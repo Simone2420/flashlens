@@ -1,189 +1,233 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Lock, CheckCircle2, Star, Play, Award } from 'lucide-react-native';
-import { COLORS, SPACING } from '../../constants/theme';
+import { Lock, Check, Star, Sparkles, BookOpen, Coffee, Home, Briefcase, Plane, ShoppingBag, Heart, MessageCircle, Compass, Film } from 'lucide-react-native';
+import * as Haptics from 'expo-haptics';
+import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { RoadmapNode } from '../../types';
-import { Badge } from '../common/Badge';
 
 interface RoadmapNodeItemProps {
   node: RoadmapNode;
-  index: number;
   onPress: (node: RoadmapNode) => void;
 }
 
+const getNodeIcon = (category: string, isLocked: boolean, isCompleted: boolean) => {
+  const iconColor = isLocked ? '#747878' : isCompleted ? '#FFFFFF' : '#1C1B1B';
+  const size = 26;
+
+  switch (category?.toUpperCase()) {
+    case 'OBJETOS COTIDIANOS':
+    case 'OBJETOS':
+      return <Coffee size={size} color={iconColor} />;
+    case 'ALIMENTOS & BEBIDAS':
+    case 'COMIDA':
+      return <ShoppingBag size={size} color={iconColor} />;
+    case 'CASA & HOGAR':
+      return <Home size={size} color={iconColor} />;
+    case 'RUTINA DIARIA':
+    case 'RUTINAS':
+      return <Compass size={size} color={iconColor} />;
+    case 'VIAJES & LUGARES':
+    case 'VIAJES':
+      return <Plane size={size} color={iconColor} />;
+    case 'TRABAJO & OFICINA':
+    case 'TRABAJO':
+      return <Briefcase size={size} color={iconColor} />;
+    case 'EMOCIONES & SENTIMIENTOS':
+    case 'EMOCIONES':
+      return <Heart size={size} color={iconColor} />;
+    case 'CONVERSACIÓN & MODISMOS':
+      return <MessageCircle size={size} color={iconColor} />;
+    case 'ENTRETENIMIENTO':
+      return <Film size={size} color={iconColor} />;
+    default:
+      return <BookOpen size={size} color={iconColor} />;
+  }
+};
+
 export const RoadmapNodeItem: React.FC<RoadmapNodeItemProps> = ({
   node,
-  index,
   onPress,
 }) => {
   const isLocked = node.status === 'LOCKED';
   const isCompleted = node.status === 'COMPLETED';
   const isActive = node.status === 'ACTIVE';
 
+  const handlePress = () => {
+    if (isLocked) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      onPress(node);
+    }
+  };
+
   return (
     <View style={styles.nodeWrapper}>
-      {/* Línea conectora vertical entre nodos */}
-      {index > 0 && <View style={[styles.connector, !isLocked && styles.connectorActive]} />}
-
+      {/* CÍRCULO NODO GAMIFICADO */}
       <TouchableOpacity
+        activeOpacity={isLocked ? 1 : 0.8}
+        onPress={handlePress}
         style={[
-          styles.card,
-          isActive && styles.cardActive,
-          isCompleted && styles.cardCompleted,
-          isLocked && styles.cardLocked,
+          styles.circleBase,
+          isActive && styles.circleActive,
+          isCompleted && styles.circleCompleted,
+          isLocked && styles.circleLocked,
         ]}
-        onPress={() => !isLocked && onPress(node)}
-        disabled={isLocked}
-        activeOpacity={0.8}
       >
-        <View style={styles.cardHeader}>
-          <View style={styles.levelGroup}>
-            <Badge
-              label={node.level}
-              variant={isActive ? 'accent' : isCompleted ? 'success' : 'default'}
-            />
-            {node.isCheckpoint && (
-              <Badge label="Checkpoint" variant="warning" />
-            )}
+        {/* Anillo de resplandor pulsante cuando está activo */}
+        {isActive && <View style={styles.activeGlowRing} />}
+
+        {/* Ícono central */}
+        {isLocked ? (
+          <Lock size={24} color="#747878" />
+        ) : isCompleted ? (
+          <Check size={28} color="#FFFFFF" strokeWidth={3} />
+        ) : (
+          getNodeIcon(node.category, isLocked, isCompleted)
+        )}
+
+        {/* Badge de Checkpoint / Desafío */}
+        {node.orderIndex % 5 === 0 && (
+          <View style={styles.checkpointBadge}>
+            <Sparkles size={11} color="#503C00" />
           </View>
+        )}
+      </TouchableOpacity>
 
-          {/* Estado de Estrellas o Candado */}
-          <View style={styles.statusGroup}>
-            {isLocked ? (
-              <Lock size={18} color={COLORS.onSurfaceVariant} />
-            ) : isCompleted ? (
-              <View style={styles.starsRow}>
-                {[1, 2, 3].map((starIndex) => (
-                  <Star
-                    key={starIndex}
-                    size={15}
-                    color={starIndex <= node.starsEarned ? COLORS.accent : COLORS.border}
-                    fill={starIndex <= node.starsEarned ? COLORS.accent : 'transparent'}
-                  />
-                ))}
-              </View>
-            ) : (
-              <View style={styles.activePill}>
-                <Play size={12} color={COLORS.onSurface} fill={COLORS.onSurface} />
-                <Text style={styles.activePillText}>DISPONIBLE</Text>
-              </View>
-            )}
-          </View>
-        </View>
+      {/* Estrellas Obtenidas */}
+      <View style={styles.starsRow}>
+        {[1, 2, 3].map(starIndex => (
+          <Star
+            key={starIndex}
+            size={12}
+            color={starIndex <= (node.starsEarned || 0) ? '#E8B400' : '#E0E0E0'}
+            fill={starIndex <= (node.starsEarned || 0) ? '#E8B400' : 'transparent'}
+          />
+        ))}
+      </View>
 
-        <Text style={[styles.title, isLocked && styles.textLocked]}>{node.title}</Text>
-        <Text style={styles.subtitle}>{node.subtitle}</Text>
-
-        <View style={styles.cardFooter}>
-          <Text style={styles.categoryText}>{node.category}</Text>
-          <Text style={styles.questionsCount}>
-            {node.questions.length} ejercicios
+      {/* Título y Nivel debajo del círculo */}
+      <View style={styles.labelContainer}>
+        <View style={styles.levelBadgeRow}>
+          <Text style={[styles.levelText, isLocked && styles.textLocked]}>{node.cefrLevel}</Text>
+          <Text style={styles.dotSeparator}>•</Text>
+          <Text style={[styles.sublessonsCount, isLocked && styles.textLocked]}>
+            {node.completedSublessons || 0}/{node.totalSublessons || 5}
           </Text>
         </View>
-      </TouchableOpacity>
+        <Text
+          style={[
+            styles.nodeTitle,
+            isActive && styles.nodeTitleActive,
+            isLocked && styles.textLocked,
+          ]}
+          numberOfLines={2}
+        >
+          {node.title}
+        </Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   nodeWrapper: {
-    width: '100%',
     alignItems: 'center',
-    marginBottom: SPACING.md,
+    width: 140,
+    marginVertical: 8,
   },
-  connector: {
-    width: 2,
-    height: 24,
-    backgroundColor: COLORS.border,
-    marginBottom: 4,
+  circleBase: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 3.5,
+    position: 'relative',
+    ...SHADOWS.card,
   },
-  connectorActive: {
-    backgroundColor: COLORS.accent,
+  circleActive: {
+    backgroundColor: '#E8B400',
+    borderColor: '#1C1B1B',
+    shadowColor: '#E8B400',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    elevation: 6,
   },
-  card: {
-    width: '100%',
-    backgroundColor: COLORS.background,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    padding: SPACING.md,
-    borderRadius: 0,
+  activeGlowRing: {
+    position: 'absolute',
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    borderWidth: 2,
+    borderColor: '#D4A400',
+    borderStyle: 'dashed',
   },
-  cardActive: {
-    borderColor: COLORS.onSurface,
+  circleCompleted: {
+    backgroundColor: '#16A34A',
+    borderColor: '#15803D',
+  },
+  circleLocked: {
+    backgroundColor: '#F1EDEC',
+    borderColor: '#E0E0E0',
+    opacity: 0.85,
+  },
+  checkpointBadge: {
+    position: 'absolute',
+    top: -3,
+    right: -3,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#FFF8E1',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderWidth: 1.5,
-    backgroundColor: COLORS.background,
-  },
-  cardCompleted: {
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.surfaceContainerLow,
-  },
-  cardLocked: {
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.surfaceContainer,
-    opacity: 0.7,
-  },
-  cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: SPACING.sm,
-  },
-  levelGroup: {
-    flexDirection: 'row',
-    gap: 6,
-  },
-  statusGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    borderColor: '#D4A400',
   },
   starsRow: {
     flexDirection: 'row',
     gap: 3,
+    marginTop: 6,
   },
-  activePill: {
+  labelContainer: {
+    alignItems: 'center',
+    marginTop: 4,
+    width: '100%',
+    paddingHorizontal: 4,
+  },
+  levelBadgeRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    backgroundColor: COLORS.accent,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
+    marginBottom: 2,
   },
-  activePillText: {
+  levelText: {
+    color: '#765A00',
     fontSize: 10,
-    fontWeight: '800',
-    color: COLORS.onSurface,
+    fontWeight: '900',
   },
-  title: {
-    fontSize: 17,
+  dotSeparator: {
+    color: '#747878',
+    fontSize: 10,
+  },
+  sublessonsCount: {
+    color: '#5E5E5E',
+    fontSize: 10,
     fontWeight: '700',
-    color: COLORS.onSurface,
-    marginBottom: 4,
   },
-  subtitle: {
-    fontSize: 13,
-    color: COLORS.onSurfaceVariant,
-    lineHeight: 18,
-    marginBottom: SPACING.sm,
+  nodeTitle: {
+    color: '#1C1B1B',
+    fontSize: 12,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  nodeTitleActive: {
+    color: '#765A00',
+    fontWeight: '900',
   },
   textLocked: {
-    color: COLORS.onSurfaceVariant,
-  },
-  cardFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: SPACING.xs,
-    borderTopWidth: 1,
-    borderTopColor: COLORS.border,
-  },
-  categoryText: {
-    fontSize: 11,
-    color: COLORS.onSurfaceVariant,
-    fontWeight: '600',
-    textTransform: 'uppercase',
-  },
-  questionsCount: {
-    fontSize: 11,
-    color: COLORS.onSurfaceVariant,
+    color: '#747878',
   },
 });
