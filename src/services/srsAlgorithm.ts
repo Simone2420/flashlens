@@ -1,4 +1,4 @@
-import { ReviewRating } from '../types';
+import { Flashcard, ReviewRating } from '../types';
 
 export interface SM2Input {
   repetitionNumber: number;
@@ -74,4 +74,13 @@ export function calculateSM2({
     intervalDays: newInterval,
     nextReviewAt: nextDate.toISOString(),
   };
+}
+
+export function calculateNextSRSState(card: Flashcard, rating: ReviewRating): SM2Result {
+  return calculateSM2({
+    repetitionNumber: card.repetitionNumber,
+    easeFactor: card.easeFactor,
+    intervalDays: card.intervalDays,
+    rating,
+  });
 }

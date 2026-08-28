@@ -1,10 +1,45 @@
 export type ReviewRating = 'AGAIN' | 'HARD' | 'GOOD' | 'EASY';
 
-export type AudioMode = 'BURST' | 'SYNTAX';
+export type AudioMode = 'BURST' | 'SYNTAX' | 'DICTATION';
 
 export type NodeStatus = 'LOCKED' | 'ACTIVE' | 'COMPLETED';
 
 export type TargetLanguage = 'en' | 'fr' | 'de' | 'it' | 'pt';
+
+export type LearningPace = 'SLOW' | 'MEDIUM' | 'FAST';
+
+export type CEFRLevel = 'A0' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+
+export type CardType = 'VOCABULARY' | 'ABSTRACT';
+
+export type PartOfSpeech =
+  | 'NOUN'
+  | 'VERB'
+  | 'ADJECTIVE'
+  | 'ADVERB'
+  | 'PREPOSITION'
+  | 'CONJUNCTION'
+  | 'PRONOUN'
+  | 'INTERJECTION'
+  | 'PHRASE'
+  | 'IDIOM';
+
+export type ConceptCategory =
+  | 'OBJECT'
+  | 'ADVERB_MODIFIER'
+  | 'GRAMMAR_RULE'
+  | 'IDIOM_EXPRESSION'
+  | 'PHRASAL_VERB'
+  | 'CONNECTOR_TRANSITION'
+  | 'FALSE_FRIEND'
+  | 'COLLOCATION_PHRASE'
+  | 'EMOTION_STATE'
+  | 'ACTION_COGNITIVE'
+  | 'QUALITY_PERSONALITY'
+  | 'CONVERSATIONAL_FILLER'
+  | 'ABSTRACT_NOUN';
+
+export type DictationInputMode = 'FREE_TEXT' | 'EXACT_BOXES' | 'DYNAMIC_EXPANDING';
 
 export interface UserProfile {
   id: string;
@@ -16,7 +51,10 @@ export interface UserProfile {
   eloRating: number;
   targetLanguage: TargetLanguage;
   xp: number;
+  learningPace: LearningPace;
+  diagnosedLevel: CEFRLevel;
   completedLessonsCount: number;
+  notificationsEnabled: boolean;
 }
 
 export interface LivesState {
@@ -30,12 +68,21 @@ export interface Flashcard {
   id: string;
   targetWord: string;
   nativeTranslation: string;
+  cardType: CardType;
+  partOfSpeech: PartOfSpeech;
+  conceptCategory: ConceptCategory;
   phoneticScript: string;
   contextSentence: string;
   contextTranslation?: string;
+  mnemonicHint?: string;
+  literalMeaning?: string;
+  grammarFormula?: string;
+  commonMistake?: string;
+  collocations?: string[];
   imageUrl: string;
+  imageSource: 'CAMERA' | 'AI_GENERATED' | 'PRESET';
   audioUrl?: string;
-  createdVia: 'CAMERA' | 'SEARCH' | 'MANUAL';
+  createdVia: 'CAMERA' | 'SEARCH' | 'MANUAL' | 'VOICE_SPANISH';
   createdAt: string;
   // SRS State
   repetitionNumber: number;
@@ -45,29 +92,96 @@ export interface Flashcard {
   nextReviewAt: string; // ISO date
 }
 
-export interface QuizQuestion {
+export interface CharacterDiff {
+  char: string;
+  status: 'CORRECT' | 'WRONG' | 'MISSING' | 'EXTRA';
+  expectedChar?: string;
+}
+
+export interface DictationResult {
+  isCorrect: boolean;
+  accuracyPercentage: number;
+  diffs: CharacterDiff[];
+  feedback: string;
+}
+
+export type QuestionType =
+  | 'SPEAKING_PRONUNCIATION'
+  | 'MATCH_PAIRS'
+  | 'FILL_IN_BLANK'
+  | 'SENTENCE_WRITING'
+  | 'IMAGE_WORD_MATCH'
+  | 'MULTIPLE_CHOICE_ICFES';
+
+export interface SublessonQuestionItem {
   id: string;
-  type: 'MULTIPLE_CHOICE' | 'REVERSE_DICTATION' | 'IMAGE_MATCH';
+  type: QuestionType;
   prompt: string;
-  targetWord: string;
-  nativeTranslation: string;
-  phoneticScript?: string;
-  imageUrl?: string;
-  options: string[];
-  correctAnswer: string;
+  contextText?: string;
+  mediaUrl?: string;
+  options?: any;
+  correctAnswer: any;
   explanation?: string;
+  cefrLevel: string;
+  phoneticTarget?: string;
+}
+
+export interface Sublesson {
+  id: string;
+  nodeId: string;
+  title: string;
+  orderIndex: number;
+  paceTier: 'ALL' | 'MEDIUM_PLUS' | 'SLOW_REINFORCEMENT';
+  xpReward: number;
+  isCompleted: boolean;
+  score: number;
+  questions: SublessonQuestionItem[];
 }
 
 export interface RoadmapNode {
   id: string;
   title: string;
-  subtitle: string;
-  level: string; // 'A1.1', 'A1.2', etc.
+  description: string;
   category: string;
+  cefrLevel: string;
+  orderIndex: number;
+  icon: string;
   status: NodeStatus;
   starsEarned: number; // 0 to 3
-  questions: QuizQuestion[];
-  isCheckpoint?: boolean;
+  prerequisites: string[];
+  totalSublessons: number;
+  completedSublessons: number;
+  sublessons?: Sublesson[];
+}
+
+export interface DiagnosticQuestion {
+  id: string;
+  section: 'PHONETICS' | 'GRAMMAR' | 'VOCABULARY' | 'READING_ICFES' | 'PRODUCTION';
+  orderIndex: number;
+  question: SublessonQuestionItem;
+}
+
+export interface DiagnosticResult {
+  totalQuestions: number;
+  correctAnswers: number;
+  percentage: number;
+  diagnosedLevel: CEFRLevel;
+  recommendedPace: LearningPace;
+  sectionScores: {
+    phonetics: number;
+    grammar: number;
+    vocabulary: number;
+    readingIcfes: number;
+    production: number;
+  };
+}
+
+export interface UserFeedback {
+  id: string;
+  rating: number; // 1 to 5
+  category: 'CAMERA' | 'SRS' | 'AUDIO_LAB' | 'ROADMAP' | 'GENERAL';
+  comment?: string;
+  createdAt: string;
 }
 
 export interface AudioBurstItem {
