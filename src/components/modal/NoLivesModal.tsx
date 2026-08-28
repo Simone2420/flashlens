@@ -11,7 +11,7 @@ interface NoLivesModalProps {
 }
 
 export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) => {
-  const { lives, refillLives, checkLivesRegeneration } = useUserStore();
+  const { lives, refillLivesDemo, checkLivesRegeneration } = useUserStore();
   const [timeLeft, setTimeLeft] = useState<string>('04:00:00');
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) 
   }, [lives.nextRegenerationAt]);
 
   const handleRefill = () => {
-    refillLives();
+    refillLivesDemo();
     onClose();
   };
 

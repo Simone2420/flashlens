@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAction }) => {
-  const { user, lives } = useUserStore();
+  const { profile, lives } = useUserStore();
   const [modalVisible, setModalVisible] = useState(false);
   const insets = useSafeAreaInsets();
 
@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
           {/* Racha */}
           <View style={styles.statPill}>
             <Flame size={16} color={COLORS.accent} fill={COLORS.accent} />
-            <Text style={styles.statText}>{user.currentStreak}</Text>
+            <Text style={styles.statText}>{profile.currentStreak}</Text>
           </View>
 
           {/* Vidas (5 Corazones) */}
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
           {/* XP */}
           <View style={styles.statPill}>
             <Zap size={14} color={COLORS.onSurface} fill={COLORS.onSurface} />
-            <Text style={styles.statText}>{user.xp}</Text>
+            <Text style={styles.statText}>{profile.xp}</Text>
           </View>
 
           {rightAction}

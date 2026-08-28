@@ -11,33 +11,28 @@ import * as SplashScreen from 'expo-splash-screen';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { COLORS } from '../src/constants/theme';
+import { NotificationToast } from '../src/components/notifications/NotificationToast';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     DMSans_400Regular,
     DMSans_500Medium,
     DMSans_700Bold,
   });
 
   useEffect(() => {
-    if (fontsLoaded) {
+    // Si las fuentes cargaron o si hubo error/offline, ocultar splash screen de inmediato
+    if (fontsLoaded || fontError) {
       SplashScreen.hideAsync().catch(() => {});
     }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={COLORS.onSurface} />
-      </View>
-    );
-  }
+  }, [fontsLoaded, fontError]);
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="dark" />
+      <StatusBar style="dark" backgroundColor={COLORS.background} />
+      <NotificationToast />
       <Stack
         screenOptions={{
           headerShown: false,
@@ -61,6 +56,20 @@ export default function RootLayout() {
             presentation: 'card',
           }}
         />
+        <Stack.Screen
+          name="diagnostic/index"
+          options={{
+            headerShown: false,
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="diagnostic/result"
+          options={{
+            headerShown: false,
+            presentation: 'card',
+          }}
+        />
       </Stack>
     </SafeAreaProvider>
   );
@@ -69,7 +78,7 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: '#FDF8F8',
     justifyContent: 'center',
     alignItems: 'center',
   },
