@@ -22,7 +22,7 @@ import { ProgressBar } from '../../src/components/common/ProgressBar';
 export default function SRSReviewScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { cards, rateFlashcard, getDueCards } = useFlashcardStore();
+  const { cards, reviewCard, getDueCards } = useFlashcardStore();
   const { addXP } = useUserStore();
 
   const dueCards = getDueCards();
@@ -40,7 +40,7 @@ export default function SRSReviewScreen() {
   const handleRate = (rating: ReviewRating) => {
     if (!currentCard) return;
 
-    rateFlashcard(currentCard.id, rating);
+    reviewCard(currentCard.id, rating);
     setRatedCount((prev) => prev + 1);
     addXP(15); // +15 XP por cada tarjeta repasada
 
