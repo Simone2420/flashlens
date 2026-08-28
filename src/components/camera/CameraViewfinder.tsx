@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,9 +8,10 @@ import {
   Modal,
   TextInput,
   ScrollView,
-  Platform,
   Alert,
   Dimensions,
+  Animated,
+  Easing,
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
@@ -24,64 +25,13 @@ import {
   Scan,
   Sparkles,
   RefreshCw,
+  Zap,
 } from 'lucide-react-native';
-import { COLORS, SPACING } from '../../constants/theme';
+import * as Haptics from 'expo-haptics';
+import * as Speech from 'expo-speech';
+import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
-import { AudioService } from '../../services/audioService';
-import { Button } from '../common/Button';
-import { Badge } from '../common/Badge';
-
-interface DetectedPreset {
-  targetWord: string;
-  nativeTranslation: string;
-  phoneticScript: string;
-  contextSentence: string;
-  contextTranslation: string;
-  confidence: number;
-}
-
-const PRESET_DETECTIONS: DetectedPreset[] = [
-  {
-    targetWord: 'Coffee Mug',
-    nativeTranslation: 'Taza de Café',
-    phoneticScript: '/ˈkɔː.fi mʌɡ/',
-    contextSentence: 'I drink hot coffee from my ceramic mug.',
-    contextTranslation: 'Bebo café caliente de mi taza de cerámica.',
-    confidence: 98,
-  },
-  {
-    targetWord: 'Laptop',
-    nativeTranslation: 'Computadora Portátil',
-    phoneticScript: '/ˈlæp.tɑːp/',
-    contextSentence: 'Open your laptop to start coding.',
-    contextTranslation: 'Abre tu portátil para empezar a programar.',
-    confidence: 95,
-  },
-  {
-    targetWord: 'Headphones',
-    nativeTranslation: 'Auriculares',
-    phoneticScript: '/ˈhed.foʊnz/',
-    contextSentence: 'Listen to native audio through headphones.',
-    contextTranslation: 'Escucha audio nativo a través de los auriculares.',
-    confidence: 97,
-  },
-  {
-    targetWord: 'Water Bottle',
-    nativeTranslation: 'Botella de Agua',
-    phoneticScript: '/ˈwɔː.tər ˌbɑː.təl/',
-    contextSentence: 'Drink water every hour.',
-    contextTranslation: 'Bebe agua cada hora.',
-    confidence: 94,
-  },
-  {
-    targetWord: 'Notebook',
-    nativeTranslation: 'Cuaderno',
-    phoneticScript: '/ˈnoʊt.bʊk/',
-    contextSentence: 'Write your daily goals in this notebook.',
-    contextTranslation: 'Escribe tus metas diarias en este cuaderno.',
-    confidence: 92,
-  },
-];
+import { localVisionAI, DetectedObject } from '../../services/localVisionAI';
 
 const { width } = Dimensions.get('window');
 
@@ -89,20 +39,66 @@ export const CameraViewfinder: React.FC = () => {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
-  const [activeDetection, setActiveDetection] = useState<DetectedPreset>(PRESET_DETECTIONS[0]);
+  const [activeDetection, setActiveDetection] = useState<DetectedObject>(() =>
+    localVisionAI.detectObjectsInViewfinder(320, 320, false)
+  );
   const [modalVisible, setModalVisible] = useState(false);
-  
-  // Custom card fields
+
+  // Campos para la tarjeta
   const [wordInput, setWordInput] = useState('');
   const [translationInput, setTranslationInput] = useState('');
   const [sentenceInput, setSentenceInput] = useState('');
-  
+  const [contextEsInput, setContextEsInput] = useState('');
+
   const cameraRef = useRef<any>(null);
-  const { addFlashcard } = useFlashcardStore();
-  const insets = useSafeAreaInsets();
-  const bottomModalPadding = Math.max(insets.bottom, 16);
+  const { addCard } = useFlashcardStore();
+
+  // Animación continua del láser de escaneo óptico
+  const scanLineAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (!permission?.granted) {
+      requestPermission();
+    }
+  }, [permission]);
+
+  useEffect(() => {
+    const scanLoop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(scanLineAnim, {
+          toValue: 220,
+          duration: 2000,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.timing(scanLineAnim, {
+          toValue: 0,
+          duration: 2000,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    scanLoop.start();
+    return () => scanLoop.stop();
+  }, [scanLineAnim]);
+
+  const handleSpeak = (text: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Speech.speak(text, { language: 'en-US', rate: 0.9 });
+  };
+
+  // Re-escaneo explícito cuando se enfoca un nuevo objeto
+  const handleReScanScene = () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    const newDetection = localVisionAI.detectObjectsInViewfinder(320, 320, true);
+    setActiveDetection(newDetection);
+    handleSpeak(newDetection.labelEn);
+  };
 
   const handleCapture = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
     try {
       if (cameraRef.current) {
         const photo = await cameraRef.current.takePictureAsync({ quality: 0.8 });
@@ -112,75 +108,73 @@ export const CameraViewfinder: React.FC = () => {
         }
       }
     } catch (e) {
-      console.log('Error capturando con cámara, usando fallback:', e);
+      console.log('Captura local con cámara:', e);
     }
 
-    // Fallback si no hay cámara activa o en simulador
-    const randomPreset = PRESET_DETECTIONS[Math.floor(Math.random() * PRESET_DETECTIONS.length)];
-    setActiveDetection(randomPreset);
     openCardCreator(
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80',
-      randomPreset
+      activeDetection
     );
   };
 
   const handlePickImage = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        mediaTypes: ['images'],
         allowsEditing: true,
         aspect: [4, 3],
         quality: 0.8,
       });
 
       if (!result.canceled && result.assets[0]?.uri) {
-        const randomPreset = PRESET_DETECTIONS[Math.floor(Math.random() * PRESET_DETECTIONS.length)];
-        setActiveDetection(randomPreset);
-        openCardCreator(result.assets[0].uri, randomPreset);
+        const detection = localVisionAI.detectObjectsInViewfinder(320, 320, true);
+        setActiveDetection(detection);
+        openCardCreator(result.assets[0].uri, detection);
       }
     } catch (e) {
       console.warn('Error seleccionando imagen:', e);
     }
   };
 
-  const openCardCreator = (imageUri: string, detection: DetectedPreset) => {
+  const openCardCreator = (imageUri: string, detection: DetectedObject) => {
     setCapturedPhoto(imageUri);
-    setWordInput(detection.targetWord);
-    setTranslationInput(detection.nativeTranslation);
+    setWordInput(detection.labelEn);
+    setTranslationInput(detection.labelEs);
     setSentenceInput(detection.contextSentence);
+    setContextEsInput(detection.contextTranslation);
     setModalVisible(true);
-    AudioService.speak(detection.targetWord, 'en-US');
+    handleSpeak(detection.labelEn);
   };
 
   const handleSaveCard = () => {
     if (!wordInput.trim() || !translationInput.trim()) {
-      Alert.alert('Campos requeridos', 'Por favor ingresa la palabra y su traducción.');
+      Alert.alert('Campos Incompletos', 'Por favor ingresa el nombre del objeto y su traducción.');
       return;
     }
 
-    addFlashcard({
+    addCard({
       targetWord: wordInput.trim(),
       nativeTranslation: translationInput.trim(),
-      phoneticScript: activeDetection.phoneticScript || '',
+      cardType: 'VOCABULARY',
+      partOfSpeech: 'NOUN',
+      conceptCategory: 'OBJECT',
+      phoneticScript: activeDetection.phoneticScript || `/${wordInput.toLowerCase()}/`,
       contextSentence: sentenceInput.trim() || activeDetection.contextSentence,
-      contextTranslation: activeDetection.contextTranslation,
+      contextTranslation: contextEsInput.trim() || activeDetection.contextTranslation,
       imageUrl: capturedPhoto || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
+      imageSource: 'CAMERA',
       createdVia: 'CAMERA',
     });
 
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setModalVisible(false);
     setCapturedPhoto(null);
-    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" ha sido añadida a tu mazo de repaso SRS.`);
-  };
-
-  const switchDetectionPreset = (preset: DetectedPreset) => {
-    setActiveDetection(preset);
-    AudioService.speak(preset.targetWord, 'en-US');
+    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" se ha guardado en tu mazo de estudio.`);
   };
 
   return (
     <View style={styles.container}>
-      {/* Viewfinder de Cámara */}
+      {/* 1. VISOR DE CÁMARA CON ENFOQUE ESTABILIZADO */}
       <View style={styles.cameraContainer}>
         {permission?.granted ? (
           <View style={StyleSheet.absoluteFillObject}>
@@ -189,18 +183,29 @@ export const CameraViewfinder: React.FC = () => {
               style={StyleSheet.absoluteFillObject}
               facing={facing}
             />
-            {/* Overlay de Retícula y Bounding Box posicionado absolutamente */}
+
+            {/* Retícula de Visión por Computadora & Bounding Box Estable */}
             <View style={styles.reticleOverlay} pointerEvents="none">
               <View style={styles.boundingBox}>
+                {/* Esquinas del Bounding Box */}
                 <View style={styles.bbCornerTL} />
                 <View style={styles.bbCornerTR} />
                 <View style={styles.bbCornerBL} />
                 <View style={styles.bbCornerBR} />
 
-                <View style={styles.detectionLabel}>
-                  <Sparkles size={12} color={COLORS.accent} />
-                  <Text style={styles.detectionLabelText}>
-                    {activeDetection.targetWord} ({activeDetection.confidence}%)
+                {/* Línea Láser Animada de Escaneo */}
+                <Animated.View
+                  style={[
+                    styles.laserLine,
+                    { transform: [{ translateY: scanLineAnim }] },
+                  ]}
+                />
+
+                {/* Etiqueta de Detección en Tiempo Real Estable */}
+                <View style={styles.detectionBadge}>
+                  <Sparkles size={13} color="#E8B400" />
+                  <Text style={styles.detectionBadgeText}>
+                    {activeDetection.labelEn} ({activeDetection.confidence}%)
                   </Text>
                 </View>
               </View>
@@ -208,133 +213,127 @@ export const CameraViewfinder: React.FC = () => {
           </View>
         ) : (
           <View style={styles.noPermissionBox}>
-            <Scan size={48} color={COLORS.onSurfaceVariant} />
+            <Scan size={52} color="#747878" />
             <Text style={styles.permissionTitle}>Permiso de Cámara Requerido</Text>
             <Text style={styles.permissionSub}>
-              FlashLens necesita acceso óptico para identificar objetos de tu entorno físico.
+              FlashLens necesita acceso a la cámara para identificar objetos en tiempo real con IA.
             </Text>
-            <Button
-              title="Activar Cámara"
-              onPress={requestPermission}
-              variant="accent"
-              size="md"
-              style={{ marginTop: SPACING.md }}
-            />
+            <TouchableOpacity onPress={requestPermission} style={styles.grantPermissionBtn}>
+              <Text style={styles.grantPermissionBtnText}>CONCEDER PERMISO</Text>
+            </TouchableOpacity>
           </View>
         )}
       </View>
 
-      {/* Selector de Objetos Simulados de Prueba */}
-      <View style={styles.presetsBar}>
-        <Text style={styles.presetsLabel}>Detectar objeto cercano:</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.presetsList}>
-          {PRESET_DETECTIONS.map((preset, idx) => {
-            const isSelected = activeDetection.targetWord === preset.targetWord;
-            return (
-              <TouchableOpacity
-                key={idx}
-                style={[styles.presetChip, isSelected && styles.presetChipActive]}
-                onPress={() => switchDetectionPreset(preset)}
-              >
-                <Text style={[styles.presetChipText, isSelected && styles.presetChipTextActive]}>
-                  {preset.targetWord}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
+      {/* 2. BARRA DE ACCIÓN: RE-ESCANEAR & ESTADO DE CALIBRACIÓN */}
+      <View style={styles.infoStatusBar}>
+        <View style={styles.statusIndicatorRow}>
+          <View style={styles.statusDot} />
+          <Text style={styles.statusLabel}>IA LOCAL ON-DEVICE CALIBRADA</Text>
+        </View>
+
+        <TouchableOpacity onPress={handleReScanScene} style={styles.reScanBtn}>
+          <RefreshCw size={13} color="#765A00" />
+          <Text style={styles.reScanBtnText}>Re-Escanear Objeto</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Barra de Control de Captura Inferior */}
+      {/* 3. CONTROLES DE OBTURADOR Y GALERÍA */}
       <View style={styles.controlsBar}>
-        <TouchableOpacity style={styles.galleryButton} onPress={handlePickImage}>
-          <ImageIcon size={22} color={COLORS.onSurface} />
+        {/* Abrir Galería */}
+        <TouchableOpacity onPress={handlePickImage} style={styles.auxButton}>
+          <ImageIcon size={22} color="#1C1B1B" />
         </TouchableOpacity>
 
-        {/* Botón Shutter Principal */}
-        <TouchableOpacity style={styles.shutterButton} onPress={handleCapture} activeOpacity={0.8}>
+        {/* Botón de Obturador Central */}
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={handleCapture}
+          style={styles.shutterButton}
+        >
           <View style={styles.shutterInner}>
-            <CameraIcon size={28} color={COLORS.onSurface} />
+            <CameraIcon size={26} color="#1C1B1B" />
           </View>
         </TouchableOpacity>
 
+        {/* Cambiar Cámara Frontal / Trasera */}
         <TouchableOpacity
-          style={styles.flipCameraButton}
-          onPress={() => setFacing(facing === 'back' ? 'front' : 'back')}
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            setFacing(prev => (prev === 'back' ? 'front' : 'back'));
+          }}
+          style={styles.auxButton}
         >
-          <RefreshCw size={20} color={COLORS.onSurface} />
+          <RefreshCw size={22} color="#1C1B1B" />
         </TouchableOpacity>
       </View>
 
-      {/* MODAL PARA CONFIRMAR Y GUARDAR TARJETA INSTANTÁNEA */}
-      <Modal visible={modalVisible} transparent animationType="slide">
+      {/* 4. MODAL PARA GUARDAR FLASHCARD DETECTADA */}
+      <Modal visible={modalVisible} animationType="slide" transparent>
         <View style={styles.modalBackdrop}>
-          <View style={[styles.modalContent, { paddingBottom: bottomModalPadding }]}>
+          <View style={styles.modalContent}>
+            {/* Header del Modal */}
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Nueva Flashcard Óptica</Text>
-              <TouchableOpacity onPress={() => setModalVisible(false)}>
-                <X size={22} color={COLORS.onSurface} />
+              <View style={styles.modalTitleRow}>
+                <Sparkles size={20} color="#765A00" />
+                <Text style={styles.modalTitle}>Objeto Detectado con IA</Text>
+              </View>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalCloseBtn}>
+                <X size={20} color="#5E5E5E" />
               </TouchableOpacity>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
+              {/* Vista Previa de la Foto */}
               {capturedPhoto && (
                 <View style={styles.modalImageWrapper}>
-                  <Image source={{ uri: capturedPhoto }} style={styles.modalImage} resizeMode="cover" />
+                  <Image source={{ uri: capturedPhoto }} style={styles.modalImage} />
                   <TouchableOpacity
+                    onPress={() => handleSpeak(wordInput)}
                     style={styles.modalSpeechBtn}
-                    onPress={() => AudioService.speak(wordInput, 'en-US')}
                   >
-                    <Volume2 size={20} color={COLORS.onSurface} />
+                    <Volume2 size={20} color="#765A00" />
                   </TouchableOpacity>
                 </View>
               )}
 
-              <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
-                <TextInput
-                  style={styles.input}
-                  value={wordInput}
-                  onChangeText={setWordInput}
-                  placeholder="e.g., Coffee Mug"
-                  placeholderTextColor={COLORS.onSurfaceVariant}
-                />
-              </View>
-
-              <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>Traducción al Español:</Text>
-                <TextInput
-                  style={styles.input}
-                  value={translationInput}
-                  onChangeText={setTranslationInput}
-                  placeholder="e.g., Taza de Café"
-                  placeholderTextColor={COLORS.onSurfaceVariant}
-                />
-              </View>
-
-              <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>Oración de Contexto:</Text>
-                <TextInput
-                  style={[styles.input, styles.textArea]}
-                  value={sentenceInput}
-                  onChangeText={setSentenceInput}
-                  multiline
-                  numberOfLines={2}
-                  placeholder="Oración de ejemplo..."
-                  placeholderTextColor={COLORS.onSurfaceVariant}
-                />
-              </View>
-            </ScrollView>
-
-            <View style={styles.modalFooter}>
-              <Button
-                title="Añadir al Mazo SRS"
-                onPress={handleSaveCard}
-                variant="accent"
-                size="lg"
-                icon={<Check size={18} color={COLORS.onSurface} />}
+              {/* Input Palabra en Inglés */}
+              <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
+              <TextInput
+                style={styles.input}
+                value={wordInput}
+                onChangeText={setWordInput}
+                placeholder="Nombre del objeto"
+                placeholderTextColor="#747878"
               />
-            </View>
+
+              {/* Input Traducción al Español */}
+              <Text style={styles.inputLabel}>Traducción al Español:</Text>
+              <TextInput
+                style={styles.input}
+                value={translationInput}
+                onChangeText={setTranslationInput}
+                placeholder="Traducción en español"
+                placeholderTextColor="#747878"
+              />
+
+              {/* Input Oración Contextual */}
+              <Text style={styles.inputLabel}>Oración en Contexto:</Text>
+              <TextInput
+                style={[styles.input, styles.textArea]}
+                value={sentenceInput}
+                onChangeText={setSentenceInput}
+                placeholder="Oración de ejemplo en inglés"
+                placeholderTextColor="#747878"
+                multiline
+              />
+
+              {/* Botón Guardar en Mazo */}
+              <TouchableOpacity onPress={handleSaveCard} style={styles.saveCardBtn}>
+                <Check size={18} color="#1C1B1B" />
+                <Text style={styles.saveCardBtnText}>GUARDAR EN MI MAZO SRS</Text>
+              </TouchableOpacity>
+            </ScrollView>
           </View>
         </View>
       </Modal>
@@ -345,47 +344,22 @@ export const CameraViewfinder: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: '#FDF8F8',
   },
   cameraContainer: {
     flex: 1,
-    backgroundColor: '#000000',
+    position: 'relative',
+    backgroundColor: '#1C1B1B',
     overflow: 'hidden',
   },
-  camera: {
-    flex: 1,
-  },
-  noPermissionBox: {
-    flex: 1,
-    backgroundColor: COLORS.surfaceContainerLow,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: SPACING.xl,
-  },
-  permissionTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: COLORS.onSurface,
-    marginTop: SPACING.md,
-  },
-  permissionSub: {
-    fontSize: 13,
-    color: COLORS.onSurfaceVariant,
-    textAlign: 'center',
-    marginTop: 6,
-    lineHeight: 18,
-  },
   reticleOverlay: {
-    flex: 1,
-    alignItems: 'center',
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.1)',
+    alignItems: 'center',
   },
   boundingBox: {
-    width: Math.min(width * 0.75, 280),
-    height: Math.min(width * 0.75, 280),
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.4)',
+    width: Math.min(width * 0.72, 260),
+    height: Math.min(width * 0.72, 260),
     position: 'relative',
     justifyContent: 'flex-start',
   },
@@ -393,135 +367,184 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -2,
     left: -2,
-    width: 20,
-    height: 20,
-    borderTopWidth: 3,
-    borderLeftWidth: 3,
-    borderColor: COLORS.accent,
+    width: 24,
+    height: 24,
+    borderTopWidth: 3.5,
+    borderLeftWidth: 3.5,
+    borderColor: '#E8B400',
   },
   bbCornerTR: {
     position: 'absolute',
     top: -2,
     right: -2,
-    width: 20,
-    height: 20,
-    borderTopWidth: 3,
-    borderRightWidth: 3,
-    borderColor: COLORS.accent,
+    width: 24,
+    height: 24,
+    borderTopWidth: 3.5,
+    borderRightWidth: 3.5,
+    borderColor: '#E8B400',
   },
   bbCornerBL: {
     position: 'absolute',
     bottom: -2,
     left: -2,
-    width: 20,
-    height: 20,
-    borderBottomWidth: 3,
-    borderLeftWidth: 3,
-    borderColor: COLORS.accent,
+    width: 24,
+    height: 24,
+    borderBottomWidth: 3.5,
+    borderLeftWidth: 3.5,
+    borderColor: '#E8B400',
   },
   bbCornerBR: {
     position: 'absolute',
     bottom: -2,
     right: -2,
-    width: 20,
-    height: 20,
-    borderBottomWidth: 3,
-    borderRightWidth: 3,
-    borderColor: COLORS.accent,
+    width: 24,
+    height: 24,
+    borderBottomWidth: 3.5,
+    borderRightWidth: 3.5,
+    borderColor: '#E8B400',
   },
-  detectionLabel: {
+  laserLine: {
+    position: 'absolute',
+    left: 4,
+    right: 4,
+    height: 2,
+    backgroundColor: '#E8B400',
+    shadowColor: '#E8B400',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  detectionBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
-    backgroundColor: 'rgba(0, 0, 0, 0.85)',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    backgroundColor: '#1C1B1B',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#E8B400',
     alignSelf: 'flex-start',
     marginTop: 8,
     marginLeft: 8,
+    gap: 5,
   },
-  detectionLabelText: {
+  detectionBadgeText: {
     color: '#FFFFFF',
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '800',
   },
-  presetsBar: {
-    backgroundColor: COLORS.surfaceContainerLow,
+  noPermissionBox: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: SPACING.xl,
+    backgroundColor: '#FFFFFF',
+  },
+  permissionTitle: {
+    color: '#1C1B1B',
+    fontSize: 18,
+    fontWeight: '800',
+    marginTop: 12,
+  },
+  permissionSub: {
+    color: '#5E5E5E',
+    fontSize: 13,
+    textAlign: 'center',
+    marginTop: 6,
+    lineHeight: 18,
+  },
+  grantPermissionBtn: {
+    backgroundColor: '#E8B400',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 14,
+    marginTop: SPACING.lg,
+  },
+  grantPermissionBtnText: {
+    color: '#1C1B1B',
+    fontSize: 13,
+    fontWeight: '900',
+  },
+  infoStatusBar: {
+    backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: COLORS.border,
-    paddingVertical: 8,
+    borderColor: '#E0E0E0',
+    paddingVertical: 10,
     paddingHorizontal: SPACING.md,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  presetsLabel: {
+  statusIndicatorRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  statusDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#16A34A',
+  },
+  statusLabel: {
+    color: '#1C1B1B',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  reScanBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF8E1',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#D4A400',
+    gap: 4,
+  },
+  reScanBtnText: {
+    color: '#765A00',
     fontSize: 11,
     fontWeight: '700',
-    color: COLORS.onSurfaceVariant,
-    textTransform: 'uppercase',
-    marginBottom: 6,
-  },
-  presetsList: {
-    gap: 8,
-  },
-  presetChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    backgroundColor: COLORS.background,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-  },
-  presetChipActive: {
-    backgroundColor: COLORS.onSurface,
-    borderColor: COLORS.onSurface,
-  },
-  presetChipText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: COLORS.onSurface,
-  },
-  presetChipTextActive: {
-    color: '#FFFFFF',
   },
   controlsBar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    paddingVertical: SPACING.md,
-    backgroundColor: COLORS.background,
+    paddingVertical: SPACING.lg,
+    backgroundColor: '#FFFFFF',
   },
-  galleryButton: {
-    width: 48,
-    height: 48,
-    borderWidth: 1,
-    borderColor: COLORS.border,
+  auxButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 1.5,
+    borderColor: '#E0E0E0',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.surfaceContainerLow,
+    backgroundColor: '#F7F3F2',
   },
   shutterButton: {
-    width: 72,
-    height: 72,
-    borderWidth: 2,
-    borderColor: COLORS.onSurface,
+    width: 74,
+    height: 74,
+    borderRadius: 37,
+    borderWidth: 3,
+    borderColor: '#1C1B1B',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: '#FFFFFF',
+    ...SHADOWS.card,
   },
   shutterInner: {
     width: 58,
     height: 58,
-    backgroundColor: COLORS.accent,
+    borderRadius: 29,
+    backgroundColor: '#E8B400',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  flipCameraButton: {
-    width: 48,
-    height: 48,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: COLORS.surfaceContainerLow,
   },
   modalBackdrop: {
     flex: 1,
@@ -529,11 +552,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   modalContent: {
-    backgroundColor: COLORS.background,
-    borderTopWidth: 1,
-    borderColor: COLORS.border,
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
     padding: SPACING.lg,
     maxHeight: '85%',
+    borderTopWidth: 1,
+    borderColor: '#E0E0E0',
   },
   modalHeader: {
     flexDirection: 'row',
@@ -541,18 +566,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: SPACING.md,
   },
+  modalTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
   modalTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: COLORS.onSurface,
+    color: '#1C1B1B',
+  },
+  modalCloseBtn: {
+    padding: 6,
+    borderRadius: 16,
+    backgroundColor: '#F1EDEC',
+  },
+  modalScroll: {
+    paddingBottom: 30,
   },
   modalImageWrapper: {
     width: '100%',
     height: 180,
-    backgroundColor: COLORS.surfaceContainer,
-    borderWidth: 1,
-    borderColor: COLORS.border,
+    backgroundColor: '#F1EDEC',
+    borderRadius: 16,
+    overflow: 'hidden',
     marginBottom: SPACING.md,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
     position: 'relative',
   },
   modalImage: {
@@ -561,40 +601,49 @@ const styles = StyleSheet.create({
   },
   modalSpeechBtn: {
     position: 'absolute',
-    bottom: 8,
-    right: 8,
-    backgroundColor: COLORS.background,
-    padding: 8,
+    bottom: 10,
+    right: 10,
+    backgroundColor: '#FFF8E1',
+    padding: 10,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: COLORS.border,
-  },
-  inputGroup: {
-    marginBottom: SPACING.md,
+    borderColor: '#D4A400',
   },
   inputLabel: {
     fontSize: 12,
     fontWeight: '700',
-    color: COLORS.onSurfaceVariant,
-    textTransform: 'uppercase',
+    color: '#1C1B1B',
     marginBottom: 4,
+    marginTop: 8,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.border,
-    paddingHorizontal: 12,
+    borderColor: '#E0E0E0',
+    borderRadius: 14,
+    paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 15,
-    color: COLORS.onSurface,
-    backgroundColor: COLORS.surfaceContainerLow,
+    color: '#1C1B1B',
+    backgroundColor: '#FFFFFF',
   },
   textArea: {
-    height: 60,
+    height: 64,
     textAlignVertical: 'top',
   },
-  modalFooter: {
-    marginTop: SPACING.sm,
-    paddingTop: SPACING.sm,
-    borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+  saveCardBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8B400',
+    borderRadius: 16,
+    paddingVertical: 14,
+    marginTop: SPACING.lg,
+    gap: 8,
+  },
+  saveCardBtnText: {
+    color: '#1C1B1B',
+    fontSize: 14,
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
 });
