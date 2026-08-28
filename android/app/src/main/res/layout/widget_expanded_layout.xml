@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_expanded_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDF8F8"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/exp_widget_streak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🔥 Racha: 7 Días"
+            android:textColor="#E8B400"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exp_widget_lives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="❤️❤️❤️❤️❤️ 5/5"
+            android:textColor="#1C1B1B"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F1EDEC"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✨ PALABRA DEL DÍA"
+            android:textColor="#E8B400"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exp_widget_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Break the ice"
+            android:textColor="#1C1B1B"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exp_widget_trans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Romper el hielo (Modismo)"
+            android:textColor="#5E5E5E"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toca para repasar hoy en FlashLens"
+        android:textColor="#5E5E5E"
+        android:textSize="10sp" />
+
+</LinearLayout>

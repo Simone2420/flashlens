@@ -40,4 +40,13 @@ app-example
 
 # generated native folders
 /ios
-/android
+*.apk
+
+# Android build artifacts (keep src and native code tracked for EAS)
+android/.gradle
+android/build
+android/app/build
+android/.idea
+android/*.iml
+android/app/*.iml
+android/local.properties
