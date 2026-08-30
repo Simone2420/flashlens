@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { LearningPace, CharacterDiff } from '../../types';
-import { COLORS, SPACING, BORDER_RADIUS } from '../../constants/theme';
+import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
 
 interface AdaptiveDictationInputProps {
   learningPace: LearningPace;
@@ -34,32 +34,48 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     setInputValue('');
   }, [targetText]);
 
+  const cleanTarget = targetText.trim();
+  const isSentence = cleanTarget.includes(' ') || cleanTarget.length > 20;
+  const targetLength = cleanTarget.length;
+
   const handleChangeText = (text: string) => {
-    setInputValue(text);
-    onInputChange(text);
+    let sanitized = text;
+    // En ritmos Medio y Rápido para palabras individuales, si el teclado inserta una sugerencia completa,
+    // se filtra para permitir únicamente el avance carácter por carácter.
+    if (!isSentence && (learningPace === 'MEDIUM' || learningPace === 'FAST')) {
+      if (text.length > inputValue.length + 1) {
+        const nextChar = text.slice(inputValue.length, inputValue.length + 1);
+        sanitized = inputValue + nextChar;
+      }
+    }
+
+    setInputValue(sanitized);
+    onInputChange(sanitized);
     Haptics.selectionAsync();
   };
 
-  const cleanTarget = targetText.trim();
-  const targetLength = cleanTarget.length;
-
-  // 1. MODO LENTO (SLOW): TEXTO LIBRE
-  if (learningPace === 'SLOW') {
+  // CASO 1: ORACIONES EN CONTEXTO (SIEMPRE CUADRO GRANDE DE TEXTO)
+  if (isSentence) {
     return (
       <View style={styles.container}>
-        <View style={styles.paceTag}>
-          <Text style={styles.paceTagText}>🐢 MODO LENTO: TEXTO LIBRE SIMPLE</Text>
+        <View style={styles.sentenceHeaderRow}>
+          <Text style={styles.sentenceHeaderTag}>📝 ORACIÓN EN CONTEXTO</Text>
+          <Text style={styles.sentenceCountTag}>{inputValue.length} caracteres</Text>
         </View>
 
         <TextInput
           ref={inputRef}
-          style={[styles.freeTextInput, diffs && styles.inputEvaluated]}
-          placeholder="Escribe aquí lo que escuchas..."
+          style={[styles.largeSentenceBox, diffs && styles.inputEvaluated]}
+          placeholder="Escribe la oración completa que escuchas..."
           placeholderTextColor="#747878"
           value={inputValue}
           onChangeText={handleChangeText}
-          autoCapitalize="none"
-          autoCorrect={false}
+          autoCapitalize="sentences"
+          autoCorrect={learningPace === 'SLOW'}
+          spellCheck={learningPace === 'SLOW'}
+          autoComplete="off"
+          multiline
+          numberOfLines={4}
           editable={!disabled}
           returnKeyType="done"
           onSubmitEditing={() => onSubmit(inputValue)}
@@ -87,7 +103,53 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // 2. MODO MEDIO (MEDIUM): CASILLAS EXACTAS
+  // CASO 2: MODO LENTO (SLOW) - PALABRAS
+  if (learningPace === 'SLOW') {
+    return (
+      <View style={styles.container}>
+        <View style={styles.paceTag}>
+          <Text style={styles.paceTagText}>🐢 MODO LENTO: TEXTO LIBRE SIMPLE</Text>
+        </View>
+
+        <TextInput
+          ref={inputRef}
+          style={[styles.freeTextInput, diffs && styles.inputEvaluated]}
+          placeholder="Escribe aquí lo que escuchas..."
+          placeholderTextColor="#747878"
+          value={inputValue}
+          onChangeText={handleChangeText}
+          autoCapitalize="none"
+          autoCorrect={false}
+          spellCheck={false}
+          autoComplete="off"
+          editable={!disabled}
+          returnKeyType="done"
+          onSubmitEditing={() => onSubmit(inputValue)}
+        />
+
+        {diffs && diffs.length > 0 && (
+          <View style={styles.diffVisualizerRow}>
+            {diffs.map((d, idx) => (
+              <View
+                key={idx}
+                style={[
+                  styles.diffCharBadge,
+                  d.status === 'CORRECT' && styles.diffCorrect,
+                  d.status === 'WRONG' && styles.diffWrong,
+                  d.status === 'MISSING' && styles.diffMissing,
+                  d.status === 'EXTRA' && styles.diffExtra,
+                ]}
+              >
+                <Text style={styles.diffCharText}>{d.char || ' '}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </View>
+    );
+  }
+
+  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS EXACTAS
   if (learningPace === 'MEDIUM') {
     return (
       <View style={styles.container}>
@@ -103,6 +165,9 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           maxLength={targetLength}
           autoCapitalize="none"
           autoCorrect={false}
+          spellCheck={false}
+          autoComplete="off"
+          keyboardType="visible-password"
           editable={!disabled}
           returnKeyType="done"
           onSubmitEditing={() => onSubmit(inputValue)}
@@ -146,7 +211,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // 3. MODO RÁPIDO (FAST): CASILLAS DINÁMICAS
+  // CASO 4: MODO RÁPIDO (FAST) - CASILLAS DINÁMICAS
   const displayedBoxesCount = Math.max(3, inputValue.length + 1);
 
   return (
@@ -164,6 +229,9 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
         onChangeText={handleChangeText}
         autoCapitalize="none"
         autoCorrect={false}
+        spellCheck={false}
+        autoComplete="off"
+        keyboardType="visible-password"
         editable={!disabled}
         returnKeyType="done"
         onSubmitEditing={() => onSubmit(inputValue)}
@@ -213,6 +281,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: SPACING.md,
   },
+  sentenceHeaderRow: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+    paddingHorizontal: 4,
+  },
+  sentenceHeaderTag: {
+    color: '#765A00',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  sentenceCountTag: {
+    color: '#747878',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  largeSentenceBox: {
+    width: '100%',
+    minHeight: 120,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
+    padding: SPACING.md,
+    color: '#1C1B1B',
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: '600',
+    textAlignVertical: 'top',
+    borderWidth: 1.5,
+    borderColor: '#E0E0E0',
+    ...SHADOWS.card,
+  },
   paceTag: {
     backgroundColor: '#F1EDEC',
     paddingHorizontal: 12,
@@ -246,44 +348,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
+    ...SHADOWS.card,
   },
   inputEvaluated: {
     borderColor: '#E8B400',
   },
-  diffVisualizerRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 4,
-    marginTop: 12,
-  },
-  diffCharBadge: {
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-    borderRadius: 6,
-    minWidth: 20,
-    alignItems: 'center',
-  },
-  diffCharText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  diffCorrect: {
-    backgroundColor: '#16A34A',
-  },
-  diffWrong: {
-    backgroundColor: '#DC2626',
-  },
-  diffMissing: {
-    backgroundColor: '#747878',
-  },
-  diffExtra: {
-    backgroundColor: '#F59E0B',
-  },
   hiddenInput: {
     position: 'absolute',
-    opacity: 0,
+    opacity: 0.01,
     width: 1,
     height: 1,
   },
@@ -291,18 +363,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 8,
-    paddingHorizontal: 8,
+    gap: 6,
+    paddingVertical: 8,
   },
   box: {
-    width: 44,
-    height: 52,
+    width: 38,
+    height: 48,
+    borderRadius: 10,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    borderWidth: 2,
+    borderWidth: 1.5,
     borderColor: '#E0E0E0',
     alignItems: 'center',
     justifyContent: 'center',
+    ...SHADOWS.card,
   },
   boxActive: {
     borderColor: '#E8B400',
@@ -313,27 +386,64 @@ const styles = StyleSheet.create({
     backgroundColor: '#DCFCE7',
   },
   boxWrong: {
-    borderColor: '#DC2626',
+    borderColor: '#BA1A1A',
     backgroundColor: '#FEE2E2',
   },
   boxMissing: {
-    borderColor: '#747878',
+    borderColor: '#BA1A1A',
+    backgroundColor: '#FFF1F2',
     borderStyle: 'dashed',
   },
   boxExtra: {
     borderColor: '#F59E0B',
-    backgroundColor: '#FFFBEB',
+    backgroundColor: '#FEF3C7',
   },
   boxText: {
-    color: '#1C1B1B',
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '800',
-    textTransform: 'uppercase',
+    color: '#1C1B1B',
   },
   boxTextCorrect: {
     color: '#16A34A',
   },
   boxTextWrong: {
-    color: '#DC2626',
+    color: '#BA1A1A',
+  },
+  diffVisualizerRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 4,
+    marginTop: 12,
+  },
+  diffCharBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    backgroundColor: '#FFFFFF',
+  },
+  diffCorrect: {
+    borderColor: '#16A34A',
+    backgroundColor: '#DCFCE7',
+  },
+  diffWrong: {
+    borderColor: '#BA1A1A',
+    backgroundColor: '#FEE2E2',
+  },
+  diffMissing: {
+    borderColor: '#BA1A1A',
+    backgroundColor: '#FFF1F2',
+    borderStyle: 'dashed',
+  },
+  diffExtra: {
+    borderColor: '#F59E0B',
+    backgroundColor: '#FEF3C7',
+  },
+  diffCharText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#1C1B1B',
   },
 });

@@ -3,11 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   TouchableOpacity,
   ScrollView,
   TextInput,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
   X,
@@ -49,7 +49,7 @@ export default function LessonScreen() {
 
   if (!node) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyTitle}>Nodo no encontrado</Text>
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
@@ -63,7 +63,7 @@ export default function LessonScreen() {
   // Si no ha seleccionado sublección, mostrar el selector de sublecciones del nodo
   if (!activeSublesson) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()} style={styles.headerCloseBtn}>
             <X size={20} color="#5E5E5E" />
@@ -185,7 +185,7 @@ export default function LessonScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => setActiveSublesson(null)}

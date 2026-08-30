@@ -125,6 +125,42 @@ export const ON_DEVICE_OBJECT_LABELS: Omit<DetectedObject, 'id' | 'confidence' |
     contextSentence: 'Turn on the desk lamp for focused nighttime reading.',
     contextTranslation: 'Enciende la lámpara de escritorio para una lectura nocturna enfocada.',
   },
+  {
+    labelEn: 'Ballpoint Pen',
+    labelEs: 'Bolígrafo / Lapicero',
+    category: 'OBJECT',
+    partOfSpeech: 'NOUN',
+    phoneticScript: '/ˈbɔːl.pɔɪnt ˌpen/',
+    contextSentence: 'Take notes with a blue ballpoint pen during your review session.',
+    contextTranslation: 'Toma notas con un bolígrafo azul durante tu sesión de repaso.',
+  },
+  {
+    labelEn: 'Office Chair',
+    labelEs: 'Silla de Oficina',
+    category: 'OBJECT',
+    partOfSpeech: 'NOUN',
+    phoneticScript: '/ˈɒf.ɪs ˌtʃeər/',
+    contextSentence: 'Sit comfortably in your ergonomic office chair while studying.',
+    contextTranslation: 'Siéntate cómodamente en tu silla ergonómica de oficina mientras estudias.',
+  },
+  {
+    labelEn: 'Houseplant',
+    labelEs: 'Planta de Interior',
+    category: 'OBJECT',
+    partOfSpeech: 'NOUN',
+    phoneticScript: '/ˈhaʊs.plɑːnt/',
+    contextSentence: 'Water the green houseplant near your desk every morning.',
+    contextTranslation: 'Riega la planta verde junto a tu escritorio cada mañana.',
+  },
+  {
+    labelEn: 'Apple',
+    labelEs: 'Manzana',
+    category: 'OBJECT',
+    partOfSpeech: 'NOUN',
+    phoneticScript: '/ˈæp.l/',
+    contextSentence: 'An apple a day keeps the doctor away.',
+    contextTranslation: 'Una manzana al día mantiene alejado al médico.',
+  },
 ];
 
 export class LocalVisionAIService {
@@ -132,8 +168,7 @@ export class LocalVisionAIService {
 
   // Estado de estabilidad temporal y bloqueo de escena para evitar saltos aleatorios
   private currentLockedIndex: number = 0;
-  private lockedConfidence: number = 96;
-  private framesSinceLastLock: number = 0;
+  private lockedConfidence: number = 97;
 
   public static getInstance(): LocalVisionAIService {
     if (!LocalVisionAIService.instance) {
@@ -154,8 +189,7 @@ export class LocalVisionAIService {
     if (forceReScan) {
       // Cambiar de objeto solo cuando se presiona explícitamente el re-escaneo o disparo
       this.currentLockedIndex = (this.currentLockedIndex + 1) % ON_DEVICE_OBJECT_LABELS.length;
-      this.lockedConfidence = Math.min(99, Math.max(94, Math.floor(94 + Math.random() * 5)));
-      this.framesSinceLastLock = 0;
+      this.lockedConfidence = Math.min(99, Math.max(95, Math.floor(95 + Math.random() * 4)));
     }
 
     const item = ON_DEVICE_OBJECT_LABELS[this.currentLockedIndex];
@@ -185,6 +219,13 @@ export class LocalVisionAIService {
       this.lockedConfidence = 98;
     }
     return this.detectObjectsInViewfinder(320, 320, false);
+  }
+
+  /**
+   * Lista todos los objetos soportados
+   */
+  public getSupportedObjects() {
+    return ON_DEVICE_OBJECT_LABELS;
   }
 }
 

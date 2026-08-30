@@ -7,6 +7,7 @@ export interface WidgetSyncData {
   currentLives: number;
   maxLives: number;
   nextRegenMinutes: number;
+  nextRegenTimestamp: number;
   wordOfTheDay: {
     targetWord: string;
     nativeTranslation: string;
@@ -41,8 +42,11 @@ class WidgetService {
     dailyGoalXp: number = 20
   ): Promise<WidgetSyncData> {
     let nextRegenMinutes = 0;
+    let nextRegenTimestamp = 0;
+
     if (lives.currentLives < lives.maxLives && lives.nextRegenerationAt) {
-      const diffMs = new Date(lives.nextRegenerationAt).getTime() - Date.now();
+      nextRegenTimestamp = new Date(lives.nextRegenerationAt).getTime();
+      const diffMs = nextRegenTimestamp - Date.now();
       nextRegenMinutes = Math.max(0, Math.ceil(diffMs / 60000));
     }
 
@@ -54,6 +58,7 @@ class WidgetService {
       currentLives: lives.currentLives,
       maxLives: lives.maxLives,
       nextRegenMinutes,
+      nextRegenTimestamp,
       wordOfTheDay: {
         targetWord: word,
         nativeTranslation: translation,
@@ -73,9 +78,12 @@ class WidgetService {
         NativeModules.WidgetBridge.updateWidgets(
           streakDays,
           lives.currentLives,
+          nextRegenTimestamp,
           word,
           translation
-        ).catch(() => {});
+        ).catch((err: any) => {
+          console.warn('WidgetBridge update error:', err);
+        });
       }
     } catch (e) {
       console.error('Error sincronizando datos del widget:', e);

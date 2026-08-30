@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FDF8F8"
-    android:padding="12dp"
+    android:padding="10dp"
     android:gravity="center">
 
     <LinearLayout
@@ -33,19 +33,30 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/widget_timer_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vidas llenas"
+        android:textColor="#765A00"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:gravity="end"
+        android:layout_marginTop="2dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="👁️"
-        android:textSize="32sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp" />
+        android:textSize="26sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FlashLens"
         android:textColor="#1C1B1B"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
     <TextView
@@ -53,6 +64,6 @@
         android:layout_height="wrap_content"
         android:text="¡Mantén tu racha!"
         android:textColor="#5E5E5E"
-        android:textSize="10sp" />
+        android:textSize="9sp" />
 
 </LinearLayout>

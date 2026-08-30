@@ -18,15 +18,18 @@ class WidgetBridgeModule(private val reactContext: ReactApplicationContext) :
     fun updateWidgets(
         streakDays: Int,
         currentLives: Int,
+        nextRegenTimestampDouble: Double,
         wordOfTheDay: String,
         wordTranslation: String,
         promise: Promise
     ) {
         try {
+            val nextRegenLong = nextRegenTimestampDouble.toLong()
             val prefs = reactContext.getSharedPreferences("FlashLensWidgetPrefs", Context.MODE_PRIVATE)
             prefs.edit().apply {
                 putInt("streakDays", streakDays)
                 putInt("currentLives", currentLives)
+                putLong("nextRegenTimestamp", nextRegenLong)
                 putString("wordOfTheDay", wordOfTheDay)
                 putString("wordTranslation", wordTranslation)
                 apply()
