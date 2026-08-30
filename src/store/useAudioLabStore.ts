@@ -11,13 +11,13 @@ interface AudioLabState {
   xpEarned: number;
   lastResult: DictationResult | null;
   isPlayingAudio: boolean;
-  dictationMode: 'WORD' | 'SENTENCE';
+  dictationMode: 'WORD' | 'SENTENCE' | 'BURST';
 
   // Actions
-  startSession: (cards: Flashcard[], mode?: 'WORD' | 'SENTENCE') => void;
+  startSession: (cards: Flashcard[], mode?: 'WORD' | 'SENTENCE' | 'BURST') => void;
   evaluateInput: (userInput: string) => DictationResult;
   nextCard: () => boolean; // returns true if session still has cards
-  toggleDictationMode: () => void;
+  setDictationMode: (mode: 'WORD' | 'SENTENCE' | 'BURST') => void;
   resetSession: () => void;
 }
 
@@ -58,54 +58,46 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       };
     }
 
-    const target = dictationMode === 'WORD' ? currentCard.targetWord : currentCard.contextSentence;
-    const result = DictationAlgorithm.evaluate(userInput, target);
-
-    let newCombo = comboCount;
-    let newScore = totalScore;
-    let newXp = xpEarned;
+    const targetText = dictationMode === 'SENTENCE' ? currentCard.contextSentence : currentCard.targetWord;
+    const result = DictationAlgorithm.evaluate(targetText, userInput);
 
     if (result.isCorrect) {
-      newCombo = comboCount + 1;
-      const comboBonus = Math.min(newCombo * 2, 10);
-      newScore += 100 + comboBonus;
-      newXp += 15 + Math.floor(comboBonus / 2);
-    } else {
-      newCombo = 0;
-      newScore = Math.max(0, newScore - 10);
-    }
+      const newCombo = comboCount + 1;
+      const basePoints = dictationMode === 'BURST' ? 150 : dictationMode === 'SENTENCE' ? 120 : 100;
+      const points = basePoints * (1 + newCombo * 0.1);
+      const newMaxCombo = Math.max(maxCombo, newCombo);
 
-    set({
-      lastResult: result,
-      comboCount: newCombo,
-      maxCombo: Math.max(maxCombo, newCombo),
-      totalScore: newScore,
-      xpEarned: newXp,
-    });
+      set({
+        comboCount: newCombo,
+        maxCombo: newMaxCombo,
+        totalScore: Math.round(totalScore + points),
+        xpEarned: xpEarned + (dictationMode === 'BURST' ? 25 : dictationMode === 'SENTENCE' ? 20 : 15),
+        lastResult: result,
+      });
+    } else {
+      set({
+        comboCount: 0,
+        lastResult: result,
+      });
+    }
 
     return result;
   },
 
   nextCard: () => {
-    const { currentCardIndex, sessionCards } = get();
-    const nextIdx = currentCardIndex + 1;
-
-    if (nextIdx < sessionCards.length) {
+    const { sessionCards, currentCardIndex } = get();
+    if (currentCardIndex + 1 < sessionCards.length) {
       set({
-        currentCardIndex: nextIdx,
+        currentCardIndex: currentCardIndex + 1,
         lastResult: null,
       });
       return true;
     }
-
     return false;
   },
 
-  toggleDictationMode: () => {
-    set(state => ({
-      dictationMode: state.dictationMode === 'WORD' ? 'SENTENCE' : 'WORD',
-      lastResult: null,
-    }));
+  setDictationMode: (mode) => {
+    set({ dictationMode: mode });
   },
 
   resetSession: () => {

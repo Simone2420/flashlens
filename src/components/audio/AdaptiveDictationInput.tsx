@@ -13,6 +13,7 @@ import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
 interface AdaptiveDictationInputProps {
   learningPace: LearningPace;
   targetText: string;
+  isSentenceMode?: boolean;
   onInputChange: (text: string) => void;
   onSubmit: (text: string) => void;
   diffs?: CharacterDiff[] | null;
@@ -22,6 +23,7 @@ interface AdaptiveDictationInputProps {
 export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   learningPace,
   targetText,
+  isSentenceMode = false,
   onInputChange,
   onSubmit,
   diffs,
@@ -35,14 +37,14 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   }, [targetText]);
 
   const cleanTarget = targetText.trim();
-  const isSentence = cleanTarget.includes(' ') || cleanTarget.length > 20;
   const targetLength = cleanTarget.length;
 
   const handleChangeText = (text: string) => {
     let sanitized = text;
+
     // En ritmos Medio y Rápido para palabras individuales, si el teclado inserta una sugerencia completa,
-    // se filtra para permitir únicamente el avance carácter por carácter.
-    if (!isSentence && (learningPace === 'MEDIUM' || learningPace === 'FAST')) {
+    // se filtra estrictamente para permitir únicamente el avance de 1 carácter por paso.
+    if (!isSentenceMode && (learningPace === 'MEDIUM' || learningPace === 'FAST')) {
       if (text.length > inputValue.length + 1) {
         const nextChar = text.slice(inputValue.length, inputValue.length + 1);
         sanitized = inputValue + nextChar;
@@ -54,8 +56,8 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     Haptics.selectionAsync();
   };
 
-  // CASO 1: ORACIONES EN CONTEXTO (SIEMPRE CUADRO GRANDE DE TEXTO)
-  if (isSentence) {
+  // CASO 1: MODO ORACIONES EN CONTEXTO (SIEMPRE CUADRO GRANDE DE TEXTO)
+  if (isSentenceMode) {
     return (
       <View style={styles.container}>
         <View style={styles.sentenceHeaderRow}>
@@ -103,7 +105,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // CASO 2: MODO LENTO (SLOW) - PALABRAS
+  // CASO 2: MODO LENTO (SLOW) - PALABRAS (TEXTO LIBRE SIN CASILLAS)
   if (learningPace === 'SLOW') {
     return (
       <View style={styles.container}>
@@ -114,7 +116,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
         <TextInput
           ref={inputRef}
           style={[styles.freeTextInput, diffs && styles.inputEvaluated]}
-          placeholder="Escribe aquí lo que escuchas..."
+          placeholder="Escribe aquí la palabra que escuchas..."
           placeholderTextColor="#747878"
           value={inputValue}
           onChangeText={handleChangeText}
@@ -149,7 +151,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS EXACTAS
+  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS EXACTAS (LONGITUD VISIBLE)
   if (learningPace === 'MEDIUM') {
     return (
       <View style={styles.container}>
@@ -211,8 +213,8 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // CASO 4: MODO RÁPIDO (FAST) - CASILLAS DINÁMICAS
-  const displayedBoxesCount = Math.max(3, inputValue.length + 1);
+  // CASO 4: MODO RÁPIDO (FAST) - CASILLAS DINÁMICAS (LONGITUD OCULTA)
+  const displayedBoxesCount = Math.max(2, inputValue.length + 1);
 
   return (
     <View style={styles.container}>
@@ -278,76 +280,47 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    alignItems: 'center',
     marginVertical: SPACING.md,
   },
   sentenceHeaderRow: {
-    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
-    paddingHorizontal: 4,
   },
   sentenceHeaderTag: {
-    color: '#765A00',
     fontSize: 11,
     fontWeight: '800',
+    color: '#765A00',
     letterSpacing: 0.5,
   },
   sentenceCountTag: {
-    color: '#747878',
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '700',
+    color: '#747878',
   },
   largeSentenceBox: {
-    width: '100%',
     minHeight: 120,
     backgroundColor: '#FFFFFF',
-    borderRadius: 18,
-    padding: SPACING.md,
-    color: '#1C1B1B',
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: '600',
-    textAlignVertical: 'top',
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
+    borderRadius: 18,
+    padding: 16,
+    fontSize: 16,
+    color: '#1C1B1B',
+    lineHeight: 24,
+    textAlignVertical: 'top',
     ...SHADOWS.card,
   },
-  paceTag: {
-    backgroundColor: '#F1EDEC',
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 12,
-    marginBottom: SPACING.md,
-  },
-  paceTagFast: {
-    backgroundColor: '#FFF8E1',
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  paceTagText: {
-    color: '#5E5E5E',
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 0.5,
-  },
-  paceTagTextFast: {
-    color: '#765A00',
-  },
   freeTextInput: {
-    width: '100%',
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    paddingHorizontal: 18,
-    paddingVertical: 14,
-    color: '#1C1B1B',
-    fontSize: 18,
-    fontWeight: '700',
-    textAlign: 'center',
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    fontSize: 16,
+    color: '#1C1B1B',
     ...SHADOWS.card,
   },
   inputEvaluated: {
@@ -356,19 +329,40 @@ const styles = StyleSheet.create({
   hiddenInput: {
     position: 'absolute',
     opacity: 0.01,
-    width: 1,
     height: 1,
+    width: 1,
+  },
+  paceTag: {
+    backgroundColor: '#F1EDEC',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    alignSelf: 'center',
+    marginBottom: 12,
+  },
+  paceTagFast: {
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+  },
+  paceTagText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#5E5E5E',
+    letterSpacing: 0.5,
+  },
+  paceTagTextFast: {
+    color: '#765A00',
   },
   boxesRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 6,
-    paddingVertical: 8,
+    gap: 7,
   },
   box: {
-    width: 38,
-    height: 48,
+    width: 36,
+    height: 44,
     borderRadius: 10,
     backgroundColor: '#FFFFFF',
     borderWidth: 1.5,
@@ -386,20 +380,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#DCFCE7',
   },
   boxWrong: {
-    borderColor: '#BA1A1A',
+    borderColor: '#EF4444',
     backgroundColor: '#FEE2E2',
   },
   boxMissing: {
-    borderColor: '#BA1A1A',
-    backgroundColor: '#FFF1F2',
-    borderStyle: 'dashed',
-  },
-  boxExtra: {
     borderColor: '#F59E0B',
     backgroundColor: '#FEF3C7',
   },
+  boxExtra: {
+    borderColor: '#A855F7',
+    backgroundColor: '#F3E8FF',
+  },
   boxText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '800',
     color: '#1C1B1B',
   },
@@ -407,7 +400,7 @@ const styles = StyleSheet.create({
     color: '#16A34A',
   },
   boxTextWrong: {
-    color: '#BA1A1A',
+    color: '#EF4444',
   },
   diffVisualizerRow: {
     flexDirection: 'row',
@@ -417,33 +410,29 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   diffCharBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingHorizontal: 6,
+    paddingVertical: 3,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: '#E0E0E0',
-    backgroundColor: '#FFFFFF',
   },
   diffCorrect: {
-    borderColor: '#16A34A',
     backgroundColor: '#DCFCE7',
+    borderColor: '#16A34A',
   },
   diffWrong: {
-    borderColor: '#BA1A1A',
     backgroundColor: '#FEE2E2',
+    borderColor: '#EF4444',
   },
   diffMissing: {
-    borderColor: '#BA1A1A',
-    backgroundColor: '#FFF1F2',
-    borderStyle: 'dashed',
+    backgroundColor: '#FEF3C7',
+    borderColor: '#F59E0B',
   },
   diffExtra: {
-    borderColor: '#F59E0B',
-    backgroundColor: '#FEF3C7',
+    backgroundColor: '#F3E8FF',
+    borderColor: '#A855F7',
   },
   diffCharText: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '800',
-    color: '#1C1B1B',
   },
 });

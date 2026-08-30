@@ -12,7 +12,7 @@ import { Star, MessageSquare, X, Check, Heart } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { UserFeedback } from '../../types';
-import { COLORS, SPACING } from '../../constants/theme';
+import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 
 interface MicroFeedbackModalProps {
   visible: boolean;
@@ -81,11 +81,11 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
             <>
               <View style={styles.header}>
                 <View style={styles.titleRow}>
-                  <MessageSquare size={20} color="#00F0FF" />
+                  <MessageSquare size={22} color="#765A00" />
                   <Text style={styles.title}>¿Cómo va tu experiencia?</Text>
                 </View>
                 <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-                  <X size={18} color="#94A3B8" />
+                  <X size={18} color="#5E5E5E" />
                 </TouchableOpacity>
               </View>
 
@@ -102,8 +102,8 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
                   >
                     <Star
                       size={32}
-                      color={starVal <= rating ? '#F59E0B' : '#334155'}
-                      fill={starVal <= rating ? '#F59E0B' : 'transparent'}
+                      color={starVal <= rating ? '#E8B400' : '#E0E0E0'}
+                      fill={starVal <= rating ? '#E8B400' : 'transparent'}
                     />
                   </TouchableOpacity>
                 ))}
@@ -137,20 +137,21 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
               </View>
 
               {/* Comentario Opcional */}
+              <Text style={styles.sectionLabel}>Comentario o sugerencia (opcional):</Text>
               <TextInput
                 style={styles.commentInput}
-                placeholder="Comentario o sugerencia opcional (<30s)..."
-                placeholderTextColor="#64748B"
+                placeholder="Escribe aquí tu sugerencia para mejorar la app..."
+                placeholderTextColor="#747878"
                 multiline
-                numberOfLines={2}
+                numberOfLines={3}
                 value={comment}
                 onChangeText={setComment}
               />
 
               {/* Botón Enviar */}
               <TouchableOpacity onPress={handleSubmit} style={styles.submitBtn}>
-                <Check size={18} color="#000" />
-                <Text style={styles.submitBtnText}>ENVIAR FEEDBACK</Text>
+                <Check size={18} color="#1C1B1B" />
+                <Text style={styles.submitBtnText}>ENVIAR OPINIÓN</Text>
               </TouchableOpacity>
             </>
           )}
@@ -163,24 +164,25 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: SPACING.l,
+    padding: SPACING.lg,
   },
   cardContainer: {
     width: '100%',
-    backgroundColor: '#0F172A',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
-    padding: SPACING.l,
-    borderWidth: 1.5,
-    borderColor: '#334155',
+    padding: SPACING.lg,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    ...SHADOWS.card,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: SPACING.m,
+    marginBottom: SPACING.sm,
   },
   titleRow: {
     flexDirection: 'row',
@@ -188,98 +190,101 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   title: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '800',
+    color: '#1C1B1B',
+    fontSize: 17,
+    fontWeight: '900',
   },
   closeBtn: {
     padding: 6,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 16,
+    backgroundColor: '#F1EDEC',
   },
   starsRow: {
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 10,
-    marginVertical: SPACING.m,
+    marginVertical: SPACING.md,
   },
   starBtn: {
     padding: 4,
   },
   sectionLabel: {
-    color: '#94A3B8',
+    color: '#1C1B1B',
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '800',
     marginBottom: 8,
+    marginTop: 6,
   },
   categoriesRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 6,
-    marginBottom: SPACING.m,
+    marginBottom: SPACING.md,
   },
   categoryChip: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    backgroundColor: '#FDF8F8',
+    paddingHorizontal: 11,
+    paddingVertical: 7,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#334155',
+    borderColor: '#E0E0E0',
   },
   categoryChipSelected: {
-    backgroundColor: 'rgba(0, 240, 255, 0.15)',
-    borderColor: '#00F0FF',
+    backgroundColor: '#E8B400',
+    borderColor: '#765A00',
   },
   categoryChipText: {
-    color: '#94A3B8',
-    fontSize: 11,
-    fontWeight: '600',
+    color: '#5E5E5E',
+    fontSize: 12,
+    fontWeight: '700',
   },
   categoryChipTextSelected: {
-    color: '#00F0FF',
+    color: '#1C1B1B',
     fontWeight: '800',
   },
   commentInput: {
-    backgroundColor: '#1E293B',
+    backgroundColor: '#FFFFFF',
     borderRadius: 14,
     padding: 12,
-    color: '#FFFFFF',
-    fontSize: 13,
+    color: '#1C1B1B',
+    fontSize: 14,
     borderWidth: 1,
-    borderColor: '#334155',
-    height: 60,
+    borderColor: '#E0E0E0',
+    height: 70,
     textAlignVertical: 'top',
-    marginBottom: SPACING.m,
+    marginBottom: SPACING.lg,
   },
   submitBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#00F0FF',
-    borderRadius: 14,
-    paddingVertical: 12,
+    backgroundColor: '#E8B400',
+    borderRadius: 16,
+    paddingVertical: 14,
     gap: 6,
+    ...SHADOWS.card,
   },
   submitBtnText: {
-    color: '#000000',
-    fontSize: 13,
-    fontWeight: '800',
+    color: '#1C1B1B',
+    fontSize: 14,
+    fontWeight: '900',
     letterSpacing: 0.5,
   },
   successBox: {
     alignItems: 'center',
-    paddingVertical: SPACING.l,
+    paddingVertical: SPACING.lg,
   },
   successTitle: {
-    color: '#FFFFFF',
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#1C1B1B',
     marginTop: 12,
   },
   successSubtitle: {
-    color: '#94A3B8',
     fontSize: 13,
+    color: '#5E5E5E',
     textAlign: 'center',
     marginTop: 6,
+    lineHeight: 18,
   },
 });

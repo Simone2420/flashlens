@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,7 @@ import {
   ArrowRight,
   ArrowLeft,
   X,
+  Clock,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -45,7 +46,7 @@ export default function AudioLabScreen() {
     startSession,
     evaluateInput,
     nextCard,
-    toggleDictationMode,
+    setDictationMode,
     resetSession,
   } = useAudioLabStore();
 
@@ -53,19 +54,42 @@ export default function AudioLabScreen() {
   const [isCompleted, setIsCompleted] = useState(false);
   const [currentTextValue, setCurrentTextValue] = useState('');
   const [isSpeakingAudio, setIsSpeakingAudio] = useState(false);
+  const [burstTimeLeft, setBurstTimeLeft] = useState(15);
 
   const activeCard = sessionCards[currentCardIndex] || cards[0];
 
-  const handleStartSession = () => {
+  // Temporizador para el modo Ráfaga (BURST)
+  useEffect(() => {
+    let timer: any = null;
+    if (isPlaying && dictationMode === 'BURST' && !lastResult) {
+      setBurstTimeLeft(15);
+      timer = setInterval(() => {
+        setBurstTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            // Tiempo agotado en modo ráfaga
+            handleSubmitEvaluation(currentTextValue || 'timeout');
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [isPlaying, dictationMode, currentCardIndex, lastResult]);
+
+  const handleStartSession = (selectedMode: 'WORD' | 'SENTENCE' | 'BURST' = dictationMode) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const targetDeck = cards.length > 0 ? cards : [];
-    startSession(targetDeck, dictationMode);
+    startSession(targetDeck, selectedMode);
     setIsPlaying(true);
     setIsCompleted(false);
     setCurrentTextValue('');
     if (targetDeck.length > 0) {
       setTimeout(() => {
-        playTargetAudio(targetDeck[0]);
+        playTargetAudio(targetDeck[0], selectedMode);
       }, 400);
     }
   };
@@ -77,13 +101,13 @@ export default function AudioLabScreen() {
     setIsCompleted(false);
   };
 
-  const playTargetAudio = (card = activeCard) => {
+  const playTargetAudio = (card = activeCard, mode = dictationMode) => {
     if (!card) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsSpeakingAudio(true);
 
-    const textToSpeak = dictationMode === 'WORD' ? card.targetWord : card.contextSentence;
-    const rate = profile.learningPace === 'SLOW' ? 0.75 : 0.95;
+    const textToSpeak = mode === 'SENTENCE' ? card.contextSentence : card.targetWord;
+    const rate = mode === 'BURST' ? 1.05 : profile.learningPace === 'SLOW' ? 0.75 : 0.95;
 
     Speech.speak(textToSpeak, {
       language: 'en-US',
@@ -94,12 +118,13 @@ export default function AudioLabScreen() {
   };
 
   const handleSubmitEvaluation = (text: string) => {
-    if (!text.trim()) return;
+    if (!text.trim() && dictationMode !== 'BURST') return;
 
     const result = evaluateInput(text);
     if (result.isCorrect) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      addXP(15);
+      addXP(dictationMode === 'BURST' ? 25 : dictationMode === 'SENTENCE' ? 20 : 15);
+      incrementStreak();
     } else {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       loseLife();
@@ -111,154 +136,160 @@ export default function AudioLabScreen() {
     setCurrentTextValue('');
     const hasMore = nextCard();
     if (hasMore) {
-      const nextC = sessionCards[currentCardIndex + 1];
       setTimeout(() => {
-        playTargetAudio(nextC);
+        const nextIndex = currentCardIndex + 1;
+        if (sessionCards[nextIndex]) {
+          playTargetAudio(sessionCards[nextIndex]);
+        }
       }, 300);
     } else {
       setIsCompleted(true);
-      setIsPlaying(false);
-      incrementStreak();
     }
   };
 
-  const targetText =
-    dictationMode === 'WORD'
-      ? activeCard?.targetWord || 'Coffee Mug'
-      : activeCard?.contextSentence || 'I drink hot coffee from my mug.';
-
   return (
     <View style={styles.container}>
-      <Header title="AUDIO LAB" />
+      <Header />
 
       {!isPlaying && !isCompleted ? (
-        // 1. PANTALLA INICIAL
-        <ScrollView contentContainerStyle={styles.introContent}>
+        // 1. PANTALLA DE BIENVENIDA Y SELECCIÓN DE MODALIDAD
+        <ScrollView contentContainerStyle={styles.introContent} showsVerticalScrollIndicator={false}>
           <View style={styles.heroCard}>
             <View style={styles.headphonesCircle}>
-              <Headphones size={40} color="#765A00" />
+              <Headphones size={36} color="#765A00" />
             </View>
-            <Text style={styles.heroTitle}>Dictado Inverso Adaptativo</Text>
+            <Text style={styles.heroTitle}>Laboratorio de Audio</Text>
             <Text style={styles.heroSubtitle}>
-              Entrena tu oído en inglés y escribe lo que escuchas con retroalimentación carácter por carácter.
+              Entrena tu oído fonético con dictado inverso adaptativo a tu velocidad de aprendizaje.
             </Text>
 
-            {/* Badge de Ritmo */}
             <View style={styles.paceIndicator}>
               <Text style={styles.paceIndicatorLabel}>
-                Tu Ritmo: <Text style={styles.paceIndicatorValue}>{profile.learningPace}</Text>
+                Ritmo Actual: <Text style={styles.paceIndicatorValue}>{profile.learningPace}</Text>
               </Text>
               <Text style={styles.paceDescText}>
                 {profile.learningPace === 'SLOW'
-                  ? '🐢 Modo texto libre fluido sin límite de longitud y audio relajado (0.75x).'
+                  ? '🐢 Modo Lento: Texto libre y velocidad de voz reducida.'
                   : profile.learningPace === 'MEDIUM'
-                  ? '⚖️ Casillas fijas exactas por cada letra.'
-                  : '⚡ 3 casillas dinámicas ciegas que se expanden al escribir.'}
+                  ? '⚖️ Modo Medio: Casillas fijas exactas con bloqueo de autosugerencias.'
+                  : '⚡ Modo Rápido: Casillas dinámicas con longitud oculta y alta exigencia.'}
               </Text>
             </View>
           </View>
 
-          {/* Selector de Modalidad */}
+          {/* Selector de las 3 Modalidades */}
           <View style={styles.modeSelectorCard}>
-            <Text style={styles.modeSelectorTitle}>Modalidad de Dictado:</Text>
+            <Text style={styles.modeSelectorTitle}>SELECCIONA LA MODALIDAD DE PRÁCTICA:</Text>
             <View style={styles.modeTabs}>
               <TouchableOpacity
                 onPress={() => {
                   Haptics.selectionAsync();
-                  if (dictationMode !== 'WORD') toggleDictationMode();
+                  setDictationMode('WORD');
                 }}
                 style={[styles.modeTab, dictationMode === 'WORD' && styles.modeTabActive]}
               >
-                <Text
-                  style={[
-                    styles.modeTabText,
-                    dictationMode === 'WORD' && styles.modeTabTextActive,
-                  ]}
-                >
-                  Palabras Clave
+                <Text style={[styles.modeTabText, dictationMode === 'WORD' && styles.modeTabTextActive]}>
+                  🔤 Palabras
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => {
                   Haptics.selectionAsync();
-                  if (dictationMode !== 'SENTENCE') toggleDictationMode();
+                  setDictationMode('SENTENCE');
                 }}
                 style={[styles.modeTab, dictationMode === 'SENTENCE' && styles.modeTabActive]}
               >
-                <Text
-                  style={[
-                    styles.modeTabText,
-                    dictationMode === 'SENTENCE' && styles.modeTabTextActive,
-                  ]}
-                >
-                  Oraciones en Contexto
+                <Text style={[styles.modeTabText, dictationMode === 'SENTENCE' && styles.modeTabTextActive]}>
+                  📝 Oraciones
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  setDictationMode('BURST');
+                }}
+                style={[styles.modeTab, dictationMode === 'BURST' && styles.modeTabActive]}
+              >
+                <Text style={[styles.modeTabText, dictationMode === 'BURST' && styles.modeTabTextActive]}>
+                  ⚡ Ráfaga
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          {/* Botón de Inicio */}
+          {/* Botón Iniciar Sesión */}
           <TouchableOpacity
-            activeOpacity={0.88}
-            onPress={handleStartSession}
+            activeOpacity={0.85}
+            onPress={() => handleStartSession(dictationMode)}
             style={styles.startSessionBtn}
           >
             <Play size={20} color="#1C1B1B" fill="#1C1B1B" />
-            <Text style={styles.startSessionBtnText}>INICIAR SESIÓN DE DICTADO</Text>
+            <Text style={styles.startSessionBtnText}>
+              INICIAR SESIÓN ({dictationMode === 'WORD' ? 'PALABRAS' : dictationMode === 'SENTENCE' ? 'ORACIONES' : 'RÁFAGA'})
+            </Text>
           </TouchableOpacity>
         </ScrollView>
-      ) : isPlaying ? (
-        // 2. SESIÓN DE DICTADO ACTIVA CON BOTÓN DE RETORNO
-        <ScrollView contentContainerStyle={styles.sessionContent}>
-          {/* Header de la Sesión con Botón para Devolverse */}
+      ) : isPlaying && !isCompleted ? (
+        // 2. PANTALLA DE SESIÓN ACTIVA
+        <ScrollView contentContainerStyle={styles.sessionContent} showsVerticalScrollIndicator={false}>
+          {/* Header de la Sesión */}
           <View style={styles.sessionHeader}>
-            <TouchableOpacity onPress={handleExitSession} style={styles.backBtn}>
-              <ArrowLeft size={18} color="#1C1B1B" />
-              <Text style={styles.backBtnText}>Salir</Text>
+            <TouchableOpacity onPress={handleExitSession} style={styles.exitBtn}>
+              <X size={20} color="#5E5E5E" />
             </TouchableOpacity>
 
-            <Text style={styles.progressText}>
-              {currentCardIndex + 1} / {sessionCards.length || 1}
-            </Text>
+            <View style={styles.progressCounter}>
+              <Text style={styles.progressCounterText}>
+                {currentCardIndex + 1} / {sessionCards.length || 1}
+              </Text>
+            </View>
 
             <View style={styles.comboBadge}>
-              <Flame size={16} color="#E8B400" fill="#E8B400" />
-              <Text style={styles.comboText}>{comboCount} Combo</Text>
+              <Flame size={16} color="#E8B400" fill={comboCount > 0 ? '#E8B400' : 'transparent'} />
+              <Text style={styles.comboBadgeText}>{comboCount}x</Text>
             </View>
           </View>
 
-          {/* Botón de Audio */}
-          <View style={styles.audioPlayerBox}>
+          {/* Temporizador para Modo Ráfaga (BURST) */}
+          {dictationMode === 'BURST' && (
+            <View style={styles.burstTimerBar}>
+              <Clock size={16} color={burstTimeLeft <= 5 ? '#EF4444' : '#E8B400'} />
+              <Text style={[styles.burstTimerText, burstTimeLeft <= 5 && styles.burstTimerTextDanger]}>
+                Tiempo: {burstTimeLeft}s
+              </Text>
+            </View>
+          )}
+
+          {/* Botón Reproducir Audio */}
+          <View style={styles.audioPlayCard}>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => playTargetAudio()}
-              style={[styles.audioWaveBtn, isSpeakingAudio && styles.audioWaveBtnPlaying]}
+              style={[styles.audioSpeakerBtn, isSpeakingAudio && styles.audioSpeakerBtnActive]}
             >
-              <Volume2 size={40} color={isSpeakingAudio ? '#16A34A' : '#765A00'} />
+              <Volume2 size={36} color="#1C1B1B" />
             </TouchableOpacity>
-            <Text style={styles.audioTapHint}>
-              {isSpeakingAudio ? '🔊 Reproduciendo...' : 'Toca para volver a escuchar'}
+            <Text style={styles.audioPromptText}>
+              {isSpeakingAudio ? 'Escuchando audio nativo...' : 'Toca para volver a escuchar'}
             </Text>
-
-            <View style={styles.hintBadge}>
-              <Text style={styles.hintBadgeText}>
-                Traducción: {activeCard?.nativeTranslation}
-              </Text>
-            </View>
           </View>
 
-          {/* Input Adaptativo */}
-          <AdaptiveDictationInput
-            learningPace={profile.learningPace}
-            targetText={targetText}
-            onInputChange={setCurrentTextValue}
-            onSubmit={handleSubmitEvaluation}
-            diffs={lastResult?.diffs}
-            disabled={!!lastResult?.isCorrect}
-          />
+          {/* Input Adaptativo de Dictado */}
+          {activeCard && (
+            <AdaptiveDictationInput
+              learningPace={profile.learningPace}
+              targetText={dictationMode === 'SENTENCE' ? activeCard.contextSentence : activeCard.targetWord}
+              isSentenceMode={dictationMode === 'SENTENCE'}
+              onInputChange={setCurrentTextValue}
+              onSubmit={handleSubmitEvaluation}
+              diffs={lastResult?.diffs}
+              disabled={!!lastResult}
+            />
+          )}
 
-          {/* Retroalimentación */}
+          {/* Feedback de la Evaluación */}
           {lastResult && (
             <View
               style={[
@@ -270,7 +301,7 @@ export default function AudioLabScreen() {
                 {lastResult.isCorrect ? (
                   <CheckCircle2 size={20} color="#16A34A" />
                 ) : (
-                  <XCircle size={20} color="#BA1A1A" />
+                  <XCircle size={20} color="#EF4444" />
                 )}
                 <Text
                   style={[
@@ -278,28 +309,37 @@ export default function AudioLabScreen() {
                     lastResult.isCorrect ? styles.feedbackTitleCorrect : styles.feedbackTitleWrong,
                   ]}
                 >
-                  {lastResult.isCorrect ? '¡CORRECTO! (+15 XP)' : 'CASI CERCA'}
+                  {lastResult.isCorrect ? '¡Excelente Precisión Fonética!' : 'Sigue Practicando'}
                 </Text>
               </View>
-              <Text style={styles.feedbackMsg}>{lastResult.feedback}</Text>
-              <Text style={styles.correctTargetDisplay}>
-                Esperado: <Text style={styles.correctTargetWord}>{targetText}</Text>
-              </Text>
+
+              <Text style={styles.feedbackSubtitle}>{lastResult.feedback}</Text>
+
+              {!lastResult.isCorrect && activeCard && (
+                <View style={styles.correctionBox}>
+                  <Text style={styles.correctionLabel}>Texto Correcto:</Text>
+                  <Text style={styles.correctionText}>
+                    {dictationMode === 'SENTENCE' ? activeCard.contextSentence : activeCard.targetWord}
+                  </Text>
+                  <Text style={styles.correctionTranslation}>{activeCard.nativeTranslation}</Text>
+                </View>
+              )}
             </View>
           )}
 
           {/* Botones de Acción */}
           {!lastResult ? (
             <TouchableOpacity
+              activeOpacity={0.85}
               onPress={() => handleSubmitEvaluation(currentTextValue)}
-              style={styles.checkAnswerBtn}
+              style={styles.verifyBtn}
             >
-              <Text style={styles.checkAnswerBtnText}>COMPROBAR RESPUESTA</Text>
+              <Text style={styles.verifyBtnText}>VERIFICAR RESPUESTA</Text>
             </TouchableOpacity>
           ) : (
             <TouchableOpacity onPress={handleNextWord} style={styles.nextWordBtn}>
               <Text style={styles.nextWordBtnText}>CONTINUAR</Text>
-              <ArrowRight size={18} color="#FFFFFF" />
+              <ArrowRight size={18} color="#1C1B1B" />
             </TouchableOpacity>
           )}
         </ScrollView>
@@ -310,7 +350,7 @@ export default function AudioLabScreen() {
             <Trophy size={56} color="#E8B400" />
             <Text style={styles.resultTitle}>¡Sesión Completada!</Text>
             <Text style={styles.resultSubtitle}>
-              Excelente entrenamiento auditivo y fonético.
+              Excelente entrenamiento auditivo y fonético en modalidad {dictationMode}.
             </Text>
 
             <View style={styles.statsRow}>
@@ -420,15 +460,17 @@ const styles = StyleSheet.create({
   },
   modeSelectorTitle: {
     color: '#1C1B1B',
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '800',
     marginBottom: 10,
+    letterSpacing: 0.5,
   },
   modeTabs: {
     flexDirection: 'row',
     backgroundColor: '#F1EDEC',
-    borderRadius: 12,
-    padding: 3,
+    borderRadius: 14,
+    padding: 4,
+    gap: 4,
   },
   modeTab: {
     flex: 1,
@@ -459,13 +501,11 @@ const styles = StyleSheet.create({
     ...SHADOWS.card,
   },
   startSessionBtnText: {
-    color: '#1C1B1B',
     fontSize: 14,
     fontWeight: '900',
+    color: '#1C1B1B',
     letterSpacing: 0.5,
   },
-
-  // Sesión Activa
   sessionContent: {
     padding: SPACING.lg,
     paddingBottom: 90,
@@ -476,83 +516,92 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: SPACING.md,
   },
-  backBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  exitBtn: {
+    padding: 8,
+    borderRadius: 14,
+    backgroundColor: '#F1EDEC',
+  },
+  progressCounter: {
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 10,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    gap: 4,
   },
-  backBtnText: {
-    color: '#1C1B1B',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  progressText: {
-    color: '#5E5E5E',
+  progressCounterText: {
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '800',
+    color: '#1C1B1B',
   },
   comboBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFF8E1',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
     borderRadius: 12,
-    gap: 4,
     borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  comboText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '800',
-  },
-  audioPlayerBox: {
-    alignItems: 'center',
-    marginVertical: SPACING.md,
-  },
-  audioWaveBtn: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
-    backgroundColor: '#FFF8E1',
-    borderWidth: 2.5,
     borderColor: '#E8B400',
+    gap: 4,
+  },
+  comboBadgeText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#765A00',
+  },
+  burstTimerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFF8E1',
+    paddingVertical: 6,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    marginBottom: SPACING.sm,
+    gap: 6,
+  },
+  burstTimerText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#765A00',
+  },
+  burstTimerTextDanger: {
+    color: '#EF4444',
+  },
+  audioPlayCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: SPACING.lg,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    marginBottom: SPACING.md,
+    ...SHADOWS.card,
+  },
+  audioSpeakerBtn: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#E8B400',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
+    ...SHADOWS.card,
   },
-  audioWaveBtnPlaying: {
-    borderColor: '#16A34A',
-    backgroundColor: '#DCFCE7',
+  audioSpeakerBtnActive: {
+    backgroundColor: '#D4A400',
   },
-  audioTapHint: {
-    color: '#5E5E5E',
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  hintBadge: {
-    backgroundColor: '#F1EDEC',
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 10,
-    marginTop: 8,
-  },
-  hintBadgeText: {
-    color: '#1C1B1B',
+  audioPromptText: {
     fontSize: 12,
-    fontWeight: '600',
+    color: '#747878',
+    fontWeight: '700',
   },
   feedbackBox: {
     borderRadius: 16,
     padding: SPACING.md,
-    marginVertical: SPACING.md,
+    marginVertical: SPACING.sm,
     borderWidth: 1.5,
   },
   feedbackBoxCorrect: {
@@ -561,7 +610,7 @@ const styles = StyleSheet.create({
   },
   feedbackBoxWrong: {
     backgroundColor: '#FEE2E2',
-    borderColor: '#BA1A1A',
+    borderColor: '#EF4444',
   },
   feedbackTitleRow: {
     flexDirection: 'row',
@@ -569,105 +618,130 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   feedbackTitle: {
-    fontSize: 15,
-    fontWeight: '900',
+    fontSize: 14,
+    fontWeight: '800',
   },
   feedbackTitleCorrect: {
     color: '#16A34A',
   },
   feedbackTitleWrong: {
-    color: '#BA1A1A',
+    color: '#EF4444',
   },
-  feedbackMsg: {
-    color: '#1C1B1B',
-    fontSize: 13,
-    marginTop: 4,
-  },
-  correctTargetDisplay: {
-    color: '#5E5E5E',
+  feedbackSubtitle: {
     fontSize: 12,
+    color: '#5E5E5E',
     marginTop: 4,
   },
-  correctTargetWord: {
-    color: '#765A00',
-    fontWeight: '800',
+  correctionBox: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    padding: 10,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
   },
-  checkAnswerBtn: {
+  correctionLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#747878',
+  },
+  correctionText: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: '#1C1B1B',
+    marginTop: 2,
+  },
+  correctionTranslation: {
+    fontSize: 12,
+    color: '#765A00',
+    marginTop: 2,
+  },
+  verifyBtn: {
     backgroundColor: '#E8B400',
     borderRadius: 16,
-    paddingVertical: 14,
+    paddingVertical: 15,
     alignItems: 'center',
     marginTop: SPACING.md,
+    ...SHADOWS.card,
   },
-  checkAnswerBtnText: {
-    color: '#1C1B1B',
-    fontSize: 13,
+  verifyBtnText: {
+    fontSize: 14,
     fontWeight: '900',
+    color: '#1C1B1B',
     letterSpacing: 0.5,
   },
   nextWordBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#16A34A',
+    backgroundColor: '#E8B400',
     borderRadius: 16,
-    paddingVertical: 14,
-    gap: 6,
+    paddingVertical: 15,
     marginTop: SPACING.md,
+    gap: 6,
+    ...SHADOWS.card,
   },
   nextWordBtnText: {
-    color: '#FFFFFF',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '900',
+    color: '#1C1B1B',
     letterSpacing: 0.5,
   },
-
-  // Resultados
   resultContent: {
     padding: SPACING.lg,
     alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1,
   },
   resultCard: {
     width: '100%',
     backgroundColor: '#FFFFFF',
     borderRadius: 24,
-    padding: SPACING.lg,
+    padding: SPACING.xl,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#E0E0E0',
     ...SHADOWS.card,
   },
   resultTitle: {
-    color: '#1C1B1B',
     fontSize: 22,
     fontWeight: '900',
-    marginTop: 12,
+    color: '#1C1B1B',
+    marginTop: SPACING.md,
   },
   resultSubtitle: {
-    color: '#5E5E5E',
     fontSize: 13,
+    color: '#5E5E5E',
     textAlign: 'center',
-    marginTop: 4,
+    marginTop: 6,
   },
   statsRow: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     width: '100%',
-    marginVertical: SPACING.lg,
+    marginVertical: SPACING.xl,
+    gap: 10,
   },
   statBox: {
+    flex: 1,
+    backgroundColor: '#FDF8F8',
+    borderRadius: 16,
+    padding: 12,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
   },
   statValue: {
-    color: '#1C1B1B',
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '900',
+    color: '#1C1B1B',
     marginTop: 4,
   },
   statLabel: {
-    color: '#5E5E5E',
-    fontSize: 11,
-    fontWeight: '600',
+    fontSize: 10,
+    color: '#747878',
+    fontWeight: '700',
+    marginTop: 2,
   },
   retrySessionBtn: {
     flexDirection: 'row',
@@ -676,13 +750,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8B400',
     borderRadius: 16,
     paddingVertical: 14,
-    paddingHorizontal: 24,
-    gap: 8,
+    paddingHorizontal: 20,
     width: '100%',
+    gap: 8,
   },
   retrySessionBtnText: {
-    color: '#1C1B1B',
     fontSize: 13,
     fontWeight: '900',
+    color: '#1C1B1B',
   },
 });

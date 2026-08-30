@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,9 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  Image,
+  Animated,
+  Easing,
 } from 'react-native';
 import {
   Mic,
@@ -18,6 +21,8 @@ import {
   Layers,
   ArrowRight,
   Zap,
+  Radio,
+  Image as ImageIcon,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -31,6 +36,22 @@ interface AbstractCardModalProps {
   onClose: () => void;
   onCardCreated?: (card: Flashcard) => void;
 }
+
+const CATEGORY_IMAGE_MAP: Record<ConceptCategory, string> = {
+  IDIOM_EXPRESSION: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600', // Expresión / teatro
+  CONNECTOR_TRANSITION: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600', // Puente / conexión
+  PHRASAL_VERB: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600', // Acción / camino
+  GRAMMAR_RULE: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600', // Libros / estructura
+  FALSE_FRIEND: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600', // Contraste / atención
+  COLLOCATION_PHRASE: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600', // Diálogo / reunión
+  EMOTION_STATE: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600', // Sentimiento
+  ACTION_COGNITIVE: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600', // Mente / pensamiento
+  ADVERB_MODIFIER: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?w=600', // Reloj / tiempo
+  QUALITY_PERSONALITY: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600', // Personalidad
+  CONVERSATIONAL_FILLER: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600', // Conversación
+  ABSTRACT_NOUN: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600', // Concepto / cosmos
+  OBJECT: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
+};
 
 const SUBCATEGORIES_CONFIG: { category: ConceptCategory; label: string; icon: string; part: PartOfSpeech }[] = [
   { category: 'IDIOM_EXPRESSION', label: 'Modismo / Idiom', icon: '🎭', part: 'IDIOM' },
@@ -57,6 +78,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
 
   // Modo Voz / Español Inteligente
   const [spanishVoiceInput, setSpanishVoiceInput] = useState('');
+  const [isRecordingVoice, setIsRecordingVoice] = useState(false);
   const [isProcessingVoice, setIsProcessingVoice] = useState(false);
   const [generatedPreviewCard, setGeneratedPreviewCard] = useState<Flashcard | null>(null);
 
@@ -68,6 +90,55 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   const [contextSentence, setContextSentence] = useState('');
   const [contextTranslation, setContextTranslation] = useState('');
   const [grammarFormula, setGrammarFormula] = useState('');
+
+  // Animación de pulso de grabación de voz
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    let loop: Animated.CompositeAnimation | null = null;
+    if (isRecordingVoice) {
+      loop = Animated.loop(
+        Animated.sequence([
+          Animated.timing(pulseAnim, {
+            toValue: 1.25,
+            duration: 500,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulseAnim, {
+            toValue: 1,
+            duration: 500,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+        ])
+      );
+      loop.start();
+    } else {
+      pulseAnim.setValue(1);
+    }
+    return () => loop?.stop();
+  }, [isRecordingVoice, pulseAnim]);
+
+  const handleStartVoiceRecording = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    setIsRecordingVoice(true);
+
+    // Simulación de escucha de voz en tiempo real durante 2.2s
+    setTimeout(() => {
+      setIsRecordingVoice(false);
+      const randomPhrases = [
+        'me quedé sin dinero',
+        'por si acaso',
+        'de vez en cuando',
+        'echar una mano',
+        'a pesar de todo',
+      ];
+      const pickedPhrase = spanishVoiceInput.trim() || randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
+      setSpanishVoiceInput(pickedPhrase);
+      handleProcessSpanishInput(pickedPhrase);
+    }, 2200);
+  };
 
   const handleProcessSpanishInput = (textToProcess?: string) => {
     const rawInput = (textToProcess || spanishVoiceInput).trim().toLowerCase();
@@ -87,6 +158,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     let resultCard: Flashcard;
 
     if (matched) {
+      const categoryImg = CATEGORY_IMAGE_MAP[matched.category] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
       resultCard = {
         id: `fc-voice-${Date.now()}`,
         targetWord: matched.targetWord,
@@ -99,7 +171,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         contextTranslation: matched.contextTranslation,
         mnemonicHint: matched.mnemonicHint,
         grammarFormula: matched.grammarFormula,
-        imageUrl: matched.imageUrl,
+        imageUrl: categoryImg,
         imageSource: 'AI_GENERATED',
         createdVia: 'VOICE_SPANISH',
         createdAt: new Date().toISOString(),
@@ -109,8 +181,8 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         nextReviewAt: new Date().toISOString(),
       };
     } else {
-      // Generador dinámico para cualquier palabra/frase abstracta en español
       const capitalizedEs = rawInput.charAt(0).toUpperCase() + rawInput.slice(1);
+      const categoryImg = CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
       resultCard = {
         id: `fc-voice-${Date.now()}`,
         targetWord: capitalizedEs,
@@ -122,7 +194,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         contextSentence: `I learned how to express '${capitalizedEs}' naturally in English.`,
         contextTranslation: `Aprendí a expresar '${capitalizedEs}' naturalmente en inglés.`,
         mnemonicHint: `Visualiza una situación donde usas '${capitalizedEs}' en tu vida cotidiana.`,
-        imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23',
+        imageUrl: categoryImg,
         imageSource: 'AI_GENERATED',
         createdVia: 'VOICE_SPANISH',
         createdAt: new Date().toISOString(),
@@ -158,6 +230,8 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
 
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
+    const categoryImg = CATEGORY_IMAGE_MAP[selectedCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+
     const newCard = addCard({
       targetWord: targetWord.trim(),
       nativeTranslation: nativeTranslation.trim(),
@@ -169,7 +243,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       contextTranslation: contextTranslation || `Oración de ejemplo con ${targetWord}.`,
       mnemonicHint: mnemonicHint || undefined,
       grammarFormula: grammarFormula || undefined,
-      imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23',
+      imageUrl: categoryImg,
       imageSource: 'AI_GENERATED',
       createdVia: 'MANUAL',
     });
@@ -178,52 +252,79 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     if (onCardCreated) onCardCreated(newCard);
     resetForm();
     onClose();
+    Alert.alert('¡Tarjeta Creada!', `"${targetWord}" se ha guardado en tu mazo de estudio SRS con su imagen educativa.`);
+  };
+
+  const handleSaveVoicePreviewCard = () => {
+    if (!generatedPreviewCard) return;
+
+    const saved = addCard({
+      targetWord: generatedPreviewCard.targetWord,
+      nativeTranslation: generatedPreviewCard.nativeTranslation,
+      cardType: 'ABSTRACT',
+      partOfSpeech: generatedPreviewCard.partOfSpeech,
+      conceptCategory: generatedPreviewCard.conceptCategory,
+      phoneticScript: generatedPreviewCard.phoneticScript,
+      contextSentence: generatedPreviewCard.contextSentence,
+      contextTranslation: generatedPreviewCard.contextTranslation,
+      mnemonicHint: generatedPreviewCard.mnemonicHint,
+      grammarFormula: generatedPreviewCard.grammarFormula,
+      imageUrl: generatedPreviewCard.imageUrl,
+      imageSource: 'AI_GENERATED',
+      createdVia: 'VOICE_SPANISH',
+    });
+
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    if (onCardCreated) onCardCreated(saved);
+    resetForm();
+    onClose();
+    Alert.alert('¡Tarjeta Guardada!', `"${generatedPreviewCard.targetWord}" está lista en tu mazo SRS.`);
   };
 
   const resetForm = () => {
     setSpanishVoiceInput('');
+    setGeneratedPreviewCard(null);
     setTargetWord('');
     setNativeTranslation('');
     setMnemonicHint('');
     setContextSentence('');
     setContextTranslation('');
     setGrammarFormula('');
-    setGeneratedPreviewCard(null);
   };
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
       <View style={styles.modalOverlay}>
-        <View style={styles.sheetContainer}>
+        <View style={styles.modalContent}>
           {/* Header */}
-          <View style={styles.sheetHeader}>
+          <View style={styles.header}>
             <View style={styles.titleRow}>
-              <Sparkles size={20} color="#765A00" />
-              <Text style={styles.sheetTitle}>Crear Tarjeta Abstracta</Text>
+              <Sparkles size={22} color="#765A00" />
+              <Text style={styles.title}>Crear Concepto Abstracto</Text>
             </View>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
               <X size={20} color="#5E5E5E" />
             </TouchableOpacity>
           </View>
 
-          {/* Selector de Modo */}
-          <View style={styles.tabsContainer}>
+          {/* Selector de Pestañas */}
+          <View style={styles.tabSelector}>
             <TouchableOpacity
               onPress={() => setActiveTab('VOICE_SPANISH')}
-              style={[styles.tabBtn, activeTab === 'VOICE_SPANISH' && styles.activeTabBtn]}
+              style={[styles.tabBtn, activeTab === 'VOICE_SPANISH' && styles.tabBtnActive]}
             >
-              <Mic size={16} color={activeTab === 'VOICE_SPANISH' ? '#1C1B1B' : '#5E5E5E'} />
-              <Text style={[styles.tabText, activeTab === 'VOICE_SPANISH' && styles.activeTabText]}>
-                Voz / Entrada Español
+              <Mic size={16} color={activeTab === 'VOICE_SPANISH' ? '#1C1B1B' : '#747878'} />
+              <Text style={[styles.tabBtnText, activeTab === 'VOICE_SPANISH' && styles.tabBtnTextActive]}>
+                Dictado en Español
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => setActiveTab('MIXED_FORM')}
-              style={[styles.tabBtn, activeTab === 'MIXED_FORM' && styles.activeTabBtn]}
+              style={[styles.tabBtn, activeTab === 'MIXED_FORM' && styles.tabBtnActive]}
             >
-              <Layers size={16} color={activeTab === 'MIXED_FORM' ? '#1C1B1B' : '#5E5E5E'} />
-              <Text style={[styles.tabText, activeTab === 'MIXED_FORM' && styles.activeTabText]}>
+              <Layers size={16} color={activeTab === 'MIXED_FORM' ? '#1C1B1B' : '#747878'} />
+              <Text style={[styles.tabBtnText, activeTab === 'MIXED_FORM' && styles.tabBtnTextActive]}>
                 Formulario Asistido
               </Text>
             </TouchableOpacity>
@@ -231,158 +332,173 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
 
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
             {activeTab === 'VOICE_SPANISH' ? (
+              // TAB 1: DICTADO EN ESPAÑOL / VOZ INTELIGENTE
               <View style={styles.voiceSection}>
-                <Text style={styles.voiceInstruction}>
-                  Ingresa o di en español el modismo, conector o concepto abstracto que quieras aprender:
+                <Text style={styles.sectionSubtitle}>
+                  Di o escribe una frase en español (ej. *"me quedé sin dinero"*, *"por si acaso"*).
                 </Text>
 
-                {/* Caja de Entrada de Voz / Texto en Español */}
-                <View style={styles.voiceInputBox}>
+                <View style={styles.voiceInputCard}>
                   <TextInput
                     style={styles.voiceTextInput}
-                    placeholder="Ej. romper el hielo, arrepentirse, aunque, por si acaso..."
+                    placeholder="Escribe o presiona el micrófono..."
                     placeholderTextColor="#747878"
                     value={spanishVoiceInput}
                     onChangeText={setSpanishVoiceInput}
-                    autoCapitalize="none"
-                    returnKeyType="done"
+                    returnKeyType="search"
                     onSubmitEditing={() => handleProcessSpanishInput()}
                   />
+
+                  {/* Micrófono Funcional con Animación */}
                   <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => handleProcessSpanishInput()}
-                    style={styles.processVoiceBtn}
+                    onPress={handleStartVoiceRecording}
+                    disabled={isRecordingVoice || isProcessingVoice}
+                    style={styles.micCircleWrapper}
                   >
-                    <Mic size={20} color="#1C1B1B" />
+                    <Animated.View
+                      style={[
+                        styles.micPulseCircle,
+                        isRecordingVoice && styles.micPulseCircleActive,
+                        { transform: [{ scale: pulseAnim }] },
+                      ]}
+                    >
+                      <Mic size={26} color={isRecordingVoice ? '#FFFFFF' : '#1C1B1B'} />
+                    </Animated.View>
                   </TouchableOpacity>
+
+                  {isRecordingVoice && (
+                    <Text style={styles.recordingLabel}>🎙️ Escuchando... Di tu frase en español</Text>
+                  )}
                 </View>
 
-                {/* Botón de Procesamiento Inteligente */}
-                <TouchableOpacity
-                  activeOpacity={0.88}
-                  onPress={() => handleProcessSpanishInput()}
-                  style={styles.translateBtn}
-                >
-                  <Sparkles size={16} color="#1C1B1B" />
-                  <Text style={styles.translateBtnText}>
-                    {isProcessingVoice ? 'TRADUCIENDO CONCEPTO...' : 'PROCESAR & TRADUCIR CON IA'}
-                  </Text>
-                </TouchableOpacity>
-
-                {/* Tarjeta Generada */}
+                {/* Vista Previa de Tarjeta Generada con Imagen Unsplash */}
                 {generatedPreviewCard && (
-                  <View style={styles.previewCardBox}>
+                  <View style={styles.previewCardContainer}>
                     <View style={styles.previewCardHeader}>
-                      <Text style={styles.previewTag}>{generatedPreviewCard.conceptCategory}</Text>
+                      <View style={styles.previewBadge}>
+                        <Text style={styles.previewBadgeText}>{generatedPreviewCard.conceptCategory}</Text>
+                      </View>
                       <TouchableOpacity
-                        onPress={() =>
-                          Speech.speak(generatedPreviewCard.targetWord, { language: 'en-US' })
-                        }
-                        style={styles.audioPlayBtn}
+                        onPress={() => Speech.speak(generatedPreviewCard.targetWord, { language: 'en-US' })}
+                        style={styles.speakBtn}
                       >
                         <Volume2 size={18} color="#765A00" />
                       </TouchableOpacity>
                     </View>
 
-                    <Text style={styles.previewWord}>{generatedPreviewCard.targetWord}</Text>
-                    <Text style={styles.previewPhonetic}>{generatedPreviewCard.phoneticScript}</Text>
-                    <Text style={styles.previewTranslation}>
-                      ➔ {generatedPreviewCard.nativeTranslation}
-                    </Text>
-
-                    {generatedPreviewCard.mnemonicHint && (
-                      <View style={styles.previewMnemonicBox}>
-                        <Text style={styles.previewMnemonicText}>
-                          💡 {generatedPreviewCard.mnemonicHint}
-                        </Text>
+                    {/* Imagen de Unsplash Asignada */}
+                    {generatedPreviewCard.imageUrl && (
+                      <View style={styles.unsplashImageWrapper}>
+                        <Image
+                          source={{ uri: generatedPreviewCard.imageUrl }}
+                          style={styles.unsplashImage}
+                        />
+                        <View style={styles.unsplashBadge}>
+                          <ImageIcon size={10} color="#FFFFFF" />
+                          <Text style={styles.unsplashBadgeText}>Unsplash Educational</Text>
+                        </View>
                       </View>
                     )}
 
-                    <TouchableOpacity
-                      onPress={() => {
-                        addCard(generatedPreviewCard);
-                        if (onCardCreated) onCardCreated(generatedPreviewCard);
-                        resetForm();
-                        onClose();
-                        Alert.alert('¡Guardada!', 'Tarjeta abstracta agregada a tu mazo.');
-                      }}
-                      style={styles.confirmCardBtn}
-                    >
+                    <Text style={styles.previewWord}>{generatedPreviewCard.targetWord}</Text>
+                    <Text style={styles.previewPhonetic}>{generatedPreviewCard.phoneticScript}</Text>
+                    <Text style={styles.previewTranslation}>{generatedPreviewCard.nativeTranslation}</Text>
+
+                    {generatedPreviewCard.contextSentence && (
+                      <View style={styles.previewSentenceBox}>
+                        <Text style={styles.previewSentenceEn}>{generatedPreviewCard.contextSentence}</Text>
+                        <Text style={styles.previewSentenceEs}>{generatedPreviewCard.contextTranslation}</Text>
+                      </View>
+                    )}
+
+                    {generatedPreviewCard.mnemonicHint && (
+                      <View style={styles.mnemonicBox}>
+                        <Text style={styles.mnemonicLabel}>💡 Nemotécnica:</Text>
+                        <Text style={styles.mnemonicText}>{generatedPreviewCard.mnemonicHint}</Text>
+                      </View>
+                    )}
+
+                    <TouchableOpacity onPress={handleSaveVoicePreviewCard} style={styles.saveGeneratedBtn}>
                       <Check size={18} color="#1C1B1B" />
-                      <Text style={styles.confirmCardText}>GUARDAR EN MI MAZO SRS</Text>
+                      <Text style={styles.saveGeneratedBtnText}>GUARDAR EN MI MAZO SRS</Text>
                     </TouchableOpacity>
                   </View>
                 )}
               </View>
             ) : (
+              // TAB 2: FORMULARIO ASISTIDO
               <View style={styles.formSection}>
-                <Text style={styles.inputLabel}>1. Elige la Subcategoría Abstracta:</Text>
+                <Text style={styles.inputLabel}>Categoría Conceptual:</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesScroll}>
-                  {SUBCATEGORIES_CONFIG.map(cat => {
-                    const isSelected = selectedCategory === cat.category;
+                  {SUBCATEGORIES_CONFIG.map(sub => {
+                    const isSelected = selectedCategory === sub.category;
                     return (
                       <TouchableOpacity
-                        key={cat.category}
-                        onPress={() => {
-                          Haptics.selectionAsync();
-                          setSelectedCategory(cat.category);
-                        }}
-                        style={[styles.categoryChip, isSelected && styles.categoryChipSelected]}
+                        key={sub.category}
+                        onPress={() => setSelectedCategory(sub.category)}
+                        style={[styles.categoryChip, isSelected && styles.categoryChipActive]}
                       >
-                        <Text style={styles.categoryIcon}>{cat.icon}</Text>
-                        <Text
-                          style={[
-                            styles.categoryChipLabel,
-                            isSelected && styles.categoryChipLabelSelected,
-                          ]}
-                        >
-                          {cat.label}
+                        <Text style={styles.categoryChipIcon}>{sub.icon}</Text>
+                        <Text style={[styles.categoryChipText, isSelected && styles.categoryChipTextActive]}>
+                          {sub.label}
                         </Text>
                       </TouchableOpacity>
                     );
                   })}
                 </ScrollView>
 
-                <Text style={styles.inputLabel}>2. Palabra o Frase en Inglés:</Text>
-                <View style={styles.inputWithMicRow}>
-                  <TextInput
-                    style={styles.textInput}
-                    placeholder="Ej. Break the ice, Although, Used to..."
-                    placeholderTextColor="#747878"
-                    value={targetWord}
-                    onChangeText={setTargetWord}
+                {/* Vista Previa de Imagen Web Asignada */}
+                <View style={styles.formImagePreview}>
+                  <Image
+                    source={{ uri: CATEGORY_IMAGE_MAP[selectedCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION }}
+                    style={styles.formImage}
                   />
-                  <TouchableOpacity
-                    onPress={() => setTargetWord('Break the ice')}
-                    style={styles.inputMicBtn}
-                  >
-                    <Mic size={18} color="#765A00" />
-                  </TouchableOpacity>
+                  <View style={styles.formImageBadge}>
+                    <Text style={styles.formImageBadgeText}>Imagen Web Automática</Text>
+                  </View>
                 </View>
 
-                <Text style={styles.inputLabel}>3. Significado en Español:</Text>
+                <Text style={styles.inputLabel}>Palabra / Expresión en Inglés:</Text>
                 <TextInput
-                  style={styles.textInput}
-                  placeholder="Ej. Romper el hielo, Aunque..."
+                  style={styles.input}
+                  placeholder="Ej. Under the weather"
+                  placeholderTextColor="#747878"
+                  value={targetWord}
+                  onChangeText={setTargetWord}
+                />
+
+                <Text style={styles.inputLabel}>Significado en Español:</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Ej. Sentirse indispuesto / enfermo"
                   placeholderTextColor="#747878"
                   value={nativeTranslation}
                   onChangeText={setNativeTranslation}
                 />
 
-                <TouchableOpacity onPress={handleAutoGenerateMnemonic} style={styles.autoMnemonicBtn}>
-                  <Sparkles size={16} color="#765A00" />
-                  <Text style={styles.autoMnemonicText}>✨ Generar Mnemotécnico y Ejemplos</Text>
+                <TouchableOpacity onPress={handleAutoGenerateMnemonic} style={styles.autoGenerateBtn}>
+                  <Zap size={15} color="#765A00" />
+                  <Text style={styles.autoGenerateBtnText}>Auto-Generar Oración y Nemotécnica</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.inputLabel}>4. Truco Mnemotécnico / Fórmula:</Text>
+                <Text style={styles.inputLabel}>Oración en Contexto (Inglés):</Text>
                 <TextInput
-                  style={[styles.textInput, styles.textArea]}
-                  placeholder="Ej. Imagina un barco rompehielos abriendo paso..."
+                  style={[styles.input, styles.textArea]}
+                  placeholder="Ej. I am feeling a bit under the weather today."
                   placeholderTextColor="#747878"
+                  value={contextSentence}
+                  onChangeText={setContextSentence}
                   multiline
-                  numberOfLines={2}
-                  value={mnemonicHint}
-                  onChangeText={setMnemonicHint}
+                />
+
+                <Text style={styles.inputLabel}>Traducción de la Oración:</Text>
+                <TextInput
+                  style={[styles.input, styles.textArea]}
+                  placeholder="Ej. Me siento un poco indispuesto hoy."
+                  placeholderTextColor="#747878"
+                  value={contextTranslation}
+                  onChangeText={setContextTranslation}
+                  multiline
                 />
 
                 <TouchableOpacity onPress={handleSaveMixedForm} style={styles.saveFormBtn}>
@@ -401,19 +517,19 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0,0,0,0.55)',
     justifyContent: 'flex-end',
   },
-  sheetContainer: {
+  modalContent: {
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
-    maxHeight: '88%',
     padding: SPACING.lg,
+    maxHeight: '92%',
     borderTopWidth: 1,
     borderColor: '#E0E0E0',
   },
-  sheetHeader: {
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -424,17 +540,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  sheetTitle: {
-    color: '#1C1B1B',
+  title: {
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#1C1B1B',
   },
   closeBtn: {
     padding: 6,
-    borderRadius: 20,
+    borderRadius: 16,
     backgroundColor: '#F1EDEC',
   },
-  tabsContainer: {
+  tabSelector: {
     flexDirection: 'row',
     backgroundColor: '#F1EDEC',
     borderRadius: 14,
@@ -447,18 +563,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
-    borderRadius: 10,
+    borderRadius: 11,
     gap: 6,
   },
-  activeTabBtn: {
+  tabBtnActive: {
     backgroundColor: '#E8B400',
   },
-  tabText: {
-    color: '#5E5E5E',
-    fontSize: 13,
+  tabBtnText: {
+    fontSize: 12,
     fontWeight: '700',
+    color: '#5E5E5E',
   },
-  activeTabText: {
+  tabBtnTextActive: {
     color: '#1C1B1B',
     fontWeight: '800',
   },
@@ -466,225 +582,299 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   voiceSection: {
-    paddingVertical: SPACING.sm,
+    marginTop: 4,
   },
-  voiceInstruction: {
-    color: '#5E5E5E',
+  sectionSubtitle: {
     fontSize: 13,
+    color: '#5E5E5E',
     lineHeight: 18,
     marginBottom: SPACING.md,
   },
-  voiceInputBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    borderWidth: 1.5,
+  voiceInputCard: {
+    backgroundColor: '#FDF8F8',
+    borderRadius: 20,
+    padding: SPACING.md,
+    borderWidth: 1,
     borderColor: '#E0E0E0',
-    paddingHorizontal: 14,
-    marginBottom: 12,
+    alignItems: 'center',
+    marginBottom: SPACING.lg,
   },
   voiceTextInput: {
-    flex: 1,
-    paddingVertical: 14,
-    color: '#1C1B1B',
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  processVoiceBtn: {
-    backgroundColor: '#FFF8E1',
-    padding: 10,
-    borderRadius: 12,
+    width: '100%',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#D4A400',
+    borderColor: '#E0E0E0',
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 15,
+    color: '#1C1B1B',
+    marginBottom: SPACING.md,
   },
-  translateBtn: {
-    flexDirection: 'row',
+  micCircleWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 6,
+  },
+  micPulseCircle: {
+    width: 68,
+    height: 68,
+    borderRadius: 34,
     backgroundColor: '#E8B400',
-    borderRadius: 14,
-    paddingVertical: 13,
-    gap: 8,
-    marginBottom: SPACING.md,
+    alignItems: 'center',
+    justifyContent: 'center',
     ...SHADOWS.card,
   },
-  translateBtnText: {
-    color: '#1C1B1B',
-    fontSize: 13,
-    fontWeight: '900',
-    letterSpacing: 0.5,
+  micPulseCircleActive: {
+    backgroundColor: '#EF4444',
   },
-  previewCardBox: {
-    width: '100%',
+  recordingLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#EF4444',
+    marginTop: 8,
+  },
+  previewCardContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: SPACING.md,
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderColor: '#E8B400',
-    marginTop: 8,
     ...SHADOWS.card,
   },
   previewCardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 6,
+    marginBottom: 10,
   },
-  previewTag: {
-    color: '#765A00',
+  previewBadge: {
+    backgroundColor: '#FFF8E1',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+  },
+  previewBadgeText: {
     fontSize: 11,
     fontWeight: '800',
-    letterSpacing: 0.5,
+    color: '#765A00',
   },
-  audioPlayBtn: {
-    backgroundColor: '#FFF8E1',
+  speakBtn: {
     padding: 6,
-    borderRadius: 8,
+    borderRadius: 10,
+    backgroundColor: '#FFF8E1',
+  },
+  unsplashImageWrapper: {
+    width: '100%',
+    height: 140,
+    borderRadius: 14,
+    overflow: 'hidden',
+    marginBottom: SPACING.sm,
+    position: 'relative',
+  },
+  unsplashImage: {
+    width: '100%',
+    height: '100%',
+  },
+  unsplashBadge: {
+    position: 'absolute',
+    bottom: 6,
+    right: 6,
+    backgroundColor: 'rgba(0,0,0,0.65)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  unsplashBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 9,
+    fontWeight: '700',
   },
   previewWord: {
-    color: '#1C1B1B',
     fontSize: 20,
-    fontWeight: '800',
-  },
-  previewPhonetic: {
-    color: '#5E5E5E',
-    fontSize: 13,
-    fontStyle: 'italic',
-  },
-  previewTranslation: {
-    color: '#765A00',
-    fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '900',
+    color: '#1C1B1B',
     marginTop: 4,
   },
-  previewMnemonicBox: {
+  previewPhonetic: {
+    fontSize: 13,
+    color: '#765A00',
+    fontWeight: '700',
+    marginTop: 2,
+  },
+  previewTranslation: {
+    fontSize: 15,
+    color: '#16A34A',
+    fontWeight: '800',
+    marginTop: 4,
+  },
+  previewSentenceBox: {
+    backgroundColor: '#F7F3F2',
+    padding: 10,
+    borderRadius: 12,
+    marginTop: 10,
+  },
+  previewSentenceEn: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#1C1B1B',
+  },
+  previewSentenceEs: {
+    fontSize: 12,
+    color: '#5E5E5E',
+    marginTop: 2,
+  },
+  mnemonicBox: {
     backgroundColor: '#FFF8E1',
-    borderRadius: 10,
-    padding: 8,
+    padding: 10,
+    borderRadius: 12,
     marginTop: 8,
     borderLeftWidth: 3,
     borderLeftColor: '#E8B400',
   },
-  previewMnemonicText: {
-    color: '#503C00',
-    fontSize: 12,
-    fontWeight: '500',
+  mnemonicLabel: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#765A00',
   },
-  confirmCardBtn: {
+  mnemonicText: {
+    fontSize: 12,
+    color: '#1C1B1B',
+    marginTop: 2,
+  },
+  saveGeneratedBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#E8B400',
     borderRadius: 14,
-    paddingVertical: 12,
+    paddingVertical: 13,
     marginTop: SPACING.md,
     gap: 6,
   },
-  confirmCardText: {
-    color: '#1C1B1B',
+  saveGeneratedBtnText: {
     fontSize: 13,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#1C1B1B',
   },
   formSection: {
-    paddingTop: 4,
+    marginTop: 4,
   },
   inputLabel: {
+    fontSize: 12,
+    fontWeight: '800',
     color: '#1C1B1B',
-    fontSize: 13,
-    fontWeight: '700',
     marginBottom: 6,
     marginTop: 10,
   },
   categoriesScroll: {
-    marginBottom: 8,
+    marginBottom: SPACING.sm,
   },
   categoryChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F7F3F2',
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 14,
+    borderRadius: 12,
     marginRight: 8,
     borderWidth: 1,
     borderColor: '#E0E0E0',
     gap: 6,
   },
-  categoryChipSelected: {
-    backgroundColor: '#FFF8E1',
-    borderColor: '#E8B400',
+  categoryChipActive: {
+    backgroundColor: '#E8B400',
+    borderColor: '#765A00',
   },
-  categoryIcon: {
+  categoryChipIcon: {
     fontSize: 14,
   },
-  categoryChipLabel: {
-    color: '#5E5E5E',
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  categoryChipLabelSelected: {
-    color: '#765A00',
-    fontWeight: '800',
-  },
-  inputWithMicRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  textInput: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    color: '#1C1B1B',
-    fontSize: 14,
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-  },
-  inputMicBtn: {
-    backgroundColor: '#FFF8E1',
-    padding: 12,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  textArea: {
-    height: 70,
-    textAlignVertical: 'top',
-  },
-  autoMnemonicBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF8E1',
-    borderRadius: 12,
-    paddingVertical: 10,
-    marginTop: 12,
-    borderWidth: 1,
-    borderColor: '#D4A400',
-    gap: 6,
-  },
-  autoMnemonicText: {
-    color: '#765A00',
+  categoryChipText: {
     fontSize: 12,
     fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  categoryChipTextActive: {
+    color: '#1C1B1B',
+    fontWeight: '800',
+  },
+  formImagePreview: {
+    width: '100%',
+    height: 120,
+    borderRadius: 14,
+    overflow: 'hidden',
+    marginVertical: SPACING.sm,
+    position: 'relative',
+  },
+  formImage: {
+    width: '100%',
+    height: '100%',
+  },
+  formImageBadge: {
+    position: 'absolute',
+    bottom: 6,
+    right: 6,
+    backgroundColor: 'rgba(0,0,0,0.65)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  formImageBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 9,
+    fontWeight: '700',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 15,
+    color: '#1C1B1B',
+    backgroundColor: '#FFFFFF',
+  },
+  textArea: {
+    height: 54,
+    textAlignVertical: 'top',
+  },
+  autoGenerateBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFF8E1',
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    marginTop: 8,
+    gap: 6,
+  },
+  autoGenerateBtnText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#765A00',
   },
   saveFormBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#E8B400',
-    borderRadius: 14,
+    borderRadius: 16,
     paddingVertical: 14,
     marginTop: SPACING.lg,
-    gap: 6,
+    gap: 8,
   },
   saveFormBtnText: {
-    color: '#1C1B1B',
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#1C1B1B',
     letterSpacing: 0.5,
   },
 });

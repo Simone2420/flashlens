@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
 import {
   Camera as CameraIcon,
   Image as ImageIcon,
@@ -26,13 +27,19 @@ import {
   Sparkles,
   RefreshCw,
   Award,
+  Crop,
+  Layers,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { useUserStore } from '../../store/useUserStore';
-import { nlpLinguisticService, AdaptiveCardPayload } from '../../services/nlpLinguisticService';
+import {
+  nlpLinguisticService,
+  AdaptiveCardPayload,
+  DetectedObjectCandidate,
+} from '../../services/nlpLinguisticService';
 import { CEFRLevel } from '../../types';
 
 const { width } = Dimensions.get('window');
@@ -41,7 +48,8 @@ const CEFR_LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'];
 export const CameraViewfinder: React.FC = () => {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
-  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
+  const [fullPhotoUri, setFullPhotoUri] = useState<string | null>(null);
+  const [activePhotoUri, setActivePhotoUri] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -57,6 +65,7 @@ export const CameraViewfinder: React.FC = () => {
   const [sentenceInput, setSentenceInput] = useState('');
   const [contextEsInput, setContextEsInput] = useState('');
   const [confidenceScore, setConfidenceScore] = useState(96);
+  const [detectedCandidates, setDetectedCandidates] = useState<DetectedObjectCandidate[]>([]);
 
   const cameraRef = useRef<any>(null);
 
@@ -97,7 +106,7 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Captura la foto y ejecuta Google ML Kit on-device
+   * Captura la foto con opción de recorte y ejecuta Google ML Kit on-device
    */
   const handleCapture = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -106,7 +115,7 @@ export const CameraViewfinder: React.FC = () => {
     try {
       if (cameraRef.current) {
         const photo = await cameraRef.current.takePictureAsync({
-          quality: 0.8,
+          quality: 0.85,
         });
 
         if (photo?.uri) {
@@ -123,7 +132,6 @@ export const CameraViewfinder: React.FC = () => {
       setIsAnalyzing(false);
     }
 
-    // Fallback si la cámara no pudo capturar
     const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600';
     const fallbackResult = await nlpLinguisticService.classifyAndGenerateCard(fallbackUri, profile.diagnosedLevel || 'A1');
     populateFormWithResult(fallbackUri, fallbackResult);
@@ -136,9 +144,8 @@ export const CameraViewfinder: React.FC = () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ['images'],
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 0.8,
+        allowsEditing: false,
+        quality: 0.85,
       });
 
       if (!result.canceled && result.assets[0]?.uri) {
@@ -156,9 +163,42 @@ export const CameraViewfinder: React.FC = () => {
     }
   };
 
+  /**
+   * Permite al usuario recortar interactivamente un área específica de la foto y re-clasificarla
+   */
+  const handleManualCrop = async () => {
+    if (!fullPhotoUri) return;
+
+    try {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+      // Usar ImagePicker con edición manual para recortar la imagen seleccionada
+      const cropResult = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.9,
+      });
+
+      if (!cropResult.canceled && cropResult.assets[0]?.uri) {
+        const croppedUri = cropResult.assets[0].uri;
+        setIsAnalyzing(true);
+        const reclassified = await nlpLinguisticService.classifyAndGenerateCard(croppedUri, selectedCefr);
+        setIsAnalyzing(false);
+        setActivePhotoUri(croppedUri);
+        populateFormWithResult(croppedUri, reclassified);
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }
+    } catch (e) {
+      setIsAnalyzing(false);
+      console.warn('Error recortando imagen:', e);
+    }
+  };
+
   const populateFormWithResult = (imageUri: string, payload: AdaptiveCardPayload) => {
     setIsAnalyzing(false);
-    setCapturedPhoto(imageUri);
+    setFullPhotoUri(prev => prev || imageUri);
+    setActivePhotoUri(imageUri);
     setRawDetectedText(payload.targetWord);
     setWordInput(payload.targetWord);
     setTranslationInput(payload.nativeTranslation);
@@ -167,8 +207,25 @@ export const CameraViewfinder: React.FC = () => {
     setContextEsInput(payload.contextTranslation);
     setSelectedCefr(payload.cefrLevel);
     setConfidenceScore(payload.confidence);
+    setDetectedCandidates(payload.topDetections || []);
     setModalVisible(true);
     handleSpeak(payload.targetWord);
+  };
+
+  /**
+   * Cambia dinámicamente al objeto seleccionado entre los Top 3 detectados por ML Kit
+   */
+  const handleSelectCandidate = (candidateText: string, candidateConfidence: number) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setRawDetectedText(candidateText);
+    setConfidenceScore(candidateConfidence);
+    const adapted = nlpLinguisticService.generateCardDataForLevel(candidateText, selectedCefr, candidateConfidence);
+    setWordInput(adapted.targetWord);
+    setTranslationInput(adapted.nativeTranslation);
+    setPhoneticInput(adapted.phoneticScript);
+    setSentenceInput(adapted.contextSentence);
+    setContextEsInput(adapted.contextTranslation);
+    handleSpeak(adapted.targetWord);
   };
 
   /**
@@ -200,14 +257,15 @@ export const CameraViewfinder: React.FC = () => {
       phoneticScript: phoneticInput.trim() || `/${wordInput.toLowerCase()}/`,
       contextSentence: sentenceInput.trim(),
       contextTranslation: contextEsInput.trim(),
-      imageUrl: capturedPhoto || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
+      imageUrl: activePhotoUri || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
       imageSource: 'CAMERA',
       createdVia: 'CAMERA',
     });
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setModalVisible(false);
-    setCapturedPhoto(null);
+    setActivePhotoUri(null);
+    setFullPhotoUri(null);
     Alert.alert('¡Tarjeta Creada!', `"${wordInput}" (${selectedCefr}) se ha guardado en tu mazo de estudio SRS.`);
   };
 
@@ -336,16 +394,60 @@ export const CameraViewfinder: React.FC = () => {
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
-              {/* Vista Previa de la Foto */}
-              {capturedPhoto && (
+              {/* Vista Previa de la Foto con Botón Opcional de Recorte */}
+              {activePhotoUri && (
                 <View style={styles.modalImageWrapper}>
-                  <Image source={{ uri: capturedPhoto }} style={styles.modalImage} />
+                  <Image source={{ uri: activePhotoUri }} style={styles.modalImage} />
+                  
+                  {/* Botón Flotante para Recortar Foto Opcionalmente */}
+                  <TouchableOpacity
+                    onPress={handleManualCrop}
+                    style={styles.modalCropActionBtn}
+                  >
+                    <Crop size={14} color="#1C1B1B" />
+                    <Text style={styles.modalCropActionText}>✂️ Recortar Área Específica</Text>
+                  </TouchableOpacity>
+
                   <TouchableOpacity
                     onPress={() => handleSpeak(wordInput)}
                     style={styles.modalSpeechBtn}
                   >
                     <Volume2 size={20} color="#765A00" />
                   </TouchableOpacity>
+                </View>
+              )}
+
+              {/* Selector Rápido de las 3 Mejores Detecciones de ML Kit */}
+              {detectedCandidates.length > 0 && (
+                <View style={styles.candidatesSelectorContainer}>
+                  <View style={styles.candidatesTitleRow}>
+                    <Layers size={13} color="#765A00" />
+                    <Text style={styles.candidatesTitle}>OBJETOS DETECTADOS EN ESTA FOTO:</Text>
+                  </View>
+                  <View style={styles.candidatesChipsRow}>
+                    {detectedCandidates.map((cand, idx) => {
+                      const isSelected = rawDetectedText.toLowerCase() === cand.text.toLowerCase();
+                      return (
+                        <TouchableOpacity
+                          key={idx}
+                          onPress={() => handleSelectCandidate(cand.text, cand.confidence)}
+                          style={[
+                            styles.candidateChip,
+                            isSelected && styles.candidateChipActive,
+                          ]}
+                        >
+                          <Text
+                            style={[
+                              styles.candidateChipText,
+                              isSelected && styles.candidateChipTextActive,
+                            ]}
+                          >
+                            {cand.text} ({cand.confidence}%) {isSelected ? '✓' : ''}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
                 </View>
               )}
 
@@ -716,6 +818,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  modalCropActionBtn: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    gap: 5,
+  },
+  modalCropActionText: {
+    color: '#1C1B1B',
+    fontSize: 11,
+    fontWeight: '800',
+  },
   modalSpeechBtn: {
     position: 'absolute',
     bottom: 10,
@@ -725,6 +846,52 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#D4A400',
+  },
+  candidatesSelectorContainer: {
+    backgroundColor: '#FFF8E1',
+    padding: 10,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    marginBottom: SPACING.md,
+  },
+  candidatesTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  candidatesTitle: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#765A00',
+    letterSpacing: 0.5,
+  },
+  candidatesChipsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  candidateChip: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  candidateChipActive: {
+    backgroundColor: '#E8B400',
+    borderColor: '#765A00',
+  },
+  candidateChipText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  candidateChipTextActive: {
+    color: '#1C1B1B',
+    fontWeight: '800',
   },
   cefrSelectorContainer: {
     backgroundColor: '#F7F3F2',

@@ -1,5 +1,7 @@
+import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
+import * as Notifications from 'expo-notifications';
 import { CEFRLevel, Flashcard } from '../types';
 import { INITIAL_FLASHCARDS } from '../data/mockData';
 
@@ -16,21 +18,66 @@ export interface LocalNotificationPayload {
 const NOTIFICATIONS_STORAGE_KEY = '@flashlens_local_notifications';
 const NOTIFICATION_PREF_KEY = '@flashlens_notifications_enabled';
 
+// Configurar cómo responde el sistema ante notificaciones en primer plano
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+    shouldShowBanner: true,
+    shouldShowList: true,
+  }),
+});
+
 class NotificationService {
   private static instance: NotificationService;
   private listeners: ((notification: LocalNotificationPayload) => void)[] = [];
+  private isConfigured: boolean = false;
 
   public static getInstance(): NotificationService {
     if (!NotificationService.instance) {
       NotificationService.instance = new NotificationService();
+      NotificationService.instance.setupNotificationChannels();
     }
     return NotificationService.instance;
+  }
+
+  public async setupNotificationChannels(): Promise<void> {
+    if (this.isConfigured) return;
+    try {
+      if (Platform.OS === 'android') {
+        await Notifications.setNotificationChannelAsync('flashlens-alerts', {
+          name: 'Alertas FlashLens',
+          importance: Notifications.AndroidImportance.MAX,
+          vibrationPattern: [0, 250, 250, 250],
+          lightColor: '#E8B400',
+          sound: 'default',
+        });
+      }
+      this.isConfigured = true;
+    } catch (e) {
+      console.warn('Error configurando canal de notificaciones Android:', e);
+    }
+  }
+
+  public async requestPermissions(): Promise<boolean> {
+    try {
+      const perm: any = await Notifications.getPermissionsAsync();
+      let isGranted = perm?.granted || perm?.status === 'granted';
+      if (!isGranted) {
+        const req: any = await Notifications.requestPermissionsAsync();
+        isGranted = req?.granted || req?.status === 'granted';
+      }
+      return !!isGranted;
+    } catch {
+      return false;
+    }
   }
 
   public async isEnabled(): Promise<boolean> {
     try {
       const val = await AsyncStorage.getItem(NOTIFICATION_PREF_KEY);
-      return val !== 'false'; // Por defecto activo
+      return val !== 'false';
     } catch {
       return true;
     }
@@ -41,6 +88,8 @@ class NotificationService {
       await AsyncStorage.setItem(NOTIFICATION_PREF_KEY, enabled ? 'true' : 'false');
       if (!enabled) {
         await this.cancelAll();
+      } else {
+        await this.requestPermissions();
       }
     } catch (e) {
       console.error('Error guardando preferencia de notificaciones:', e);
@@ -48,7 +97,7 @@ class NotificationService {
   }
 
   /**
-   * Programa la Notificación 1: Vidas al 100%
+   * Programa la Notificación 1: Vidas al 100% (Android status bar + In-App)
    */
   public async scheduleLivesFull(secondsUntilFull: number): Promise<void> {
     if (!(await this.isEnabled())) return;
@@ -63,10 +112,29 @@ class NotificationService {
     };
 
     await this.saveNotification(payload);
+
+    try {
+      if (secondsUntilFull > 0) {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: payload.title,
+            body: payload.body,
+            data: { route: payload.route },
+            sound: 'default',
+          },
+          trigger: {
+            type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+            seconds: Math.max(1, Math.round(secondsUntilFull)),
+          },
+        });
+      }
+    } catch (e) {
+      console.warn('Error programando notificación nativa de vidas:', e);
+    }
   }
 
   /**
-   * Programa la Notificación 2: Peligro de Racha (8:00 PM)
+   * Programa la Notificación 2: Peligro de Racha
    */
   public async scheduleStreakDanger(currentStreak: number): Promise<void> {
     if (!(await this.isEnabled())) return;
@@ -81,10 +149,27 @@ class NotificationService {
     };
 
     await this.saveNotification(payload);
+
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: payload.title,
+          body: payload.body,
+          data: { route: payload.route },
+          sound: 'default',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: 3600,
+        },
+      });
+    } catch (e) {
+      console.warn('Error programando notificación nativa de racha:', e);
+    }
   }
 
   /**
-   * Programa la Notificación 3: Repaso Espaciado SM-2 (Mañana)
+   * Programa la Notificación 3: Repaso Espaciado SM-2
    */
   public async scheduleSRSDue(dueCardsCount: number): Promise<void> {
     if (!(await this.isEnabled()) || dueCardsCount <= 0) return;
@@ -99,6 +184,23 @@ class NotificationService {
     };
 
     await this.saveNotification(payload);
+
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: payload.title,
+          body: payload.body,
+          data: { route: payload.route },
+          sound: 'default',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: 1800,
+        },
+      });
+    } catch (e) {
+      console.warn('Error programando notificación nativa de SRS:', e);
+    }
   }
 
   /**
@@ -110,7 +212,6 @@ class NotificationService {
   ): Promise<void> {
     if (!(await this.isEnabled())) return;
 
-    // Seleccionar una tarjeta o concepto aleatorio de la base de datos
     const targetCards = allCards.length > 0 ? allCards : INITIAL_FLASHCARDS;
     const randomCard = targetCards[Math.floor(Math.random() * targetCards.length)];
 
@@ -127,13 +228,13 @@ class NotificationService {
   }
 
   /**
-   * Dispara una notificación de prueba inmediata en la interfaz
+   * Dispara una notificación de prueba real en el sistema Android y en la interfaz
    */
   public async triggerTestNotification(type: LocalNotificationPayload['type']): Promise<LocalNotificationPayload> {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
     let title = '✨ FlashLens Notificación';
-    let body = 'Probando el sistema de notificaciones locales on-device.';
+    let body = 'Probando el sistema de notificaciones reales on-device.';
     let route = '/(tabs)';
 
     if (type === 'LIVES_FULL') {
@@ -146,7 +247,7 @@ class NotificationService {
       route = '/(tabs)/audio';
     } else if (type === 'SRS_DUE') {
       title = '🧠 Tienes 4 tarjetas listas para repasar';
-      body: 'Domínalas hoy antes de que se te olviden con el método SM-2.';
+      body = 'Domínalas hoy antes de que se te olviden con el método SM-2.';
       route = '/(tabs)';
     } else if (type === 'LEARNING_PILL') {
       title = '🎲 Píldora del Día [Modismo A1]: "Break the ice"';
@@ -164,7 +265,24 @@ class NotificationService {
       isDelivered: true,
     };
 
+    // 1. Mostrar banner / toast dentro de la app
     this.notifyListeners(payload);
+
+    // 2. Disparar notificación real en la barra de estado de Android
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: payload.title,
+          body: payload.body,
+          data: { route: payload.route },
+          sound: 'default',
+        },
+        trigger: null, // Inmediata
+      });
+    } catch (e) {
+      console.warn('Error disparando notificación nativa de prueba:', e);
+    }
+
     return payload;
   }
 
@@ -193,6 +311,7 @@ class NotificationService {
   public async cancelAll(): Promise<void> {
     try {
       await AsyncStorage.removeItem(NOTIFICATIONS_STORAGE_KEY);
+      await Notifications.cancelAllScheduledNotificationsAsync();
     } catch (e) {
       console.error('Error cancelando notificaciones:', e);
     }
