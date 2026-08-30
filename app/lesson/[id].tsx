@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  Platform,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
   X,
@@ -30,9 +31,13 @@ import { Sublesson, SublessonQuestionItem } from '../../src/types';
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   const { getNodeById, getVisibleSublessons, completeSublesson } = useRoadmapStore();
-  const { profile, lives, loseLife, addXP } = useUserStore();
+  const { profile, lives, loseLife, addXP, registerDailyActivity } = useUserStore();
+
+  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
+  const bottomPadding = Math.max(insets.bottom, 16);
 
   const node = getNodeById(id || '');
   const visibleSublessons = id ? getVisibleSublessons(id, profile.learningPace) : [];
@@ -49,21 +54,21 @@ export default function LessonScreen() {
 
   if (!node) {
     return (
-      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
+      <View style={[styles.safeArea, { paddingTop: topPadding, paddingBottom: bottomPadding }]}>
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyTitle}>Nodo no encontrado</Text>
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
             <Text style={styles.backBtnText}>Volver al Roadmap</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
   // Si no ha seleccionado sublección, mostrar el selector de sublecciones del nodo
   if (!activeSublesson) {
     return (
-      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
+      <View style={[styles.safeArea, { paddingTop: topPadding }]}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()} style={styles.headerCloseBtn}>
             <X size={20} color="#5E5E5E" />
@@ -78,7 +83,10 @@ export default function LessonScreen() {
           </View>
         </View>
 
-        <ScrollView contentContainerStyle={styles.sublessonsList}>
+        <ScrollView
+          contentContainerStyle={[styles.sublessonsList, { paddingBottom: bottomPadding + 20 }]}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.nodeIntroCard}>
             <Text style={styles.nodeIntroDesc}>{node.description}</Text>
             <View style={styles.paceTag}>
@@ -130,7 +138,7 @@ export default function LessonScreen() {
             );
           })}
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
   }
 
@@ -180,12 +188,13 @@ export default function LessonScreen() {
       setSelectedPairLeft(null);
     } else {
       completeSublesson(node.id, activeSublesson.id, 100);
+      registerDailyActivity('LESSON');
       setIsSublessonComplete(true);
     }
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
+    <View style={[styles.safeArea, { paddingTop: topPadding }]}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => setActiveSublesson(null)}
@@ -208,7 +217,10 @@ export default function LessonScreen() {
       </View>
 
       {!isSublessonComplete && currentQ ? (
-        <ScrollView contentContainerStyle={styles.questionContent}>
+        <ScrollView
+          contentContainerStyle={[styles.questionContent, { paddingBottom: 100 + bottomPadding }]}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.qTypeBadge}>
             <Text style={styles.qTypeBadgeText}>{currentQ.type}</Text>
           </View>
@@ -313,7 +325,7 @@ export default function LessonScreen() {
           )}
         </ScrollView>
       ) : (
-        <View style={styles.completedSublessonBox}>
+        <View style={[styles.completedSublessonBox, { paddingBottom: bottomPadding + 20 }]}>
           <Sparkles size={56} color="#E8B400" />
           <Text style={styles.completedSubTitle}>¡Sublección Completada!</Text>
           <Text style={styles.completedSubMeta}>Ganaste +{activeSublesson.xpReward || 20} XP</Text>
@@ -327,7 +339,7 @@ export default function LessonScreen() {
       )}
 
       {!isSublessonComplete && (
-        <View style={styles.footer}>
+        <View style={[styles.footer, { paddingBottom: bottomPadding }]}>
           {!isAnswered ? (
             <TouchableOpacity onPress={handleEvaluateCurrent} style={styles.actionBtn}>
               <Text style={styles.actionBtnText}>COMPROBAR</Text>
@@ -340,7 +352,7 @@ export default function LessonScreen() {
           )}
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 }
 

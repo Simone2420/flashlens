@@ -40,6 +40,7 @@ export type ConceptCategory =
   | 'ABSTRACT_NOUN';
 
 export type DictationInputMode = 'FREE_TEXT' | 'EXACT_BOXES' | 'DYNAMIC_EXPANDING';
+export type DictationDirection = 'NORMAL' | 'INVERSE';
 
 export interface UserProfile {
   id: string;
@@ -48,6 +49,7 @@ export interface UserProfile {
   isPremium: boolean;
   currentStreak: number;
   maxStreak: number;
+  lastStreakDate?: string | null; // ISO date 'YYYY-MM-DD' in local timezone
   eloRating: number;
   targetLanguage: TargetLanguage;
   xp: number;

@@ -5,10 +5,13 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
+import { Mic, MicOff } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { LearningPace, CharacterDiff } from '../../types';
 import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
+import { speechToTextService } from '../../services/speechToTextService';
 
 interface AdaptiveDictationInputProps {
   learningPace: LearningPace;
@@ -30,11 +33,45 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   disabled = false,
 }) => {
   const [inputValue, setInputValue] = useState('');
+  const [isListening, setIsListening] = useState(false);
   const inputRef = useRef<TextInput>(null);
 
   useEffect(() => {
     setInputValue('');
+    setIsListening(false);
+    speechToTextService.stopListening();
   }, [targetText]);
+
+  const toggleSpeechRecognition = () => {
+    if (disabled) return;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (isListening) {
+      speechToTextService.stopListening();
+      setIsListening(false);
+    } else {
+      setIsListening(true);
+      speechToTextService.startListening({
+        language: 'en-US',
+        onResult: (transcript, isFinal) => {
+          setInputValue(transcript);
+          onInputChange(transcript);
+          if (isFinal) {
+            setIsListening(false);
+          }
+        },
+        onError: () => setIsListening(false),
+        onEnd: () => setIsListening(false),
+      });
+
+      // Contingencia reactiva si el reconocedor web no está disponible
+      setTimeout(() => {
+        if (!speechToTextService.getIsListening() && isListening) {
+          setIsListening(false);
+        }
+      }, 3500);
+    }
+  };
 
   const cleanTarget = targetText.trim();
   const targetLength = cleanTarget.length;
@@ -101,6 +138,25 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             ))}
           </View>
         )}
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          disabled={disabled}
+          onPress={toggleSpeechRecognition}
+          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
+        >
+          {isListening ? (
+            <>
+              <MicOff size={15} color="#BA1A1A" />
+              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
+            </>
+          ) : (
+            <>
+              <Mic size={15} color="#765A00" />
+              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
+            </>
+          )}
+        </TouchableOpacity>
       </View>
     );
   }
@@ -147,6 +203,25 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             ))}
           </View>
         )}
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          disabled={disabled}
+          onPress={toggleSpeechRecognition}
+          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
+        >
+          {isListening ? (
+            <>
+              <MicOff size={15} color="#BA1A1A" />
+              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
+            </>
+          ) : (
+            <>
+              <Mic size={15} color="#765A00" />
+              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
+            </>
+          )}
+        </TouchableOpacity>
       </View>
     );
   }
@@ -208,6 +283,25 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
               </View>
             );
           })}
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          disabled={disabled}
+          onPress={toggleSpeechRecognition}
+          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
+        >
+          {isListening ? (
+            <>
+              <MicOff size={15} color="#BA1A1A" />
+              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
+            </>
+          ) : (
+            <>
+              <Mic size={15} color="#765A00" />
+              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
+            </>
+          )}
         </TouchableOpacity>
       </View>
     );
@@ -272,6 +366,25 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             </View>
           );
         })}
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        activeOpacity={0.8}
+        disabled={disabled}
+        onPress={toggleSpeechRecognition}
+        style={[styles.sttBtn, isListening && styles.sttBtnActive]}
+      >
+        {isListening ? (
+          <>
+            <MicOff size={15} color="#BA1A1A" />
+            <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
+          </>
+        ) : (
+          <>
+            <Mic size={15} color="#765A00" />
+            <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
+          </>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -432,6 +545,34 @@ const styles = StyleSheet.create({
     borderColor: '#A855F7',
   },
   diffCharText: {
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  sttBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginTop: 12,
+    alignSelf: 'center',
+  },
+  sttBtnActive: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#EF4444',
+  },
+  sttBtnText: {
+    color: '#765A00',
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  sttBtnTextActive: {
+    color: '#BA1A1A',
     fontSize: 12,
     fontWeight: '800',
   },

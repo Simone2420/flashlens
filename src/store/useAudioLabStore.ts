@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { DictationResult, Flashcard } from '../types';
+import { DictationResult, Flashcard, DictationDirection } from '../types';
 import { DictationAlgorithm } from '../services/dictationAlgorithm';
 
 interface AudioLabState {
@@ -12,12 +12,18 @@ interface AudioLabState {
   lastResult: DictationResult | null;
   isPlayingAudio: boolean;
   dictationMode: 'WORD' | 'SENTENCE' | 'BURST';
+  dictationDirection: DictationDirection;
 
   // Actions
-  startSession: (cards: Flashcard[], mode?: 'WORD' | 'SENTENCE' | 'BURST') => void;
+  startSession: (
+    cards: Flashcard[],
+    mode?: 'WORD' | 'SENTENCE' | 'BURST',
+    direction?: DictationDirection
+  ) => void;
   evaluateInput: (userInput: string) => DictationResult;
   nextCard: () => boolean; // returns true if session still has cards
   setDictationMode: (mode: 'WORD' | 'SENTENCE' | 'BURST') => void;
+  setDictationDirection: (direction: DictationDirection) => void;
   resetSession: () => void;
 }
 
@@ -31,8 +37,9 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
   lastResult: null,
   isPlayingAudio: false,
   dictationMode: 'WORD',
+  dictationDirection: 'NORMAL',
 
-  startSession: (cards, mode = 'WORD') => {
+  startSession: (cards, mode = 'WORD', direction = 'NORMAL') => {
     set({
       sessionCards: cards,
       currentCardIndex: 0,
@@ -42,11 +49,20 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       xpEarned: 0,
       lastResult: null,
       dictationMode: mode,
+      dictationDirection: direction,
     });
   },
 
   evaluateInput: (userInput: string) => {
-    const { sessionCards, currentCardIndex, dictationMode, comboCount, maxCombo, totalScore, xpEarned } = get();
+    const {
+      sessionCards,
+      currentCardIndex,
+      dictationMode,
+      comboCount,
+      maxCombo,
+      totalScore,
+      xpEarned,
+    } = get();
     const currentCard = sessionCards[currentCardIndex];
 
     if (!currentCard) {
@@ -58,12 +74,19 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       };
     }
 
-    const targetText = dictationMode === 'SENTENCE' ? currentCard.contextSentence : currentCard.targetWord;
-    const result = DictationAlgorithm.evaluate(targetText, userInput);
+    // La respuesta esperada en inglés siempre es la palabra u oración meta
+    const targetText =
+      dictationMode === 'SENTENCE'
+        ? currentCard.contextSentence
+        : currentCard.targetWord;
+
+    // DictationAlgorithm.evaluate recibe (userInput, targetText)
+    const result = DictationAlgorithm.evaluate(userInput, targetText);
 
     if (result.isCorrect) {
       const newCombo = comboCount + 1;
-      const basePoints = dictationMode === 'BURST' ? 150 : dictationMode === 'SENTENCE' ? 120 : 100;
+      const basePoints =
+        dictationMode === 'BURST' ? 150 : dictationMode === 'SENTENCE' ? 120 : 100;
       const points = basePoints * (1 + newCombo * 0.1);
       const newMaxCombo = Math.max(maxCombo, newCombo);
 
@@ -71,7 +94,9 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
         comboCount: newCombo,
         maxCombo: newMaxCombo,
         totalScore: Math.round(totalScore + points),
-        xpEarned: xpEarned + (dictationMode === 'BURST' ? 25 : dictationMode === 'SENTENCE' ? 20 : 15),
+        xpEarned:
+          xpEarned +
+          (dictationMode === 'BURST' ? 25 : dictationMode === 'SENTENCE' ? 20 : 15),
         lastResult: result,
       });
     } else {
@@ -98,6 +123,10 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
 
   setDictationMode: (mode) => {
     set({ dictationMode: mode });
+  },
+
+  setDictationDirection: (direction) => {
+    set({ dictationDirection: direction });
   },
 
   resetSession: () => {

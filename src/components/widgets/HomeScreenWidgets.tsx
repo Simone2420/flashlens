@@ -105,6 +105,12 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
     }
   };
 
+  let minutesLeft = 15;
+  if (lives.nextRegenerationAt) {
+    const diff = new Date(lives.nextRegenerationAt).getTime() - Date.now();
+    minutesLeft = Math.max(1, Math.ceil(diff / (60 * 1000)));
+  }
+
   return (
     <TouchableOpacity
       activeOpacity={0.9}
@@ -135,7 +141,7 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
           {lives.currentLives < 5 && (
             <View style={styles.timerTag}>
               <Clock size={10} color="#5E5E5E" />
-              <Text style={styles.timerText}>14m</Text>
+              <Text style={styles.timerText}>{minutesLeft}m</Text>
             </View>
           )}
         </View>

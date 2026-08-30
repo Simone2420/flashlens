@@ -16,6 +16,9 @@ interface UserState {
   refillLivesDemo: () => void;
   addXP: (amount: number) => void;
   incrementStreak: () => void;
+  registerDailyActivity: (
+    activityType: 'FLASHCARD_DECK' | 'LESSON' | 'AUDIO_SECTION'
+  ) => { success: boolean; alreadySecured: boolean; currentStreak: number };
   setTargetLanguage: (lang: TargetLanguage) => void;
   setLearningPace: (pace: LearningPace) => void;
   setDiagnosedLevel: (level: CEFRLevel) => void;
@@ -32,6 +35,7 @@ const DEFAULT_USER: UserProfile = {
   isPremium: false,
   currentStreak: 7,
   maxStreak: 14,
+  lastStreakDate: null,
   eloRating: 1050,
   targetLanguage: 'en',
   xp: 450,
@@ -60,14 +64,24 @@ export const useUserStore = create<UserState>()(
         if (lives.currentLives <= 0) return false;
 
         const newLivesCount = lives.currentLives - 1;
-        const now = new Date();
-        const nextRegen = new Date(now.getTime() + 15 * 60 * 1000); // 15 minutos en demo
+        const now = Date.now();
+        const intervalMs = 15 * 60 * 1000; // 15 minutos por cada corazón
+
+        // Si ya había un temporizador activo para un corazón perdido previo, lo preservamos.
+        // Solo si teníamos 5 vidas o no había fecha previa, iniciamos desde 'ahora'.
+        let lastLifeLostAt = lives.lastLifeLostAt;
+        let nextRegen = lives.nextRegenerationAt;
+
+        if (!lastLifeLostAt || lives.currentLives >= lives.maxLives) {
+          lastLifeLostAt = new Date(now).toISOString();
+          nextRegen = new Date(now + intervalMs).toISOString();
+        }
 
         const updatedLives: LivesState = {
           ...lives,
           currentLives: newLivesCount,
-          lastLifeLostAt: now.toISOString(),
-          nextRegenerationAt: nextRegen.toISOString(),
+          lastLifeLostAt,
+          nextRegenerationAt: nextRegen,
         };
 
         set({ lives: updatedLives });
@@ -86,13 +100,17 @@ export const useUserStore = create<UserState>()(
         const { lives, profile } = get();
         if (lives.currentLives >= lives.maxLives) return;
 
+        const now = Date.now();
+        const newLivesCount = Math.min(lives.maxLives, lives.currentLives + 1);
+        const isFull = newLivesCount >= lives.maxLives;
+
         const updatedLives: LivesState = {
           ...lives,
-          currentLives: Math.min(lives.maxLives, lives.currentLives + 1),
-          nextRegenerationAt:
-            lives.currentLives + 1 >= lives.maxLives
-              ? null
-              : new Date(Date.now() + 15 * 60 * 1000).toISOString(),
+          currentLives: newLivesCount,
+          lastLifeLostAt: isFull ? null : new Date(now).toISOString(),
+          nextRegenerationAt: isFull
+            ? null
+            : new Date(now + 15 * 60 * 1000).toISOString(),
         };
 
         set({ lives: updatedLives });
@@ -131,6 +149,59 @@ export const useUserStore = create<UserState>()(
           widgetService.syncWidgetData(newStreak, state.lives, null as any, state.profile.xp);
           return { profile: updatedProfile };
         });
+      },
+
+      registerDailyActivity: (activityType) => {
+        const { profile, lives } = get();
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const todayLocal = `${year}-${month}-${day}`;
+
+        // Si ya se registró una actividad hoy después de la medianoche local, no sumar racha otra vez
+        if (profile.lastStreakDate === todayLocal) {
+          return {
+            success: false,
+            alreadySecured: true,
+            currentStreak: profile.currentStreak,
+          };
+        }
+
+        // Calcular si la última fecha fue ayer
+        const yesterday = new Date(now);
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yYear = yesterday.getFullYear();
+        const yMonth = String(yesterday.getMonth() + 1).padStart(2, '0');
+        const yDay = String(yesterday.getDate()).padStart(2, '0');
+        const yesterdayLocal = `${yYear}-${yMonth}-${yDay}`;
+
+        let newStreak = 1;
+        if (profile.lastStreakDate === yesterdayLocal) {
+          newStreak = (profile.currentStreak || 0) + 1;
+        } else if (!profile.lastStreakDate) {
+          // Primera actividad o manteniendo demo
+          newStreak = Math.max(1, (profile.currentStreak || 0) + 1);
+        } else {
+          // Racha perdida por inactividad de más de 1 día
+          newStreak = 1;
+        }
+
+        const updatedProfile: UserProfile = {
+          ...profile,
+          currentStreak: newStreak,
+          maxStreak: Math.max(profile.maxStreak || 0, newStreak),
+          lastStreakDate: todayLocal,
+        };
+
+        set({ profile: updatedProfile });
+        widgetService.syncWidgetData(newStreak, lives, null as any, updatedProfile.xp);
+
+        return {
+          success: true,
+          alreadySecured: false,
+          currentStreak: newStreak,
+        };
       },
 
       setTargetLanguage: (lang: TargetLanguage) => {
@@ -173,21 +244,27 @@ export const useUserStore = create<UserState>()(
 
         const now = Date.now();
         const lostTime = new Date(lives.lastLifeLostAt).getTime();
-        const intervalMs = 15 * 60 * 1000; // 15 minutos por vida
-        const livesToRegenerate = Math.floor((now - lostTime) / intervalMs);
+        const intervalMs = 15 * 60 * 1000; // 15 minutos por cada corazón
+        const elapsed = now - lostTime;
+        const livesToRegenerate = Math.floor(elapsed / intervalMs);
 
         if (livesToRegenerate > 0) {
           const newCount = Math.min(lives.maxLives, lives.currentLives + livesToRegenerate);
-          const nextRegenTime =
-            newCount < lives.maxLives
-              ? new Date(lostTime + (livesToRegenerate + 1) * intervalMs).toISOString()
-              : null;
+          const isFull = newCount >= lives.maxLives;
+
+          const newLastLifeLostAt = isFull
+            ? null
+            : new Date(lostTime + livesToRegenerate * intervalMs).toISOString();
+
+          const nextRegenTime = isFull
+            ? null
+            : new Date(lostTime + (livesToRegenerate + 1) * intervalMs).toISOString();
 
           const updatedLives: LivesState = {
             ...lives,
             currentLives: newCount,
             nextRegenerationAt: nextRegenTime,
-            lastLifeLostAt: newCount >= lives.maxLives ? null : lives.lastLifeLostAt,
+            lastLifeLostAt: newLastLifeLostAt,
           };
 
           set({ lives: updatedLives });

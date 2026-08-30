@@ -23,7 +23,7 @@ export default function SRSReviewScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { cards, reviewCard, getDueCards } = useFlashcardStore();
-  const { addXP } = useUserStore();
+  const { addXP, registerDailyActivity } = useUserStore();
 
   const dueCards = getDueCards();
   const reviewDeck = dueCards.length > 0 ? dueCards : cards;
@@ -47,6 +47,7 @@ export default function SRSReviewScreen() {
     if (currentIndex + 1 < reviewDeck.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
+      registerDailyActivity('FLASHCARD_DECK');
       setSessionCompleted(true);
     }
   };
