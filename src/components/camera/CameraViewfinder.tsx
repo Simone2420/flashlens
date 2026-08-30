@@ -25,15 +25,18 @@ import {
   Scan,
   Sparkles,
   RefreshCw,
-  Zap,
+  Award,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
-import { geminiVisionAI, VisionDetectionResult } from '../../services/geminiVisionAI';
+import { useUserStore } from '../../store/useUserStore';
+import { nlpLinguisticService, AdaptiveCardPayload } from '../../services/nlpLinguisticService';
+import { CEFRLevel } from '../../types';
 
 const { width } = Dimensions.get('window');
+const CEFR_LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 export const CameraViewfinder: React.FC = () => {
   const [permission, requestPermission] = useCameraPermissions();
@@ -42,16 +45,20 @@ export const CameraViewfinder: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  // Campos para la tarjeta generada
+  const { profile } = useUserStore();
+  const { addCard } = useFlashcardStore();
+
+  // Estados del formulario y nivel seleccionado
+  const [rawDetectedText, setRawDetectedText] = useState('Coffee Cup');
+  const [selectedCefr, setSelectedCefr] = useState<CEFRLevel>(profile.diagnosedLevel || 'A1');
   const [wordInput, setWordInput] = useState('');
   const [translationInput, setTranslationInput] = useState('');
   const [phoneticInput, setPhoneticInput] = useState('');
   const [sentenceInput, setSentenceInput] = useState('');
   const [contextEsInput, setContextEsInput] = useState('');
-  const [cefrLevel, setCefrLevel] = useState('A1');
+  const [confidenceScore, setConfidenceScore] = useState(96);
 
   const cameraRef = useRef<any>(null);
-  const { addCard } = useFlashcardStore();
 
   // Animación continua del láser de escaneo óptico
   const scanLineAnim = useRef(new Animated.Value(0)).current;
@@ -90,7 +97,7 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Captura la foto y analiza los píxeles reales con el motor de visión por IA
+   * Captura la foto y ejecuta Google ML Kit on-device
    */
   const handleCapture = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -100,30 +107,30 @@ export const CameraViewfinder: React.FC = () => {
       if (cameraRef.current) {
         const photo = await cameraRef.current.takePictureAsync({
           quality: 0.8,
-          base64: true,
         });
 
         if (photo?.uri) {
-          const result = await geminiVisionAI.analyzeCapturedImage(photo.uri, photo.base64);
-          populateAndOpenModal(photo.uri, result);
+          const userLevel = profile.diagnosedLevel || 'A1';
+          setSelectedCefr(userLevel);
+          const result = await nlpLinguisticService.classifyAndGenerateCard(photo.uri, userLevel);
+          populateFormWithResult(photo.uri, result);
           return;
         }
       }
     } catch (e) {
-      console.warn('Error capturando con cámara:', e);
+      console.warn('Error capturando foto:', e);
     } finally {
       setIsAnalyzing(false);
     }
 
-    // Fallback de demostración si la cámara no pudo disparar
-    const fallbackUri =
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80';
-    const fallbackResult = await geminiVisionAI.analyzeCapturedImage(fallbackUri, null);
-    populateAndOpenModal(fallbackUri, fallbackResult);
+    // Fallback si la cámara no pudo capturar
+    const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600';
+    const fallbackResult = await nlpLinguisticService.classifyAndGenerateCard(fallbackUri, profile.diagnosedLevel || 'A1');
+    populateFormWithResult(fallbackUri, fallbackResult);
   };
 
   /**
-   * Selecciona una foto de la galería y la procesa con IA
+   * Selecciona una foto de la galería y la procesa con Google ML Kit on-device
    */
   const handlePickImage = async () => {
     try {
@@ -132,33 +139,50 @@ export const CameraViewfinder: React.FC = () => {
         allowsEditing: true,
         aspect: [4, 3],
         quality: 0.8,
-        base64: true,
       });
 
       if (!result.canceled && result.assets[0]?.uri) {
         const asset = result.assets[0];
         setIsAnalyzing(true);
-        const detection = await geminiVisionAI.analyzeCapturedImage(asset.uri, asset.base64);
+        const userLevel = profile.diagnosedLevel || 'A1';
+        setSelectedCefr(userLevel);
+        const detection = await nlpLinguisticService.classifyAndGenerateCard(asset.uri, userLevel);
         setIsAnalyzing(false);
-        populateAndOpenModal(asset.uri, detection);
+        populateFormWithResult(asset.uri, detection);
       }
     } catch (e) {
       setIsAnalyzing(false);
-      console.warn('Error seleccionando imagen:', e);
+      console.warn('Error seleccionando imagen de galería:', e);
     }
   };
 
-  const populateAndOpenModal = (imageUri: string, detection: VisionDetectionResult) => {
+  const populateFormWithResult = (imageUri: string, payload: AdaptiveCardPayload) => {
     setIsAnalyzing(false);
     setCapturedPhoto(imageUri);
-    setWordInput(detection.targetWord);
-    setTranslationInput(detection.nativeTranslation);
-    setPhoneticInput(detection.phoneticScript);
-    setSentenceInput(detection.contextSentence);
-    setContextEsInput(detection.contextTranslation);
-    setCefrLevel(detection.cefrLevel || 'A1');
+    setRawDetectedText(payload.targetWord);
+    setWordInput(payload.targetWord);
+    setTranslationInput(payload.nativeTranslation);
+    setPhoneticInput(payload.phoneticScript);
+    setSentenceInput(payload.contextSentence);
+    setContextEsInput(payload.contextTranslation);
+    setSelectedCefr(payload.cefrLevel);
+    setConfidenceScore(payload.confidence);
     setModalVisible(true);
-    handleSpeak(detection.targetWord);
+    handleSpeak(payload.targetWord);
+  };
+
+  /**
+   * Permite al usuario cambiar el nivel CEFR en tiempo real para adaptar la dificultad de la oración
+   */
+  const handleLevelChange = (newLevel: CEFRLevel) => {
+    Haptics.selectionAsync();
+    setSelectedCefr(newLevel);
+    const adapted = nlpLinguisticService.generateCardDataForLevel(rawDetectedText, newLevel, confidenceScore);
+    setWordInput(adapted.targetWord);
+    setTranslationInput(adapted.nativeTranslation);
+    setPhoneticInput(adapted.phoneticScript);
+    setSentenceInput(adapted.contextSentence);
+    setContextEsInput(adapted.contextTranslation);
   };
 
   const handleSaveCard = () => {
@@ -184,7 +208,7 @@ export const CameraViewfinder: React.FC = () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setModalVisible(false);
     setCapturedPhoto(null);
-    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" se ha guardado en tu mazo de estudio SRS.`);
+    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" (${selectedCefr}) se ha guardado en tu mazo de estudio SRS.`);
   };
 
   return (
@@ -231,7 +255,7 @@ export const CameraViewfinder: React.FC = () => {
             <Scan size={52} color="#747878" />
             <Text style={styles.permissionTitle}>Permiso de Cámara Requerido</Text>
             <Text style={styles.permissionSub}>
-              FlashLens necesita acceso a la cámara para identificar objetos reales con IA.
+              FlashLens necesita acceso a la cámara para identificar objetos con Google ML Kit local.
             </Text>
             <TouchableOpacity onPress={requestPermission} style={styles.grantPermissionBtn}>
               <Text style={styles.grantPermissionBtnText}>CONCEDER PERMISO</Text>
@@ -239,13 +263,13 @@ export const CameraViewfinder: React.FC = () => {
           </View>
         )}
 
-        {/* Overlay de Análisis con IA */}
+        {/* Overlay de Análisis con Google ML Kit */}
         {isAnalyzing && (
           <View style={styles.analyzingOverlay}>
             <View style={styles.analyzingCard}>
               <ActivityIndicator size="large" color="#E8B400" />
-              <Text style={styles.analyzingTitle}>Identificando Objeto con IA...</Text>
-              <Text style={styles.analyzingSub}>Extrayendo fonética y traducción contextual</Text>
+              <Text style={styles.analyzingTitle}>Escaneando con Google ML Kit...</Text>
+              <Text style={styles.analyzingSub}>Procesando objeto on-device y adaptando nivel {profile.diagnosedLevel || 'A1'}</Text>
             </View>
           </View>
         )}
@@ -255,9 +279,9 @@ export const CameraViewfinder: React.FC = () => {
       <View style={styles.infoStatusBar}>
         <View style={styles.statusIndicatorRow}>
           <View style={styles.statusDot} />
-          <Text style={styles.statusLabel}>VISIÓN MULTIMODAL ACTIVA</Text>
+          <Text style={styles.statusLabel}>GOOGLE ML KIT ON-DEVICE LISTO</Text>
         </View>
-        <Text style={styles.infoInstruction}>Presiona el obturador para escanear</Text>
+        <Text style={styles.infoInstruction}>Nivel Activo: {profile.diagnosedLevel || 'A1'}</Text>
       </View>
 
       {/* 3. CONTROLES DE OBTURADOR Y GALERÍA */}
@@ -296,7 +320,7 @@ export const CameraViewfinder: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      {/* 4. MODAL PARA GUARDAR FLASHCARD DETECTADA */}
+      {/* 4. MODAL ADAPTATIVO PARA GUARDAR FLASHCARD DETECTADA */}
       <Modal visible={modalVisible} animationType="slide" transparent>
         <View style={styles.modalBackdrop}>
           <View style={styles.modalContent}>
@@ -304,7 +328,7 @@ export const CameraViewfinder: React.FC = () => {
             <View style={styles.modalHeader}>
               <View style={styles.modalTitleRow}>
                 <Sparkles size={20} color="#765A00" />
-                <Text style={styles.modalTitle}>Objeto Detectado con IA</Text>
+                <Text style={styles.modalTitle}>Objeto Detectado ({confidenceScore}%)</Text>
               </View>
               <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalCloseBtn}>
                 <X size={20} color="#5E5E5E" />
@@ -322,16 +346,37 @@ export const CameraViewfinder: React.FC = () => {
                   >
                     <Volume2 size={20} color="#765A00" />
                   </TouchableOpacity>
-                  <View style={styles.cefrBadge}>
-                    <Text style={styles.cefrBadgeText}>{cefrLevel}</Text>
-                  </View>
                 </View>
               )}
+
+              {/* Selector Adaptativo de Nivel CEFR (A1 a C1) */}
+              <View style={styles.cefrSelectorContainer}>
+                <View style={styles.cefrTitleRow}>
+                  <Award size={14} color="#765A00" />
+                  <Text style={styles.cefrTitle}>NIVEL CEFR DE LA FLASHCARD:</Text>
+                </View>
+                <View style={styles.cefrChipsRow}>
+                  {CEFR_LEVELS.map(level => {
+                    const isSelected = selectedCefr === level;
+                    return (
+                      <TouchableOpacity
+                        key={level}
+                        onPress={() => handleLevelChange(level)}
+                        style={[styles.cefrChip, isSelected && styles.cefrChipActive]}
+                      >
+                        <Text style={[styles.cefrChipText, isSelected && styles.cefrChipTextActive]}>
+                          {level}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </View>
+              </View>
 
               {/* Input Palabra en Inglés y Fonética */}
               <View style={styles.inputRow}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
+                  <Text style={styles.inputLabel}>Palabra en Inglés ({selectedCefr}):</Text>
                   <TextInput
                     style={styles.input}
                     value={wordInput}
@@ -340,7 +385,7 @@ export const CameraViewfinder: React.FC = () => {
                     placeholderTextColor="#747878"
                   />
                 </View>
-                <View style={{ width: 110 }}>
+                <View style={{ width: 120 }}>
                   <Text style={styles.inputLabel}>Fonética IPA:</Text>
                   <TextInput
                     style={styles.input}
@@ -362,8 +407,8 @@ export const CameraViewfinder: React.FC = () => {
                 placeholderTextColor="#747878"
               />
 
-              {/* Input Oración Contextual */}
-              <Text style={styles.inputLabel}>Oración en Contexto (Inglés):</Text>
+              {/* Input Oración Contextual en Inglés */}
+              <Text style={styles.inputLabel}>Oración en Contexto ({selectedCefr}):</Text>
               <TextInput
                 style={[styles.input, styles.textArea]}
                 value={sentenceInput}
@@ -373,7 +418,7 @@ export const CameraViewfinder: React.FC = () => {
                 multiline
               />
 
-              {/* Input Traducción de Oración */}
+              {/* Input Traducción de la Oración */}
               <Text style={styles.inputLabel}>Traducción de la Oración (Español):</Text>
               <TextInput
                 style={[styles.input, styles.textArea]}
@@ -384,7 +429,7 @@ export const CameraViewfinder: React.FC = () => {
                 multiline
               />
 
-              {/* Botón Guardar en Mazo */}
+              {/* Botón Guardar en Mazo SRS */}
               <TouchableOpacity onPress={handleSaveCard} style={styles.saveCardBtn}>
                 <Check size={18} color="#1C1B1B" />
                 <Text style={styles.saveCardBtnText}>GUARDAR EN MI MAZO SRS</Text>
@@ -502,7 +547,7 @@ const styles = StyleSheet.create({
     padding: SPACING.xl,
     borderRadius: 20,
     alignItems: 'center',
-    width: '80%',
+    width: '82%',
     ...SHADOWS.card,
   },
   analyzingTitle: {
@@ -578,9 +623,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   infoInstruction: {
-    color: '#747878',
+    color: '#765A00',
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '800',
   },
   controlsBar: {
     flexDirection: 'row',
@@ -628,7 +673,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
     padding: SPACING.lg,
-    maxHeight: '88%',
+    maxHeight: '90%',
     borderTopWidth: 1,
     borderColor: '#E0E0E0',
   },
@@ -644,7 +689,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   modalTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '800',
     color: '#1C1B1B',
   },
@@ -658,7 +703,7 @@ const styles = StyleSheet.create({
   },
   modalImageWrapper: {
     width: '100%',
-    height: 180,
+    height: 170,
     backgroundColor: '#F1EDEC',
     borderRadius: 16,
     overflow: 'hidden',
@@ -681,24 +726,54 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#D4A400',
   },
-  cefrBadge: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    backgroundColor: '#1C1B1B',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
+  cefrSelectorContainer: {
+    backgroundColor: '#F7F3F2',
+    padding: 10,
+    borderRadius: 14,
+    marginBottom: SPACING.md,
   },
-  cefrBadgeText: {
-    color: '#E8B400',
+  cefrTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  cefrTitle: {
     fontSize: 11,
     fontWeight: '800',
+    color: '#765A00',
+    letterSpacing: 0.5,
+  },
+  cefrChipsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 6,
+  },
+  cefrChip: {
+    flex: 1,
+    paddingVertical: 6,
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    alignItems: 'center',
+  },
+  cefrChipActive: {
+    backgroundColor: '#E8B400',
+    borderColor: '#765A00',
+  },
+  cefrChipText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#5E5E5E',
+  },
+  cefrChipTextActive: {
+    color: '#1C1B1B',
   },
   inputRow: {
     flexDirection: 'row',
     gap: 10,
-    marginTop: 4,
+    marginTop: 2,
   },
   inputLabel: {
     fontSize: 12,
@@ -718,7 +793,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   textArea: {
-    height: 58,
+    height: 56,
     textAlignVertical: 'top',
   },
   saveCardBtn: {
