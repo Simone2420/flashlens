@@ -12,10 +12,10 @@ import {
   Dimensions,
   Animated,
   Easing,
+  ActivityIndicator,
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Camera as CameraIcon,
   Image as ImageIcon,
@@ -31,7 +31,7 @@ import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
-import { localVisionAI, DetectedObject } from '../../services/localVisionAI';
+import { geminiVisionAI, VisionDetectionResult } from '../../services/geminiVisionAI';
 
 const { width } = Dimensions.get('window');
 
@@ -39,16 +39,16 @@ export const CameraViewfinder: React.FC = () => {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
-  const [activeDetection, setActiveDetection] = useState<DetectedObject>(() =>
-    localVisionAI.detectObjectsInViewfinder(320, 320, false)
-  );
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  // Campos para la tarjeta
+  // Campos para la tarjeta generada
   const [wordInput, setWordInput] = useState('');
   const [translationInput, setTranslationInput] = useState('');
+  const [phoneticInput, setPhoneticInput] = useState('');
   const [sentenceInput, setSentenceInput] = useState('');
   const [contextEsInput, setContextEsInput] = useState('');
+  const [cefrLevel, setCefrLevel] = useState('A1');
 
   const cameraRef = useRef<any>(null);
   const { addCard } = useFlashcardStore();
@@ -84,39 +84,47 @@ export const CameraViewfinder: React.FC = () => {
   }, [scanLineAnim]);
 
   const handleSpeak = (text: string) => {
+    if (!text.trim()) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Speech.speak(text, { language: 'en-US', rate: 0.9 });
   };
 
-  // Re-escaneo explícito cuando se enfoca un nuevo objeto
-  const handleReScanScene = () => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    const newDetection = localVisionAI.detectObjectsInViewfinder(320, 320, true);
-    setActiveDetection(newDetection);
-    handleSpeak(newDetection.labelEn);
-  };
-
+  /**
+   * Captura la foto y analiza los píxeles reales con el motor de visión por IA
+   */
   const handleCapture = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    setIsAnalyzing(true);
 
     try {
       if (cameraRef.current) {
-        const photo = await cameraRef.current.takePictureAsync({ quality: 0.8 });
+        const photo = await cameraRef.current.takePictureAsync({
+          quality: 0.8,
+          base64: true,
+        });
+
         if (photo?.uri) {
-          openCardCreator(photo.uri, activeDetection);
+          const result = await geminiVisionAI.analyzeCapturedImage(photo.uri, photo.base64);
+          populateAndOpenModal(photo.uri, result);
           return;
         }
       }
     } catch (e) {
-      console.log('Captura local con cámara:', e);
+      console.warn('Error capturando con cámara:', e);
+    } finally {
+      setIsAnalyzing(false);
     }
 
-    openCardCreator(
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80',
-      activeDetection
-    );
+    // Fallback de demostración si la cámara no pudo disparar
+    const fallbackUri =
+      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80';
+    const fallbackResult = await geminiVisionAI.analyzeCapturedImage(fallbackUri, null);
+    populateAndOpenModal(fallbackUri, fallbackResult);
   };
 
+  /**
+   * Selecciona una foto de la galería y la procesa con IA
+   */
   const handlePickImage = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -124,26 +132,33 @@ export const CameraViewfinder: React.FC = () => {
         allowsEditing: true,
         aspect: [4, 3],
         quality: 0.8,
+        base64: true,
       });
 
       if (!result.canceled && result.assets[0]?.uri) {
-        const detection = localVisionAI.detectObjectsInViewfinder(320, 320, true);
-        setActiveDetection(detection);
-        openCardCreator(result.assets[0].uri, detection);
+        const asset = result.assets[0];
+        setIsAnalyzing(true);
+        const detection = await geminiVisionAI.analyzeCapturedImage(asset.uri, asset.base64);
+        setIsAnalyzing(false);
+        populateAndOpenModal(asset.uri, detection);
       }
     } catch (e) {
+      setIsAnalyzing(false);
       console.warn('Error seleccionando imagen:', e);
     }
   };
 
-  const openCardCreator = (imageUri: string, detection: DetectedObject) => {
+  const populateAndOpenModal = (imageUri: string, detection: VisionDetectionResult) => {
+    setIsAnalyzing(false);
     setCapturedPhoto(imageUri);
-    setWordInput(detection.labelEn);
-    setTranslationInput(detection.labelEs);
+    setWordInput(detection.targetWord);
+    setTranslationInput(detection.nativeTranslation);
+    setPhoneticInput(detection.phoneticScript);
     setSentenceInput(detection.contextSentence);
     setContextEsInput(detection.contextTranslation);
+    setCefrLevel(detection.cefrLevel || 'A1');
     setModalVisible(true);
-    handleSpeak(detection.labelEn);
+    handleSpeak(detection.targetWord);
   };
 
   const handleSaveCard = () => {
@@ -158,9 +173,9 @@ export const CameraViewfinder: React.FC = () => {
       cardType: 'VOCABULARY',
       partOfSpeech: 'NOUN',
       conceptCategory: 'OBJECT',
-      phoneticScript: activeDetection.phoneticScript || `/${wordInput.toLowerCase()}/`,
-      contextSentence: sentenceInput.trim() || activeDetection.contextSentence,
-      contextTranslation: contextEsInput.trim() || activeDetection.contextTranslation,
+      phoneticScript: phoneticInput.trim() || `/${wordInput.toLowerCase()}/`,
+      contextSentence: sentenceInput.trim(),
+      contextTranslation: contextEsInput.trim(),
       imageUrl: capturedPhoto || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
       imageSource: 'CAMERA',
       createdVia: 'CAMERA',
@@ -169,12 +184,12 @@ export const CameraViewfinder: React.FC = () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setModalVisible(false);
     setCapturedPhoto(null);
-    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" se ha guardado en tu mazo de estudio.`);
+    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" se ha guardado en tu mazo de estudio SRS.`);
   };
 
   return (
     <View style={styles.container}>
-      {/* 1. VISOR DE CÁMARA CON ENFOQUE ESTABILIZADO */}
+      {/* 1. VISOR DE CÁMARA LIMPIO Y ESTABLE */}
       <View style={styles.cameraContainer}>
         {permission?.granted ? (
           <View style={StyleSheet.absoluteFillObject}>
@@ -184,10 +199,10 @@ export const CameraViewfinder: React.FC = () => {
               facing={facing}
             />
 
-            {/* Retícula de Visión por Computadora & Bounding Box Estable */}
+            {/* Retícula de Enfoque Óptico */}
             <View style={styles.reticleOverlay} pointerEvents="none">
               <View style={styles.boundingBox}>
-                {/* Esquinas del Bounding Box */}
+                {/* Esquinas de la Retícula */}
                 <View style={styles.bbCornerTL} />
                 <View style={styles.bbCornerTR} />
                 <View style={styles.bbCornerBL} />
@@ -201,11 +216,11 @@ export const CameraViewfinder: React.FC = () => {
                   ]}
                 />
 
-                {/* Etiqueta de Detección en Tiempo Real Estable */}
+                {/* Estado del Escáner */}
                 <View style={styles.detectionBadge}>
                   <Sparkles size={13} color="#E8B400" />
                   <Text style={styles.detectionBadgeText}>
-                    {activeDetection.labelEn} ({activeDetection.confidence}%)
+                    APUNTA Y CAPTURA CUALQUIER OBJETO
                   </Text>
                 </View>
               </View>
@@ -216,32 +231,43 @@ export const CameraViewfinder: React.FC = () => {
             <Scan size={52} color="#747878" />
             <Text style={styles.permissionTitle}>Permiso de Cámara Requerido</Text>
             <Text style={styles.permissionSub}>
-              FlashLens necesita acceso a la cámara para identificar objetos en tiempo real con IA.
+              FlashLens necesita acceso a la cámara para identificar objetos reales con IA.
             </Text>
             <TouchableOpacity onPress={requestPermission} style={styles.grantPermissionBtn}>
               <Text style={styles.grantPermissionBtnText}>CONCEDER PERMISO</Text>
             </TouchableOpacity>
           </View>
         )}
+
+        {/* Overlay de Análisis con IA */}
+        {isAnalyzing && (
+          <View style={styles.analyzingOverlay}>
+            <View style={styles.analyzingCard}>
+              <ActivityIndicator size="large" color="#E8B400" />
+              <Text style={styles.analyzingTitle}>Identificando Objeto con IA...</Text>
+              <Text style={styles.analyzingSub}>Extrayendo fonética y traducción contextual</Text>
+            </View>
+          </View>
+        )}
       </View>
 
-      {/* 2. BARRA DE ACCIÓN: RE-ESCANEAR & ESTADO DE CALIBRACIÓN */}
+      {/* 2. BARRA DE ESTADO INFORMATIVA */}
       <View style={styles.infoStatusBar}>
         <View style={styles.statusIndicatorRow}>
           <View style={styles.statusDot} />
-          <Text style={styles.statusLabel}>IA LOCAL ON-DEVICE CALIBRADA</Text>
+          <Text style={styles.statusLabel}>VISIÓN MULTIMODAL ACTIVA</Text>
         </View>
-
-        <TouchableOpacity onPress={handleReScanScene} style={styles.reScanBtn}>
-          <RefreshCw size={13} color="#765A00" />
-          <Text style={styles.reScanBtnText}>Re-Escanear Objeto</Text>
-        </TouchableOpacity>
+        <Text style={styles.infoInstruction}>Presiona el obturador para escanear</Text>
       </View>
 
       {/* 3. CONTROLES DE OBTURADOR Y GALERÍA */}
       <View style={styles.controlsBar}>
         {/* Abrir Galería */}
-        <TouchableOpacity onPress={handlePickImage} style={styles.auxButton}>
+        <TouchableOpacity
+          onPress={handlePickImage}
+          disabled={isAnalyzing}
+          style={styles.auxButton}
+        >
           <ImageIcon size={22} color="#1C1B1B" />
         </TouchableOpacity>
 
@@ -249,6 +275,7 @@ export const CameraViewfinder: React.FC = () => {
         <TouchableOpacity
           activeOpacity={0.85}
           onPress={handleCapture}
+          disabled={isAnalyzing}
           style={styles.shutterButton}
         >
           <View style={styles.shutterInner}>
@@ -262,6 +289,7 @@ export const CameraViewfinder: React.FC = () => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
             setFacing(prev => (prev === 'back' ? 'front' : 'back'));
           }}
+          disabled={isAnalyzing}
           style={styles.auxButton}
         >
           <RefreshCw size={22} color="#1C1B1B" />
@@ -294,18 +322,35 @@ export const CameraViewfinder: React.FC = () => {
                   >
                     <Volume2 size={20} color="#765A00" />
                   </TouchableOpacity>
+                  <View style={styles.cefrBadge}>
+                    <Text style={styles.cefrBadgeText}>{cefrLevel}</Text>
+                  </View>
                 </View>
               )}
 
-              {/* Input Palabra en Inglés */}
-              <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
-              <TextInput
-                style={styles.input}
-                value={wordInput}
-                onChangeText={setWordInput}
-                placeholder="Nombre del objeto"
-                placeholderTextColor="#747878"
-              />
+              {/* Input Palabra en Inglés y Fonética */}
+              <View style={styles.inputRow}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={wordInput}
+                    onChangeText={setWordInput}
+                    placeholder="Nombre del objeto"
+                    placeholderTextColor="#747878"
+                  />
+                </View>
+                <View style={{ width: 110 }}>
+                  <Text style={styles.inputLabel}>Fonética IPA:</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={phoneticInput}
+                    onChangeText={setPhoneticInput}
+                    placeholder="/.../"
+                    placeholderTextColor="#747878"
+                  />
+                </View>
+              </View>
 
               {/* Input Traducción al Español */}
               <Text style={styles.inputLabel}>Traducción al Español:</Text>
@@ -318,12 +363,23 @@ export const CameraViewfinder: React.FC = () => {
               />
 
               {/* Input Oración Contextual */}
-              <Text style={styles.inputLabel}>Oración en Contexto:</Text>
+              <Text style={styles.inputLabel}>Oración en Contexto (Inglés):</Text>
               <TextInput
                 style={[styles.input, styles.textArea]}
                 value={sentenceInput}
                 onChangeText={setSentenceInput}
                 placeholder="Oración de ejemplo en inglés"
+                placeholderTextColor="#747878"
+                multiline
+              />
+
+              {/* Input Traducción de Oración */}
+              <Text style={styles.inputLabel}>Traducción de la Oración (Español):</Text>
+              <TextInput
+                style={[styles.input, styles.textArea]}
+                value={contextEsInput}
+                onChangeText={setContextEsInput}
+                placeholder="Traducción de la oración"
                 placeholderTextColor="#747878"
                 multiline
               />
@@ -358,8 +414,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   boundingBox: {
-    width: Math.min(width * 0.72, 260),
-    height: Math.min(width * 0.72, 260),
+    width: Math.min(width * 0.75, 270),
+    height: Math.min(width * 0.75, 270),
     position: 'relative',
     justifyContent: 'flex-start',
   },
@@ -418,21 +474,48 @@ const styles = StyleSheet.create({
   detectionBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1C1B1B',
+    backgroundColor: 'rgba(28, 27, 27, 0.85)',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#E8B400',
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
     marginTop: 8,
-    marginLeft: 8,
     gap: 5,
   },
   detectionBadgeText: {
     color: '#FFFFFF',
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: '800',
+    letterSpacing: 0.3,
+  },
+  analyzingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 999,
+  },
+  analyzingCard: {
+    backgroundColor: '#FFFFFF',
+    padding: SPACING.xl,
+    borderRadius: 20,
+    alignItems: 'center',
+    width: '80%',
+    ...SHADOWS.card,
+  },
+  analyzingTitle: {
+    color: '#1C1B1B',
+    fontSize: 16,
+    fontWeight: '800',
+    marginTop: 14,
+  },
+  analyzingSub: {
+    color: '#747878',
+    fontSize: 12,
+    marginTop: 4,
+    textAlign: 'center',
   },
   noPermissionBox: {
     flex: 1,
@@ -494,21 +577,10 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 0.5,
   },
-  reScanBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF8E1',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#D4A400',
-    gap: 4,
-  },
-  reScanBtnText: {
-    color: '#765A00',
+  infoInstruction: {
+    color: '#747878',
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   controlsBar: {
     flexDirection: 'row',
@@ -556,7 +628,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
     padding: SPACING.lg,
-    maxHeight: '85%',
+    maxHeight: '88%',
     borderTopWidth: 1,
     borderColor: '#E0E0E0',
   },
@@ -609,6 +681,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#D4A400',
   },
+  cefrBadge: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    backgroundColor: '#1C1B1B',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  cefrBadgeText: {
+    color: '#E8B400',
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  inputRow: {
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: 4,
+  },
   inputLabel: {
     fontSize: 12,
     fontWeight: '700',
@@ -627,7 +718,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   textArea: {
-    height: 64,
+    height: 58,
     textAlignVertical: 'top',
   },
   saveCardBtn: {
