@@ -21,6 +21,11 @@ class CompactWidgetProvider : AppWidgetProvider() {
         }
     }
 
+    override fun onEnabled(context: Context) {
+        super.onEnabled(context)
+        WidgetAlarmScheduler.scheduleNextUpdate(context)
+    }
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -89,5 +94,8 @@ class CompactWidgetProvider : AppWidgetProvider() {
 
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
+
+        // 3. Re-programar el siguiente tick en segundo plano
+        WidgetAlarmScheduler.scheduleNextUpdate(context)
     }
 }

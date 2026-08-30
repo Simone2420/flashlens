@@ -62,6 +62,9 @@ class WidgetBridgeModule(private val reactContext: ReactApplicationContext) :
                 reactContext.sendBroadcast(expandedIntent)
             }
 
+            // 3. Programar el ciclo de alarmas en segundo plano para actualizar el temporizador minuto a minuto
+            WidgetAlarmScheduler.scheduleNextUpdate(reactContext)
+
             promise.resolve(true)
         } catch (e: Exception) {
             promise.reject("WIDGET_UPDATE_ERROR", e.message, e)

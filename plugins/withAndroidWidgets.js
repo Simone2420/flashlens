@@ -3,10 +3,28 @@ const fs = require('fs');
 const path = require('path');
 
 const withAndroidWidgets = (config) => {
-  // 1. Inyectar los receptores en AndroidManifest.xml
+  // 1. Inyectar los receptores y permisos en AndroidManifest.xml
   config = withAndroidManifest(config, async (config) => {
-    const mainApplication = config.modResults.manifest.application[0];
+    const manifest = config.modResults.manifest;
+    const mainApplication = manifest.application[0];
     const existingReceivers = mainApplication.receiver || [];
+
+    // Permisos para AlarmManager y reinicio del dispositivo
+    const existingPermissions = manifest['uses-permission'] || [];
+    const requiredPermissions = [
+      'android.permission.RECEIVE_BOOT_COMPLETED',
+      'android.permission.SCHEDULE_EXACT_ALARM',
+      'android.permission.USE_EXACT_ALARM',
+    ];
+
+    for (const perm of requiredPermissions) {
+      if (!existingPermissions.some((p) => p.$ && p.$['android:name'] === perm)) {
+        existingPermissions.push({
+          $: { 'android:name': perm },
+        });
+      }
+    }
+    manifest['uses-permission'] = existingPermissions;
 
     const hasCompact = existingReceivers.some(
       (r) => r.$ && r.$['android:name'] === '.CompactWidgetProvider'
@@ -14,6 +32,14 @@ const withAndroidWidgets = (config) => {
     const hasExpanded = existingReceivers.some(
       (r) => r.$ && r.$['android:name'] === '.ExpandedWidgetProvider'
     );
+
+    const standardWidgetActions = [
+      { $: { 'android:name': 'android.appwidget.action.APPWIDGET_UPDATE' } },
+      { $: { 'android:name': 'android.intent.action.BOOT_COMPLETED' } },
+      { $: { 'android:name': 'android.intent.action.MY_PACKAGE_REPLACED' } },
+      { $: { 'android:name': 'android.intent.action.TIME_SET' } },
+      { $: { 'android:name': 'android.intent.action.TIMEZONE_CHANGED' } },
+    ];
 
     if (!hasCompact) {
       existingReceivers.push({
@@ -24,13 +50,7 @@ const withAndroidWidgets = (config) => {
         },
         'intent-filter': [
           {
-            action: [
-              {
-                $: {
-                  'android:name': 'android.appwidget.action.APPWIDGET_UPDATE',
-                },
-              },
-            ],
+            action: standardWidgetActions,
           },
         ],
         'meta-data': [
@@ -53,13 +73,7 @@ const withAndroidWidgets = (config) => {
         },
         'intent-filter': [
           {
-            action: [
-              {
-                $: {
-                  'android:name': 'android.appwidget.action.APPWIDGET_UPDATE',
-                },
-              },
-            ],
+            action: standardWidgetActions,
           },
         ],
         'meta-data': [
@@ -83,65 +97,55 @@ const withAndroidWidgets = (config) => {
     async (config) => {
       const projectRoot = config.modRequest.projectRoot;
       const androidRoot = config.modRequest.platformProjectRoot;
-
       const templateDir = path.join(projectRoot, 'plugins', 'android-widgets-template');
-      const javaTargetDir = path.join(androidRoot, 'app', 'src', 'main', 'java', 'com', 'flashlens', 'app');
-      const xmlTargetDir = path.join(androidRoot, 'app', 'src', 'main', 'res', 'xml');
-      const layoutTargetDir = path.join(androidRoot, 'app', 'src', 'main', 'res', 'layout');
 
-      // Crear directorios de destino si no existen
-      fs.mkdirSync(javaTargetDir, { recursive: true });
-      fs.mkdirSync(xmlTargetDir, { recursive: true });
-      fs.mkdirSync(layoutTargetDir, { recursive: true });
+      // Rutas destino en el proyecto nativo generado
+      const javaDestDir = path.join(androidRoot, 'app', 'src', 'main', 'java', 'com', 'flashlens', 'app');
+      const resLayoutDestDir = path.join(androidRoot, 'app', 'src', 'main', 'res', 'layout');
+      const resXmlDestDir = path.join(androidRoot, 'app', 'src', 'main', 'res', 'xml');
+
+      // Crear directorios si no existen
+      if (!fs.existsSync(javaDestDir)) fs.mkdirSync(javaDestDir, { recursive: true });
+      if (!fs.existsSync(resLayoutDestDir)) fs.mkdirSync(resLayoutDestDir, { recursive: true });
+      if (!fs.existsSync(resXmlDestDir)) fs.mkdirSync(resXmlDestDir, { recursive: true });
 
       // Copiar archivos Kotlin
-      const javaFiles = [
-        'CompactWidgetProvider.kt',
-        'ExpandedWidgetProvider.kt',
-        'WidgetBridgeModule.kt',
-        'WidgetBridgePackage.kt',
-      ];
-      for (const file of javaFiles) {
-        const srcPath = path.join(templateDir, 'java', file);
-        const destPath = path.join(javaTargetDir, file);
-        if (fs.existsSync(srcPath)) {
-          fs.copyFileSync(srcPath, destPath);
+      const javaSrcDir = path.join(templateDir, 'java');
+      if (fs.existsSync(javaSrcDir)) {
+        const kotlinFiles = fs.readdirSync(javaSrcDir);
+        for (const file of kotlinFiles) {
+          fs.copyFileSync(path.join(javaSrcDir, file), path.join(javaDestDir, file));
         }
       }
 
-      // Copiar archivos XML de metadata
-      const xmlFiles = ['widget_compact_info.xml', 'widget_expanded_info.xml'];
-      for (const file of xmlFiles) {
-        const srcPath = path.join(templateDir, 'res', 'xml', file);
-        const destPath = path.join(xmlTargetDir, file);
-        if (fs.existsSync(srcPath)) {
-          fs.copyFileSync(srcPath, destPath);
+      // Copiar archivos de Layout
+      const layoutSrcDir = path.join(templateDir, 'res', 'layout');
+      if (fs.existsSync(layoutSrcDir)) {
+        const layoutFiles = fs.readdirSync(layoutSrcDir);
+        for (const file of layoutFiles) {
+          fs.copyFileSync(path.join(layoutSrcDir, file), path.join(resLayoutDestDir, file));
         }
       }
 
-      // Copiar layouts XML
-      const layoutFiles = ['widget_compact_layout.xml', 'widget_expanded_layout.xml'];
-      for (const file of layoutFiles) {
-        const srcPath = path.join(templateDir, 'res', 'layout', file);
-        const destPath = path.join(layoutTargetDir, file);
-        if (fs.existsSync(srcPath)) {
-          fs.copyFileSync(srcPath, destPath);
+      // Copiar archivos de Configuración XML
+      const xmlSrcDir = path.join(templateDir, 'res', 'xml');
+      if (fs.existsSync(xmlSrcDir)) {
+        const xmlFiles = fs.readdirSync(xmlSrcDir);
+        for (const file of xmlFiles) {
+          fs.copyFileSync(path.join(xmlSrcDir, file), path.join(resXmlDestDir, file));
         }
       }
 
-      // Inyectar WidgetBridgePackage en MainApplication.kt si no está presente
-      const mainAppPath = path.join(javaTargetDir, 'MainApplication.kt');
-      if (fs.existsSync(mainAppPath)) {
-        let mainAppContent = fs.readFileSync(mainAppPath, 'utf8');
-        if (!mainAppContent.includes('WidgetBridgePackage()')) {
-          mainAppContent = mainAppContent.replace(
-            /PackageList\(this\)\.packages\.apply\s*\{([\s\S]*?)\}/,
-            (match, inner) => {
-              if (inner.includes('WidgetBridgePackage()')) return match;
-              return `PackageList(this).packages.apply {\n              add(WidgetBridgePackage())${inner}\n            }`;
-            }
+      // 3. Inyectar WidgetBridgePackage en MainApplication.kt
+      const mainAppFile = path.join(javaDestDir, 'MainApplication.kt');
+      if (fs.existsSync(mainAppFile)) {
+        let content = fs.readFileSync(mainAppFile, 'utf-8');
+        if (!content.includes('WidgetBridgePackage()')) {
+          content = content.replace(
+            /PackageList\(this\)\.packages\.apply\s*\{/,
+            'PackageList(this).packages.apply {\n              add(WidgetBridgePackage())'
           );
-          fs.writeFileSync(mainAppPath, mainAppContent, 'utf8');
+          fs.writeFileSync(mainAppFile, content, 'utf-8');
         }
       }
 
