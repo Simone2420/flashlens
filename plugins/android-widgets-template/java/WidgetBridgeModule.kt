@@ -26,34 +26,41 @@ class WidgetBridgeModule(private val reactContext: ReactApplicationContext) :
         try {
             val nextRegenLong = nextRegenTimestampDouble.toLong()
             val prefs = reactContext.getSharedPreferences("FlashLensWidgetPrefs", Context.MODE_PRIVATE)
+            
+            // Guardar de manera síncrona (commit) para garantizar que los Widgets lean los datos inmediatamente
             prefs.edit().apply {
                 putInt("streakDays", streakDays)
                 putInt("currentLives", currentLives)
                 putLong("nextRegenTimestamp", nextRegenLong)
                 putString("wordOfTheDay", wordOfTheDay)
                 putString("wordTranslation", wordTranslation)
-                apply()
+            }.commit()
+
+            // 1. Notificar y actualizar Widget Compacto
+            val compactManager = AppWidgetManager.getInstance(reactContext)
+            val compactIds = compactManager.getAppWidgetIds(
+                ComponentName(reactContext, CompactWidgetProvider::class.java)
+            )
+            if (compactIds != null && compactIds.isNotEmpty()) {
+                val compactIntent = Intent(reactContext, CompactWidgetProvider::class.java).apply {
+                    action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, compactIds)
+                }
+                reactContext.sendBroadcast(compactIntent)
             }
 
-            // Actualizar Widget Compacto
-            val compactIntent = Intent(reactContext, CompactWidgetProvider::class.java).apply {
-                action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                val ids = AppWidgetManager.getInstance(reactContext).getAppWidgetIds(
-                    ComponentName(reactContext, CompactWidgetProvider::class.java)
-                )
-                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            // 2. Notificar y actualizar Widget Expandido
+            val expandedManager = AppWidgetManager.getInstance(reactContext)
+            val expandedIds = expandedManager.getAppWidgetIds(
+                ComponentName(reactContext, ExpandedWidgetProvider::class.java)
+            )
+            if (expandedIds != null && expandedIds.isNotEmpty()) {
+                val expandedIntent = Intent(reactContext, ExpandedWidgetProvider::class.java).apply {
+                    action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, expandedIds)
+                }
+                reactContext.sendBroadcast(expandedIntent)
             }
-            reactContext.sendBroadcast(compactIntent)
-
-            // Actualizar Widget Expandido
-            val expandedIntent = Intent(reactContext, ExpandedWidgetProvider::class.java).apply {
-                action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                val ids = AppWidgetManager.getInstance(reactContext).getAppWidgetIds(
-                    ComponentName(reactContext, ExpandedWidgetProvider::class.java)
-                )
-                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-            }
-            reactContext.sendBroadcast(expandedIntent)
 
             promise.resolve(true)
         } catch (e: Exception) {

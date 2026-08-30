@@ -44,8 +44,12 @@ class WidgetService {
     let nextRegenMinutes = 0;
     let nextRegenTimestamp = 0;
 
-    if (lives.currentLives < lives.maxLives && lives.nextRegenerationAt) {
-      nextRegenTimestamp = new Date(lives.nextRegenerationAt).getTime();
+    if (lives.currentLives < lives.maxLives) {
+      if (lives.nextRegenerationAt) {
+        nextRegenTimestamp = new Date(lives.nextRegenerationAt).getTime();
+      } else {
+        nextRegenTimestamp = Date.now() + 15 * 60 * 1000;
+      }
       const diffMs = nextRegenTimestamp - Date.now();
       nextRegenMinutes = Math.max(0, Math.ceil(diffMs / 60000));
     }

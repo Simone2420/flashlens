@@ -3,11 +3,24 @@ package com.flashlens.app
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 
 class ExpandedWidgetProvider : AppWidgetProvider() {
+
+    override fun onReceive(context: Context, intent: Intent) {
+        super.onReceive(context, intent)
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val ids = appWidgetManager.getAppWidgetIds(
+            ComponentName(context, ExpandedWidgetProvider::class.java)
+        )
+        if (ids != null && ids.isNotEmpty()) {
+            onUpdate(context, appWidgetManager, ids)
+        }
+    }
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -21,24 +34,30 @@ class ExpandedWidgetProvider : AppWidgetProvider() {
         val trans = prefs.getString("wordTranslation", "Romper el hielo (Modismo)") ?: "Romper el hielo (Modismo)"
         val now = System.currentTimeMillis()
 
-        // 1. Algoritmo de recarga de vidas en segundo plano
-        if (lives < 5 && nextRegen > 0L) {
-            if (now >= nextRegen) {
+        // 1. Algoritmo robusto de recarga de vidas en segundo plano
+        if (lives < 5) {
+            if (nextRegen <= 0L || nextRegen < now - (24 * 60 * 60 * 1000L)) {
+                nextRegen = now + 15 * 60 * 1000L
+                prefs.edit().putLong("nextRegenTimestamp", nextRegen).commit()
+            } else if (now >= nextRegen) {
                 val intervalMs = 15 * 60 * 1000L // 15 minutos por vida
-                val elapsedSinceTarget = now - nextRegen
-                val additionalLives = (elapsedSinceTarget / intervalMs) + 1
-                val newLives = (lives + additionalLives.toInt()).coerceAtMost(5)
+                val elapsed = now - nextRegen
+                val gained = (elapsed / intervalMs) + 1
+                val newLives = (lives + gained.toInt()).coerceAtMost(5)
                 lives = newLives
-                prefs.edit().putInt("currentLives", newLives).apply()
+                prefs.edit().putInt("currentLives", newLives).commit()
 
                 if (newLives < 5) {
-                    nextRegen += (additionalLives * intervalMs)
-                    prefs.edit().putLong("nextRegenTimestamp", nextRegen).apply()
+                    nextRegen += (gained * intervalMs)
+                    prefs.edit().putLong("nextRegenTimestamp", nextRegen).commit()
                 } else {
                     nextRegen = 0L
-                    prefs.edit().putLong("nextRegenTimestamp", 0L).apply()
+                    prefs.edit().putLong("nextRegenTimestamp", 0L).commit()
                 }
             }
+        } else {
+            nextRegen = 0L
+            prefs.edit().putLong("nextRegenTimestamp", 0L).commit()
         }
 
         // 2. Formato de tiempo restante en Horas y Minutos (sin segundos)
