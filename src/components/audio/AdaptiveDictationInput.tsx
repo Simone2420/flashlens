@@ -42,7 +42,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     speechToTextService.stopListening();
   }, [targetText]);
 
-  const toggleSpeechRecognition = () => {
+  const toggleSpeechRecognition = async () => {
     if (disabled) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
@@ -51,7 +51,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
       setIsListening(false);
     } else {
       setIsListening(true);
-      speechToTextService.startListening({
+      const started = await speechToTextService.startListening({
         language: 'en-US',
         onResult: (transcript, isFinal) => {
           setInputValue(transcript);
@@ -64,12 +64,9 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
         onEnd: () => setIsListening(false),
       });
 
-      // Contingencia reactiva si el reconocedor web no está disponible
-      setTimeout(() => {
-        if (!speechToTextService.getIsListening() && isListening) {
-          setIsListening(false);
-        }
-      }, 3500);
+      if (!started) {
+        setIsListening(false);
+      }
     }
   };
 

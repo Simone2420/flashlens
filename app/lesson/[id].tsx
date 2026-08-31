@@ -20,6 +20,8 @@ import {
   ArrowRight,
   Sparkles,
   Play,
+  Mic,
+  MicOff,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -27,6 +29,7 @@ import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { useUserStore } from '../../src/store/useUserStore';
 import { Sublesson, SublessonQuestionItem } from '../../src/types';
+import { speechToTextService } from '../../src/services/speechToTextService';
 
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -51,6 +54,31 @@ export default function LessonScreen() {
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isSublessonComplete, setIsSublessonComplete] = useState(false);
+  const [isListeningVoice, setIsListeningVoice] = useState(false);
+
+  const toggleLessonSpeechRecognition = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    if (isListeningVoice) {
+      speechToTextService.stopListening();
+      setIsListeningVoice(false);
+    } else {
+      setIsListeningVoice(true);
+      const started = await speechToTextService.startListening({
+        language: 'en-US',
+        onResult: (transcript, isFinal) => {
+          setWrittenInput(transcript);
+          if (isFinal) {
+            setIsListeningVoice(false);
+          }
+        },
+        onError: () => setIsListeningVoice(false),
+        onEnd: () => setIsListeningVoice(false),
+      });
+      if (!started) {
+        setIsListeningVoice(false);
+      }
+    }
+  };
 
   if (!node) {
     return (
@@ -271,12 +299,32 @@ export default function LessonScreen() {
                 editable={!isAnswered}
                 autoCapitalize="none"
               />
-              <TouchableOpacity
-                onPress={() => setWrittenInput(String(currentQ.correctAnswer))}
-                style={styles.voiceDictateBtn}
-              >
-                <Text style={styles.voiceDictateBtnText}>Usar Entrada de Voz / Demo</Text>
-              </TouchableOpacity>
+              <View style={styles.voiceActionsRow}>
+                <TouchableOpacity
+                  onPress={toggleLessonSpeechRecognition}
+                  style={[styles.voiceDictateBtn, isListeningVoice && styles.voiceDictateBtnActive]}
+                >
+                  {isListeningVoice ? (
+                    <MicOff size={16} color="#BA1A1A" />
+                  ) : (
+                    <Mic size={16} color="#765A00" />
+                  )}
+                  <Text
+                    style={[
+                      styles.voiceDictateBtnText,
+                      isListeningVoice && styles.voiceDictateTextActive,
+                    ]}
+                  >
+                    {isListeningVoice ? 'Escuchando... (Toca para parar)' : 'Hablar por Micrófono'}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => setWrittenInput(String(currentQ.correctAnswer))}
+                  style={styles.demoFillBtn}
+                >
+                  <Text style={styles.demoFillBtnText}>Demo</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
 
@@ -604,14 +652,49 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
   },
-  voiceDictateBtn: {
-    backgroundColor: '#F1EDEC',
-    padding: 12,
-    borderRadius: 12,
+  voiceActionsRow: {
+    flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
+  },
+  voiceDictateBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1.5,
+    borderColor: '#E8B400',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    gap: 6,
+    ...SHADOWS.card,
+  },
+  voiceDictateBtnActive: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#BA1A1A',
   },
   voiceDictateBtnText: {
     color: '#765A00',
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  voiceDictateTextActive: {
+    color: '#BA1A1A',
+  },
+  demoFillBtn: {
+    backgroundColor: '#F1EDEC',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  demoFillBtnText: {
+    color: '#5E5E5E',
     fontSize: 12,
     fontWeight: '700',
   },

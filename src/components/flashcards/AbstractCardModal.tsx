@@ -30,6 +30,7 @@ import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
 import { ConceptCategory, PartOfSpeech, Flashcard } from '../../types';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { VOICE_CONCEPT_DICTIONARY } from '../../data/mockData';
+import { speechToTextService } from '../../services/speechToTextService';
 
 interface AbstractCardModalProps {
   visible: boolean;
@@ -120,24 +121,50 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     return () => loop?.stop();
   }, [isRecordingVoice, pulseAnim]);
 
-  const handleStartVoiceRecording = () => {
+  useEffect(() => {
+    if (!visible) {
+      speechToTextService.stopListening();
+      setIsRecordingVoice(false);
+    }
+  }, [visible]);
+
+  const handleStartVoiceRecording = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
+    if (isRecordingVoice) {
+      speechToTextService.stopListening();
+      setIsRecordingVoice(false);
+      if (spanishVoiceInput.trim()) {
+        handleProcessSpanishInput(spanishVoiceInput.trim());
+      }
+      return;
+    }
+
+    setSpanishVoiceInput('');
     setIsRecordingVoice(true);
 
-    // Simulación de escucha de voz en tiempo real durante 2.2s
-    setTimeout(() => {
+    const started = await speechToTextService.startListening({
+      language: 'es-ES',
+      continuous: false,
+      onResult: (transcript, isFinal) => {
+        setSpanishVoiceInput(transcript);
+        if (isFinal) {
+          setIsRecordingVoice(false);
+          handleProcessSpanishInput(transcript);
+        }
+      },
+      onError: (err) => {
+        setIsRecordingVoice(false);
+        console.warn('Error reconocimiento de voz:', err);
+      },
+      onEnd: () => {
+        setIsRecordingVoice(false);
+      },
+    });
+
+    if (!started) {
       setIsRecordingVoice(false);
-      const randomPhrases = [
-        'me quedé sin dinero',
-        'por si acaso',
-        'de vez en cuando',
-        'echar una mano',
-        'a pesar de todo',
-      ];
-      const pickedPhrase = spanishVoiceInput.trim() || randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
-      setSpanishVoiceInput(pickedPhrase);
-      handleProcessSpanishInput(pickedPhrase);
-    }, 2200);
+    }
   };
 
   const handleProcessSpanishInput = (textToProcess?: string) => {
