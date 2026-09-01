@@ -6,9 +6,273 @@ import {
   VoiceConceptMatch,
 } from '../types';
 
-export const INITIAL_FLASHCARDS: Flashcard[] = [];
+export const INITIAL_FLASHCARDS: Flashcard[] = [
+  {
+    "id": "fc-obj-1",
+    "targetWord": "Coffee Mug",
+    "nativeTranslation": "Taza de Café",
+    "cardType": "VOCABULARY",
+    "partOfSpeech": "NOUN",
+    "conceptCategory": "OBJECT",
+    "phoneticScript": "/ˈkɒf.i mʌɡ/",
+    "contextSentence": "She poured hot Colombian coffee into her ceramic mug.",
+    "contextTranslation": "Ella sirvió café colombiano caliente en su taza de cerámica.",
+    "mnemonicHint": "Imagina una taza humeante en tu escritorio de trabajo.",
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+    "imageSource": "CAMERA",
+    "createdVia": "CAMERA",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 1,
+    "easeFactor": 2.5,
+    "intervalDays": 1,
+    "lastRating": "GOOD",
+    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+  },
+  {
+    "id": "fc-obj-2",
+    "targetWord": "Laptop",
+    "nativeTranslation": "Computadora Portátil",
+    "cardType": "VOCABULARY",
+    "partOfSpeech": "NOUN",
+    "conceptCategory": "OBJECT",
+    "phoneticScript": "/ˈlæp.tɒp/",
+    "contextSentence": "Open your laptop to start coding the mobile application.",
+    "contextTranslation": "Abre tu portátil para empezar a programar la aplicación móvil.",
+    "mnemonicHint": "Lap (regazo) + Top (encima): la máquina que pones sobre tu regazo.",
+    "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "imageSource": "CAMERA",
+    "createdVia": "CAMERA",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+  },
+  {
+    "id": "fc-obj-3",
+    "targetWord": "Backpack",
+    "nativeTranslation": "Mochila / Morral",
+    "cardType": "VOCABULARY",
+    "partOfSpeech": "NOUN",
+    "conceptCategory": "OBJECT",
+    "phoneticScript": "/ˈbæk.pæk/",
+    "contextSentence": "He packed his laptop and notebook inside his sturdy backpack.",
+    "contextTranslation": "Empacó su portátil y cuaderno dentro de su mochila resistente.",
+    "mnemonicHint": "Back (espalda) + Pack (paquete): el paquete que llevas en la espalda.",
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+    "imageSource": "CAMERA",
+    "createdVia": "CAMERA",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-1",
+    "targetWord": "Break the ice",
+    "nativeTranslation": "Romper el hielo",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "IDIOM",
+    "conceptCategory": "IDIOM_EXPRESSION",
+    "phoneticScript": "/breɪk ðiː aɪs/",
+    "contextSentence": "A friendly smile and a warm greeting can easily break the ice with new colleagues.",
+    "contextTranslation": "Una sonrisa amigable y un saludo cálido pueden fácilmente romper el hielo con nuevos compañeros.",
+    "literalMeaning": "Destrozar un bloque de hielo sólido.",
+    "mnemonicHint": "Imagina un barco rompehielos abriendo camino en el mar para que los demás puedan navegar y hablar.",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "VOICE_SPANISH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-2",
+    "targetWord": "Although",
+    "nativeTranslation": "Aunque / A pesar de que",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "CONJUNCTION",
+    "conceptCategory": "CONNECTOR_TRANSITION",
+    "phoneticScript": "/ɔːlˈðoʊ/",
+    "contextSentence": "Although it was raining heavily, we continued practicing English outdoors.",
+    "contextTranslation": "Aunque estaba lloviendo fuerte, continuamos practicando inglés al aire libre.",
+    "grammarFormula": "Although + [Cláusula A (contraste)], [Cláusula B (resultado)]",
+    "commonMistake": "No uses \"Although\" y \"But\" en la misma oración (doble conector).",
+    "mnemonicHint": "All (todo) + though (a través): aunque todo esté en contra, sigues adelante.",
+    "imageUrl": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 1,
+    "easeFactor": 2.5,
+    "intervalDays": 1,
+    "lastRating": "GOOD",
+    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-3",
+    "targetWord": "Exhausted",
+    "nativeTranslation": "Agotado / Exhausto",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "ADJECTIVE",
+    "conceptCategory": "EMOTION_STATE",
+    "phoneticScript": "/ɪɡˈzɔː.stɪd/",
+    "contextSentence": "After studying all night for the Saber Pro exam, she felt completely exhausted.",
+    "contextTranslation": "Después de estudiar toda la noche para el examen Saber Pro, se sintió completamente exhausta.",
+    "mnemonicHint": "Suena como \"exhausto\" en español: como el tubo de escape de un auto sin energía.",
+    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 2,
+    "easeFactor": 2.6,
+    "intervalDays": 3,
+    "lastRating": "EASY",
+    "nextReviewAt": "2026-09-04T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-4",
+    "targetWord": "Give up",
+    "nativeTranslation": "Rendirse / Abandonar",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "VERB",
+    "conceptCategory": "PHRASAL_VERB",
+    "phoneticScript": "/ɡɪv ʌp/",
+    "contextSentence": "Never give up on your dreams of mastering the English language.",
+    "contextTranslation": "Nunca te rindas en tus sueños de dominar el idioma inglés.",
+    "mnemonicHint": "Imagina levantar las manos \"hacia arriba\" (UP) para soltar la toalla.",
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-5",
+    "targetWord": "Actually",
+    "nativeTranslation": "En realidad / De hecho (¡No actualmente!)",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "ADVERB",
+    "conceptCategory": "FALSE_FRIEND",
+    "phoneticScript": "/ˈæk.tʃu.ə.li/",
+    "contextSentence": "Actually, I am from Bogota, but I currently live in Medellin.",
+    "contextTranslation": "En realidad soy de Bogotá, pero actualmente vivo en Medellín.",
+    "commonMistake": "Actually NO significa actualmente. Para actualmente di \"Currently\".",
+    "mnemonicHint": "Actually = Actual fact (hecho real en el presente).",
+    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 1,
+    "easeFactor": 2.5,
+    "intervalDays": 1,
+    "lastRating": "GOOD",
+    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+  },
+  {
+    "id": "fc-abs-6",
+    "targetWord": "Used to",
+    "nativeTranslation": "Solía (hábito del pasado)",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "VERB",
+    "conceptCategory": "GRAMMAR_RULE",
+    "phoneticScript": "/ˈjuːzd tuː/",
+    "contextSentence": "I used to play soccer every weekend when I was a teenager.",
+    "contextTranslation": "Solía jugar fútbol todos los fines de semana cuando era adolescente.",
+    "grammarFormula": "Subject + used to + base verb (acción habitual que ya no ocurre)",
+    "commonMistake": "En negativo di \"didn't use to\" (sin d final en use).",
+    "mnemonicHint": "Usa \"used to\" para lo que solías usar en tu vida pasada.",
+    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
+    "imageSource": "AI_GENERATED",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T22:35:58.852Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+  }
+];
 
-export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [];
+export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
+  {
+    "spanishTrigger": "romper el hielo",
+    "targetWord": "Break the ice",
+    "nativeTranslation": "Romper el hielo",
+    "category": "IDIOM_EXPRESSION",
+    "partOfSpeech": "IDIOM",
+    "phoneticScript": "/breɪk ðiː aɪs/",
+    "contextSentence": "A friendly smile can easily break the ice with new coworkers.",
+    "contextTranslation": "Una sonrisa amigable puede fácilmente romper el hielo con nuevos compañeros.",
+    "mnemonicHint": "Imagina un barco rompehielos abriendo paso para comunicarse.",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
+  },
+  {
+    "spanishTrigger": "arrepentirse",
+    "targetWord": "To Regret",
+    "nativeTranslation": "Arrepentirse / Lamentar",
+    "category": "ACTION_COGNITIVE",
+    "partOfSpeech": "VERB",
+    "phoneticScript": "/rɪˈɡret/",
+    "contextSentence": "I regret not practicing my English pronunciation earlier.",
+    "contextTranslation": "Me arrepiento de no haber practicado mi pronunciación de inglés antes.",
+    "mnemonicHint": "Regret suena a \"re-grieta\": una grieta en tu corazón por algo del pasado.",
+    "imageUrl": "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c"
+  },
+  {
+    "spanishTrigger": "agotado",
+    "targetWord": "Exhausted",
+    "nativeTranslation": "Agotado / Exhausto",
+    "category": "EMOTION_STATE",
+    "partOfSpeech": "ADJECTIVE",
+    "phoneticScript": "/ɪɡˈzɔː.stɪd/",
+    "contextSentence": "After running a marathon, he was completely exhausted.",
+    "contextTranslation": "Después de correr una maratón, estaba completamente agotado.",
+    "mnemonicHint": "Exhausto: sin combustible, como un auto apagado.",
+    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474"
+  },
+  {
+    "spanishTrigger": "rendirse",
+    "targetWord": "Give up",
+    "nativeTranslation": "Rendirse / Abandonar",
+    "category": "PHRASAL_VERB",
+    "partOfSpeech": "VERB",
+    "phoneticScript": "/ɡɪv ʌp/",
+    "contextSentence": "Never give up when facing difficult challenges.",
+    "contextTranslation": "Nunca te rindas cuando enfrentes desafíos difíciles.",
+    "mnemonicHint": "Levantar las manos hacia arriba (UP) en señal de rendición.",
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5"
+  },
+  {
+    "spanishTrigger": "en realidad",
+    "targetWord": "Actually",
+    "nativeTranslation": "En realidad / De hecho",
+    "category": "FALSE_FRIEND",
+    "partOfSpeech": "ADVERB",
+    "phoneticScript": "/ˈæk.tʃu.ə.li/",
+    "contextSentence": "Actually, I have never been to London before.",
+    "contextTranslation": "En realidad, nunca he estado en Londres antes.",
+    "mnemonicHint": "No es actualmente; es un hecho actual real.",
+    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8"
+  },
+  {
+    "spanishTrigger": "solía",
+    "targetWord": "Used to",
+    "nativeTranslation": "Solía (hábito pasado)",
+    "category": "GRAMMAR_RULE",
+    "partOfSpeech": "VERB",
+    "phoneticScript": "/ˈjuːzd tuː/",
+    "contextSentence": "I used to live in Cali before moving to Bogota.",
+    "contextTranslation": "Solía vivir en Cali antes de mudarme a Bogotá.",
+    "mnemonicHint": "Cosas que usabas hacer en el pasado.",
+    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211"
+  }
+];
 
 export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
@@ -168,7 +432,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I am Colombian and I live in Bogota.\"",
+            "prompt": "Traduce y construye en inglés: \"I am Colombian and I live in Bogota.\"",
             "correctAnswer": "I am Colombian and I live in Bogota.",
             "explanation": "Práctica de producción escrita para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
@@ -176,7 +440,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hello, my name is Alex and I am from Colombia.\"",
             "correctAnswer": "Hello, my name is Alex and I am from Colombia.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
@@ -326,7 +590,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The English alphabet has twenty-six letters.\"",
+            "prompt": "Traduce y construye en inglés: \"The English alphabet has twenty-six letters.\"",
             "correctAnswer": "The English alphabet has twenty-six letters.",
             "explanation": "Práctica de producción escrita para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
@@ -334,7 +598,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.\"",
             "correctAnswer": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
             "explanation": "Práctica oral de fluidez y articulación para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
@@ -484,7 +748,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I live in a big house with my family.\"",
+            "prompt": "Traduce y construye en inglés: \"I live in a big house with my family.\"",
             "correctAnswer": "I live in a big house with my family.",
             "explanation": "Práctica de producción escrita para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
@@ -492,7 +756,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"This big ship is very fast and safe.\"",
             "correctAnswer": "This big ship is very fast and safe.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
@@ -642,7 +906,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"How do you spell your first name?\"",
+            "prompt": "Traduce y construye en inglés: \"How do you spell your first name?\"",
             "correctAnswer": "How do you spell your first name?",
             "explanation": "Práctica de producción escrita para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
@@ -650,7 +914,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My name is spelled J-O-H-N.\"",
             "correctAnswer": "My name is spelled J-O-H-N.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
@@ -800,7 +1064,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Thank you for your help, have a good one!\"",
+            "prompt": "Traduce y construye en inglés: \"Thank you for your help, have a good one!\"",
             "correctAnswer": "Thank you for your help, have a good one!",
             "explanation": "Práctica de producción escrita para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
@@ -808,7 +1072,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Catch you later, take care and have a nice day!\"",
             "correctAnswer": "Catch you later, take care and have a nice day!",
             "explanation": "Práctica oral de fluidez y articulación para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
@@ -976,7 +1240,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"She is a doctor and they are engineers.\"",
+            "prompt": "Traduce y construye en inglés: \"She is a doctor and they are engineers.\"",
             "correctAnswer": "She is a doctor and they are engineers.",
             "explanation": "Práctica de producción escrita para 1. Pronombres Sujeto en Inglés.",
             "cefrLevel": "A1"
@@ -984,7 +1248,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"We are happy because they are here.\"",
             "correctAnswer": "We are happy because they are here.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Pronombres Sujeto en Inglés.",
             "cefrLevel": "A1"
@@ -1134,7 +1398,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We are students and we're happy.\"",
+            "prompt": "Traduce y construye en inglés: \"We are students and we're happy.\"",
             "correctAnswer": "We are students and we're happy.",
             "explanation": "Práctica de producción escrita para 2. Verbo To Be Afirmativo & Contracciones.",
             "cefrLevel": "A1"
@@ -1142,7 +1406,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"He's my best friend and he's very kind.\"",
             "correctAnswer": "He's my best friend and he's very kind.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbo To Be Afirmativo & Contracciones.",
             "cefrLevel": "A1"
@@ -1292,7 +1556,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I'm not tired and they aren't busy.\"",
+            "prompt": "Traduce y construye en inglés: \"I'm not tired and they aren't busy.\"",
             "correctAnswer": "I'm not tired and they aren't busy.",
             "explanation": "Práctica de producción escrita para 3. Verbo To Be Negativo (Isn't / Aren't).",
             "cefrLevel": "A1"
@@ -1300,7 +1564,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"She isn't at work today.\"",
             "correctAnswer": "She isn't at work today.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Verbo To Be Negativo (Isn't / Aren't).",
             "cefrLevel": "A1"
@@ -1450,7 +1714,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Is she a student at this university?\"",
+            "prompt": "Traduce y construye en inglés: \"Is she a student at this university?\"",
             "correctAnswer": "Is she a student at this university?",
             "explanation": "Práctica de producción escrita para 4. Preguntas con To Be & Respuestas Cortas.",
             "cefrLevel": "A1"
@@ -1458,7 +1722,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Are you ready to start the class?\"",
             "correctAnswer": "Are you ready to start the class?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con To Be & Respuestas Cortas.",
             "cefrLevel": "A1"
@@ -1608,7 +1872,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"This is my computer and she is an architect.\"",
+            "prompt": "Traduce y construye en inglés: \"This is my computer and she is an architect.\"",
             "correctAnswer": "This is my computer and she is an architect.",
             "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
@@ -1616,7 +1880,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"This is my phone and these are my keys.\"",
             "correctAnswer": "This is my phone and these are my keys.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
@@ -1636,7 +1900,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_2"
+      "a1_node_1"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -1784,7 +2048,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The teacher has a book and an eraser.\"",
+            "prompt": "Traduce y construye en inglés: \"The teacher has a book and an eraser.\"",
             "correctAnswer": "The teacher has a book and an eraser.",
             "explanation": "Práctica de producción escrita para 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "cefrLevel": "A1"
@@ -1792,7 +2056,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I have an idea and a great project.\"",
             "correctAnswer": "I have an idea and a great project.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "cefrLevel": "A1"
@@ -1942,7 +2206,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The boys are reading three interesting books.\"",
+            "prompt": "Traduce y construye en inglés: \"The boys are reading three interesting books.\"",
             "correctAnswer": "The boys are reading three interesting books.",
             "explanation": "Práctica de producción escrita para 2. Plurales Regulares (-s, -es, -ies).",
             "cefrLevel": "A1"
@@ -1950,7 +2214,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"There are two boxes and four glasses on the table.\"",
             "correctAnswer": "There are two boxes and four glasses on the table.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Plurales Regulares (-s, -es, -ies).",
             "cefrLevel": "A1"
@@ -2100,7 +2364,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Three men and two women are in the office.\"",
+            "prompt": "Traduce y construye en inglés: \"Three men and two women are in the office.\"",
             "correctAnswer": "Three men and two women are in the office.",
             "explanation": "Práctica de producción escrita para 3. Plurales Irregulares (Man/Men, Child/Children).",
             "cefrLevel": "A1"
@@ -2108,7 +2372,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The children have clean hands and feet.\"",
             "correctAnswer": "The children have clean hands and feet.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Plurales Irregulares (Man/Men, Child/Children).",
             "cefrLevel": "A1"
@@ -2258,7 +2522,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Put your laptop and notebook in your backpack.\"",
+            "prompt": "Traduce y construye en inglés: \"Put your laptop and notebook in your backpack.\"",
             "correctAnswer": "Put your laptop and notebook in your backpack.",
             "explanation": "Práctica de producción escrita para 4. Objetos del Aula & Tecnología.",
             "cefrLevel": "A1"
@@ -2266,7 +2530,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My backpack is on the desk next to the computer.\"",
             "correctAnswer": "My backpack is on the desk next to the computer.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Objetos del Aula & Tecnología.",
             "cefrLevel": "A1"
@@ -2416,7 +2680,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The book is on the table and the pen is in the bag.\"",
+            "prompt": "Traduce y construye en inglés: \"The book is on the table and the pen is in the bag.\"",
             "correctAnswer": "The book is on the table and the pen is in the bag.",
             "explanation": "Práctica de producción escrita para 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "cefrLevel": "A1"
@@ -2424,7 +2688,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The shoes are under the chair next to the door.\"",
             "correctAnswer": "The shoes are under the chair next to the door.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "cefrLevel": "A1"
@@ -2444,7 +2708,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_3"
+      "a1_node_2"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -2592,7 +2856,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"She wakes up early and drinks hot coffee.\"",
+            "prompt": "Traduce y construye en inglés: \"She wakes up early and drinks hot coffee.\"",
             "correctAnswer": "She wakes up early and drinks hot coffee.",
             "explanation": "Práctica de producción escrita para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "cefrLevel": "A1"
@@ -2600,7 +2864,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My brother plays soccer every Saturday morning.\"",
             "correctAnswer": "My brother plays soccer every Saturday morning.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "cefrLevel": "A1"
@@ -2750,7 +3014,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He doesn't eat meat because he is vegetarian.\"",
+            "prompt": "Traduce y construye en inglés: \"He doesn't eat meat because he is vegetarian.\"",
             "correctAnswer": "He doesn't eat meat because he is vegetarian.",
             "explanation": "Práctica de producción escrita para 2. Negación: Don't vs Doesn't.",
             "cefrLevel": "A1"
@@ -2758,7 +3022,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"They don't work on weekends.\"",
             "correctAnswer": "They don't work on weekends.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Negación: Don't vs Doesn't.",
             "cefrLevel": "A1"
@@ -2908,7 +3172,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Do you live in Colombia and does he work here?\"",
+            "prompt": "Traduce y construye en inglés: \"Do you live in Colombia and does he work here?\"",
             "correctAnswer": "Do you live in Colombia and does he work here?",
             "explanation": "Práctica de producción escrita para 3. Preguntas con Do y Does.",
             "cefrLevel": "A1"
@@ -2916,7 +3180,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Does your sister live in this apartment?\"",
             "correctAnswer": "Does your sister live in this apartment?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Preguntas con Do y Does.",
             "cefrLevel": "A1"
@@ -3066,7 +3330,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I usually drink water and I never smoke.\"",
+            "prompt": "Traduce y construye en inglés: \"I usually drink water and I never smoke.\"",
             "correctAnswer": "I usually drink water and I never smoke.",
             "explanation": "Práctica de producción escrita para 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "cefrLevel": "A1"
@@ -3074,7 +3338,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"She always brushes her teeth before going to bed.\"",
             "correctAnswer": "She always brushes her teeth before going to bed.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "cefrLevel": "A1"
@@ -3224,7 +3488,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We go to the gym on Mondays in the afternoon.\"",
+            "prompt": "Traduce y construye en inglés: \"We go to the gym on Mondays in the afternoon.\"",
             "correctAnswer": "We go to the gym on Mondays in the afternoon.",
             "explanation": "Práctica de producción escrita para 5. Expresiones Temporales: In the morning, On Mondays.",
             "cefrLevel": "A1"
@@ -3232,7 +3496,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I read a book at night before sleeping.\"",
             "correctAnswer": "I read a book at night before sleeping.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresiones Temporales: In the morning, On Mondays.",
             "cefrLevel": "A1"
@@ -3252,7 +3516,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_4"
+      "a1_node_3"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -3400,7 +3664,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"My brother's wife is very friendly and smart.\"",
+            "prompt": "Traduce y construye en inglés: \"My brother's wife is very friendly and smart.\"",
             "correctAnswer": "My brother's wife is very friendly and smart.",
             "explanation": "Práctica de producción escrita para 1. Miembros de la Familia & Posesivo ('s).",
             "cefrLevel": "A1"
@@ -3408,7 +3672,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My parents live in a big house with my sister.\"",
             "correctAnswer": "My parents live in a big house with my sister.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Miembros de la Familia & Posesivo ('s).",
             "cefrLevel": "A1"
@@ -3558,7 +3822,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The refrigerator and the stove are in the kitchen.\"",
+            "prompt": "Traduce y construye en inglés: \"The refrigerator and the stove are in the kitchen.\"",
             "correctAnswer": "The refrigerator and the stove are in the kitchen.",
             "explanation": "Práctica de producción escrita para 2. Partes de la Casa & Muebles.",
             "cefrLevel": "A1"
@@ -3566,7 +3830,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Our apartment has two bedrooms and a nice balcony.\"",
             "correctAnswer": "Our apartment has two bedrooms and a nice balcony.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Partes de la Casa & Muebles.",
             "cefrLevel": "A1"
@@ -3716,7 +3980,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"There is a computer and there are two chairs in the room.\"",
+            "prompt": "Traduce y construye en inglés: \"There is a computer and there are two chairs in the room.\"",
             "correctAnswer": "There is a computer and there are two chairs in the room.",
             "explanation": "Práctica de producción escrita para 3. Existencia: There is & There are.",
             "cefrLevel": "A1"
@@ -3724,7 +3988,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"There are many beautiful flowers in the garden.\"",
             "correctAnswer": "There are many beautiful flowers in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Existencia: There is & There are.",
             "cefrLevel": "A1"
@@ -3874,7 +4138,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He is a hardworking man and a kind father.\"",
+            "prompt": "Traduce y construye en inglés: \"He is a hardworking man and a kind father.\"",
             "correctAnswer": "He is a hardworking man and a kind father.",
             "explanation": "Práctica de producción escrita para 4. Adjetivos de Personalidad & Físico.",
             "cefrLevel": "A1"
@@ -3882,7 +4146,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My sister is tall, smart and very creative.\"",
             "correctAnswer": "My sister is tall, smart and very creative.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adjetivos de Personalidad & Físico.",
             "cefrLevel": "A1"
@@ -4032,7 +4296,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I've got two brothers and he has got one sister.\"",
+            "prompt": "Traduce y construye en inglés: \"I've got two brothers and he has got one sister.\"",
             "correctAnswer": "I've got two brothers and he has got one sister.",
             "explanation": "Práctica de producción escrita para 5. Verbo Have Got / Has Got (Posesión).",
             "cefrLevel": "A1"
@@ -4040,7 +4304,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Have you got any pets in your house?\"",
             "correctAnswer": "Have you got any pets in your house?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Verbo Have Got / Has Got (Posesión).",
             "cefrLevel": "A1"
@@ -4060,7 +4324,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_5"
+      "a1_node_4"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -4208,7 +4472,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"My brother can play the guitar very well.\"",
+            "prompt": "Traduce y construye en inglés: \"My brother can play the guitar very well.\"",
             "correctAnswer": "My brother can play the guitar very well.",
             "explanation": "Práctica de producción escrita para 1. Modal Can & Can't (Habilidades).",
             "cefrLevel": "A1"
@@ -4216,7 +4480,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Can you speak English and Spanish fluently?\"",
             "correctAnswer": "Can you speak English and Spanish fluently?",
             "explanation": "Práctica oral de fluidez y articulación para 1. Modal Can & Can't (Habilidades).",
             "cefrLevel": "A1"
@@ -4366,7 +4630,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"She likes listening to music when she studies.\"",
+            "prompt": "Traduce y construye en inglés: \"She likes listening to music when she studies.\"",
             "correctAnswer": "She likes listening to music when she studies.",
             "explanation": "Práctica de producción escrita para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
             "cefrLevel": "A1"
@@ -4374,7 +4638,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"We love traveling to new countries every summer.\"",
             "correctAnswer": "We love traveling to new countries every summer.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
             "cefrLevel": "A1"
@@ -4524,7 +4788,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I eat fruit and drink coffee for breakfast.\"",
+            "prompt": "Traduce y construye en inglés: \"I eat fruit and drink coffee for breakfast.\"",
             "correctAnswer": "I eat fruit and drink coffee for breakfast.",
             "explanation": "Práctica de producción escrita para 3. Comidas & Bebidas Cotidianas.",
             "cefrLevel": "A1"
@@ -4532,7 +4796,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"We usually have lunch at one o'clock in the afternoon.\"",
             "correctAnswer": "We usually have lunch at one o'clock in the afternoon.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comidas & Bebidas Cotidianas.",
             "cefrLevel": "A1"
@@ -4682,7 +4946,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"There are some apples on the table but there isn't any milk.\"",
+            "prompt": "Traduce y construye en inglés: \"There are some apples on the table but there isn't any milk.\"",
             "correctAnswer": "There are some apples on the table but there isn't any milk.",
             "explanation": "Práctica de producción escrita para 4. Sustantivos Contables e Incontables (Some / Any).",
             "cefrLevel": "A1"
@@ -4690,7 +4954,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Can I have some water and some bread, please?\"",
             "correctAnswer": "Can I have some water and some bread, please?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Sustantivos Contables e Incontables (Some / Any).",
             "cefrLevel": "A1"
@@ -4840,7 +5104,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"How many students are in the classroom today?\"",
+            "prompt": "Traduce y construye en inglés: \"How many students are in the classroom today?\"",
             "correctAnswer": "How many students are in the classroom today?",
             "explanation": "Práctica de producción escrita para 5. Preguntas de Cantidad: How Much vs How Many.",
             "cefrLevel": "A1"
@@ -4848,7 +5112,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"How much sugar do you want in your coffee?\"",
             "correctAnswer": "How much sugar do you want in your coffee?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas de Cantidad: How Much vs How Many.",
             "cefrLevel": "A1"
@@ -4868,7 +5132,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_6"
+      "a1_node_5"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -5016,7 +5280,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Today is my twenty-fifth birthday.\"",
+            "prompt": "Traduce y construye en inglés: \"Today is my twenty-fifth birthday.\"",
             "correctAnswer": "Today is my twenty-fifth birthday.",
             "explanation": "Práctica de producción escrita para 1. Números Cardinales & Ordinales.",
             "cefrLevel": "A1"
@@ -5024,7 +5288,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"He won first place in the English competition.\"",
             "correctAnswer": "He won first place in the English competition.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Números Cardinales & Ordinales.",
             "cefrLevel": "A1"
@@ -5174,7 +5438,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The train arrives at quarter to nine in the morning.\"",
+            "prompt": "Traduce y construye en inglés: \"The train arrives at quarter to nine in the morning.\"",
             "correctAnswer": "The train arrives at quarter to nine in the morning.",
             "explanation": "Práctica de producción escrita para 2. Decir la Hora: O'clock, Past & To.",
             "cefrLevel": "A1"
@@ -5182,7 +5446,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My English class starts at half past seven.\"",
             "correctAnswer": "My English class starts at half past seven.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Decir la Hora: O'clock, Past & To.",
             "cefrLevel": "A1"
@@ -5332,7 +5596,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"This jacket costs forty-five dollars and fifty cents.\"",
+            "prompt": "Traduce y construye en inglés: \"This jacket costs forty-five dollars and fifty cents.\"",
             "correctAnswer": "This jacket costs forty-five dollars and fifty cents.",
             "explanation": "Práctica de producción escrita para 3. Precios & Compras en Tiendas.",
             "cefrLevel": "A1"
@@ -5340,7 +5604,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Excuse me, how much are these black shoes?\"",
             "correctAnswer": "Excuse me, how much are these black shoes?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Precios & Compras en Tiendas.",
             "cefrLevel": "A1"
@@ -5490,7 +5754,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We go to the beach in summer on weekends.\"",
+            "prompt": "Traduce y construye en inglés: \"We go to the beach in summer on weekends.\"",
             "correctAnswer": "We go to the beach in summer on weekends.",
             "explanation": "Práctica de producción escrita para 4. Días de la Semana, Meses & Estaciones.",
             "cefrLevel": "A1"
@@ -5498,7 +5762,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"My English test is on Friday, October 15th.\"",
             "correctAnswer": "My English test is on Friday, October 15th.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Días de la Semana, Meses & Estaciones.",
             "cefrLevel": "A1"
@@ -5648,7 +5912,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He is wearing a blue shirt and black pants today.\"",
+            "prompt": "Traduce y construye en inglés: \"He is wearing a blue shirt and black pants today.\"",
             "correctAnswer": "He is wearing a blue shirt and black pants today.",
             "explanation": "Práctica de producción escrita para 5. Ropa, Tallas & Colores.",
             "cefrLevel": "A1"
@@ -5656,7 +5920,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I would like to try on this green jacket in medium size.\"",
             "correctAnswer": "I would like to try on this green jacket in medium size.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Ropa, Tallas & Colores.",
             "cefrLevel": "A1"
@@ -5676,6 +5940,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
+      "a1_node_6",
       "a1_node_7"
     ],
     "totalSublessons": 5,
@@ -5824,7 +6089,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"You can see this sign at the airport check-in desk.\"",
+            "prompt": "Traduce y construye en inglés: \"You can see this sign at the airport check-in desk.\"",
             "correctAnswer": "You can see this sign at the airport check-in desk.",
             "explanation": "Práctica de producción escrita para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "cefrLevel": "A1"
@@ -5832,7 +6097,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Passengers must show their tickets before boarding the train.\"",
             "correctAnswer": "Passengers must show their tickets before boarding the train.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "cefrLevel": "A1"
@@ -5982,7 +6247,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I enjoy studying English with FlashLens every day.\"",
+            "prompt": "Traduce y construye en inglés: \"I enjoy studying English with FlashLens every day.\"",
             "correctAnswer": "I enjoy studying English with FlashLens every day.",
             "explanation": "Práctica de producción escrita para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "cefrLevel": "A1"
@@ -5990,7 +6255,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Thank you for your advice, it was very helpful.\"",
             "correctAnswer": "Thank you for your advice, it was very helpful.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "cefrLevel": "A1"
@@ -6140,7 +6405,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"David lives in Cali and works as a designer.\"",
+            "prompt": "Traduce y construye en inglés: \"David lives in Cali and works as a designer.\"",
             "correctAnswer": "David lives in Cali and works as a designer.",
             "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A1.",
             "cefrLevel": "A1"
@@ -6148,7 +6413,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"He enjoys his job and speaks English with his international clients.\"",
             "correctAnswer": "He enjoys his job and speaks English with his international clients.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A1.",
             "cefrLevel": "A1"
@@ -6298,7 +6563,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"My family has dinner together every evening at home.\"",
+            "prompt": "Traduce y construye en inglés: \"My family has dinner together every evening at home.\"",
             "correctAnswer": "My family has dinner together every evening at home.",
             "explanation": "Práctica de producción escrita para 4. Vocabulario Integrado A1.",
             "cefrLevel": "A1"
@@ -6306,7 +6571,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I am proud of my progress in English level A1.\"",
             "correctAnswer": "I am proud of my progress in English level A1.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Vocabulario Integrado A1.",
             "cefrLevel": "A1"
@@ -6456,7 +6721,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I have successfully completed all A1 modules in FlashLens.\"",
+            "prompt": "Traduce y construye en inglés: \"I have successfully completed all A1 modules in FlashLens.\"",
             "correctAnswer": "I have successfully completed all A1 modules in FlashLens.",
             "explanation": "Práctica de producción escrita para 5. Evaluación de Consolidación A1.",
             "cefrLevel": "A1"
@@ -6464,7 +6729,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I am ready to conquer level A2 with confidence and fluency.\"",
             "correctAnswer": "I am ready to conquer level A2 with confidence and fluency.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Evaluación de Consolidación A1.",
             "cefrLevel": "A1"
@@ -6484,7 +6749,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_8"
+      "a1_node_8"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -6632,7 +6897,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"They lived in London for three years.\"",
+            "prompt": "Traduce y construye en inglés: \"They lived in London for three years.\"",
             "correctAnswer": "They lived in London for three years.",
             "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
@@ -6640,7 +6905,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I visited my grandparents and we talked for hours.\"",
             "correctAnswer": "I visited my grandparents and we talked for hours.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
@@ -6790,7 +7055,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I bought a new laptop and saw a movie yesterday.\"",
+            "prompt": "Traduce y construye en inglés: \"I bought a new laptop and saw a movie yesterday.\"",
             "correctAnswer": "I bought a new laptop and saw a movie yesterday.",
             "explanation": "Práctica de producción escrita para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "cefrLevel": "A2"
@@ -6798,7 +7063,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"She went to Paris last summer and had a wonderful time.\"",
             "correctAnswer": "She went to Paris last summer and had a wonderful time.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "cefrLevel": "A2"
@@ -6948,7 +7213,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We didn't watch the movie because we were busy.\"",
+            "prompt": "Traduce y construye en inglés: \"We didn't watch the movie because we were busy.\"",
             "correctAnswer": "We didn't watch the movie because we were busy.",
             "explanation": "Práctica de producción escrita para 3. Negación en Pasado: Auxiliar Didn't.",
             "cefrLevel": "A2"
@@ -6956,7 +7221,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"He didn't understand the question during the exam.\"",
             "correctAnswer": "He didn't understand the question during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Negación en Pasado: Auxiliar Didn't.",
             "cefrLevel": "A2"
@@ -7106,7 +7371,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Did you see your friends last weekend?\"",
+            "prompt": "Traduce y construye en inglés: \"Did you see your friends last weekend?\"",
             "correctAnswer": "Did you see your friends last weekend?",
             "explanation": "Práctica de producción escrita para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "cefrLevel": "A2"
@@ -7114,7 +7379,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Where did you go on your last vacation?\"",
             "correctAnswer": "Where did you go on your last vacation?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "cefrLevel": "A2"
@@ -7264,7 +7529,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He used to study English every day when he was at school.\"",
+            "prompt": "Traduce y construye en inglés: \"He used to study English every day when he was at school.\"",
             "correctAnswer": "He used to study English every day when he was at school.",
             "explanation": "Práctica de producción escrita para 5. Hábitos Pasados con \"Used To\".",
             "cefrLevel": "A2"
@@ -7272,7 +7537,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"We used to go to the countryside on summer holidays.\"",
             "correctAnswer": "We used to go to the countryside on summer holidays.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Hábitos Pasados con \"Used To\".",
             "cefrLevel": "A2"
@@ -7292,7 +7557,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_9"
+      "a1_node_8"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -7440,7 +7705,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The modern hospital is near the central bus station.\"",
+            "prompt": "Traduce y construye en inglés: \"The modern hospital is near the central bus station.\"",
             "correctAnswer": "The modern hospital is near the central bus station.",
             "explanation": "Práctica de producción escrita para 1. Lugares de la Ciudad & Servicios Públicos.",
             "cefrLevel": "A2"
@@ -7448,7 +7713,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"There is a famous art museum in the historic center.\"",
             "correctAnswer": "There is a famous art museum in the historic center.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Lugares de la Ciudad & Servicios Públicos.",
             "cefrLevel": "A2"
@@ -7598,7 +7863,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Turn left at the traffic light and cross the street.\"",
+            "prompt": "Traduce y construye en inglés: \"Turn left at the traffic light and cross the street.\"",
             "correctAnswer": "Turn left at the traffic light and cross the street.",
             "explanation": "Práctica de producción escrita para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "cefrLevel": "A2"
@@ -7606,7 +7871,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Excuse me, where is the nearest metro station?\"",
             "correctAnswer": "Excuse me, where is the nearest metro station?",
             "explanation": "Práctica oral de fluidez y articulación para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "cefrLevel": "A2"
@@ -7756,7 +8021,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Walk past the supermarket and go through the central park.\"",
+            "prompt": "Traduce y construye en inglés: \"Walk past the supermarket and go through the central park.\"",
             "correctAnswer": "Walk past the supermarket and go through the central park.",
             "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
@@ -7764,7 +8029,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The pedestrians walked across the bridge over the river.\"",
             "correctAnswer": "The pedestrians walked across the bridge over the river.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
@@ -7914,7 +8179,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I take the subway to work every morning at eight o'clock.\"",
+            "prompt": "Traduce y construye en inglés: \"I take the subway to work every morning at eight o'clock.\"",
             "correctAnswer": "I take the subway to work every morning at eight o'clock.",
             "explanation": "Práctica de producción escrita para 4. Medios de Transporte & Viajes.",
             "cefrLevel": "A2"
@@ -7922,7 +8187,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Traveling by train is faster and more comfortable than by bus.\"",
             "correctAnswer": "Traveling by train is faster and more comfortable than by bus.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Medios de Transporte & Viajes.",
             "cefrLevel": "A2"
@@ -8072,7 +8337,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"My neighborhood has green parks, quiet streets and good restaurants.\"",
+            "prompt": "Traduce y construye en inglés: \"My neighborhood has green parks, quiet streets and good restaurants.\"",
             "correctAnswer": "My neighborhood has green parks, quiet streets and good restaurants.",
             "explanation": "Práctica de producción escrita para 5. Describir tu Ciudad o Vecindario.",
             "cefrLevel": "A2"
@@ -8080,7 +8345,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I love living in this city because people are very friendly.\"",
             "correctAnswer": "I love living in this city because people are very friendly.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Describir tu Ciudad o Vecindario.",
             "cefrLevel": "A2"
@@ -8100,7 +8365,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_10"
+      "a1_node_8"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -8248,7 +8513,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"This computer is faster than my old laptop.\"",
+            "prompt": "Traduce y construye en inglés: \"This computer is faster than my old laptop.\"",
             "correctAnswer": "This computer is faster than my old laptop.",
             "explanation": "Práctica de producción escrita para 1. Comparativos Cortos (-er than).",
             "cefrLevel": "A2"
@@ -8256,7 +8521,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Canada is colder than Colombia in winter.\"",
             "correctAnswer": "Canada is colder than Colombia in winter.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Comparativos Cortos (-er than).",
             "cefrLevel": "A2"
@@ -8406,7 +8671,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Traveling by plane is more comfortable than by bus.\"",
+            "prompt": "Traduce y construye en inglés: \"Traveling by plane is more comfortable than by bus.\"",
             "correctAnswer": "Traveling by plane is more comfortable than by bus.",
             "explanation": "Práctica de producción escrita para 2. Comparativos Largos (More ... than).",
             "cefrLevel": "A2"
@@ -8414,7 +8679,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"This book is more interesting than the movie.\"",
             "correctAnswer": "This book is more interesting than the movie.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Comparativos Largos (More ... than).",
             "cefrLevel": "A2"
@@ -8564,7 +8829,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"His English is much better than it was last year.\"",
+            "prompt": "Traduce y construye en inglés: \"His English is much better than it was last year.\"",
             "correctAnswer": "His English is much better than it was last year.",
             "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
@@ -8572,7 +8837,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"This coffee is the best in the entire city.\"",
             "correctAnswer": "This coffee is the best in the entire city.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
@@ -8722,7 +8987,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"This is the most important exam of the semester.\"",
+            "prompt": "Traduce y construye en inglés: \"This is the most important exam of the semester.\"",
             "correctAnswer": "This is the most important exam of the semester.",
             "explanation": "Práctica de producción escrita para 4. Superlativos: The -est & The Most.",
             "cefrLevel": "A2"
@@ -8730,7 +8995,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The cheetah is the fastest animal on land.\"",
             "correctAnswer": "The cheetah is the fastest animal on land.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Superlativos: The -est & The Most.",
             "cefrLevel": "A2"
@@ -8880,7 +9145,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He is as hardworking as his father.\"",
+            "prompt": "Traduce y construye en inglés: \"He is as hardworking as his father.\"",
             "correctAnswer": "He is as hardworking as his father.",
             "explanation": "Práctica de producción escrita para 5. Estructura de Igualdad: As ... As.",
             "cefrLevel": "A2"
@@ -8888,7 +9153,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Colombia is as rich in biodiversity as Brazil.\"",
             "correctAnswer": "Colombia is as rich in biodiversity as Brazil.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Estructura de Igualdad: As ... As.",
             "cefrLevel": "A2"
@@ -8908,7 +9173,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_11"
+      "a2_node_9"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -9056,7 +9321,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I am practicing English on FlashLens right now.\"",
+            "prompt": "Traduce y construye en inglés: \"I am practicing English on FlashLens right now.\"",
             "correctAnswer": "I am practicing English on FlashLens right now.",
             "explanation": "Práctica de producción escrita para 1. Presente Continuo: Acciones en Progreso.",
             "cefrLevel": "A2"
@@ -9064,7 +9329,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The children are playing happily in the garden.\"",
             "correctAnswer": "The children are playing happily in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Presente Continuo: Acciones en Progreso.",
             "cefrLevel": "A2"
@@ -9214,7 +9479,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"He usually wears jeans, but today he is wearing a suit.\"",
+            "prompt": "Traduce y construye en inglés: \"He usually wears jeans, but today he is wearing a suit.\"",
             "correctAnswer": "He usually wears jeans, but today he is wearing a suit.",
             "explanation": "Práctica de producción escrita para 2. Contraste: Presente Simple vs Presente Continuo.",
             "cefrLevel": "A2"
@@ -9222,7 +9487,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"We live in Colombia but we are traveling in Europe this month.\"",
             "correctAnswer": "We live in Colombia but we are traveling in Europe this month.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Contraste: Presente Simple vs Presente Continuo.",
             "cefrLevel": "A2"
@@ -9372,7 +9637,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I am going to pass my English exam with a high score.\"",
+            "prompt": "Traduce y construye en inglés: \"I am going to pass my English exam with a high score.\"",
             "correctAnswer": "I am going to pass my English exam with a high score.",
             "explanation": "Práctica de producción escrita para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "cefrLevel": "A2"
@@ -9380,7 +9645,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"What are you going to do this weekend with your friends?\"",
             "correctAnswer": "What are you going to do this weekend with your friends?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "cefrLevel": "A2"
@@ -9530,7 +9795,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We are flying to New York next Friday morning.\"",
+            "prompt": "Traduce y construye en inglés: \"We are flying to New York next Friday morning.\"",
             "correctAnswer": "We are flying to New York next Friday morning.",
             "explanation": "Práctica de producción escrita para 4. Presente Continuo con Sentido de Futuro Acordado.",
             "cefrLevel": "A2"
@@ -9538,7 +9803,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Are you attending the international conference next week?\"",
             "correctAnswer": "Are you attending the international conference next week?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Presente Continuo con Sentido de Futuro Acordado.",
             "cefrLevel": "A2"
@@ -9688,7 +9953,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"What are you going to do after you graduate?\"",
+            "prompt": "Traduce y construye en inglés: \"What are you going to do after you graduate?\"",
             "correctAnswer": "What are you going to do after you graduate?",
             "explanation": "Práctica de producción escrita para 5. Preguntas sobre Planes & Predicciones Futuras.",
             "cefrLevel": "A2"
@@ -9696,7 +9961,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Look at those dark clouds, it is going to rain heavily.\"",
             "correctAnswer": "Look at those dark clouds, it is going to rain heavily.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas sobre Planes & Predicciones Futuras.",
             "cefrLevel": "A2"
@@ -9716,7 +9981,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_12"
+      "a2_node_10"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -9864,7 +10129,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I studied hard because I wanted to pass the test.\"",
+            "prompt": "Traduce y construye en inglés: \"I studied hard because I wanted to pass the test.\"",
             "correctAnswer": "I studied hard because I wanted to pass the test.",
             "explanation": "Práctica de producción escrita para 1. Conectores Lógicos: And, But, So, Because, Although.",
             "cefrLevel": "A2"
@@ -9872,7 +10137,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Although English is challenging, I practice every day.\"",
             "correctAnswer": "Although English is challenging, I practice every day.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Conectores Lógicos: And, But, So, Because, Although.",
             "cefrLevel": "A2"
@@ -10022,7 +10287,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"You should drink eight glasses of water every day.\"",
+            "prompt": "Traduce y construye en inglés: \"You should drink eight glasses of water every day.\"",
             "correctAnswer": "You should drink eight glasses of water every day.",
             "explanation": "Práctica de producción escrita para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "cefrLevel": "A2"
@@ -10030,7 +10295,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"If you feel sick, you should stay at home and rest.\"",
             "correctAnswer": "If you feel sick, you should stay at home and rest.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "cefrLevel": "A2"
@@ -10180,7 +10445,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Students have to submit their homework on time.\"",
+            "prompt": "Traduce y construye en inglés: \"Students have to submit their homework on time.\"",
             "correctAnswer": "Students have to submit their homework on time.",
             "explanation": "Práctica de producción escrita para 3. Modales de Obligación: Must vs Have To.",
             "cefrLevel": "A2"
@@ -10188,7 +10453,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"You mustn't use your mobile phone during the exam.\"",
             "correctAnswer": "You mustn't use your mobile phone during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Modales de Obligación: Must vs Have To.",
             "cefrLevel": "A2"
@@ -10338,7 +10603,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I have a sore throat and a bad cough today.\"",
+            "prompt": "Traduce y construye en inglés: \"I have a sore throat and a bad cough today.\"",
             "correctAnswer": "I have a sore throat and a bad cough today.",
             "explanation": "Práctica de producción escrita para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "cefrLevel": "A2"
@@ -10346,7 +10611,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"The doctor advised me to take this medicine twice a day.\"",
             "correctAnswer": "The doctor advised me to take this medicine twice a day.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "cefrLevel": "A2"
@@ -10496,7 +10761,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Regular exercise makes me feel healthy, calm and energetic.\"",
+            "prompt": "Traduce y construye en inglés: \"Regular exercise makes me feel healthy, calm and energetic.\"",
             "correctAnswer": "Regular exercise makes me feel healthy, calm and energetic.",
             "explanation": "Práctica de producción escrita para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "cefrLevel": "A2"
@@ -10504,7 +10769,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I feel very proud and confident about my progress in English.\"",
             "correctAnswer": "I feel very proud and confident about my progress in English.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "cefrLevel": "A2"
@@ -10524,7 +10789,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_13"
+      "a2_node_12",
+      "a2_node_13",
+      "a2_node_11"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
@@ -10672,7 +10939,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"You can see this warning notice at the chemistry laboratory.\"",
+            "prompt": "Traduce y construye en inglés: \"You can see this warning notice at the chemistry laboratory.\"",
             "correctAnswer": "You can see this warning notice at the chemistry laboratory.",
             "explanation": "Práctica de producción escrita para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "cefrLevel": "A2"
@@ -10680,7 +10947,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Passengers must wear a face mask inside the hospital.\"",
             "correctAnswer": "Passengers must wear a face mask inside the hospital.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "cefrLevel": "A2"
@@ -10830,7 +11097,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Could you please tell me where the nearest pharmacy is located?\"",
+            "prompt": "Traduce y construye en inglés: \"Could you please tell me where the nearest pharmacy is located?\"",
             "correctAnswer": "Could you please tell me where the nearest pharmacy is located?",
             "explanation": "Práctica de producción escrita para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "cefrLevel": "A2"
@@ -10838,7 +11105,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I really appreciate your assistance with this difficult project.\"",
             "correctAnswer": "I really appreciate your assistance with this difficult project.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "cefrLevel": "A2"
@@ -10988,7 +11255,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Elena started her company in 2021 and photographs wildlife.\"",
+            "prompt": "Traduce y construye en inglés: \"Elena started her company in 2021 and photographs wildlife.\"",
             "correctAnswer": "Elena started her company in 2021 and photographs wildlife.",
             "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "cefrLevel": "A2"
@@ -10996,7 +11263,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"She has won several international awards for her nature photography.\"",
             "correctAnswer": "She has won several international awards for her nature photography.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "cefrLevel": "A2"
@@ -11146,7 +11413,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Reading between the lines helps you infer implicit meaning.\"",
+            "prompt": "Traduce y construye en inglés: \"Reading between the lines helps you infer implicit meaning.\"",
             "correctAnswer": "Reading between the lines helps you infer implicit meaning.",
             "explanation": "Práctica de producción escrita para 4. Inferencia & Vocabulario en Contexto.",
             "cefrLevel": "A2"
@@ -11154,7 +11421,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Context clues provide valuable hints to understand complex vocabulary.\"",
             "correctAnswer": "Context clues provide valuable hints to understand complex vocabulary.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Inferencia & Vocabulario en Contexto.",
             "cefrLevel": "A2"
@@ -11304,7 +11571,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Actually, I didn't know the answer until you explained it.\"",
+            "prompt": "Traduce y construye en inglés: \"Actually, I didn't know the answer until you explained it.\"",
             "correctAnswer": "Actually, I didn't know the answer until you explained it.",
             "explanation": "Práctica de producción escrita para 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "cefrLevel": "A2"
@@ -11312,7 +11579,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"He felt very embarrassed when he forgot his friend's name.\"",
             "correctAnswer": "He felt very embarrassed when he forgot his friend's name.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "cefrLevel": "A2"
@@ -11480,7 +11747,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"The Coffee Cultural Landscape is celebrated worldwide for its beauty.\"",
+            "prompt": "Traduce y construye en inglés: \"The Coffee Cultural Landscape is celebrated worldwide for its beauty.\"",
             "correctAnswer": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
             "explanation": "Práctica de producción escrita para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "cefrLevel": "A2"
@@ -11488,7 +11755,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Colombian coffee is recognized globally for its superior quality and taste.\"",
             "correctAnswer": "Colombian coffee is recognized globally for its superior quality and taste.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "cefrLevel": "A2"
@@ -11638,7 +11905,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.\"",
+            "prompt": "Traduce y construye en inglés: \"Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.\"",
             "correctAnswer": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
             "explanation": "Práctica de producción escrita para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "cefrLevel": "A2"
@@ -11646,7 +11913,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"I learned basic English in A1 and now I am mastering A2 fluently.\"",
             "correctAnswer": "I learned basic English in A1 and now I am mastering A2 fluently.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "cefrLevel": "A2"
@@ -11796,7 +12063,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I listened carefully to the native speaker's pronunciation.\"",
+            "prompt": "Traduce y construye en inglés: \"I listened carefully to the native speaker's pronunciation.\"",
             "correctAnswer": "I listened carefully to the native speaker's pronunciation.",
             "explanation": "Práctica de producción escrita para 3. Prueba de Precisión Auditiva & Fonética A2.",
             "cefrLevel": "A2"
@@ -11804,7 +12071,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Mastering phonetic stress allows you to communicate naturally.\"",
             "correctAnswer": "Mastering phonetic stress allows you to communicate naturally.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Prueba de Precisión Auditiva & Fonética A2.",
             "cefrLevel": "A2"
@@ -11954,7 +12221,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I enjoy writing in English because it helps me organize my thoughts.\"",
+            "prompt": "Traduce y construye en inglés: \"I enjoy writing in English because it helps me organize my thoughts.\"",
             "correctAnswer": "I enjoy writing in English because it helps me organize my thoughts.",
             "explanation": "Práctica de producción escrita para 4. Diagnóstico de Producción Escrita A2.",
             "cefrLevel": "A2"
@@ -11962,7 +12229,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"With dedication and daily practice, I have achieved level A2 certification.\"",
             "correctAnswer": "With dedication and daily practice, I have achieved level A2 certification.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Diagnóstico de Producción Escrita A2.",
             "cefrLevel": "A2"
@@ -12112,7 +12379,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I am proud to be a certified A2 English speaker with FlashLens.\"",
+            "prompt": "Traduce y construye en inglés: \"I am proud to be a certified A2 English speaker with FlashLens.\"",
             "correctAnswer": "I am proud to be a certified A2 English speaker with FlashLens.",
             "explanation": "Práctica de producción escrita para 5. Gran Certificación de Logro Nivel A2.",
             "cefrLevel": "A2"
@@ -12120,7 +12387,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con entonación clara y natural:",
+            "prompt": "Pronuncia en voz alta en inglés: \"Congratulations on completing the entire A1 and A2 roadmap with excellence!\"",
             "correctAnswer": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",
             "explanation": "Práctica oral de fluidez y articulación para 5. Gran Certificación de Logro Nivel A2.",
             "cefrLevel": "A2"

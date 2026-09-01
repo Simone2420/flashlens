@@ -11,12 +11,12 @@ import {
   BookOpen,
   Volume2,
   Info,
-  CheckCircle2,
-  XCircle,
   Lightbulb,
-  ArrowRight,
   Play,
   Languages,
+  Zap,
+  Mic,
+  MessageSquare,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -58,7 +58,7 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      {/* 1. TÍTULO PRINCIPAL ESTILO SOLOLEARN */}
+      {/* 1. TÍTULO Y BADGE SEGÚN EL CHECKPOINT */}
       <View style={styles.titleSection}>
         <View style={styles.badgeRow}>
           <View
@@ -72,10 +72,10 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
             ) : isCheckpoint ? (
               <Sparkles size={13} color="#765A00" />
             ) : (
-              <BookOpen size={13} color="#16A34A" />
+              <Zap size={13} color="#16A34A" />
             )}
             <Text style={styles.placementBadgeText}>
-              {isIntro ? 'CONCEPT' : isCheckpoint ? 'CHECKPOINT' : 'SUMMARY'}
+              {isIntro ? '1. INTRO & ESCENARIO' : isCheckpoint ? '2. CHECKPOINT & PRONUNCIACIÓN' : '3. REGLA DE 5s & RESUMEN'}
             </Text>
           </View>
         </View>
@@ -83,7 +83,7 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
         <Text style={styles.mainTitle}>{explanation.title}</Text>
       </View>
 
-      {/* 2. EXPLICACIÓN CONCISA Y DIRECTA */}
+      {/* 2. EXPLICACIÓN DIDÁCTICA CONCISA */}
       <Text style={styles.mainDescription}>
         {explanation.summaryShort || explanation.conceptBreakdown}
       </Text>
@@ -94,95 +94,120 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
         </Text>
       )}
 
-      {/* 3. CAJA DE ESTRUCTURA / SINTAXIS / DIÁLOGO INTERACTIVA ESTILO SOLOLEARN */}
-      <Text style={styles.exampleHeaderLabel}>Por ejemplo:</Text>
+      {/* 3. CHECKPOINT 1 (INTRO): FÓRMULA / SINTAXIS Y MICRO-DIÁLOGO */}
+      {isIntro && (
+        <>
+          <Text style={styles.exampleHeaderLabel}>Fórmula & Escenario en Acción:</Text>
 
-      <View style={styles.codeSnippetCard}>
-        {/* Pestaña superior con indicador de idioma */}
-        <View style={styles.codeTabHeader}>
-          <View style={styles.activeTabIndicator}>
-            <Text style={styles.activeTabText}>EN ➔ ES</Text>
-          </View>
-        </View>
-
-        {/* Líneas numeradas con sintaxis de colores */}
-        <View style={styles.codeBody}>
-          {formulaLines.map((line, idx) => (
-            <View key={idx} style={styles.codeLineRow}>
-              <Text style={styles.lineNumberText}>{idx + 1}</Text>
-              <Text style={styles.codeLineContent}>{line}</Text>
+          <View style={styles.codeSnippetCard}>
+            <View style={styles.codeTabHeader}>
+              <View style={styles.activeTabIndicator}>
+                <Text style={styles.activeTabText}>ESTRUCTURA EN ➔ ES</Text>
+              </View>
             </View>
-          ))}
-        </View>
 
-        {/* Barra inferior interactiva: Pulsa para escuchar audio */}
-        <View style={styles.codeFooterRow}>
-          <Text style={styles.codeFooterHint}>Pulsa para escuchar pronunciación</Text>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => handleSpeak(explanation.grammarFormula || explanation.title)}
-            style={styles.runAudioBtn}
-          >
-            <Text style={styles.runAudioBtnText}>AUDIO</Text>
-            <Play size={14} color="#00E5FF" fill="#00E5FF" />
-          </TouchableOpacity>
-        </View>
-      </View>
+            <View style={styles.codeBody}>
+              {formulaLines.map((line, idx) => (
+                <View key={idx} style={styles.codeLineRow}>
+                  <Text style={styles.lineNumberText}>{idx + 1}</Text>
+                  <Text style={styles.codeLineContent}>{line}</Text>
+                </View>
+              ))}
+            </View>
 
-      {/* 4. PÍLDORA DIDÁCTICA ℹ️ ("TEN EN CUENTA QUE...") ESTILO SOLOLEARN */}
-      {(mainPitfall || explanation.deepDiveNotes) && (
-        <View style={styles.noteCalloutBox}>
-          <View style={styles.noteIconCircle}>
-            <Info size={22} color="#FFA000" />
+            <View style={styles.codeFooterRow}>
+              <Text style={styles.codeFooterHint}>Pulsa para escuchar pronunciación</Text>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => handleSpeak(explanation.grammarFormula || explanation.title)}
+                style={styles.runAudioBtn}
+              >
+                <Text style={styles.runAudioBtnText}>AUDIO</Text>
+                <Play size={14} color="#00E5FF" fill="#00E5FF" />
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.noteTextBox}>
-            <Text style={styles.noteHeading}>Ten en cuenta que:</Text>
-            <Text style={styles.noteBodyText}>
-              {mainPitfall
-                ? mainPitfall.fastPill || mainPitfall.mediumExplanation
-                : explanation.deepDiveNotes}
-            </Text>
-            {mainPitfall?.wrongExample && mainPitfall?.correctExample && (
-              <View style={styles.noteComparisonRow}>
-                <Text style={styles.wrongPill}>❌ {mainPitfall.wrongExample}</Text>
-                <Text style={styles.correctPill}>✅ {mainPitfall.correctExample}</Text>
+        </>
+      )}
+
+      {/* 4. CHECKPOINT 2 (MID_CHECKPOINT): DON'T SAY ❌ VS SAY ✅ & GUÍA DE ARTICULACIÓN */}
+      {isCheckpoint && (
+        <View style={styles.checkpointSpecialSection}>
+          {/* Tarjeta Don't Say vs Say */}
+          <View style={styles.contrastErrorCard}>
+            <Text style={styles.contrastErrorTitle}>⚠️ ERROR COMÚN DE HISPANOHABLANTES:</Text>
+            {mainPitfall && (
+              <View style={styles.dontSayBox}>
+                <View style={styles.dontSayRow}>
+                  <Text style={styles.dontSayLabel}>❌ Don't say:</Text>
+                  <Text style={styles.dontSayText}>{mainPitfall.wrongExample}</Text>
+                </View>
+                <View style={styles.sayRow}>
+                  <Text style={styles.sayLabel}>✅ Say:</Text>
+                  <Text style={styles.sayText}>{mainPitfall.correctExample}</Text>
+                </View>
+                <Text style={styles.l1ReasonText}>
+                  💡 <Text style={{ fontWeight: '800' }}>Por qué:</Text> {mainPitfall.fastPill || mainPitfall.mediumExplanation}
+                </Text>
               </View>
             )}
           </View>
+
+          {/* Guía de Articulación y Pronunciación */}
+          <View style={styles.phoneticsCard}>
+            <View style={styles.phoneticsHeaderRow}>
+              <Mic size={18} color="#0284C7" />
+              <Text style={styles.phoneticsHeading}>Guía de Articulación Práctica:</Text>
+            </View>
+            <Text style={styles.phoneticsBodyText}>
+              {explanation.deepDiveNotes || 'Coloca la lengua y los labios con precisión para pronunciar con fluidez nativa.'}
+            </Text>
+          </View>
         </View>
       )}
 
-      {/* 5. EJEMPLOS CONTRASTIVOS EN CONTEXTO */}
+      {/* 5. CHECKPOINT 3 (FINAL_SUMMARY): REGLA DE 5 SEGUNDOS & PUNTOS CLAVE */}
+      {isFinal && (
+        <View style={styles.summarySpecialSection}>
+          <View style={styles.mnemonicCard}>
+            <View style={styles.mnemonicHeaderRow}>
+              <Zap size={20} color="#E8B400" fill="#E8B400" />
+              <Text style={styles.mnemonicHeading}>⚡ Regla de 5 Segundos (Atajo Mental):</Text>
+            </View>
+            <Text style={styles.mnemonicBodyText}>
+              {explanation.deepDiveNotes || explanation.summaryShort}
+            </Text>
+          </View>
+
+          {explanation.keyTakeaways && explanation.keyTakeaways.length > 0 && (
+            <View style={styles.takeawaysCard}>
+              <Text style={styles.takeawaysTitle}>📌 Puntos Clave Dominados:</Text>
+              {explanation.keyTakeaways.map((item, idx) => (
+                <View key={idx} style={styles.takeawayItemRow}>
+                  <Text style={styles.takeawayBullet}>✓</Text>
+                  <Text style={styles.takeawayItemText}>{item}</Text>
+                </View>
+              ))}
+            </View>
+          )}
+        </View>
+      )}
+
+      {/* 6. EJEMPLOS EN CONTEXTO CON AUDIO (Común a checkpoints si existen) */}
       {explanation.contrastExamples && explanation.contrastExamples.length > 0 && (
         <View style={styles.contrastSection}>
-          <Text style={styles.contrastSectionTitle}>EJEMPLOS EN CONTEXTO:</Text>
+          <Text style={styles.contrastSectionTitle}>EJEMPLO REPRESENTATIVO:</Text>
           {explanation.contrastExamples.map((ex, idx) => (
             <View key={idx} style={styles.contrastCard}>
-              <View style={styles.contrastHeaderRow}>
-                <TouchableOpacity
-                  activeOpacity={0.7}
-                  onPress={() => handleSpeak(ex.en)}
-                  style={styles.speakPhraseBtn}
-                >
-                  <Volume2 size={16} color="#0284C7" />
-                  <Text style={styles.contrastEnText}>{ex.en}</Text>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => handleSpeak(ex.en)}
+                style={styles.speakPhraseBtn}
+              >
+                <Volume2 size={16} color="#0284C7" />
+                <Text style={styles.contrastEnText}>{ex.en}</Text>
+              </TouchableOpacity>
               <Text style={styles.contrastEsText}>➔ {ex.es}</Text>
-              {ex.note && <Text style={styles.contrastNoteText}>💡 {ex.note}</Text>}
-            </View>
-          ))}
-        </View>
-      )}
-
-      {/* 6. PUNTOS CLAVE PARA RECORDAR (KEY TAKEAWAYS) */}
-      {explanation.keyTakeaways && explanation.keyTakeaways.length > 0 && (
-        <View style={styles.takeawaysCard}>
-          <Text style={styles.takeawaysTitle}>📌 Puntos clave:</Text>
-          {explanation.keyTakeaways.map((item, idx) => (
-            <View key={idx} style={styles.takeawayItemRow}>
-              <Text style={styles.takeawayBullet}>•</Text>
-              <Text style={styles.takeawayItemText}>{item}</Text>
             </View>
           ))}
         </View>
@@ -252,10 +277,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   mainTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '900',
     color: '#1C1B1B',
-    lineHeight: 30,
+    lineHeight: 28,
   },
   mainDescription: {
     fontSize: 15,
@@ -271,13 +296,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   exampleHeaderLabel: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#1C1B1B',
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#765A00',
     marginTop: 8,
     marginBottom: 8,
+    letterSpacing: 0.5,
   },
-  // Caja de código / sintaxis oscura estilo SoloLearn
   codeSnippetCard: {
     backgroundColor: '#1E1F29',
     borderRadius: 14,
@@ -360,61 +385,158 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.8,
   },
-  // Píldora de nota ℹ️ estilo SoloLearn
-  noteCalloutBox: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    backgroundColor: '#FFFDF0',
-    borderRadius: 16,
+  // Checkpoint 2 (Don't Say vs Say & Fonética)
+  checkpointSpecialSection: {
+    marginBottom: SPACING.md,
+    gap: 12,
+  },
+  contrastErrorCard: {
+    backgroundColor: '#FFF7F7',
+    borderRadius: 14,
     padding: 14,
     borderWidth: 1.5,
-    borderColor: '#FFE082',
-    gap: 12,
-    marginBottom: SPACING.md,
+    borderColor: '#FECACA',
     ...SHADOWS.card,
   },
-  noteIconCircle: {
-    marginTop: 2,
+  contrastErrorTitle: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: '#DC2626',
+    letterSpacing: 0.8,
+    marginBottom: 8,
   },
-  noteTextBox: {
+  dontSayBox: {
+    gap: 6,
+  },
+  dontSayRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  dontSayLabel: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#DC2626',
+    width: 90,
+  },
+  dontSayText: {
+    fontSize: 13,
+    color: '#991B1B',
+    fontWeight: '600',
+    flex: 1,
+    textDecorationLine: 'line-through',
+  },
+  sayRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  sayLabel: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#16A34A',
+    width: 90,
+  },
+  sayText: {
+    fontSize: 13.5,
+    color: '#15803D',
+    fontWeight: '800',
     flex: 1,
   },
-  noteHeading: {
+  l1ReasonText: {
+    fontSize: 12,
+    color: '#49454F',
+    lineHeight: 18,
+    marginTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: '#FEE2E2',
+    paddingTop: 6,
+  },
+  phoneticsCard: {
+    backgroundColor: '#F0F9FF',
+    borderRadius: 14,
+    padding: 14,
+    borderWidth: 1.5,
+    borderColor: '#BAE6FD',
+    ...SHADOWS.card,
+  },
+  phoneticsHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 6,
+  },
+  phoneticsHeading: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#0369A1',
+    letterSpacing: 0.5,
+  },
+  phoneticsBodyText: {
+    fontSize: 12.5,
+    color: '#0C4A6E',
+    lineHeight: 18,
+  },
+  // Checkpoint 3 (Summary & Mnemotécnica)
+  summarySpecialSection: {
+    marginBottom: SPACING.md,
+    gap: 12,
+  },
+  mnemonicCard: {
+    backgroundColor: '#FFFBEB',
+    borderRadius: 14,
+    padding: 14,
+    borderWidth: 1.5,
+    borderColor: '#FDE68A',
+    ...SHADOWS.card,
+  },
+  mnemonicHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 6,
+  },
+  mnemonicHeading: {
+    fontSize: 12.5,
+    fontWeight: '900',
+    color: '#B45309',
+  },
+  mnemonicBodyText: {
+    fontSize: 13,
+    color: '#78350F',
+    lineHeight: 19,
+    fontWeight: '600',
+  },
+  takeawaysCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 14,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  takeawaysTitle: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#1C1B1B',
+    marginBottom: 6,
+  },
+  takeawayItemRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 8,
+    marginVertical: 2,
+  },
+  takeawayBullet: {
+    color: '#16A34A',
     fontSize: 13,
     fontWeight: '900',
-    color: '#765A00',
-    marginBottom: 4,
   },
-  noteBodyText: {
-    fontSize: 13,
+  takeawayItemText: {
+    fontSize: 12,
     color: '#49454F',
-    lineHeight: 19,
+    flex: 1,
+    lineHeight: 18,
   },
-  noteComparisonRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 8,
-  },
-  wrongPill: {
-    backgroundColor: '#FFEEEE',
-    color: '#BA1A1A',
-    fontSize: 11,
-    fontWeight: '700',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  correctPill: {
-    backgroundColor: '#E6F4EA',
-    color: '#16A34A',
-    fontSize: 11,
-    fontWeight: '700',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  // Sección de ejemplos contrastivos
   contrastSection: {
     marginBottom: SPACING.md,
   },
@@ -435,66 +557,22 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     ...SHADOWS.card,
   },
-  contrastHeaderRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   speakPhraseBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    flex: 1,
   },
   contrastEnText: {
-    fontSize: 14.5,
+    fontSize: 14,
     fontWeight: '800',
     color: '#1C1B1B',
   },
   contrastEsText: {
-    fontSize: 13,
+    fontSize: 12.5,
     color: '#5E5E5E',
     marginTop: 4,
     marginLeft: 24,
   },
-  contrastNoteText: {
-    fontSize: 11,
-    color: '#0284C7',
-    marginTop: 3,
-    marginLeft: 24,
-    fontStyle: 'italic',
-  },
-  takeawaysCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-    marginBottom: SPACING.lg,
-  },
-  takeawaysTitle: {
-    fontSize: 12,
-    fontWeight: '900',
-    color: '#1C1B1B',
-    marginBottom: 6,
-  },
-  takeawayItemRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 6,
-    marginVertical: 2,
-  },
-  takeawayBullet: {
-    color: '#E8B400',
-    fontSize: 14,
-    fontWeight: '900',
-  },
-  takeawayItemText: {
-    fontSize: 12,
-    color: '#49454F',
-    flex: 1,
-    lineHeight: 18,
-  },
-  // Botón CONTINUAR SoloLearn
   continueBtn: {
     backgroundColor: '#0095FF',
     paddingVertical: 16,

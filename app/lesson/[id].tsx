@@ -32,6 +32,7 @@ import { MultipleChoiceIcfesQuestion } from '../../src/components/roadmap/questi
 import { SentenceWritingQuestion } from '../../src/components/roadmap/questions/SentenceWritingQuestion';
 import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/questions/SpeakingPronunciationQuestion';
 import { ImageWordMatchQuestion } from '../../src/components/roadmap/questions/ImageWordMatchQuestion';
+import { evaluateLanguageInput } from '../../src/services/languageEvaluation';
 
 type LessonPhase = 'SUBLESSON_PICKER' | 'THEORY' | 'QUESTION' | 'CHECKPOINT' | 'SUMMARY' | 'COMPLETE';
 
@@ -246,8 +247,12 @@ export default function LessonScreen() {
       currentQ.type === 'IMAGE_WORD_MATCH'
     ) {
       correct = selectedOption?.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
-    } else if (currentQ.type === 'SENTENCE_WRITING' || currentQ.type === 'SPEAKING_PRONUNCIATION') {
-      correct = writtenInput.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
+    } else if (currentQ.type === 'SENTENCE_WRITING') {
+      const result = evaluateLanguageInput(writtenInput, String(currentQ.correctAnswer), false);
+      correct = result.isCorrect;
+    } else if (currentQ.type === 'SPEAKING_PRONUNCIATION') {
+      const result = evaluateLanguageInput(writtenInput, String(currentQ.correctAnswer), true);
+      correct = result.isCorrect;
     }
 
     setIsCorrect(correct);
