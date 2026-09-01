@@ -94,6 +94,20 @@ export interface Flashcard {
   nextReviewAt: string; // ISO date
 }
 
+export interface VoiceConceptMatch {
+  spanishTrigger: string;
+  targetWord: string;
+  nativeTranslation: string;
+  category: ConceptCategory;
+  partOfSpeech: PartOfSpeech;
+  phoneticScript: string;
+  contextSentence: string;
+  contextTranslation: string;
+  mnemonicHint: string;
+  imageUrl?: string;
+  grammarFormula?: string;
+}
+
 export interface CharacterDiff {
   char: string;
   status: 'CORRECT' | 'WRONG' | 'MISSING' | 'EXTRA';

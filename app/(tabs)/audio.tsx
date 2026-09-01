@@ -372,16 +372,25 @@ export default function AudioLabScreen() {
             </View>
           </View>
 
-          {/* Botón Iniciar Sesión */}
+          {/* Botón Iniciar Sesión de Alto Impacto */}
           <TouchableOpacity
             activeOpacity={0.85}
             onPress={() => handleStartSession(dictationMode, dictationDirection)}
             style={styles.startSessionBtn}
           >
-            <Play size={20} color="#1C1B1B" fill="#1C1B1B" />
-            <Text style={styles.startSessionBtnText}>
-              INICIAR ({dictationDirection === 'NORMAL' ? 'DIRECTO' : dictationDirection === 'INVERSE' ? 'INVERSO' : 'INV. NATIVO'} • {dictationMode})
-            </Text>
+            <View style={styles.startIconCircle}>
+              <Play size={18} color="#1C1B1B" fill="#1C1B1B" />
+            </View>
+            <View style={styles.startBtnTextBox}>
+              <Text style={styles.startSessionBtnTitle}>COMENZAR ENTRENAMIENTO</Text>
+              <Text style={styles.startSessionBtnSubtitle}>
+                {dictationDirection === 'NORMAL'
+                  ? '🇬🇧 Directo'
+                  : dictationDirection === 'INVERSE'
+                  ? '🇪🇸 Inverso Clásico'
+                  : '✨ Inverso Nativo'} • {dictationMode === 'WORD' ? 'Palabras' : dictationMode === 'SENTENCE' ? 'Oraciones' : 'Ráfaga 15s'}
+              </Text>
+            </View>
           </TouchableOpacity>
         </ScrollView>
       ) : isPlaying && !isCompleted ? (
@@ -818,16 +827,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#E8B400',
-    borderRadius: 18,
-    paddingVertical: 16,
-    gap: 8,
+    borderRadius: 20,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    gap: 12,
     ...SHADOWS.card,
   },
-  startSessionBtnText: {
-    fontSize: 14,
+  startIconCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#FFF9E6',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  startBtnTextBox: {
+    alignItems: 'flex-start',
+  },
+  startSessionBtnTitle: {
+    fontSize: 15,
     fontWeight: '900',
     color: '#1C1B1B',
     letterSpacing: 0.5,
+  },
+  startSessionBtnSubtitle: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#503C00',
+    marginTop: 2,
   },
   sessionContent: {
     padding: SPACING.lg,

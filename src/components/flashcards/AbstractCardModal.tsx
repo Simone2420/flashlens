@@ -185,7 +185,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     let resultCard: Flashcard;
 
     if (matched) {
-      const categoryImg = CATEGORY_IMAGE_MAP[matched.category] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+      const categoryImg = CATEGORY_IMAGE_MAP[matched.category as ConceptCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
       resultCard = {
         id: `fc-voice-${Date.now()}`,
         targetWord: matched.targetWord,

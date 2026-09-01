@@ -129,7 +129,7 @@ export const useFlashcardStore = create<FlashcardState>()(
             contextTranslation: match.contextTranslation,
             mnemonicHint: match.mnemonicHint,
             grammarFormula: match.grammarFormula,
-            imageUrl: match.imageUrl,
+            imageUrl: match.imageUrl || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23',
             imageSource: 'AI_GENERATED',
             createdVia: 'VOICE_SPANISH',
           });

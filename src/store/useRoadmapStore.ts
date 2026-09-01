@@ -139,8 +139,12 @@ export const useRoadmapStore = create<RoadmapState>()(
                 sublessons: completedSubs,
               };
             }
-            // El primer nodo de A2 se activa
-            if (node.id === 'a2_node_9') {
+            // Los 3 primeros nodos paralelos de A2 se activan simultáneamente
+            if (
+              node.id === 'a2_node_9' ||
+              node.id === 'a2_node_10' ||
+              node.id === 'a2_node_11'
+            ) {
               return {
                 ...node,
                 status: 'ACTIVE' as const,
