@@ -67,21 +67,25 @@ export default function AudioLabScreen() {
   const burstOptions = useMemo(() => {
     if (!activeCard || dictationMode !== 'BURST') return [];
 
-    const correctAnswer = activeCard.targetWord;
+    const isNativeInverse = dictationDirection === 'NATIVE_INVERSE';
+    const correctAnswer = isNativeInverse ? activeCard.nativeTranslation : activeCard.targetWord;
     const otherCards = cards.filter(c => c.id !== activeCard.id);
     const shuffledOthers = [...otherCards].sort(() => 0.5 - Math.random());
-    const distractors = shuffledOthers.slice(0, 3).map(c => c.targetWord);
+    const distractors = shuffledOthers.slice(0, 3).map(c => (isNativeInverse ? c.nativeTranslation : c.targetWord));
 
     // Fallbacks si hay pocas tarjetas
-    const fallbackDistractors = ['explore', 'journey', 'challenge', 'discover', 'insight'];
+    const fallbackDistractors = isNativeInverse
+      ? ['Explorar', 'Viaje', 'Desafío', 'Descubrir', 'Perspicacia']
+      : ['explore', 'journey', 'challenge', 'discover', 'insight'];
+
     while (distractors.length < 3) {
       const fb = fallbackDistractors.find(w => w !== correctAnswer && !distractors.includes(w));
       if (fb) distractors.push(fb);
-      else distractors.push(`word-${distractors.length}`);
+      else distractors.push(isNativeInverse ? `opción-${distractors.length}` : `word-${distractors.length}`);
     }
 
     return [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
-  }, [activeCard?.id, dictationMode, currentCardIndex]);
+  }, [activeCard?.id, dictationMode, dictationDirection, currentCardIndex]);
 
   // Temporizador para el modo Ráfaga (BURST)
   useEffect(() => {
@@ -148,14 +152,18 @@ export default function AudioLabScreen() {
       // Dictado Normal: Audio en Inglés
       textToSpeak = mode === 'SENTENCE' ? card.contextSentence : card.targetWord;
       language = 'en-US';
-    } else {
-      // Dictado Inverso: Audio en Español
+    } else if (direction === 'INVERSE') {
+      // Dictado Inverso Clásico: Audio en Español
       if (mode === 'SENTENCE') {
         textToSpeak = card.contextTranslation || card.nativeTranslation;
       } else {
         textToSpeak = card.nativeTranslation;
       }
       language = 'es-ES';
+    } else {
+      // Dictado Inverso Nativo: Audio en INGLÉS (para validar traducción en Español)
+      textToSpeak = mode === 'SENTENCE' ? card.contextSentence : card.targetWord;
+      language = 'en-US';
     }
 
     const rate = mode === 'BURST' ? 1.05 : profile.learningPace === 'SLOW' ? 0.75 : 0.95;
@@ -228,7 +236,7 @@ export default function AudioLabScreen() {
               Entrena tu oído fonético con dictado adaptativo a tu velocidad de aprendizaje.
             </Text>
 
-            {/* SELECTOR DIRECCIÓN DE DICTADO: NORMAL vs INVERSO */}
+            {/* SELECTOR DIRECCIÓN DE DICTADO: NORMAL vs INVERSO vs INVERSO NATIVO */}
             <View style={styles.directionControlCard}>
               <Text style={styles.directionControlTitle}>DIRECCIÓN DEL DICTADO:</Text>
               <View style={styles.directionTabs}>
@@ -243,14 +251,14 @@ export default function AudioLabScreen() {
                     dictationDirection === 'NORMAL' && styles.directionTabActive,
                   ]}
                 >
-                  <Headphones size={15} color={dictationDirection === 'NORMAL' ? '#1C1B1B' : '#5E5E5E'} />
+                  <Headphones size={13} color={dictationDirection === 'NORMAL' ? '#1C1B1B' : '#5E5E5E'} />
                   <Text
                     style={[
                       styles.directionTabText,
                       dictationDirection === 'NORMAL' && styles.directionTabTextActive,
                     ]}
                   >
-                    Dictado Normal
+                    Directo
                   </Text>
                 </TouchableOpacity>
 
@@ -265,22 +273,46 @@ export default function AudioLabScreen() {
                     dictationDirection === 'INVERSE' && styles.directionTabActive,
                   ]}
                 >
-                  <Repeat size={15} color={dictationDirection === 'INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
+                  <Repeat size={13} color={dictationDirection === 'INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
                   <Text
                     style={[
                       styles.directionTabText,
                       dictationDirection === 'INVERSE' && styles.directionTabTextActive,
                     ]}
                   >
-                    Dictado Inverso
+                    Inverso
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  activeOpacity={0.85}
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    setDictationDirection('NATIVE_INVERSE');
+                  }}
+                  style={[
+                    styles.directionTab,
+                    dictationDirection === 'NATIVE_INVERSE' && styles.directionTabActive,
+                  ]}
+                >
+                  <Sparkles size={13} color={dictationDirection === 'NATIVE_INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
+                  <Text
+                    style={[
+                      styles.directionTabText,
+                      dictationDirection === 'NATIVE_INVERSE' && styles.directionTabTextActive,
+                    ]}
+                  >
+                    Inverso Nativo
                   </Text>
                 </TouchableOpacity>
               </View>
 
               <Text style={styles.directionExplanation}>
                 {dictationDirection === 'NORMAL'
-                  ? '🎧 Modo Normal: Escuchas el audio en Inglés y escribes/validas en Inglés.'
-                  : '🔄 Modo Inverso: Escuchas el audio/contexto en Español y respondes/validas en Inglés.'}
+                  ? '🎧 Directo: Escuchas en Inglés y escribes en Inglés.'
+                  : dictationDirection === 'INVERSE'
+                  ? '🔄 Inverso: Escuchas en Español y respondes en Inglés.'
+                  : '✨ Inverso Nativo: Escuchas en Inglés nativo y traduces/escribes en Español.'}
               </Text>
             </View>
 
@@ -348,7 +380,7 @@ export default function AudioLabScreen() {
           >
             <Play size={20} color="#1C1B1B" fill="#1C1B1B" />
             <Text style={styles.startSessionBtnText}>
-              INICIAR ({dictationDirection === 'NORMAL' ? 'NORMAL' : 'INVERSO'} • {dictationMode})
+              INICIAR ({dictationDirection === 'NORMAL' ? 'DIRECTO' : dictationDirection === 'INVERSE' ? 'INVERSO' : 'INV. NATIVO'} • {dictationMode})
             </Text>
           </TouchableOpacity>
         </ScrollView>
@@ -377,7 +409,11 @@ export default function AudioLabScreen() {
           <View style={styles.sessionTypePillRow}>
             <View style={styles.directionBadge}>
               <Text style={styles.directionBadgeText}>
-                {dictationDirection === 'NORMAL' ? '🎧 NORMAL (EN➔EN)' : '🔄 INVERSO (ES➔EN)'}
+                {dictationDirection === 'NORMAL'
+                  ? '🎧 DIRECTO (EN➔EN)'
+                  : dictationDirection === 'INVERSE'
+                  ? '🔄 INVERSO (ES➔EN)'
+                  : '✨ INV. NATIVO (EN➔ES)'}
               </Text>
             </View>
             <View style={styles.modeBadge}>
@@ -409,13 +445,13 @@ export default function AudioLabScreen() {
 
             <Text style={styles.audioPromptText}>
               {isSpeakingAudio
-                ? dictationDirection === 'NORMAL'
-                  ? 'Escuchando audio en inglés...'
-                  : 'Escuchando audio en español...'
+                ? dictationDirection === 'INVERSE'
+                  ? 'Escuchando audio en español...'
+                  : 'Escuchando audio nativo en inglés...'
                 : 'Toca para volver a escuchar'}
             </Text>
 
-            {/* En modo inverso, mostrar la pista contextual en español */}
+            {/* En modo inverso clásico, mostrar la pista contextual en español */}
             {dictationDirection === 'INVERSE' && activeCard && (
               <View style={styles.inversePromptCard}>
                 <Text style={styles.inversePromptLabel}>Pista en Español:</Text>
@@ -423,6 +459,16 @@ export default function AudioLabScreen() {
                   {dictationMode === 'SENTENCE'
                     ? activeCard.contextTranslation || activeCard.nativeTranslation
                     : activeCard.nativeTranslation}
+                </Text>
+              </View>
+            )}
+
+            {/* En modo inverso nativo, indicar la consigna */}
+            {dictationDirection === 'NATIVE_INVERSE' && activeCard && (
+              <View style={styles.inversePromptCard}>
+                <Text style={styles.inversePromptLabel}>Consigna:</Text>
+                <Text style={styles.inversePromptText}>
+                  Escucha la pronunciación en inglés y escribe la traducción en español.
                 </Text>
               </View>
             )}
@@ -434,13 +480,18 @@ export default function AudioLabScreen() {
               <Text style={styles.multipleChoiceTitle}>
                 {dictationDirection === 'NORMAL'
                   ? 'Selecciona la palabra en inglés que escuchaste:'
-                  : 'Selecciona la traducción en inglés correcta:'}
+                  : dictationDirection === 'INVERSE'
+                  ? 'Selecciona la traducción en inglés correcta:'
+                  : 'Selecciona la traducción en español correcta:'}
               </Text>
 
               <View style={styles.multipleChoiceGrid}>
                 {burstOptions.map((opt, idx) => {
                   const isSelected = selectedBurstOption === opt;
-                  const isCorrect = opt === activeCard.targetWord;
+                  const isCorrect =
+                    dictationDirection === 'NATIVE_INVERSE'
+                      ? opt === activeCard.nativeTranslation
+                      : opt === activeCard.targetWord;
 
                   let btnStyle: any = styles.mcOptionBtn;
                   let textStyle: any = styles.mcOptionText;
@@ -474,7 +525,15 @@ export default function AudioLabScreen() {
             activeCard && (
               <AdaptiveDictationInput
                 learningPace={profile.learningPace}
-                targetText={dictationMode === 'SENTENCE' ? activeCard.contextSentence : activeCard.targetWord}
+                targetText={
+                  dictationDirection === 'NATIVE_INVERSE'
+                    ? dictationMode === 'SENTENCE'
+                      ? (activeCard.contextTranslation || activeCard.nativeTranslation)
+                      : activeCard.nativeTranslation
+                    : dictationMode === 'SENTENCE'
+                    ? activeCard.contextSentence
+                    : activeCard.targetWord
+                }
                 isSentenceMode={dictationMode === 'SENTENCE'}
                 onInputChange={setCurrentTextValue}
                 onSubmit={handleSubmitEvaluation}
@@ -512,11 +571,25 @@ export default function AudioLabScreen() {
 
               {!lastResult.isCorrect && activeCard && (
                 <View style={styles.correctionBox}>
-                  <Text style={styles.correctionLabel}>Respuesta Correcta en Inglés:</Text>
-                  <Text style={styles.correctionText}>
-                    {dictationMode === 'SENTENCE' ? activeCard.contextSentence : activeCard.targetWord}
+                  <Text style={styles.correctionLabel}>
+                    {dictationDirection === 'NATIVE_INVERSE'
+                      ? 'Traducción Correcta en Español:'
+                      : 'Respuesta Correcta en Inglés:'}
                   </Text>
-                  <Text style={styles.correctionTranslation}>{activeCard.nativeTranslation}</Text>
+                  <Text style={styles.correctionText}>
+                    {dictationDirection === 'NATIVE_INVERSE'
+                      ? dictationMode === 'SENTENCE'
+                        ? (activeCard.contextTranslation || activeCard.nativeTranslation)
+                        : activeCard.nativeTranslation
+                      : dictationMode === 'SENTENCE'
+                      ? activeCard.contextSentence
+                      : activeCard.targetWord}
+                  </Text>
+                  <Text style={styles.correctionTranslation}>
+                    {dictationDirection === 'NATIVE_INVERSE'
+                      ? `Audio en inglés: "${dictationMode === 'SENTENCE' ? activeCard.contextSentence : activeCard.targetWord}"`
+                      : activeCard.nativeTranslation}
+                  </Text>
                 </View>
               )}
             </View>

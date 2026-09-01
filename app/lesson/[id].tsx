@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  TextInput,
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -13,23 +12,28 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
   X,
   Heart,
-  Volume2,
   CheckCircle2,
   XCircle,
-  Star,
   ArrowRight,
   Sparkles,
   Play,
-  Mic,
-  MicOff,
 } from 'lucide-react-native';
-import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
-import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
+import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { useUserStore } from '../../src/store/useUserStore';
-import { Sublesson, SublessonQuestionItem } from '../../src/types';
-import { speechToTextService } from '../../src/services/speechToTextService';
+import { Sublesson, SublessonQuestionItem, SublessonExplanation } from '../../src/types';
+
+// Componentes especializados
+import { TheoryExplanationCard } from '../../src/components/roadmap/TheoryExplanationCard';
+import { MatchPairsQuestion } from '../../src/components/roadmap/questions/MatchPairsQuestion';
+import { FillInBlankQuestion } from '../../src/components/roadmap/questions/FillInBlankQuestion';
+import { MultipleChoiceIcfesQuestion } from '../../src/components/roadmap/questions/MultipleChoiceIcfesQuestion';
+import { SentenceWritingQuestion } from '../../src/components/roadmap/questions/SentenceWritingQuestion';
+import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/questions/SpeakingPronunciationQuestion';
+import { ImageWordMatchQuestion } from '../../src/components/roadmap/questions/ImageWordMatchQuestion';
+
+type LessonPhase = 'SUBLESSON_PICKER' | 'THEORY' | 'QUESTION' | 'CHECKPOINT' | 'SUMMARY' | 'COMPLETE';
 
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -46,39 +50,13 @@ export default function LessonScreen() {
   const visibleSublessons = id ? getVisibleSublessons(id, profile.learningPace) : [];
 
   const [activeSublesson, setActiveSublesson] = useState<Sublesson | null>(null);
+  const [lessonPhase, setLessonPhase] = useState<LessonPhase>('SUBLESSON_PICKER');
+  const [currentExplanation, setCurrentExplanation] = useState<SublessonExplanation | null>(null);
   const [questionIdx, setQuestionIdx] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [writtenInput, setWrittenInput] = useState('');
-  const [matchedPairs, setMatchedPairs] = useState<Record<string, string>>({});
-  const [selectedPairLeft, setSelectedPairLeft] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [isSublessonComplete, setIsSublessonComplete] = useState(false);
-  const [isListeningVoice, setIsListeningVoice] = useState(false);
-
-  const toggleLessonSpeechRecognition = async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    if (isListeningVoice) {
-      speechToTextService.stopListening();
-      setIsListeningVoice(false);
-    } else {
-      setIsListeningVoice(true);
-      const started = await speechToTextService.startListening({
-        language: 'en-US',
-        onResult: (transcript, isFinal) => {
-          setWrittenInput(transcript);
-          if (isFinal) {
-            setIsListeningVoice(false);
-          }
-        },
-        onError: () => setIsListeningVoice(false),
-        onEnd: () => setIsListeningVoice(false),
-      });
-      if (!started) {
-        setIsListeningVoice(false);
-      }
-    }
-  };
 
   if (!node) {
     return (
@@ -93,8 +71,8 @@ export default function LessonScreen() {
     );
   }
 
-  // Si no ha seleccionado sublección, mostrar el selector de sublecciones del nodo
-  if (!activeSublesson) {
+  // 1. SELECCIÓN DE SUBLECCIONES DEL NODO
+  if (lessonPhase === 'SUBLESSON_PICKER' || !activeSublesson) {
     return (
       <View style={[styles.safeArea, { paddingTop: topPadding }]}>
         <View style={styles.header}>
@@ -128,6 +106,8 @@ export default function LessonScreen() {
 
           {visibleSublessons.map((sub, idx) => {
             const isDone = sub.isCompleted;
+            const hasTheory = (sub.explanations || []).length > 0;
+
             return (
               <TouchableOpacity
                 key={sub.id}
@@ -137,10 +117,17 @@ export default function LessonScreen() {
                   setActiveSublesson(sub);
                   setQuestionIdx(0);
                   setIsAnswered(false);
-                  setIsSublessonComplete(false);
                   setSelectedOption(null);
                   setWrittenInput('');
-                  setMatchedPairs({});
+
+                  // Si la sublección contiene explicación INTRO, mostrarla primero estilo SoloLearn
+                  const introExp = (sub.explanations || []).find(e => e.placement === 'INTRO');
+                  if (introExp) {
+                    setCurrentExplanation(introExp);
+                    setLessonPhase('THEORY');
+                  } else {
+                    setLessonPhase('QUESTION');
+                  }
                 }}
                 style={[styles.sublessonCard, isDone && styles.sublessonCardDone]}
               >
@@ -151,7 +138,7 @@ export default function LessonScreen() {
                 <View style={styles.sublessonInfo}>
                   <Text style={styles.sublessonTitle}>{sub.title}</Text>
                   <Text style={styles.sublessonMeta}>
-                    +{sub.xpReward || 20} XP • {sub.questions?.length || 3} Ejercicios
+                    +{sub.xpReward || 20} XP • {sub.questions?.length || 5} Ejercicios {hasTheory ? '• 💡 Con Teoría' : ''}
                   </Text>
                 </View>
 
@@ -170,27 +157,97 @@ export default function LessonScreen() {
     );
   }
 
-  // 2. EJECUCIÓN DE PREGUNTAS DE LA SUBLECCIÓN
+  // 2. FASES DE TEORÍA SOLOLEARN (INTRO, CHECKPOINT, SUMMARY)
+  if (
+    (lessonPhase === 'THEORY' || lessonPhase === 'CHECKPOINT' || lessonPhase === 'SUMMARY') &&
+    currentExplanation
+  ) {
+    return (
+      <View style={[styles.safeArea, { paddingTop: topPadding }]}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => {
+              setLessonPhase('SUBLESSON_PICKER');
+              setActiveSublesson(null);
+            }}
+            style={styles.headerCloseBtn}
+          >
+            <X size={20} color="#5E5E5E" />
+          </TouchableOpacity>
+          <View style={styles.headerTitleBox}>
+            <Text style={styles.nodeCategoryTag}>{activeSublesson.title}</Text>
+            <Text style={styles.nodeMainTitle} numberOfLines={1}>{currentExplanation.title}</Text>
+          </View>
+          <View style={styles.livesBadge}>
+            <Heart size={16} color="#EF4444" fill="#EF4444" />
+            <Text style={styles.livesText}>{lives.currentLives}</Text>
+          </View>
+        </View>
+
+        <TheoryExplanationCard
+          explanation={currentExplanation}
+          learningPace={profile.learningPace}
+          onContinue={() => {
+            if (lessonPhase === 'THEORY' || lessonPhase === 'CHECKPOINT') {
+              setLessonPhase('QUESTION');
+            } else if (lessonPhase === 'SUMMARY') {
+              completeSublesson(node.id, activeSublesson.id, 100);
+              registerDailyActivity('LESSON');
+              setLessonPhase('COMPLETE');
+            }
+          }}
+        />
+      </View>
+    );
+  }
+
+  // 3. FASE DE FINALIZACIÓN Y RECOMPENSA DE XP
+  if (lessonPhase === 'COMPLETE') {
+    return (
+      <View style={[styles.safeArea, { paddingTop: topPadding }]}>
+        <View style={[styles.completedSublessonBox, { paddingBottom: bottomPadding + 20 }]}>
+          <Sparkles size={64} color="#E8B400" />
+          <Text style={styles.completedSubTitle}>¡Sublección Dominada!</Text>
+          <Text style={styles.completedSubMeta}>
+            Completaste con éxito todos los ejercicios pedagógicos.
+          </Text>
+          <View style={styles.xpRewardPill}>
+            <Text style={styles.xpRewardText}>+{activeSublesson.xpReward || 20} XP Ganados</Text>
+          </View>
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              setLessonPhase('SUBLESSON_PICKER');
+              setActiveSublesson(null);
+            }}
+            style={styles.finishSublessonBtn}
+          >
+            <Text style={styles.finishSublessonBtnText}>CONTINUAR AL ROADMAP</Text>
+            <ArrowRight size={18} color="#1C1B1B" />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  // 4. EJECUCIÓN DE PREGUNTAS DE LA SUBLECCIÓN
   const currentQuestions = activeSublesson.questions || [];
   const currentQ: SublessonQuestionItem | undefined = currentQuestions[questionIdx];
 
-  const handleSpeak = (text: string) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Speech.speak(text, { language: 'en-US' });
-  };
-
   const handleEvaluateCurrent = () => {
-    if (!currentQ) return;
+    if (!currentQ || isAnswered) return;
 
     let correct = false;
 
-    if (currentQ.type === 'FILL_IN_BLANK' || currentQ.type === 'MULTIPLE_CHOICE_ICFES' || currentQ.type === 'IMAGE_WORD_MATCH') {
+    if (
+      currentQ.type === 'FILL_IN_BLANK' ||
+      currentQ.type === 'MULTIPLE_CHOICE_ICFES' ||
+      currentQ.type === 'IMAGE_WORD_MATCH'
+    ) {
       correct = selectedOption?.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
     } else if (currentQ.type === 'SENTENCE_WRITING' || currentQ.type === 'SPEAKING_PRONUNCIATION') {
       correct = writtenInput.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
-    } else if (currentQ.type === 'MATCH_PAIRS') {
-      const keys = Object.keys(currentQ.correctAnswer || {});
-      correct = keys.every(k => matchedPairs[k] === currentQ.correctAnswer[k]);
     }
 
     setIsCorrect(correct);
@@ -207,25 +264,51 @@ export default function LessonScreen() {
 
   const handleNextQuestion = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    if (questionIdx + 1 < currentQuestions.length) {
-      setQuestionIdx(questionIdx + 1);
+
+    // Verificar si hay una explicación MID_CHECKPOINT para el siguiente índice
+    const nextIdx = questionIdx + 1;
+    const checkpointExp = (activeSublesson.explanations || []).find(
+      e => e.placement === 'MID_CHECKPOINT' && e.triggerQuestionIndex === nextIdx
+    );
+
+    if (checkpointExp) {
+      setCurrentExplanation(checkpointExp);
+      setLessonPhase('CHECKPOINT');
+      setQuestionIdx(nextIdx);
       setIsAnswered(false);
       setSelectedOption(null);
       setWrittenInput('');
-      setMatchedPairs({});
-      setSelectedPairLeft(null);
+      return;
+    }
+
+    if (nextIdx < currentQuestions.length) {
+      setQuestionIdx(nextIdx);
+      setIsAnswered(false);
+      setSelectedOption(null);
+      setWrittenInput('');
     } else {
-      completeSublesson(node.id, activeSublesson.id, 100);
-      registerDailyActivity('LESSON');
-      setIsSublessonComplete(true);
+      // Verificar si hay una explicación FINAL_SUMMARY antes de completar
+      const summaryExp = (activeSublesson.explanations || []).find(e => e.placement === 'FINAL_SUMMARY');
+      if (summaryExp) {
+        setCurrentExplanation(summaryExp);
+        setLessonPhase('SUMMARY');
+      } else {
+        completeSublesson(node.id, activeSublesson.id, 100);
+        registerDailyActivity('LESSON');
+        setLessonPhase('COMPLETE');
+      }
     }
   };
 
   return (
     <View style={[styles.safeArea, { paddingTop: topPadding }]}>
+      {/* Header con Barra de Progreso */}
       <View style={styles.header}>
         <TouchableOpacity
-          onPress={() => setActiveSublesson(null)}
+          onPress={() => {
+            setLessonPhase('SUBLESSON_PICKER');
+            setActiveSublesson(null);
+          }}
           style={styles.headerCloseBtn}
         >
           <X size={20} color="#5E5E5E" />
@@ -244,124 +327,89 @@ export default function LessonScreen() {
         </View>
       </View>
 
-      {!isSublessonComplete && currentQ ? (
+      {currentQ && (
         <ScrollView
-          contentContainerStyle={[styles.questionContent, { paddingBottom: 100 + bottomPadding }]}
+          contentContainerStyle={[styles.questionContent, { paddingBottom: 110 + bottomPadding }]}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.qTypeBadge}>
-            <Text style={styles.qTypeBadgeText}>{currentQ.type}</Text>
-          </View>
+          {/* 1. MATCH PAIRS (EMPAREJAR PAREJAS) */}
+          {currentQ.type === 'MATCH_PAIRS' && (
+            <MatchPairsQuestion
+              prompt={currentQ.prompt}
+              pairs={(currentQ.options as Record<string, string>) || {}}
+              onComplete={(isDone) => {
+                setIsCorrect(isDone);
+                setIsAnswered(true);
+                if (isDone) addXP(10);
+              }}
+              disabled={isAnswered}
+            />
+          )}
 
-          <Text style={styles.promptText}>{currentQ.prompt}</Text>
+          {/* 2. FILL IN THE BLANK (COMPLETAR ESPACIO) */}
+          {currentQ.type === 'FILL_IN_BLANK' && (
+            <FillInBlankQuestion
+              prompt={currentQ.prompt}
+              options={Array.isArray(currentQ.options) ? currentQ.options : []}
+              selectedWord={selectedOption}
+              onSelectWord={setSelectedOption}
+              disabled={isAnswered}
+            />
+          )}
 
+          {/* 3. MULTIPLE CHOICE ICFES & GENERAL */}
+          {currentQ.type === 'MULTIPLE_CHOICE_ICFES' && (
+            <MultipleChoiceIcfesQuestion
+              prompt={currentQ.prompt}
+              options={Array.isArray(currentQ.options) ? currentQ.options : []}
+              selectedOption={selectedOption}
+              onSelectOption={setSelectedOption}
+              isAnswered={isAnswered}
+              correctAnswer={String(currentQ.correctAnswer)}
+              disabled={isAnswered}
+            />
+          )}
+
+          {/* 4. SENTENCE WRITING (CONSTRUCCIÓN DE ORACIONES) */}
+          {currentQ.type === 'SENTENCE_WRITING' && (
+            <SentenceWritingQuestion
+              prompt={currentQ.prompt}
+              correctAnswer={String(currentQ.correctAnswer)}
+              value={writtenInput}
+              onChangeValue={setWrittenInput}
+              disabled={isAnswered}
+            />
+          )}
+
+          {/* 5. SPEAKING PRONUNCIATION (PRÁCTICA ORAL) */}
           {currentQ.type === 'SPEAKING_PRONUNCIATION' && (
-            <TouchableOpacity
-              onPress={() => handleSpeak(String(currentQ.correctAnswer))}
-              style={styles.audioPromptBtn}
-            >
-              <Volume2 size={24} color="#765A00" />
-              <Text style={styles.audioPromptBtnText}>Escuchar Pronunciación</Text>
-            </TouchableOpacity>
+            <SpeakingPronunciationQuestion
+              prompt={currentQ.prompt}
+              targetSentence={String(currentQ.correctAnswer)}
+              recordedText={writtenInput}
+              onRecordResult={setWrittenInput}
+              disabled={isAnswered}
+            />
           )}
 
-          {(currentQ.type === 'FILL_IN_BLANK' || currentQ.type === 'MULTIPLE_CHOICE_ICFES' || currentQ.type === 'IMAGE_WORD_MATCH') && currentQ.options && (
-            <View style={styles.optionsList}>
-              {(Array.isArray(currentQ.options) ? currentQ.options : []).map((opt: string, i: number) => {
-                const isSelected = selectedOption === opt;
-                return (
-                  <TouchableOpacity
-                    key={i}
-                    disabled={isAnswered}
-                    onPress={() => {
-                      Haptics.selectionAsync();
-                      setSelectedOption(opt);
-                    }}
-                    style={[styles.optionBtn, isSelected && styles.optionBtnSelected]}
-                  >
-                    <Text style={[styles.optionBtnText, isSelected && styles.optionBtnTextSelected]}>
-                      {opt}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
+          {/* 6. IMAGE WORD MATCH (VOCABULARIO VISUAL) */}
+          {currentQ.type === 'IMAGE_WORD_MATCH' && (
+            <ImageWordMatchQuestion
+              prompt={currentQ.prompt}
+              options={Array.isArray(currentQ.options) ? currentQ.options : []}
+              selectedOption={selectedOption}
+              onSelectOption={setSelectedOption}
+              isAnswered={isAnswered}
+              correctAnswer={String(currentQ.correctAnswer)}
+              disabled={isAnswered}
+            />
           )}
 
-          {(currentQ.type === 'SENTENCE_WRITING' || currentQ.type === 'SPEAKING_PRONUNCIATION') && (
-            <View style={styles.inputSection}>
-              <TextInput
-                style={styles.sentenceInput}
-                placeholder="Escribe o repite la frase exacta..."
-                placeholderTextColor="#747878"
-                value={writtenInput}
-                onChangeText={setWrittenInput}
-                editable={!isAnswered}
-                autoCapitalize="none"
-              />
-              <View style={styles.voiceActionsRow}>
-                <TouchableOpacity
-                  onPress={toggleLessonSpeechRecognition}
-                  style={[styles.voiceDictateBtn, isListeningVoice && styles.voiceDictateBtnActive]}
-                >
-                  {isListeningVoice ? (
-                    <MicOff size={16} color="#BA1A1A" />
-                  ) : (
-                    <Mic size={16} color="#765A00" />
-                  )}
-                  <Text
-                    style={[
-                      styles.voiceDictateBtnText,
-                      isListeningVoice && styles.voiceDictateTextActive,
-                    ]}
-                  >
-                    {isListeningVoice ? 'Escuchando... (Toca para parar)' : 'Hablar por Micrófono'}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => setWrittenInput(String(currentQ.correctAnswer))}
-                  style={styles.demoFillBtn}
-                >
-                  <Text style={styles.demoFillBtnText}>Demo</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          )}
-
-          {currentQ.type === 'MATCH_PAIRS' && currentQ.options && (
-            <View style={styles.matchingSection}>
-              <Text style={styles.matchingHint}>Toca un elemento y luego su par:</Text>
-              <View style={styles.pairsContainer}>
-                {Object.keys(currentQ.options).map((leftKey) => {
-                  const isMatched = !!matchedPairs[leftKey];
-                  const isSelected = selectedPairLeft === leftKey;
-                  return (
-                    <TouchableOpacity
-                      key={leftKey}
-                      onPress={() => {
-                        Haptics.selectionAsync();
-                        setSelectedPairLeft(leftKey);
-                        setMatchedPairs(prev => ({ ...prev, [leftKey]: currentQ.options[leftKey] }));
-                      }}
-                      style={[
-                        styles.pairLeftChip,
-                        isSelected && styles.pairLeftChipSelected,
-                        isMatched && styles.pairLeftChipMatched,
-                      ]}
-                    >
-                      <Text style={styles.pairLeftText}>{leftKey}</Text>
-                      {isMatched && <CheckCircle2 size={14} color="#16A34A" />}
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          )}
-
+          {/* Banner de Retroalimentación de la Evaluación */}
           {isAnswered && (
             <View style={[styles.feedbackBanner, isCorrect ? styles.feedbackCorrect : styles.feedbackWrong]}>
               <View style={styles.feedbackHeaderRow}>
-                {isCorrect ? <CheckCircle2 size={20} color="#16A34A" /> : <XCircle size={20} color="#BA1A1A" />}
+                {isCorrect ? <CheckCircle2 size={22} color="#16A34A" /> : <XCircle size={22} color="#BA1A1A" />}
                 <Text style={[styles.feedbackTitle, isCorrect ? styles.feedbackTitleGreen : styles.feedbackTitleRed]}>
                   {isCorrect ? '¡CORRECTO! (+10 XP)' : 'RESPUESTA INCORRECTA'}
                 </Text>
@@ -372,34 +420,29 @@ export default function LessonScreen() {
             </View>
           )}
         </ScrollView>
-      ) : (
-        <View style={[styles.completedSublessonBox, { paddingBottom: bottomPadding + 20 }]}>
-          <Sparkles size={56} color="#E8B400" />
-          <Text style={styles.completedSubTitle}>¡Sublección Completada!</Text>
-          <Text style={styles.completedSubMeta}>Ganaste +{activeSublesson.xpReward || 20} XP</Text>
-          <TouchableOpacity
-            onPress={() => setActiveSublesson(null)}
-            style={styles.finishSublessonBtn}
-          >
-            <Text style={styles.finishSublessonBtnText}>VOLVER AL NODO</Text>
-          </TouchableOpacity>
-        </View>
       )}
 
-      {!isSublessonComplete && (
-        <View style={[styles.footer, { paddingBottom: bottomPadding }]}>
-          {!isAnswered ? (
-            <TouchableOpacity onPress={handleEvaluateCurrent} style={styles.actionBtn}>
-              <Text style={styles.actionBtnText}>COMPROBAR</Text>
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={handleNextQuestion} style={styles.nextBtn}>
-              <Text style={styles.nextBtnText}>CONTINUAR</Text>
-              <ArrowRight size={18} color="#FFFFFF" />
-            </TouchableOpacity>
-          )}
-        </View>
-      )}
+      {/* Footer de Acción Inferior */}
+      <View style={[styles.footer, { paddingBottom: bottomPadding }]}>
+        {!isAnswered ? (
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={handleEvaluateCurrent}
+            style={styles.actionBtn}
+          >
+            <Text style={styles.actionBtnText}>COMPROBAR</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={handleNextQuestion}
+            style={styles.nextBtn}
+          >
+            <Text style={styles.nextBtnText}>CONTINUAR</Text>
+            <ArrowRight size={20} color="#FFFFFF" />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 }
@@ -450,14 +493,30 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   nodeCategoryTag: {
-    color: '#765A00',
     fontSize: 10,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#765A00',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
   },
   nodeMainTitle: {
-    color: '#1C1B1B',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '800',
+    color: '#1C1B1B',
+  },
+  livesBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: '#FFF0F0',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  livesText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#EF4444',
   },
   progressBarTrack: {
     flex: 1,
@@ -468,292 +527,126 @@ const styles = StyleSheet.create({
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: '#E8B400',
-  },
-  livesBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FEE2E2',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 10,
-    gap: 4,
-  },
-  livesText: {
-    color: '#BA1A1A',
-    fontSize: 12,
-    fontWeight: '800',
+    backgroundColor: '#16A34A',
+    borderRadius: 4,
   },
   sublessonsList: {
     padding: SPACING.md,
   },
   nodeIntroCard: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 20,
     padding: SPACING.md,
-    marginBottom: SPACING.lg,
+    borderRadius: 18,
     borderWidth: 1,
     borderColor: '#E0E0E0',
+    marginBottom: SPACING.md,
     ...SHADOWS.card,
   },
   nodeIntroDesc: {
-    color: '#5E5E5E',
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: 14,
+    color: '#49454F',
+    lineHeight: 20,
+    marginBottom: 8,
   },
   paceTag: {
-    backgroundColor: '#FFF8E1',
-    borderRadius: 10,
-    padding: 8,
-    marginTop: 10,
-    borderLeftWidth: 3,
-    borderLeftColor: '#E8B400',
+    backgroundColor: '#FFF9E6',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
   },
   paceTagText: {
-    color: '#765A00',
     fontSize: 11,
     fontWeight: '700',
+    color: '#765A00',
   },
   sublessonsHeading: {
-    color: '#1C1B1B',
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 0.5,
-    marginBottom: SPACING.md,
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#765A00',
+    letterSpacing: 0.8,
+    marginBottom: SPACING.sm,
+    marginLeft: 4,
   },
   sublessonCard: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    borderRadius: 18,
     padding: SPACING.md,
-    marginBottom: SPACING.md,
-    borderWidth: 1,
+    borderRadius: 18,
+    borderWidth: 1.5,
     borderColor: '#E0E0E0',
+    marginBottom: SPACING.sm,
     gap: 12,
     ...SHADOWS.card,
   },
   sublessonCardDone: {
-    borderColor: '#16A34A',
-    backgroundColor: '#DCFCE7',
+    backgroundColor: '#F0FDF4',
+    borderColor: '#86EFAC',
   },
   sublessonOrderCircle: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#FFF8E1',
-    alignItems: 'center',
+    backgroundColor: '#FFF9E6',
     justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#D4A400',
+    borderColor: '#E8B400',
   },
   sublessonOrderText: {
-    color: '#765A00',
     fontSize: 13,
-    fontWeight: '800',
+    fontWeight: '900',
+    color: '#765A00',
   },
   sublessonInfo: {
     flex: 1,
   },
   sublessonTitle: {
-    color: '#1C1B1B',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '800',
+    color: '#1C1B1B',
+    marginBottom: 2,
   },
   sublessonMeta: {
+    fontSize: 12,
     color: '#5E5E5E',
-    fontSize: 11,
-    marginTop: 2,
   },
   startSublessonBtn: {
     width: 32,
     height: 32,
     borderRadius: 16,
     backgroundColor: '#E8B400',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   questionContent: {
-    padding: SPACING.lg,
-    paddingBottom: 100,
-  },
-  qTypeBadge: {
-    backgroundColor: '#FFF8E1',
-    alignSelf: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 10,
-    marginBottom: SPACING.md,
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  qTypeBadgeText: {
-    color: '#765A00',
-    fontSize: 10,
-    fontWeight: '800',
-  },
-  promptText: {
-    color: '#1C1B1B',
-    fontSize: 18,
-    fontWeight: '800',
-    lineHeight: 24,
-    marginBottom: SPACING.lg,
-  },
-  audioPromptBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF8E1',
     padding: SPACING.md,
-    borderRadius: 16,
-    gap: 10,
-    marginBottom: SPACING.lg,
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  audioPromptBtnText: {
-    color: '#765A00',
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  optionsList: {
-    gap: 10,
-  },
-  optionBtn: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: SPACING.md,
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-    ...SHADOWS.card,
-  },
-  optionBtnSelected: {
-    borderColor: '#E8B400',
-    backgroundColor: '#FFF8E1',
-  },
-  optionBtnText: {
-    color: '#1C1B1B',
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  optionBtnTextSelected: {
-    color: '#765A00',
-    fontWeight: '800',
-  },
-  inputSection: {
-    gap: 12,
-  },
-  sentenceInput: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 16,
-    color: '#1C1B1B',
-    fontSize: 16,
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-  },
-  voiceActionsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  voiceDictateBtn: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF8E1',
-    borderWidth: 1.5,
-    borderColor: '#E8B400',
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    borderRadius: 14,
-    gap: 6,
-    ...SHADOWS.card,
-  },
-  voiceDictateBtnActive: {
-    backgroundColor: '#FEE2E2',
-    borderColor: '#BA1A1A',
-  },
-  voiceDictateBtnText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '800',
-  },
-  voiceDictateTextActive: {
-    color: '#BA1A1A',
-  },
-  demoFillBtn: {
-    backgroundColor: '#F1EDEC',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-  },
-  demoFillBtnText: {
-    color: '#5E5E5E',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  matchingSection: {
-    gap: 10,
-  },
-  matchingHint: {
-    color: '#5E5E5E',
-    fontSize: 12,
-    marginBottom: 6,
-  },
-  pairsContainer: {
-    gap: 8,
-  },
-  pairLeftChip: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 14,
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-  },
-  pairLeftChipSelected: {
-    borderColor: '#E8B400',
-    backgroundColor: '#FFF8E1',
-  },
-  pairLeftChipMatched: {
-    borderColor: '#16A34A',
-    backgroundColor: '#DCFCE7',
-  },
-  pairLeftText: {
-    color: '#1C1B1B',
-    fontSize: 14,
-    fontWeight: '700',
   },
   feedbackBanner: {
-    borderRadius: 16,
+    borderRadius: 18,
     padding: SPACING.md,
     marginTop: SPACING.lg,
     borderWidth: 1.5,
   },
   feedbackCorrect: {
-    backgroundColor: '#DCFCE7',
-    borderColor: '#16A34A',
+    backgroundColor: '#F0FDF4',
+    borderColor: '#86EFAC',
   },
   feedbackWrong: {
-    backgroundColor: '#FEE2E2',
-    borderColor: '#BA1A1A',
+    backgroundColor: '#FEF2F2',
+    borderColor: '#FCA5A5',
   },
   feedbackHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 8,
+    marginBottom: 4,
   },
   feedbackTitle: {
     fontSize: 14,
     fontWeight: '900',
+    letterSpacing: 0.5,
   },
   feedbackTitleGreen: {
     color: '#16A34A',
@@ -762,77 +655,99 @@ const styles = StyleSheet.create({
     color: '#BA1A1A',
   },
   feedbackExplanation: {
-    color: '#1C1B1B',
-    fontSize: 12,
-    marginTop: 6,
-    lineHeight: 16,
-  },
-  completedSublessonBox: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: SPACING.lg,
-  },
-  completedSubTitle: {
-    color: '#1C1B1B',
-    fontSize: 22,
-    fontWeight: '900',
-    marginTop: 12,
-  },
-  completedSubMeta: {
-    color: '#765A00',
-    fontSize: 15,
-    fontWeight: '800',
-    marginTop: 4,
-    marginBottom: SPACING.lg,
-  },
-  finishSublessonBtn: {
-    backgroundColor: '#E8B400',
-    borderRadius: 16,
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    ...SHADOWS.card,
-  },
-  finishSublessonBtnText: {
-    color: '#1C1B1B',
     fontSize: 13,
-    fontWeight: '900',
+    color: '#49454F',
+    lineHeight: 18,
+    marginTop: 4,
   },
   footer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    padding: SPACING.md,
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderTopColor: '#E0E0E0',
+    paddingHorizontal: SPACING.md,
+    paddingTop: 12,
   },
   actionBtn: {
     backgroundColor: '#E8B400',
-    borderRadius: 16,
-    paddingVertical: 14,
+    paddingVertical: 16,
+    borderRadius: 18,
     alignItems: 'center',
+    justifyContent: 'center',
+    ...SHADOWS.card,
   },
   actionBtnText: {
     color: '#1C1B1B',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '900',
     letterSpacing: 0.5,
   },
   nextBtn: {
+    backgroundColor: '#16A34A',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#16A34A',
-    borderRadius: 16,
-    paddingVertical: 14,
-    gap: 6,
+    paddingVertical: 16,
+    borderRadius: 18,
+    gap: 8,
+    ...SHADOWS.card,
   },
   nextBtnText: {
     color: '#FFFFFF',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '900',
     letterSpacing: 0.5,
+  },
+  completedSublessonBox: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: SPACING.xl,
+  },
+  completedSubTitle: {
+    fontSize: 22,
+    fontWeight: '900',
+    color: '#1C1B1B',
+    marginTop: 16,
+  },
+  completedSubMeta: {
+    fontSize: 14,
+    color: '#5E5E5E',
+    textAlign: 'center',
+    marginTop: 6,
+    lineHeight: 20,
+  },
+  xpRewardPill: {
+    backgroundColor: '#FFF9E6',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: '#E8B400',
+    marginVertical: 20,
+  },
+  xpRewardText: {
+    fontSize: 15,
+    fontWeight: '900',
+    color: '#765A00',
+  },
+  finishSublessonBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8B400',
+    paddingVertical: 16,
+    paddingHorizontal: 28,
+    borderRadius: 18,
+    gap: 10,
+    ...SHADOWS.card,
+  },
+  finishSublessonBtnText: {
+    color: '#1C1B1B',
+    fontSize: 15,
+    fontWeight: '900',
   },
 });

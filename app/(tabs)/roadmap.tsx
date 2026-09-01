@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   LayoutChangeEvent,
 } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import Svg, { Line, Path } from 'react-native-svg';
 import {
   Sparkles,
@@ -17,6 +17,7 @@ import {
   Lock,
   ChevronRight,
   Flame,
+  Zap,
 } from 'lucide-react-native';
 import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
@@ -27,9 +28,12 @@ import { RoadmapNode } from '../../src/types';
 
 export default function RoadmapScreen() {
   const router = useRouter();
+  const params = useLocalSearchParams<{ focusNode?: string }>();
   const { nodes, selectNode } = useRoadmapStore();
   const { profile } = useUserStore();
   const [treeWidth, setTreeWidth] = useState<number>(340);
+
+  const isA2Focused = params.focusNode === 'a2_node_9' || profile.diagnosedLevel === 'A2';
 
   const handleSelectNode = (node: RoadmapNode) => {
     selectNode(node.id);

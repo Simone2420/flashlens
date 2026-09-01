@@ -38,7 +38,7 @@ export default function DiagnosticResultScreen() {
   }>();
 
   const { setDiagnosedLevel, setLearningPace, profile } = useUserStore();
-  const { recalculatePaceTransition } = useRoadmapStore();
+  const { recalculatePaceTransition, applyDiagnosticLevel } = useRoadmapStore();
 
   const total = Number(params.total) || 25;
   const correct = Number(params.correct) || 18;
@@ -50,8 +50,14 @@ export default function DiagnosticResultScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     setDiagnosedLevel(level);
     setLearningPace(selectedPace);
+    applyDiagnosticLevel(level);
     recalculatePaceTransition(selectedPace);
-    router.replace('/(tabs)/roadmap' as any);
+    router.replace({
+      pathname: '/(tabs)/roadmap' as any,
+      params: {
+        focusNode: level === 'A2' ? 'a2_node_9' : 'a1_node_1',
+      },
+    });
   };
 
   return (

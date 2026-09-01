@@ -58,6 +58,7 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       sessionCards,
       currentCardIndex,
       dictationMode,
+      dictationDirection,
       comboCount,
       maxCombo,
       totalScore,
@@ -74,14 +75,25 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       };
     }
 
-    // La respuesta esperada en inglés siempre es la palabra u oración meta
-    const targetText =
-      dictationMode === 'SENTENCE'
-        ? currentCard.contextSentence
-        : currentCard.targetWord;
+    const isNativeInverse = dictationDirection === 'NATIVE_INVERSE';
 
-    // DictationAlgorithm.evaluate recibe (userInput, targetText)
-    const result = DictationAlgorithm.evaluate(userInput, targetText);
+    // Si es Dictado Inverso Nativo, la respuesta esperada es en ESPAÑOL
+    let targetText = '';
+    if (isNativeInverse) {
+      targetText =
+        dictationMode === 'SENTENCE'
+          ? (currentCard.contextTranslation || currentCard.nativeTranslation)
+          : currentCard.nativeTranslation;
+    } else {
+      // Dictado Normal o Inverso Tradicional: la respuesta esperada es en INGLÉS
+      targetText =
+        dictationMode === 'SENTENCE'
+          ? currentCard.contextSentence
+          : currentCard.targetWord;
+    }
+
+    // DictationAlgorithm.evaluate con soporte para español
+    const result = DictationAlgorithm.evaluate(userInput, targetText, isNativeInverse);
 
     if (result.isCorrect) {
       const newCombo = comboCount + 1;

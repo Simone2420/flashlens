@@ -40,7 +40,7 @@ export type ConceptCategory =
   | 'ABSTRACT_NOUN';
 
 export type DictationInputMode = 'FREE_TEXT' | 'EXACT_BOXES' | 'DYNAMIC_EXPANDING';
-export type DictationDirection = 'NORMAL' | 'INVERSE';
+export type DictationDirection = 'NORMAL' | 'INVERSE' | 'NATIVE_INVERSE';
 
 export interface UserProfile {
   id: string;
@@ -115,6 +115,43 @@ export type QuestionType =
   | 'IMAGE_WORD_MATCH'
   | 'MULTIPLE_CHOICE_ICFES';
 
+export type ExplanationPlacement = 'INTRO' | 'MID_CHECKPOINT' | 'FINAL_SUMMARY';
+
+export interface ContrastExample {
+  en: string;
+  es: string;
+  highlightEn?: string;
+  highlightEs?: string;
+  note?: string;
+}
+
+export interface CommonPitfallItem {
+  pitfallId?: string;
+  ruleTitle?: string;
+  wrongExample?: string;
+  correctExample?: string;
+  fastPill?: string;
+  mediumExplanation?: string;
+  slowDeepDive?: string;
+}
+
+export interface SublessonExplanation {
+  id: string;
+  sublessonId: string;
+  title: string;
+  slideOrder: number;
+  placement: ExplanationPlacement;
+  triggerQuestionIndex: number;
+  grammarFormula?: string;
+  summaryShort: string;
+  conceptBreakdown: string;
+  deepDiveNotes?: string;
+  keyTakeaways?: string[];
+  contrastExamples?: ContrastExample[];
+  commonPitfalls?: CommonPitfallItem[];
+  audioSampleUrl?: string;
+}
+
 export interface SublessonQuestionItem {
   id: string;
   type: QuestionType;
@@ -137,6 +174,7 @@ export interface Sublesson {
   xpReward: number;
   isCompleted: boolean;
   score: number;
+  explanations?: SublessonExplanation[];
   questions: SublessonQuestionItem[];
 }
 

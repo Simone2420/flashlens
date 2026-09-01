@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RoadmapNode, Sublesson, LearningPace } from '../types';
+import { RoadmapNode, Sublesson, LearningPace, CEFRLevel } from '../types';
 import { MOCK_ROADMAP_NODES } from '../data/mockData';
 
 interface RoadmapState {
@@ -14,6 +14,7 @@ interface RoadmapState {
   getVisibleSublessons: (nodeId: string, pace: LearningPace) => Sublesson[];
   completeSublesson: (nodeId: string, sublessonId: string, score: number) => { xpEarned: number; nodeCompleted: boolean };
   recalculatePaceTransition: (newPace: LearningPace) => void;
+  applyDiagnosticLevel: (level: CEFRLevel) => void;
   resetRoadmapProgress: () => void;
 }
 
@@ -117,6 +118,42 @@ export const useRoadmapStore = create<RoadmapState>()(
         });
 
         set({ nodes: updatedNodes });
+      },
+
+      applyDiagnosticLevel: (level: CEFRLevel) => {
+        const { nodes } = get();
+        const updatedNodes = nodes.map(node => {
+          if (level === 'A2') {
+            // Si el nivel diagnosticado es A2, los nodos de A1 se consideran dominados
+            if (node.cefrLevel === 'A1') {
+              const completedSubs = (node.sublessons || []).map(s => ({
+                ...s,
+                isCompleted: true,
+                score: 100,
+              }));
+              return {
+                ...node,
+                status: 'COMPLETED' as const,
+                starsEarned: 3,
+                completedSublessons: node.totalSublessons,
+                sublessons: completedSubs,
+              };
+            }
+            // El primer nodo de A2 se activa
+            if (node.id === 'a2_node_9') {
+              return {
+                ...node,
+                status: 'ACTIVE' as const,
+              };
+            }
+          }
+          return node;
+        });
+
+        set({
+          nodes: updatedNodes,
+          selectedNodeId: level === 'A2' ? 'a2_node_9' : 'a1_node_1',
+        });
       },
 
       resetRoadmapProgress: () => {
