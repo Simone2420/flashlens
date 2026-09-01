@@ -13,8 +13,8 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [];
 export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
     "id": "a1_node_1",
-    "title": "1. Fonética Esencial & Saludos",
-    "description": "Pares mínimos vocálicos (/ɪ/ vs /iː/), entonación, saludos formales e informales y cortesía en inglés.",
+    "title": "1. Primeros Pasos & Comunicación Básica",
+    "description": "Saludos formales e informales, presentaciones, alfabeto completo A-Z, pares fonéticos y despedidas casuales.",
     "category": "PHONETICS",
     "cefrLevel": "A1",
     "orderIndex": 1,
@@ -28,7 +28,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_1-1",
         "nodeId": "a1_node_1",
-        "title": "1. Pares Mínimos /ɪ/ vs /iː/",
+        "title": "1. Saludos & Presentaciones Personales",
         "orderIndex": 1,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -38,62 +38,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-1-1",
             "sublessonId": "sub-a1_node_1-1",
-            "title": "Concepto Clave: 1. Pares Mínimos /ɪ/ vs /iː/",
+            "title": "1. Saludos & Presentaciones Personales",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "/ɪ/ (corta: ship, live) ≠ /iː/ (larga: sheep, leave)",
-            "summaryShort": "En inglés, la duración y tensión vocálica cambia el significado de la palabra.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Pares Mínimos /ɪ/ vs /iː/. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Pares Mínimos /ɪ/ vs /iː/.",
+            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
+            "summaryShort": "Aprende a saludar según el momento del día y a presentarte con tu nombre, nacionalidad y origen.",
+            "conceptBreakdown": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
+            "deepDiveNotes": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
-                "en": "We live in a nice house.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "en": "I am Colombian and I live in Bogota.",
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_1_1",
-                "ruleTitle": "Error Común en 1. Pares Mínimos /ɪ/ vs /iː/",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We live in a nice house.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Pares Mínimos /ɪ/ vs /iː/ para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Good night everyone! (Al entrar a las 7 PM)",
+                "correctExample": "Good evening everyone! (Al llegar de noche)",
+                "fastPill": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
+                "mediumExplanation": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
+                "slowDeepDive": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir."
               }
             ]
           },
           {
             "id": "exp-a1_node_1-1-2",
             "sublessonId": "sub-a1_node_1-1",
-            "title": "Refuerzo Pedagógico: 1. Pares Mínimos /ɪ/ vs /iː/",
+            "title": "Refuerzo de Concepto: 1. Saludos & Presentaciones Personales",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "/ɪ/ (corta: ship, live) ≠ /iː/ (larga: sheep, leave)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Pares Mínimos /ɪ/ vs /iː/.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Pares Mínimos /ɪ/ vs /iː/ antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Saludos & Presentaciones Personales antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
+            "deepDiveNotes": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
-                "en": "This big ship is very fast.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "en": "Hello, my name is Alex and I am from Colombia.",
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -101,18 +101,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-1-3",
             "sublessonId": "sub-a1_node_1-1",
-            "title": "Resumen de Logro: 1. Pares Mínimos /ɪ/ vs /iː/",
+            "title": "Resumen: 1. Saludos & Presentaciones Personales",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "/ɪ/ (corta: ship, live) ≠ /iː/ (larga: sheep, leave)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Pares Mínimos /ɪ/ vs /iː/.",
-            "conceptBreakdown": "Repasa la fórmula: \"/ɪ/ (corta: ship, live) ≠ /iː/ (larga: sheep, leave)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Saludos & Presentaciones Personales.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Hello! My name is Carlos.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -122,63 +122,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Carlos quiere decir en inglés \"Yo vivo en Medellín con mi familia\". ¿Cuál frase contiene la palabra correcta?",
+            "prompt": "Llegas a las 8:00 PM a una cena formal de negocios en un restaurante. ¿Cuál es el saludo apropiado al entrar?",
             "options": [
-              "I live in Medellín with my family.",
-              "I leave in Medellín with my family.",
-              "I life in Medellín with my family.",
-              "I living in Medellín with my family."
+              "Good evening, nice to meet you all.",
+              "Good night, nice to meet you all.",
+              "What's up guys, see you later.",
+              "Goodbye, have a good sleep."
             ],
-            "correctAnswer": "I live in Medellín with my family.",
-            "explanation": "\"Live\" (/lɪv/) es vivir; \"leave\" (/liːv/) es marcharse.",
+            "correctAnswer": "Good evening, nice to meet you all.",
+            "explanation": "\"Good evening\" es el saludo correcto al llegar en horario nocturno. \"Good night\" es solo para despedirse.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Please take a _____ and make yourself comfortable.",
+            "prompt": "Hi, my name is Sofia and I _____ from Argentina.",
             "options": [
-              "seat",
-              "sit",
-              "set"
+              "am",
+              "is",
+              "are"
             ],
-            "correctAnswer": "seat",
-            "explanation": "\"Seat\" (/siːt/) es el sustantivo (asiento).",
+            "correctAnswer": "am",
+            "explanation": "Con el pronombre \"I\" se utiliza la forma verbal \"am\" (I am from...).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
-              "Ship (/ɪ/)": "Barco (vocal corta)",
-              "Sheep (/iː/)": "Oveja (vocal larga)",
-              "Fit (/ɪ/)": "En forma / Quedar bien",
-              "Feet (/iː/)": "Pies (plural)"
+              "What is your name?": "My name is Carlos.",
+              "Where are you from?": "I am from Colombia.",
+              "Where do you live?": "I live in Medellin.",
+              "Nice to meet you!": "Nice to meet you too!"
             },
             "correctAnswer": {
-              "Ship (/ɪ/)": "Barco (vocal corta)",
-              "Sheep (/iː/)": "Oveja (vocal larga)",
-              "Fit (/ɪ/)": "En forma / Quedar bien",
-              "Feet (/iː/)": "Pies (plural)"
+              "What is your name?": "My name is Carlos.",
+              "Where are you from?": "I am from Colombia.",
+              "Where do you live?": "I live in Medellin.",
+              "Nice to meet you!": "Nice to meet you too!"
             },
-            "explanation": "Asociación conceptual clave para 1. Pares Mínimos /ɪ/ vs /iː/.",
+            "explanation": "Asociación conceptual clave para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"We live in a nice house.\"",
-            "correctAnswer": "We live in a nice house.",
-            "explanation": "Práctica de producción escrita para 1. Pares Mínimos /ɪ/ vs /iː/.",
+            "prompt": "Escribe la oración completa: \"I am Colombian and I live in Bogota.\"",
+            "correctAnswer": "I am Colombian and I live in Bogota.",
+            "explanation": "Práctica de producción escrita para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
-            "correctAnswer": "This big ship is very fast.",
-            "explanation": "Práctica oral de fluidez y articulación para 1. Pares Mínimos /ɪ/ vs /iː/.",
+            "prompt": "Pronuncia con entonación clara y natural:",
+            "correctAnswer": "Hello, my name is Alex and I am from Colombia.",
+            "explanation": "Práctica oral de fluidez y articulación para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
           }
         ]
@@ -186,7 +186,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_1-2",
         "nodeId": "a1_node_1",
-        "title": "2. Saludos Formales vs Informales",
+        "title": "2. El Alfabeto Completo en Inglés (A-Z)",
         "orderIndex": 2,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -196,62 +196,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-2-1",
             "sublessonId": "sub-a1_node_1-2",
-            "title": "Concepto Clave: 2. Saludos Formales vs Informales",
+            "title": "2. El Alfabeto Completo en Inglés (A-Z)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Formal: Good morning / evening | Informal: Hey / What's up",
-            "summaryShort": "Adapta tu saludo según el contexto social o profesional.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Saludos Formales vs Informales. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Saludos Formales vs Informales.",
+            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
+            "summaryShort": "Domina la pronunciación fonética exacta de las 5 vocales y las 21 consonantes del abecedario inglés.",
+            "conceptBreakdown": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
+            "deepDiveNotes": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
-                "en": "Good morning, how are you today?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "en": "The English alphabet has twenty-six letters.",
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_1_2",
-                "ruleTitle": "Error Común en 2. Saludos Formales vs Informales",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Good morning, how are you today?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Saludos Formales vs Informales para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Pronunciar la letra E como /e/ y la letra I como /i/",
+                "correctExample": "E = /iː/ (Email) | I = /aɪ/ (iPhone)",
+                "fastPill": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
+                "mediumExplanation": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
+                "slowDeepDive": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre)."
               }
             ]
           },
           {
             "id": "exp-a1_node_1-2-2",
             "sublessonId": "sub-a1_node_1-2",
-            "title": "Refuerzo Pedagógico: 2. Saludos Formales vs Informales",
+            "title": "Refuerzo de Concepto: 2. El Alfabeto Completo en Inglés (A-Z)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Formal: Good morning / evening | Informal: Hey / What's up",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Saludos Formales vs Informales.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Saludos Formales vs Informales antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. El Alfabeto Completo en Inglés (A-Z) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
+            "deepDiveNotes": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
-                "en": "Good afternoon, nice to meet you.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "en": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -259,18 +259,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-2-3",
             "sublessonId": "sub-a1_node_1-2",
-            "title": "Resumen de Logro: 2. Saludos Formales vs Informales",
+            "title": "Resumen: 2. El Alfabeto Completo en Inglés (A-Z)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Formal: Good morning / evening | Informal: Hey / What's up",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Saludos Formales vs Informales.",
-            "conceptBreakdown": "Repasa la fórmula: \"Formal: Good morning / evening | Informal: Hey / What's up\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. El Alfabeto Completo en Inglés (A-Z).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -280,63 +280,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Llegas a las 8:00 PM a una cena formal de negocios. ¿Cuál es el saludo apropiado al entrar?",
+            "prompt": "¿Cuál grupo representa la pronunciación fonética correcta de las 5 vocales en inglés?",
             "options": [
-              "Good evening, nice to meet you all.",
-              "Good night, nice to meet you all.",
-              "What's up guys, see you later.",
-              "Goodbye, have a good sleep."
+              "A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
+              "A /a/, E /e/, I /i/, O /o/, U /u/",
+              "A /æ/, E /e/, I /ɪ/, O /ɒ/, U /ʌ/",
+              "A /eɪ/, E /e/, I /iː/, O /oʊ/, U /uː/"
             ],
-            "correctAnswer": "Good evening, nice to meet you all.",
-            "explanation": "\"Good evening\" es el saludo nocturno de llegada. \"Good night\" es despedida.",
+            "correctAnswer": "A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
+            "explanation": "Esta es la pronunciación canónica de las vocales en el abecedario inglés.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-2-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "It is 9:00 AM. In the office, we say: \"Good _____, Mr. Johnson.\"",
+            "prompt": "In the English alphabet, the letter \"H\" is pronounced _____.",
             "options": [
-              "morning",
-              "evening",
-              "night"
+              "/eɪtʃ/ (\"aitch\")",
+              "/hæt/",
+              "/eɪ/"
             ],
-            "correctAnswer": "morning",
-            "explanation": "A las 9:00 AM corresponde \"Good morning\".",
+            "correctAnswer": "/eɪtʃ/ (\"aitch\")",
+            "explanation": "La letra H se llama \"aitch\" (/eɪtʃ/).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
-              "Good morning": "Por la mañana (antes de 12 PM)",
-              "Good afternoon": "Por la tarde (12 PM a 6 PM)",
-              "Good evening": "Al llegar de noche (después de 6 PM)",
-              "Good night": "Al despedirse para dormir"
+              "Letter A": "/eɪ/",
+              "Letter E": "/iː/",
+              "Letter I": "/aɪ/",
+              "Letter H": "/eɪtʃ/"
             },
             "correctAnswer": {
-              "Good morning": "Por la mañana (antes de 12 PM)",
-              "Good afternoon": "Por la tarde (12 PM a 6 PM)",
-              "Good evening": "Al llegar de noche (después de 6 PM)",
-              "Good night": "Al despedirse para dormir"
+              "Letter A": "/eɪ/",
+              "Letter E": "/iː/",
+              "Letter I": "/aɪ/",
+              "Letter H": "/eɪtʃ/"
             },
-            "explanation": "Asociación conceptual clave para 2. Saludos Formales vs Informales.",
+            "explanation": "Asociación conceptual clave para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Good morning, how are you today?\"",
-            "correctAnswer": "Good morning, how are you today?",
-            "explanation": "Práctica de producción escrita para 2. Saludos Formales vs Informales.",
+            "prompt": "Escribe la oración completa: \"The English alphabet has twenty-six letters.\"",
+            "correctAnswer": "The English alphabet has twenty-six letters.",
+            "explanation": "Práctica de producción escrita para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
-            "correctAnswer": "Good afternoon, nice to meet you.",
-            "explanation": "Práctica oral de fluidez y articulación para 2. Saludos Formales vs Informales.",
+            "prompt": "Pronuncia con entonación clara y natural:",
+            "correctAnswer": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
+            "explanation": "Práctica oral de fluidez y articulación para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
           }
         ]
@@ -344,7 +344,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_1-3",
         "nodeId": "a1_node_1",
-        "title": "3. Presentaciones Personales & Origen",
+        "title": "3. Diferencias de Sonidos & Pares Mínimos",
         "orderIndex": 3,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -354,62 +354,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-3-1",
             "sublessonId": "sub-a1_node_1-3",
-            "title": "Concepto Clave: 3. Presentaciones Personales & Origen",
+            "title": "3. Diferencias de Sonidos & Pares Mínimos",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "My name is [Name] + I am from [Country] + I live in [City]",
-            "summaryShort": "Comunica tu nombre, nacionalidad y lugar de residencia con fluidez.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Presentaciones Personales & Origen. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Presentaciones Personales & Origen.",
+            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
+            "summaryShort": "Distingue los 5 contrastes fonéticos más importantes que cambian por completo el significado de las palabras.",
+            "conceptBreakdown": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
+            "deepDiveNotes": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
-                "en": "I am Colombian and I live in Bogota.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "en": "I live in a big house with my family.",
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_1_3",
-                "ruleTitle": "Error Común en 3. Presentaciones Personales & Origen",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I am Colombian and I live in Bogota.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Presentaciones Personales & Origen para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I leave in Bogota (queriendo decir que vives allí)",
+                "correctExample": "I live in Bogota (/lɪv/)",
+                "fastPill": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
+                "mediumExplanation": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
+                "slowDeepDive": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos."
               }
             ]
           },
           {
             "id": "exp-a1_node_1-3-2",
             "sublessonId": "sub-a1_node_1-3",
-            "title": "Refuerzo Pedagógico: 3. Presentaciones Personales & Origen",
+            "title": "Refuerzo de Concepto: 3. Diferencias de Sonidos & Pares Mínimos",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "My name is [Name] + I am from [Country] + I live in [City]",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Presentaciones Personales & Origen.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Presentaciones Personales & Origen antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Diferencias de Sonidos & Pares Mínimos antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
+            "deepDiveNotes": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
-                "en": "Hello, my name is Alex and I am from Colombia.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "en": "This big ship is very fast and safe.",
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -417,18 +417,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-3-3",
             "sublessonId": "sub-a1_node_1-3",
-            "title": "Resumen de Logro: 3. Presentaciones Personales & Origen",
+            "title": "Resumen: 3. Diferencias de Sonidos & Pares Mínimos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "My name is [Name] + I am from [Country] + I live in [City]",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Presentaciones Personales & Origen.",
-            "conceptBreakdown": "Repasa la fórmula: \"My name is [Name] + I am from [Country] + I live in [City]\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Diferencias de Sonidos & Pares Mínimos.",
+            "conceptBreakdown": "Recuerda la regla central: 1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -438,63 +438,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "A new coworker asks: \"Where are you from?\". What is the natural answer?",
+            "prompt": "Carlos quiere decir \"Vivo en Medellín\" y no \"Me voy de Medellín\". ¿Cuál palabra debe usar?",
             "options": [
-              "I am from Colombia.",
-              "I have 25 years old.",
-              "I live with my brother.",
-              "My name is John."
+              "live (/lɪv/)",
+              "leave (/liːv/)",
+              "life (/laɪf/)",
+              "living (/lɪv.ɪŋ/)"
             ],
-            "correctAnswer": "I am from Colombia.",
-            "explanation": "\"Where are you from?\" indaga sobre procedencia.",
+            "correctAnswer": "live (/lɪv/)",
+            "explanation": "\"Live\" (/lɪv/) con vocal corta significa habitar; \"leave\" (/liːv/) con vocal larga significa marcharse.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Hi, my name is Sofia and I _____ from Argentina.",
+            "prompt": "Please take a _____ and sit down comfortably.",
             "options": [
-              "am",
-              "is",
-              "are"
+              "seat",
+              "sit",
+              "set"
             ],
-            "correctAnswer": "am",
-            "explanation": "Con \"I\" se utiliza \"am\".",
+            "correctAnswer": "seat",
+            "explanation": "\"Seat\" (/siːt/) es el sustantivo (asiento), mientras que \"sit\" (/sɪt/) es el verbo (sentarse).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
-              "What is your name?": "My name is Carlos.",
-              "Where are you from?": "I am from Colombia.",
-              "Where do you live?": "I live in Medellin.",
-              "Nice to meet you!": "Nice to meet you too!"
+              "Ship (/ɪ/) vs Sheep (/iː/)": "Barco vs Oveja",
+              "Berry (/b/) vs Very (/v/)": "Baya vs Muy",
+              "Sip (/s/) vs Zip (/z/)": "Sorbo vs Cremallera",
+              "Share (/ʃ/) vs Chair (/tʃ/)": "Compartir vs Silla"
             },
             "correctAnswer": {
-              "What is your name?": "My name is Carlos.",
-              "Where are you from?": "I am from Colombia.",
-              "Where do you live?": "I live in Medellin.",
-              "Nice to meet you!": "Nice to meet you too!"
+              "Ship (/ɪ/) vs Sheep (/iː/)": "Barco vs Oveja",
+              "Berry (/b/) vs Very (/v/)": "Baya vs Muy",
+              "Sip (/s/) vs Zip (/z/)": "Sorbo vs Cremallera",
+              "Share (/ʃ/) vs Chair (/tʃ/)": "Compartir vs Silla"
             },
-            "explanation": "Asociación conceptual clave para 3. Presentaciones Personales & Origen.",
+            "explanation": "Asociación conceptual clave para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"I am Colombian and I live in Bogota.\"",
-            "correctAnswer": "I am Colombian and I live in Bogota.",
-            "explanation": "Práctica de producción escrita para 3. Presentaciones Personales & Origen.",
+            "prompt": "Escribe la oración completa: \"I live in a big house with my family.\"",
+            "correctAnswer": "I live in a big house with my family.",
+            "explanation": "Práctica de producción escrita para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
-            "correctAnswer": "Hello, my name is Alex and I am from Colombia.",
-            "explanation": "Práctica oral de fluidez y articulación para 3. Presentaciones Personales & Origen.",
+            "prompt": "Pronuncia con entonación clara y natural:",
+            "correctAnswer": "This big ship is very fast and safe.",
+            "explanation": "Práctica oral de fluidez y articulación para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
           }
         ]
@@ -502,7 +502,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_1-4",
         "nodeId": "a1_node_1",
-        "title": "4. Alfabeto & Spelling de Nombres",
+        "title": "4. Deletreo de Nombres & Correos",
         "orderIndex": 4,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -512,62 +512,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-4-1",
             "sublessonId": "sub-a1_node_1-4",
-            "title": "Concepto Clave: 4. Alfabeto & Spelling de Nombres",
+            "title": "4. Deletreo de Nombres & Correos",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "How do you spell your name? ➔ J-O-H-N | @ = \"at\" | . = \"dot\"",
-            "summaryShort": "Domina las vocales y consonantes confusas para deletrear datos personales.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Alfabeto & Spelling de Nombres. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Alfabeto & Spelling de Nombres.",
+            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
+            "summaryShort": "Aprende a deletrear datos personales letra por letra y a dictar correos electrónicos y símbolos de internet.",
+            "conceptBreakdown": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
+            "deepDiveNotes": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "How do you spell your first name?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_1_4",
-                "ruleTitle": "Error Común en 4. Alfabeto & Spelling de Nombres",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "How do you spell your first name?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Alfabeto & Spelling de Nombres para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "carlos point dev arroba flashlens point com",
+                "correctExample": "carlos dot dev at flashlens dot com",
+                "fastPill": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
+                "mediumExplanation": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
+                "slowDeepDive": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five)."
               }
             ]
           },
           {
             "id": "exp-a1_node_1-4-2",
             "sublessonId": "sub-a1_node_1-4",
-            "title": "Refuerzo Pedagógico: 4. Alfabeto & Spelling de Nombres",
+            "title": "Refuerzo de Concepto: 4. Deletreo de Nombres & Correos",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "How do you spell your name? ➔ J-O-H-N | @ = \"at\" | . = \"dot\"",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Alfabeto & Spelling de Nombres.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Alfabeto & Spelling de Nombres antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Deletreo de Nombres & Correos antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
+            "deepDiveNotes": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My name is spelled J-O-H-N.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -575,18 +575,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-4-3",
             "sublessonId": "sub-a1_node_1-4",
-            "title": "Resumen de Logro: 4. Alfabeto & Spelling de Nombres",
+            "title": "Resumen: 4. Deletreo de Nombres & Correos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "How do you spell your name? ➔ J-O-H-N | @ = \"at\" | . = \"dot\"",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Alfabeto & Spelling de Nombres.",
-            "conceptBreakdown": "Repasa la fórmula: \"How do you spell your name? ➔ J-O-H-N | @ = \"at\" | . = \"dot\"\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Deletreo de Nombres & Correos.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Question: How do you spell your last name?",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -596,7 +596,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "How do you say the email address \"user@test.com\" in English?",
+            "prompt": "¿Cómo se dicta en inglés la dirección de correo \"user@test.com\"?",
             "options": [
               "user AT test DOT com",
               "user ARROBA test POINT com",
@@ -604,7 +604,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "user ARROBA test DOT com"
             ],
             "correctAnswer": "user AT test DOT com",
-            "explanation": "@ es \"at\" y el punto es \"dot\".",
+            "explanation": "En inglés el símbolo @ se lee \"at\" y el punto en direcciones de internet se lee \"dot\".",
             "cefrLevel": "A1"
           },
           {
@@ -617,26 +617,26 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "write"
             ],
             "correctAnswer": "spell",
-            "explanation": "\"Spell\" es deletrear.",
+            "explanation": "\"Spell\" es el verbo específico para deletrear letra por letra.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
-              "Letter A": "/eɪ/",
-              "Letter E": "/iː/",
-              "Letter I": "/aɪ/",
-              "Letter H": "/eɪtʃ/"
+              "@": "at",
+              ".": "dot (en correos y web)",
+              "_": "underscore",
+              "-": "dash / hyphen"
             },
             "correctAnswer": {
-              "Letter A": "/eɪ/",
-              "Letter E": "/iː/",
-              "Letter I": "/aɪ/",
-              "Letter H": "/eɪtʃ/"
+              "@": "at",
+              ".": "dot (en correos y web)",
+              "_": "underscore",
+              "-": "dash / hyphen"
             },
-            "explanation": "Asociación conceptual clave para 4. Alfabeto & Spelling de Nombres.",
+            "explanation": "Asociación conceptual clave para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
           },
           {
@@ -644,15 +644,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Escribe la oración completa: \"How do you spell your first name?\"",
             "correctAnswer": "How do you spell your first name?",
-            "explanation": "Práctica de producción escrita para 4. Alfabeto & Spelling de Nombres.",
+            "explanation": "Práctica de producción escrita para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My name is spelled J-O-H-N.",
-            "explanation": "Práctica oral de fluidez y articulación para 4. Alfabeto & Spelling de Nombres.",
+            "explanation": "Práctica oral de fluidez y articulación para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
           }
         ]
@@ -670,62 +670,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-5-1",
             "sublessonId": "sub-a1_node_1-5",
-            "title": "Concepto Clave: 5. Despedidas & Cortesía Cotidiana",
+            "title": "5. Despedidas & Cortesía Cotidiana",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Despedida: Have a nice day | Cortesía: Please / Thank you / You are welcome",
-            "summaryShort": "Cierra interacciones cordialmente y usa fórmulas de agradecimiento.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Despedidas & Cortesía Cotidiana. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Despedidas & Cortesía Cotidiana.",
+            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
+            "summaryShort": "Domina las despedidas casuales, formales y las normas de cortesía esenciales para cualquier interacción.",
+            "conceptBreakdown": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
+            "deepDiveNotes": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
-                "en": "Thank you for your help, have a nice day.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "en": "Thank you for your help, have a good one!",
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_1_5",
-                "ruleTitle": "Error Común en 5. Despedidas & Cortesía Cotidiana",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Thank you for your help, have a nice day.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Despedidas & Cortesía Cotidiana para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Thank you! - For nothing / Of nothing",
+                "correctExample": "Thank you! - You're welcome / No problem",
+                "fastPill": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
+                "mediumExplanation": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
+                "slowDeepDive": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error."
               }
             ]
           },
           {
             "id": "exp-a1_node_1-5-2",
             "sublessonId": "sub-a1_node_1-5",
-            "title": "Refuerzo Pedagógico: 5. Despedidas & Cortesía Cotidiana",
+            "title": "Refuerzo de Concepto: 5. Despedidas & Cortesía Cotidiana",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Despedida: Have a nice day | Cortesía: Please / Thank you / You are welcome",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Despedidas & Cortesía Cotidiana.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Despedidas & Cortesía Cotidiana antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Despedidas & Cortesía Cotidiana antes de los ejercicios de producción.",
+            "conceptBreakdown": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
+            "deepDiveNotes": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
-                "en": "Excuse me, could you please help me?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "en": "Catch you later, take care and have a nice day!",
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -733,18 +733,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_1-5-3",
             "sublessonId": "sub-a1_node_1-5",
-            "title": "Resumen de Logro: 5. Despedidas & Cortesía Cotidiana",
+            "title": "Resumen: 5. Despedidas & Cortesía Cotidiana",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Despedida: Have a nice day | Cortesía: Please / Thank you / You are welcome",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Despedidas & Cortesía Cotidiana.",
-            "conceptBreakdown": "Repasa la fórmula: \"Despedida: Have a nice day | Cortesía: Please / Thank you / You are welcome\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Despedidas & Cortesía Cotidiana.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -754,45 +754,45 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Alguien te sostiene la puerta y dice \"Have a wonderful day!\". ¿Cómo respondes?",
+            "prompt": "Un amigo se despide de manera casual diciendo \"Catch you later!\". ¿Cuál es una respuesta natural equivalente?",
             "options": [
-              "Thank you, you too! Have a good one.",
-              "I am sorry for nothing.",
+              "See ya! Have a good one.",
+              "Good night, I am sorry.",
               "Excuse me, I leave now.",
-              "Good night, how do you do?"
+              "You are for nothing."
             ],
-            "correctAnswer": "Thank you, you too! Have a good one.",
-            "explanation": "\"Thank you, you too!\" agradece y devuelve el buen deseo.",
+            "correctAnswer": "See ya! Have a good one.",
+            "explanation": "\"See ya! Have a good one.\" es una respuesta casual perfectamente natural.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-5-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "A customer says \"Thank you very much!\". You reply: \"You are _____!\"",
+            "prompt": "A coworker says \"Thank you for your help!\". You reply: \"You are _____!\"",
             "options": [
               "welcome",
               "nothing",
               "please"
             ],
             "correctAnswer": "welcome",
-            "explanation": "\"You are welcome\" significa \"De nada\".",
+            "explanation": "\"You are welcome\" es la fórmula estándar para responder \"De nada\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
-              "Excuse me": "Para pedir permiso o llamar atención",
-              "I am sorry": "Para disculparse por un error",
-              "You are welcome": "Para responder \"De nada\"",
-              "See you soon": "Nos vemos pronto"
+              "Catch you later!": "¡Te hablo luego! (informal)",
+              "I gotta run!": "¡Me tengo que ir volando!",
+              "Take it easy!": "¡Cuídate / Que te vaya suave!",
+              "Excuse me": "Disculpe / Con permiso"
             },
             "correctAnswer": {
-              "Excuse me": "Para pedir permiso o llamar atención",
-              "I am sorry": "Para disculparse por un error",
-              "You are welcome": "Para responder \"De nada\"",
-              "See you soon": "Nos vemos pronto"
+              "Catch you later!": "¡Te hablo luego! (informal)",
+              "I gotta run!": "¡Me tengo que ir volando!",
+              "Take it easy!": "¡Cuídate / Que te vaya suave!",
+              "Excuse me": "Disculpe / Con permiso"
             },
             "explanation": "Asociación conceptual clave para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
@@ -800,16 +800,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Escribe la oración completa: \"Thank you for your help, have a nice day.\"",
-            "correctAnswer": "Thank you for your help, have a nice day.",
+            "prompt": "Escribe la oración completa: \"Thank you for your help, have a good one!\"",
+            "correctAnswer": "Thank you for your help, have a good one!",
             "explanation": "Práctica de producción escrita para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
-            "correctAnswer": "Excuse me, could you please help me?",
+            "prompt": "Pronuncia con entonación clara y natural:",
+            "correctAnswer": "Catch you later, take care and have a nice day!",
             "explanation": "Práctica oral de fluidez y articulación para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
           }
@@ -820,7 +820,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
     "id": "a1_node_2",
     "title": "2. Pronombres & Verbo To Be",
-    "description": "Sujetos (I, you, he, she, it, we, they), conjugación del verbo To Be (am, is, are), contracciones y preguntas.",
+    "description": "Sujetos obligatorios (I, you, he, she, it, we, they), To Be afirmativo/negativo, contracciones y demostrativos.",
     "category": "GRAMMAR",
     "cefrLevel": "A1",
     "orderIndex": 2,
@@ -846,62 +846,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-1-1",
             "sublessonId": "sub-a1_node_2-1",
-            "title": "Concepto Clave: 1. Pronombres Sujeto en Inglés",
+            "title": "1. Pronombres Sujeto en Inglés",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I (yo) | You (tú) | He (él) | She (ella) | It (cosa) | We (nosotros) | They (ellos)",
-            "summaryShort": "En inglés el pronombre sujeto es obligatorio en toda oración.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Pronombres Sujeto en Inglés. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Pronombres Sujeto en Inglés.",
+            "grammarFormula": "1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)\n2. Plural: We (nosotros), You (ustedes), They (ellos/ellas)\n3. Regla: El pronombre sujeto es OBLIGATORIO en toda oración.",
+            "summaryShort": "En inglés nunca se omite el sujeto y el pronombre \"I\" siempre se escribe en mayúscula.",
+            "conceptBreakdown": "A diferencia del español (\"soy estudiante\"), en inglés se exige el sujeto explícito (\"I am a student\"). Usa \"It\" para objetos singulares y \"They\" para plurales.",
+            "deepDiveNotes": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "She is a doctor and they are engineers.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_2_1",
-                "ruleTitle": "Error Común en 1. Pronombres Sujeto en Inglés",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "She is a doctor and they are engineers.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Pronombres Sujeto en Inglés para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Is very cold today / Am from Cali",
+                "correctExample": "It is very cold today / I am from Cali",
+                "fastPill": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
+                "mediumExplanation": "A diferencia del español (\"soy estudiante\"), en inglés se exige el sujeto explícito (\"I am a student\"). Usa \"It\" para objetos singulares y \"They\" para plurales.",
+                "slowDeepDive": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc."
               }
             ]
           },
           {
             "id": "exp-a1_node_2-1-2",
             "sublessonId": "sub-a1_node_2-1",
-            "title": "Refuerzo Pedagógico: 1. Pronombres Sujeto en Inglés",
+            "title": "Refuerzo de Concepto: 1. Pronombres Sujeto en Inglés",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I (yo) | You (tú) | He (él) | She (ella) | It (cosa) | We (nosotros) | They (ellos)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Pronombres Sujeto en Inglés.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Pronombres Sujeto en Inglés antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)\n2. Plural: We (nosotros), You (ustedes), They (ellos/ellas)\n3. Regla: El pronombre sujeto es OBLIGATORIO en toda oración.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Pronombres Sujeto en Inglés antes de los ejercicios de producción.",
+            "conceptBreakdown": "A diferencia del español (\"soy estudiante\"), en inglés se exige el sujeto explícito (\"I am a student\"). Usa \"It\" para objetos singulares y \"They\" para plurales.",
+            "deepDiveNotes": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "We are happy because they are here.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -909,18 +909,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-1-3",
             "sublessonId": "sub-a1_node_2-1",
-            "title": "Resumen de Logro: 1. Pronombres Sujeto en Inglés",
+            "title": "Resumen: 1. Pronombres Sujeto en Inglés",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I (yo) | You (tú) | He (él) | She (ella) | It (cosa) | We (nosotros) | They (ellos)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Pronombres Sujeto en Inglés.",
-            "conceptBreakdown": "Repasa la fórmula: \"I (yo) | You (tú) | He (él) | She (ella) | It (cosa) | We (nosotros) | They (ellos)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)\n2. Plural: We (nosotros), You (ustedes), They (ellos/ellas)\n3. Regla: El pronombre sujeto es OBLIGATORIO en toda oración.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Pronombres Sujeto en Inglés.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -951,13 +951,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "He"
             ],
             "correctAnswer": "They",
-            "explanation": "Carlos y Maria equivalen a \"They\".",
+            "explanation": "Carlos y Maria equivalen a tercera persona plural \"They\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_2-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I": "Yo (mayúscula)",
               "He": "Él (varón)",
@@ -984,7 +984,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "We are happy because they are here.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Pronombres Sujeto en Inglés.",
             "cefrLevel": "A1"
@@ -1004,62 +1004,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-2-1",
             "sublessonId": "sub-a1_node_2-2",
-            "title": "Concepto Clave: 2. Verbo To Be Afirmativo & Contracciones",
+            "title": "2. Verbo To Be Afirmativo & Contracciones",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I am (I'm) | You are (You're) | He is (He's) | We are (We're) | They are (They're)",
-            "summaryShort": "El verbo To Be significa tanto \"Ser\" como \"Estar\" según el contexto.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Verbo To Be Afirmativo & Contracciones. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Verbo To Be Afirmativo & Contracciones.",
+            "grammarFormula": "1. I am ➔ I'm (Soy / Estoy)\n2. He / She / It is ➔ He's / She's / It's\n3. You / We / They are ➔ You're / We're / They're\n4. Edad: I am 25 years old (con To Be)",
+            "summaryShort": "El verbo To Be significa \"Ser\" o \"Estar\" y se usa de forma obligatoria para expresar la edad.",
+            "conceptBreakdown": "En inglés hablado se usan casi siempre las contracciones con apóstrofo ('m, 's, 're).",
+            "deepDiveNotes": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "We are students and we're happy.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_2_2",
-                "ruleTitle": "Error Común en 2. Verbo To Be Afirmativo & Contracciones",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We are students and we're happy.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Verbo To Be Afirmativo & Contracciones para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have 25 years old",
+                "correctExample": "I am 25 years old / I'm 25",
+                "fastPill": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
+                "mediumExplanation": "En inglés hablado se usan casi siempre las contracciones con apóstrofo ('m, 's, 're).",
+                "slowDeepDive": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_2-2-2",
             "sublessonId": "sub-a1_node_2-2",
-            "title": "Refuerzo Pedagógico: 2. Verbo To Be Afirmativo & Contracciones",
+            "title": "Refuerzo de Concepto: 2. Verbo To Be Afirmativo & Contracciones",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I am (I'm) | You are (You're) | He is (He's) | We are (We're) | They are (They're)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Verbo To Be Afirmativo & Contracciones.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Verbo To Be Afirmativo & Contracciones antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I am ➔ I'm (Soy / Estoy)\n2. He / She / It is ➔ He's / She's / It's\n3. You / We / They are ➔ You're / We're / They're\n4. Edad: I am 25 years old (con To Be)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Verbo To Be Afirmativo & Contracciones antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés hablado se usan casi siempre las contracciones con apóstrofo ('m, 's, 're).",
+            "deepDiveNotes": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "He's my best friend and he's very kind.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1067,18 +1067,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-2-3",
             "sublessonId": "sub-a1_node_2-2",
-            "title": "Resumen de Logro: 2. Verbo To Be Afirmativo & Contracciones",
+            "title": "Resumen: 2. Verbo To Be Afirmativo & Contracciones",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I am (I'm) | You are (You're) | He is (He's) | We are (We're) | They are (They're)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Verbo To Be Afirmativo & Contracciones.",
-            "conceptBreakdown": "Repasa la fórmula: \"I am (I'm) | You are (You're) | He is (He's) | We are (We're) | They are (They're)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I am ➔ I'm (Soy / Estoy)\n2. He / She / It is ➔ He's / She's / It's\n3. You / We / They are ➔ You're / We're / They're\n4. Edad: I am 25 years old (con To Be)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbo To Be Afirmativo & Contracciones.",
+            "conceptBreakdown": "Recuerda la regla central: 1. I am ➔ I'm (Soy / Estoy)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1088,7 +1088,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Laura states her age: \"Yo tengo 21 años\". What is the correct English sentence?",
+            "prompt": "Laura states her age in an English interview: \"Yo tengo 21 años\". What is the correct phrase?",
             "options": [
               "I am 21 years old.",
               "I have 21 years old.",
@@ -1096,7 +1096,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I am having 21 years."
             ],
             "correctAnswer": "I am 21 years old.",
-            "explanation": "En inglés la edad se expresa exclusivamente con To Be (\"I am 21 years old\").",
+            "explanation": "La edad se dice con To Be (\"I am [número] years old\").",
             "cefrLevel": "A1"
           },
           {
@@ -1115,7 +1115,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I am": "I'm",
               "You are": "You're",
@@ -1142,7 +1142,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "He's my best friend and he's very kind.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbo To Be Afirmativo & Contracciones.",
             "cefrLevel": "A1"
@@ -1162,62 +1162,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-3-1",
             "sublessonId": "sub-a1_node_2-3",
-            "title": "Concepto Clave: 3. Verbo To Be Negativo (Isn't / Aren't)",
+            "title": "3. Verbo To Be Negativo (Isn't / Aren't)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + To Be + not ➔ I'm not | He isn't | We aren't | They aren't",
+            "grammarFormula": "1. I am not ➔ I'm not\n2. He / She / It is not ➔ He isn't / She isn't\n3. You / We / They are not ➔ We aren't / They aren't",
             "summaryShort": "Forma negaciones agregando \"not\" directamente después del verbo To Be.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Verbo To Be Negativo (Isn't / Aren't). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Verbo To Be Negativo (Isn't / Aren't).",
+            "conceptBreakdown": "En inglés no decimos \"She no is here\". Decimos \"She is NOT here\" o \"She isn't here\".",
+            "deepDiveNotes": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I'm not tired and they aren't busy.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_2_3",
-                "ruleTitle": "Error Común en 3. Verbo To Be Negativo (Isn't / Aren't)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I'm not tired and they aren't busy.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Verbo To Be Negativo (Isn't / Aren't) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "She no is my teacher / I no am ready",
+                "correctExample": "She is not my teacher / I am not ready",
+                "fastPill": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
+                "mediumExplanation": "En inglés no decimos \"She no is here\". Decimos \"She is NOT here\" o \"She isn't here\".",
+                "slowDeepDive": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes."
               }
             ]
           },
           {
             "id": "exp-a1_node_2-3-2",
             "sublessonId": "sub-a1_node_2-3",
-            "title": "Refuerzo Pedagógico: 3. Verbo To Be Negativo (Isn't / Aren't)",
+            "title": "Refuerzo de Concepto: 3. Verbo To Be Negativo (Isn't / Aren't)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + To Be + not ➔ I'm not | He isn't | We aren't | They aren't",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Verbo To Be Negativo (Isn't / Aren't).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Verbo To Be Negativo (Isn't / Aren't) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I am not ➔ I'm not\n2. He / She / It is not ➔ He isn't / She isn't\n3. You / We / They are not ➔ We aren't / They aren't",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Verbo To Be Negativo (Isn't / Aren't) antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés no decimos \"She no is here\". Decimos \"She is NOT here\" o \"She isn't here\".",
+            "deepDiveNotes": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "She isn't at work today.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1225,18 +1225,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-3-3",
             "sublessonId": "sub-a1_node_2-3",
-            "title": "Resumen de Logro: 3. Verbo To Be Negativo (Isn't / Aren't)",
+            "title": "Resumen: 3. Verbo To Be Negativo (Isn't / Aren't)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + To Be + not ➔ I'm not | He isn't | We aren't | They aren't",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Verbo To Be Negativo (Isn't / Aren't).",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + To Be + not ➔ I'm not | He isn't | We aren't | They aren't\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I am not ➔ I'm not\n2. He / She / It is not ➔ He isn't / She isn't\n3. You / We / They are not ➔ We aren't / They aren't",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Verbo To Be Negativo (Isn't / Aren't).",
+            "conceptBreakdown": "Recuerda la regla central: 1. I am not ➔ I'm not",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1267,13 +1267,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "am not"
             ],
             "correctAnswer": "isn't",
-            "explanation": "Con He la forma negativa es \"isn't\".",
+            "explanation": "Con David (He) la forma negativa contraída es \"isn't\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_2-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I": "am not (I'm not)",
               "He / She / It": "is not (isn't)",
@@ -1300,7 +1300,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "She isn't at work today.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Verbo To Be Negativo (Isn't / Aren't).",
             "cefrLevel": "A1"
@@ -1320,62 +1320,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-4-1",
             "sublessonId": "sub-a1_node_2-4",
-            "title": "Concepto Clave: 4. Preguntas con To Be & Respuestas Cortas",
+            "title": "4. Preguntas con To Be & Respuestas Cortas",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Are you...? ➔ Yes, I am. / No, I'm not. | Is he...? ➔ Yes, he is.",
-            "summaryShort": "Invierte el orden del verbo y sujeto para formular preguntas con To Be.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Preguntas con To Be & Respuestas Cortas. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Preguntas con To Be & Respuestas Cortas.",
+            "grammarFormula": "1. Are you happy? ➔ Yes, I am. / No, I'm not.\n2. Is he your brother? ➔ Yes, he is. / No, he isn't.\n3. Regla: Nunca contraer en respuestas cortas afirmativas (Yes, I am).",
+            "summaryShort": "Invierte el orden del verbo y el sujeto para formular preguntas con To Be.",
+            "conceptBreakdown": "Afirmativo: \"You are ready\". Pregunta: \"Are you ready?\". Responde con respuestas cortas.",
+            "deepDiveNotes": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Is she a student at this university?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_2_4",
-                "ruleTitle": "Error Común en 4. Preguntas con To Be & Respuestas Cortas",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Is she a student at this university?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Preguntas con To Be & Respuestas Cortas para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Are you ready? - Yes, I'm",
+                "correctExample": "Are you ready? - Yes, I am",
+                "fastPill": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
+                "mediumExplanation": "Afirmativo: \"You are ready\". Pregunta: \"Are you ready?\". Responde con respuestas cortas.",
+                "slowDeepDive": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\")."
               }
             ]
           },
           {
             "id": "exp-a1_node_2-4-2",
             "sublessonId": "sub-a1_node_2-4",
-            "title": "Refuerzo Pedagógico: 4. Preguntas con To Be & Respuestas Cortas",
+            "title": "Refuerzo de Concepto: 4. Preguntas con To Be & Respuestas Cortas",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Are you...? ➔ Yes, I am. / No, I'm not. | Is he...? ➔ Yes, he is.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Preguntas con To Be & Respuestas Cortas.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Preguntas con To Be & Respuestas Cortas antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Are you happy? ➔ Yes, I am. / No, I'm not.\n2. Is he your brother? ➔ Yes, he is. / No, he isn't.\n3. Regla: Nunca contraer en respuestas cortas afirmativas (Yes, I am).",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Preguntas con To Be & Respuestas Cortas antes de los ejercicios de producción.",
+            "conceptBreakdown": "Afirmativo: \"You are ready\". Pregunta: \"Are you ready?\". Responde con respuestas cortas.",
+            "deepDiveNotes": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Are you ready to start the class?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1383,18 +1383,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-4-3",
             "sublessonId": "sub-a1_node_2-4",
-            "title": "Resumen de Logro: 4. Preguntas con To Be & Respuestas Cortas",
+            "title": "Resumen: 4. Preguntas con To Be & Respuestas Cortas",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Are you...? ➔ Yes, I am. / No, I'm not. | Is he...? ➔ Yes, he is.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Preguntas con To Be & Respuestas Cortas.",
-            "conceptBreakdown": "Repasa la fórmula: \"Are you...? ➔ Yes, I am. / No, I'm not. | Is he...? ➔ Yes, he is.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Are you happy? ➔ Yes, I am. / No, I'm not.\n2. Is he your brother? ➔ Yes, he is. / No, he isn't.\n3. Regla: Nunca contraer en respuestas cortas afirmativas (Yes, I am).",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Preguntas con To Be & Respuestas Cortas.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Are you happy? ➔ Yes, I am. / No, I'm not.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1431,7 +1431,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Is he your brother?": "Yes, he is.",
               "Are they ready?": "No, they aren't.",
@@ -1458,7 +1458,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Are you ready to start the class?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con To Be & Respuestas Cortas.",
             "cefrLevel": "A1"
@@ -1468,7 +1468,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_2-5",
         "nodeId": "a1_node_2",
-        "title": "5. Profesiones & Demostrativos (This/That/These/Those)",
+        "title": "5. Profesiones & Demostrativos (This / That / These / Those)",
         "orderIndex": 5,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -1478,62 +1478,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-5-1",
             "sublessonId": "sub-a1_node_2-5",
-            "title": "Concepto Clave: 5. Profesiones & Demostrativos (This/That/These/Those)",
+            "title": "5. Profesiones & Demostrativos (This / That / These / Those)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "This (cerca sing.) | That (lejos sing.) | These (cerca plur.) | Those (lejos plur.)",
-            "summaryShort": "Señala objetos y describe profesiones con los artículos A / An.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Profesiones & Demostrativos (This/That/These/Those). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Profesiones & Demostrativos (This/That/These/Those).",
+            "grammarFormula": "1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)\n2. These (estos/estas - cerca plural) | Those (esos/aquellos - lejos plural)\n3. Profesiones: a teacher / an engineer (artículo obligatorio)",
+            "summaryShort": "Señala objetos según su distancia y describe profesiones utilizando los artículos A / An.",
+            "conceptBreakdown": "En inglés se usa \"a/an\" antes de profesiones: \"I am A teacher\", \"He is AN engineer\".",
+            "deepDiveNotes": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "This is my computer and she is an architect.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_2_5",
-                "ruleTitle": "Error Común en 5. Profesiones & Demostrativos (This/That/These/Those)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "This is my computer and she is an architect.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Profesiones & Demostrativos (This/That/These/Those) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He is doctor / I am engineer",
+                "correctExample": "He is a doctor / I am an engineer",
+                "fastPill": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
+                "mediumExplanation": "En inglés se usa \"a/an\" antes de profesiones: \"I am A teacher\", \"He is AN engineer\".",
+                "slowDeepDive": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular."
               }
             ]
           },
           {
             "id": "exp-a1_node_2-5-2",
             "sublessonId": "sub-a1_node_2-5",
-            "title": "Refuerzo Pedagógico: 5. Profesiones & Demostrativos (This/That/These/Those)",
+            "title": "Refuerzo de Concepto: 5. Profesiones & Demostrativos (This / That / These / Those)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "This (cerca sing.) | That (lejos sing.) | These (cerca plur.) | Those (lejos plur.)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Profesiones & Demostrativos (This/That/These/Those).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Profesiones & Demostrativos (This/That/These/Those) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)\n2. These (estos/estas - cerca plural) | Those (esos/aquellos - lejos plural)\n3. Profesiones: a teacher / an engineer (artículo obligatorio)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Profesiones & Demostrativos (This / That / These / Those) antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés se usa \"a/an\" antes de profesiones: \"I am A teacher\", \"He is AN engineer\".",
+            "deepDiveNotes": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "This is my phone and these are my keys.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1541,18 +1541,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_2-5-3",
             "sublessonId": "sub-a1_node_2-5",
-            "title": "Resumen de Logro: 5. Profesiones & Demostrativos (This/That/These/Those)",
+            "title": "Resumen: 5. Profesiones & Demostrativos (This / That / These / Those)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "This (cerca sing.) | That (lejos sing.) | These (cerca plur.) | Those (lejos plur.)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Profesiones & Demostrativos (This/That/These/Those).",
-            "conceptBreakdown": "Repasa la fórmula: \"This (cerca sing.) | That (lejos sing.) | These (cerca plur.) | Those (lejos plur.)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)\n2. These (estos/estas - cerca plural) | Those (esos/aquellos - lejos plural)\n3. Profesiones: a teacher / an engineer (artículo obligatorio)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Profesiones & Demostrativos (This / That / These / Those).",
+            "conceptBreakdown": "Recuerda la regla central: 1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1589,7 +1589,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "This": "Este / Esta (cerca)",
               "That": "Ese / Aquel (lejos)",
@@ -1602,7 +1602,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "These": "Estos / Estas (cerca)",
               "Those": "Esos / Aquellos (lejos)"
             },
-            "explanation": "Asociación conceptual clave para 5. Profesiones & Demostrativos (This/That/These/Those).",
+            "explanation": "Asociación conceptual clave para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
           },
           {
@@ -1610,15 +1610,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Escribe la oración completa: \"This is my computer and she is an architect.\"",
             "correctAnswer": "This is my computer and she is an architect.",
-            "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This/That/These/Those).",
+            "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_2-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "This is my phone and these are my keys.",
-            "explanation": "Práctica oral de fluidez y articulación para 5. Profesiones & Demostrativos (This/That/These/Those).",
+            "explanation": "Práctica oral de fluidez y articulación para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
           }
         ]
@@ -1628,7 +1628,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
     "id": "a1_node_3",
     "title": "3. Objetos Diarios & Artículos",
-    "description": "Artículos A, An, The, sustantivos plurales regulares e irregulares, objetos del aula y preposiciones in, on, under.",
+    "description": "Artículos A, An, The, plurales regulares e irregulares, objetos cotidianos y preposiciones in, on, under.",
     "category": "VOCABULARY",
     "cefrLevel": "A1",
     "orderIndex": 3,
@@ -1654,62 +1654,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-1-1",
             "sublessonId": "sub-a1_node_3-1",
-            "title": "Concepto Clave: 1. Artículos Indefinidos (A / An) vs Definido (The)",
+            "title": "1. Artículos Indefinidos (A / An) vs Definido (The)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "A + consonante (a book) | An + vocal (an apple) | The (específico)",
-            "summaryShort": "Usa \"a/an\" para cosas no específicas y \"the\" para cosas conocidas.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Artículos Indefinidos (A / An) vs Definido (The). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Artículos Indefinidos (A / An) vs Definido (The).",
+            "grammarFormula": "1. A + sonido consonante: a book, a laptop, a university (/juː/)\n2. An + sonido vocal: an apple, an eraser, an hour (h muda)\n3. The: el/la/los/las para objetos específicos conocidos",
+            "summaryShort": "Usa \"a/an\" para elementos generales no especificados y \"the\" para elementos concretos conocidos.",
+            "conceptBreakdown": "La regla de \"a\" o \"an\" depende del sonido inicial de la palabra, no solo de la letra escrita.",
+            "deepDiveNotes": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The teacher has a book and an eraser.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_3_1",
-                "ruleTitle": "Error Común en 1. Artículos Indefinidos (A / An) vs Definido (The)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The teacher has a book and an eraser.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Artículos Indefinidos (A / An) vs Definido (The) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "a hour / an university",
+                "correctExample": "an hour / a university",
+                "fastPill": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
+                "mediumExplanation": "La regla de \"a\" o \"an\" depende del sonido inicial de la palabra, no solo de la letra escrita.",
+                "slowDeepDive": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university)."
               }
             ]
           },
           {
             "id": "exp-a1_node_3-1-2",
             "sublessonId": "sub-a1_node_3-1",
-            "title": "Refuerzo Pedagógico: 1. Artículos Indefinidos (A / An) vs Definido (The)",
+            "title": "Refuerzo de Concepto: 1. Artículos Indefinidos (A / An) vs Definido (The)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "A + consonante (a book) | An + vocal (an apple) | The (específico)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Artículos Indefinidos (A / An) vs Definido (The).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Artículos Indefinidos (A / An) vs Definido (The) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. A + sonido consonante: a book, a laptop, a university (/juː/)\n2. An + sonido vocal: an apple, an eraser, an hour (h muda)\n3. The: el/la/los/las para objetos específicos conocidos",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Artículos Indefinidos (A / An) vs Definido (The) antes de los ejercicios de producción.",
+            "conceptBreakdown": "La regla de \"a\" o \"an\" depende del sonido inicial de la palabra, no solo de la letra escrita.",
+            "deepDiveNotes": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I have an idea and a great project.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1717,18 +1717,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-1-3",
             "sublessonId": "sub-a1_node_3-1",
-            "title": "Resumen de Logro: 1. Artículos Indefinidos (A / An) vs Definido (The)",
+            "title": "Resumen: 1. Artículos Indefinidos (A / An) vs Definido (The)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "A + consonante (a book) | An + vocal (an apple) | The (específico)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Artículos Indefinidos (A / An) vs Definido (The).",
-            "conceptBreakdown": "Repasa la fórmula: \"A + consonante (a book) | An + vocal (an apple) | The (específico)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. A + sonido consonante: a book, a laptop, a university (/juː/)\n2. An + sonido vocal: an apple, an eraser, an hour (h muda)\n3. The: el/la/los/las para objetos específicos conocidos",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Artículos Indefinidos (A / An) vs Definido (The).",
+            "conceptBreakdown": "Recuerda la regla central: 1. A + sonido consonante: a book, a laptop, a university (/juː/)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1765,7 +1765,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "A book": "Un libro (consonante)",
               "An apple": "Una manzana (vocal)",
@@ -1792,7 +1792,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I have an idea and a great project.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "cefrLevel": "A1"
@@ -1812,62 +1812,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-2-1",
             "sublessonId": "sub-a1_node_3-2",
-            "title": "Concepto Clave: 2. Plurales Regulares (-s, -es, -ies)",
+            "title": "2. Plurales Regulares (-s, -es, -ies)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "book ➔ books | watch ➔ watches | city ➔ cities | box ➔ boxes",
-            "summaryShort": "Añade -es tras sonidos ch, sh, s, x, z; cambia -y por -ies tras consonante.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Plurales Regulares (-s, -es, -ies). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Plurales Regulares (-s, -es, -ies).",
+            "grammarFormula": "1. Regla general: book ➔ books, car ➔ cars\n2. Tras -ch, -sh, -s, -x, -z: watch ➔ watches, box ➔ boxes\n3. Consonante + y: city ➔ cities, dictionary ➔ dictionaries",
+            "summaryShort": "Añade -es a palabras terminadas en sonidos sibilantes y cambia -y por -ies tras consonante.",
+            "conceptBreakdown": "Los plurales regulares modifican su terminación según las letras finales de la palabra.",
+            "deepDiveNotes": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The boys are reading three interesting books.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_3_2",
-                "ruleTitle": "Error Común en 2. Plurales Regulares (-s, -es, -ies)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The boys are reading three interesting books.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Plurales Regulares (-s, -es, -ies) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "citys / watchs",
+                "correctExample": "cities / watches",
+                "fastPill": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
+                "mediumExplanation": "Los plurales regulares modifican su terminación según las letras finales de la palabra.",
+                "slowDeepDive": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days)."
               }
             ]
           },
           {
             "id": "exp-a1_node_3-2-2",
             "sublessonId": "sub-a1_node_3-2",
-            "title": "Refuerzo Pedagógico: 2. Plurales Regulares (-s, -es, -ies)",
+            "title": "Refuerzo de Concepto: 2. Plurales Regulares (-s, -es, -ies)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "book ➔ books | watch ➔ watches | city ➔ cities | box ➔ boxes",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Plurales Regulares (-s, -es, -ies).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Plurales Regulares (-s, -es, -ies) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Regla general: book ➔ books, car ➔ cars\n2. Tras -ch, -sh, -s, -x, -z: watch ➔ watches, box ➔ boxes\n3. Consonante + y: city ➔ cities, dictionary ➔ dictionaries",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Plurales Regulares (-s, -es, -ies) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Los plurales regulares modifican su terminación según las letras finales de la palabra.",
+            "deepDiveNotes": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "There are two boxes and four glasses on the table.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -1875,18 +1875,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-2-3",
             "sublessonId": "sub-a1_node_3-2",
-            "title": "Resumen de Logro: 2. Plurales Regulares (-s, -es, -ies)",
+            "title": "Resumen: 2. Plurales Regulares (-s, -es, -ies)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "book ➔ books | watch ➔ watches | city ➔ cities | box ➔ boxes",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Plurales Regulares (-s, -es, -ies).",
-            "conceptBreakdown": "Repasa la fórmula: \"book ➔ books | watch ➔ watches | city ➔ cities | box ➔ boxes\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Regla general: book ➔ books, car ➔ cars\n2. Tras -ch, -sh, -s, -x, -z: watch ➔ watches, box ➔ boxes\n3. Consonante + y: city ➔ cities, dictionary ➔ dictionaries",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Plurales Regulares (-s, -es, -ies).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Regla general: book ➔ books, car ➔ cars",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1904,7 +1904,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "cityes"
             ],
             "correctAnswer": "cities",
-            "explanation": "Sustantivos que terminan en consonante + y cambian a -ies.",
+            "explanation": "Consonante + y cambia a -ies.",
             "cefrLevel": "A1"
           },
           {
@@ -1923,7 +1923,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Book ➔": "Books",
               "Watch ➔": "Watches",
@@ -1950,7 +1950,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "There are two boxes and four glasses on the table.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Plurales Regulares (-s, -es, -ies).",
             "cefrLevel": "A1"
@@ -1970,62 +1970,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-3-1",
             "sublessonId": "sub-a1_node_3-3",
-            "title": "Concepto Clave: 3. Plurales Irregulares (Man/Men, Child/Children)",
+            "title": "3. Plurales Irregulares (Man/Men, Child/Children)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "man ➔ men | woman ➔ women | child ➔ children | person ➔ people",
-            "summaryShort": "Los plurales irregulares cambian de raíz y nunca llevan -s al final.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Plurales Irregulares (Man/Men, Child/Children). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Plurales Irregulares (Man/Men, Child/Children).",
+            "grammarFormula": "1. man ➔ men | woman ➔ women\n2. child ➔ children | person ➔ people\n3. foot ➔ feet | tooth ➔ teeth",
+            "summaryShort": "Los sustantivos con plural irregular cambian su raíz interna y nunca llevan -s.",
+            "conceptBreakdown": "Memoriza estas formas irregulares esenciales en el vocabulario cotidiano.",
+            "deepDiveNotes": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Three men and two women are in the office.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_3_3",
-                "ruleTitle": "Error Común en 3. Plurales Irregulares (Man/Men, Child/Children)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Three men and two women are in the office.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Plurales Irregulares (Man/Men, Child/Children) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The childrens are playing / Two persons",
+                "correctExample": "The children are playing / Two people",
+                "fastPill": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
+                "mediumExplanation": "Memoriza estas formas irregulares esenciales en el vocabulario cotidiano.",
+                "slowDeepDive": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales."
               }
             ]
           },
           {
             "id": "exp-a1_node_3-3-2",
             "sublessonId": "sub-a1_node_3-3",
-            "title": "Refuerzo Pedagógico: 3. Plurales Irregulares (Man/Men, Child/Children)",
+            "title": "Refuerzo de Concepto: 3. Plurales Irregulares (Man/Men, Child/Children)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "man ➔ men | woman ➔ women | child ➔ children | person ➔ people",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Plurales Irregulares (Man/Men, Child/Children).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Plurales Irregulares (Man/Men, Child/Children) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. man ➔ men | woman ➔ women\n2. child ➔ children | person ➔ people\n3. foot ➔ feet | tooth ➔ teeth",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Plurales Irregulares (Man/Men, Child/Children) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Memoriza estas formas irregulares esenciales en el vocabulario cotidiano.",
+            "deepDiveNotes": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The children have clean hands and feet.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2033,18 +2033,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-3-3",
             "sublessonId": "sub-a1_node_3-3",
-            "title": "Resumen de Logro: 3. Plurales Irregulares (Man/Men, Child/Children)",
+            "title": "Resumen: 3. Plurales Irregulares (Man/Men, Child/Children)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "man ➔ men | woman ➔ women | child ➔ children | person ➔ people",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Plurales Irregulares (Man/Men, Child/Children).",
-            "conceptBreakdown": "Repasa la fórmula: \"man ➔ men | woman ➔ women | child ➔ children | person ➔ people\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. man ➔ men | woman ➔ women\n2. child ➔ children | person ➔ people\n3. foot ➔ feet | tooth ➔ teeth",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Plurales Irregulares (Man/Men, Child/Children).",
+            "conceptBreakdown": "Recuerda la regla central: 1. man ➔ men | woman ➔ women",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2081,7 +2081,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Child ➔": "Children",
               "Person ➔": "People",
@@ -2108,7 +2108,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The children have clean hands and feet.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Plurales Irregulares (Man/Men, Child/Children).",
             "cefrLevel": "A1"
@@ -2128,62 +2128,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-4-1",
             "sublessonId": "sub-a1_node_3-4",
-            "title": "Concepto Clave: 4. Objetos del Aula & Tecnología",
+            "title": "4. Objetos del Aula & Tecnología",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "backpack, laptop, notebook, charger, headphones, desk, chair",
-            "summaryShort": "Nombra los objetos cotidianos en la escuela, universidad u oficina.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Objetos del Aula & Tecnología. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Objetos del Aula & Tecnología.",
+            "grammarFormula": "1. Escuela: backpack, notebook, pencil, desk, whiteboard\n2. Tecnología: laptop, smartphone, charger, headphones, screen",
+            "summaryShort": "Identifica y nombra los objetos más frecuentes en el entorno educativo y laboral.",
+            "conceptBreakdown": "Vocabulario práctico para describir tus pertenencias y herramientas de trabajo.",
+            "deepDiveNotes": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Put your laptop and notebook in your backpack.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_3_4",
-                "ruleTitle": "Error Común en 4. Objetos del Aula & Tecnología",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Put your laptop and notebook in your backpack.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Objetos del Aula & Tecnología para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I put my books in the charge",
+                "correctExample": "I put my books in the backpack",
+                "fastPill": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
+                "mediumExplanation": "Vocabulario práctico para describir tus pertenencias y herramientas de trabajo.",
+                "slowDeepDive": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería."
               }
             ]
           },
           {
             "id": "exp-a1_node_3-4-2",
             "sublessonId": "sub-a1_node_3-4",
-            "title": "Refuerzo Pedagógico: 4. Objetos del Aula & Tecnología",
+            "title": "Refuerzo de Concepto: 4. Objetos del Aula & Tecnología",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "backpack, laptop, notebook, charger, headphones, desk, chair",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Objetos del Aula & Tecnología.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Objetos del Aula & Tecnología antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Escuela: backpack, notebook, pencil, desk, whiteboard\n2. Tecnología: laptop, smartphone, charger, headphones, screen",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Objetos del Aula & Tecnología antes de los ejercicios de producción.",
+            "conceptBreakdown": "Vocabulario práctico para describir tus pertenencias y herramientas de trabajo.",
+            "deepDiveNotes": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My backpack is on the desk next to the computer.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2191,18 +2191,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-4-3",
             "sublessonId": "sub-a1_node_3-4",
-            "title": "Resumen de Logro: 4. Objetos del Aula & Tecnología",
+            "title": "Resumen: 4. Objetos del Aula & Tecnología",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "backpack, laptop, notebook, charger, headphones, desk, chair",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Objetos del Aula & Tecnología.",
-            "conceptBreakdown": "Repasa la fórmula: \"backpack, laptop, notebook, charger, headphones, desk, chair\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Escuela: backpack, notebook, pencil, desk, whiteboard\n2. Tecnología: laptop, smartphone, charger, headphones, screen",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Objetos del Aula & Tecnología.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Escuela: backpack, notebook, pencil, desk, whiteboard",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2239,7 +2239,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Backpack": "Mochila / Morral",
               "Laptop": "Computadora portátil",
@@ -2266,7 +2266,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My backpack is on the desk next to the computer.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Objetos del Aula & Tecnología.",
             "cefrLevel": "A1"
@@ -2286,62 +2286,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-5-1",
             "sublessonId": "sub-a1_node_3-5",
-            "title": "Concepto Clave: 5. Preposiciones de Lugar: In, On, Under, Next to",
+            "title": "5. Preposiciones de Lugar: In, On, Under, Next to",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "In (dentro) | On (sobre) | Under (debajo) | Next to (al lado)",
-            "summaryShort": "Describe la ubicación espacial exacta de los objetos cotidianos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Preposiciones de Lugar: In, On, Under, Next to. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Preposiciones de Lugar: In, On, Under, Next to.",
+            "grammarFormula": "1. In: dentro de un espacio cerrado (in the bag, in the room)\n2. On: sobre una superficie (on the desk, on the wall)\n3. Under: debajo de (under the bed)\n4. Next to: al lado de (next to the door)",
+            "summaryShort": "Describe con precisión la ubicación espacial de objetos y personas.",
+            "conceptBreakdown": "Usa \"in\" para contenedores, \"on\" para superficies y \"under\" para posiciones inferiores.",
+            "deepDiveNotes": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The book is on the table and the pen is in the bag.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_3_5",
-                "ruleTitle": "Error Común en 5. Preposiciones de Lugar: In, On, Under, Next to",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The book is on the table and the pen is in the bag.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Preposiciones de Lugar: In, On, Under, Next to para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The book is in the table",
+                "correctExample": "The book is on the table",
+                "fastPill": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
+                "mediumExplanation": "Usa \"in\" para contenedores, \"on\" para superficies y \"under\" para posiciones inferiores.",
+                "slowDeepDive": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_3-5-2",
             "sublessonId": "sub-a1_node_3-5",
-            "title": "Refuerzo Pedagógico: 5. Preposiciones de Lugar: In, On, Under, Next to",
+            "title": "Refuerzo de Concepto: 5. Preposiciones de Lugar: In, On, Under, Next to",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "In (dentro) | On (sobre) | Under (debajo) | Next to (al lado)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Preposiciones de Lugar: In, On, Under, Next to.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Preposiciones de Lugar: In, On, Under, Next to antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. In: dentro de un espacio cerrado (in the bag, in the room)\n2. On: sobre una superficie (on the desk, on the wall)\n3. Under: debajo de (under the bed)\n4. Next to: al lado de (next to the door)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Preposiciones de Lugar: In, On, Under, Next to antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"in\" para contenedores, \"on\" para superficies y \"under\" para posiciones inferiores.",
+            "deepDiveNotes": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The shoes are under the chair next to the door.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2349,18 +2349,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_3-5-3",
             "sublessonId": "sub-a1_node_3-5",
-            "title": "Resumen de Logro: 5. Preposiciones de Lugar: In, On, Under, Next to",
+            "title": "Resumen: 5. Preposiciones de Lugar: In, On, Under, Next to",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "In (dentro) | On (sobre) | Under (debajo) | Next to (al lado)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Preposiciones de Lugar: In, On, Under, Next to.",
-            "conceptBreakdown": "Repasa la fórmula: \"In (dentro) | On (sobre) | Under (debajo) | Next to (al lado)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. In: dentro de un espacio cerrado (in the bag, in the room)\n2. On: sobre una superficie (on the desk, on the wall)\n3. Under: debajo de (under the bed)\n4. Next to: al lado de (next to the door)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preposiciones de Lugar: In, On, Under, Next to.",
+            "conceptBreakdown": "Recuerda la regla central: 1. In: dentro de un espacio cerrado (in the bag, in the room)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2397,7 +2397,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "In": "Dentro de",
               "On": "Sobre / Encima de",
@@ -2424,7 +2424,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The shoes are under the chair next to the door.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "cefrLevel": "A1"
@@ -2462,62 +2462,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-1-1",
             "sublessonId": "sub-a1_node_4-1",
-            "title": "Concepto Clave: 1. Rutinas Diarias & 3ra Persona (-s / -es)",
+            "title": "1. Rutinas Diarias & 3ra Persona (-s / -es)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "He/She/It + verb(-s/-es) ➔ I work ➔ He works | I watch ➔ She watches",
+            "grammarFormula": "1. I / You / We / They + base verb (I work, We play)\n2. He / She / It + verb(-s/-es) ➔ He works, She watches, He studies\n3. Regla: Solo la 3ra persona singular añade -s/-es en afirmativo.",
             "summaryShort": "En presente simple afirmativo, la tercera persona singular (he/she/it) añade -s o -es al verbo.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Rutinas Diarias & 3ra Persona (-s / -es). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
+            "conceptBreakdown": "Usa presente simple para hábitos y verdades universales.",
+            "deepDiveNotes": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "She wakes up early and drinks hot coffee.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_4_1",
-                "ruleTitle": "Error Común en 1. Rutinas Diarias & 3ra Persona (-s / -es)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "She wakes up early and drinks hot coffee.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Rutinas Diarias & 3ra Persona (-s / -es) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He study English every day",
+                "correctExample": "He studies English every day",
+                "fastPill": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
+                "mediumExplanation": "Usa presente simple para hábitos y verdades universales.",
+                "slowDeepDive": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies)."
               }
             ]
           },
           {
             "id": "exp-a1_node_4-1-2",
             "sublessonId": "sub-a1_node_4-1",
-            "title": "Refuerzo Pedagógico: 1. Rutinas Diarias & 3ra Persona (-s / -es)",
+            "title": "Refuerzo de Concepto: 1. Rutinas Diarias & 3ra Persona (-s / -es)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "He/She/It + verb(-s/-es) ➔ I work ➔ He works | I watch ➔ She watches",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Rutinas Diarias & 3ra Persona (-s / -es).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Rutinas Diarias & 3ra Persona (-s / -es) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I / You / We / They + base verb (I work, We play)\n2. He / She / It + verb(-s/-es) ➔ He works, She watches, He studies\n3. Regla: Solo la 3ra persona singular añade -s/-es en afirmativo.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Rutinas Diarias & 3ra Persona (-s / -es) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa presente simple para hábitos y verdades universales.",
+            "deepDiveNotes": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My brother plays soccer every Saturday morning.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2525,18 +2525,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-1-3",
             "sublessonId": "sub-a1_node_4-1",
-            "title": "Resumen de Logro: 1. Rutinas Diarias & 3ra Persona (-s / -es)",
+            "title": "Resumen: 1. Rutinas Diarias & 3ra Persona (-s / -es)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "He/She/It + verb(-s/-es) ➔ I work ➔ He works | I watch ➔ She watches",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Rutinas Diarias & 3ra Persona (-s / -es).",
-            "conceptBreakdown": "Repasa la fórmula: \"He/She/It + verb(-s/-es) ➔ I work ➔ He works | I watch ➔ She watches\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I / You / We / They + base verb (I work, We play)\n2. He / She / It + verb(-s/-es) ➔ He works, She watches, He studies\n3. Regla: Solo la 3ra persona singular añade -s/-es en afirmativo.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Rutinas Diarias & 3ra Persona (-s / -es).",
+            "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They + base verb (I work, We play)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2554,7 +2554,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "studys"
             ],
             "correctAnswer": "studies",
-            "explanation": "Verbos terminados en consonante + y cambian a -ies (study ➔ studies).",
+            "explanation": "Study cambia a studies en tercera persona.",
             "cefrLevel": "A1"
           },
           {
@@ -2567,13 +2567,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "cooking"
             ],
             "correctAnswer": "cooks",
-            "explanation": "Con \"My mother\" (She) se agrega -s al verbo (cooks).",
+            "explanation": "Con She se añade -s (cooks).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_4-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I work ➔": "He works",
               "I watch ➔": "She watches",
@@ -2600,7 +2600,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My brother plays soccer every Saturday morning.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "cefrLevel": "A1"
@@ -2620,62 +2620,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-2-1",
             "sublessonId": "sub-a1_node_4-2",
-            "title": "Concepto Clave: 2. Negación: Don't vs Doesn't",
+            "title": "2. Negación: Don't vs Doesn't",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I/You/We/They + don't + verb | He/She/It + doesn't + verb (base)",
-            "summaryShort": "Al usar \"doesn't\", el verbo principal vuelve a su forma base sin -s.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Negación: Don't vs Doesn't. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Negación: Don't vs Doesn't.",
+            "grammarFormula": "1. I / You / We / They + don't + base verb (We don't work)\n2. He / She / It + doesn't + base verb (He doesn't work)\n3. Regla: Con \"doesn't\", el verbo principal NO lleva -s.",
+            "summaryShort": "Usa \"don't\" o \"doesn't\" para negar en presente y mantén el verbo principal en su forma base.",
+            "conceptBreakdown": "El auxiliar \"doesn't\" absorbe la tercera persona, por lo que el verbo vuelve a su forma simple.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He doesn't eat meat because he is vegetarian.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_4_2",
-                "ruleTitle": "Error Común en 2. Negación: Don't vs Doesn't",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He doesn't eat meat because he is vegetarian.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Negación: Don't vs Doesn't para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He doesn't works / He no works",
+                "correctExample": "He doesn't work",
+                "fastPill": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
+                "mediumExplanation": "El auxiliar \"doesn't\" absorbe la tercera persona, por lo que el verbo vuelve a su forma simple.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to."
               }
             ]
           },
           {
             "id": "exp-a1_node_4-2-2",
             "sublessonId": "sub-a1_node_4-2",
-            "title": "Refuerzo Pedagógico: 2. Negación: Don't vs Doesn't",
+            "title": "Refuerzo de Concepto: 2. Negación: Don't vs Doesn't",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I/You/We/They + don't + verb | He/She/It + doesn't + verb (base)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Negación: Don't vs Doesn't.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Negación: Don't vs Doesn't antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I / You / We / They + don't + base verb (We don't work)\n2. He / She / It + doesn't + base verb (He doesn't work)\n3. Regla: Con \"doesn't\", el verbo principal NO lleva -s.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Negación: Don't vs Doesn't antes de los ejercicios de producción.",
+            "conceptBreakdown": "El auxiliar \"doesn't\" absorbe la tercera persona, por lo que el verbo vuelve a su forma simple.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "They don't work on weekends.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2683,18 +2683,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-2-3",
             "sublessonId": "sub-a1_node_4-2",
-            "title": "Resumen de Logro: 2. Negación: Don't vs Doesn't",
+            "title": "Resumen: 2. Negación: Don't vs Doesn't",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I/You/We/They + don't + verb | He/She/It + doesn't + verb (base)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Negación: Don't vs Doesn't.",
-            "conceptBreakdown": "Repasa la fórmula: \"I/You/We/They + don't + verb | He/She/It + doesn't + verb (base)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I / You / We / They + don't + base verb (We don't work)\n2. He / She / It + doesn't + base verb (He doesn't work)\n3. Regla: Con \"doesn't\", el verbo principal NO lleva -s.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Negación: Don't vs Doesn't.",
+            "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They + don't + base verb (We don't work)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2712,7 +2712,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "He no drinks coffee."
             ],
             "correctAnswer": "He doesn't drink coffee.",
-            "explanation": "Con \"doesn't\" el verbo queda en forma base: \"drink\" (sin -s).",
+            "explanation": "Con \"doesn't\" el verbo queda en forma base: \"drink\".",
             "cefrLevel": "A1"
           },
           {
@@ -2725,13 +2725,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "not"
             ],
             "correctAnswer": "don't",
-            "explanation": "Con \"We\" el auxiliar negativo es \"don't\".",
+            "explanation": "Con We se usa \"don't\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_4-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I": "don't like",
               "He": "doesn't work",
@@ -2758,7 +2758,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "They don't work on weekends.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Negación: Don't vs Doesn't.",
             "cefrLevel": "A1"
@@ -2778,62 +2778,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-3-1",
             "sublessonId": "sub-a1_node_4-3",
-            "title": "Concepto Clave: 3. Preguntas con Do y Does",
+            "title": "3. Preguntas con Do y Does",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Do + I/you/we/they + verb? | Does + he/she/it + verb?",
-            "summaryShort": "Inicia preguntas con Do o Does según el sujeto de la oración.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Preguntas con Do y Does. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Preguntas con Do y Does.",
+            "grammarFormula": "1. Do + I/you/we/they + base verb? (Do you work?)\n2. Does + he/she/it + base verb? (Does he work?)\n3. Respuestas: Yes, I do. / No, I don't. | Yes, he does. / No, he doesn't.",
+            "summaryShort": "Inicia preguntas con Do o Does según el sujeto y responde con respuestas cortas.",
+            "conceptBreakdown": "Al igual que en la negación, en preguntas con \"Does\" el verbo principal va en forma base sin -s.",
+            "deepDiveNotes": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Do you live in Colombia and does he work here?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_4_3",
-                "ruleTitle": "Error Común en 3. Preguntas con Do y Does",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Do you live in Colombia and does he work here?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Preguntas con Do y Does para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Does she lives in Bogota?",
+                "correctExample": "Does she live in Bogota?",
+                "fastPill": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
+                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Does\" el verbo principal va en forma base sin -s.",
+                "slowDeepDive": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base."
               }
             ]
           },
           {
             "id": "exp-a1_node_4-3-2",
             "sublessonId": "sub-a1_node_4-3",
-            "title": "Refuerzo Pedagógico: 3. Preguntas con Do y Does",
+            "title": "Refuerzo de Concepto: 3. Preguntas con Do y Does",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Do + I/you/we/they + verb? | Does + he/she/it + verb?",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Preguntas con Do y Does.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Preguntas con Do y Does antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Do + I/you/we/they + base verb? (Do you work?)\n2. Does + he/she/it + base verb? (Does he work?)\n3. Respuestas: Yes, I do. / No, I don't. | Yes, he does. / No, he doesn't.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Preguntas con Do y Does antes de los ejercicios de producción.",
+            "conceptBreakdown": "Al igual que en la negación, en preguntas con \"Does\" el verbo principal va en forma base sin -s.",
+            "deepDiveNotes": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Does your sister live in this apartment?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2841,18 +2841,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-3-3",
             "sublessonId": "sub-a1_node_4-3",
-            "title": "Resumen de Logro: 3. Preguntas con Do y Does",
+            "title": "Resumen: 3. Preguntas con Do y Does",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Do + I/you/we/they + verb? | Does + he/she/it + verb?",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Preguntas con Do y Does.",
-            "conceptBreakdown": "Repasa la fórmula: \"Do + I/you/we/they + verb? | Does + he/she/it + verb?\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Do + I/you/we/they + base verb? (Do you work?)\n2. Does + he/she/it + base verb? (Does he work?)\n3. Respuestas: Yes, I do. / No, I don't. | Yes, he does. / No, he doesn't.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Preguntas con Do y Does.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Do + I/you/we/they + base verb? (Do you work?)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -2870,7 +2870,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Is your brother speak French?"
             ],
             "correctAnswer": "Does your brother speak French?",
-            "explanation": "Con \"your brother\" (He) usamos \"Does\" + verbo base \"speak\".",
+            "explanation": "Con He usamos Does + verbo base \"speak\".",
             "cefrLevel": "A1"
           },
           {
@@ -2883,13 +2883,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Are"
             ],
             "correctAnswer": "Do",
-            "explanation": "Con \"you\" usamos el auxiliar \"Do\".",
+            "explanation": "Con You usamos \"Do\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_4-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Do you...?": "Yes, I do.",
               "Does he...?": "Yes, he does.",
@@ -2916,7 +2916,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Does your sister live in this apartment?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Preguntas con Do y Does.",
             "cefrLevel": "A1"
@@ -2936,62 +2936,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-4-1",
             "sublessonId": "sub-a1_node_4-4",
-            "title": "Concepto Clave: 4. Adverbios de Frecuencia (Always, Usually, Never)",
+            "title": "4. Adverbios de Frecuencia (Always, Usually, Never)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + Frequency Adverb + Main Verb | Subject + To Be + Adverb",
-            "summaryShort": "Los adverbios de frecuencia van antes del verbo principal pero después de To Be.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Adverbios de Frecuencia (Always, Usually, Never). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Adverbios de Frecuencia (Always, Usually, Never).",
+            "grammarFormula": "1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)\n2. Posición: Antes del verbo principal (I always eat)\n3. Posición con To Be: Después del verbo To Be (I am always happy)",
+            "summaryShort": "Expresa con qué frecuencia realizas tus actividades cotidianas.",
+            "conceptBreakdown": "Los adverbios de frecuencia preceden a los verbos ordinarios pero siguen al verbo To Be.",
+            "deepDiveNotes": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I usually drink water and I never smoke.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_4_4",
-                "ruleTitle": "Error Común en 4. Adverbios de Frecuencia (Always, Usually, Never)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I usually drink water and I never smoke.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Adverbios de Frecuencia (Always, Usually, Never) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I don't never eat meat / She is late always",
+                "correctExample": "I never eat meat / She is always late",
+                "fastPill": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
+                "mediumExplanation": "Los adverbios de frecuencia preceden a los verbos ordinarios pero siguen al verbo To Be.",
+                "slowDeepDive": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación)."
               }
             ]
           },
           {
             "id": "exp-a1_node_4-4-2",
             "sublessonId": "sub-a1_node_4-4",
-            "title": "Refuerzo Pedagógico: 4. Adverbios de Frecuencia (Always, Usually, Never)",
+            "title": "Refuerzo de Concepto: 4. Adverbios de Frecuencia (Always, Usually, Never)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + Frequency Adverb + Main Verb | Subject + To Be + Adverb",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Adverbios de Frecuencia (Always, Usually, Never).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Adverbios de Frecuencia (Always, Usually, Never) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)\n2. Posición: Antes del verbo principal (I always eat)\n3. Posición con To Be: Después del verbo To Be (I am always happy)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Adverbios de Frecuencia (Always, Usually, Never) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Los adverbios de frecuencia preceden a los verbos ordinarios pero siguen al verbo To Be.",
+            "deepDiveNotes": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "She always brushes her teeth before going to bed.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -2999,18 +2999,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-4-3",
             "sublessonId": "sub-a1_node_4-4",
-            "title": "Resumen de Logro: 4. Adverbios de Frecuencia (Always, Usually, Never)",
+            "title": "Resumen: 4. Adverbios de Frecuencia (Always, Usually, Never)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + Frequency Adverb + Main Verb | Subject + To Be + Adverb",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Adverbios de Frecuencia (Always, Usually, Never).",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + Frequency Adverb + Main Verb | Subject + To Be + Adverb\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)\n2. Posición: Antes del verbo principal (I always eat)\n3. Posición con To Be: Después del verbo To Be (I am always happy)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Adverbios de Frecuencia (Always, Usually, Never).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3041,13 +3041,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "usually"
             ],
             "correctAnswer": "never",
-            "explanation": "\"Never\" significa nunca (0% de frecuencia).",
+            "explanation": "\"Never\" significa nunca (0%).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_4-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Always": "Siempre (100%)",
               "Usually": "Usualmente (80%)",
@@ -3074,7 +3074,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "She always brushes her teeth before going to bed.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "cefrLevel": "A1"
@@ -3094,62 +3094,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-5-1",
             "sublessonId": "sub-a1_node_4-5",
-            "title": "Concepto Clave: 5. Expresiones Temporales: In the morning, On Mondays",
+            "title": "5. Expresiones Temporales: In the morning, On Mondays",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "In the morning/afternoon | At night/8 PM | On Mondays/Fridays",
+            "grammarFormula": "1. In: in the morning, in the afternoon, in the evening\n2. At: at night, at noon, at 8:00 AM\n3. On: on Monday, on Fridays, on the weekend",
             "summaryShort": "Usa \"in\" para partes del día, \"at\" para horas y noche, \"on\" para días específicos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Expresiones Temporales: In the morning, On Mondays. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Expresiones Temporales: In the morning, On Mondays.",
+            "conceptBreakdown": "Preposiciones temporales indispensables para coordinar horarios y rutinas.",
+            "deepDiveNotes": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "We go to the gym on Mondays in the afternoon.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_4_5",
-                "ruleTitle": "Error Común en 5. Expresiones Temporales: In the morning, On Mondays",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We go to the gym on Mondays in the afternoon.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Expresiones Temporales: In the morning, On Mondays para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "in the night / in Monday",
+                "correctExample": "at night / on Monday",
+                "fastPill": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
+                "mediumExplanation": "Preposiciones temporales indispensables para coordinar horarios y rutinas.",
+                "slowDeepDive": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_4-5-2",
             "sublessonId": "sub-a1_node_4-5",
-            "title": "Refuerzo Pedagógico: 5. Expresiones Temporales: In the morning, On Mondays",
+            "title": "Refuerzo de Concepto: 5. Expresiones Temporales: In the morning, On Mondays",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "In the morning/afternoon | At night/8 PM | On Mondays/Fridays",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Expresiones Temporales: In the morning, On Mondays.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Expresiones Temporales: In the morning, On Mondays antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. In: in the morning, in the afternoon, in the evening\n2. At: at night, at noon, at 8:00 AM\n3. On: on Monday, on Fridays, on the weekend",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Expresiones Temporales: In the morning, On Mondays antes de los ejercicios de producción.",
+            "conceptBreakdown": "Preposiciones temporales indispensables para coordinar horarios y rutinas.",
+            "deepDiveNotes": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I read a book at night before sleeping.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3157,18 +3157,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_4-5-3",
             "sublessonId": "sub-a1_node_4-5",
-            "title": "Resumen de Logro: 5. Expresiones Temporales: In the morning, On Mondays",
+            "title": "Resumen: 5. Expresiones Temporales: In the morning, On Mondays",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "In the morning/afternoon | At night/8 PM | On Mondays/Fridays",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Expresiones Temporales: In the morning, On Mondays.",
-            "conceptBreakdown": "Repasa la fórmula: \"In the morning/afternoon | At night/8 PM | On Mondays/Fridays\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. In: in the morning, in the afternoon, in the evening\n2. At: at night, at noon, at 8:00 AM\n3. On: on Monday, on Fridays, on the weekend",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Expresiones Temporales: In the morning, On Mondays.",
+            "conceptBreakdown": "Recuerda la regla central: 1. In: in the morning, in the afternoon, in the evening",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3199,13 +3199,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "at"
             ],
             "correctAnswer": "on",
-            "explanation": "Con días de la semana se usa \"on\".",
+            "explanation": "Con días se usa \"on\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_4-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "In the morning": "Por la mañana",
               "At night": "Por la noche",
@@ -3232,7 +3232,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I read a book at night before sleeping.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresiones Temporales: In the morning, On Mondays.",
             "cefrLevel": "A1"
@@ -3270,62 +3270,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-1-1",
             "sublessonId": "sub-a1_node_5-1",
-            "title": "Concepto Clave: 1. Miembros de la Familia & Posesivo ('s)",
+            "title": "1. Miembros de la Familia & Posesivo ('s)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Carlos's car (el carro de Carlos) | My sister's house",
-            "summaryShort": "Usa el apóstrofo 's para indicar posesión sin usar \"of\".",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Miembros de la Familia & Posesivo ('s). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Miembros de la Familia & Posesivo ('s).",
+            "grammarFormula": "1. Familia: parents (padres), siblings (hermanos), children (hijos)\n2. Posesivo: Carlos's car (el carro de Carlos), My sister's house",
+            "summaryShort": "Usa el apóstrofo 's para indicar posesión y describe a tu árbol genealógico.",
+            "conceptBreakdown": "En inglés la posesión se expresa colocando 's al final del poseedor.",
+            "deepDiveNotes": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "My brother's wife is very friendly and smart.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_5_1",
-                "ruleTitle": "Error Común en 1. Miembros de la Familia & Posesivo ('s)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "My brother's wife is very friendly and smart.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Miembros de la Familia & Posesivo ('s) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The house of my sister / My parents are my uncles",
+                "correctExample": "My sister's house / My parents are my mother and father",
+                "fastPill": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
+                "mediumExplanation": "En inglés la posesión se expresa colocando 's al final del poseedor.",
+                "slowDeepDive": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives)."
               }
             ]
           },
           {
             "id": "exp-a1_node_5-1-2",
             "sublessonId": "sub-a1_node_5-1",
-            "title": "Refuerzo Pedagógico: 1. Miembros de la Familia & Posesivo ('s)",
+            "title": "Refuerzo de Concepto: 1. Miembros de la Familia & Posesivo ('s)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Carlos's car (el carro de Carlos) | My sister's house",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Miembros de la Familia & Posesivo ('s).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Miembros de la Familia & Posesivo ('s) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Familia: parents (padres), siblings (hermanos), children (hijos)\n2. Posesivo: Carlos's car (el carro de Carlos), My sister's house",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Miembros de la Familia & Posesivo ('s) antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés la posesión se expresa colocando 's al final del poseedor.",
+            "deepDiveNotes": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My parents live in a big house with my sister.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3333,18 +3333,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-1-3",
             "sublessonId": "sub-a1_node_5-1",
-            "title": "Resumen de Logro: 1. Miembros de la Familia & Posesivo ('s)",
+            "title": "Resumen: 1. Miembros de la Familia & Posesivo ('s)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Carlos's car (el carro de Carlos) | My sister's house",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Miembros de la Familia & Posesivo ('s).",
-            "conceptBreakdown": "Repasa la fórmula: \"Carlos's car (el carro de Carlos) | My sister's house\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Familia: parents (padres), siblings (hermanos), children (hijos)\n2. Posesivo: Carlos's car (el carro de Carlos), My sister's house",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Miembros de la Familia & Posesivo ('s).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Familia: parents (padres), siblings (hermanos), children (hijos)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3362,7 +3362,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "The sister's my house"
             ],
             "correctAnswer": "My sister's house",
-            "explanation": "En inglés la posesión se indica con [Poseedor]'s [Objeto].",
+            "explanation": "Posesión con 's: My sister's house.",
             "cefrLevel": "A1"
           },
           {
@@ -3381,7 +3381,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Parents": "Padres (papá y mamá)",
               "Siblings": "Hermanos (en general)",
@@ -3408,7 +3408,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My parents live in a big house with my sister.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Miembros de la Familia & Posesivo ('s).",
             "cefrLevel": "A1"
@@ -3428,62 +3428,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-2-1",
             "sublessonId": "sub-a1_node_5-2",
-            "title": "Concepto Clave: 2. Partes de la Casa & Muebles",
+            "title": "2. Partes de la Casa & Muebles",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Living room, kitchen, bedroom, bathroom, sofa, fridge, bed",
-            "summaryShort": "Nombra cada habitación y mueble de la vivienda.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Partes de la Casa & Muebles. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Partes de la Casa & Muebles.",
+            "grammarFormula": "1. Habitaciones: kitchen, living room, bedroom, bathroom, garden\n2. Muebles: sofa, bed, table, chair, refrigerator, stove",
+            "summaryShort": "Nombra cada estancia de la vivienda y los principales muebles y electrodomésticos.",
+            "conceptBreakdown": "Vocabulario esencial para describir tu hogar y alquiler de viviendas.",
+            "deepDiveNotes": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The refrigerator and the stove are in the kitchen.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_5_2",
-                "ruleTitle": "Error Común en 2. Partes de la Casa & Muebles",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The refrigerator and the stove are in the kitchen.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Partes de la Casa & Muebles para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I sleep in the living room bed",
+                "correctExample": "I sleep in the bedroom",
+                "fastPill": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
+                "mediumExplanation": "Vocabulario esencial para describir tu hogar y alquiler de viviendas.",
+                "slowDeepDive": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio."
               }
             ]
           },
           {
             "id": "exp-a1_node_5-2-2",
             "sublessonId": "sub-a1_node_5-2",
-            "title": "Refuerzo Pedagógico: 2. Partes de la Casa & Muebles",
+            "title": "Refuerzo de Concepto: 2. Partes de la Casa & Muebles",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Living room, kitchen, bedroom, bathroom, sofa, fridge, bed",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Partes de la Casa & Muebles.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Partes de la Casa & Muebles antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Habitaciones: kitchen, living room, bedroom, bathroom, garden\n2. Muebles: sofa, bed, table, chair, refrigerator, stove",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Partes de la Casa & Muebles antes de los ejercicios de producción.",
+            "conceptBreakdown": "Vocabulario esencial para describir tu hogar y alquiler de viviendas.",
+            "deepDiveNotes": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Our apartment has two bedrooms and a nice balcony.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3491,18 +3491,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-2-3",
             "sublessonId": "sub-a1_node_5-2",
-            "title": "Resumen de Logro: 2. Partes de la Casa & Muebles",
+            "title": "Resumen: 2. Partes de la Casa & Muebles",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Living room, kitchen, bedroom, bathroom, sofa, fridge, bed",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Partes de la Casa & Muebles.",
-            "conceptBreakdown": "Repasa la fórmula: \"Living room, kitchen, bedroom, bathroom, sofa, fridge, bed\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Habitaciones: kitchen, living room, bedroom, bathroom, garden\n2. Muebles: sofa, bed, table, chair, refrigerator, stove",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Partes de la Casa & Muebles.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Habitaciones: kitchen, living room, bedroom, bathroom, garden",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3520,7 +3520,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "In the garage"
             ],
             "correctAnswer": "In the kitchen",
-            "explanation": "\"Kitchen\" es la cocina de la casa.",
+            "explanation": "\"Kitchen\" es la cocina.",
             "cefrLevel": "A1"
           },
           {
@@ -3539,7 +3539,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Kitchen": "Cocina",
               "Bedroom": "Dormitorio",
@@ -3566,7 +3566,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Our apartment has two bedrooms and a nice balcony.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Partes de la Casa & Muebles.",
             "cefrLevel": "A1"
@@ -3586,62 +3586,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-3-1",
             "sublessonId": "sub-a1_node_5-3",
-            "title": "Concepto Clave: 3. Existencia: There is & There are",
+            "title": "3. Existencia: There is & There are",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "There is + singular noun | There are + plural noun",
-            "summaryShort": "Usa \"There is\" para singular y \"There are\" para plural (significan \"Hay\").",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Existencia: There is & There are. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Existencia: There is & There are.",
+            "grammarFormula": "1. There is + singular noun (There is a table)\n2. There are + plural noun (There are three chairs)\n3. Negativo: There isn't / There aren't | Pregunta: Is there...? / Are there...?",
+            "summaryShort": "Usa \"There is\" para singular y \"There are\" para plural (ambos significan \"Hay\").",
+            "conceptBreakdown": "Estructura obligatoria para expresar existencia y disponibilidad de cosas.",
+            "deepDiveNotes": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "There is a computer and there are two chairs in the room.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_5_3",
-                "ruleTitle": "Error Común en 3. Existencia: There is & There are",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "There is a computer and there are two chairs in the room.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Existencia: There is & There are para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "There is three books on the table",
+                "correctExample": "There are three books on the table",
+                "fastPill": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
+                "mediumExplanation": "Estructura obligatoria para expresar existencia y disponibilidad de cosas.",
+                "slowDeepDive": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural)."
               }
             ]
           },
           {
             "id": "exp-a1_node_5-3-2",
             "sublessonId": "sub-a1_node_5-3",
-            "title": "Refuerzo Pedagógico: 3. Existencia: There is & There are",
+            "title": "Refuerzo de Concepto: 3. Existencia: There is & There are",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "There is + singular noun | There are + plural noun",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Existencia: There is & There are.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Existencia: There is & There are antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. There is + singular noun (There is a table)\n2. There are + plural noun (There are three chairs)\n3. Negativo: There isn't / There aren't | Pregunta: Is there...? / Are there...?",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Existencia: There is & There are antes de los ejercicios de producción.",
+            "conceptBreakdown": "Estructura obligatoria para expresar existencia y disponibilidad de cosas.",
+            "deepDiveNotes": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "There are many beautiful flowers in the garden.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3649,18 +3649,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-3-3",
             "sublessonId": "sub-a1_node_5-3",
-            "title": "Resumen de Logro: 3. Existencia: There is & There are",
+            "title": "Resumen: 3. Existencia: There is & There are",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "There is + singular noun | There are + plural noun",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Existencia: There is & There are.",
-            "conceptBreakdown": "Repasa la fórmula: \"There is + singular noun | There are + plural noun\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. There is + singular noun (There is a table)\n2. There are + plural noun (There are three chairs)\n3. Negativo: There isn't / There aren't | Pregunta: Is there...? / Are there...?",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Existencia: There is & There are.",
+            "conceptBreakdown": "Recuerda la regla central: 1. There is + singular noun (There is a table)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3678,7 +3678,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "There is / there is"
             ],
             "correctAnswer": "There are / there is",
-            "explanation": "There are para 3 habitaciones (plural) y There is para una cocina (singular).",
+            "explanation": "There are para 3 habitaciones y There is para 1 cocina.",
             "cefrLevel": "A1"
           },
           {
@@ -3691,13 +3691,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Are there"
             ],
             "correctAnswer": "There is",
-            "explanation": "\"A modern television\" es singular (There is).",
+            "explanation": "Singular usa \"There is\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_5-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "There is a table": "Hay una mesa",
               "There are two beds": "Hay dos camas",
@@ -3724,7 +3724,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "There are many beautiful flowers in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Existencia: There is & There are.",
             "cefrLevel": "A1"
@@ -3744,62 +3744,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-4-1",
             "sublessonId": "sub-a1_node_5-4",
-            "title": "Concepto Clave: 4. Adjetivos de Personalidad & Físico",
+            "title": "4. Adjetivos de Personalidad & Físico",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Adjective + Noun (a tall man, a kind doctor)",
-            "summaryShort": "En inglés los adjetivos van SIEMPRE antes del sustantivo y no tienen plural.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Adjetivos de Personalidad & Físico. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Adjetivos de Personalidad & Físico.",
+            "grammarFormula": "1. Posición: Adjective + Noun (a tall man, a kind doctor)\n2. Regla: Los adjetivos en inglés NO tienen plural ni género.",
+            "summaryShort": "Describe rasgos físicos y cualidades de personalidad colocando el adjetivo antes del sustantivo.",
+            "conceptBreakdown": "En inglés nunca decimos \"doctors friendlys\". Decimos \"friendly doctors\".",
+            "deepDiveNotes": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He is a hardworking man and a kind father.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_5_4",
-                "ruleTitle": "Error Común en 4. Adjetivos de Personalidad & Físico",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He is a hardworking man and a kind father.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Adjetivos de Personalidad & Físico para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "They are intelligentes doctors / a woman kind",
+                "correctExample": "They are intelligent doctors / a kind woman",
+                "fastPill": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
+                "mediumExplanation": "En inglés nunca decimos \"doctors friendlys\". Decimos \"friendly doctors\".",
+                "slowDeepDive": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino."
               }
             ]
           },
           {
             "id": "exp-a1_node_5-4-2",
             "sublessonId": "sub-a1_node_5-4",
-            "title": "Refuerzo Pedagógico: 4. Adjetivos de Personalidad & Físico",
+            "title": "Refuerzo de Concepto: 4. Adjetivos de Personalidad & Físico",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Adjective + Noun (a tall man, a kind doctor)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Adjetivos de Personalidad & Físico.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Adjetivos de Personalidad & Físico antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Posición: Adjective + Noun (a tall man, a kind doctor)\n2. Regla: Los adjetivos en inglés NO tienen plural ni género.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Adjetivos de Personalidad & Físico antes de los ejercicios de producción.",
+            "conceptBreakdown": "En inglés nunca decimos \"doctors friendlys\". Decimos \"friendly doctors\".",
+            "deepDiveNotes": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My sister is tall, smart and very creative.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3807,18 +3807,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-4-3",
             "sublessonId": "sub-a1_node_5-4",
-            "title": "Resumen de Logro: 4. Adjetivos de Personalidad & Físico",
+            "title": "Resumen: 4. Adjetivos de Personalidad & Físico",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Adjective + Noun (a tall man, a kind doctor)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Adjetivos de Personalidad & Físico.",
-            "conceptBreakdown": "Repasa la fórmula: \"Adjective + Noun (a tall man, a kind doctor)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Posición: Adjective + Noun (a tall man, a kind doctor)\n2. Regla: Los adjetivos en inglés NO tienen plural ni género.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Adjetivos de Personalidad & Físico.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Posición: Adjective + Noun (a tall man, a kind doctor)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3836,7 +3836,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Anywhere"
             ],
             "correctAnswer": "Before the noun (a friendly doctor)",
-            "explanation": "El adjetivo precede al sustantivo: \"a friendly doctor\".",
+            "explanation": "El adjetivo siempre precede al sustantivo.",
             "cefrLevel": "A1"
           },
           {
@@ -3849,13 +3849,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "lazy"
             ],
             "correctAnswer": "kind",
-            "explanation": "\"Kind\" significa amable y servicial.",
+            "explanation": "\"Kind\" significa amable.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_5-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Tall vs Short": "Alto vs Bajo",
               "Friendly": "Amable / Amigable",
@@ -3882,7 +3882,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My sister is tall, smart and very creative.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adjetivos de Personalidad & Físico.",
             "cefrLevel": "A1"
@@ -3902,62 +3902,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-5-1",
             "sublessonId": "sub-a1_node_5-5",
-            "title": "Concepto Clave: 5. Verbo Have Got / Has Got (Posesión)",
+            "title": "5. Verbo Have Got / Has Got (Posesión)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I have got (I've got) | He has got (He's got) = Tener (posesión)",
-            "summaryShort": "Estructura británica común para posesión y características físicas.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Verbo Have Got / Has Got (Posesión). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Verbo Have Got / Has Got (Posesión).",
+            "grammarFormula": "1. I / You / We / They have got ➔ I've got (Tengo)\n2. He / She / It has got ➔ He's got (Él tiene)\n3. Pregunta: Have you got a car? / Has she got blue eyes?",
+            "summaryShort": "Estructura británica cotidiana para expresar posesión y rasgos físicos.",
+            "conceptBreakdown": "Equivale al verbo \"have\", ampliamente utilizado en exámenes internacionales.",
+            "deepDiveNotes": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I've got two brothers and he has got one sister.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_5_5",
-                "ruleTitle": "Error Común en 5. Verbo Have Got / Has Got (Posesión)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I've got two brothers and he has got one sister.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Verbo Have Got / Has Got (Posesión) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He have got a new car",
+                "correctExample": "He has got a new car",
+                "fastPill": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
+                "mediumExplanation": "Equivale al verbo \"have\", ampliamente utilizado en exámenes internacionales.",
+                "slowDeepDive": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes)."
               }
             ]
           },
           {
             "id": "exp-a1_node_5-5-2",
             "sublessonId": "sub-a1_node_5-5",
-            "title": "Refuerzo Pedagógico: 5. Verbo Have Got / Has Got (Posesión)",
+            "title": "Refuerzo de Concepto: 5. Verbo Have Got / Has Got (Posesión)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I have got (I've got) | He has got (He's got) = Tener (posesión)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Verbo Have Got / Has Got (Posesión).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Verbo Have Got / Has Got (Posesión) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I / You / We / They have got ➔ I've got (Tengo)\n2. He / She / It has got ➔ He's got (Él tiene)\n3. Pregunta: Have you got a car? / Has she got blue eyes?",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Verbo Have Got / Has Got (Posesión) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Equivale al verbo \"have\", ampliamente utilizado en exámenes internacionales.",
+            "deepDiveNotes": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Have you got any pets in your house?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -3965,18 +3965,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_5-5-3",
             "sublessonId": "sub-a1_node_5-5",
-            "title": "Resumen de Logro: 5. Verbo Have Got / Has Got (Posesión)",
+            "title": "Resumen: 5. Verbo Have Got / Has Got (Posesión)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I have got (I've got) | He has got (He's got) = Tener (posesión)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Verbo Have Got / Has Got (Posesión).",
-            "conceptBreakdown": "Repasa la fórmula: \"I have got (I've got) | He has got (He's got) = Tener (posesión)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I / You / We / They have got ➔ I've got (Tengo)\n2. He / She / It has got ➔ He's got (Él tiene)\n3. Pregunta: Have you got a car? / Has she got blue eyes?",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Verbo Have Got / Has Got (Posesión).",
+            "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They have got ➔ I've got (Tengo)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -3994,7 +3994,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "has get"
             ],
             "correctAnswer": "has got",
-            "explanation": "Con \"She\" se usa \"has got\".",
+            "explanation": "Con She se usa \"has got\".",
             "cefrLevel": "A1"
           },
           {
@@ -4007,13 +4007,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "having got"
             ],
             "correctAnswer": "have got",
-            "explanation": "Con \"They\" se usa \"have got\".",
+            "explanation": "Con They se usa \"have got\".",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_5-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I have got": "Tengo",
               "He has got": "Él tiene",
@@ -4040,7 +4040,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Have you got any pets in your house?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Verbo Have Got / Has Got (Posesión).",
             "cefrLevel": "A1"
@@ -4078,62 +4078,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-1-1",
             "sublessonId": "sub-a1_node_6-1",
-            "title": "Concepto Clave: 1. Modal Can & Can't (Habilidades)",
+            "title": "1. Modal Can & Can't (Habilidades)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + can/can't + base verb (I can swim / She can't drive)",
-            "summaryShort": "\"Can\" no cambia de forma con he/she/it y va seguido del verbo base sin \"to\".",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Modal Can & Can't (Habilidades). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Modal Can & Can't (Habilidades).",
+            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
+            "summaryShort": "\"Can\" expresa habilidad o permiso; no cambia con he/she/it y va seguido del verbo base sin \"to\".",
+            "conceptBreakdown": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
+            "deepDiveNotes": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "My brother can play the guitar very well.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_6_1",
-                "ruleTitle": "Error Común en 1. Modal Can & Can't (Habilidades)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "My brother can play the guitar very well.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Modal Can & Can't (Habilidades) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He can to swim / She cans speak",
+                "correctExample": "He can swim / She can speak",
+                "fastPill": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
+                "mediumExplanation": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
+                "slowDeepDive": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim)."
               }
             ]
           },
           {
             "id": "exp-a1_node_6-1-2",
             "sublessonId": "sub-a1_node_6-1",
-            "title": "Refuerzo Pedagógico: 1. Modal Can & Can't (Habilidades)",
+            "title": "Refuerzo de Concepto: 1. Modal Can & Can't (Habilidades)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + can/can't + base verb (I can swim / She can't drive)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Modal Can & Can't (Habilidades).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Modal Can & Can't (Habilidades) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Modal Can & Can't (Habilidades) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
+            "deepDiveNotes": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Can you speak English and Spanish fluently?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4141,18 +4141,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-1-3",
             "sublessonId": "sub-a1_node_6-1",
-            "title": "Resumen de Logro: 1. Modal Can & Can't (Habilidades)",
+            "title": "Resumen: 1. Modal Can & Can't (Habilidades)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + can/can't + base verb (I can swim / She can't drive)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Modal Can & Can't (Habilidades).",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + can/can't + base verb (I can swim / She can't drive)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Modal Can & Can't (Habilidades).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Afirmativo: Subject + can + base verb (I can swim / She can drive)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4189,7 +4189,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I can swim": "Puedo nadar",
               "She can drive": "Ella puede conducir",
@@ -4216,7 +4216,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Can you speak English and Spanish fluently?",
             "explanation": "Práctica oral de fluidez y articulación para 1. Modal Can & Can't (Habilidades).",
             "cefrLevel": "A1"
@@ -4236,62 +4236,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-2-1",
             "sublessonId": "sub-a1_node_6-2",
-            "title": "Concepto Clave: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
+            "title": "2. Verbos de Preferencia: Like, Love, Hate + -ing",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + like/love/enjoy/hate + verb(-ing) ➔ I love cooking",
-            "summaryShort": "Los verbos de preferencia van seguidos de gerundio (-ing) para actividades.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Verbos de Preferencia: Like, Love, Hate + -ing. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
+            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
+            "summaryShort": "Los verbos de gusto o preferencia van seguidos de gerundio (-ing) para denotar actividades habituales.",
+            "conceptBreakdown": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
+            "deepDiveNotes": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "She likes listening to music when she studies.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_6_2",
-                "ruleTitle": "Error Común en 2. Verbos de Preferencia: Like, Love, Hate + -ing",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "She likes listening to music when she studies.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Verbos de Preferencia: Like, Love, Hate + -ing para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I enjoy to cook / She likes read",
+                "correctExample": "I enjoy cooking / She likes reading",
+                "fastPill": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
+                "mediumExplanation": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
+                "slowDeepDive": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading)."
               }
             ]
           },
           {
             "id": "exp-a1_node_6-2-2",
             "sublessonId": "sub-a1_node_6-2",
-            "title": "Refuerzo Pedagógico: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
+            "title": "Refuerzo de Concepto: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + like/love/enjoy/hate + verb(-ing) ➔ I love cooking",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Verbos de Preferencia: Like, Love, Hate + -ing antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Verbos de Preferencia: Like, Love, Hate + -ing antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
+            "deepDiveNotes": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "We love traveling to new countries every summer.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4299,18 +4299,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-2-3",
             "sublessonId": "sub-a1_node_6-2",
-            "title": "Resumen de Logro: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
+            "title": "Resumen: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + like/love/enjoy/hate + verb(-ing) ➔ I love cooking",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + like/love/enjoy/hate + verb(-ing) ➔ I love cooking\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Like / Love / Hate / Enjoy + verb(-ing)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4328,7 +4328,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "to reading"
             ],
             "correctAnswer": "reading",
-            "explanation": "Tras \"enjoy/like/love\" se usa la forma en -ing.",
+            "explanation": "Tras enjoy se usa -ing (reading).",
             "cefrLevel": "A1"
           },
           {
@@ -4341,13 +4341,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "wakes"
             ],
             "correctAnswer": "waking",
-            "explanation": "Con \"hate\" usamos el verbo con -ing (waking).",
+            "explanation": "Con hate usamos -ing (waking).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I love dancing": "Me encanta bailar",
               "I like reading": "Me gusta leer",
@@ -4374,7 +4374,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "We love traveling to new countries every summer.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
             "cefrLevel": "A1"
@@ -4394,62 +4394,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-3-1",
             "sublessonId": "sub-a1_node_6-3",
-            "title": "Concepto Clave: 3. Comidas & Bebidas Cotidianas",
+            "title": "3. Comidas & Bebidas Cotidianas",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "breakfast, lunch, dinner, bread, rice, chicken, coffee, water, vegetables",
-            "summaryShort": "Vocabulario esencial de alimentos para restaurantes y supermercados.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Comidas & Bebidas Cotidianas. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Comidas & Bebidas Cotidianas.",
+            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
+            "summaryShort": "Vocabulario esencial de alimentos para desenvolverte en restaurantes y supermercados.",
+            "conceptBreakdown": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
+            "deepDiveNotes": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I eat fruit and drink coffee for breakfast.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_6_3",
-                "ruleTitle": "Error Común en 3. Comidas & Bebidas Cotidianas",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I eat fruit and drink coffee for breakfast.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Comidas & Bebidas Cotidianas para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I drink breakfast at 8 AM",
+                "correctExample": "I have breakfast at 8 AM",
+                "fastPill": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
+                "mediumExplanation": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
+                "slowDeepDive": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_6-3-2",
             "sublessonId": "sub-a1_node_6-3",
-            "title": "Refuerzo Pedagógico: 3. Comidas & Bebidas Cotidianas",
+            "title": "Refuerzo de Concepto: 3. Comidas & Bebidas Cotidianas",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "breakfast, lunch, dinner, bread, rice, chicken, coffee, water, vegetables",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Comidas & Bebidas Cotidianas.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Comidas & Bebidas Cotidianas antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Comidas & Bebidas Cotidianas antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
+            "deepDiveNotes": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "We usually have lunch at one o'clock in the afternoon.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4457,18 +4457,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-3-3",
             "sublessonId": "sub-a1_node_6-3",
-            "title": "Resumen de Logro: 3. Comidas & Bebidas Cotidianas",
+            "title": "Resumen: 3. Comidas & Bebidas Cotidianas",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "breakfast, lunch, dinner, bread, rice, chicken, coffee, water, vegetables",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Comidas & Bebidas Cotidianas.",
-            "conceptBreakdown": "Repasa la fórmula: \"breakfast, lunch, dinner, bread, rice, chicken, coffee, water, vegetables\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comidas & Bebidas Cotidianas.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4505,7 +4505,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Breakfast": "Desayuno",
               "Lunch": "Almuerzo",
@@ -4532,7 +4532,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "We usually have lunch at one o'clock in the afternoon.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comidas & Bebidas Cotidianas.",
             "cefrLevel": "A1"
@@ -4552,62 +4552,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-4-1",
             "sublessonId": "sub-a1_node_6-4",
-            "title": "Concepto Clave: 4. Sustantivos Contables e Incontables (Some / Any)",
+            "title": "4. Sustantivos Contables e Incontables (Some / Any)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Some (afirmativo / ofertas) | Any (negativo / preguntas)",
-            "summaryShort": "Usa \"some\" para oraciones positivas y \"any\" para preguntas y negaciones.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Sustantivos Contables e Incontables (Some / Any). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Sustantivos Contables e Incontables (Some / Any).",
+            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
+            "summaryShort": "Usa \"some\" para afirmaciones u ofrecimientos y \"any\" para negaciones y preguntas.",
+            "conceptBreakdown": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
+            "deepDiveNotes": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "There are some apples on the table but there isn't any milk.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_6_4",
-                "ruleTitle": "Error Común en 4. Sustantivos Contables e Incontables (Some / Any)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "There are some apples on the table but there isn't any milk.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Sustantivos Contables e Incontables (Some / Any) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I don't have some money / two breads",
+                "correctExample": "I don't have any money / two pieces of bread",
+                "fastPill": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
+                "mediumExplanation": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
+                "slowDeepDive": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money)."
               }
             ]
           },
           {
             "id": "exp-a1_node_6-4-2",
             "sublessonId": "sub-a1_node_6-4",
-            "title": "Refuerzo Pedagógico: 4. Sustantivos Contables e Incontables (Some / Any)",
+            "title": "Refuerzo de Concepto: 4. Sustantivos Contables e Incontables (Some / Any)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Some (afirmativo / ofertas) | Any (negativo / preguntas)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Sustantivos Contables e Incontables (Some / Any).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Sustantivos Contables e Incontables (Some / Any) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Sustantivos Contables e Incontables (Some / Any) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
+            "deepDiveNotes": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Can I have some water and some bread, please?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4615,18 +4615,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-4-3",
             "sublessonId": "sub-a1_node_6-4",
-            "title": "Resumen de Logro: 4. Sustantivos Contables e Incontables (Some / Any)",
+            "title": "Resumen: 4. Sustantivos Contables e Incontables (Some / Any)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Some (afirmativo / ofertas) | Any (negativo / preguntas)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Sustantivos Contables e Incontables (Some / Any).",
-            "conceptBreakdown": "Repasa la fórmula: \"Some (afirmativo / ofertas) | Any (negativo / preguntas)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Sustantivos Contables e Incontables (Some / Any).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4663,7 +4663,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Some apples": "Algunas manzanas (contable)",
               "Some water": "Algo de agua (incontable)",
@@ -4690,7 +4690,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Can I have some water and some bread, please?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Sustantivos Contables e Incontables (Some / Any).",
             "cefrLevel": "A1"
@@ -4710,62 +4710,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-5-1",
             "sublessonId": "sub-a1_node_6-5",
-            "title": "Concepto Clave: 5. Preguntas de Cantidad: How Much vs How Many",
+            "title": "5. Preguntas de Cantidad: How Much vs How Many",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "How much + incontable (How much water?) | How many + contable plural (How many books?)",
+            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
             "summaryShort": "Usa \"How many\" para cosas que puedes contar y \"How much\" para cantidades continuas y precios.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Preguntas de Cantidad: How Much vs How Many. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Preguntas de Cantidad: How Much vs How Many.",
+            "conceptBreakdown": "Diferenciación crucial para compras y cantidades de comida.",
+            "deepDiveNotes": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "How many students are in the classroom today?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_6_5",
-                "ruleTitle": "Error Común en 5. Preguntas de Cantidad: How Much vs How Many",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "How many students are in the classroom today?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Preguntas de Cantidad: How Much vs How Many para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "How many money do you have? / How much apples?",
+                "correctExample": "How much money do you have? / How many apples?",
+                "fastPill": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
+                "mediumExplanation": "Diferenciación crucial para compras y cantidades de comida.",
+                "slowDeepDive": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_6-5-2",
             "sublessonId": "sub-a1_node_6-5",
-            "title": "Refuerzo Pedagógico: 5. Preguntas de Cantidad: How Much vs How Many",
+            "title": "Refuerzo de Concepto: 5. Preguntas de Cantidad: How Much vs How Many",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "How much + incontable (How much water?) | How many + contable plural (How many books?)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Preguntas de Cantidad: How Much vs How Many.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Preguntas de Cantidad: How Much vs How Many antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Preguntas de Cantidad: How Much vs How Many antes de los ejercicios de producción.",
+            "conceptBreakdown": "Diferenciación crucial para compras y cantidades de comida.",
+            "deepDiveNotes": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "How much sugar do you want in your coffee?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4773,18 +4773,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-5-3",
             "sublessonId": "sub-a1_node_6-5",
-            "title": "Resumen de Logro: 5. Preguntas de Cantidad: How Much vs How Many",
+            "title": "Resumen: 5. Preguntas de Cantidad: How Much vs How Many",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "How much + incontable (How much water?) | How many + contable plural (How many books?)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Preguntas de Cantidad: How Much vs How Many.",
-            "conceptBreakdown": "Repasa la fórmula: \"How much + incontable (How much water?) | How many + contable plural (How many books?)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preguntas de Cantidad: How Much vs How Many.",
+            "conceptBreakdown": "Recuerda la regla central: 1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4821,7 +4821,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "How many people?": "¿Cuántas personas?",
               "How much time?": "¿Cuánto tiempo?",
@@ -4848,7 +4848,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "How much sugar do you want in your coffee?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas de Cantidad: How Much vs How Many.",
             "cefrLevel": "A1"
@@ -4886,62 +4886,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-1-1",
             "sublessonId": "sub-a1_node_7-1",
-            "title": "Concepto Clave: 1. Números Cardinales & Ordinales",
+            "title": "1. Números Cardinales & Ordinales",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Cardinales: one, two, twenty, hundred | Ordinales: first (1st), second (2nd), third (3rd)",
-            "summaryShort": "Usa cardinales para cantidad y ordinales para fechas y pisos de edificios.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Números Cardinales & Ordinales. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Números Cardinales & Ordinales.",
+            "grammarFormula": "1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)\n2. Ordinales (orden/fechas): first (1st), second (2nd), third (3rd), fourth (4th)",
+            "summaryShort": "Usa cardinales para contar objetos y ordinales para fechas del calendario y pisos de edificios.",
+            "conceptBreakdown": "Las fechas en inglés se leen con ordinales: \"May third\" (May 3rd).",
+            "deepDiveNotes": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Today is my twenty-fifth birthday.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_7_1",
-                "ruleTitle": "Error Común en 1. Números Cardinales & Ordinales",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Today is my twenty-fifth birthday.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Números Cardinales & Ordinales para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "My birthday is May three / I live in the floor five",
+                "correctExample": "My birthday is May 3rd (third) / I live on the fifth floor",
+                "fastPill": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
+                "mediumExplanation": "Las fechas en inglés se leen con ordinales: \"May third\" (May 3rd).",
+                "slowDeepDive": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th)."
               }
             ]
           },
           {
             "id": "exp-a1_node_7-1-2",
             "sublessonId": "sub-a1_node_7-1",
-            "title": "Refuerzo Pedagógico: 1. Números Cardinales & Ordinales",
+            "title": "Refuerzo de Concepto: 1. Números Cardinales & Ordinales",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Cardinales: one, two, twenty, hundred | Ordinales: first (1st), second (2nd), third (3rd)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Números Cardinales & Ordinales.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Números Cardinales & Ordinales antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)\n2. Ordinales (orden/fechas): first (1st), second (2nd), third (3rd), fourth (4th)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Números Cardinales & Ordinales antes de los ejercicios de producción.",
+            "conceptBreakdown": "Las fechas en inglés se leen con ordinales: \"May third\" (May 3rd).",
+            "deepDiveNotes": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "He won first place in the English competition.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -4949,18 +4949,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-1-3",
             "sublessonId": "sub-a1_node_7-1",
-            "title": "Resumen de Logro: 1. Números Cardinales & Ordinales",
+            "title": "Resumen: 1. Números Cardinales & Ordinales",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Cardinales: one, two, twenty, hundred | Ordinales: first (1st), second (2nd), third (3rd)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Números Cardinales & Ordinales.",
-            "conceptBreakdown": "Repasa la fórmula: \"Cardinales: one, two, twenty, hundred | Ordinales: first (1st), second (2nd), third (3rd)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)\n2. Ordinales (orden/fechas): first (1st), second (2nd), third (3rd), fourth (4th)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Números Cardinales & Ordinales.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4978,7 +4978,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Third of May three"
             ],
             "correctAnswer": "May 3rd (May third)",
-            "explanation": "Las fechas en inglés se leen con números ordinales (third).",
+            "explanation": "Las fechas se leen con ordinales (May 3rd).",
             "cefrLevel": "A1"
           },
           {
@@ -4991,13 +4991,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "fiveth"
             ],
             "correctAnswer": "fifth",
-            "explanation": "Para pisos se usa el ordinal \"fifth\" (5th).",
+            "explanation": "Pisos de edificios usan ordinales (fifth).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_7-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "1st ➔": "First",
               "2nd ➔": "Second",
@@ -5024,7 +5024,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "He won first place in the English competition.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Números Cardinales & Ordinales.",
             "cefrLevel": "A1"
@@ -5044,62 +5044,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-2-1",
             "sublessonId": "sub-a1_node_7-2",
-            "title": "Concepto Clave: 2. Decir la Hora: O'clock, Past & To",
+            "title": "2. Decir la Hora: O'clock, Past & To",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "7:00 (seven o'clock) | 7:15 (quarter past seven) | 7:30 (half past seven) | 7:45 (quarter to eight)",
-            "summaryShort": "En inglés se leen primero los minutos y luego la hora con \"past\" o \"to\".",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Decir la Hora: O'clock, Past & To. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Decir la Hora: O'clock, Past & To.",
+            "grammarFormula": "1. 7:00 ➔ Seven o'clock\n2. 7:15 ➔ Quarter past seven\n3. 7:30 ➔ Half past seven\n4. 7:45 ➔ Quarter to eight",
+            "summaryShort": "En el formato tradicional de inglés se indican primero los minutos y luego la hora con \"past\" o \"to\".",
+            "conceptBreakdown": "\"Past\" indica minutos después de la hora (hasta el minuto 30); \"To\" indica minutos que faltan para la siguiente hora.",
+            "deepDiveNotes": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The train arrives at quarter to nine in the morning.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_7_2",
-                "ruleTitle": "Error Común en 2. Decir la Hora: O'clock, Past & To",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The train arrives at quarter to nine in the morning.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Decir la Hora: O'clock, Past & To para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "It is eight fifteen o'clock",
+                "correctExample": "It is quarter past eight / It is eight fifteen",
+                "fastPill": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
+                "mediumExplanation": "\"Past\" indica minutos después de la hora (hasta el minuto 30); \"To\" indica minutos que faltan para la siguiente hora.",
+                "slowDeepDive": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock)."
               }
             ]
           },
           {
             "id": "exp-a1_node_7-2-2",
             "sublessonId": "sub-a1_node_7-2",
-            "title": "Refuerzo Pedagógico: 2. Decir la Hora: O'clock, Past & To",
+            "title": "Refuerzo de Concepto: 2. Decir la Hora: O'clock, Past & To",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "7:00 (seven o'clock) | 7:15 (quarter past seven) | 7:30 (half past seven) | 7:45 (quarter to eight)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Decir la Hora: O'clock, Past & To.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Decir la Hora: O'clock, Past & To antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. 7:00 ➔ Seven o'clock\n2. 7:15 ➔ Quarter past seven\n3. 7:30 ➔ Half past seven\n4. 7:45 ➔ Quarter to eight",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Decir la Hora: O'clock, Past & To antes de los ejercicios de producción.",
+            "conceptBreakdown": "\"Past\" indica minutos después de la hora (hasta el minuto 30); \"To\" indica minutos que faltan para la siguiente hora.",
+            "deepDiveNotes": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My English class starts at half past seven.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5107,18 +5107,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-2-3",
             "sublessonId": "sub-a1_node_7-2",
-            "title": "Resumen de Logro: 2. Decir la Hora: O'clock, Past & To",
+            "title": "Resumen: 2. Decir la Hora: O'clock, Past & To",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "7:00 (seven o'clock) | 7:15 (quarter past seven) | 7:30 (half past seven) | 7:45 (quarter to eight)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Decir la Hora: O'clock, Past & To.",
-            "conceptBreakdown": "Repasa la fórmula: \"7:00 (seven o'clock) | 7:15 (quarter past seven) | 7:30 (half past seven) | 7:45 (quarter to eight)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. 7:00 ➔ Seven o'clock\n2. 7:15 ➔ Quarter past seven\n3. 7:30 ➔ Half past seven\n4. 7:45 ➔ Quarter to eight",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Decir la Hora: O'clock, Past & To.",
+            "conceptBreakdown": "Recuerda la regla central: 1. 7:00 ➔ Seven o'clock",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5155,7 +5155,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "3:00": "Three o'clock",
               "3:15": "Quarter past three",
@@ -5182,7 +5182,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My English class starts at half past seven.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Decir la Hora: O'clock, Past & To.",
             "cefrLevel": "A1"
@@ -5202,62 +5202,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-3-1",
             "sublessonId": "sub-a1_node_7-3",
-            "title": "Concepto Clave: 3. Precios & Compras en Tiendas",
+            "title": "3. Precios & Compras en Tiendas",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "How much is this shirt? ➔ It is twenty dollars ($20) | Can I help you?",
-            "summaryShort": "Pregunta precios y pide artículos al dependiente de una tienda.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Precios & Compras en Tiendas. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Precios & Compras en Tiendas.",
+            "grammarFormula": "1. How much is this [item]? ➔ It is twenty dollars ($20).\n2. Can I help you? / I am looking for a jacket.\n3. Can I pay by card? ➔ Here is your receipt.",
+            "summaryShort": "Pregunta precios, interactúa con el vendedor y realiza pagos en tiendas de ropa y comercio.",
+            "conceptBreakdown": "Usa \"How much is...?\" para singular y \"How much are...?\" para plural (shoes, pants).",
+            "deepDiveNotes": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "This jacket costs forty-five dollars and fifty cents.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_7_3",
-                "ruleTitle": "Error Común en 3. Precios & Compras en Tiendas",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "This jacket costs forty-five dollars and fifty cents.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Precios & Compras en Tiendas para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "How much is these shoes?",
+                "correctExample": "How much are these shoes?",
+                "fastPill": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
+                "mediumExplanation": "Usa \"How much is...?\" para singular y \"How much are...?\" para plural (shoes, pants).",
+                "slowDeepDive": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\"."
               }
             ]
           },
           {
             "id": "exp-a1_node_7-3-2",
             "sublessonId": "sub-a1_node_7-3",
-            "title": "Refuerzo Pedagógico: 3. Precios & Compras en Tiendas",
+            "title": "Refuerzo de Concepto: 3. Precios & Compras en Tiendas",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "How much is this shirt? ➔ It is twenty dollars ($20) | Can I help you?",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Precios & Compras en Tiendas.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Precios & Compras en Tiendas antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. How much is this [item]? ➔ It is twenty dollars ($20).\n2. Can I help you? / I am looking for a jacket.\n3. Can I pay by card? ➔ Here is your receipt.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Precios & Compras en Tiendas antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"How much is...?\" para singular y \"How much are...?\" para plural (shoes, pants).",
+            "deepDiveNotes": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Excuse me, how much are these black shoes?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5265,18 +5265,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-3-3",
             "sublessonId": "sub-a1_node_7-3",
-            "title": "Resumen de Logro: 3. Precios & Compras en Tiendas",
+            "title": "Resumen: 3. Precios & Compras en Tiendas",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "How much is this shirt? ➔ It is twenty dollars ($20) | Can I help you?",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Precios & Compras en Tiendas.",
-            "conceptBreakdown": "Repasa la fórmula: \"How much is this shirt? ➔ It is twenty dollars ($20) | Can I help you?\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. How much is this [item]? ➔ It is twenty dollars ($20).\n2. Can I help you? / I am looking for a jacket.\n3. Can I pay by card? ➔ Here is your receipt.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Precios & Compras en Tiendas.",
+            "conceptBreakdown": "Recuerda la regla central: 1. How much is this [item]? ➔ It is twenty dollars ($20).",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5307,13 +5307,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "helps"
             ],
             "correctAnswer": "help",
-            "explanation": "\"Can I help you?\" es la fórmula de atención al cliente.",
+            "explanation": "\"Can I help you?\" es la fórmula de atención.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_7-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "How much is it?": "¿Cuánto cuesta?",
               "Can I pay by card?": "¿Puedo pagar con tarjeta?",
@@ -5340,7 +5340,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Excuse me, how much are these black shoes?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Precios & Compras en Tiendas.",
             "cefrLevel": "A1"
@@ -5360,62 +5360,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-4-1",
             "sublessonId": "sub-a1_node_7-4",
-            "title": "Concepto Clave: 4. Días de la Semana, Meses & Estaciones",
+            "title": "4. Días de la Semana, Meses & Estaciones",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Monday, Tuesday, Wednesday... | January, February... | Spring, Summer, Autumn, Winter",
-            "summaryShort": "Los días y meses siempre se escriben con mayúscula en inglés.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Días de la Semana, Meses & Estaciones. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Días de la Semana, Meses & Estaciones.",
+            "grammarFormula": "1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n2. Meses: January, February, March, April, May, June, July, August, September, October, November, December\n3. Estaciones: Spring, Summer, Autumn (Fall), Winter",
+            "summaryShort": "Los días de la semana y los meses del año SIEMPRE se escriben con mayúscula en inglés.",
+            "conceptBreakdown": "Vocabulario temporal indispensable para fijar reuniones y fechas de entrega.",
+            "deepDiveNotes": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "We go to the beach in summer on weekends.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_7_4",
-                "ruleTitle": "Error Común en 4. Días de la Semana, Meses & Estaciones",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We go to the beach in summer on weekends.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Días de la Semana, Meses & Estaciones para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "on friday / in august",
+                "correctExample": "on Friday / in August",
+                "fastPill": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
+                "mediumExplanation": "Vocabulario temporal indispensable para fijar reuniones y fechas de entrega.",
+                "slowDeepDive": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October)."
               }
             ]
           },
           {
             "id": "exp-a1_node_7-4-2",
             "sublessonId": "sub-a1_node_7-4",
-            "title": "Refuerzo Pedagógico: 4. Días de la Semana, Meses & Estaciones",
+            "title": "Refuerzo de Concepto: 4. Días de la Semana, Meses & Estaciones",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Monday, Tuesday, Wednesday... | January, February... | Spring, Summer, Autumn, Winter",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Días de la Semana, Meses & Estaciones.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Días de la Semana, Meses & Estaciones antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n2. Meses: January, February, March, April, May, June, July, August, September, October, November, December\n3. Estaciones: Spring, Summer, Autumn (Fall), Winter",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Días de la Semana, Meses & Estaciones antes de los ejercicios de producción.",
+            "conceptBreakdown": "Vocabulario temporal indispensable para fijar reuniones y fechas de entrega.",
+            "deepDiveNotes": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "My English test is on Friday, October 15th.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5423,18 +5423,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-4-3",
             "sublessonId": "sub-a1_node_7-4",
-            "title": "Resumen de Logro: 4. Días de la Semana, Meses & Estaciones",
+            "title": "Resumen: 4. Días de la Semana, Meses & Estaciones",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Monday, Tuesday, Wednesday... | January, February... | Spring, Summer, Autumn, Winter",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Días de la Semana, Meses & Estaciones.",
-            "conceptBreakdown": "Repasa la fórmula: \"Monday, Tuesday, Wednesday... | January, February... | Spring, Summer, Autumn, Winter\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n2. Meses: January, February, March, April, May, June, July, August, September, October, November, December\n3. Estaciones: Spring, Summer, Autumn (Fall), Winter",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Días de la Semana, Meses & Estaciones.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5465,13 +5465,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Augustus"
             ],
             "correctAnswer": "August",
-            "explanation": "Los meses en inglés van siempre en mayúscula (August).",
+            "explanation": "Los meses van en mayúscula (August).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_7-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Monday": "Lunes",
               "Wednesday": "Miércoles",
@@ -5498,7 +5498,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "My English test is on Friday, October 15th.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Días de la Semana, Meses & Estaciones.",
             "cefrLevel": "A1"
@@ -5518,62 +5518,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-5-1",
             "sublessonId": "sub-a1_node_7-5",
-            "title": "Concepto Clave: 5. Ropa, Tallas & Colores",
+            "title": "5. Ropa, Tallas & Colores",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "shirt, pants, jacket, shoes, dress, hat | small (S), medium (M), large (L)",
-            "summaryShort": "Describe prendas de vestir y pide tu talla adecuada.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Ropa, Tallas & Colores. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Ropa, Tallas & Colores.",
+            "grammarFormula": "1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)\n2. Tallas: small (S), medium (M), large (L), extra large (XL)",
+            "summaryShort": "Describe prendas de vestir y pide tu talla adecuada al comprar ropa.",
+            "conceptBreakdown": "Usa \"in a larger/smaller size\" para solicitar cambios de talla.",
+            "deepDiveNotes": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He is wearing a blue shirt and black pants today.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_7_5",
-                "ruleTitle": "Error Común en 5. Ropa, Tallas & Colores",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He is wearing a blue shirt and black pants today.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Ropa, Tallas & Colores para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "This pant is small",
+                "correctExample": "These pants are small",
+                "fastPill": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
+                "mediumExplanation": "Usa \"in a larger/smaller size\" para solicitar cambios de talla.",
+                "slowDeepDive": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés."
               }
             ]
           },
           {
             "id": "exp-a1_node_7-5-2",
             "sublessonId": "sub-a1_node_7-5",
-            "title": "Refuerzo Pedagógico: 5. Ropa, Tallas & Colores",
+            "title": "Refuerzo de Concepto: 5. Ropa, Tallas & Colores",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "shirt, pants, jacket, shoes, dress, hat | small (S), medium (M), large (L)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Ropa, Tallas & Colores.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Ropa, Tallas & Colores antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)\n2. Tallas: small (S), medium (M), large (L), extra large (XL)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Ropa, Tallas & Colores antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"in a larger/smaller size\" para solicitar cambios de talla.",
+            "deepDiveNotes": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I would like to try on this green jacket in medium size.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5581,18 +5581,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_7-5-3",
             "sublessonId": "sub-a1_node_7-5",
-            "title": "Resumen de Logro: 5. Ropa, Tallas & Colores",
+            "title": "Resumen: 5. Ropa, Tallas & Colores",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "shirt, pants, jacket, shoes, dress, hat | small (S), medium (M), large (L)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Ropa, Tallas & Colores.",
-            "conceptBreakdown": "Repasa la fórmula: \"shirt, pants, jacket, shoes, dress, hat | small (S), medium (M), large (L)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)\n2. Tallas: small (S), medium (M), large (L), extra large (XL)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Ropa, Tallas & Colores.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5610,7 +5610,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Give me big shirt please."
             ],
             "correctAnswer": "Do you have this in a larger size?",
-            "explanation": "\"In a larger size\" es la forma natural de pedir una talla más grande.",
+            "explanation": "\"In a larger size\" es la forma natural de pedir una talla mayor.",
             "cefrLevel": "A1"
           },
           {
@@ -5618,18 +5618,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "FILL_IN_BLANK",
             "prompt": "I wear a _____ size T-shirt because it is very comfortable.",
             "options": [
-              "option1",
-              "option2",
-              "option3"
+              "medium",
+              "many",
+              "much"
             ],
-            "correctAnswer": "option1",
-            "explanation": "Uso adecuado de la estructura en 5. Ropa, Tallas & Colores.",
+            "correctAnswer": "medium",
+            "explanation": "\"Medium\" es talla mediana (M).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_7-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Shirt": "Camisa",
               "Pants / Trousers": "Pantalones",
@@ -5656,7 +5656,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I would like to try on this green jacket in medium size.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Ropa, Tallas & Colores.",
             "cefrLevel": "A1"
@@ -5694,62 +5694,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-1-1",
             "sublessonId": "sub-a1_node_8-1",
-            "title": "Concepto Clave: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
+            "title": "1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Identificar el lugar donde verías un cartel o aviso (in a library, in a hospital, on a bus)",
-            "summaryShort": "Asocia anuncios y señales en inglés con su contexto real.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Avisos Públicos Saber Pro A1 (Parte 1). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
+            "grammarFormula": "1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema\n2. Notice: NO SWIMMING - DANGEROUS WAVES ➔ At the beach\n3. Notice: FASTEN YOUR SEATBELT ➔ On an airplane",
+            "summaryShort": "Asocia avisos y letreros públicos en inglés con el lugar donde se encuentran en la vida real.",
+            "conceptBreakdown": "Estrategia Saber Pro: busca palabras clave en el cartel (waves, seats, silent, books).",
+            "deepDiveNotes": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "You can see this sign at the airport check-in desk.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_8_1",
-                "ruleTitle": "Error Común en 1. Avisos Públicos Saber Pro A1 (Parte 1)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "You can see this sign at the airport check-in desk.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Avisos Públicos Saber Pro A1 (Parte 1) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "No swimming seen in a cinema",
+                "correctExample": "No swimming seen at the beach",
+                "fastPill": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
+                "mediumExplanation": "Estrategia Saber Pro: busca palabras clave en el cartel (waves, seats, silent, books).",
+                "slowDeepDive": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos."
               }
             ]
           },
           {
             "id": "exp-a1_node_8-1-2",
             "sublessonId": "sub-a1_node_8-1",
-            "title": "Refuerzo Pedagógico: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
+            "title": "Refuerzo de Concepto: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Identificar el lugar donde verías un cartel o aviso (in a library, in a hospital, on a bus)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Avisos Públicos Saber Pro A1 (Parte 1).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Avisos Públicos Saber Pro A1 (Parte 1) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema\n2. Notice: NO SWIMMING - DANGEROUS WAVES ➔ At the beach\n3. Notice: FASTEN YOUR SEATBELT ➔ On an airplane",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Avisos Públicos Saber Pro A1 (Parte 1) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Estrategia Saber Pro: busca palabras clave en el cartel (waves, seats, silent, books).",
+            "deepDiveNotes": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Passengers must show their tickets before boarding the train.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5757,18 +5757,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-1-3",
             "sublessonId": "sub-a1_node_8-1",
-            "title": "Resumen de Logro: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
+            "title": "Resumen: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Identificar el lugar donde verías un cartel o aviso (in a library, in a hospital, on a bus)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Avisos Públicos Saber Pro A1 (Parte 1).",
-            "conceptBreakdown": "Repasa la fórmula: \"Identificar el lugar donde verías un cartel o aviso (in a library, in a hospital, on a bus)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema\n2. Notice: NO SWIMMING - DANGEROUS WAVES ➔ At the beach\n3. Notice: FASTEN YOUR SEATBELT ➔ On an airplane",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Avisos Públicos Saber Pro A1 (Parte 1).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5786,7 +5786,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "On a plane"
             ],
             "correctAnswer": "In a cinema",
-            "explanation": "Este aviso es característico de las salas de cine.",
+            "explanation": "Aviso característico de salas de cine.",
             "cefrLevel": "A1"
           },
           {
@@ -5799,13 +5799,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "In a library"
             ],
             "correctAnswer": "At the beach",
-            "explanation": "Señales de olas peligrosas se encuentran en la playa.",
+            "explanation": "Señales de olas peligrosas se ubican en la playa.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_8-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Please keep off the grass": "In a park",
               "Fasten your seatbelt": "On an airplane",
@@ -5832,7 +5832,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Passengers must show their tickets before boarding the train.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "cefrLevel": "A1"
@@ -5852,62 +5852,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-2-1",
             "sublessonId": "sub-a1_node_8-2",
-            "title": "Concepto Clave: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
+            "title": "2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Completar conversaciones con la respuesta más lógica y natural.",
-            "summaryShort": "Entiende la intención comunicativa de tu interlocutor.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Diálogos Cortos Saber Pro A1 (Parte 2). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
+            "grammarFormula": "1. Speaker A: Would you like a cup of coffee?\n2. Speaker B: Yes, please. With a little sugar.\n3. Estrategia: Elige la respuesta más lógica y cortés.",
+            "summaryShort": "Completa conversaciones cotidianas seleccionando la réplica comunicativamente adecuada.",
+            "conceptBreakdown": "Analiza la intención del hablante A (ofrecimiento, pregunta de cortesía, saludo).",
+            "deepDiveNotes": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I enjoy studying English with FlashLens every day.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_8_2",
-                "ruleTitle": "Error Común en 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I enjoy studying English with FlashLens every day.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Diálogos Cortos Saber Pro A1 (Parte 2) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Would you like coffee? - I am 20 years old",
+                "correctExample": "Would you like coffee? - Yes, please",
+                "fastPill": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
+                "mediumExplanation": "Analiza la intención del hablante A (ofrecimiento, pregunta de cortesía, saludo).",
+                "slowDeepDive": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro."
               }
             ]
           },
           {
             "id": "exp-a1_node_8-2-2",
             "sublessonId": "sub-a1_node_8-2",
-            "title": "Refuerzo Pedagógico: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
+            "title": "Refuerzo de Concepto: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Completar conversaciones con la respuesta más lógica y natural.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Diálogos Cortos Saber Pro A1 (Parte 2) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Speaker A: Would you like a cup of coffee?\n2. Speaker B: Yes, please. With a little sugar.\n3. Estrategia: Elige la respuesta más lógica y cortés.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Diálogos Cortos Saber Pro A1 (Parte 2) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Analiza la intención del hablante A (ofrecimiento, pregunta de cortesía, saludo).",
+            "deepDiveNotes": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Thank you for your advice, it was very helpful.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -5915,18 +5915,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-2-3",
             "sublessonId": "sub-a1_node_8-2",
-            "title": "Resumen de Logro: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
+            "title": "Resumen: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Completar conversaciones con la respuesta más lógica y natural.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
-            "conceptBreakdown": "Repasa la fórmula: \"Completar conversaciones con la respuesta más lógica y natural.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Speaker A: Would you like a cup of coffee?\n2. Speaker B: Yes, please. With a little sugar.\n3. Estrategia: Elige la respuesta más lógica y cortés.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Speaker A: Would you like a cup of coffee?",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5944,7 +5944,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "No, she isn't here."
             ],
             "correctAnswer": "Yes, please. With a little sugar.",
-            "explanation": "Responde cortésmente a una oferta de bebida.",
+            "explanation": "Responde cortésmente a un ofrecimiento.",
             "cefrLevel": "A1"
           },
           {
@@ -5957,13 +5957,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "with my friend"
             ],
             "correctAnswer": "very easy, I got an A",
-            "explanation": "Responde a una pregunta sobre cómo estuvo una experiencia pasada.",
+            "explanation": "Responde a cómo estuvo una experiencia pasada.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_8-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "How are you today?": "I'm doing great, thanks!",
               "Where do you work?": "At a software company.",
@@ -5990,7 +5990,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Thank you for your advice, it was very helpful.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "cefrLevel": "A1"
@@ -6010,62 +6010,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-3-1",
             "sublessonId": "sub-a1_node_8-3",
-            "title": "Concepto Clave: 3. Comprensión Lectora Literal A1",
+            "title": "3. Comprensión Lectora Literal A1",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Lectura de textos informativos cortos y extracción de datos clave.",
-            "summaryShort": "Localiza nombres, horarios, fechas y datos puntuales en textos simples.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Comprensión Lectora Literal A1. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Comprensión Lectora Literal A1.",
+            "grammarFormula": "1. Text: David is 28 years old. He is a graphic designer in Cali.\n2. Extraction: Age = 28, Job = Graphic designer, City = Cali",
+            "summaryShort": "Lee textos informativos cortos y extrae datos puntuales (nombres, fechas, lugares y profesiones).",
+            "conceptBreakdown": "Lectura literal para responder preguntas cerradas basadas en el texto.",
+            "deepDiveNotes": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "David lives in Cali and works as a designer.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_8_3",
-                "ruleTitle": "Error Común en 3. Comprensión Lectora Literal A1",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "David lives in Cali and works as a designer.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Comprensión Lectora Literal A1 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Assuming unstated facts not in the text",
+                "correctExample": "Finding exact keywords in the paragraph",
+                "fastPill": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
+                "mediumExplanation": "Lectura literal para responder preguntas cerradas basadas en el texto.",
+                "slowDeepDive": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo."
               }
             ]
           },
           {
             "id": "exp-a1_node_8-3-2",
             "sublessonId": "sub-a1_node_8-3",
-            "title": "Refuerzo Pedagógico: 3. Comprensión Lectora Literal A1",
+            "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Lectura de textos informativos cortos y extracción de datos clave.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Comprensión Lectora Literal A1.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Comprensión Lectora Literal A1 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Text: David is 28 years old. He is a graphic designer in Cali.\n2. Extraction: Age = 28, Job = Graphic designer, City = Cali",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Comprensión Lectora Literal A1 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Lectura literal para responder preguntas cerradas basadas en el texto.",
+            "deepDiveNotes": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "He enjoys his job and speaks English with his international clients.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6073,18 +6073,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-3-3",
             "sublessonId": "sub-a1_node_8-3",
-            "title": "Resumen de Logro: 3. Comprensión Lectora Literal A1",
+            "title": "Resumen: 3. Comprensión Lectora Literal A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Lectura de textos informativos cortos y extracción de datos clave.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Comprensión Lectora Literal A1.",
-            "conceptBreakdown": "Repasa la fórmula: \"Lectura de textos informativos cortos y extracción de datos clave.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Text: David is 28 years old. He is a graphic designer in Cali.\n2. Extraction: Age = 28, Job = Graphic designer, City = Cali",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comprensión Lectora Literal A1.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Text: David is 28 years old. He is a graphic designer in Cali.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6115,13 +6115,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Medellin"
             ],
             "correctAnswer": "Cali",
-            "explanation": "El texto especifica que vive en Cali.",
+            "explanation": "El texto menciona que vive en Cali.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_8-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "David's age": "28 years old",
               "David's city": "Cali",
@@ -6148,7 +6148,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "He enjoys his job and speaks English with his international clients.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A1.",
             "cefrLevel": "A1"
@@ -6168,62 +6168,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-4-1",
             "sublessonId": "sub-a1_node_8-4",
-            "title": "Concepto Clave: 4. Vocabulario Integrado A1",
+            "title": "4. Vocabulario Integrado A1",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Integración léxica de objetos, familia, profesiones, números y alimentos.",
-            "summaryShort": "Reconoce y utiliza el léxico central del nivel A1.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Vocabulario Integrado A1. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Vocabulario Integrado A1.",
+            "grammarFormula": "1. Familia: parents, siblings, nephew, niece\n2. Lugares: library, supermarket, hospital, school\n3. Acciones: study, work, cook, travel, play",
+            "summaryShort": "Integra el léxico esencial aprendido en los módulos anteriores del nivel A1.",
+            "conceptBreakdown": "Reconocimiento léxico para consolidar tu vocabulario activo.",
+            "deepDiveNotes": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "My family has dinner together every evening at home.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_8_4",
-                "ruleTitle": "Error Común en 4. Vocabulario Integrado A1",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "My family has dinner together every evening at home.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Vocabulario Integrado A1 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "My sister son is my cousin",
+                "correctExample": "My sister's son is my nephew",
+                "fastPill": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
+                "mediumExplanation": "Reconocimiento léxico para consolidar tu vocabulario activo.",
+                "slowDeepDive": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina."
               }
             ]
           },
           {
             "id": "exp-a1_node_8-4-2",
             "sublessonId": "sub-a1_node_8-4",
-            "title": "Refuerzo Pedagógico: 4. Vocabulario Integrado A1",
+            "title": "Refuerzo de Concepto: 4. Vocabulario Integrado A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Integración léxica de objetos, familia, profesiones, números y alimentos.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Vocabulario Integrado A1.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Vocabulario Integrado A1 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Familia: parents, siblings, nephew, niece\n2. Lugares: library, supermarket, hospital, school\n3. Acciones: study, work, cook, travel, play",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Vocabulario Integrado A1 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Reconocimiento léxico para consolidar tu vocabulario activo.",
+            "deepDiveNotes": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I am proud of my progress in English level A1.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6231,18 +6231,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-4-3",
             "sublessonId": "sub-a1_node_8-4",
-            "title": "Resumen de Logro: 4. Vocabulario Integrado A1",
+            "title": "Resumen: 4. Vocabulario Integrado A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Integración léxica de objetos, familia, profesiones, números y alimentos.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Vocabulario Integrado A1.",
-            "conceptBreakdown": "Repasa la fórmula: \"Integración léxica de objetos, familia, profesiones, números y alimentos.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Familia: parents, siblings, nephew, niece\n2. Lugares: library, supermarket, hospital, school\n3. Acciones: study, work, cook, travel, play",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Vocabulario Integrado A1.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Familia: parents, siblings, nephew, niece",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6260,7 +6260,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Table, chair, laptop, desk"
             ],
             "correctAnswer": "Doctor, engineer, teacher, architect",
-            "explanation": "Este grupo contiene exclusivamente nombres de profesiones.",
+            "explanation": "Contiene exclusivamente nombres de profesiones.",
             "cefrLevel": "A1"
           },
           {
@@ -6279,7 +6279,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Nephew": "Sobrino",
               "Niece": "Sobrina",
@@ -6306,7 +6306,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I am proud of my progress in English level A1.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Vocabulario Integrado A1.",
             "cefrLevel": "A1"
@@ -6326,62 +6326,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-5-1",
             "sublessonId": "sub-a1_node_8-5",
-            "title": "Concepto Clave: 5. Evaluación de Consolidación A1",
+            "title": "5. Evaluación de Consolidación A1",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Demostración de dominio completo de las competencias A1 según el marco CEFR.",
-            "summaryShort": "¡Has alcanzado la meta del nivel A1! Estás listo para avanzar al nivel A2.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Evaluación de Consolidación A1. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Evaluación de Consolidación A1.",
+            "grammarFormula": "1. Nivel A1 CEFR: Usuario Básico (Acceso)\n2. Competencias: Rutinas, descripciones simples, To Be, Presente Simple\n3. Meta alcanzada ➔ Avance a Nivel A2",
+            "summaryShort": "¡Has demostrado dominio completo de las competencias del nivel A1 según el marco CEFR!",
+            "conceptBreakdown": "Estás listo para avanzar a los retos del nivel A2 (Pasado Simple, Direcciones, Comparativos y Futuro).",
+            "deepDiveNotes": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I have successfully completed all A1 modules in FlashLens.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a1_node_8_5",
-                "ruleTitle": "Error Común en 5. Evaluación de Consolidación A1",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I have successfully completed all A1 modules in FlashLens.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Evaluación de Consolidación A1 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Staying in basic vocabulary without advancing",
+                "correctExample": "Moving forward to CEFR Level A2 consolidation",
+                "fastPill": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
+                "mediumExplanation": "Estás listo para avanzar a los retos del nivel A2 (Pasado Simple, Direcciones, Comparativos y Futuro).",
+                "slowDeepDive": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras."
               }
             ]
           },
           {
             "id": "exp-a1_node_8-5-2",
             "sublessonId": "sub-a1_node_8-5",
-            "title": "Refuerzo Pedagógico: 5. Evaluación de Consolidación A1",
+            "title": "Refuerzo de Concepto: 5. Evaluación de Consolidación A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Demostración de dominio completo de las competencias A1 según el marco CEFR.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Evaluación de Consolidación A1.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Evaluación de Consolidación A1 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Nivel A1 CEFR: Usuario Básico (Acceso)\n2. Competencias: Rutinas, descripciones simples, To Be, Presente Simple\n3. Meta alcanzada ➔ Avance a Nivel A2",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Evaluación de Consolidación A1 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Estás listo para avanzar a los retos del nivel A2 (Pasado Simple, Direcciones, Comparativos y Futuro).",
+            "deepDiveNotes": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I am ready to conquer level A2 with confidence and fluency.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6389,18 +6389,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-5-3",
             "sublessonId": "sub-a1_node_8-5",
-            "title": "Resumen de Logro: 5. Evaluación de Consolidación A1",
+            "title": "Resumen: 5. Evaluación de Consolidación A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Demostración de dominio completo de las competencias A1 según el marco CEFR.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Evaluación de Consolidación A1.",
-            "conceptBreakdown": "Repasa la fórmula: \"Demostración de dominio completo de las competencias A1 según el marco CEFR.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Nivel A1 CEFR: Usuario Básico (Acceso)\n2. Competencias: Rutinas, descripciones simples, To Be, Presente Simple\n3. Meta alcanzada ➔ Avance a Nivel A2",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Evaluación de Consolidación A1.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Nivel A1 CEFR: Usuario Básico (Acceso)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6437,7 +6437,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "A1 Level": "Basic user (Acceso)",
               "A2 Level": "Waystage (Plataforma)",
@@ -6464,7 +6464,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I am ready to conquer level A2 with confidence and fluency.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Evaluación de Consolidación A1.",
             "cefrLevel": "A1"
@@ -6476,7 +6476,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
     "id": "a2_node_9",
     "title": "9. Pasado Simple & Verbos Irregulares",
-    "description": "Verbos regulares (-ed con sonidos /t/, /d/, /ɪd/), verbos irregulares clave (went, saw, had), auxiliar Didn't y Did.",
+    "description": "Verbos regulares (-ed con fonemas /t/, /d/, /ɪd/), verbos irregulares clave (went, saw, had), auxiliar Didn't y Did.",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
     "orderIndex": 9,
@@ -6492,7 +6492,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a2_node_9-1",
         "nodeId": "a2_node_9",
-        "title": "1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/)",
+        "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
         "orderIndex": 1,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -6502,62 +6502,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-1-1",
             "sublessonId": "sub-a2_node_9-1",
-            "title": "Concepto Clave: 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/)",
+            "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "/t/ (tras sonidos sordos: watched, worked) | /d/ (tras sonoros: played, lived) | /ɪd/ (tras t y d: wanted, needed)",
-            "summaryShort": "Solo se pronuncia una sílaba extra /ɪd/ cuando el verbo termina en sonido \"t\" o \"d\".",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
+            "grammarFormula": "1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/\n2. /d/ (tras sonidos sonoros): played /pleɪd/, lived /lɪvd/\n3. /ɪd/ (tras sonido t y d): wanted /ˈwɒn.tɪd/, needed /ˈniː.dɪd/",
+            "summaryShort": "Solo se pronuncia la sílaba extra /ɪd/ cuando el verbo termina en sonido \"t\" o \"d\".",
+            "conceptBreakdown": "En los demás verbos la \"e\" de -ed es muda: \"watched\" suena /wɒtʃt/ (una sola sílaba).",
+            "deepDiveNotes": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "They lived in London for three years.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_9_1",
-                "ruleTitle": "Error Común en 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "They lived in London for three years.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Pronunciar \"watched\" como \"uatch-ed\" con dos sílabas",
+                "correctExample": "Watched se pronuncia /wɒtʃt/ con sonido /t/ final",
+                "fastPill": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
+                "mediumExplanation": "En los demás verbos la \"e\" de -ed es muda: \"watched\" suena /wɒtʃt/ (una sola sílaba).",
+                "slowDeepDive": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided)."
               }
             ]
           },
           {
             "id": "exp-a2_node_9-1-2",
             "sublessonId": "sub-a2_node_9-1",
-            "title": "Refuerzo Pedagógico: 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/)",
+            "title": "Refuerzo de Concepto: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "/t/ (tras sonidos sordos: watched, worked) | /d/ (tras sonoros: played, lived) | /ɪd/ (tras t y d: wanted, needed)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/\n2. /d/ (tras sonidos sonoros): played /pleɪd/, lived /lɪvd/\n3. /ɪd/ (tras sonido t y d): wanted /ˈwɒn.tɪd/, needed /ˈniː.dɪd/",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/) antes de los ejercicios de producción.",
+            "conceptBreakdown": "En los demás verbos la \"e\" de -ed es muda: \"watched\" suena /wɒtʃt/ (una sola sílaba).",
+            "deepDiveNotes": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I visited my grandparents and we talked for hours.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6565,18 +6565,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-1-3",
             "sublessonId": "sub-a2_node_9-1",
-            "title": "Resumen de Logro: 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/)",
+            "title": "Resumen: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "/t/ (tras sonidos sordos: watched, worked) | /d/ (tras sonoros: played, lived) | /ɪd/ (tras t y d: wanted, needed)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
-            "conceptBreakdown": "Repasa la fórmula: \"/t/ (tras sonidos sordos: watched, worked) | /d/ (tras sonoros: played, lived) | /ɪd/ (tras t y d: wanted, needed)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/\n2. /d/ (tras sonidos sonoros): played /pleɪd/, lived /lɪvd/\n3. /ɪd/ (tras sonido t y d): wanted /ˈwɒn.tɪd/, needed /ˈniː.dɪd/",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
+            "conceptBreakdown": "Recuerda la regla central: 1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6594,7 +6594,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Worked (/wɜːkt/)"
             ],
             "correctAnswer": "Wanted (/ˈwɒn.tɪd/)",
-            "explanation": "Solo los verbos terminados en \"t\" o \"d\" añaden la sílaba /ɪd/ (wanted, needed).",
+            "explanation": "Solo verbos terminados en t o d añaden la sílaba /ɪd/ (wanted, needed).",
             "cefrLevel": "A2"
           },
           {
@@ -6607,13 +6607,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "watchs"
             ],
             "correctAnswer": "watched",
-            "explanation": "\"Watched\" es el pasado regular del verbo watch.",
+            "explanation": "\"Watched\" es el pasado regular.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_9-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Worked (/t/)": "Trabajó",
               "Played (/d/)": "Jugó / Tocó",
@@ -6626,7 +6626,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Wanted (/ɪd/)": "Quiso",
               "Needed (/ɪd/)": "Necesitó"
             },
-            "explanation": "Asociación conceptual clave para 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
+            "explanation": "Asociación conceptual clave para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
           },
           {
@@ -6634,15 +6634,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Escribe la oración completa: \"They lived in London for three years.\"",
             "correctAnswer": "They lived in London for three years.",
-            "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
+            "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_9-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I visited my grandparents and we talked for hours.",
-            "explanation": "Práctica oral de fluidez y articulación para 1. Verbos Regulares: Terminación -ed & Fonética (/t/, /d/, /ɪd/).",
+            "explanation": "Práctica oral de fluidez y articulación para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
           }
         ]
@@ -6660,62 +6660,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-2-1",
             "sublessonId": "sub-a2_node_9-2",
-            "title": "Concepto Clave: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
+            "title": "2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "go ➔ went | see ➔ saw | have ➔ had | buy ➔ bought | eat ➔ ate | write ➔ wrote",
-            "summaryShort": "Los verbos irregulares no llevan -ed; memoriza sus formas de pasado simple.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
+            "grammarFormula": "1. go ➔ went (ir)\n2. see ➔ saw (ver)\n3. have ➔ had (tener)\n4. buy ➔ bought (comprar)\n5. eat ➔ ate (comer)",
+            "summaryShort": "Los verbos irregulares no añaden -ed; transforman su raíz interna en pasado simple.",
+            "conceptBreakdown": "Memoriza los verbos irregulares de alta frecuencia en la comunicación cotidiana.",
+            "deepDiveNotes": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I bought a new laptop and saw a movie yesterday.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_9_2",
-                "ruleTitle": "Error Común en 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I bought a new laptop and saw a movie yesterday.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Yesterday I goed to the store and eated pizza",
+                "correctExample": "Yesterday I went to the store and ate pizza",
+                "fastPill": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
+                "mediumExplanation": "Memoriza los verbos irregulares de alta frecuencia en la comunicación cotidiana.",
+                "slowDeepDive": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_9-2-2",
             "sublessonId": "sub-a2_node_9-2",
-            "title": "Refuerzo Pedagógico: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
+            "title": "Refuerzo de Concepto: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "go ➔ went | see ➔ saw | have ➔ had | buy ➔ bought | eat ➔ ate | write ➔ wrote",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. go ➔ went (ir)\n2. see ➔ saw (ver)\n3. have ➔ had (tener)\n4. buy ➔ bought (comprar)\n5. eat ➔ ate (comer)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Memoriza los verbos irregulares de alta frecuencia en la comunicación cotidiana.",
+            "deepDiveNotes": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "She went to Paris last summer and had a wonderful time.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6723,18 +6723,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-2-3",
             "sublessonId": "sub-a2_node_9-2",
-            "title": "Resumen de Logro: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
+            "title": "Resumen: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "go ➔ went | see ➔ saw | have ➔ had | buy ➔ bought | eat ➔ ate | write ➔ wrote",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
-            "conceptBreakdown": "Repasa la fórmula: \"go ➔ went | see ➔ saw | have ➔ had | buy ➔ bought | eat ➔ ate | write ➔ wrote\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. go ➔ went (ir)\n2. see ➔ saw (ver)\n3. have ➔ had (tener)\n4. buy ➔ bought (comprar)\n5. eat ➔ ate (comer)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
+            "conceptBreakdown": "Recuerda la regla central: 1. go ➔ went (ir)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6765,13 +6765,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "eat"
             ],
             "correctAnswer": "ate",
-            "explanation": "El pasado simple de \"eat\" es \"ate\".",
+            "explanation": "El pasado de \"eat\" es \"ate\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_9-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Go ➔": "Went",
               "See ➔": "Saw",
@@ -6798,7 +6798,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "She went to Paris last summer and had a wonderful time.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "cefrLevel": "A2"
@@ -6818,62 +6818,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-3-1",
             "sublessonId": "sub-a2_node_9-3",
-            "title": "Concepto Clave: 3. Negación en Pasado: Auxiliar Didn't",
+            "title": "3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + didn't + base verb (I didn't go / She didn't see)",
-            "summaryShort": "Con \"didn't\" el verbo principal SIEMPRE regresa a su forma base en presente.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Negación en Pasado: Auxiliar Didn't. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Negación en Pasado: Auxiliar Didn't.",
+            "grammarFormula": "1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)\n2. I didn't go (No fui - con \"go\", no \"went\")\n3. She didn't see (Ella no vio - con \"see\", no \"saw\")",
+            "summaryShort": "Con el auxiliar \"didn't\" el verbo principal SIEMPRE regresa a su forma base en presente.",
+            "conceptBreakdown": "\"Didn't\" ya indica tiempo pasado, por lo que el verbo no se conjuga en pasado dos veces.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "We didn't watch the movie because we were busy.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_9_3",
-                "ruleTitle": "Error Común en 3. Negación en Pasado: Auxiliar Didn't",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We didn't watch the movie because we were busy.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Negación en Pasado: Auxiliar Didn't para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "She didn't went to the party / He no went",
+                "correctExample": "She didn't go to the party",
+                "fastPill": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
+                "mediumExplanation": "\"Didn't\" ya indica tiempo pasado, por lo que el verbo no se conjuga en pasado dos veces.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go)."
               }
             ]
           },
           {
             "id": "exp-a2_node_9-3-2",
             "sublessonId": "sub-a2_node_9-3",
-            "title": "Refuerzo Pedagógico: 3. Negación en Pasado: Auxiliar Didn't",
+            "title": "Refuerzo de Concepto: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + didn't + base verb (I didn't go / She didn't see)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Negación en Pasado: Auxiliar Didn't.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Negación en Pasado: Auxiliar Didn't antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)\n2. I didn't go (No fui - con \"go\", no \"went\")\n3. She didn't see (Ella no vio - con \"see\", no \"saw\")",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Negación en Pasado: Auxiliar Didn't antes de los ejercicios de producción.",
+            "conceptBreakdown": "\"Didn't\" ya indica tiempo pasado, por lo que el verbo no se conjuga en pasado dos veces.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "He didn't understand the question during the exam.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -6881,18 +6881,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-3-3",
             "sublessonId": "sub-a2_node_9-3",
-            "title": "Resumen de Logro: 3. Negación en Pasado: Auxiliar Didn't",
+            "title": "Resumen: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + didn't + base verb (I didn't go / She didn't see)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Negación en Pasado: Auxiliar Didn't.",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + didn't + base verb (I didn't go / She didn't see)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)\n2. I didn't go (No fui - con \"go\", no \"went\")\n3. She didn't see (Ella no vio - con \"see\", no \"saw\")",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Negación en Pasado: Auxiliar Didn't.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -6910,7 +6910,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "She no went to the party."
             ],
             "correctAnswer": "She didn't go to the party.",
-            "explanation": "Tras \"didn't\" el verbo va en forma base: \"go\" (no \"went\").",
+            "explanation": "Tras \"didn't\" el verbo va en forma base: \"go\".",
             "cefrLevel": "A2"
           },
           {
@@ -6923,13 +6923,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "not"
             ],
             "correctAnswer": "didn't",
-            "explanation": "\"Didn't\" es el auxiliar de negación en pasado para todas las personas.",
+            "explanation": "\"Didn't\" es el auxiliar negativo en pasado.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_9-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I went ➔": "I didn't go",
               "He saw ➔": "He didn't see",
@@ -6956,7 +6956,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "He didn't understand the question during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Negación en Pasado: Auxiliar Didn't.",
             "cefrLevel": "A2"
@@ -6976,62 +6976,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-4-1",
             "sublessonId": "sub-a2_node_9-4",
-            "title": "Concepto Clave: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
+            "title": "4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Did + subject + base verb? (Did you see Carlos yesterday?) | yesterday, last night, two days ago",
-            "summaryShort": "Usa \"Did\" al inicio de preguntas en pasado y complementa con expresiones temporales.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Preguntas con Did & Expresiones de Tiempo Pasado. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
+            "grammarFormula": "1. Did + subject + base verb? (Did you see Carlos?)\n2. Expresiones: yesterday (ayer), last night (anoche), two days ago (hace 2 días)",
+            "summaryShort": "Inicia preguntas en pasado con \"Did\" y acompáñalas de expresiones temporales específicas.",
+            "conceptBreakdown": "Al igual que en la negación, en preguntas con \"Did\" el verbo principal va en forma base.",
+            "deepDiveNotes": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Did you see your friends last weekend?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_9_4",
-                "ruleTitle": "Error Común en 4. Preguntas con Did & Expresiones de Tiempo Pasado",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Did you see your friends last weekend?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Preguntas con Did & Expresiones de Tiempo Pasado para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Did you went? / ago two days",
+                "correctExample": "Did you go? / two days ago",
+                "fastPill": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
+                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Did\" el verbo principal va en forma base.",
+                "slowDeepDive": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas)."
               }
             ]
           },
           {
             "id": "exp-a2_node_9-4-2",
             "sublessonId": "sub-a2_node_9-4",
-            "title": "Refuerzo Pedagógico: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
+            "title": "Refuerzo de Concepto: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Did + subject + base verb? (Did you see Carlos yesterday?) | yesterday, last night, two days ago",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Preguntas con Did & Expresiones de Tiempo Pasado antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Did + subject + base verb? (Did you see Carlos?)\n2. Expresiones: yesterday (ayer), last night (anoche), two days ago (hace 2 días)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Preguntas con Did & Expresiones de Tiempo Pasado antes de los ejercicios de producción.",
+            "conceptBreakdown": "Al igual que en la negación, en preguntas con \"Did\" el verbo principal va en forma base.",
+            "deepDiveNotes": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Where did you go on your last vacation?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7039,18 +7039,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-4-3",
             "sublessonId": "sub-a2_node_9-4",
-            "title": "Resumen de Logro: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
+            "title": "Resumen: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Did + subject + base verb? (Did you see Carlos yesterday?) | yesterday, last night, two days ago",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
-            "conceptBreakdown": "Repasa la fórmula: \"Did + subject + base verb? (Did you see Carlos yesterday?) | yesterday, last night, two days ago\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Did + subject + base verb? (Did you see Carlos?)\n2. Expresiones: yesterday (ayer), last night (anoche), two days ago (hace 2 días)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Did + subject + base verb? (Did you see Carlos?)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7068,7 +7068,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Have"
             ],
             "correctAnswer": "Did",
-            "explanation": "Preguntas en pasado simple inician con \"Did\".",
+            "explanation": "Preguntas en pasado inician con \"Did\".",
             "cefrLevel": "A2"
           },
           {
@@ -7081,13 +7081,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "before"
             ],
             "correctAnswer": "ago",
-            "explanation": "\"Ago\" se coloca al final para indicar tiempo transcurrido (two months ago).",
+            "explanation": "\"Ago\" se coloca al final (two months ago).",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_9-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Yesterday": "Ayer",
               "Last night": "Anoche",
@@ -7114,7 +7114,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Where did you go on your last vacation?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "cefrLevel": "A2"
@@ -7134,62 +7134,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-5-1",
             "sublessonId": "sub-a2_node_9-5",
-            "title": "Concepto Clave: 5. Hábitos Pasados con \"Used To\"",
+            "title": "5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + used to + base verb (I used to live in Cali = Solía vivir en Cali)",
-            "summaryShort": "Usa \"used to\" para acciones o estados habituales en el pasado que ya no ocurren.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Hábitos Pasados con \"Used To\". Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Hábitos Pasados con \"Used To\".",
+            "grammarFormula": "1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)\n2. Negativo: I didn't use to play (No solía jugar)\n3. Significado: Hábitos o estados del pasado que ya no ocurren en el presente.",
+            "summaryShort": "Usa \"used to\" para describir rutinas y situaciones habituales que realizabas en el pasado pero ya no.",
+            "conceptBreakdown": "Distingue entre el pasado simple puntual (I played once) y el hábito pasado (I used to play regularly).",
+            "deepDiveNotes": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He used to study English every day when he was at school.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_9_5",
-                "ruleTitle": "Error Común en 5. Hábitos Pasados con \"Used To\"",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He used to study English every day when he was at school.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Hábitos Pasados con \"Used To\" para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I use to live in Cali (para pasado) / I didn't used to",
+                "correctExample": "I used to live in Cali / I didn't use to",
+                "fastPill": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
+                "mediumExplanation": "Distingue entre el pasado simple puntual (I played once) y el hábito pasado (I used to play regularly).",
+                "slowDeepDive": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use)."
               }
             ]
           },
           {
             "id": "exp-a2_node_9-5-2",
             "sublessonId": "sub-a2_node_9-5",
-            "title": "Refuerzo Pedagógico: 5. Hábitos Pasados con \"Used To\"",
+            "title": "Refuerzo de Concepto: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + used to + base verb (I used to live in Cali = Solía vivir en Cali)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Hábitos Pasados con \"Used To\".",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Hábitos Pasados con \"Used To\" antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)\n2. Negativo: I didn't use to play (No solía jugar)\n3. Significado: Hábitos o estados del pasado que ya no ocurren en el presente.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Hábitos Pasados con \"Used To\" antes de los ejercicios de producción.",
+            "conceptBreakdown": "Distingue entre el pasado simple puntual (I played once) y el hábito pasado (I used to play regularly).",
+            "deepDiveNotes": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "We used to go to the countryside on summer holidays.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7197,18 +7197,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_9-5-3",
             "sublessonId": "sub-a2_node_9-5",
-            "title": "Resumen de Logro: 5. Hábitos Pasados con \"Used To\"",
+            "title": "Resumen: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + used to + base verb (I used to live in Cali = Solía vivir en Cali)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Hábitos Pasados con \"Used To\".",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + used to + base verb (I used to live in Cali = Solía vivir en Cali)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)\n2. Negativo: I didn't use to play (No solía jugar)\n3. Significado: Hábitos o estados del pasado que ya no ocurren en el presente.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Hábitos Pasados con \"Used To\".",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7245,7 +7245,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I used to play": "Solía jugar",
               "I used to live": "Solía vivir",
@@ -7272,7 +7272,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "We used to go to the countryside on summer holidays.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Hábitos Pasados con \"Used To\".",
             "cefrLevel": "A2"
@@ -7310,62 +7310,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-1-1",
             "sublessonId": "sub-a2_node_10-1",
-            "title": "Concepto Clave: 1. Lugares de la Ciudad & Servicios Públicos",
+            "title": "1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "bank, post office, library, hospital, museum, pharmacy, supermarket, bus station",
-            "summaryShort": "Identifica y describe los principales edificios y servicios urbanos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Lugares de la Ciudad & Servicios Públicos. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Lugares de la Ciudad & Servicios Públicos.",
+            "grammarFormula": "1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital\n2. Transporte: bus station, train station, airport, subway station",
+            "summaryShort": "Identifica y diferencia los principales edificios públicos y servicios urbanos.",
+            "conceptBreakdown": "Cuidado con el falso amigo: \"library\" es biblioteca (para consultar libros) y \"bookstore\" es la tienda de libros.",
+            "deepDiveNotes": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The modern hospital is near the central bus station.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_10_1",
-                "ruleTitle": "Error Común en 1. Lugares de la Ciudad & Servicios Públicos",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The modern hospital is near the central bus station.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Lugares de la Ciudad & Servicios Públicos para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I bought a novel at the library",
+                "correctExample": "I bought a novel at the bookstore / I borrowed a book from the library",
+                "fastPill": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
+                "mediumExplanation": "Cuidado con el falso amigo: \"library\" es biblioteca (para consultar libros) y \"bookstore\" es la tienda de libros.",
+                "slowDeepDive": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore)."
               }
             ]
           },
           {
             "id": "exp-a2_node_10-1-2",
             "sublessonId": "sub-a2_node_10-1",
-            "title": "Refuerzo Pedagógico: 1. Lugares de la Ciudad & Servicios Públicos",
+            "title": "Refuerzo de Concepto: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "bank, post office, library, hospital, museum, pharmacy, supermarket, bus station",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Lugares de la Ciudad & Servicios Públicos.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Lugares de la Ciudad & Servicios Públicos antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital\n2. Transporte: bus station, train station, airport, subway station",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Lugares de la Ciudad & Servicios Públicos antes de los ejercicios de producción.",
+            "conceptBreakdown": "Cuidado con el falso amigo: \"library\" es biblioteca (para consultar libros) y \"bookstore\" es la tienda de libros.",
+            "deepDiveNotes": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "There is a famous art museum in the historic center.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7373,18 +7373,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-1-3",
             "sublessonId": "sub-a2_node_10-1",
-            "title": "Resumen de Logro: 1. Lugares de la Ciudad & Servicios Públicos",
+            "title": "Resumen: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "bank, post office, library, hospital, museum, pharmacy, supermarket, bus station",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Lugares de la Ciudad & Servicios Públicos.",
-            "conceptBreakdown": "Repasa la fórmula: \"bank, post office, library, hospital, museum, pharmacy, supermarket, bus station\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital\n2. Transporte: bus station, train station, airport, subway station",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Lugares de la Ciudad & Servicios Públicos.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7421,7 +7421,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Library": "Biblioteca",
               "Bookstore": "Librería (tienda)",
@@ -7448,7 +7448,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "There is a famous art museum in the historic center.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Lugares de la Ciudad & Servicios Públicos.",
             "cefrLevel": "A2"
@@ -7468,62 +7468,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-2-1",
             "sublessonId": "sub-a2_node_10-2",
-            "title": "Concepto Clave: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
+            "title": "2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Go straight ahead | Turn left / right | It is on the corner of [Street] | Cross the street",
-            "summaryShort": "Guía a turistas y ubícate en la ciudad con instrucciones de orientación.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Dar y Pedir Direcciones (Turn Left, Go Straight). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
+            "grammarFormula": "1. Go straight ahead (Sigue derecho / todo recto)\n2. Turn left / Turn right (Gira a la izquierda / derecha)\n3. It is on the corner of [Street] (Está en la esquina de)\n4. Cross the street (Cruza la calle)",
+            "summaryShort": "Guía a personas y solicita indicaciones para llegar a cualquier punto de la ciudad.",
+            "conceptBreakdown": "Instrucciones en modo imperativo con preposiciones espaciales.",
+            "deepDiveNotes": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Turn left at the traffic light and cross the street.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_10_2",
-                "ruleTitle": "Error Común en 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Turn left at the traffic light and cross the street.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Dar y Pedir Direcciones (Turn Left, Go Straight) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Go direct to the left",
+                "correctExample": "Go straight ahead and turn left",
+                "fastPill": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
+                "mediumExplanation": "Instrucciones en modo imperativo con preposiciones espaciales.",
+                "slowDeepDive": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse."
               }
             ]
           },
           {
             "id": "exp-a2_node_10-2-2",
             "sublessonId": "sub-a2_node_10-2",
-            "title": "Refuerzo Pedagógico: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
+            "title": "Refuerzo de Concepto: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Go straight ahead | Turn left / right | It is on the corner of [Street] | Cross the street",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Dar y Pedir Direcciones (Turn Left, Go Straight) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Go straight ahead (Sigue derecho / todo recto)\n2. Turn left / Turn right (Gira a la izquierda / derecha)\n3. It is on the corner of [Street] (Está en la esquina de)\n4. Cross the street (Cruza la calle)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Dar y Pedir Direcciones (Turn Left, Go Straight) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Instrucciones en modo imperativo con preposiciones espaciales.",
+            "deepDiveNotes": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Excuse me, where is the nearest metro station?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7531,18 +7531,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-2-3",
             "sublessonId": "sub-a2_node_10-2",
-            "title": "Resumen de Logro: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
+            "title": "Resumen: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Go straight ahead | Turn left / right | It is on the corner of [Street] | Cross the street",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
-            "conceptBreakdown": "Repasa la fórmula: \"Go straight ahead | Turn left / right | It is on the corner of [Street] | Cross the street\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Go straight ahead (Sigue derecho / todo recto)\n2. Turn left / Turn right (Gira a la izquierda / derecha)\n3. It is on the corner of [Street] (Está en la esquina de)\n4. Cross the street (Cruza la calle)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Go straight ahead (Sigue derecho / todo recto)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7560,7 +7560,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Go to the right direct."
             ],
             "correctAnswer": "Go straight ahead and turn right.",
-            "explanation": "\"Go straight ahead\" (sigue derecho) y \"turn right\" (gira a la derecha).",
+            "explanation": "\"Go straight ahead\" y \"turn right\".",
             "cefrLevel": "A2"
           },
           {
@@ -7573,13 +7573,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "turn"
             ],
             "correctAnswer": "corner",
-            "explanation": "\"On the corner of\" significa en la esquina de.",
+            "explanation": "\"On the corner of\" es en la esquina de.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_10-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Turn left": "Gira a la izquierda",
               "Turn right": "Gira a la derecha",
@@ -7606,7 +7606,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Excuse me, where is the nearest metro station?",
             "explanation": "Práctica oral de fluidez y articulación para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "cefrLevel": "A2"
@@ -7616,7 +7616,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a2_node_10-3",
         "nodeId": "a2_node_10",
-        "title": "3. Preposiciones de Movimiento: Across, Through, Into, Past",
+        "title": "3. Preposiciones de Movimiento: Across, Through, Into",
         "orderIndex": 3,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -7626,62 +7626,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-3-1",
             "sublessonId": "sub-a2_node_10-3",
-            "title": "Concepto Clave: 3. Preposiciones de Movimiento: Across, Through, Into, Past",
+            "title": "3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Walk across (cruzar a través) | Go through (atravesar túnel/parque) | Go into (entrar)",
-            "summaryShort": "Expresa desplazamiento y trayectoria en el espacio urbano.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Preposiciones de Movimiento: Across, Through, Into, Past. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
+            "grammarFormula": "1. Walk across: cruzar de un lado a otro (across the street / bridge)\n2. Go through: atravesar un espacio tridimensional (through the park / tunnel)\n3. Go into: entrar al interior de un edificio (into the bank)",
+            "summaryShort": "Describe desplazamientos y trayectorias exactas en el espacio urbano.",
+            "conceptBreakdown": "Usa \"across\" para superficies bidimensionales y \"through\" para túneles, parques y puertas.",
+            "deepDiveNotes": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Walk past the supermarket and go through the central park.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_10_3",
-                "ruleTitle": "Error Común en 3. Preposiciones de Movimiento: Across, Through, Into, Past",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Walk past the supermarket and go through the central park.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Preposiciones de Movimiento: Across, Through, Into, Past para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Walk into the street to the other side",
+                "correctExample": "Walk across the street to the other side",
+                "fastPill": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
+                "mediumExplanation": "Usa \"across\" para superficies bidimensionales y \"through\" para túneles, parques y puertas.",
+                "slowDeepDive": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_10-3-2",
             "sublessonId": "sub-a2_node_10-3",
-            "title": "Refuerzo Pedagógico: 3. Preposiciones de Movimiento: Across, Through, Into, Past",
+            "title": "Refuerzo de Concepto: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Walk across (cruzar a través) | Go through (atravesar túnel/parque) | Go into (entrar)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Preposiciones de Movimiento: Across, Through, Into, Past antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Walk across: cruzar de un lado a otro (across the street / bridge)\n2. Go through: atravesar un espacio tridimensional (through the park / tunnel)\n3. Go into: entrar al interior de un edificio (into the bank)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Preposiciones de Movimiento: Across, Through, Into antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"across\" para superficies bidimensionales y \"through\" para túneles, parques y puertas.",
+            "deepDiveNotes": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The pedestrians walked across the bridge over the river.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7689,18 +7689,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-3-3",
             "sublessonId": "sub-a2_node_10-3",
-            "title": "Resumen de Logro: 3. Preposiciones de Movimiento: Across, Through, Into, Past",
+            "title": "Resumen: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Walk across (cruzar a través) | Go through (atravesar túnel/parque) | Go into (entrar)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
-            "conceptBreakdown": "Repasa la fórmula: \"Walk across (cruzar a través) | Go through (atravesar túnel/parque) | Go into (entrar)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Walk across: cruzar de un lado a otro (across the street / bridge)\n2. Go through: atravesar un espacio tridimensional (through the park / tunnel)\n3. Go into: entrar al interior de un edificio (into the bank)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Preposiciones de Movimiento: Across, Through, Into.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Walk across: cruzar de un lado a otro (across the street / bridge)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7718,7 +7718,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "underneath"
             ],
             "correctAnswer": "through",
-            "explanation": "\"Through\" se usa para atravesar estructuras cerradas como túneles.",
+            "explanation": "\"Through\" se usa para atravesar túneles.",
             "cefrLevel": "A2"
           },
           {
@@ -7731,13 +7731,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "past"
             ],
             "correctAnswer": "across",
-            "explanation": "\"Across\" es cruzar de un lado a otro.",
+            "explanation": "\"Across\" es cruzar de lado a lado.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_10-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Across the street": "Cruzar la calle",
               "Through the park": "A través del parque",
@@ -7750,7 +7750,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Into the building": "Hacia dentro del edificio",
               "Past the bank": "Pasando el banco"
             },
-            "explanation": "Asociación conceptual clave para 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
+            "explanation": "Asociación conceptual clave para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
           },
           {
@@ -7758,15 +7758,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Escribe la oración completa: \"Walk past the supermarket and go through the central park.\"",
             "correctAnswer": "Walk past the supermarket and go through the central park.",
-            "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
+            "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_10-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The pedestrians walked across the bridge over the river.",
-            "explanation": "Práctica oral de fluidez y articulación para 3. Preposiciones de Movimiento: Across, Through, Into, Past.",
+            "explanation": "Práctica oral de fluidez y articulación para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
           }
         ]
@@ -7784,62 +7784,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-4-1",
             "sublessonId": "sub-a2_node_10-4",
-            "title": "Concepto Clave: 4. Medios de Transporte & Viajes",
+            "title": "4. Medios de Transporte & Viajes",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "By bus, by train, by plane, by car | On foot (caminando) | Take a taxi / sub",
-            "summaryShort": "Habla sobre desplazamientos urbanos y transportes públicos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Medios de Transporte & Viajes. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Medios de Transporte & Viajes.",
+            "grammarFormula": "1. En vehículo: by bus, by train, by plane, by car, by taxi\n2. Caminando: on foot (exclusivamente con preposición \"on\")",
+            "summaryShort": "Habla sobre desplazamientos urbanos y viajes de larga distancia.",
+            "conceptBreakdown": "Todos los vehículos usan \"by\", excepto caminar que usa \"on foot\".",
+            "deepDiveNotes": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I take the subway to work every morning at eight o'clock.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_10_4",
-                "ruleTitle": "Error Común en 4. Medios de Transporte & Viajes",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I take the subway to work every morning at eight o'clock.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Medios de Transporte & Viajes para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I go to work by foot",
+                "correctExample": "I go to work on foot",
+                "fastPill": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
+                "mediumExplanation": "Todos los vehículos usan \"by\", excepto caminar que usa \"on foot\".",
+                "slowDeepDive": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_10-4-2",
             "sublessonId": "sub-a2_node_10-4",
-            "title": "Refuerzo Pedagógico: 4. Medios de Transporte & Viajes",
+            "title": "Refuerzo de Concepto: 4. Medios de Transporte & Viajes",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "By bus, by train, by plane, by car | On foot (caminando) | Take a taxi / sub",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Medios de Transporte & Viajes.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Medios de Transporte & Viajes antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. En vehículo: by bus, by train, by plane, by car, by taxi\n2. Caminando: on foot (exclusivamente con preposición \"on\")",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Medios de Transporte & Viajes antes de los ejercicios de producción.",
+            "conceptBreakdown": "Todos los vehículos usan \"by\", excepto caminar que usa \"on foot\".",
+            "deepDiveNotes": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Traveling by train is faster and more comfortable than by bus.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -7847,18 +7847,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-4-3",
             "sublessonId": "sub-a2_node_10-4",
-            "title": "Resumen de Logro: 4. Medios de Transporte & Viajes",
+            "title": "Resumen: 4. Medios de Transporte & Viajes",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "By bus, by train, by plane, by car | On foot (caminando) | Take a taxi / sub",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Medios de Transporte & Viajes.",
-            "conceptBreakdown": "Repasa la fórmula: \"By bus, by train, by plane, by car | On foot (caminando) | Take a taxi / sub\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. En vehículo: by bus, by train, by plane, by car, by taxi\n2. Caminando: on foot (exclusivamente con preposición \"on\")",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Medios de Transporte & Viajes.",
+            "conceptBreakdown": "Recuerda la regla central: 1. En vehículo: by bus, by train, by plane, by car, by taxi",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -7876,7 +7876,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I go to work in foot."
             ],
             "correctAnswer": "I go to work on foot.",
-            "explanation": "Para caminar se dice \"on foot\" (con \"on\"), mientras que los vehículos usan \"by\".",
+            "explanation": "Para caminar se dice \"on foot\".",
             "cefrLevel": "A2"
           },
           {
@@ -7889,13 +7889,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "in"
             ],
             "correctAnswer": "by",
-            "explanation": "Con medios de transporte se usa \"by\" (by plane, by bus).",
+            "explanation": "Medios de transporte usan \"by\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_10-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "By bus": "En autobús",
               "By train": "En tren",
@@ -7922,7 +7922,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Traveling by train is faster and more comfortable than by bus.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Medios de Transporte & Viajes.",
             "cefrLevel": "A2"
@@ -7942,62 +7942,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-5-1",
             "sublessonId": "sub-a2_node_10-5",
-            "title": "Concepto Clave: 5. Describir tu Ciudad o Vecindario",
+            "title": "5. Describir tu Ciudad o Vecindario",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "My neighborhood is quiet/noisy/crowded/modern/safe | There are many parks and shops",
-            "summaryShort": "Redacta descripciones completas de tu entorno y calidad de vida.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Describir tu Ciudad o Vecindario. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Describir tu Ciudad o Vecindario.",
+            "grammarFormula": "1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)\n2. There are many shops and restaurants in my neighborhood.",
+            "summaryShort": "Redacta descripciones fluidas de tu barrio y calidad de vida urbana.",
+            "conceptBreakdown": "Combina adjetivos urbanos con estructuras de existencia There is / There are.",
+            "deepDiveNotes": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "My neighborhood has green parks, quiet streets and good restaurants.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_10_5",
-                "ruleTitle": "Error Común en 5. Describir tu Ciudad o Vecindario",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "My neighborhood has green parks, quiet streets and good restaurants.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Describir tu Ciudad o Vecindario para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The street is very people",
+                "correctExample": "The street is very crowded",
+                "fastPill": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
+                "mediumExplanation": "Combina adjetivos urbanos con estructuras de existencia There is / There are.",
+                "slowDeepDive": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado."
               }
             ]
           },
           {
             "id": "exp-a2_node_10-5-2",
             "sublessonId": "sub-a2_node_10-5",
-            "title": "Refuerzo Pedagógico: 5. Describir tu Ciudad o Vecindario",
+            "title": "Refuerzo de Concepto: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "My neighborhood is quiet/noisy/crowded/modern/safe | There are many parks and shops",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Describir tu Ciudad o Vecindario.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Describir tu Ciudad o Vecindario antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)\n2. There are many shops and restaurants in my neighborhood.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Describir tu Ciudad o Vecindario antes de los ejercicios de producción.",
+            "conceptBreakdown": "Combina adjetivos urbanos con estructuras de existencia There is / There are.",
+            "deepDiveNotes": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I love living in this city because people are very friendly.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8005,18 +8005,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_10-5-3",
             "sublessonId": "sub-a2_node_10-5",
-            "title": "Resumen de Logro: 5. Describir tu Ciudad o Vecindario",
+            "title": "Resumen: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "My neighborhood is quiet/noisy/crowded/modern/safe | There are many parks and shops",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Describir tu Ciudad o Vecindario.",
-            "conceptBreakdown": "Repasa la fórmula: \"My neighborhood is quiet/noisy/crowded/modern/safe | There are many parks and shops\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)\n2. There are many shops and restaurants in my neighborhood.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Describir tu Ciudad o Vecindario.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8034,7 +8034,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Lonely"
             ],
             "correctAnswer": "Crowded",
-            "explanation": "\"Crowded\" significa concurrido o lleno de gente.",
+            "explanation": "\"Crowded\" significa concurrido o abarrotado.",
             "cefrLevel": "A2"
           },
           {
@@ -8053,7 +8053,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Quiet": "Tranquilo / Silencioso",
               "Noisy": "Ruidoso",
@@ -8080,7 +8080,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I love living in this city because people are very friendly.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Describir tu Ciudad o Vecindario.",
             "cefrLevel": "A2"
@@ -8118,62 +8118,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-1-1",
             "sublessonId": "sub-a2_node_11-1",
-            "title": "Concepto Clave: 1. Comparativos Cortos (-er than)",
+            "title": "1. Comparativos Cortos (-er than)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Adjetivo corto + -er + than (tall ➔ taller than | big ➔ bigger than | fast ➔ faster than)",
-            "summaryShort": "Añade -er a los adjetivos de una sola sílaba para comparar dos elementos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Comparativos Cortos (-er than). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Comparativos Cortos (-er than).",
+            "grammarFormula": "1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than\n2. CVC (Consonante-Vocal-Consonante): big ➔ bigger than, hot ➔ hotter than",
+            "summaryShort": "Añade -er y \"than\" a los adjetivos de una sílaba para comparar dos elementos.",
+            "conceptBreakdown": "Regla morfológica básica para adjetivos breves en inglés.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "This computer is faster than my old laptop.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_11_1",
-                "ruleTitle": "Error Común en 1. Comparativos Cortos (-er than)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "This computer is faster than my old laptop.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Comparativos Cortos (-er than) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "more fast than / more big than",
+                "correctExample": "faster than / bigger than",
+                "fastPill": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
+                "mediumExplanation": "Regla morfológica básica para adjetivos breves en inglés.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_11-1-2",
             "sublessonId": "sub-a2_node_11-1",
-            "title": "Refuerzo Pedagógico: 1. Comparativos Cortos (-er than)",
+            "title": "Refuerzo de Concepto: 1. Comparativos Cortos (-er than)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Adjetivo corto + -er + than (tall ➔ taller than | big ➔ bigger than | fast ➔ faster than)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Comparativos Cortos (-er than).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Comparativos Cortos (-er than) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than\n2. CVC (Consonante-Vocal-Consonante): big ➔ bigger than, hot ➔ hotter than",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Comparativos Cortos (-er than) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Regla morfológica básica para adjetivos breves en inglés.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Canada is colder than Colombia in winter.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8181,18 +8181,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-1-3",
             "sublessonId": "sub-a2_node_11-1",
-            "title": "Resumen de Logro: 1. Comparativos Cortos (-er than)",
+            "title": "Resumen: 1. Comparativos Cortos (-er than)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Adjetivo corto + -er + than (tall ➔ taller than | big ➔ bigger than | fast ➔ faster than)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Comparativos Cortos (-er than).",
-            "conceptBreakdown": "Repasa la fórmula: \"Adjetivo corto + -er + than (tall ➔ taller than | big ➔ bigger than | fast ➔ faster than)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than\n2. CVC (Consonante-Vocal-Consonante): big ➔ bigger than, hot ➔ hotter than",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Comparativos Cortos (-er than).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8210,7 +8210,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "more faster"
             ],
             "correctAnswer": "faster than",
-            "explanation": "Los adjetivos cortos forman el comparativo con -er + than.",
+            "explanation": "Adjetivos cortos forman el comparativo con -er + than.",
             "cefrLevel": "A2"
           },
           {
@@ -8229,7 +8229,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Tall ➔": "Taller than",
               "Fast ➔": "Faster than",
@@ -8256,7 +8256,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Canada is colder than Colombia in winter.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Comparativos Cortos (-er than).",
             "cefrLevel": "A2"
@@ -8276,62 +8276,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-2-1",
             "sublessonId": "sub-a2_node_11-2",
-            "title": "Concepto Clave: 2. Comparativos Largos (More ... than)",
+            "title": "2. Comparativos Largos (More ... than)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "More + adjetivo largo (2+ sílabas) + than (more expensive than, more interesting than)",
+            "grammarFormula": "1. More + adjetivo largo (2+ sílabas) + than\n2. more expensive than, more comfortable than, more interesting than",
             "summaryShort": "Los adjetivos de dos o más sílabas no llevan -er; se antepone \"more\".",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Comparativos Largos (More ... than). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Comparativos Largos (More ... than).",
+            "conceptBreakdown": "Mantiene la palabra intacta y añade \"more\" antes del adjetivo.",
+            "deepDiveNotes": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Traveling by plane is more comfortable than by bus.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_11_2",
-                "ruleTitle": "Error Común en 2. Comparativos Largos (More ... than)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Traveling by plane is more comfortable than by bus.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Comparativos Largos (More ... than) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "expensiver than / more expensiver",
+                "correctExample": "more expensive than",
+                "fastPill": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
+                "mediumExplanation": "Mantiene la palabra intacta y añade \"more\" antes del adjetivo.",
+                "slowDeepDive": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe)."
               }
             ]
           },
           {
             "id": "exp-a2_node_11-2-2",
             "sublessonId": "sub-a2_node_11-2",
-            "title": "Refuerzo Pedagógico: 2. Comparativos Largos (More ... than)",
+            "title": "Refuerzo de Concepto: 2. Comparativos Largos (More ... than)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "More + adjetivo largo (2+ sílabas) + than (more expensive than, more interesting than)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Comparativos Largos (More ... than).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Comparativos Largos (More ... than) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. More + adjetivo largo (2+ sílabas) + than\n2. more expensive than, more comfortable than, more interesting than",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Comparativos Largos (More ... than) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Mantiene la palabra intacta y añade \"more\" antes del adjetivo.",
+            "deepDiveNotes": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "This book is more interesting than the movie.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8339,18 +8339,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-2-3",
             "sublessonId": "sub-a2_node_11-2",
-            "title": "Resumen de Logro: 2. Comparativos Largos (More ... than)",
+            "title": "Resumen: 2. Comparativos Largos (More ... than)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "More + adjetivo largo (2+ sílabas) + than (more expensive than, more interesting than)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Comparativos Largos (More ... than).",
-            "conceptBreakdown": "Repasa la fórmula: \"More + adjetivo largo (2+ sílabas) + than (more expensive than, more interesting than)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. More + adjetivo largo (2+ sílabas) + than\n2. more expensive than, more comfortable than, more interesting than",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Comparativos Largos (More ... than).",
+            "conceptBreakdown": "Recuerda la regla central: 1. More + adjetivo largo (2+ sílabas) + than",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8368,7 +8368,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "A sports car is more expensiver."
             ],
             "correctAnswer": "A sports car is more expensive than a bicycle.",
-            "explanation": "\"Expensive\" es adjetivo largo y forma el comparativo con \"more ... than\".",
+            "explanation": "\"Expensive\" es largo y usa \"more ... than\".",
             "cefrLevel": "A2"
           },
           {
@@ -8387,7 +8387,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Expensive": "More expensive than",
               "Comfortable": "More comfortable than",
@@ -8414,7 +8414,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "This book is more interesting than the movie.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Comparativos Largos (More ... than).",
             "cefrLevel": "A2"
@@ -8424,7 +8424,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a2_node_11-3",
         "nodeId": "a2_node_11",
-        "title": "3. Comparativos y Superlativos Irregulares (Good / Bad / Far)",
+        "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
         "orderIndex": 3,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -8434,62 +8434,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-3-1",
             "sublessonId": "sub-a2_node_11-3",
-            "title": "Concepto Clave: 3. Comparativos y Superlativos Irregulares (Good / Bad / Far)",
+            "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "good ➔ better than ➔ the best | bad ➔ worse than ➔ the worst | far ➔ further/farther",
+            "grammarFormula": "1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)\n2. bad ➔ worse than ➔ the worst (malo ➔ peor que ➔ el peor)\n3. far ➔ farther than ➔ the farthest (lejos)",
             "summaryShort": "Estos adjetivos cambian completamente de palabra; no llevan -er ni more.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Comparativos y Superlativos Irregulares (Good / Bad / Far). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
+            "conceptBreakdown": "Memoriza estas formas irregulares esenciales en cualquier comparación.",
+            "deepDiveNotes": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "His English is much better than it was last year.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_11_3",
-                "ruleTitle": "Error Común en 3. Comparativos y Superlativos Irregulares (Good / Bad / Far)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "His English is much better than it was last year.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Comparativos y Superlativos Irregulares (Good / Bad / Far) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "more good than / more bad than",
+                "correctExample": "better than / worse than",
+                "fastPill": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
+                "mediumExplanation": "Memoriza estas formas irregulares esenciales en cualquier comparación.",
+                "slowDeepDive": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_11-3-2",
             "sublessonId": "sub-a2_node_11-3",
-            "title": "Refuerzo Pedagógico: 3. Comparativos y Superlativos Irregulares (Good / Bad / Far)",
+            "title": "Refuerzo de Concepto: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "good ➔ better than ➔ the best | bad ➔ worse than ➔ the worst | far ➔ further/farther",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Comparativos y Superlativos Irregulares (Good / Bad / Far) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)\n2. bad ➔ worse than ➔ the worst (malo ➔ peor que ➔ el peor)\n3. far ➔ farther than ➔ the farthest (lejos)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Comparativos y Superlativos Irregulares (Good / Bad) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Memoriza estas formas irregulares esenciales en cualquier comparación.",
+            "deepDiveNotes": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "This coffee is the best in the entire city.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8497,18 +8497,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-3-3",
             "sublessonId": "sub-a2_node_11-3",
-            "title": "Resumen de Logro: 3. Comparativos y Superlativos Irregulares (Good / Bad / Far)",
+            "title": "Resumen: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "good ➔ better than ➔ the best | bad ➔ worse than ➔ the worst | far ➔ further/farther",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
-            "conceptBreakdown": "Repasa la fórmula: \"good ➔ better than ➔ the best | bad ➔ worse than ➔ the worst | far ➔ further/farther\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)\n2. bad ➔ worse than ➔ the worst (malo ➔ peor que ➔ el peor)\n3. far ➔ farther than ➔ the farthest (lejos)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comparativos y Superlativos Irregulares (Good / Bad).",
+            "conceptBreakdown": "Recuerda la regla central: 1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8526,7 +8526,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "worst than"
             ],
             "correctAnswer": "worse than",
-            "explanation": "El comparativo irregular de \"bad\" es \"worse than\".",
+            "explanation": "El comparativo de \"bad\" es \"worse than\".",
             "cefrLevel": "A2"
           },
           {
@@ -8545,7 +8545,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Good ➔": "Better than ➔ The best",
               "Bad ➔": "Worse than ➔ The worst",
@@ -8558,7 +8558,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Far ➔": "Farther than ➔ The farthest",
               "Little ➔": "Less than ➔ The least"
             },
-            "explanation": "Asociación conceptual clave para 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
+            "explanation": "Asociación conceptual clave para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
           },
           {
@@ -8566,15 +8566,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Escribe la oración completa: \"His English is much better than it was last year.\"",
             "correctAnswer": "His English is much better than it was last year.",
-            "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
+            "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_11-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "This coffee is the best in the entire city.",
-            "explanation": "Práctica oral de fluidez y articulación para 3. Comparativos y Superlativos Irregulares (Good / Bad / Far).",
+            "explanation": "Práctica oral de fluidez y articulación para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
           }
         ]
@@ -8592,62 +8592,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-4-1",
             "sublessonId": "sub-a2_node_11-4",
-            "title": "Concepto Clave: 4. Superlativos: The -est & The Most",
+            "title": "4. Superlativos: The -est & The Most",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "The + adjetivo corto + -est (the tallest) | The most + adjetivo largo (the most expensive)",
+            "grammarFormula": "1. The + adjetivo corto + -est: the tallest, the fastest, the oldest\n2. The most + adjetivo largo: the most beautiful, the most expensive\n3. Regla: Siempre llevan el artículo \"The\" antes del superlativo.",
             "summaryShort": "Usa superlativos para destacar un elemento como el máximo dentro de un grupo.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Superlativos: The -est & The Most. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Superlativos: The -est & The Most.",
+            "conceptBreakdown": "El superlativo exige \"The\" al inicio de la frase descriptiva.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "This is the most important exam of the semester.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_11_4",
-                "ruleTitle": "Error Común en 4. Superlativos: The -est & The Most",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "This is the most important exam of the semester.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Superlativos: The -est & The Most para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Mount Everest is highest mountain",
+                "correctExample": "Mount Everest is the highest mountain",
+                "fastPill": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
+                "mediumExplanation": "El superlativo exige \"The\" al inicio de la frase descriptiva.",
+                "slowDeepDive": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_11-4-2",
             "sublessonId": "sub-a2_node_11-4",
-            "title": "Refuerzo Pedagógico: 4. Superlativos: The -est & The Most",
+            "title": "Refuerzo de Concepto: 4. Superlativos: The -est & The Most",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "The + adjetivo corto + -est (the tallest) | The most + adjetivo largo (the most expensive)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Superlativos: The -est & The Most.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Superlativos: The -est & The Most antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. The + adjetivo corto + -est: the tallest, the fastest, the oldest\n2. The most + adjetivo largo: the most beautiful, the most expensive\n3. Regla: Siempre llevan el artículo \"The\" antes del superlativo.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Superlativos: The -est & The Most antes de los ejercicios de producción.",
+            "conceptBreakdown": "El superlativo exige \"The\" al inicio de la frase descriptiva.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The cheetah is the fastest animal on land.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8655,18 +8655,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-4-3",
             "sublessonId": "sub-a2_node_11-4",
-            "title": "Resumen de Logro: 4. Superlativos: The -est & The Most",
+            "title": "Resumen: 4. Superlativos: The -est & The Most",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "The + adjetivo corto + -est (the tallest) | The most + adjetivo largo (the most expensive)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Superlativos: The -est & The Most.",
-            "conceptBreakdown": "Repasa la fórmula: \"The + adjetivo corto + -est (the tallest) | The most + adjetivo largo (the most expensive)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. The + adjetivo corto + -est: the tallest, the fastest, the oldest\n2. The most + adjetivo largo: the most beautiful, the most expensive\n3. Regla: Siempre llevan el artículo \"The\" antes del superlativo.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Superlativos: The -est & The Most.",
+            "conceptBreakdown": "Recuerda la regla central: 1. The + adjetivo corto + -est: the tallest, the fastest, the oldest",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8703,7 +8703,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "The tallest": "El más alto",
               "The fastest": "El más rápido",
@@ -8730,7 +8730,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The cheetah is the fastest animal on land.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Superlativos: The -est & The Most.",
             "cefrLevel": "A2"
@@ -8750,62 +8750,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-5-1",
             "sublessonId": "sub-a2_node_11-5",
-            "title": "Concepto Clave: 5. Estructura de Igualdad: As ... As",
+            "title": "5. Estructura de Igualdad: As ... As",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + as + adjective + as (as tall as / not as expensive as)",
-            "summaryShort": "Compara dos elementos que tienen la misma cualidad (o no en negativa).",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Estructura de Igualdad: As ... As. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Estructura de Igualdad: As ... As.",
+            "grammarFormula": "1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)\n2. Negativo: Subject + not as + adjective + as (not as expensive as)",
+            "summaryShort": "Compara dos elementos que poseen la misma cualidad de manera exacta.",
+            "conceptBreakdown": "El adjetivo va en su forma base neutra entre las dos partículas \"as\".",
+            "deepDiveNotes": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He is as hardworking as his father.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_11_5",
-                "ruleTitle": "Error Común en 5. Estructura de Igualdad: As ... As",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He is as hardworking as his father.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Estructura de Igualdad: As ... As para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "as faster as / as expensive than",
+                "correctExample": "as fast as / as expensive as",
+                "fastPill": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
+                "mediumExplanation": "El adjetivo va en su forma base neutra entre las dos partículas \"as\".",
+                "slowDeepDive": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as)."
               }
             ]
           },
           {
             "id": "exp-a2_node_11-5-2",
             "sublessonId": "sub-a2_node_11-5",
-            "title": "Refuerzo Pedagógico: 5. Estructura de Igualdad: As ... As",
+            "title": "Refuerzo de Concepto: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + as + adjective + as (as tall as / not as expensive as)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Estructura de Igualdad: As ... As.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Estructura de Igualdad: As ... As antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)\n2. Negativo: Subject + not as + adjective + as (not as expensive as)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Estructura de Igualdad: As ... As antes de los ejercicios de producción.",
+            "conceptBreakdown": "El adjetivo va en su forma base neutra entre las dos partículas \"as\".",
+            "deepDiveNotes": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Colombia is as rich in biodiversity as Brazil.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8813,18 +8813,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_11-5-3",
             "sublessonId": "sub-a2_node_11-5",
-            "title": "Resumen de Logro: 5. Estructura de Igualdad: As ... As",
+            "title": "Resumen: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + as + adjective + as (as tall as / not as expensive as)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Estructura de Igualdad: As ... As.",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + as + adjective + as (as tall as / not as expensive as)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)\n2. Negativo: Subject + not as + adjective + as (not as expensive as)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Estructura de Igualdad: As ... As.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -8842,7 +8842,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "This car is more fast as that."
             ],
             "correctAnswer": "This car is as fast as that one.",
-            "explanation": "La estructura de igualdad es \"as [adjetivo] as\".",
+            "explanation": "Estructura de igualdad: \"as [adjetivo] as\".",
             "cefrLevel": "A2"
           },
           {
@@ -8861,7 +8861,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "As good as": "Tan bueno como",
               "As fast as": "Tan rápido como",
@@ -8888,7 +8888,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Colombia is as rich in biodiversity as Brazil.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Estructura de Igualdad: As ... As.",
             "cefrLevel": "A2"
@@ -8926,62 +8926,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-1-1",
             "sublessonId": "sub-a2_node_12-1",
-            "title": "Concepto Clave: 1. Presente Continuo: Acciones en Progreso",
+            "title": "1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) ➔ I am studying / She is working right now",
-            "summaryShort": "Describe acciones que están ocurriendo exactamente en este momento.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Presente Continuo: Acciones en Progreso. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Presente Continuo: Acciones en Progreso.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing)\n2. I am studying English right now / She is working at the moment\n3. Marcadores: right now, currently, at the moment, Listen!, Look!",
+            "summaryShort": "Describe acciones que están ocurriendo en este momento exacto.",
+            "conceptBreakdown": "Requiere conjugar To Be + verbo principal con terminación -ing.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I am practicing English on FlashLens right now.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_12_1",
-                "ruleTitle": "Error Común en 1. Presente Continuo: Acciones en Progreso",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I am practicing English on FlashLens right now.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Presente Continuo: Acciones en Progreso para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I studying now / She working",
+                "correctExample": "I am studying now / She is working",
+                "fastPill": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
+                "mediumExplanation": "Requiere conjugar To Be + verbo principal con terminación -ing.",
+                "slowDeepDive": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_12-1-2",
             "sublessonId": "sub-a2_node_12-1",
-            "title": "Refuerzo Pedagógico: 1. Presente Continuo: Acciones en Progreso",
+            "title": "Refuerzo de Concepto: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) ➔ I am studying / She is working right now",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Presente Continuo: Acciones en Progreso.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Presente Continuo: Acciones en Progreso antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing)\n2. I am studying English right now / She is working at the moment\n3. Marcadores: right now, currently, at the moment, Listen!, Look!",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Presente Continuo: Acciones en Progreso antes de los ejercicios de producción.",
+            "conceptBreakdown": "Requiere conjugar To Be + verbo principal con terminación -ing.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The children are playing happily in the garden.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -8989,18 +8989,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-1-3",
             "sublessonId": "sub-a2_node_12-1",
-            "title": "Resumen de Logro: 1. Presente Continuo: Acciones en Progreso",
+            "title": "Resumen: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) ➔ I am studying / She is working right now",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Presente Continuo: Acciones en Progreso.",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + am/is/are + verb(-ing) ➔ I am studying / She is working right now\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing)\n2. I am studying English right now / She is working at the moment\n3. Marcadores: right now, currently, at the moment, Listen!, Look!",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Presente Continuo: Acciones en Progreso.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + verb(-ing)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9018,7 +9018,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "played"
             ],
             "correctAnswer": "is playing",
-            "explanation": "\"Listen!\" indica una acción en progreso ahora mismo (is playing).",
+            "explanation": "\"Listen!\" indica acción en progreso (is playing).",
             "cefrLevel": "A2"
           },
           {
@@ -9031,13 +9031,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "am"
             ],
             "correctAnswer": "are",
-            "explanation": "Con \"We\" usamos \"are preparing\".",
+            "explanation": "Con We se usa \"are preparing\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_12-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I am reading": "Estoy leyendo",
               "She is writing": "Ella está escribiendo",
@@ -9064,7 +9064,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The children are playing happily in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Presente Continuo: Acciones en Progreso.",
             "cefrLevel": "A2"
@@ -9084,62 +9084,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-2-1",
             "sublessonId": "sub-a2_node_12-2",
-            "title": "Concepto Clave: 2. Contraste: Presente Simple vs Presente Continuo",
+            "title": "2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Present Simple (rutinas: every day, usually) vs Continuous (ahora: right now, currently)",
-            "summaryShort": "Usa presente simple para hábitos permanentes y continuo para situaciones temporales.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Contraste: Presente Simple vs Presente Continuo. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Contraste: Presente Simple vs Presente Continuo.",
+            "grammarFormula": "1. Present Simple: hábitos permanentes (I drink coffee every morning)\n2. Present Continuous: acciones temporales/ahora (Today I am drinking tea)",
+            "summaryShort": "Usa presente simple para rutinas y continuo para lo que sucede hoy o en este período.",
+            "conceptBreakdown": "Los marcadores temporales (every day vs right now) determinan el tiempo verbal.",
+            "deepDiveNotes": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "He usually wears jeans, but today he is wearing a suit.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_12_2",
-                "ruleTitle": "Error Común en 2. Contraste: Presente Simple vs Presente Continuo",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "He usually wears jeans, but today he is wearing a suit.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Contraste: Presente Simple vs Presente Continuo para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I am drinking coffee every day / Today I work",
+                "correctExample": "I drink coffee every day / Today I am working",
+                "fastPill": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
+                "mediumExplanation": "Los marcadores temporales (every day vs right now) determinan el tiempo verbal.",
+                "slowDeepDive": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo."
               }
             ]
           },
           {
             "id": "exp-a2_node_12-2-2",
             "sublessonId": "sub-a2_node_12-2",
-            "title": "Refuerzo Pedagógico: 2. Contraste: Presente Simple vs Presente Continuo",
+            "title": "Refuerzo de Concepto: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Present Simple (rutinas: every day, usually) vs Continuous (ahora: right now, currently)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Contraste: Presente Simple vs Presente Continuo.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Contraste: Presente Simple vs Presente Continuo antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Present Simple: hábitos permanentes (I drink coffee every morning)\n2. Present Continuous: acciones temporales/ahora (Today I am drinking tea)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Contraste: Presente Simple vs Presente Continuo antes de los ejercicios de producción.",
+            "conceptBreakdown": "Los marcadores temporales (every day vs right now) determinan el tiempo verbal.",
+            "deepDiveNotes": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "We live in Colombia but we are traveling in Europe this month.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9147,18 +9147,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-2-3",
             "sublessonId": "sub-a2_node_12-2",
-            "title": "Resumen de Logro: 2. Contraste: Presente Simple vs Presente Continuo",
+            "title": "Resumen: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Present Simple (rutinas: every day, usually) vs Continuous (ahora: right now, currently)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Contraste: Presente Simple vs Presente Continuo.",
-            "conceptBreakdown": "Repasa la fórmula: \"Present Simple (rutinas: every day, usually) vs Continuous (ahora: right now, currently)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Present Simple: hábitos permanentes (I drink coffee every morning)\n2. Present Continuous: acciones temporales/ahora (Today I am drinking tea)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Contraste: Presente Simple vs Presente Continuo.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Present Simple: hábitos permanentes (I drink coffee every morning)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9176,7 +9176,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "drink / drink"
             ],
             "correctAnswer": "drink / am drinking",
-            "explanation": "Usually ➔ simple (drink); Today (ahora) ➔ continuo (am drinking).",
+            "explanation": "Usually ➔ simple (drink); Today ➔ continuo (am drinking).",
             "cefrLevel": "A2"
           },
           {
@@ -9189,13 +9189,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "study"
             ],
             "correctAnswer": "studies",
-            "explanation": "\"Every single day\" señala un hábito recurrente (studies).",
+            "explanation": "\"Every day\" señala hábito (studies).",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_12-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I work every day": "Hábito rutinario",
               "I am working now": "Acción en progreso",
@@ -9222,7 +9222,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "We live in Colombia but we are traveling in Europe this month.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Contraste: Presente Simple vs Presente Continuo.",
             "cefrLevel": "A2"
@@ -9242,62 +9242,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-3-1",
             "sublessonId": "sub-a2_node_12-3",
-            "title": "Concepto Clave: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
+            "title": "3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + am/is/are + going to + base verb ➔ I am going to travel to London",
-            "summaryShort": "Expresa planes premeditados y decisiones tomadas antes del momento de hablar.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Futuro con \"Be Going To\" (Planes e Intenciones). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
+            "grammarFormula": "1. Subject + am/is/are + going to + base verb\n2. I am going to travel to London next month.\n3. Planes premeditados y decisiones tomadas antes de hablar.",
+            "summaryShort": "Expresa planes futuros firmes e intenciones ya decididas.",
+            "conceptBreakdown": "Estructura estándar de futuro para proyectos y vacaciones programadas.",
+            "deepDiveNotes": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I am going to pass my English exam with a high score.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_12_3",
-                "ruleTitle": "Error Común en 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I am going to pass my English exam with a high score.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Futuro con \"Be Going To\" (Planes e Intenciones) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I go travel / I will to travel",
+                "correctExample": "I am going to travel",
+                "fastPill": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
+                "mediumExplanation": "Estructura estándar de futuro para proyectos y vacaciones programadas.",
+                "slowDeepDive": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled)."
               }
             ]
           },
           {
             "id": "exp-a2_node_12-3-2",
             "sublessonId": "sub-a2_node_12-3",
-            "title": "Refuerzo Pedagógico: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
+            "title": "Refuerzo de Concepto: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + am/is/are + going to + base verb ➔ I am going to travel to London",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Futuro con \"Be Going To\" (Planes e Intenciones) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + am/is/are + going to + base verb\n2. I am going to travel to London next month.\n3. Planes premeditados y decisiones tomadas antes de hablar.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Futuro con \"Be Going To\" (Planes e Intenciones) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Estructura estándar de futuro para proyectos y vacaciones programadas.",
+            "deepDiveNotes": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "What are you going to do this weekend with your friends?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9305,18 +9305,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-3-3",
             "sublessonId": "sub-a2_node_12-3",
-            "title": "Resumen de Logro: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
+            "title": "Resumen: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + am/is/are + going to + base verb ➔ I am going to travel to London",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + am/is/are + going to + base verb ➔ I am going to travel to London\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + am/is/are + going to + base verb\n2. I am going to travel to London next month.\n3. Planes premeditados y decisiones tomadas antes de hablar.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + going to + base verb",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9334,7 +9334,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I am go travel to Spain."
             ],
             "correctAnswer": "I am going to travel to Spain next month.",
-            "explanation": "\"Be going to\" es la estructura estándar para planes futuros ya decididos.",
+            "explanation": "\"Be going to\" es para planes ya decididos.",
             "cefrLevel": "A2"
           },
           {
@@ -9347,13 +9347,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "am going to"
             ],
             "correctAnswer": "is going to",
-            "explanation": "Con David (He) usamos \"is going to\".",
+            "explanation": "Con He se usa \"is going to\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_12-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I am going to study": "Voy a estudiar",
               "She is going to buy": "Ella va a comprar",
@@ -9380,7 +9380,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "What are you going to do this weekend with your friends?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "cefrLevel": "A2"
@@ -9400,62 +9400,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-4-1",
             "sublessonId": "sub-a2_node_12-4",
-            "title": "Concepto Clave: 4. Presente Continuo con Sentido de Futuro Acordado",
+            "title": "4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) + future time expression (I am meeting Sarah at 3 PM)",
-            "summaryShort": "Usa presente continuo para citas y compromisos con hora o fecha fija en la agenda.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Presente Continuo con Sentido de Futuro Acordado. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Presente Continuo con Sentido de Futuro Acordado.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing) + future time\n2. I am meeting Sarah tomorrow at 3:00 PM (cita agendada)\n3. We are flying to New York on Friday morning (vuelo comprado)",
+            "summaryShort": "Usa presente continuo para citas médicas, eventos y compromisos con hora fija en la agenda.",
+            "conceptBreakdown": "Indica acuerdos definitivos entre dos o más personas.",
+            "deepDiveNotes": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "We are flying to New York next Friday morning.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_12_4",
-                "ruleTitle": "Error Común en 4. Presente Continuo con Sentido de Futuro Acordado",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "We are flying to New York next Friday morning.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Presente Continuo con Sentido de Futuro Acordado para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I will meet the doctor tomorrow at 10 AM",
+                "correctExample": "I am seeing the doctor tomorrow at 10 AM",
+                "fastPill": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
+                "mediumExplanation": "Indica acuerdos definitivos entre dos o más personas.",
+                "slowDeepDive": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will."
               }
             ]
           },
           {
             "id": "exp-a2_node_12-4-2",
             "sublessonId": "sub-a2_node_12-4",
-            "title": "Refuerzo Pedagógico: 4. Presente Continuo con Sentido de Futuro Acordado",
+            "title": "Refuerzo de Concepto: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) + future time expression (I am meeting Sarah at 3 PM)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Presente Continuo con Sentido de Futuro Acordado.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Presente Continuo con Sentido de Futuro Acordado antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing) + future time\n2. I am meeting Sarah tomorrow at 3:00 PM (cita agendada)\n3. We are flying to New York on Friday morning (vuelo comprado)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Presente Continuo con Sentido de Futuro Acordado antes de los ejercicios de producción.",
+            "conceptBreakdown": "Indica acuerdos definitivos entre dos o más personas.",
+            "deepDiveNotes": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Are you attending the international conference next week?",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9463,18 +9463,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-4-3",
             "sublessonId": "sub-a2_node_12-4",
-            "title": "Resumen de Logro: 4. Presente Continuo con Sentido de Futuro Acordado",
+            "title": "Resumen: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + am/is/are + verb(-ing) + future time expression (I am meeting Sarah at 3 PM)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Presente Continuo con Sentido de Futuro Acordado.",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + am/is/are + verb(-ing) + future time expression (I am meeting Sarah at 3 PM)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + am/is/are + verb(-ing) + future time\n2. I am meeting Sarah tomorrow at 3:00 PM (cita agendada)\n3. We are flying to New York on Friday morning (vuelo comprado)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Presente Continuo con Sentido de Futuro Acordado.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + verb(-ing) + future time",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9492,7 +9492,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I will to see the doctor."
             ],
             "correctAnswer": "I am seeing the doctor tomorrow at 10:00 AM.",
-            "explanation": "Citas con hora fija en la agenda se expresan naturalmente con presente continuo.",
+            "explanation": "Citas agendadas usan presente continuo.",
             "cefrLevel": "A2"
           },
           {
@@ -9505,13 +9505,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "had"
             ],
             "correctAnswer": "are having",
-            "explanation": "\"Are having\" expresa compromiso acordado para hoy en la noche.",
+            "explanation": "\"Are having\" expresa cita agendada.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_12-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "I'm flying to Miami tomorrow": "Vuelo programado",
               "She is getting married in July": "Boda fijada",
@@ -9538,7 +9538,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Are you attending the international conference next week?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Presente Continuo con Sentido de Futuro Acordado.",
             "cefrLevel": "A2"
@@ -9558,62 +9558,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-5-1",
             "sublessonId": "sub-a2_node_12-5",
-            "title": "Concepto Clave: 5. Preguntas sobre Planes & Predicciones Futuras",
+            "title": "5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Are you going to...? | What are you going to do? | It is going to rain (evidencia visible)",
-            "summaryShort": "Formula preguntas sobre planes y haz predicciones basadas en indicios visibles.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Preguntas sobre Planes & Predicciones Futuras. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Preguntas sobre Planes & Predicciones Futuras.",
+            "grammarFormula": "1. Are you going to study tonight?\n2. What are you going to do this weekend?\n3. Predicción con evidencia: Look at the dark clouds! It is going to rain.",
+            "summaryShort": "Pregunta sobre planes a otros y realiza predicciones basadas en indicios visibles presentes.",
+            "conceptBreakdown": "Usa \"be going to\" para predecir algo cuando ves la causa en el presente.",
+            "deepDiveNotes": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "What are you going to do after you graduate?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_12_5",
-                "ruleTitle": "Error Común en 5. Preguntas sobre Planes & Predicciones Futuras",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "What are you going to do after you graduate?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Preguntas sobre Planes & Predicciones Futuras para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Look at the clouds, it will rains",
+                "correctExample": "Look at the clouds, it is going to rain",
+                "fastPill": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
+                "mediumExplanation": "Usa \"be going to\" para predecir algo cuando ves la causa en el presente.",
+                "slowDeepDive": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!)."
               }
             ]
           },
           {
             "id": "exp-a2_node_12-5-2",
             "sublessonId": "sub-a2_node_12-5",
-            "title": "Refuerzo Pedagógico: 5. Preguntas sobre Planes & Predicciones Futuras",
+            "title": "Refuerzo de Concepto: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Are you going to...? | What are you going to do? | It is going to rain (evidencia visible)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Preguntas sobre Planes & Predicciones Futuras.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Preguntas sobre Planes & Predicciones Futuras antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Are you going to study tonight?\n2. What are you going to do this weekend?\n3. Predicción con evidencia: Look at the dark clouds! It is going to rain.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Preguntas sobre Planes & Predicciones Futuras antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"be going to\" para predecir algo cuando ves la causa en el presente.",
+            "deepDiveNotes": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Look at those dark clouds, it is going to rain heavily.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9621,18 +9621,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_12-5-3",
             "sublessonId": "sub-a2_node_12-5",
-            "title": "Resumen de Logro: 5. Preguntas sobre Planes & Predicciones Futuras",
+            "title": "Resumen: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Are you going to...? | What are you going to do? | It is going to rain (evidencia visible)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Preguntas sobre Planes & Predicciones Futuras.",
-            "conceptBreakdown": "Repasa la fórmula: \"Are you going to...? | What are you going to do? | It is going to rain (evidencia visible)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Are you going to study tonight?\n2. What are you going to do this weekend?\n3. Predicción con evidencia: Look at the dark clouds! It is going to rain.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preguntas sobre Planes & Predicciones Futuras.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Are you going to study tonight?",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9650,7 +9650,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "It is raining yesterday."
             ],
             "correctAnswer": "It is going to rain very soon.",
-            "explanation": "Predicciones basadas en evidencia visual presente usan \"be going to\".",
+            "explanation": "Predicción por evidencia visual: \"is going to rain\".",
             "cefrLevel": "A2"
           },
           {
@@ -9663,13 +9663,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "do"
             ],
             "correctAnswer": "are",
-            "explanation": "Con \"you\" usamos \"are you going to...\".",
+            "explanation": "Con you se usa \"are you going to\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_12-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "What are you going to do?": "¿Qué vas a hacer?",
               "Where are you going to live?": "¿Dónde vas a vivir?",
@@ -9696,7 +9696,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Look at those dark clouds, it is going to rain heavily.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas sobre Planes & Predicciones Futuras.",
             "cefrLevel": "A2"
@@ -9734,62 +9734,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-1-1",
             "sublessonId": "sub-a2_node_13-1",
-            "title": "Concepto Clave: 1. Conectores Lógicos: And, But, So, Because, Although",
+            "title": "1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "And (adición) | But (contraste) | So (consecuencia) | Because (causa) | Although (concesión)",
-            "summaryShort": "Enlaza oraciones complejas con conectores lógicos para mejorar tu fluidez.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Conectores Lógicos: And, But, So, Because, Although. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Conectores Lógicos: And, But, So, Because, Although.",
+            "grammarFormula": "1. And (adición): I like coffee and tea.\n2. But (contraste): I wanted to go, but I was tired.\n3. So (consecuencia): It was raining, so I took an umbrella.\n4. Because (causa): I slept early because I was exhausted.\n5. Although (concesión): Although it was hard, I passed.",
+            "summaryShort": "Enlaza oraciones complejas con conectores lógicos para construir párrafos fluidos.",
+            "conceptBreakdown": "Distingue entre causa (\"because\") y consecuencia (\"so\").",
+            "deepDiveNotes": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I studied hard because I wanted to pass the test.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_13_1",
-                "ruleTitle": "Error Común en 1. Conectores Lógicos: And, But, So, Because, Although",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I studied hard because I wanted to pass the test.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Conectores Lógicos: And, But, So, Because, Although para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I was tired because I went to bed early (sentido invertido)",
+                "correctExample": "I went to bed early because I was tired / I was tired, so I went to bed early",
+                "fastPill": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
+                "mediumExplanation": "Distingue entre causa (\"because\") y consecuencia (\"so\").",
+                "slowDeepDive": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto."
               }
             ]
           },
           {
             "id": "exp-a2_node_13-1-2",
             "sublessonId": "sub-a2_node_13-1",
-            "title": "Refuerzo Pedagógico: 1. Conectores Lógicos: And, But, So, Because, Although",
+            "title": "Refuerzo de Concepto: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "And (adición) | But (contraste) | So (consecuencia) | Because (causa) | Although (concesión)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Conectores Lógicos: And, But, So, Because, Although.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Conectores Lógicos: And, But, So, Because, Although antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. And (adición): I like coffee and tea.\n2. But (contraste): I wanted to go, but I was tired.\n3. So (consecuencia): It was raining, so I took an umbrella.\n4. Because (causa): I slept early because I was exhausted.\n5. Although (concesión): Although it was hard, I passed.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Conectores Lógicos: And, But, So, Because, Although antes de los ejercicios de producción.",
+            "conceptBreakdown": "Distingue entre causa (\"because\") y consecuencia (\"so\").",
+            "deepDiveNotes": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Although English is challenging, I practice every day.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9797,18 +9797,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-1-3",
             "sublessonId": "sub-a2_node_13-1",
-            "title": "Resumen de Logro: 1. Conectores Lógicos: And, But, So, Because, Although",
+            "title": "Resumen: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "And (adición) | But (contraste) | So (consecuencia) | Because (causa) | Although (concesión)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Conectores Lógicos: And, But, So, Because, Although.",
-            "conceptBreakdown": "Repasa la fórmula: \"And (adición) | But (contraste) | So (consecuencia) | Because (causa) | Although (concesión)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. And (adición): I like coffee and tea.\n2. But (contraste): I wanted to go, but I was tired.\n3. So (consecuencia): It was raining, so I took an umbrella.\n4. Because (causa): I slept early because I was exhausted.\n5. Although (concesión): Although it was hard, I passed.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Conectores Lógicos: And, But, So, Because, Although.",
+            "conceptBreakdown": "Recuerda la regla central: 1. And (adición): I like coffee and tea.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9826,7 +9826,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "but"
             ],
             "correctAnswer": "so",
-            "explanation": "\"So\" introduce el resultado o consecuencia de estar cansado.",
+            "explanation": "\"So\" introduce la consecuencia de estar cansado.",
             "cefrLevel": "A2"
           },
           {
@@ -9839,13 +9839,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "so"
             ],
             "correctAnswer": "although",
-            "explanation": "\"Although\" introduce un contraste de concesión (aunque).",
+            "explanation": "\"Although\" introduce concesión (aunque).",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_13-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Because": "Porque (causa)",
               "So": "Así que / Por lo tanto (resultado)",
@@ -9872,7 +9872,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Although English is challenging, I practice every day.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Conectores Lógicos: And, But, So, Because, Although.",
             "cefrLevel": "A2"
@@ -9892,62 +9892,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-2-1",
             "sublessonId": "sub-a2_node_13-2",
-            "title": "Concepto Clave: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
+            "title": "2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Subject + should/shouldn't + base verb ➔ You should drink more water",
+            "grammarFormula": "1. Subject + should + base verb: You should drink more water.\n2. Subject + shouldn't + base verb: You shouldn't work so late.\n3. Pregunta: Should I see a doctor?",
             "summaryShort": "Usa \"should\" para dar recomendaciones cordiales y consejos éticos o de salud.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Modal Should & Shouldn't (Consejos & Sugerencias). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
+            "conceptBreakdown": "\"Should\" es un modal auxiliar: no cambia con he/she/it y va seguido del verbo base sin \"to\".",
+            "deepDiveNotes": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "You should drink eight glasses of water every day.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_13_2",
-                "ruleTitle": "Error Común en 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "You should drink eight glasses of water every day.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Modal Should & Shouldn't (Consejos & Sugerencias) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "You should to rest",
+                "correctExample": "You should rest",
+                "fastPill": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
+                "mediumExplanation": "\"Should\" es un modal auxiliar: no cambia con he/she/it y va seguido del verbo base sin \"to\".",
+                "slowDeepDive": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see)."
               }
             ]
           },
           {
             "id": "exp-a2_node_13-2-2",
             "sublessonId": "sub-a2_node_13-2",
-            "title": "Refuerzo Pedagógico: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
+            "title": "Refuerzo de Concepto: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Subject + should/shouldn't + base verb ➔ You should drink more water",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Modal Should & Shouldn't (Consejos & Sugerencias) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Subject + should + base verb: You should drink more water.\n2. Subject + shouldn't + base verb: You shouldn't work so late.\n3. Pregunta: Should I see a doctor?",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Modal Should & Shouldn't (Consejos & Sugerencias) antes de los ejercicios de producción.",
+            "conceptBreakdown": "\"Should\" es un modal auxiliar: no cambia con he/she/it y va seguido del verbo base sin \"to\".",
+            "deepDiveNotes": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "If you feel sick, you should stay at home and rest.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -9955,18 +9955,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-2-3",
             "sublessonId": "sub-a2_node_13-2",
-            "title": "Resumen de Logro: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
+            "title": "Resumen: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Subject + should/shouldn't + base verb ➔ You should drink more water",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
-            "conceptBreakdown": "Repasa la fórmula: \"Subject + should/shouldn't + base verb ➔ You should drink more water\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Subject + should + base verb: You should drink more water.\n2. Subject + shouldn't + base verb: You shouldn't work so late.\n3. Pregunta: Should I see a doctor?",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Subject + should + base verb: You should drink more water.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -9984,7 +9984,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "You ought see doctor."
             ],
             "correctAnswer": "You should see a doctor and rest.",
-            "explanation": "\"Should\" + verbo base (\"see\") es la estructura de consejo.",
+            "explanation": "Consejo con should + verbo base: \"should see\".",
             "cefrLevel": "A2"
           },
           {
@@ -10003,7 +10003,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "You should rest": "Deberías descansar",
               "You shouldn't smoke": "No deberías fumar",
@@ -10030,7 +10030,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "If you feel sick, you should stay at home and rest.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "cefrLevel": "A2"
@@ -10050,62 +10050,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-3-1",
             "sublessonId": "sub-a2_node_13-3",
-            "title": "Concepto Clave: 3. Modales de Obligación: Must vs Have To",
+            "title": "3. Modales de Obligación: Must vs Have To",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Must (obligación personal/urgente) | Have to (regla externa/ley) | Don't have to (no es obligatorio)",
-            "summaryShort": "Distingue entre obligación legal (have to) y ausencia de necesidad (don't have to).",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Modales de Obligación: Must vs Have To. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Modales de Obligación: Must vs Have To.",
+            "grammarFormula": "1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)\n2. Must: obligación personal o urgente (I must call my mom)\n3. Don't have to: NO es obligatorio / no hay necesidad (You don't have to pay)",
+            "summaryShort": "Distingue entre obligación estricta (have to) y ausencia de necesidad (don't have to).",
+            "conceptBreakdown": "\"Don't have to\" significa que tienes la opción de hacerlo o no; no es una prohibición.",
+            "deepDiveNotes": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Students have to submit their homework on time.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_13_3",
-                "ruleTitle": "Error Común en 3. Modales de Obligación: Must vs Have To",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Students have to submit their homework on time.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Modales de Obligación: Must vs Have To para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Tomorrow is Sunday, I mustn't wake up early",
+                "correctExample": "Tomorrow is Sunday, I don't have to wake up early",
+                "fastPill": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
+                "mediumExplanation": "\"Don't have to\" significa que tienes la opción de hacerlo o no; no es una prohibición.",
+                "slowDeepDive": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_13-3-2",
             "sublessonId": "sub-a2_node_13-3",
-            "title": "Refuerzo Pedagógico: 3. Modales de Obligación: Must vs Have To",
+            "title": "Refuerzo de Concepto: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Must (obligación personal/urgente) | Have to (regla externa/ley) | Don't have to (no es obligatorio)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Modales de Obligación: Must vs Have To.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Modales de Obligación: Must vs Have To antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)\n2. Must: obligación personal o urgente (I must call my mom)\n3. Don't have to: NO es obligatorio / no hay necesidad (You don't have to pay)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Modales de Obligación: Must vs Have To antes de los ejercicios de producción.",
+            "conceptBreakdown": "\"Don't have to\" significa que tienes la opción de hacerlo o no; no es una prohibición.",
+            "deepDiveNotes": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "You mustn't use your mobile phone during the exam.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10113,18 +10113,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-3-3",
             "sublessonId": "sub-a2_node_13-3",
-            "title": "Resumen de Logro: 3. Modales de Obligación: Must vs Have To",
+            "title": "Resumen: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Must (obligación personal/urgente) | Have to (regla externa/ley) | Don't have to (no es obligatorio)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Modales de Obligación: Must vs Have To.",
-            "conceptBreakdown": "Repasa la fórmula: \"Must (obligación personal/urgente) | Have to (regla externa/ley) | Don't have to (no es obligatorio)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)\n2. Must: obligación personal o urgente (I must call my mom)\n3. Don't have to: NO es obligatorio / no hay necesidad (You don't have to pay)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Modales de Obligación: Must vs Have To.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10142,7 +10142,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I no have to wake up."
             ],
             "correctAnswer": "I don't have to wake up early.",
-            "explanation": "\"Don't have to\" expresa que no hay necesidad u obligación.",
+            "explanation": "\"Don't have to\" expresa ausencia de obligación.",
             "cefrLevel": "A2"
           },
           {
@@ -10155,13 +10155,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "must to"
             ],
             "correctAnswer": "have to",
-            "explanation": "Es una regla o ley oficial (\"have to\").",
+            "explanation": "Es una regla legal (\"have to\").",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_13-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "You must stop": "Obligación estricta",
               "You have to wear a seatbelt": "Regla legal",
@@ -10188,7 +10188,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "You mustn't use your mobile phone during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Modales de Obligación: Must vs Have To.",
             "cefrLevel": "A2"
@@ -10208,62 +10208,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-4-1",
             "sublessonId": "sub-a2_node_13-4",
-            "title": "Concepto Clave: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
+            "title": "4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I have a headache / stomachache / fever / sore throat | My knee hurts",
-            "summaryShort": "Describe síntomas físicos y dolencias en la consulta médica.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Salud, Síntomas Médicos & Partes del Cuerpo. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
+            "grammarFormula": "1. Síntomas: I have a headache / stomachache / fever / sore throat\n2. Dolor puntual: My knee hurts / My back hurts\n3. En la consulta: Take this medicine twice a day.",
+            "summaryShort": "Describe síntomas físicos, dolores y enfermedades en la consulta médica.",
+            "conceptBreakdown": "Usa \"I have a [síntoma]\" para la mayoría de dolencias comunes.",
+            "deepDiveNotes": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I have a sore throat and a bad cough today.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_13_4",
-                "ruleTitle": "Error Común en 4. Salud, Síntomas Médicos & Partes del Cuerpo",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I have a sore throat and a bad cough today.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Salud, Síntomas Médicos & Partes del Cuerpo para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have headache / My head pains",
+                "correctExample": "I have a headache / My head hurts",
+                "fastPill": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
+                "mediumExplanation": "Usa \"I have a [síntoma]\" para la mayoría de dolencias comunes.",
+                "slowDeepDive": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\")."
               }
             ]
           },
           {
             "id": "exp-a2_node_13-4-2",
             "sublessonId": "sub-a2_node_13-4",
-            "title": "Refuerzo Pedagógico: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
+            "title": "Refuerzo de Concepto: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I have a headache / stomachache / fever / sore throat | My knee hurts",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Salud, Síntomas Médicos & Partes del Cuerpo antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Síntomas: I have a headache / stomachache / fever / sore throat\n2. Dolor puntual: My knee hurts / My back hurts\n3. En la consulta: Take this medicine twice a day.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Salud, Síntomas Médicos & Partes del Cuerpo antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"I have a [síntoma]\" para la mayoría de dolencias comunes.",
+            "deepDiveNotes": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "The doctor advised me to take this medicine twice a day.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10271,18 +10271,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-4-3",
             "sublessonId": "sub-a2_node_13-4",
-            "title": "Resumen de Logro: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
+            "title": "Resumen: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I have a headache / stomachache / fever / sore throat | My knee hurts",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
-            "conceptBreakdown": "Repasa la fórmula: \"I have a headache / stomachache / fever / sore throat | My knee hurts\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Síntomas: I have a headache / stomachache / fever / sore throat\n2. Dolor puntual: My knee hurts / My back hurts\n3. En la consulta: Take this medicine twice a day.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Síntomas: I have a headache / stomachache / fever / sore throat",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10300,7 +10300,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "A cold water"
             ],
             "correctAnswer": "A high fever",
-            "explanation": "39°C de temperatura corporal es fiebre alta (high fever).",
+            "explanation": "39°C es fiebre alta (high fever).",
             "cefrLevel": "A2"
           },
           {
@@ -10313,13 +10313,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "sick"
             ],
             "correctAnswer": "hurts",
-            "explanation": "El verbo para \"doler\" es \"hurts\".",
+            "explanation": "El verbo doler es \"hurts\".",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_13-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Headache": "Dolor de cabeza",
               "Sore throat": "Dolor de garganta",
@@ -10346,7 +10346,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "The doctor advised me to take this medicine twice a day.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "cefrLevel": "A2"
@@ -10366,62 +10366,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-5-1",
             "sublessonId": "sub-a2_node_13-5",
-            "title": "Concepto Clave: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
+            "title": "5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "I feel exhausted / energetic / anxious / relaxed / cheerful",
-            "summaryShort": "Comunica tu estado anímico y nivel de energía con vocabulario preciso.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Expresar Emociones, Estado de Ánimo & Bienestar. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
+            "grammarFormula": "1. I feel exhausted / energetic / anxious / relaxed / cheerful\n2. Why do you feel stressed? ➔ Because I have a big exam tomorrow.",
+            "summaryShort": "Comunica tu estado anímico y bienestar psicológico con adjetivos precisos.",
+            "conceptBreakdown": "Usa \"I feel [adjetivo]\" para describir tu estado emocional.",
+            "deepDiveNotes": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Regular exercise makes me feel healthy, calm and energetic.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_13_5",
-                "ruleTitle": "Error Común en 5. Expresar Emociones, Estado de Ánimo & Bienestar",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Regular exercise makes me feel healthy, calm and energetic.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Expresar Emociones, Estado de Ánimo & Bienestar para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I feel very much tired",
+                "correctExample": "I feel completely exhausted",
+                "fastPill": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
+                "mediumExplanation": "Usa \"I feel [adjetivo]\" para describir tu estado emocional.",
+                "slowDeepDive": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\")."
               }
             ]
           },
           {
             "id": "exp-a2_node_13-5-2",
             "sublessonId": "sub-a2_node_13-5",
-            "title": "Refuerzo Pedagógico: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
+            "title": "Refuerzo de Concepto: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "I feel exhausted / energetic / anxious / relaxed / cheerful",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Expresar Emociones, Estado de Ánimo & Bienestar antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. I feel exhausted / energetic / anxious / relaxed / cheerful\n2. Why do you feel stressed? ➔ Because I have a big exam tomorrow.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Expresar Emociones, Estado de Ánimo & Bienestar antes de los ejercicios de producción.",
+            "conceptBreakdown": "Usa \"I feel [adjetivo]\" para describir tu estado emocional.",
+            "deepDiveNotes": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I feel very proud and confident about my progress in English.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10429,18 +10429,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_13-5-3",
             "sublessonId": "sub-a2_node_13-5",
-            "title": "Resumen de Logro: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
+            "title": "Resumen: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "I feel exhausted / energetic / anxious / relaxed / cheerful",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
-            "conceptBreakdown": "Repasa la fórmula: \"I feel exhausted / energetic / anxious / relaxed / cheerful\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. I feel exhausted / energetic / anxious / relaxed / cheerful\n2. Why do you feel stressed? ➔ Because I have a big exam tomorrow.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
+            "conceptBreakdown": "Recuerda la regla central: 1. I feel exhausted / energetic / anxious / relaxed / cheerful",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10471,13 +10471,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "calm"
             ],
             "correctAnswer": "exhausted",
-            "explanation": "\"Exhausted\" significa extremadamente fatigado.",
+            "explanation": "\"Exhausted\" es agotado.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_13-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Exhausted": "Agotado",
               "Relaxed": "Relajado",
@@ -10504,7 +10504,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I feel very proud and confident about my progress in English.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "cefrLevel": "A2"
@@ -10542,62 +10542,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-1-1",
             "sublessonId": "sub-a2_node_14-1",
-            "title": "Concepto Clave: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
+            "title": "1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Estrategia de palabras clave en avisos: caution, admission, emergency exit, discount",
-            "summaryShort": "Identifica rápidamente la ubicación de letreros públicos en exámenes oficiales.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Carteles & Lugares Públicos (ICFES Parte 1). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
+            "grammarFormula": "1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store\n2. Notice: EMERGENCY EXIT - DO NOT BLOCK ➔ In a public building\n3. Notice: NO FLASH PHOTOGRAPHY ➔ In an art museum",
+            "summaryShort": "Identifica con rapidez el lugar donde se ubican letreros en pruebas estandarizadas Saber Pro.",
+            "conceptBreakdown": "Estrategia de palabras clave en avisos comerciales y de seguridad.",
+            "deepDiveNotes": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "You can see this warning notice at the chemistry laboratory.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_14_1",
-                "ruleTitle": "Error Común en 1. Carteles & Lugares Públicos (ICFES Parte 1)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "You can see this warning notice at the chemistry laboratory.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Carteles & Lugares Públicos (ICFES Parte 1) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Discount on shoes placed in a hospital",
+                "correctExample": "Discount on shoes placed in a shoe store",
+                "fastPill": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
+                "mediumExplanation": "Estrategia de palabras clave en avisos comerciales y de seguridad.",
+                "slowDeepDive": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C)."
               }
             ]
           },
           {
             "id": "exp-a2_node_14-1-2",
             "sublessonId": "sub-a2_node_14-1",
-            "title": "Refuerzo Pedagógico: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
+            "title": "Refuerzo de Concepto: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Estrategia de palabras clave en avisos: caution, admission, emergency exit, discount",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Carteles & Lugares Públicos (ICFES Parte 1).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Carteles & Lugares Públicos (ICFES Parte 1) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store\n2. Notice: EMERGENCY EXIT - DO NOT BLOCK ➔ In a public building\n3. Notice: NO FLASH PHOTOGRAPHY ➔ In an art museum",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Carteles & Lugares Públicos (ICFES Parte 1) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Estrategia de palabras clave en avisos comerciales y de seguridad.",
+            "deepDiveNotes": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Passengers must wear a face mask inside the hospital.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10605,18 +10605,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-1-3",
             "sublessonId": "sub-a2_node_14-1",
-            "title": "Resumen de Logro: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
+            "title": "Resumen: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Estrategia de palabras clave en avisos: caution, admission, emergency exit, discount",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Carteles & Lugares Públicos (ICFES Parte 1).",
-            "conceptBreakdown": "Repasa la fórmula: \"Estrategia de palabras clave en avisos: caution, admission, emergency exit, discount\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store\n2. Notice: EMERGENCY EXIT - DO NOT BLOCK ➔ In a public building\n3. Notice: NO FLASH PHOTOGRAPHY ➔ In an art museum",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Carteles & Lugares Públicos (ICFES Parte 1).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10634,7 +10634,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "In a chemistry lab"
             ],
             "correctAnswer": "In a shoe store",
-            "explanation": "Descuentos en zapatos se observan en zapaterías.",
+            "explanation": "Descuentos en zapatos se ven en zapaterías.",
             "cefrLevel": "A2"
           },
           {
@@ -10647,13 +10647,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "On a beach"
             ],
             "correctAnswer": "In a public building",
-            "explanation": "Salidas de emergencia se señalizan en edificios públicos.",
+            "explanation": "Salidas de emergencia en edificios públicos.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_14-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "No flash photography": "In a museum",
               "Keep your pets on a leash": "In a public park",
@@ -10680,7 +10680,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Passengers must wear a face mask inside the hospital.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "cefrLevel": "A2"
@@ -10700,62 +10700,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-2-1",
             "sublessonId": "sub-a2_node_14-2",
-            "title": "Concepto Clave: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
+            "title": "2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Analizar la cortesía y coherencia lógica de las réplicas en diálogos cotidianos.",
-            "summaryShort": "Elige la respuesta pragmática más adecuada en pruebas estandarizadas.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
+            "grammarFormula": "1. Speaker A: I won't be able to come to your party tonight.\n2. Speaker B: What a pity! We will miss you.\n3. Speaker A: Do you mind if I open the window? ➔ Speaker B: Not at all, go ahead.",
+            "summaryShort": "Selecciona la respuesta conversacional más coherente y pragmáticamente adecuada.",
+            "conceptBreakdown": "Evalúa la fórmula de cortesía que encaja con el enunciado del hablante A.",
+            "deepDiveNotes": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Could you please tell me where the nearest pharmacy is located?",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_14_2",
-                "ruleTitle": "Error Común en 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Could you please tell me where the nearest pharmacy is located?",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Do you mind if I open? - Yes, open it (contradictorio)",
+                "correctExample": "Do you mind if I open? - Not at all, go ahead",
+                "fastPill": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
+                "mediumExplanation": "Evalúa la fórmula de cortesía que encaja con el enunciado del hablante A.",
+                "slowDeepDive": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada)."
               }
             ]
           },
           {
             "id": "exp-a2_node_14-2-2",
             "sublessonId": "sub-a2_node_14-2",
-            "title": "Refuerzo Pedagógico: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
+            "title": "Refuerzo de Concepto: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Analizar la cortesía y coherencia lógica de las réplicas en diálogos cotidianos.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Speaker A: I won't be able to come to your party tonight.\n2. Speaker B: What a pity! We will miss you.\n3. Speaker A: Do you mind if I open the window? ➔ Speaker B: Not at all, go ahead.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Evalúa la fórmula de cortesía que encaja con el enunciado del hablante A.",
+            "deepDiveNotes": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I really appreciate your assistance with this difficult project.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10763,18 +10763,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-2-3",
             "sublessonId": "sub-a2_node_14-2",
-            "title": "Resumen de Logro: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
+            "title": "Resumen: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Analizar la cortesía y coherencia lógica de las réplicas en diálogos cotidianos.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
-            "conceptBreakdown": "Repasa la fórmula: \"Analizar la cortesía y coherencia lógica de las réplicas en diálogos cotidianos.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Speaker A: I won't be able to come to your party tonight.\n2. Speaker B: What a pity! We will miss you.\n3. Speaker A: Do you mind if I open the window? ➔ Speaker B: Not at all, go ahead.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Speaker A: I won't be able to come to your party tonight.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10792,7 +10792,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Good morning, nice to meet you."
             ],
             "correctAnswer": "What a pity! We will miss you.",
-            "explanation": "\"What a pity!\" expresa empatía ante una cancelación.",
+            "explanation": "\"What a pity!\" expresa lástima/empatía.",
             "cefrLevel": "A2"
           },
           {
@@ -10805,13 +10805,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "I don't know."
             ],
             "correctAnswer": "Not at all, go ahead.",
-            "explanation": "\"Not at all\" es la respuesta cortés que autoriza abrir la ventana.",
+            "explanation": "\"Not at all\" autoriza cortésmente.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_14-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "What do you do?": "I am a software developer.",
               "Can you give me a hand?": "Sure, what do you need?",
@@ -10838,7 +10838,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I really appreciate your assistance with this difficult project.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "cefrLevel": "A2"
@@ -10858,62 +10858,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-3-1",
             "sublessonId": "sub-a2_node_14-3",
-            "title": "Concepto Clave: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
+            "title": "3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Escanear textos narrativos para identificar hechos, cronologías y relaciones causa-efecto.",
-            "summaryShort": "Responde preguntas de comprensión directa sobre textos de 150 a 200 palabras.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Comprensión Lectora Literal A2 (ICFES Parte 3). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
+            "grammarFormula": "1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.\n2. Extraction: Founding year = 2021, Topic = Wildlife photography",
+            "summaryShort": "Responde preguntas de comprensión directa sobre textos narrativos e informativos de nivel A2.",
+            "conceptBreakdown": "Escaneo de datos puntuales sin necesidad de traducir palabra por palabra.",
+            "deepDiveNotes": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Elena started her company in 2021 and photographs wildlife.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_14_3",
-                "ruleTitle": "Error Común en 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Elena started her company in 2021 and photographs wildlife.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Comprensión Lectora Literal A2 (ICFES Parte 3) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Guessing without referencing the text",
+                "correctExample": "Locating exact chronological references in paragraph",
+                "fastPill": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
+                "mediumExplanation": "Escaneo de datos puntuales sin necesidad de traducir palabra por palabra.",
+                "slowDeepDive": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta."
               }
             ]
           },
           {
             "id": "exp-a2_node_14-3-2",
             "sublessonId": "sub-a2_node_14-3",
-            "title": "Refuerzo Pedagógico: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
+            "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Escanear textos narrativos para identificar hechos, cronologías y relaciones causa-efecto.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Comprensión Lectora Literal A2 (ICFES Parte 3) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.\n2. Extraction: Founding year = 2021, Topic = Wildlife photography",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Comprensión Lectora Literal A2 (ICFES Parte 3) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Escaneo de datos puntuales sin necesidad de traducir palabra por palabra.",
+            "deepDiveNotes": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "She has won several international awards for her nature photography.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -10921,18 +10921,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-3-3",
             "sublessonId": "sub-a2_node_14-3",
-            "title": "Resumen de Logro: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
+            "title": "Resumen: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Escanear textos narrativos para identificar hechos, cronologías y relaciones causa-efecto.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
-            "conceptBreakdown": "Repasa la fórmula: \"Escanear textos narrativos para identificar hechos, cronologías y relaciones causa-efecto.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.\n2. Extraction: Founding year = 2021, Topic = Wildlife photography",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -10950,7 +10950,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Last month"
             ],
             "correctAnswer": "In 2021",
-            "explanation": "El texto indica explícitamente el año 2021.",
+            "explanation": "El texto indica explícitamente 2021.",
             "cefrLevel": "A2"
           },
           {
@@ -10969,7 +10969,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Elena's business": "Photography company",
               "Starting year": "2021",
@@ -10996,7 +10996,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "She has won several international awards for her nature photography.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "cefrLevel": "A2"
@@ -11016,62 +11016,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-4-1",
             "sublessonId": "sub-a2_node_14-4",
-            "title": "Concepto Clave: 4. Inferencia & Vocabulario en Contexto",
+            "title": "4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Deducir el significado de palabras desconocidas mediante las pistas del contexto textual.",
-            "summaryShort": "Aprende a inferir sin recurrir a traducciones literales o diccionarios.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Inferencia & Vocabulario en Contexto. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Inferencia & Vocabulario en Contexto.",
+            "grammarFormula": "1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.\n2. Inferencia: Arid = Very dry (muy árido / seco)\n3. Context: He is an avid reader who reads 2 books a week ➔ Avid = Very enthusiastic",
+            "summaryShort": "Deduce el significado de palabras desconocidas mediante las pistas semánticas del párrafo.",
+            "conceptBreakdown": "Técnica de lectura crítica indispensable en Saber Pro e ICFES.",
+            "deepDiveNotes": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Reading between the lines helps you infer implicit meaning.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_14_4",
-                "ruleTitle": "Error Común en 4. Inferencia & Vocabulario en Contexto",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Reading between the lines helps you infer implicit meaning.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Inferencia & Vocabulario en Contexto para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Translating unknown words literally",
+                "correctExample": "Inferring meaning from surrounding textual clues",
+                "fastPill": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
+                "mediumExplanation": "Técnica de lectura crítica indispensable en Saber Pro e ICFES.",
+                "slowDeepDive": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas."
               }
             ]
           },
           {
             "id": "exp-a2_node_14-4-2",
             "sublessonId": "sub-a2_node_14-4",
-            "title": "Refuerzo Pedagógico: 4. Inferencia & Vocabulario en Contexto",
+            "title": "Refuerzo de Concepto: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Deducir el significado de palabras desconocidas mediante las pistas del contexto textual.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Inferencia & Vocabulario en Contexto.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Inferencia & Vocabulario en Contexto antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.\n2. Inferencia: Arid = Very dry (muy árido / seco)\n3. Context: He is an avid reader who reads 2 books a week ➔ Avid = Very enthusiastic",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Inferencia & Vocabulario en Contexto antes de los ejercicios de producción.",
+            "conceptBreakdown": "Técnica de lectura crítica indispensable en Saber Pro e ICFES.",
+            "deepDiveNotes": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Context clues provide valuable hints to understand complex vocabulary.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11079,18 +11079,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-4-3",
             "sublessonId": "sub-a2_node_14-4",
-            "title": "Resumen de Logro: 4. Inferencia & Vocabulario en Contexto",
+            "title": "Resumen: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Deducir el significado de palabras desconocidas mediante las pistas del contexto textual.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Inferencia & Vocabulario en Contexto.",
-            "conceptBreakdown": "Repasa la fórmula: \"Deducir el significado de palabras desconocidas mediante las pistas del contexto textual.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.\n2. Inferencia: Arid = Very dry (muy árido / seco)\n3. Context: He is an avid reader who reads 2 books a week ➔ Avid = Very enthusiastic",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Inferencia & Vocabulario en Contexto.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11108,7 +11108,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Windy and stormy"
             ],
             "correctAnswer": "Very dry",
-            "explanation": "La pista \"hadn't rained in six months\" indica sequedad extrema (very dry).",
+            "explanation": "\"Hadn't rained in 6 months\" señala aridez (very dry).",
             "cefrLevel": "A2"
           },
           {
@@ -11121,13 +11121,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "bored"
             ],
             "correctAnswer": "very enthusiastic and dedicated",
-            "explanation": "\"Avid\" significa apasionado o entusiasta.",
+            "explanation": "\"Avid\" significa apasionado/entusiasta.",
             "cefrLevel": "A2"
           },
           {
             "id": "q-a2_node_14-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Arid": "Very dry (árido / seco)",
               "Avid": "Enthusiastic (entusiasta)",
@@ -11154,7 +11154,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Context clues provide valuable hints to understand complex vocabulary.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Inferencia & Vocabulario en Contexto.",
             "cefrLevel": "A2"
@@ -11174,62 +11174,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-5-1",
             "sublessonId": "sub-a2_node_14-5",
-            "title": "Concepto Clave: 5. Trampas Frecuentes & Descarte en Saber Pro",
+            "title": "5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Identificar falsos amigos (falsos cognados), distractores gramaticales y extremos (always/never)",
-            "summaryShort": "Técnicas de examen para maximizar tu puntaje en Saber Pro e ICFES.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Trampas Frecuentes & Descarte en Saber Pro. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Trampas Frecuentes & Descarte en Saber Pro.",
+            "grammarFormula": "1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente\n2. False Friends: Embarrassed = Avergonzado(a) (NO embarazada) | Pregnant = Embarazada\n3. Descarte: Eliminar opciones extremas que usen \"always\" o \"never\" sin justificación.",
+            "summaryShort": "Domina los falsos cognados y las técnicas de descarte para maximizar tu puntaje en Saber Pro.",
+            "conceptBreakdown": "Los falsos amigos parecen palabras en español pero tienen significados totalmente distintos.",
+            "deepDiveNotes": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Actually, I didn't know the answer until you explained it.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_14_5",
-                "ruleTitle": "Error Común en 5. Trampas Frecuentes & Descarte en Saber Pro",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Actually, I didn't know the answer until you explained it.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Trampas Frecuentes & Descarte en Saber Pro para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Actually I am studying at university (queriendo decir en la actualidad)",
+                "correctExample": "Currently I am studying at university / Actually, I am working",
+                "fastPill": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
+                "mediumExplanation": "Los falsos amigos parecen palabras en español pero tienen significados totalmente distintos.",
+                "slowDeepDive": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_14-5-2",
             "sublessonId": "sub-a2_node_14-5",
-            "title": "Refuerzo Pedagógico: 5. Trampas Frecuentes & Descarte en Saber Pro",
+            "title": "Refuerzo de Concepto: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Identificar falsos amigos (falsos cognados), distractores gramaticales y extremos (always/never)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Trampas Frecuentes & Descarte en Saber Pro.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Trampas Frecuentes & Descarte en Saber Pro antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente\n2. False Friends: Embarrassed = Avergonzado(a) (NO embarazada) | Pregnant = Embarazada\n3. Descarte: Eliminar opciones extremas que usen \"always\" o \"never\" sin justificación.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Trampas Frecuentes & Descarte en Saber Pro antes de los ejercicios de producción.",
+            "conceptBreakdown": "Los falsos amigos parecen palabras en español pero tienen significados totalmente distintos.",
+            "deepDiveNotes": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "He felt very embarrassed when he forgot his friend's name.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11237,18 +11237,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_14-5-3",
             "sublessonId": "sub-a2_node_14-5",
-            "title": "Resumen de Logro: 5. Trampas Frecuentes & Descarte en Saber Pro",
+            "title": "Resumen: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Identificar falsos amigos (falsos cognados), distractores gramaticales y extremos (always/never)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Trampas Frecuentes & Descarte en Saber Pro.",
-            "conceptBreakdown": "Repasa la fórmula: \"Identificar falsos amigos (falsos cognados), distractores gramaticales y extremos (always/never)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente\n2. False Friends: Embarrassed = Avergonzado(a) (NO embarazada) | Pregnant = Embarazada\n3. Descarte: Eliminar opciones extremas que usen \"always\" o \"never\" sin justificación.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Trampas Frecuentes & Descarte en Saber Pro.",
+            "conceptBreakdown": "Recuerda la regla central: 1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11266,7 +11266,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Never"
             ],
             "correctAnswer": "In fact / really (en realidad)",
-            "explanation": "\"Actually\" significa en realidad o de hecho; actualmente es \"currently\".",
+            "explanation": "\"Actually\" significa en realidad; actualmente es \"currently\".",
             "cefrLevel": "A2"
           },
           {
@@ -11285,7 +11285,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Actually": "En realidad (falso cognado)",
               "Currently": "Actualmente",
@@ -11312,7 +11312,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "He felt very embarrassed when he forgot his friend's name.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "cefrLevel": "A2"
@@ -11350,62 +11350,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-1-1",
             "sublessonId": "sub-a2_node_15-1",
-            "title": "Concepto Clave: 1. Simulacro Saber Pro A2: Comprensión Lectora",
+            "title": "1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Evaluación integral de lectura con textos de nivel A2 y preguntas inferenciales.",
-            "summaryShort": "Demuestra tu capacidad de comprender textos narrativos e informativos complejos.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 1. Simulacro Saber Pro A2: Comprensión Lectora. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
+            "grammarFormula": "1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.\n2. Reading: Analysis of dates, numbers and historical facts.",
+            "summaryShort": "Demuestra tu comprensión de textos descriptivos e informativos de nivel A2.",
+            "conceptBreakdown": "Lectura inferencial y literal integrada.",
+            "deepDiveNotes": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_15_1",
-                "ruleTitle": "Error Común en 1. Simulacro Saber Pro A2: Comprensión Lectora",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 1. Simulacro Saber Pro A2: Comprensión Lectora para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Confusing visitor statistics with founding dates",
+                "correctExample": "Matching exact data points with the questions",
+                "fastPill": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
+                "mediumExplanation": "Lectura inferencial y literal integrada.",
+                "slowDeepDive": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave."
               }
             ]
           },
           {
             "id": "exp-a2_node_15-1-2",
             "sublessonId": "sub-a2_node_15-1",
-            "title": "Refuerzo Pedagógico: 1. Simulacro Saber Pro A2: Comprensión Lectora",
+            "title": "Refuerzo de Concepto: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Evaluación integral de lectura con textos de nivel A2 y preguntas inferenciales.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 1. Simulacro Saber Pro A2: Comprensión Lectora.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 1. Simulacro Saber Pro A2: Comprensión Lectora antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.\n2. Reading: Analysis of dates, numbers and historical facts.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Simulacro Saber Pro A2: Comprensión Lectora antes de los ejercicios de producción.",
+            "conceptBreakdown": "Lectura inferencial y literal integrada.",
+            "deepDiveNotes": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Colombian coffee is recognized globally for its superior quality and taste.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11413,18 +11413,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-1-3",
             "sublessonId": "sub-a2_node_15-1",
-            "title": "Resumen de Logro: 1. Simulacro Saber Pro A2: Comprensión Lectora",
+            "title": "Resumen: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Evaluación integral de lectura con textos de nivel A2 y preguntas inferenciales.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 1. Simulacro Saber Pro A2: Comprensión Lectora.",
-            "conceptBreakdown": "Repasa la fórmula: \"Evaluación integral de lectura con textos de nivel A2 y preguntas inferenciales.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.\n2. Reading: Analysis of dates, numbers and historical facts.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Simulacro Saber Pro A2: Comprensión Lectora.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11461,7 +11461,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Annual visitors": "Over 500,000 tourists",
               "Recognition": "World Heritage Site",
@@ -11488,7 +11488,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Colombian coffee is recognized globally for its superior quality and taste.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "cefrLevel": "A2"
@@ -11508,62 +11508,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-2-1",
             "sublessonId": "sub-a2_node_15-2",
-            "title": "Concepto Clave: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
+            "title": "2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Contrastar fluidamente: I do (presente), I did (pasado), I am going to do (futuro)",
-            "summaryShort": "Domina el cambio de perspectiva temporal en una misma conversación.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro). Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
+            "grammarFormula": "1. Pasado: Last year I lived in Cali (pasado simple)\n2. Presente: Now I live in Medellin (presente simple) and I am working (continuo)\n3. Futuro: Next year I am going to move to Bogota (be going to)",
+            "summaryShort": "Alterna fluidamente entre pasado, presente y futuro en una misma conversación o texto.",
+            "conceptBreakdown": "Dominio de la línea de tiempo verbal en inglés.",
+            "deepDiveNotes": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_15_2",
-                "ruleTitle": "Error Común en 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro) para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Last year I live in Cali and now I lived in Medellin",
+                "correctExample": "Last year I lived in Cali and now I live in Medellin",
+                "fastPill": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
+                "mediumExplanation": "Dominio de la línea de tiempo verbal en inglés.",
+                "slowDeepDive": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move)."
               }
             ]
           },
           {
             "id": "exp-a2_node_15-2-2",
             "sublessonId": "sub-a2_node_15-2",
-            "title": "Refuerzo Pedagógico: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
+            "title": "Refuerzo de Concepto: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Contrastar fluidamente: I do (presente), I did (pasado), I am going to do (futuro)",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro) antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Pasado: Last year I lived in Cali (pasado simple)\n2. Presente: Now I live in Medellin (presente simple) and I am working (continuo)\n3. Futuro: Next year I am going to move to Bogota (be going to)",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro) antes de los ejercicios de producción.",
+            "conceptBreakdown": "Dominio de la línea de tiempo verbal en inglés.",
+            "deepDiveNotes": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "I learned basic English in A1 and now I am mastering A2 fluently.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11571,18 +11571,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-2-3",
             "sublessonId": "sub-a2_node_15-2",
-            "title": "Resumen de Logro: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
+            "title": "Resumen: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Contrastar fluidamente: I do (presente), I did (pasado), I am going to do (futuro)",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
-            "conceptBreakdown": "Repasa la fórmula: \"Contrastar fluidamente: I do (presente), I did (pasado), I am going to do (futuro)\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Pasado: Last year I lived in Cali (pasado simple)\n2. Presente: Now I live in Medellin (presente simple) and I am working (continuo)\n3. Futuro: Next year I am going to move to Bogota (be going to)",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
+            "conceptBreakdown": "Recuerda la regla central: 1. Pasado: Last year I lived in Cali (pasado simple)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11600,7 +11600,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "lived / am living / moved"
             ],
             "correctAnswer": "lived / live / am going to move",
-            "explanation": "Secuencia temporal perfecta: Pasado (lived), Presente (live), Futuro (am going to move).",
+            "explanation": "Pasado (lived), Presente (live), Futuro (am going to move).",
             "cefrLevel": "A2"
           },
           {
@@ -11619,7 +11619,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Past Simple": "I worked yesterday",
               "Present Simple": "I work every day",
@@ -11646,7 +11646,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "I learned basic English in A1 and now I am mastering A2 fluently.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "cefrLevel": "A2"
@@ -11666,62 +11666,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-3-1",
             "sublessonId": "sub-a2_node_15-3",
-            "title": "Concepto Clave: 3. Prueba de Precisión Auditiva & Fonética A2",
+            "title": "3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Diferenciación de pares mínimos, acento prosódico y formas débiles en audio.",
-            "summaryShort": "Comprueba que tu oído fonético distingue expresiones nativas a velocidad real.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 3. Prueba de Precisión Auditiva & Fonética A2. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 3. Prueba de Precisión Auditiva & Fonética A2.",
+            "grammarFormula": "1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/\n2. Terminaciones: watched /wɒtʃt/ vs wanted /ˈwɒn.tɪd/\n3. Formas débiles y reducciones nativas: going to ➔ gonna, want to ➔ wanna",
+            "summaryShort": "Comprueba que tu oído fonético discrimina sonidos nativos a velocidad real.",
+            "conceptBreakdown": "Entrenamiento de percepción acústica y discriminación fonológica.",
+            "deepDiveNotes": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I listened carefully to the native speaker's pronunciation.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_15_3",
-                "ruleTitle": "Error Común en 3. Prueba de Precisión Auditiva & Fonética A2",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I listened carefully to the native speaker's pronunciation.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 3. Prueba de Precisión Auditiva & Fonética A2 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Confusing spoken past tenses with present forms",
+                "correctExample": "Recognizing subtle phonetic differences in native speech",
+                "fastPill": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
+                "mediumExplanation": "Entrenamiento de percepción acústica y discriminación fonológica.",
+                "slowDeepDive": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\"."
               }
             ]
           },
           {
             "id": "exp-a2_node_15-3-2",
             "sublessonId": "sub-a2_node_15-3",
-            "title": "Refuerzo Pedagógico: 3. Prueba de Precisión Auditiva & Fonética A2",
+            "title": "Refuerzo de Concepto: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Diferenciación de pares mínimos, acento prosódico y formas débiles en audio.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 3. Prueba de Precisión Auditiva & Fonética A2.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 3. Prueba de Precisión Auditiva & Fonética A2 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/\n2. Terminaciones: watched /wɒtʃt/ vs wanted /ˈwɒn.tɪd/\n3. Formas débiles y reducciones nativas: going to ➔ gonna, want to ➔ wanna",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Prueba de Precisión Auditiva & Fonética A2 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Entrenamiento de percepción acústica y discriminación fonológica.",
+            "deepDiveNotes": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Mastering phonetic stress allows you to communicate naturally.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11729,18 +11729,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-3-3",
             "sublessonId": "sub-a2_node_15-3",
-            "title": "Resumen de Logro: 3. Prueba de Precisión Auditiva & Fonética A2",
+            "title": "Resumen: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Diferenciación de pares mínimos, acento prosódico y formas débiles en audio.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 3. Prueba de Precisión Auditiva & Fonética A2.",
-            "conceptBreakdown": "Repasa la fórmula: \"Diferenciación de pares mínimos, acento prosódico y formas débiles en audio.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/\n2. Terminaciones: watched /wɒtʃt/ vs wanted /ˈwɒn.tɪd/\n3. Formas débiles y reducciones nativas: going to ➔ gonna, want to ➔ wanna",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Prueba de Precisión Auditiva & Fonética A2.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11777,7 +11777,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Ship vs Sheep": "/ɪ/ vs /iː/",
               "Live vs Leave": "/lɪv/ vs /liːv/",
@@ -11804,7 +11804,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Mastering phonetic stress allows you to communicate naturally.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Prueba de Precisión Auditiva & Fonética A2.",
             "cefrLevel": "A2"
@@ -11824,62 +11824,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-4-1",
             "sublessonId": "sub-a2_node_15-4",
-            "title": "Concepto Clave: 4. Diagnóstico de Producción Escrita A2",
+            "title": "4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "Redacción de párrafos estructurados con conectores lógicos y variedad verbal.",
-            "summaryShort": "Demuestra que puedes escribir correos y descripciones sin errores de concordancia.",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 4. Diagnóstico de Producción Escrita A2. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 4. Diagnóstico de Producción Escrita A2.",
+            "grammarFormula": "1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión\n2. Variedad léxica y ausencia de calcos literales del español.",
+            "summaryShort": "Demuestra que puedes redactar correos, ensayos breves y descripciones sin errores de concordancia.",
+            "conceptBreakdown": "Producción escrita estructurada de nivel A2 consolidado.",
+            "deepDiveNotes": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I enjoy writing in English because it helps me organize my thoughts.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_15_4",
-                "ruleTitle": "Error Común en 4. Diagnóstico de Producción Escrita A2",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I enjoy writing in English because it helps me organize my thoughts.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 4. Diagnóstico de Producción Escrita A2 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Writing isolated single sentences without logical connectors",
+                "correctExample": "Structuring cohesive paragraphs with variety of tenses and connectors",
+                "fastPill": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
+                "mediumExplanation": "Producción escrita estructurada de nivel A2 consolidado.",
+                "slowDeepDive": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción."
               }
             ]
           },
           {
             "id": "exp-a2_node_15-4-2",
             "sublessonId": "sub-a2_node_15-4",
-            "title": "Refuerzo Pedagógico: 4. Diagnóstico de Producción Escrita A2",
+            "title": "Refuerzo de Concepto: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "Redacción de párrafos estructurados con conectores lógicos y variedad verbal.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 4. Diagnóstico de Producción Escrita A2.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 4. Diagnóstico de Producción Escrita A2 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión\n2. Variedad léxica y ausencia de calcos literales del español.",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Diagnóstico de Producción Escrita A2 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Producción escrita estructurada de nivel A2 consolidado.",
+            "deepDiveNotes": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "With dedication and daily practice, I have achieved level A2 certification.",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -11887,18 +11887,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-4-3",
             "sublessonId": "sub-a2_node_15-4",
-            "title": "Resumen de Logro: 4. Diagnóstico de Producción Escrita A2",
+            "title": "Resumen: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "Redacción de párrafos estructurados con conectores lógicos y variedad verbal.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 4. Diagnóstico de Producción Escrita A2.",
-            "conceptBreakdown": "Repasa la fórmula: \"Redacción de párrafos estructurados con conectores lógicos y variedad verbal.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión\n2. Variedad léxica y ausencia de calcos literales del español.",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Diagnóstico de Producción Escrita A2.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -11935,7 +11935,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Topic sentence": "Oración principal",
               "Supporting detail": "Detalle de soporte",
@@ -11962,7 +11962,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "With dedication and daily practice, I have achieved level A2 certification.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Diagnóstico de Producción Escrita A2.",
             "cefrLevel": "A2"
@@ -11982,62 +11982,62 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-5-1",
             "sublessonId": "sub-a2_node_15-5",
-            "title": "Concepto Clave: 5. Gran Certificación de Logro Nivel A2",
+            "title": "5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "¡Felicitaciones! Has dominado el 100% de los objetivos del nivel A2 en FlashLens.",
-            "summaryShort": "¡Has culminado exitosamente el Roadmap completo de A1 y A2!",
-            "conceptBreakdown": "Explicación didáctica paso a paso de 5. Gran Certificación de Logro Nivel A2. Aplica los patrones sintácticos correctos y presta atención a las concordancias gramaticales.",
-            "deepDiveNotes": "Análisis de transferencia materna (L1 transfer) y pronunciación fonética nativa para 5. Gran Certificación de Logro Nivel A2.",
+            "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
+            "summaryShort": "¡Felicitaciones! Has completado y dominado el 100% de los objetivos de los niveles A1 y A2 en FlashLens.",
+            "conceptBreakdown": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
+            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical central.",
-              "Evita la traducción literal del español.",
-              "Practica con oraciones en contexto real."
+              "Aplica la estructura gramatical o fórmula del concepto.",
+              "Presta atención a las diferencias clave con el español.",
+              "Practica con los ejercicios interactivos de comprobación."
             ],
             "contrastExamples": [
               {
                 "en": "I am proud to be a certified A2 English speaker with FlashLens.",
-                "es": "Ejemplo representativo en contexto real.",
-                "highlightEn": "structure",
-                "highlightEs": "estructura",
-                "note": "Contraste sintáctico"
+                "es": "Ejemplo contextual en inglés estándar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura central"
               }
             ],
             "commonPitfalls": [
               {
                 "pitfallId": "pitfall_a2_node_15_5",
-                "ruleTitle": "Error Común en 5. Gran Certificación de Logro Nivel A2",
-                "wrongExample": "Incorrect usage pattern from literal Spanish translation",
-                "correctExample": "I am proud to be a certified A2 English speaker with FlashLens.",
-                "fastPill": "⚠️ Evita la traducción literal palabra por palabra.",
-                "mediumExplanation": "Comprende la regla fundamental de 5. Gran Certificación de Logro Nivel A2 para evitar equivocaciones comunes.",
-                "slowDeepDive": "Interferencia lingüística L1 para estudiantes hispanohablantes."
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Stopping practice after certification",
+                "correctExample": "Continuing daily spaced repetition in Audio Lab and Flashcards",
+                "fastPill": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
+                "mediumExplanation": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
+                "slowDeepDive": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens."
               }
             ]
           },
           {
             "id": "exp-a2_node_15-5-2",
             "sublessonId": "sub-a2_node_15-5",
-            "title": "Refuerzo Pedagógico: 5. Gran Certificación de Logro Nivel A2",
+            "title": "Refuerzo de Concepto: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
             "triggerQuestionIndex": 2,
-            "grammarFormula": "¡Felicitaciones! Has dominado el 100% de los objetivos del nivel A2 en FlashLens.",
-            "summaryShort": "Refuerzo de mitad de lección: consolida los matices esenciales de 5. Gran Certificación de Logro Nivel A2.",
-            "conceptBreakdown": "Profundización en las excepciones y reglas de aplicación directa de 5. Gran Certificación de Logro Nivel A2 antes de los ejercicios de producción.",
-            "deepDiveNotes": "Consejo práctico para pruebas estandarizadas y fluidez comunicativa.",
+            "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
+            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Gran Certificación de Logro Nivel A2 antes de los ejercicios de producción.",
+            "conceptBreakdown": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
+            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
             "keyTakeaways": [
-              "Fija el patrón antes de los ejercicios prácticos.",
-              "Verifica la concordancia de tiempo y persona."
+              "Fija el patrón antes de escribir o hablar.",
+              "Verifica la concordancia exacta."
             ],
             "contrastExamples": [
               {
                 "en": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",
-                "es": "Segundo ejemplo contrastivo en contexto.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Refuerzo de patrón"
+                "es": "Segundo ejemplo representativo.",
+                "highlightEn": "example",
+                "highlightEs": "ejemplo",
+                "note": "Refuerzo"
               }
             ],
             "commonPitfalls": []
@@ -12045,18 +12045,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a2_node_15-5-3",
             "sublessonId": "sub-a2_node_15-5",
-            "title": "Resumen de Logro: 5. Gran Certificación de Logro Nivel A2",
+            "title": "Resumen: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "¡Felicitaciones! Has dominado el 100% de los objetivos del nivel A2 en FlashLens.",
-            "summaryShort": "¡Excelente trabajo! Has completado y dominado todos los puntos clave de 5. Gran Certificación de Logro Nivel A2.",
-            "conceptBreakdown": "Repasa la fórmula: \"¡Felicitaciones! Has dominado el 100% de los objetivos del nivel A2 en FlashLens.\". Estás listo para aplicar este conocimiento con soltura.",
+            "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
+            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Gran Certificación de Logro Nivel A2.",
+            "conceptBreakdown": "Recuerda la regla central: 1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)",
             "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
             "keyTakeaways": [
-              "Estructura dominada",
+              "Concepto dominado",
               "Sin errores de transferencia L1",
-              "Fluidez adquirida"
+              "Listo para avanzar"
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -12093,7 +12093,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada concepto con su significado o equivalente en español:",
+            "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
               "Level A1": "Fundamentos y Rutinas",
               "Level A2": "Consolidación y Fluidez Práctica",
@@ -12120,7 +12120,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia con claridad y entonación natural:",
+            "prompt": "Pronuncia con entonación clara y natural:",
             "correctAnswer": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",
             "explanation": "Práctica oral de fluidez y articulación para 5. Gran Certificación de Logro Nivel A2.",
             "cefrLevel": "A2"
@@ -12131,361 +12131,6 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   }
 ];
 
-export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
-  // Bloque I: Fonética (5)
-  {
-    id: 'diag-1',
-    section: 'PHONETICS',
-    orderIndex: 1,
-    question: {
-      id: 'dq-1',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia 'ship' con vocal corta /ɪ/.",
-      correctAnswer: 'ship',
-      explanation: 'Vocal corta y relajada /ɪ/.',
-      cefrLevel: 'A1',
-      phoneticTarget: '/ɪ/',
-    },
-  },
-  {
-    id: 'diag-2',
-    section: 'PHONETICS',
-    orderIndex: 2,
-    question: {
-      id: 'dq-2',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia 'sheep' con vocal larga tensa /iː/.",
-      correctAnswer: 'sheep',
-      explanation: 'Vocal larga y tensa /iː/.',
-      cefrLevel: 'A1',
-      phoneticTarget: '/iː/',
-    },
-  },
-  {
-    id: 'diag-3',
-    section: 'PHONETICS',
-    orderIndex: 3,
-    question: {
-      id: 'dq-3',
-      type: 'FILL_IN_BLANK',
-      prompt: "Elige la palabra con sonido corto: 'I saw a _____ in the sea (barco)'",
-      options: ['ship', 'sheep'],
-      correctAnswer: 'ship',
-      explanation: "'Ship' lleva la vocal corta /ɪ/.",
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-4',
-    section: 'PHONETICS',
-    orderIndex: 4,
-    question: {
-      id: 'dq-4',
-      type: 'FILL_IN_BLANK',
-      prompt: "Identifica el Schwa /ə/: 'She is a doc____ (doctora)'",
-      options: ['tor', 'tar', 'ter'],
-      correctAnswer: 'tor',
-      explanation: "'-or' en doctor suena como Schwa /tər/.",
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-5',
-    section: 'PHONETICS',
-    orderIndex: 5,
-    question: {
-      id: 'dq-5',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia la terminación /-t/ en 'walked'.",
-      correctAnswer: 'walked',
-      explanation: "El sufijo regular de walk es sordo /-t/.",
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque II: Gramática (6)
-  {
-    id: 'diag-6',
-    section: 'GRAMMAR',
-    orderIndex: 6,
-    question: {
-      id: 'dq-6',
-      type: 'FILL_IN_BLANK',
-      prompt: "She _____ from Colombia.",
-      options: ['is', 'are', 'am'],
-      correctAnswer: 'is',
-      explanation: 'Tercera persona singular usa is.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-7',
-    section: 'GRAMMAR',
-    orderIndex: 7,
-    question: {
-      id: 'dq-7',
-      type: 'FILL_IN_BLANK',
-      prompt: "Daniel _____ English every day.",
-      options: ['studies', 'study', 'studying'],
-      correctAnswer: 'studies',
-      explanation: 'Regla de -ies para verbos en presente 3ra persona.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-8',
-    section: 'GRAMMAR',
-    orderIndex: 8,
-    question: {
-      id: 'dq-8',
-      type: 'FILL_IN_BLANK',
-      prompt: "_____ there any milk left in the fridge?",
-      options: ['Is', 'Are', 'Do'],
-      correctAnswer: 'Is',
-      explanation: "'Milk' es incontable y requiere 'Is there'.",
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-9',
-    section: 'GRAMMAR',
-    orderIndex: 9,
-    question: {
-      id: 'dq-9',
-      type: 'FILL_IN_BLANK',
-      prompt: "We _____ to London last summer.",
-      options: ['travelled', 'travel', 'travelling'],
-      correctAnswer: 'travelled',
-      explanation: 'Pasado simple regular con -ed.',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-10',
-    section: 'GRAMMAR',
-    orderIndex: 10,
-    question: {
-      id: 'dq-10',
-      type: 'FILL_IN_BLANK',
-      prompt: "Canada is _____ than Colombia in winter.",
-      options: ['colder', 'more cold', 'coldest'],
-      correctAnswer: 'colder',
-      explanation: 'Comparativo de una sílaba añade -er than.',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-11',
-    section: 'GRAMMAR',
-    orderIndex: 11,
-    question: {
-      id: 'dq-11',
-      type: 'FILL_IN_BLANK',
-      prompt: "I didn't _____ coffee in the morning.",
-      options: ['use to drink', 'used to drink'],
-      correctAnswer: 'use to drink',
-      explanation: "Con el auxiliar 'didn't', el verbo va en forma base 'use to'.",
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque III: Vocabulario (5)
-  {
-    id: 'diag-12',
-    section: 'VOCABULARY',
-    orderIndex: 12,
-    question: {
-      id: 'dq-12',
-      type: 'IMAGE_WORD_MATCH',
-      prompt: "Selecciona la palabra en inglés para 'Mochila':",
-      options: ['Backpack', 'Suitcase', 'Wallet'],
-      correctAnswer: 'Backpack',
-      explanation: 'Backpack es mochila.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-13',
-    section: 'VOCABULARY',
-    orderIndex: 13,
-    question: {
-      id: 'dq-13',
-      type: 'IMAGE_WORD_MATCH',
-      prompt: "Selecciona la palabra para 'Taza de café':",
-      options: ['Coffee Mug', 'Glass', 'Bottle'],
-      correctAnswer: 'Coffee Mug',
-      explanation: 'Coffee mug es taza de cerámica.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-14',
-    section: 'VOCABULARY',
-    orderIndex: 14,
-    question: {
-      id: 'dq-14',
-      type: 'MATCH_PAIRS',
-      prompt: 'Relaciona los miembros de la familia con su opuesto:',
-      options: { 'Father': 'Mother', 'Brother': 'Sister', 'Uncle': 'Aunt' },
-      correctAnswer: { 'Father': 'Mother', 'Brother': 'Sister', 'Uncle': 'Aunt' },
-      explanation: 'Parentesco básico.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-15',
-    section: 'VOCABULARY',
-    orderIndex: 15,
-    question: {
-      id: 'dq-15',
-      type: 'MATCH_PAIRS',
-      prompt: 'Relaciona los adjetivos con sus antónimos:',
-      options: { 'Expensive': 'Cheap', 'Quiet': 'Noisy', 'Dangerous': 'Safe' },
-      correctAnswer: { 'Expensive': 'Cheap', 'Quiet': 'Noisy', 'Dangerous': 'Safe' },
-      explanation: 'Antónimos fundamentales A2.',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-16',
-    section: 'VOCABULARY',
-    orderIndex: 16,
-    question: {
-      id: 'dq-16',
-      type: 'FILL_IN_BLANK',
-      prompt: "The keys are _____ the table (sobre la mesa).",
-      options: ['on', 'in', 'at', 'under'],
-      correctAnswer: 'on',
-      explanation: "'On' denota superficie.",
-      cefrLevel: 'A1',
-    },
-  },
-
-  // Bloque IV: Lectura ICFES (5)
-  {
-    id: 'diag-17',
-    section: 'READING_ICFES',
-    orderIndex: 17,
-    question: {
-      id: 'dq-17',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "¿Dónde verías el aviso 'PLEASE DO NOT FEED THE ANIMALS'?",
-      options: ['In a zoo', 'In a library', 'In a bakery'],
-      correctAnswer: 'In a zoo',
-      explanation: 'Aviso público de zoológico.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-18',
-    section: 'READING_ICFES',
-    orderIndex: 18,
-    question: {
-      id: 'dq-18',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "Alex: 'How much is this t-shirt?' Seller: '$15 dollars.' ¿Qué hace Alex?",
-      options: ['Buying clothes', 'Ordering food', 'Calling doctor'],
-      correctAnswer: 'Buying clothes',
-      explanation: 'Transacción de compra de ropa.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-19',
-    section: 'READING_ICFES',
-    orderIndex: 19,
-    question: {
-      id: 'dq-19',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "'Hi Laura, I couldn't come to class because I had a high fever.' ¿Por qué faltó?",
-      options: ['Because he was sick', 'Because he lost his book'],
-      correctAnswer: 'Because he was sick',
-      explanation: 'Comprensión de causa con fever (fiebre).',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-20',
-    section: 'READING_ICFES',
-    orderIndex: 20,
-    question: {
-      id: 'dq-20',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "'FASTEN SEATBELTS WHILE SEATED'. ¿Dónde verías este aviso?",
-      options: ['On an airplane', 'In a cinema', 'In a supermarket'],
-      correctAnswer: 'On an airplane',
-      explanation: 'Instrucción de seguridad aeronáutica.',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-21',
-    section: 'READING_ICFES',
-    orderIndex: 21,
-    question: {
-      id: 'dq-21',
-      type: 'FILL_IN_BLANK',
-      prompt: "Although it was raining, _____ we went out.",
-      options: ['although', 'because', 'but'],
-      correctAnswer: 'although',
-      explanation: 'Conector concesivo de contraste.',
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque V: Producción (4)
-  {
-    id: 'diag-22',
-    section: 'PRODUCTION',
-    orderIndex: 22,
-    question: {
-      id: 'dq-22',
-      type: 'SENTENCE_WRITING',
-      prompt: "Escribe: 'I live in Colombia and I study English every morning.'",
-      correctAnswer: 'I live in Colombia and I study English every morning.',
-      explanation: 'Construcción coordinada nivel A1.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-23',
-    section: 'PRODUCTION',
-    orderIndex: 23,
-    question: {
-      id: 'dq-23',
-      type: 'SENTENCE_WRITING',
-      prompt: "Escribe: 'Although English is challenging, I enjoy practicing it.'",
-      correctAnswer: 'Although English is challenging, I enjoy practicing it.',
-      explanation: 'Uso de conectores de contraste en producción A2.',
-      cefrLevel: 'A2',
-    },
-  },
-  {
-    id: 'diag-24',
-    section: 'PRODUCTION',
-    orderIndex: 24,
-    question: {
-      id: 'dq-24',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Lee en voz alta: 'I like apples and bananas.'",
-      correctAnswer: 'I like apples and bananas',
-      explanation: 'Fluidez y articulación vocálica A1.',
-      cefrLevel: 'A1',
-    },
-  },
-  {
-    id: 'diag-25',
-    section: 'PRODUCTION',
-    orderIndex: 25,
-    question: {
-      id: 'dq-25',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia: 'We watched a movie and cooked dinner last night.'",
-      correctAnswer: 'We watched a movie and cooked dinner last night',
-      explanation: 'Terminaciones regulares -ed en pasado /t/.',
-      cefrLevel: 'A2',
-    },
-  },
-];
+export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [];
 
 export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = MOCK_DIAGNOSTIC_QUESTIONS;
