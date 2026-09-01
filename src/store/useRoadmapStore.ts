@@ -141,9 +141,9 @@ export const useRoadmapStore = create<RoadmapState>()(
             }
             // Los 3 primeros nodos paralelos de A2 se activan simultáneamente
             if (
-              node.id === 'a2_node_9' ||
               node.id === 'a2_node_10' ||
-              node.id === 'a2_node_11'
+              node.id === 'a2_node_11' ||
+              node.id === 'a2_node_12'
             ) {
               return {
                 ...node,
@@ -156,7 +156,7 @@ export const useRoadmapStore = create<RoadmapState>()(
 
         set({
           nodes: updatedNodes,
-          selectedNodeId: level === 'A2' ? 'a2_node_9' : 'a1_node_1',
+          selectedNodeId: level === 'A2' ? 'a2_node_10' : 'a1_node_1',
         });
       },
 

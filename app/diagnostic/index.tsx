@@ -6,21 +6,25 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
-  TextInput,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
   X,
   Sparkles,
-  Volume2,
-  CheckCircle2,
   ArrowRight,
 } from 'lucide-react-native';
-import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
-import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
+import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
 import { MOCK_DIAGNOSTIC_QUESTIONS } from '../../src/data/mockData';
 import { DiagnosticQuestion } from '../../src/types';
+import { evaluateLanguageInput } from '../../src/services/languageEvaluation';
+
+// Componentes interactivos especializados por tipo de pregunta
+import { MatchPairsQuestion } from '../../src/components/roadmap/questions/MatchPairsQuestion';
+import { FillInBlankQuestion } from '../../src/components/roadmap/questions/FillInBlankQuestion';
+import { MultipleChoiceIcfesQuestion } from '../../src/components/roadmap/questions/MultipleChoiceIcfesQuestion';
+import { SentenceWritingQuestion } from '../../src/components/roadmap/questions/SentenceWritingQuestion';
+import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/questions/SpeakingPronunciationQuestion';
 
 export default function DiagnosticScreen() {
   const router = useRouter();
@@ -30,22 +34,17 @@ export default function DiagnosticScreen() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [writtenInput, setWrittenInput] = useState('');
-  const [matchedPairs, setMatchedPairs] = useState<Record<string, string>>({});
+  const [isPairDone, setIsPairDone] = useState(false);
 
   const currentItem: DiagnosticQuestion = questions[currentIdx];
   const q = currentItem?.question;
-
-  const handleSpeak = (text: string) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Speech.speak(text, { language: 'en-US' });
-  };
 
   const handleNext = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     let answerGiven = selectedOption || writtenInput;
     if (q?.type === 'MATCH_PAIRS') {
-      answerGiven = JSON.stringify(matchedPairs);
+      answerGiven = isPairDone ? 'PAIRS_COMPLETED' : '';
     }
 
     const updatedAnswers = {
@@ -58,7 +57,7 @@ export default function DiagnosticScreen() {
       setCurrentIdx(currentIdx + 1);
       setSelectedOption(null);
       setWrittenInput('');
-      setMatchedPairs({});
+      setIsPairDone(false);
     } else {
       let correctCount = 0;
       let phoneticsCorrect = 0;
@@ -68,14 +67,18 @@ export default function DiagnosticScreen() {
       let productionCorrect = 0;
 
       questions.forEach(item => {
-        const userAns = updatedAnswers[item.id];
+        const userAns = updatedAnswers[item.id] || '';
         const correctAns = item.question.correctAnswer;
         let isRight = false;
 
         if (item.question.type === 'MATCH_PAIRS') {
-          isRight = Boolean(userAns && userAns !== '{}');
+          isRight = userAns === 'PAIRS_COMPLETED' || Boolean(userAns && userAns !== '{}');
+        } else if (item.question.type === 'SENTENCE_WRITING') {
+          isRight = evaluateLanguageInput(userAns, String(correctAns), false).isCorrect;
+        } else if (item.question.type === 'SPEAKING_PRONUNCIATION') {
+          isRight = evaluateLanguageInput(userAns, String(correctAns), true).isCorrect;
         } else {
-          isRight = userAns?.toLowerCase().trim() === String(correctAns).toLowerCase().trim();
+          isRight = userAns.toLowerCase().trim() === String(correctAns).toLowerCase().trim();
         }
 
         if (isRight) {
@@ -112,6 +115,12 @@ export default function DiagnosticScreen() {
 
   const progressPercent = ((currentIdx + 1) / questions.length) * 100;
 
+  // Determinar si el botón siguiente está habilitado
+  const hasAnswer =
+    (q?.type === 'MATCH_PAIRS' && isPairDone) ||
+    Boolean(selectedOption && selectedOption.trim().length > 0) ||
+    Boolean(writtenInput && writtenInput.trim().length > 0);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
@@ -126,7 +135,7 @@ export default function DiagnosticScreen() {
         </Text>
       </View>
 
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.sectionBadge}>
           <Sparkles size={14} color="#765A00" />
           <Text style={styles.sectionBadgeText}>
@@ -134,85 +143,74 @@ export default function DiagnosticScreen() {
           </Text>
         </View>
 
-        <Text style={styles.promptText}>{q?.prompt}</Text>
+        {/* 1. MATCH PAIRS (EMPAREJAR PAREJAS) */}
+        {q?.type === 'MATCH_PAIRS' && (
+          <MatchPairsQuestion
+            prompt={q.prompt}
+            pairs={typeof q.options === 'object' && !Array.isArray(q.options) ? (q.options as Record<string, string>) : {}}
+            onComplete={(isDone) => setIsPairDone(isDone)}
+            disabled={false}
+          />
+        )}
 
+        {/* 2. FILL IN THE BLANK (COMPLETAR ESPACIO) */}
+        {q?.type === 'FILL_IN_BLANK' && (
+          <FillInBlankQuestion
+            prompt={q.prompt}
+            options={Array.isArray(q.options) ? q.options : []}
+            selectedWord={selectedOption}
+            onSelectWord={setSelectedOption}
+            disabled={false}
+          />
+        )}
+
+        {/* 3. MULTIPLE CHOICE ICFES & READING */}
+        {(q?.type === 'MULTIPLE_CHOICE_ICFES' || (q?.options && Array.isArray(q.options) && q?.type !== 'FILL_IN_BLANK')) && (
+          <MultipleChoiceIcfesQuestion
+            prompt={q.prompt}
+            options={Array.isArray(q.options) ? q.options : []}
+            selectedOption={selectedOption}
+            onSelectOption={setSelectedOption}
+            isAnswered={false}
+            correctAnswer={String(q.correctAnswer)}
+            disabled={false}
+          />
+        )}
+
+        {/* 4. SENTENCE WRITING (CONSTRUCCIÓN DE ORACIONES) */}
+        {q?.type === 'SENTENCE_WRITING' && (
+          <SentenceWritingQuestion
+            prompt={q.prompt}
+            correctAnswer={String(q.correctAnswer)}
+            value={writtenInput}
+            onChangeValue={setWrittenInput}
+            disabled={false}
+          />
+        )}
+
+        {/* 5. SPEAKING PRONUNCIATION (PRÁCTICA ORAL) */}
         {q?.type === 'SPEAKING_PRONUNCIATION' && (
-          <TouchableOpacity
-            onPress={() => handleSpeak(String(q.correctAnswer))}
-            style={styles.audioPromptBtn}
-          >
-            <Volume2 size={24} color="#765A00" />
-            <Text style={styles.audioPromptBtnText}>Escuchar Fonética en Inglés</Text>
-          </TouchableOpacity>
-        )}
-
-        {q?.options && Array.isArray(q.options) && (
-          <View style={styles.optionsList}>
-            {q.options.map((opt: string, i: number) => {
-              const isSelected = selectedOption === opt;
-              return (
-                <TouchableOpacity
-                  key={i}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setSelectedOption(opt);
-                  }}
-                  style={[styles.optionBtn, isSelected && styles.optionBtnSelected]}
-                >
-                  <Text style={[styles.optionBtnText, isSelected && styles.optionBtnTextSelected]}>
-                    {opt}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-        )}
-
-        {(q?.type === 'SENTENCE_WRITING' || q?.type === 'SPEAKING_PRONUNCIATION') && (
-          <View style={styles.inputSection}>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Escribe aquí tu respuesta..."
-              placeholderTextColor="#747878"
-              value={writtenInput}
-              onChangeText={setWrittenInput}
-              autoCapitalize="none"
-            />
-            <TouchableOpacity
-              onPress={() => setWrittenInput(String(q.correctAnswer))}
-              style={styles.demoFillBtn}
-            >
-              <Text style={styles.demoFillBtnText}>Llenar para Demo</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-
-        {q?.type === 'MATCH_PAIRS' && q.options && (
-          <View style={styles.matchingBox}>
-            <Text style={styles.matchingHint}>Relaciona las parejas:</Text>
-            {Object.keys(q.options).map(k => (
-              <TouchableOpacity
-                key={k}
-                onPress={() => {
-                  Haptics.selectionAsync();
-                  setMatchedPairs(prev => ({ ...prev, [k]: q.options[k] }));
-                }}
-                style={[styles.matchChip, matchedPairs[k] && styles.matchChipDone]}
-              >
-                <Text style={styles.matchChipText}>{k} ➔ {matchedPairs[k] || '...'}</Text>
-                {matchedPairs[k] && <CheckCircle2 size={16} color="#16A34A" />}
-              </TouchableOpacity>
-            ))}
-          </View>
+          <SpeakingPronunciationQuestion
+            prompt={q.prompt}
+            targetSentence={String(q.correctAnswer)}
+            recordedText={writtenInput}
+            onRecordResult={setWrittenInput}
+            disabled={false}
+          />
         )}
       </ScrollView>
 
+      {/* Footer de Navegación */}
       <View style={styles.footer}>
-        <TouchableOpacity onPress={handleNext} style={styles.nextBtn}>
+        <TouchableOpacity
+          onPress={handleNext}
+          disabled={!hasAnswer}
+          style={[styles.nextBtn, !hasAnswer && styles.nextBtnDisabled]}
+        >
           <Text style={styles.nextBtnText}>
-            {currentIdx + 1 === questions.length ? 'VER RESULTADOS' : 'SIGUIENTE PREGUNTA'}
+            {currentIdx + 1 === questions.length ? 'FINALIZAR DIAGNÓSTICO' : 'SIGUIENTE PREGUNTA'}
           </Text>
-          <ArrowRight size={18} color="#1C1B1B" />
+          <ArrowRight size={18} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -228,7 +226,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: SPACING.md,
-    paddingVertical: 10,
+    paddingVertical: 12,
     gap: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#E0E0E0',
@@ -249,137 +247,37 @@ const styles = StyleSheet.create({
   progressBarFill: {
     height: '100%',
     backgroundColor: '#E8B400',
+    borderRadius: 4,
   },
   counterText: {
-    color: '#5E5E5E',
     fontSize: 12,
     fontWeight: '800',
+    color: '#765A00',
   },
   content: {
-    padding: SPACING.lg,
-    paddingBottom: 100,
+    padding: SPACING.md,
+    paddingBottom: 40,
   },
   sectionBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFF8E1',
     alignSelf: 'flex-start',
+    gap: 6,
+    backgroundColor: '#FFF9E6',
+    borderWidth: 1,
+    borderColor: '#E8B400',
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 10,
-    gap: 6,
+    borderRadius: 8,
     marginBottom: SPACING.md,
-    borderWidth: 1,
-    borderColor: '#D4A400',
   },
   sectionBadgeText: {
     color: '#765A00',
     fontSize: 11,
-    fontWeight: '800',
-  },
-  promptText: {
-    color: '#1C1B1B',
-    fontSize: 18,
-    fontWeight: '800',
-    lineHeight: 25,
-    marginBottom: SPACING.lg,
-  },
-  audioPromptBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF8E1',
-    padding: SPACING.md,
-    borderRadius: 16,
-    gap: 10,
-    marginBottom: SPACING.lg,
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  audioPromptBtnText: {
-    color: '#765A00',
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  optionsList: {
-    gap: 10,
-  },
-  optionBtn: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: SPACING.md,
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-    ...SHADOWS.card,
-  },
-  optionBtnSelected: {
-    borderColor: '#E8B400',
-    backgroundColor: '#FFF8E1',
-  },
-  optionBtnText: {
-    color: '#1C1B1B',
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  optionBtnTextSelected: {
-    color: '#765A00',
-    fontWeight: '800',
-  },
-  inputSection: {
-    gap: 10,
-  },
-  textInput: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 16,
-    color: '#1C1B1B',
-    fontSize: 16,
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-  },
-  demoFillBtn: {
-    backgroundColor: '#F1EDEC',
-    padding: 10,
-    borderRadius: 12,
-    alignItems: 'center',
-  },
-  demoFillBtnText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  matchingBox: {
-    gap: 8,
-  },
-  matchingHint: {
-    color: '#5E5E5E',
-    fontSize: 12,
-    marginBottom: 6,
-  },
-  matchChip: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 14,
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-  },
-  matchChipDone: {
-    borderColor: '#16A34A',
-    backgroundColor: '#DCFCE7',
-  },
-  matchChipText: {
-    color: '#1C1B1B',
-    fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
   footer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     padding: SPACING.md,
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
@@ -389,14 +287,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E8B400',
+    gap: 8,
+    backgroundColor: '#0095FF',
+    paddingVertical: 16,
     borderRadius: 16,
-    paddingVertical: 14,
-    gap: 6,
     ...SHADOWS.card,
   },
+  nextBtnDisabled: {
+    backgroundColor: '#BDBDBD',
+  },
   nextBtnText: {
-    color: '#1C1B1B',
+    color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.5,

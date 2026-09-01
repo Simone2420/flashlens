@@ -21,12 +21,12 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.831Z",
     "repetitionNumber": 1,
     "easeFactor": 2.5,
     "intervalDays": 1,
     "lastRating": "GOOD",
-    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+    "nextReviewAt": "2026-09-02T23:07:16.832Z"
   },
   {
     "id": "fc-obj-2",
@@ -42,11 +42,11 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
     "intervalDays": 0,
-    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
     "id": "fc-obj-3",
@@ -62,11 +62,11 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
     "intervalDays": 0,
-    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
     "id": "fc-abs-1",
@@ -79,15 +79,15 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "A friendly smile and a warm greeting can easily break the ice with new colleagues.",
     "contextTranslation": "Una sonrisa amigable y un saludo cálido pueden fácilmente romper el hielo con nuevos compañeros.",
     "literalMeaning": "Destrozar un bloque de hielo sólido.",
-    "mnemonicHint": "Imagina un barco rompehielos abriendo camino en el mar para que los demás puedan navegar y hablar.",
+    "mnemonicHint": "Imagina un barco rompehielos abriendo camino en el mar para comunicarse.",
     "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23",
     "imageSource": "AI_GENERATED",
     "createdVia": "VOICE_SPANISH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
     "intervalDays": 0,
-    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
     "id": "fc-abs-2",
@@ -105,12 +105,12 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0",
     "imageSource": "AI_GENERATED",
     "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 1,
     "easeFactor": 2.5,
     "intervalDays": 1,
     "lastRating": "GOOD",
-    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+    "nextReviewAt": "2026-09-02T23:07:16.832Z"
   },
   {
     "id": "fc-abs-3",
@@ -122,16 +122,16 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "phoneticScript": "/ɪɡˈzɔː.stɪd/",
     "contextSentence": "After studying all night for the Saber Pro exam, she felt completely exhausted.",
     "contextTranslation": "Después de estudiar toda la noche para el examen Saber Pro, se sintió completamente exhausta.",
-    "mnemonicHint": "Suena como \"exhausto\" en español: como el tubo de escape de un auto sin energía.",
+    "mnemonicHint": "Suena como \"exhausto\": como un auto sin energía apagado.",
     "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474",
     "imageSource": "AI_GENERATED",
     "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 2,
     "easeFactor": 2.6,
     "intervalDays": 3,
     "lastRating": "EASY",
-    "nextReviewAt": "2026-09-04T22:35:58.852Z"
+    "nextReviewAt": "2026-09-04T23:07:16.832Z"
   },
   {
     "id": "fc-abs-4",
@@ -143,15 +143,15 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "phoneticScript": "/ɡɪv ʌp/",
     "contextSentence": "Never give up on your dreams of mastering the English language.",
     "contextTranslation": "Nunca te rindas en tus sueños de dominar el idioma inglés.",
-    "mnemonicHint": "Imagina levantar las manos \"hacia arriba\" (UP) para soltar la toalla.",
+    "mnemonicHint": "Levantar las manos hacia arriba (UP) para soltar la toalla.",
     "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5",
     "imageSource": "AI_GENERATED",
     "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
     "intervalDays": 0,
-    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
     "id": "fc-abs-5",
@@ -168,12 +168,12 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8",
     "imageSource": "AI_GENERATED",
     "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 1,
     "easeFactor": 2.5,
     "intervalDays": 1,
     "lastRating": "GOOD",
-    "nextReviewAt": "2026-09-02T22:35:58.852Z"
+    "nextReviewAt": "2026-09-02T23:07:16.832Z"
   },
   {
     "id": "fc-abs-6",
@@ -191,11 +191,11 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
     "imageSource": "AI_GENERATED",
     "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T22:35:58.852Z",
+    "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
     "intervalDays": 0,
-    "nextReviewAt": "2026-09-01T22:35:58.852Z"
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   }
 ];
 
@@ -278,7 +278,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   {
     "id": "a1_node_1",
     "title": "1. Primeros Pasos & Comunicación Básica",
-    "description": "Saludos formales e informales, presentaciones, alfabeto completo A-Z, pares fonéticos y despedidas casuales.",
+    "description": "Saludos, presentaciones personales, abecedario completo (A-Z) con pronunciación en español, sonidos básicos y cortesía.",
     "category": "PHONETICS",
     "cefrLevel": "A1",
     "orderIndex": 1,
@@ -306,77 +306,77 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
-            "summaryShort": "Aprende a saludar según el momento del día y a presentarte con tu nombre, nacionalidad y origen.",
-            "conceptBreakdown": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
-            "deepDiveNotes": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
+            "grammarFormula": "1. Saludo: Hello! / Good morning / Good evening\n2. Nombre: My name is Carlos. (se dice: \"mái néim is Carlos\")\n3. Origen: I am from Colombia. (se dice: \"ái am from Colombia\")\n4. Cortesía: Nice to meet you! (se dice: \"náis tu míit iu\")",
+            "summaryShort": "Aprende a saludar según la hora del día y a presentarte con tu nombre y país de origen.",
+            "conceptBreakdown": "Para saludar usamos \"Hello\" (hola), \"Good morning\" (buenos días - \"gud mórning\"), \"Good afternoon\" (buenas tardes - \"gud áfternuun\") y \"Good evening\" (buenas noches al llegar - \"gud ívning\"). Para decir tu nombre dices \"My name is [Nombre]\" y para tu país \"I am from [País]\".",
+            "deepDiveNotes": "📍 En la recepción del hotel:\n👩 Recepcionista: \"Good evening! What is your name?\" (gud ívning! uát is ior néim?)\n👨 Huésped: \"Hello! My name is Carlos and I am from Colombia.\" (jelóu! mái néim is Carlos and ái am from Colombia)",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
             ],
             "contrastExamples": [
               {
                 "en": "I am Colombian and I live in Bogota.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Soy colombiano y vivo en Bogotá.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_1_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Good night everyone! (Al entrar a las 7 PM)",
-                "correctExample": "Good evening everyone! (Al llegar de noche)",
-                "fastPill": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
-                "mediumExplanation": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
-                "slowDeepDive": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_1-1-2",
-            "sublessonId": "sub-a1_node_1-1",
-            "title": "Refuerzo de Concepto: 1. Saludos & Presentaciones Personales",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Saludos & Presentaciones Personales antes de los ejercicios de producción.",
-            "conceptBreakdown": "Usa \"Good morning\" (mañana), \"Good afternoon\" (tarde) y \"Good evening\" (noche al llegar). Para presentarte usa \"My name is [Nombre]\", \"I am from [País]\" e \"I live in [Ciudad]\".",
-            "deepDiveNotes": "Ten en cuenta que \"Good evening\" es el saludo al llegar de noche, mientras que \"Good night\" es únicamente para despedirse e ir a dormir.",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "Hello, my name is Alex and I am from Colombia.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "note": "Estructura en acción"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_1-1-2",
+            "sublessonId": "sub-a1_node_1-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. Saludo: Hello! / Good morning / Good evening\n2. Nombre: My name is Carlos. (se dice: \"mái néim is Carlos\")\n3. Origen: I am from Colombia. (se dice: \"ái am from Colombia\")\n4. Cortesía: Nice to meet you! (se dice: \"náis tu míit iu\")",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En inglés \"Good evening\" es el saludo al llegar de noche. \"Good night\" es solo para despedirse e ir a dormir.",
+            "deepDiveNotes": "Pronuncia \"name\" cerrando los labios al final (\"néim\"). No pronuncies la \"e\" final.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Hello, my name is Alex and I am from Colombia.",
+                "es": "Hola, mi nombre es Alex y soy de Colombia.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_1_1",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Good night everyone! (Al entrar a una reunión a las 8 PM)",
+                "correctExample": "Good evening everyone! (Al llegar de noche)",
+                "fastPill": "En inglés \"Good evening\" es el saludo al llegar de noche. \"Good night\" es solo para despedirse e ir a dormir.",
+                "mediumExplanation": "Para saludar usamos \"Hello\" (hola), \"Good morning\" (buenos días - \"gud mórning\"), \"Good afternoon\" (buenas tardes - \"gud áfternuun\") y \"Good evening\" (buenas noches al llegar - \"gud ívning\"). Para decir tu nombre dices \"My name is [Nombre]\" y para tu país \"I am from [País]\".",
+                "slowDeepDive": "En inglés \"Good evening\" es el saludo al llegar de noche. \"Good night\" es solo para despedirse e ir a dormir."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_1-1-3",
             "sublessonId": "sub-a1_node_1-1",
-            "title": "Resumen: 1. Saludos & Presentaciones Personales",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Hello! My name is Carlos.\n2. I am from Colombia and I live in Bogota.\n3. Nice to meet you!",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Saludos & Presentaciones Personales.",
-            "conceptBreakdown": "Recuerda la regla central: 1. Hello! My name is Carlos.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "1. Saludo: Hello! / Good morning / Good evening\n2. Nombre: My name is Carlos. (se dice: \"mái néim is Carlos\")\n3. Origen: I am from Colombia. (se dice: \"ái am from Colombia\")\n4. Cortesía: Nice to meet you! (se dice: \"náis tu míit iu\")",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ Si llegas de noche, di \"Good evening\". Si te vas a dormir, di \"Good night\".",
+            "deepDiveNotes": "⚡ Si llegas de noche, di \"Good evening\". Si te vas a dormir, di \"Good night\".",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Si llegas de noche, di \"Good evening\". Si te vas a dormir, di \"Good night\".",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -386,7 +386,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Llegas a las 8:00 PM a una cena formal de negocios en un restaurante. ¿Cuál es el saludo apropiado al entrar?",
+            "prompt": "Llegas a las 8:00 PM a una cena de negocios en un restaurante. ¿Cuál es el saludo apropiado al entrar?",
             "options": [
               "Good evening, nice to meet you all.",
               "Good night, nice to meet you all.",
@@ -394,7 +394,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "Goodbye, have a good sleep."
             ],
             "correctAnswer": "Good evening, nice to meet you all.",
-            "explanation": "\"Good evening\" es el saludo correcto al llegar en horario nocturno. \"Good night\" es solo para despedirse.",
+            "explanation": "\"Good evening\" es el saludo correcto al llegar de noche. \"Good night\" es únicamente para despedirse.",
             "cefrLevel": "A1"
           },
           {
@@ -407,24 +407,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "are"
             ],
             "correctAnswer": "am",
-            "explanation": "Con el pronombre \"I\" se utiliza la forma verbal \"am\" (I am from...).",
+            "explanation": "Con el pronombre \"I\" (yo) se utiliza \"am\" (I am from...).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
               "What is your name?": "My name is Carlos.",
               "Where are you from?": "I am from Colombia.",
-              "Where do you live?": "I live in Medellin.",
-              "Nice to meet you!": "Nice to meet you too!"
+              "Nice to meet you!": "Nice to meet you too!",
+              "Good morning!": "Good morning, how are you?"
             },
             "correctAnswer": {
               "What is your name?": "My name is Carlos.",
               "Where are you from?": "I am from Colombia.",
-              "Where do you live?": "I live in Medellin.",
-              "Nice to meet you!": "Nice to meet you too!"
+              "Nice to meet you!": "Nice to meet you too!",
+              "Good morning!": "Good morning, how are you?"
             },
             "explanation": "Asociación conceptual clave para 1. Saludos & Presentaciones Personales.",
             "cefrLevel": "A1"
@@ -432,17 +432,17 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I am Colombian and I live in Bogota.\"",
+            "prompt": "Traduce y construye en inglés: \"Soy colombiano y vivo en Bogotá.\"",
             "correctAnswer": "I am Colombian and I live in Bogota.",
-            "explanation": "Práctica de producción escrita para 1. Saludos & Presentaciones Personales.",
+            "explanation": "Traducción correcta: \"I am Colombian and I live in Bogota.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Hello, my name is Alex and I am from Colombia.\"",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hola, mi nombre es Alex y soy de Colombia.\"",
             "correctAnswer": "Hello, my name is Alex and I am from Colombia.",
-            "explanation": "Práctica oral de fluidez y articulación para 1. Saludos & Presentaciones Personales.",
+            "explanation": "Pronunciación modelo: \"Hello, my name is Alex and I am from Colombia.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -464,77 +464,77 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
-            "summaryShort": "Domina la pronunciación fonética exacta de las 5 vocales y las 21 consonantes del abecedario inglés.",
-            "conceptBreakdown": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
-            "deepDiveNotes": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
+            "grammarFormula": "1. Vocales: A (\"éi\"), E (\"ii\"), I (\"ái\"), O (\"óu\"), U (\"iú\")\n2. Consonantes B a K: B (\"bii\"), C (\"sii\"), D (\"dii\"), F (\"ef\"), G (\"yí\"), H (\"éich\"), J (\"yéi\"), K (\"kéi\")\n3. Consonantes L a S: L (\"el\"), M (\"em\"), N (\"en\"), P (\"pii\"), Q (\"kiú\"), R (\"ar\"), S (\"es\")\n4. Consonantes T a Z: T (\"tii\"), V (\"vii\"), W (\"dábel-iu\"), X (\"eks\"), Y (\"uái\"), Z (\"zii\")",
+            "summaryShort": "Domina las 5 vocales y las 21 consonantes del abecedario inglés con su pronunciación en español.",
+            "conceptBreakdown": "En inglés las 5 vocales son A (\"éi\"), E (\"ii\"), I (\"ái\"), O (\"óu\"), U (\"iú\"). Recuerda que la E suena a \"email\" (\"ii\") y la I suena a \"iPhone\" (\"ái\"). Todas las 21 consonantes tienen su sonido facilitado: H es \"éich\", V es \"vii\" mordiendo el labio, y Z es \"zii\" con zumbido de abeja.",
+            "deepDiveNotes": "📍 Deletreando en el mostrador del aeropuerto:\n👮 Oficial: \"How do you spell your name?\" (jáu du iu spel ior néim?)\n👨 Pasajero: \"A-L-E-X: éi - el - ii - eks.\"",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
             ],
             "contrastExamples": [
               {
                 "en": "The English alphabet has twenty-six letters.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El alfabeto en inglés tiene veintiséis letras.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_1_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Pronunciar la letra E como /e/ y la letra I como /i/",
-                "correctExample": "E = /iː/ (Email) | I = /aɪ/ (iPhone)",
-                "fastPill": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
-                "mediumExplanation": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
-                "slowDeepDive": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre)."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_1-2-2",
-            "sublessonId": "sub-a1_node_1-2",
-            "title": "Refuerzo de Concepto: 2. El Alfabeto Completo en Inglés (A-Z)",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. El Alfabeto Completo en Inglés (A-Z) antes de los ejercicios de producción.",
-            "conceptBreakdown": "Las vocales inglesas son A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/. Las consonantes más confusas son G /dʒiː/, J /dʒeɪ/, H /eɪtʃ/, V /viː/ (labiodental con vibración) y Z /ziː/ (sonora con zumbido).",
-            "deepDiveNotes": "Ten en cuenta que la letra \"E\" suena /iː/ (como la \"i\" en Email) y la letra \"I\" suena /aɪ/ (como en iPhone). Además, la letra \"H\" se pronuncia /eɪtʃ/ (no es muda en su nombre).",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "note": "Estructura en acción"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_1-2-2",
+            "sublessonId": "sub-a1_node_1-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. Vocales: A (\"éi\"), E (\"ii\"), I (\"ái\"), O (\"óu\"), U (\"iú\")\n2. Consonantes B a K: B (\"bii\"), C (\"sii\"), D (\"dii\"), F (\"ef\"), G (\"yí\"), H (\"éich\"), J (\"yéi\"), K (\"kéi\")\n3. Consonantes L a S: L (\"el\"), M (\"em\"), N (\"en\"), P (\"pii\"), Q (\"kiú\"), R (\"ar\"), S (\"es\")\n4. Consonantes T a Z: T (\"tii\"), V (\"vii\"), W (\"dábel-iu\"), X (\"eks\"), Y (\"uái\"), Z (\"zii\")",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En inglés los sonidos de las letras E e I están invertidos respecto a cómo se pronuncian en español.",
+            "deepDiveNotes": "La letra H se pronuncia \"éich\" (no es muda cuando dices su nombre).",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
+                "es": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_1_2",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Pronunciar la letra E como /e/ y la letra I como /i/",
+                "correctExample": "E = \"ii\" (como en Email) | I = \"ái\" (como en iPhone)",
+                "fastPill": "En inglés los sonidos de las letras E e I están invertidos respecto a cómo se pronuncian en español.",
+                "mediumExplanation": "En inglés las 5 vocales son A (\"éi\"), E (\"ii\"), I (\"ái\"), O (\"óu\"), U (\"iú\"). Recuerda que la E suena a \"email\" (\"ii\") y la I suena a \"iPhone\" (\"ái\"). Todas las 21 consonantes tienen su sonido facilitado: H es \"éich\", V es \"vii\" mordiendo el labio, y Z es \"zii\" con zumbido de abeja.",
+                "slowDeepDive": "En inglés los sonidos de las letras E e I están invertidos respecto a cómo se pronuncian en español."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_1-2-3",
             "sublessonId": "sub-a1_node_1-2",
-            "title": "Resumen: 2. El Alfabeto Completo en Inglés (A-Z)",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/\n2. Fricativas: F /ef/, V /viː/, S /es/, Z /ziː/\n3. Especiales: H /eɪtʃ/, G /dʒiː/, J /dʒeɪ/, W /ˈdʌb.əl.juː/",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. El Alfabeto Completo en Inglés (A-Z).",
-            "conceptBreakdown": "Recuerda la regla central: 1. Vocales: A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "1. Vocales: A (\"éi\"), E (\"ii\"), I (\"ái\"), O (\"óu\"), U (\"iú\")\n2. Consonantes B a K: B (\"bii\"), C (\"sii\"), D (\"dii\"), F (\"ef\"), G (\"yí\"), H (\"éich\"), J (\"yéi\"), K (\"kéi\")\n3. Consonantes L a S: L (\"el\"), M (\"em\"), N (\"en\"), P (\"pii\"), Q (\"kiú\"), R (\"ar\"), S (\"es\")\n4. Consonantes T a Z: T (\"tii\"), V (\"vii\"), W (\"dábel-iu\"), X (\"eks\"), Y (\"uái\"), Z (\"zii\")",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ E suena a \"Email\" (\"ii\") e I suena a \"iPhone\" (\"ái\").",
+            "deepDiveNotes": "⚡ E suena a \"Email\" (\"ii\") e I suena a \"iPhone\" (\"ái\").",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ E suena a \"Email\" (\"ii\") e I suena a \"iPhone\" (\"ái\").",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -544,15 +544,15 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "¿Cuál grupo representa la pronunciación fonética correcta de las 5 vocales en inglés?",
+            "prompt": "¿Cómo se pronuncian en inglés las vocales A, E, I?",
             "options": [
-              "A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
-              "A /a/, E /e/, I /i/, O /o/, U /u/",
-              "A /æ/, E /e/, I /ɪ/, O /ɒ/, U /ʌ/",
-              "A /eɪ/, E /e/, I /iː/, O /oʊ/, U /uː/"
+              "A (\"éi\"), E (\"ii\"), I (\"ái\")",
+              "A (\"a\"), E (\"e\"), I (\"i\")",
+              "A (\"ai\"), E (\"ei\"), I (\"ii\")",
+              "A (\"ou\"), E (\"iu\"), I (\"ei\")"
             ],
-            "correctAnswer": "A /eɪ/, E /iː/, I /aɪ/, O /oʊ/, U /juː/",
-            "explanation": "Esta es la pronunciación canónica de las vocales en el abecedario inglés.",
+            "correctAnswer": "A (\"éi\"), E (\"ii\"), I (\"ái\")",
+            "explanation": "A se pronuncia \"éi\", E se pronuncia \"ii\" e I se pronuncia \"ái\".",
             "cefrLevel": "A1"
           },
           {
@@ -560,29 +560,29 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "FILL_IN_BLANK",
             "prompt": "In the English alphabet, the letter \"H\" is pronounced _____.",
             "options": [
-              "/eɪtʃ/ (\"aitch\")",
-              "/hæt/",
-              "/eɪ/"
+              "éich",
+              "hæt",
+              "eɪ"
             ],
-            "correctAnswer": "/eɪtʃ/ (\"aitch\")",
-            "explanation": "La letra H se llama \"aitch\" (/eɪtʃ/).",
+            "correctAnswer": "éich",
+            "explanation": "La letra H en inglés se llama \"éich\" (/eɪtʃ/).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
-              "Letter A": "/eɪ/",
-              "Letter E": "/iː/",
-              "Letter I": "/aɪ/",
-              "Letter H": "/eɪtʃ/"
+              "Letter A": "se dice \"éi\"",
+              "Letter E": "se dice \"ii\"",
+              "Letter I": "se dice \"ái\"",
+              "Letter H": "se dice \"éich\""
             },
             "correctAnswer": {
-              "Letter A": "/eɪ/",
-              "Letter E": "/iː/",
-              "Letter I": "/aɪ/",
-              "Letter H": "/eɪtʃ/"
+              "Letter A": "se dice \"éi\"",
+              "Letter E": "se dice \"ii\"",
+              "Letter I": "se dice \"ái\"",
+              "Letter H": "se dice \"éich\""
             },
             "explanation": "Asociación conceptual clave para 2. El Alfabeto Completo en Inglés (A-Z).",
             "cefrLevel": "A1"
@@ -590,9 +590,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The English alphabet has twenty-six letters.\"",
+            "prompt": "Traduce y construye en inglés: \"El alfabeto en inglés tiene veintiséis letras.\"",
             "correctAnswer": "The English alphabet has twenty-six letters.",
-            "explanation": "Práctica de producción escrita para 2. El Alfabeto Completo en Inglés (A-Z).",
+            "explanation": "Traducción correcta: \"The English alphabet has twenty-six letters.\"",
             "cefrLevel": "A1"
           },
           {
@@ -600,7 +600,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.\"",
             "correctAnswer": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.",
-            "explanation": "Práctica oral de fluidez y articulación para 2. El Alfabeto Completo en Inglés (A-Z).",
+            "explanation": "Pronunciación modelo: \"A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -622,77 +622,77 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
-            "summaryShort": "Distingue los 5 contrastes fonéticos más importantes que cambian por completo el significado de las palabras.",
-            "conceptBreakdown": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
-            "deepDiveNotes": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
+            "grammarFormula": "1. Sonido I corto vs largo: live (\"lev/liv\" - vivir) ≠ leave (\"liiiv\" - marcharse)\n2. Barco vs Oveja: ship (\"ship\" corto) ≠ sheep (\"shiiip\" largo)\n3. Labios vs Dientes: berry (\"béri\" con labios) ≠ very (\"véri\" con dientes sobre labio)",
+            "summaryShort": "Distingue las diferencias de pronunciación más importantes para no cambiar el significado de las palabras.",
+            "conceptBreakdown": "En inglés hay sonidos cortos y largos: \"live\" (vivir) se dice rápido y relajado (\"liv\"), mientras que \"leave\" (marcharse) se alarga sonriendo (\"liiiv\"). Para la V (\"very\") muerde suavemente el labio inferior con los dientes.",
+            "deepDiveNotes": "📍 Hablando de vivienda:\n👨 Hablante A: \"I live in Bogota.\" (ái liv in Bogotá - Vivo en Bogotá)\n👩 Hablante B: \"Don't leave yet!\" (dóunt liiiv iet - ¡No te vayas aún!)",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
             ],
             "contrastExamples": [
               {
                 "en": "I live in a big house with my family.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Vivo en una casa grande con mi familia.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_1_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I leave in Bogota (queriendo decir que vives allí)",
-                "correctExample": "I live in Bogota (/lɪv/)",
-                "fastPill": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
-                "mediumExplanation": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
-                "slowDeepDive": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_1-3-2",
-            "sublessonId": "sub-a1_node_1-3",
-            "title": "Refuerzo de Concepto: 3. Diferencias de Sonidos & Pares Mínimos",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Diferencias de Sonidos & Pares Mínimos antes de los ejercicios de producción.",
-            "conceptBreakdown": "En inglés la duración vocálica y la vibración consonántica son fundamentales: /ɪ/ es corta y relajada mientras que /iː/ es larga y tensa; /v/ requiere vibración labiodental a diferencia de /b/; /z/ tiene zumbido sonoro a diferencia de /s/.",
-            "deepDiveNotes": "Ten en cuenta que en español no distinguimos entre B y V ni entre S y Z sonora. En inglés, morder suavemente el labio inferior para la /v/ y hacer zumbido para la /z/ evita malentendidos.",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "This big ship is very fast and safe.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "note": "Estructura en acción"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_1-3-2",
+            "sublessonId": "sub-a1_node_1-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. Sonido I corto vs largo: live (\"lev/liv\" - vivir) ≠ leave (\"liiiv\" - marcharse)\n2. Barco vs Oveja: ship (\"ship\" corto) ≠ sheep (\"shiiip\" largo)\n3. Labios vs Dientes: berry (\"béri\" con labios) ≠ very (\"véri\" con dientes sobre labio)",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "Decir \"leave\" (\"liiiv\") en vez de \"live\" (\"liv\") cambia el significado de vivir a marcharse.",
+            "deepDiveNotes": "Sonido V (\"very\"): muerde suavemente el labio inferior y haz vibrar la voz.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "This big ship is very fast and safe.",
+                "es": "Este barco grande es muy rápido y seguro.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_1_3",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "I leave in Bogota (queriendo decir que vives allí)",
+                "correctExample": "I live in Bogota (con sonido corto \"liv\")",
+                "fastPill": "Decir \"leave\" (\"liiiv\") en vez de \"live\" (\"liv\") cambia el significado de vivir a marcharse.",
+                "mediumExplanation": "En inglés hay sonidos cortos y largos: \"live\" (vivir) se dice rápido y relajado (\"liv\"), mientras que \"leave\" (marcharse) se alarga sonriendo (\"liiiv\"). Para la V (\"very\") muerde suavemente el labio inferior con los dientes.",
+                "slowDeepDive": "Decir \"leave\" (\"liiiv\") en vez de \"live\" (\"liv\") cambia el significado de vivir a marcharse."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_1-3-3",
             "sublessonId": "sub-a1_node_1-3",
-            "title": "Resumen: 3. Diferencias de Sonidos & Pares Mínimos",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)\n2. /b/ vs /v/: berry /ˈber.i/ (baya) ≠ very /ˈver.i/ (muy)\n3. /s/ vs /z/: sip /sɪp/ (sorbo) ≠ zip /zɪp/ (cremallera)\n4. /ʃ/ vs /tʃ/: share /ʃeər/ (compartir) ≠ chair /tʃeər/ (silla)\n5. /æ/ vs /ʌ/: cat /kæt/ (gato) ≠ cut /kʌt/ (cortar)",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Diferencias de Sonidos & Pares Mínimos.",
-            "conceptBreakdown": "Recuerda la regla central: 1. /ɪ/ vs /iː/: ship /ʃɪp/ (barco) ≠ sheep /ʃiːp/ (oveja)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "1. Sonido I corto vs largo: live (\"lev/liv\" - vivir) ≠ leave (\"liiiv\" - marcharse)\n2. Barco vs Oveja: ship (\"ship\" corto) ≠ sheep (\"shiiip\" largo)\n3. Labios vs Dientes: berry (\"béri\" con labios) ≠ very (\"véri\" con dientes sobre labio)",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ Live (\"liv\") es corto como un latido; Leave (\"liiiv\") es largo como una despedida.",
+            "deepDiveNotes": "⚡ Live (\"liv\") es corto como un latido; Leave (\"liiiv\") es largo como una despedida.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Live (\"liv\") es corto como un latido; Leave (\"liiiv\") es largo como una despedida.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -704,13 +704,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Carlos quiere decir \"Vivo en Medellín\" y no \"Me voy de Medellín\". ¿Cuál palabra debe usar?",
             "options": [
-              "live (/lɪv/)",
-              "leave (/liːv/)",
-              "life (/laɪf/)",
-              "living (/lɪv.ɪŋ/)"
+              "live (pronunciado \"liv\")",
+              "leave (pronunciado \"liiiv\")",
+              "life (vida)",
+              "living (viviendo)"
             ],
-            "correctAnswer": "live (/lɪv/)",
-            "explanation": "\"Live\" (/lɪv/) con vocal corta significa habitar; \"leave\" (/liːv/) con vocal larga significa marcharse.",
+            "correctAnswer": "live (pronunciado \"liv\")",
+            "explanation": "\"Live\" con sonido corto significa vivir; \"leave\" con sonido largo significa marcharse.",
             "cefrLevel": "A1"
           },
           {
@@ -723,24 +723,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "set"
             ],
             "correctAnswer": "seat",
-            "explanation": "\"Seat\" (/siːt/) es el sustantivo (asiento), mientras que \"sit\" (/sɪt/) es el verbo (sentarse).",
+            "explanation": "\"Seat\" (\"siit\") es el asiento (sustantivo), mientras que \"sit\" (\"sit\") es sentarse (verbo).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
-              "Ship (/ɪ/) vs Sheep (/iː/)": "Barco vs Oveja",
-              "Berry (/b/) vs Very (/v/)": "Baya vs Muy",
-              "Sip (/s/) vs Zip (/z/)": "Sorbo vs Cremallera",
-              "Share (/ʃ/) vs Chair (/tʃ/)": "Compartir vs Silla"
+              "Ship vs Sheep": "Barco (corto) vs Oveja (largo)",
+              "Live vs Leave": "Vivir (corto) vs Marcharse (largo)",
+              "Berry vs Very": "Baya (labios B) vs Muy (dientes V)",
+              "Sip vs Zip": "Sorbo (S) vs Cremallera (Z zumbido)"
             },
             "correctAnswer": {
-              "Ship (/ɪ/) vs Sheep (/iː/)": "Barco vs Oveja",
-              "Berry (/b/) vs Very (/v/)": "Baya vs Muy",
-              "Sip (/s/) vs Zip (/z/)": "Sorbo vs Cremallera",
-              "Share (/ʃ/) vs Chair (/tʃ/)": "Compartir vs Silla"
+              "Ship vs Sheep": "Barco (corto) vs Oveja (largo)",
+              "Live vs Leave": "Vivir (corto) vs Marcharse (largo)",
+              "Berry vs Very": "Baya (labios B) vs Muy (dientes V)",
+              "Sip vs Zip": "Sorbo (S) vs Cremallera (Z zumbido)"
             },
             "explanation": "Asociación conceptual clave para 3. Diferencias de Sonidos & Pares Mínimos.",
             "cefrLevel": "A1"
@@ -748,17 +748,17 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I live in a big house with my family.\"",
+            "prompt": "Traduce y construye en inglés: \"Vivo en una casa grande con mi familia.\"",
             "correctAnswer": "I live in a big house with my family.",
-            "explanation": "Práctica de producción escrita para 3. Diferencias de Sonidos & Pares Mínimos.",
+            "explanation": "Traducción correcta: \"I live in a big house with my family.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"This big ship is very fast and safe.\"",
+            "prompt": "Pronuncia en voz alta en inglés: \"Este barco grande es muy rápido y seguro.\"",
             "correctAnswer": "This big ship is very fast and safe.",
-            "explanation": "Práctica oral de fluidez y articulación para 3. Diferencias de Sonidos & Pares Mínimos.",
+            "explanation": "Pronunciación modelo: \"This big ship is very fast and safe.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -780,77 +780,77 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
-            "summaryShort": "Aprende a deletrear datos personales letra por letra y a dictar correos electrónicos y símbolos de internet.",
-            "conceptBreakdown": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
-            "deepDiveNotes": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
+            "grammarFormula": "1. Preguntar deletreo: How do you spell your last name? (jáu du iu spel ior last néim?)\n2. Responder: It is G-A-R-C-I-A (yí - éi - ar - sii - ái - éi)\n3. Correo electrónico: @ se dice \"at\" (\"at\") y . se dice \"dot\" (\"dot\")",
+            "summaryShort": "Aprende a deletrear tus datos personales letra por letra y a dictar correos electrónicos.",
+            "conceptBreakdown": "Usa \"How do you spell...?\" para pedir que te deletreen algo. En direcciones de correo decimos @ = \"at\" y . = \"dot\". Por ejemplo: carlos@mail.com se dice \"carlos at mail dot com\".",
+            "deepDiveNotes": "📍 Dictando un correo al registrarte:\n👨 Usuario: \"My email is support@flashlens.com.\"\n👩 Secretaria: \"Got it: support AT flashlens DOT com!\"",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
             ],
             "contrastExamples": [
               {
                 "en": "How do you spell your first name?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Cómo deletreas tu primer nombre?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_1_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "carlos point dev arroba flashlens point com",
-                "correctExample": "carlos dot dev at flashlens dot com",
-                "fastPill": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
-                "mediumExplanation": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
-                "slowDeepDive": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five)."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_1-4-2",
-            "sublessonId": "sub-a1_node_1-4",
-            "title": "Refuerzo de Concepto: 4. Deletreo de Nombres & Correos",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Deletreo de Nombres & Correos antes de los ejercicios de producción.",
-            "conceptBreakdown": "Usa \"How do you spell...?\" para preguntar el deletreo. En direcciones web y correos decimos @ = \"at\", . = \"dot\", _ = \"underscore\" y - = \"dash\".",
-            "deepDiveNotes": "Ten en cuenta que en correos y páginas web el punto se pronuncia siempre \"dot\", nunca \"point\". \"Point\" solo se usa para cifras decimales (3.5 = three point five).",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "My name is spelled J-O-H-N.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "note": "Estructura en acción"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_1-4-2",
+            "sublessonId": "sub-a1_node_1-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. Preguntar deletreo: How do you spell your last name? (jáu du iu spel ior last néim?)\n2. Responder: It is G-A-R-C-I-A (yí - éi - ar - sii - ái - éi)\n3. Correo electrónico: @ se dice \"at\" (\"at\") y . se dice \"dot\" (\"dot\")",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En correos y páginas web el punto se dice siempre \"dot\". \"Point\" solo se usa para números decimales.",
+            "deepDiveNotes": "Pronuncia \"@\" como \"at\" y el punto como \"dot\".",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "My name is spelled J-O-H-N.",
+                "es": "Mi nombre se deletrea J-O-H-N.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_1_4",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "carlos point dev arroba flashlens point com",
+                "correctExample": "carlos dot dev at flashlens dot com",
+                "fastPill": "En correos y páginas web el punto se dice siempre \"dot\". \"Point\" solo se usa para números decimales.",
+                "mediumExplanation": "Usa \"How do you spell...?\" para pedir que te deletreen algo. En direcciones de correo decimos @ = \"at\" y . = \"dot\". Por ejemplo: carlos@mail.com se dice \"carlos at mail dot com\".",
+                "slowDeepDive": "En correos y páginas web el punto se dice siempre \"dot\". \"Point\" solo se usa para números decimales."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_1-4-3",
             "sublessonId": "sub-a1_node_1-4",
-            "title": "Resumen: 4. Deletreo de Nombres & Correos",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Question: How do you spell your last name?\n2. Answer: It is G-A-R-C-I-A.\n3. Email: carlos.dev@flashlens.com ➔ carlos DOT dev AT flashlens DOT com",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Deletreo de Nombres & Correos.",
-            "conceptBreakdown": "Recuerda la regla central: 1. Question: How do you spell your last name?",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "1. Preguntar deletreo: How do you spell your last name? (jáu du iu spel ior last néim?)\n2. Responder: It is G-A-R-C-I-A (yí - éi - ar - sii - ái - éi)\n3. Correo electrónico: @ se dice \"at\" (\"at\") y . se dice \"dot\" (\"dot\")",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ En correos y páginas web: @ es AT y el punto es DOT.",
+            "deepDiveNotes": "⚡ En correos y páginas web: @ es AT y el punto es DOT.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ En correos y páginas web: @ es AT y el punto es DOT.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -868,7 +868,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
               "user ARROBA test DOT com"
             ],
             "correctAnswer": "user AT test DOT com",
-            "explanation": "En inglés el símbolo @ se lee \"at\" y el punto en direcciones de internet se lee \"dot\".",
+            "explanation": "En inglés el símbolo @ se lee \"at\" y el punto en correos se lee \"dot\".",
             "cefrLevel": "A1"
           },
           {
@@ -887,18 +887,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
-              "@": "at",
-              ".": "dot (en correos y web)",
-              "_": "underscore",
-              "-": "dash / hyphen"
+              "@": "se lee \"at\"",
+              ".": "se lee \"dot\" (en correos y web)",
+              "_": "se lee \"underscore\"",
+              "-": "se lee \"dash\""
             },
             "correctAnswer": {
-              "@": "at",
-              ".": "dot (en correos y web)",
-              "_": "underscore",
-              "-": "dash / hyphen"
+              "@": "se lee \"at\"",
+              ".": "se lee \"dot\" (en correos y web)",
+              "_": "se lee \"underscore\"",
+              "-": "se lee \"dash\""
             },
             "explanation": "Asociación conceptual clave para 4. Deletreo de Nombres & Correos.",
             "cefrLevel": "A1"
@@ -906,17 +906,17 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"How do you spell your first name?\"",
+            "prompt": "Traduce y construye en inglés: \"¿Cómo deletreas tu primer nombre?\"",
             "correctAnswer": "How do you spell your first name?",
-            "explanation": "Práctica de producción escrita para 4. Deletreo de Nombres & Correos.",
+            "explanation": "Traducción correcta: \"How do you spell your first name?\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My name is spelled J-O-H-N.\"",
+            "prompt": "Pronuncia en voz alta en inglés: \"Mi nombre se deletrea J-O-H-N.\"",
             "correctAnswer": "My name is spelled J-O-H-N.",
-            "explanation": "Práctica oral de fluidez y articulación para 4. Deletreo de Nombres & Correos.",
+            "explanation": "Pronunciación modelo: \"My name is spelled J-O-H-N.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -938,77 +938,77 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
-            "summaryShort": "Domina las despedidas casuales, formales y las normas de cortesía esenciales para cualquier interacción.",
-            "conceptBreakdown": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
-            "deepDiveNotes": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
+            "grammarFormula": "1. Despedidas formales: Goodbye! / Have a nice day! (gudbái / jav a náis déi)\n2. Despedidas casuales: See you later! / Catch you later! (sii iu léiter / katch iu léiter)\n3. Responder a gracias: You're welcome! / No problem! (ior uélkom / no próblem)\n4. Pedir permiso vs disculpa: Excuse me (con permiso) ≠ I'm sorry (lo siento)",
+            "summaryShort": "Aprende a despedirte amablemente y a usar las fórmulas de cortesía esenciales.",
+            "conceptBreakdown": "Para despedirte puedes usar el clásico \"Goodbye\", o con amigos \"See you later\" (\"sii iu léiter\") o \"Take care\" (cuídate). Cuando alguien te diga \"Thank you\", responde \"You're welcome\" (\"ior uélkom\" - de nada) o \"No problem\".",
+            "deepDiveNotes": "📍 Saliendo de la cafetería:\n👨 Carlos: \"Thank you for the coffee! See you later!\" (zenk iu for de kófi! sii iu léiter!)\n👩 Barista: \"You're welcome! Have a good one!\" (ior uélkom! jav a gud uan!)",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
             ],
             "contrastExamples": [
               {
                 "en": "Thank you for your help, have a good one!",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¡Gracias por tu ayuda, que tengas un buen día!",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_1_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Thank you! - For nothing / Of nothing",
-                "correctExample": "Thank you! - You're welcome / No problem",
-                "fastPill": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
-                "mediumExplanation": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
-                "slowDeepDive": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_1-5-2",
-            "sublessonId": "sub-a1_node_1-5",
-            "title": "Refuerzo de Concepto: 5. Despedidas & Cortesía Cotidiana",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Despedidas & Cortesía Cotidiana antes de los ejercicios de producción.",
-            "conceptBreakdown": "Entre amigos usamos \"Catch you later!\", \"See ya!\", \"I gotta run!\" o \"Take it easy!\". En contextos formales decimos \"Goodbye\" o \"Have a nice day\". Para responder a \"Thank you\" decimos \"You're welcome\", \"My pleasure\" o el casual \"No problem!\".",
-            "deepDiveNotes": "Ten en cuenta que \"Excuse me\" se usa antes de interrumpir o pedir permiso al pasar; \"I'm sorry\" se usa después de un inconveniente o error.",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "Catch you later, take care and have a nice day!",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "note": "Estructura en acción"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_1-5-2",
+            "sublessonId": "sub-a1_node_1-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. Despedidas formales: Goodbye! / Have a nice day! (gudbái / jav a náis déi)\n2. Despedidas casuales: See you later! / Catch you later! (sii iu léiter / katch iu léiter)\n3. Responder a gracias: You're welcome! / No problem! (ior uélkom / no próblem)\n4. Pedir permiso vs disculpa: Excuse me (con permiso) ≠ I'm sorry (lo siento)",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En inglés no se traduce literalmente \"de nada\" como \"for nothing\"; se dice \"You're welcome\" o \"No problem\".",
+            "deepDiveNotes": "\"Excuse me\" se dice con tono amable ascendente antes de llamar la atención de alguien.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Catch you later, take care and have a nice day!",
+                "es": "¡Nos vemos luego, cuídate y que tengas un lindo día!",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_1_5",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Thank you! - For nothing / Of nothing",
+                "correctExample": "Thank you! - You're welcome / No problem",
+                "fastPill": "En inglés no se traduce literalmente \"de nada\" como \"for nothing\"; se dice \"You're welcome\" o \"No problem\".",
+                "mediumExplanation": "Para despedirte puedes usar el clásico \"Goodbye\", o con amigos \"See you later\" (\"sii iu léiter\") o \"Take care\" (cuídate). Cuando alguien te diga \"Thank you\", responde \"You're welcome\" (\"ior uélkom\" - de nada) o \"No problem\".",
+                "slowDeepDive": "En inglés no se traduce literalmente \"de nada\" como \"for nothing\"; se dice \"You're welcome\" o \"No problem\"."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_1-5-3",
             "sublessonId": "sub-a1_node_1-5",
-            "title": "Resumen: 5. Despedidas & Cortesía Cotidiana",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!\n2. Formal: Goodbye! / Have a pleasant day! / Good night!\n3. Cortesía: Thank you! ➔ You're welcome! / My pleasure! / No problem!\n4. Disculpas: Excuse me (permiso/llamar atención) ≠ I'm sorry (por un error)",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Despedidas & Cortesía Cotidiana.",
-            "conceptBreakdown": "Recuerda la regla central: 1. Informal: Catch you later! / See ya! / I gotta run! / Take it easy!",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "1. Despedidas formales: Goodbye! / Have a nice day! (gudbái / jav a náis déi)\n2. Despedidas casuales: See you later! / Catch you later! (sii iu léiter / katch iu léiter)\n3. Responder a gracias: You're welcome! / No problem! (ior uélkom / no próblem)\n4. Pedir permiso vs disculpa: Excuse me (con permiso) ≠ I'm sorry (lo siento)",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ Usa \"Excuse me\" ANTES de interrumpir; usa \"I'm sorry\" DESPUÉS de un error.",
+            "deepDiveNotes": "⚡ Usa \"Excuse me\" ANTES de interrumpir; usa \"I'm sorry\" DESPUÉS de un error.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Usa \"Excuse me\" ANTES de interrumpir; usa \"I'm sorry\" DESPUÉS de un error.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -1018,7 +1018,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Un amigo se despide de manera casual diciendo \"Catch you later!\". ¿Cuál es una respuesta natural equivalente?",
+            "prompt": "Un amigo se despide diciendo \"See you later!\". ¿Cuál es una respuesta natural?",
             "options": [
               "See ya! Have a good one.",
               "Good night, I am sorry.",
@@ -1045,18 +1045,18 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
-              "Catch you later!": "¡Te hablo luego! (informal)",
-              "I gotta run!": "¡Me tengo que ir volando!",
-              "Take it easy!": "¡Cuídate / Que te vaya suave!",
-              "Excuse me": "Disculpe / Con permiso"
+              "See you later!": "¡Nos vemos luego! (sii iu léiter)",
+              "You're welcome!": "¡De nada! (ior uélkom)",
+              "Excuse me": "Disculpe / Con permiso (exkiús mi)",
+              "I'm sorry": "Lo siento / Perdón (áim sórri)"
             },
             "correctAnswer": {
-              "Catch you later!": "¡Te hablo luego! (informal)",
-              "I gotta run!": "¡Me tengo que ir volando!",
-              "Take it easy!": "¡Cuídate / Que te vaya suave!",
-              "Excuse me": "Disculpe / Con permiso"
+              "See you later!": "¡Nos vemos luego! (sii iu léiter)",
+              "You're welcome!": "¡De nada! (ior uélkom)",
+              "Excuse me": "Disculpe / Con permiso (exkiús mi)",
+              "I'm sorry": "Lo siento / Perdón (áim sórri)"
             },
             "explanation": "Asociación conceptual clave para 5. Despedidas & Cortesía Cotidiana.",
             "cefrLevel": "A1"
@@ -1064,17 +1064,17 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_1-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Thank you for your help, have a good one!\"",
+            "prompt": "Traduce y construye en inglés: \"¡Gracias por tu ayuda, que tengas un buen día!\"",
             "correctAnswer": "Thank you for your help, have a good one!",
-            "explanation": "Práctica de producción escrita para 5. Despedidas & Cortesía Cotidiana.",
+            "explanation": "Traducción correcta: \"Thank you for your help, have a good one!\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_1-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Catch you later, take care and have a nice day!\"",
+            "prompt": "Pronuncia en voz alta en inglés: \"¡Nos vemos luego, cuídate y que tengas un lindo día!\"",
             "correctAnswer": "Catch you later, take care and have a nice day!",
-            "explanation": "Práctica oral de fluidez y articulación para 5. Despedidas & Cortesía Cotidiana.",
+            "explanation": "Pronunciación modelo: \"Catch you later, take care and have a nice day!\"",
             "cefrLevel": "A1"
           }
         ]
@@ -1240,7 +1240,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"She is a doctor and they are engineers.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "She is a doctor and they are engineers.",
             "explanation": "Práctica de producción escrita para 1. Pronombres Sujeto en Inglés.",
             "cefrLevel": "A1"
@@ -1248,7 +1248,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"We are happy because they are here.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We are happy because they are here.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Pronombres Sujeto en Inglés.",
             "cefrLevel": "A1"
@@ -1398,7 +1398,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"We are students and we're happy.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "We are students and we're happy.",
             "explanation": "Práctica de producción escrita para 2. Verbo To Be Afirmativo & Contracciones.",
             "cefrLevel": "A1"
@@ -1406,7 +1406,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"He's my best friend and he's very kind.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He's my best friend and he's very kind.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbo To Be Afirmativo & Contracciones.",
             "cefrLevel": "A1"
@@ -1556,7 +1556,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I'm not tired and they aren't busy.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I'm not tired and they aren't busy.",
             "explanation": "Práctica de producción escrita para 3. Verbo To Be Negativo (Isn't / Aren't).",
             "cefrLevel": "A1"
@@ -1564,7 +1564,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"She isn't at work today.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She isn't at work today.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Verbo To Be Negativo (Isn't / Aren't).",
             "cefrLevel": "A1"
@@ -1714,7 +1714,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Is she a student at this university?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Is she a student at this university?",
             "explanation": "Práctica de producción escrita para 4. Preguntas con To Be & Respuestas Cortas.",
             "cefrLevel": "A1"
@@ -1722,7 +1722,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Are you ready to start the class?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Are you ready to start the class?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con To Be & Respuestas Cortas.",
             "cefrLevel": "A1"
@@ -1872,7 +1872,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"This is my computer and she is an architect.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "This is my computer and she is an architect.",
             "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
@@ -1880,7 +1880,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"This is my phone and these are my keys.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "This is my phone and these are my keys.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Profesiones & Demostrativos (This / That / These / Those).",
             "cefrLevel": "A1"
@@ -2048,7 +2048,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The teacher has a book and an eraser.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The teacher has a book and an eraser.",
             "explanation": "Práctica de producción escrita para 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "cefrLevel": "A1"
@@ -2056,7 +2056,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I have an idea and a great project.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I have an idea and a great project.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "cefrLevel": "A1"
@@ -2206,7 +2206,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The boys are reading three interesting books.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The boys are reading three interesting books.",
             "explanation": "Práctica de producción escrita para 2. Plurales Regulares (-s, -es, -ies).",
             "cefrLevel": "A1"
@@ -2214,7 +2214,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"There are two boxes and four glasses on the table.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "There are two boxes and four glasses on the table.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Plurales Regulares (-s, -es, -ies).",
             "cefrLevel": "A1"
@@ -2364,7 +2364,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Three men and two women are in the office.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Three men and two women are in the office.",
             "explanation": "Práctica de producción escrita para 3. Plurales Irregulares (Man/Men, Child/Children).",
             "cefrLevel": "A1"
@@ -2372,7 +2372,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The children have clean hands and feet.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The children have clean hands and feet.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Plurales Irregulares (Man/Men, Child/Children).",
             "cefrLevel": "A1"
@@ -2522,7 +2522,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Put your laptop and notebook in your backpack.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Put your laptop and notebook in your backpack.",
             "explanation": "Práctica de producción escrita para 4. Objetos del Aula & Tecnología.",
             "cefrLevel": "A1"
@@ -2530,7 +2530,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My backpack is on the desk next to the computer.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My backpack is on the desk next to the computer.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Objetos del Aula & Tecnología.",
             "cefrLevel": "A1"
@@ -2680,7 +2680,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The book is on the table and the pen is in the bag.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The book is on the table and the pen is in the bag.",
             "explanation": "Práctica de producción escrita para 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "cefrLevel": "A1"
@@ -2688,7 +2688,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The shoes are under the chair next to the door.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The shoes are under the chair next to the door.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "cefrLevel": "A1"
@@ -2856,7 +2856,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"She wakes up early and drinks hot coffee.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "She wakes up early and drinks hot coffee.",
             "explanation": "Práctica de producción escrita para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "cefrLevel": "A1"
@@ -2864,7 +2864,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My brother plays soccer every Saturday morning.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My brother plays soccer every Saturday morning.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "cefrLevel": "A1"
@@ -3014,7 +3014,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He doesn't eat meat because he is vegetarian.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He doesn't eat meat because he is vegetarian.",
             "explanation": "Práctica de producción escrita para 2. Negación: Don't vs Doesn't.",
             "cefrLevel": "A1"
@@ -3022,7 +3022,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"They don't work on weekends.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "They don't work on weekends.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Negación: Don't vs Doesn't.",
             "cefrLevel": "A1"
@@ -3172,7 +3172,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Do you live in Colombia and does he work here?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Do you live in Colombia and does he work here?",
             "explanation": "Práctica de producción escrita para 3. Preguntas con Do y Does.",
             "cefrLevel": "A1"
@@ -3180,7 +3180,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Does your sister live in this apartment?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Does your sister live in this apartment?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Preguntas con Do y Does.",
             "cefrLevel": "A1"
@@ -3330,7 +3330,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I usually drink water and I never smoke.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I usually drink water and I never smoke.",
             "explanation": "Práctica de producción escrita para 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "cefrLevel": "A1"
@@ -3338,7 +3338,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"She always brushes her teeth before going to bed.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She always brushes her teeth before going to bed.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "cefrLevel": "A1"
@@ -3488,7 +3488,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"We go to the gym on Mondays in the afternoon.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "We go to the gym on Mondays in the afternoon.",
             "explanation": "Práctica de producción escrita para 5. Expresiones Temporales: In the morning, On Mondays.",
             "cefrLevel": "A1"
@@ -3496,7 +3496,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I read a book at night before sleeping.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I read a book at night before sleeping.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresiones Temporales: In the morning, On Mondays.",
             "cefrLevel": "A1"
@@ -3664,7 +3664,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"My brother's wife is very friendly and smart.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "My brother's wife is very friendly and smart.",
             "explanation": "Práctica de producción escrita para 1. Miembros de la Familia & Posesivo ('s).",
             "cefrLevel": "A1"
@@ -3672,7 +3672,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My parents live in a big house with my sister.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My parents live in a big house with my sister.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Miembros de la Familia & Posesivo ('s).",
             "cefrLevel": "A1"
@@ -3822,7 +3822,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The refrigerator and the stove are in the kitchen.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The refrigerator and the stove are in the kitchen.",
             "explanation": "Práctica de producción escrita para 2. Partes de la Casa & Muebles.",
             "cefrLevel": "A1"
@@ -3830,7 +3830,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Our apartment has two bedrooms and a nice balcony.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Our apartment has two bedrooms and a nice balcony.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Partes de la Casa & Muebles.",
             "cefrLevel": "A1"
@@ -3980,7 +3980,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"There is a computer and there are two chairs in the room.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "There is a computer and there are two chairs in the room.",
             "explanation": "Práctica de producción escrita para 3. Existencia: There is & There are.",
             "cefrLevel": "A1"
@@ -3988,7 +3988,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"There are many beautiful flowers in the garden.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "There are many beautiful flowers in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Existencia: There is & There are.",
             "cefrLevel": "A1"
@@ -4138,7 +4138,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He is a hardworking man and a kind father.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He is a hardworking man and a kind father.",
             "explanation": "Práctica de producción escrita para 4. Adjetivos de Personalidad & Físico.",
             "cefrLevel": "A1"
@@ -4146,7 +4146,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My sister is tall, smart and very creative.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My sister is tall, smart and very creative.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Adjetivos de Personalidad & Físico.",
             "cefrLevel": "A1"
@@ -4296,7 +4296,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I've got two brothers and he has got one sister.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I've got two brothers and he has got one sister.",
             "explanation": "Práctica de producción escrita para 5. Verbo Have Got / Has Got (Posesión).",
             "cefrLevel": "A1"
@@ -4304,7 +4304,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Have you got any pets in your house?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Have you got any pets in your house?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Verbo Have Got / Has Got (Posesión).",
             "cefrLevel": "A1"
@@ -4472,7 +4472,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"My brother can play the guitar very well.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "My brother can play the guitar very well.",
             "explanation": "Práctica de producción escrita para 1. Modal Can & Can't (Habilidades).",
             "cefrLevel": "A1"
@@ -4480,7 +4480,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Can you speak English and Spanish fluently?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Can you speak English and Spanish fluently?",
             "explanation": "Práctica oral de fluidez y articulación para 1. Modal Can & Can't (Habilidades).",
             "cefrLevel": "A1"
@@ -4630,7 +4630,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"She likes listening to music when she studies.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "She likes listening to music when she studies.",
             "explanation": "Práctica de producción escrita para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
             "cefrLevel": "A1"
@@ -4638,7 +4638,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"We love traveling to new countries every summer.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We love traveling to new countries every summer.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
             "cefrLevel": "A1"
@@ -4788,7 +4788,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I eat fruit and drink coffee for breakfast.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I eat fruit and drink coffee for breakfast.",
             "explanation": "Práctica de producción escrita para 3. Comidas & Bebidas Cotidianas.",
             "cefrLevel": "A1"
@@ -4796,7 +4796,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"We usually have lunch at one o'clock in the afternoon.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We usually have lunch at one o'clock in the afternoon.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comidas & Bebidas Cotidianas.",
             "cefrLevel": "A1"
@@ -4946,7 +4946,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"There are some apples on the table but there isn't any milk.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "There are some apples on the table but there isn't any milk.",
             "explanation": "Práctica de producción escrita para 4. Sustantivos Contables e Incontables (Some / Any).",
             "cefrLevel": "A1"
@@ -4954,7 +4954,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Can I have some water and some bread, please?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Can I have some water and some bread, please?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Sustantivos Contables e Incontables (Some / Any).",
             "cefrLevel": "A1"
@@ -5104,7 +5104,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"How many students are in the classroom today?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "How many students are in the classroom today?",
             "explanation": "Práctica de producción escrita para 5. Preguntas de Cantidad: How Much vs How Many.",
             "cefrLevel": "A1"
@@ -5112,7 +5112,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"How much sugar do you want in your coffee?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "How much sugar do you want in your coffee?",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas de Cantidad: How Much vs How Many.",
             "cefrLevel": "A1"
@@ -5280,7 +5280,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Today is my twenty-fifth birthday.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Today is my twenty-fifth birthday.",
             "explanation": "Práctica de producción escrita para 1. Números Cardinales & Ordinales.",
             "cefrLevel": "A1"
@@ -5288,7 +5288,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"He won first place in the English competition.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He won first place in the English competition.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Números Cardinales & Ordinales.",
             "cefrLevel": "A1"
@@ -5438,7 +5438,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The train arrives at quarter to nine in the morning.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The train arrives at quarter to nine in the morning.",
             "explanation": "Práctica de producción escrita para 2. Decir la Hora: O'clock, Past & To.",
             "cefrLevel": "A1"
@@ -5446,7 +5446,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My English class starts at half past seven.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My English class starts at half past seven.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Decir la Hora: O'clock, Past & To.",
             "cefrLevel": "A1"
@@ -5596,7 +5596,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"This jacket costs forty-five dollars and fifty cents.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "This jacket costs forty-five dollars and fifty cents.",
             "explanation": "Práctica de producción escrita para 3. Precios & Compras en Tiendas.",
             "cefrLevel": "A1"
@@ -5604,7 +5604,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Excuse me, how much are these black shoes?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Excuse me, how much are these black shoes?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Precios & Compras en Tiendas.",
             "cefrLevel": "A1"
@@ -5754,7 +5754,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"We go to the beach in summer on weekends.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "We go to the beach in summer on weekends.",
             "explanation": "Práctica de producción escrita para 4. Días de la Semana, Meses & Estaciones.",
             "cefrLevel": "A1"
@@ -5762,7 +5762,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"My English test is on Friday, October 15th.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "My English test is on Friday, October 15th.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Días de la Semana, Meses & Estaciones.",
             "cefrLevel": "A1"
@@ -5912,7 +5912,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He is wearing a blue shirt and black pants today.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He is wearing a blue shirt and black pants today.",
             "explanation": "Práctica de producción escrita para 5. Ropa, Tallas & Colores.",
             "cefrLevel": "A1"
@@ -5920,7 +5920,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I would like to try on this green jacket in medium size.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I would like to try on this green jacket in medium size.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Ropa, Tallas & Colores.",
             "cefrLevel": "A1"
@@ -5931,12 +5931,12 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   },
   {
     "id": "a1_node_8",
-    "title": "8. Gran Reto Integrador A1",
-    "description": "Simulación Saber Pro A1: comprensión lectora de avisos públicos, diálogos contextuales y consolidación del nivel A1.",
-    "category": "CHALLENGE",
+    "title": "8. De la Pronunciación al Alfabeto Fonético (IPA)",
+    "description": "Aprende a leer los símbolos fonéticos internacionales (IPA) para dejar de depender de escribir en español antes de pasar a A2.",
+    "category": "PHONETICS",
     "cefrLevel": "A1",
     "orderIndex": 8,
-    "icon": "Award",
+    "icon": "Headphones",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
@@ -5949,6 +5949,814 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_8-1",
         "nodeId": "a1_node_8",
+        "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
+        "orderIndex": 1,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-1-1",
+            "sublessonId": "sub-a1_node_8-1",
+            "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "1. De \"jao\" (How, Now) ➔ Símbolo IPA /aʊ/ (/haʊ/, /naʊ/)\n2. De \"néim\" (Name, Day) ➔ Símbolo IPA /eɪ/ (/neɪm/, /deɪ/)\n3. De \"mái\" (My, Hi, Night) ➔ Símbolo IPA /aɪ/ (/maɪ/, /haɪ/)\n4. De \"góu\" (Go, No, Home) ➔ Símbolo IPA /oʊ/ (/ɡoʊ/, /noʊ/)",
+            "summaryShort": "Aprende cómo las combinaciones de vocales que antes escribías en español se representan en los símbolos fonéticos oficiales.",
+            "conceptBreakdown": "Hasta ahora escribíamos \"jao\" para guiarte; el símbolo fonético universal es /haʊ/. El diptongo \"éi\" se escribe /eɪ/ (como en name /neɪm/), \"ái\" se escribe /aɪ/ (como en my /maɪ/) y \"óu\" se escribe /oʊ/ (como en go /ɡoʊ/).",
+            "deepDiveNotes": "📍 Consultando un diccionario en inglés:\n📖 Palabra: \"How\" ➔ Transcripción fonética: /haʊ/ (suena \"jáu\")\n📖 Palabra: \"Name\" ➔ Transcripción fonética: /neɪm/ (suena \"néim\")",
+            "keyTakeaways": [
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
+            ],
+            "contrastExamples": [
+              {
+                "en": "My name is Carlos and I know how to speak English.",
+                "es": "Mi nombre es Carlos y sé cómo hablar inglés.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura en acción"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-1-2",
+            "sublessonId": "sub-a1_node_8-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. De \"jao\" (How, Now) ➔ Símbolo IPA /aʊ/ (/haʊ/, /naʊ/)\n2. De \"néim\" (Name, Day) ➔ Símbolo IPA /eɪ/ (/neɪm/, /deɪ/)\n3. De \"mái\" (My, Hi, Night) ➔ Símbolo IPA /aɪ/ (/maɪ/, /haɪ/)\n4. De \"góu\" (Go, No, Home) ➔ Símbolo IPA /oʊ/ (/ɡoʊ/, /noʊ/)",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En el alfabeto fonético IPA los símbolos representan sonidos exactos, no letras del abecedario.",
+            "deepDiveNotes": "En /aʊ/ abre la boca y redondea los labios al final.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Now I know how to read phonetic symbols.",
+                "es": "Ahora sé cómo leer símbolos fonéticos.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_1",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Confundir /aɪ/ con la letra A del español",
+                "correctExample": "El símbolo /aɪ/ representa el sonido \"ái\" (como en \"I am\" /aɪ æm/)",
+                "fastPill": "En el alfabeto fonético IPA los símbolos representan sonidos exactos, no letras del abecedario.",
+                "mediumExplanation": "Hasta ahora escribíamos \"jao\" para guiarte; el símbolo fonético universal es /haʊ/. El diptongo \"éi\" se escribe /eɪ/ (como en name /neɪm/), \"ái\" se escribe /aɪ/ (como en my /maɪ/) y \"óu\" se escribe /oʊ/ (como en go /ɡoʊ/).",
+                "slowDeepDive": "En el alfabeto fonético IPA los símbolos representan sonidos exactos, no letras del abecedario."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-1-3",
+            "sublessonId": "sub-a1_node_8-1",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "1. De \"jao\" (How, Now) ➔ Símbolo IPA /aʊ/ (/haʊ/, /naʊ/)\n2. De \"néim\" (Name, Day) ➔ Símbolo IPA /eɪ/ (/neɪm/, /deɪ/)\n3. De \"mái\" (My, Hi, Night) ➔ Símbolo IPA /aɪ/ (/maɪ/, /haɪ/)\n4. De \"góu\" (Go, No, Home) ➔ Símbolo IPA /oʊ/ (/ɡoʊ/, /noʊ/)",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ /aʊ/ es \"áu\" (How), /eɪ/ es \"éi\" (Name), /aɪ/ es \"ái\" (My).",
+            "deepDiveNotes": "⚡ /aʊ/ es \"áu\" (How), /eɪ/ es \"éi\" (Name), /aɪ/ es \"ái\" (My).",
+            "keyTakeaways": [
+              "⚡ /aʊ/ es \"áu\" (How), /eɪ/ es \"éi\" (Name), /aɪ/ es \"ái\" (My).",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-1-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "En un diccionario en inglés, la palabra \"My\" aparece como /maɪ/. ¿A qué sonido equivale?",
+            "options": [
+              "Al sonido \"mái\"",
+              "Al sonido \"mi\"",
+              "Al sonido \"me\"",
+              "Al sonido \"mu\""
+            ],
+            "correctAnswer": "Al sonido \"mái\"",
+            "explanation": "El símbolo /aɪ/ equivale al sonido diptongado \"ái\" (como en My, Hi, Night).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "The phonetic symbol /eɪ/ in the word \"day\" /deɪ/ sounds like the Spanish letters _____.",
+            "options": [
+              "éi",
+              "ii",
+              "ái"
+            ],
+            "correctAnswer": "éi",
+            "explanation": "El símbolo /eɪ/ representa el sonido \"éi\" (day, name, play).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada elemento con su correspondencia:",
+            "options": {
+              "/haʊ/": "se lee \"jáu\" (How)",
+              "/neɪm/": "se lee \"néim\" (Name)",
+              "/maɪ/": "se lee \"mái\" (My)",
+              "/ɡoʊ/": "se lee \"góu\" (Go)"
+            },
+            "correctAnswer": {
+              "/haʊ/": "se lee \"jáu\" (How)",
+              "/neɪm/": "se lee \"néim\" (Name)",
+              "/maɪ/": "se lee \"mái\" (My)",
+              "/ɡoʊ/": "se lee \"góu\" (Go)"
+            },
+            "explanation": "Asociación conceptual clave para 1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Mi nombre es Carlos y sé cómo hablar inglés.\"",
+            "correctAnswer": "My name is Carlos and I know how to speak English.",
+            "explanation": "Traducción correcta: \"My name is Carlos and I know how to speak English.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Ahora sé cómo leer símbolos fonéticos.\"",
+            "correctAnswer": "Now I know how to read phonetic symbols.",
+            "explanation": "Pronunciación modelo: \"Now I know how to read phonetic symbols.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-2",
+        "nodeId": "a1_node_8",
+        "title": "2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship)",
+        "orderIndex": 2,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-2-1",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "1. /iː/ (con dos puntos): vocal larga y tensa ➔ sheep /ʃiːp/, see /siː/, eat /iːt/\n2. /ɪ/ (sin dos puntos): vocal corta y relajada ➔ ship /ʃɪp/, live /lɪv/, it /ɪt/\n3. Regla de Oro: Los dos puntos (ː) en IPA significan SIEMPRE sonido largo.",
+            "summaryShort": "Aprende a identificar en el diccionario cuándo una vocal debe ser larga (/iː/) o corta (/ɪ/).",
+            "conceptBreakdown": "En los símbolos IPA, cada vez que veas dos puntos (ː) significa que el sonido se mantiene más tiempo. Así sabes al instante que /ʃiːp/ (sheep - oveja) es larga y que /ʃɪp/ (ship - barco) es corta y relajada.",
+            "deepDiveNotes": "📍 Comparando en el diccionario:\n📖 \"live\" ➔ /lɪv/ (vocal corta: vivir)\n📖 \"leave\" ➔ /liːv/ (vocal larga: marcharse)",
+            "keyTakeaways": [
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
+            ],
+            "contrastExamples": [
+              {
+                "en": "The sheep is on the farm and the ship is in the sea.",
+                "es": "La oveja está en la granja y el barco está en el mar.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura en acción"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-2-2",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. /iː/ (con dos puntos): vocal larga y tensa ➔ sheep /ʃiːp/, see /siː/, eat /iːt/\n2. /ɪ/ (sin dos puntos): vocal corta y relajada ➔ ship /ʃɪp/, live /lɪv/, it /ɪt/\n3. Regla de Oro: Los dos puntos (ː) en IPA significan SIEMPRE sonido largo.",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "En español no tenemos vocales largas y cortas, pero en inglés los dos puntos (ː) cambian el significado por completo.",
+            "deepDiveNotes": "Al pronunciar /iː/ estira las comisuras de los labios en una sonrisa.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Please sit in this seat next to me.",
+                "es": "Por favor siéntate en este asiento a mi lado.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_2",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Pronunciar /lɪv/ y /liːv/ con la misma duración",
+                "correctExample": "/lɪv/ es corto y relajado; /liːv/ es largo y sonriente",
+                "fastPill": "En español no tenemos vocales largas y cortas, pero en inglés los dos puntos (ː) cambian el significado por completo.",
+                "mediumExplanation": "En los símbolos IPA, cada vez que veas dos puntos (ː) significa que el sonido se mantiene más tiempo. Así sabes al instante que /ʃiːp/ (sheep - oveja) es larga y que /ʃɪp/ (ship - barco) es corta y relajada.",
+                "slowDeepDive": "En español no tenemos vocales largas y cortas, pero en inglés los dos puntos (ː) cambian el significado por completo."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-2-3",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "1. /iː/ (con dos puntos): vocal larga y tensa ➔ sheep /ʃiːp/, see /siː/, eat /iːt/\n2. /ɪ/ (sin dos puntos): vocal corta y relajada ➔ ship /ʃɪp/, live /lɪv/, it /ɪt/\n3. Regla de Oro: Los dos puntos (ː) en IPA significan SIEMPRE sonido largo.",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ Si ves dos puntos (ː) en IPA ➔ ¡alarga el sonido!",
+            "deepDiveNotes": "⚡ Si ves dos puntos (ː) en IPA ➔ ¡alarga el sonido!",
+            "keyTakeaways": [
+              "⚡ Si ves dos puntos (ː) en IPA ➔ ¡alarga el sonido!",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-2-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "¿Qué significan los dos puntos (ː) en el símbolo fonético /iː/?",
+            "options": [
+              "Que el sonido vocálico es largo y sostenido",
+              "Que la vocal no se pronuncia",
+              "Que la palabra es plural",
+              "Que la letra es mayúscula"
+            ],
+            "correctAnswer": "Que el sonido vocálico es largo y sostenido",
+            "explanation": "En el alfabeto fonético internacional (IPA), el símbolo (ː) indica alargamiento del sonido.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "The word \"ship\" (barco) is transcribed as /ʃɪp/ with a _____ vowel.",
+            "options": [
+              "short",
+              "long",
+              "silent"
+            ],
+            "correctAnswer": "short",
+            "explanation": "/ɪ/ es la vocal corta y relajada.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada elemento con su correspondencia:",
+            "options": {
+              "/ʃiːp/": "Sheep (oveja - vocal larga)",
+              "/ʃɪp/": "Ship (barco - vocal corta)",
+              "/liːv/": "Leave (marcharse - vocal larga)",
+              "/lɪv/": "Live (vivir - vocal corta)"
+            },
+            "correctAnswer": {
+              "/ʃiːp/": "Sheep (oveja - vocal larga)",
+              "/ʃɪp/": "Ship (barco - vocal corta)",
+              "/liːv/": "Leave (marcharse - vocal larga)",
+              "/lɪv/": "Live (vivir - vocal corta)"
+            },
+            "explanation": "Asociación conceptual clave para 2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"La oveja está en la granja y el barco está en el mar.\"",
+            "correctAnswer": "The sheep is on the farm and the ship is in the sea.",
+            "explanation": "Traducción correcta: \"The sheep is on the farm and the ship is in the sea.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Por favor siéntate en este asiento a mi lado.\"",
+            "correctAnswer": "Please sit in this seat next to me.",
+            "explanation": "Pronunciación modelo: \"Please sit in this seat next to me.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-3",
+        "nodeId": "a1_node_8",
+        "title": "3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés)",
+        "orderIndex": 3,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-3-1",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "1. El símbolo /ə/ (una \"e\" invertida) representa el sonido vocálico más común del inglés.\n2. Es un sonido neutro y ultra-relajado: suena como un \"uh\" suave y sin esfuerzo.\n3. Ejemplos: about /əˈbaʊt/, banana /bəˈnæn.ə/, teacher /ˈtiː.tʃər/, pencil /ˈpen.səl/",
+            "summaryShort": "Descubre el secreto del sonido más importante del inglés: el Schwa (/ə/).",
+            "conceptBreakdown": "En inglés, las sílabas que no llevan el acento casi siempre se transforman en Schwa (/ə/). En lugar de pronunciar una \"a\" o \"o\" marcada, la boca se relaja totalmente y produce un sonido neutro \"uh\". En \"banana\" no dices \"ba-na-na\", dices /bəˈnæn.ə/ (\"buh-nán-uh\").",
+            "deepDiveNotes": "📍 Practicando el sonido más común:\n👨 Profesor: \"Look at the word 'about'. The first letter is transcribed as /ə/.\"\n👩 Alumna: \"So it sounds like /əˈbaʊt/ ('uh-báut')!\"",
+            "keyTakeaways": [
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
+            ],
+            "contrastExamples": [
+              {
+                "en": "The teacher is talking about a new banana recipe.",
+                "es": "El profesor está hablando sobre una nueva receta de banano.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura en acción"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-3-2",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. El símbolo /ə/ (una \"e\" invertida) representa el sonido vocálico más común del inglés.\n2. Es un sonido neutro y ultra-relajado: suena como un \"uh\" suave y sin esfuerzo.\n3. Ejemplos: about /əˈbaʊt/, banana /bəˈnæn.ə/, teacher /ˈtiː.tʃər/, pencil /ˈpen.səl/",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "Los hispanohablantes intentamos pronunciar todas las vocales con fuerza; en inglés las no acentuadas se relajan en Schwa (/ə/).",
+            "deepDiveNotes": "Deja la mandíbula caída y la lengua completamente relajada en el centro de la boca.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have a pencil and a book about Colombia.",
+                "es": "Tengo un lápiz y un libro sobre Colombia.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_3",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Pronunciar \"about\" con una A fuerte española como \"a-baut\"",
+                "correctExample": "Pronuncia con sonido relajado /əˈbaʊt/ (\"uh-báut\")",
+                "fastPill": "Los hispanohablantes intentamos pronunciar todas las vocales con fuerza; en inglés las no acentuadas se relajan en Schwa (/ə/).",
+                "mediumExplanation": "En inglés, las sílabas que no llevan el acento casi siempre se transforman en Schwa (/ə/). En lugar de pronunciar una \"a\" o \"o\" marcada, la boca se relaja totalmente y produce un sonido neutro \"uh\". En \"banana\" no dices \"ba-na-na\", dices /bəˈnæn.ə/ (\"buh-nán-uh\").",
+                "slowDeepDive": "Los hispanohablantes intentamos pronunciar todas las vocales con fuerza; en inglés las no acentuadas se relajan en Schwa (/ə/)."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-3-3",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "1. El símbolo /ə/ (una \"e\" invertida) representa el sonido vocálico más común del inglés.\n2. Es un sonido neutro y ultra-relajado: suena como un \"uh\" suave y sin esfuerzo.\n3. Ejemplos: about /əˈbaʊt/, banana /bəˈnæn.ə/, teacher /ˈtiː.tʃər/, pencil /ˈpen.səl/",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ La \"e\" al revés /ə/ es el Schwa: la vocal más perezosa y relajada del inglés.",
+            "deepDiveNotes": "⚡ La \"e\" al revés /ə/ es el Schwa: la vocal más perezosa y relajada del inglés.",
+            "keyTakeaways": [
+              "⚡ La \"e\" al revés /ə/ es el Schwa: la vocal más perezosa y relajada del inglés.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-3-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "¿Cómo se pronuncia el símbolo fonético Schwa (/ə/) en palabras como \"about\" /əˈbaʊt/?",
+            "options": [
+              "Como un sonido \"uh\" neutro y relajado",
+              "Como una \"A\" fuerte y abierta",
+              "Como una \"O\" cerrada",
+              "No se pronuncia, es mudo"
+            ],
+            "correctAnswer": "Como un sonido \"uh\" neutro y relajado",
+            "explanation": "El Schwa (/ə/) es el sonido vocálico neutro y relajado más frecuente del inglés.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "In the word \"banana\" /bəˈnæn.ə/, the first and last vowels are the _____ sound.",
+            "options": [
+              "Schwa (/ə/)",
+              "Long E (/iː/)",
+              "Diphthong (/aɪ/)"
+            ],
+            "correctAnswer": "Schwa (/ə/)",
+            "explanation": "Tanto la primera como la última \"a\" de banana se reducen a Schwa (/ə/).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada elemento con su correspondencia:",
+            "options": {
+              "/əˈbaʊt/": "About (uh-báut)",
+              "/bəˈnæn.ə/": "Banana (buh-nán-uh)",
+              "/ˈtiː.tʃər/": "Teacher (tíi-chuhr)",
+              "/ˈpen.səl/": "Pencil (pén-suhl)"
+            },
+            "correctAnswer": {
+              "/əˈbaʊt/": "About (uh-báut)",
+              "/bəˈnæn.ə/": "Banana (buh-nán-uh)",
+              "/ˈtiː.tʃər/": "Teacher (tíi-chuhr)",
+              "/ˈpen.səl/": "Pencil (pén-suhl)"
+            },
+            "explanation": "Asociación conceptual clave para 3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"El profesor está hablando sobre una nueva receta de banano.\"",
+            "correctAnswer": "The teacher is talking about a new banana recipe.",
+            "explanation": "Traducción correcta: \"The teacher is talking about a new banana recipe.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Tengo un lápiz y un libro sobre Colombia.\"",
+            "correctAnswer": "I have a pencil and a book about Colombia.",
+            "explanation": "Pronunciación modelo: \"I have a pencil and a book about Colombia.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-4",
+        "nodeId": "a1_node_8",
+        "title": "4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/)",
+        "orderIndex": 4,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-4-1",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "1. /θ/ (Z española con lengua entre dientes): Thank you /ˈθæŋk juː/, Think /θɪŋk/\n2. /ð/ (D suave vibrante entre dientes): This /ðɪs/, They /ðeɪ/, The /ðə/\n3. /ʃ/ (Sonido \"shh\"): She /ʃiː/, Fish /fɪʃ/\n4. /tʃ/ (\"ch\" española): Chair /tʃeər/, Teacher /ˈtiː.tʃər/\n5. /dʒ/ (\"y\" fuerte con zumbido): Job /dʒɒb/, Jump /dʒʌmp/\n6. /ŋ/ (N nasal de -ing): Singing /ˈsɪŋ.ɪŋ/",
+            "summaryShort": "Aprende los 6 símbolos consonánticos especiales que no se parecen a las letras normales.",
+            "conceptBreakdown": "Cuando veas /θ/ pon la lengua entre los dientes sin vibrar (como la Z de España en \"think\"). Cuando veas /ð/ haz lo mismo pero haciendo vibrar la voz (en \"this\" /ðɪs/). El símbolo /ʃ/ es el sonido de mandar a callar (\"shh\"), y /tʃ/ es nuestra \"ch\".",
+            "deepDiveNotes": "📍 Descifrando símbolos en clase:\n👨 Profesor: \"Look at 'Thank you': /ˈθæŋk juː/. The first symbol is /θ/.\"\n👩 Alumno: \"And 'This' is /ðɪs/ with the voiced /ð/!\"",
+            "keyTakeaways": [
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
+            ],
+            "contrastExamples": [
+              {
+                "en": "She thinks this chair is very comfortable.",
+                "es": "Ella piensa que esta silla es muy cómoda.",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura en acción"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-4-2",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. /θ/ (Z española con lengua entre dientes): Thank you /ˈθæŋk juː/, Think /θɪŋk/\n2. /ð/ (D suave vibrante entre dientes): This /ðɪs/, They /ðeɪ/, The /ðə/\n3. /ʃ/ (Sonido \"shh\"): She /ʃiː/, Fish /fɪʃ/\n4. /tʃ/ (\"ch\" española): Chair /tʃeər/, Teacher /ˈtiː.tʃər/\n5. /dʒ/ (\"y\" fuerte con zumbido): Job /dʒɒb/, Jump /dʒʌmp/\n6. /ŋ/ (N nasal de -ing): Singing /ˈsɪŋ.ɪŋ/",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "Confundir /θ/ con /s/ o /t/ cambia palabras como \"think\" (pensar) por \"sink\" (hundirse).",
+            "deepDiveNotes": "Coloca la punta de la lengua entre los dientes incisivos para /θ/ y /ð/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Thank you for this delicious fresh fish.",
+                "es": "Gracias por este delicioso pescado fresco.",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_4",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Pronunciar \"Think\" como \"Sink\" o \"Tink\"",
+                "correctExample": "Pon la lengua entre los dientes para el sonido /θ/ en /θɪŋk/",
+                "fastPill": "Confundir /θ/ con /s/ o /t/ cambia palabras como \"think\" (pensar) por \"sink\" (hundirse).",
+                "mediumExplanation": "Cuando veas /θ/ pon la lengua entre los dientes sin vibrar (como la Z de España en \"think\"). Cuando veas /ð/ haz lo mismo pero haciendo vibrar la voz (en \"this\" /ðɪs/). El símbolo /ʃ/ es el sonido de mandar a callar (\"shh\"), y /tʃ/ es nuestra \"ch\".",
+                "slowDeepDive": "Confundir /θ/ con /s/ o /t/ cambia palabras como \"think\" (pensar) por \"sink\" (hundirse)."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-4-3",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "1. /θ/ (Z española con lengua entre dientes): Thank you /ˈθæŋk juː/, Think /θɪŋk/\n2. /ð/ (D suave vibrante entre dientes): This /ðɪs/, They /ðeɪ/, The /ðə/\n3. /ʃ/ (Sonido \"shh\"): She /ʃiː/, Fish /fɪʃ/\n4. /tʃ/ (\"ch\" española): Chair /tʃeər/, Teacher /ˈtiː.tʃər/\n5. /dʒ/ (\"y\" fuerte con zumbido): Job /dʒɒb/, Jump /dʒʌmp/\n6. /ŋ/ (N nasal de -ing): Singing /ˈsɪŋ.ɪŋ/",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ /θ/ es la Z española sorda; /ð/ es la D suave con vibración.",
+            "deepDiveNotes": "⚡ /θ/ es la Z española sorda; /ð/ es la D suave con vibración.",
+            "keyTakeaways": [
+              "⚡ /θ/ es la Z española sorda; /ð/ es la D suave con vibración.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-4-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "¿Qué símbolo fonético representa el sonido inicial de la palabra \"Thank you\"?",
+            "options": [
+              "/θ/ (lengua entre los dientes)",
+              "/s/ (sibilante simple)",
+              "/t/ (oclusiva)",
+              "/f/ (labiodental)"
+            ],
+            "correctAnswer": "/θ/ (lengua entre los dientes)",
+            "explanation": "El dígrafo \"th\" en \"Thank you\" se transcribe como /θ/ (sonido sordo interdental).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "The phonetic symbol /ʃ/ in \"she\" /ʃiː/ sounds like _____.",
+            "options": [
+              "el sonido \"shh\" de silencio",
+              "la letra ch española",
+              "la letra s simple"
+            ],
+            "correctAnswer": "el sonido \"shh\" de silencio",
+            "explanation": "/ʃ/ es la fricativa postalveolar sorda (sonido \"shh\").",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada elemento con su correspondencia:",
+            "options": {
+              "/θɪŋk/": "Think (pensar - sonido /θ/)",
+              "/ðɪs/": "This (este - sonido /ð/)",
+              "/ʃiː/": "She (ella - sonido /ʃ/)",
+              "/tʃeər/": "Chair (silla - sonido /tʃ/)"
+            },
+            "correctAnswer": {
+              "/θɪŋk/": "Think (pensar - sonido /θ/)",
+              "/ðɪs/": "This (este - sonido /ð/)",
+              "/ʃiː/": "She (ella - sonido /ʃ/)",
+              "/tʃeər/": "Chair (silla - sonido /tʃ/)"
+            },
+            "explanation": "Asociación conceptual clave para 4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Ella piensa que esta silla es muy cómoda.\"",
+            "correctAnswer": "She thinks this chair is very comfortable.",
+            "explanation": "Traducción correcta: \"She thinks this chair is very comfortable.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Gracias por este delicioso pescado fresco.\"",
+            "correctAnswer": "Thank you for this delicious fresh fish.",
+            "explanation": "Pronunciación modelo: \"Thank you for this delicious fresh fish.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-5",
+        "nodeId": "a1_node_8",
+        "title": "5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ)",
+        "orderIndex": 5,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-5-1",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "1. El apóstrofo superior (ˈ) indica que la sílaba siguiente lleva la mayor fuerza de voz.\n2. De \"jao ar iu\" ➔ Transcripción real: /haʊ ɑːr juː/\n3. De \"uér du iu liv\" ➔ Transcripción real: /weər duː juː lɪv/\n4. De \"mái néim is\" ➔ Transcripción real: /maɪ neɪm ɪz/",
+            "summaryShort": "Integra todo lo aprendido y lee transcripciones fonéticas completas de forma autónoma.",
+            "conceptBreakdown": "¡Felicidades! Ahora puedes leer cualquier palabra en inglés con su transcripción fonética internacional. Cuando veas la barrita (ˈ) como en /kəmˈpjuː.tər/ (computer), sabes que la fuerza va en la segunda sílaba. ¡Estás listo para ingresar a A2 con pronunciación nativa!",
+            "deepDiveNotes": "📍 Leyendo una oración completa en IPA:\n📖 Texto en IPA: /haʊ ɑːr juː təˈdeɪ/\n👨 Estudiante: \"¡Eso dice: 'How are you today?'!\"",
+            "keyTakeaways": [
+              "Paso 1: Comprende el significado natural en español.",
+              "Paso 2: Lee la pronunciación en voz alta.",
+              "Paso 3: Responde las preguntas de práctica guiada."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Where do you live and what is your name?",
+                "es": "¿Dónde vives y cuál es tu nombre?",
+                "highlightEn": "pattern",
+                "highlightEs": "patrón",
+                "note": "Estructura en acción"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-5-2",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "1. El apóstrofo superior (ˈ) indica que la sílaba siguiente lleva la mayor fuerza de voz.\n2. De \"jao ar iu\" ➔ Transcripción real: /haʊ ɑːr juː/\n3. De \"uér du iu liv\" ➔ Transcripción real: /weər duː juː lɪv/\n4. De \"mái néim is\" ➔ Transcripción real: /maɪ neɪm ɪz/",
+            "summaryShort": "Corrección de errores típicos de hispanohablantes y guía de pronunciación.",
+            "conceptBreakdown": "El acento en inglés cambia el ritmo de toda la oración.",
+            "deepDiveNotes": "Eleva el volumen y la duración de la sílaba que tiene el acento (ˈ).",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra.",
+              "Pronuncia con claridad y seguridad."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Hello, how are you today, my friend?",
+                "es": "Hola, ¿cómo estás hoy, mi amigo?",
+                "highlightEn": "speech",
+                "highlightEs": "voz",
+                "note": "Pronunciación modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_5",
+                "ruleTitle": "Error común de hispanohablantes:",
+                "wrongExample": "Ignorar la barrita de acento (ˈ) en la transcripción",
+                "correctExample": "Pon la fuerza en la sílaba que va justo después de la barrita (ˈ)",
+                "fastPill": "El acento en inglés cambia el ritmo de toda la oración.",
+                "mediumExplanation": "¡Felicidades! Ahora puedes leer cualquier palabra en inglés con su transcripción fonética internacional. Cuando veas la barrita (ˈ) como en /kəmˈpjuː.tər/ (computer), sabes que la fuerza va en la segunda sílaba. ¡Estás listo para ingresar a A2 con pronunciación nativa!",
+                "slowDeepDive": "El acento en inglés cambia el ritmo de toda la oración."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-5-3",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "1. El apóstrofo superior (ˈ) indica que la sílaba siguiente lleva la mayor fuerza de voz.\n2. De \"jao ar iu\" ➔ Transcripción real: /haʊ ɑːr juː/\n3. De \"uér du iu liv\" ➔ Transcripción real: /weər duː juː lɪv/\n4. De \"mái néim is\" ➔ Transcripción real: /maɪ neɪm ɪz/",
+            "summaryShort": "¡Excelente trabajo! Has completado esta sublección.",
+            "conceptBreakdown": "⚡ La barrita (ˈ) es tu brújula: la sílaba que le sigue se dice con más fuerza.",
+            "deepDiveNotes": "⚡ La barrita (ˈ) es tu brújula: la sílaba que le sigue se dice con más fuerza.",
+            "keyTakeaways": [
+              "⚡ La barrita (ˈ) es tu brújula: la sílaba que le sigue se dice con más fuerza.",
+              "Escritura y pronunciación validadas.",
+              "+20 XP Ganados para tu racha."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-5-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "En la transcripción /ˈtiː.tʃər/ (teacher), ¿qué indica el símbolo (ˈ) al inicio?",
+            "options": [
+              "Que la primera sílaba \"tea\" lleva el acento de voz",
+              "Que la palabra es una pregunta",
+              "Que la primera letra es mayúscula",
+              "Que la vocal es muda"
+            ],
+            "correctAnswer": "Que la primera sílaba \"tea\" lleva el acento de voz",
+            "explanation": "El símbolo (ˈ) marca el acento tónico principal en la sílaba inmediatamente posterior.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "How is the sentence \"Where do you live?\" written in phonetic symbols?",
+            "options": [
+              "/weər duː juː lɪv/",
+              "/uér du iu liv/",
+              "/wer do yo live/"
+            ],
+            "correctAnswer": "/weər duː juː lɪv/",
+            "explanation": "/weər duː juː lɪv/ es la transcripción estándar en el Alfabeto Fonético Internacional.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada elemento con su correspondencia:",
+            "options": {
+              "/haʊ ɑːr juː/": "How are you?",
+              "/weər duː juː lɪv/": "Where do you live?",
+              "/maɪ neɪm ɪz/": "My name is",
+              "/ˈkɒf.i/": "Coffee (acento en primera sílaba)"
+            },
+            "correctAnswer": {
+              "/haʊ ɑːr juː/": "How are you?",
+              "/weər duː juː lɪv/": "Where do you live?",
+              "/maɪ neɪm ɪz/": "My name is",
+              "/ˈkɒf.i/": "Coffee (acento en primera sílaba)"
+            },
+            "explanation": "Asociación conceptual clave para 5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Dónde vives y cuál es tu nombre?\"",
+            "correctAnswer": "Where do you live and what is your name?",
+            "explanation": "Traducción correcta: \"Where do you live and what is your name?\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hola, ¿cómo estás hoy, mi amigo?\"",
+            "correctAnswer": "Hello, how are you today, my friend?",
+            "explanation": "Pronunciación modelo: \"Hello, how are you today, my friend?\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1_node_9",
+    "title": "9. Gran Reto Integrador A1",
+    "description": "Consolidación de gramática, vocabulario y fonética de nivel A1.",
+    "category": "CHALLENGE",
+    "cefrLevel": "A1",
+    "orderIndex": 9,
+    "icon": "Award",
+    "status": "LOCKED",
+    "starsEarned": 0,
+    "prerequisites": [
+      "a1_node_8"
+    ],
+    "totalSublessons": 5,
+    "completedSublessons": 0,
+    "sublessons": [
+      {
+        "id": "sub-a1_node_9-1",
+        "nodeId": "a1_node_9",
         "title": "1. Avisos Públicos Saber Pro A1 (Parte 1)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -6089,7 +6897,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"You can see this sign at the airport check-in desk.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "You can see this sign at the airport check-in desk.",
             "explanation": "Práctica de producción escrita para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "cefrLevel": "A1"
@@ -6097,7 +6905,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Passengers must show their tickets before boarding the train.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Passengers must show their tickets before boarding the train.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "cefrLevel": "A1"
@@ -6105,8 +6913,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-2",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-2",
+        "nodeId": "a1_node_9",
         "title": "2. Diálogos Cortos Saber Pro A1 (Parte 2)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -6247,7 +7055,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I enjoy studying English with FlashLens every day.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I enjoy studying English with FlashLens every day.",
             "explanation": "Práctica de producción escrita para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "cefrLevel": "A1"
@@ -6255,7 +7063,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Thank you for your advice, it was very helpful.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Thank you for your advice, it was very helpful.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "cefrLevel": "A1"
@@ -6263,8 +7071,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-3",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-3",
+        "nodeId": "a1_node_9",
         "title": "3. Comprensión Lectora Literal A1",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -6405,7 +7213,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"David lives in Cali and works as a designer.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "David lives in Cali and works as a designer.",
             "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A1.",
             "cefrLevel": "A1"
@@ -6413,7 +7221,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"He enjoys his job and speaks English with his international clients.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He enjoys his job and speaks English with his international clients.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A1.",
             "cefrLevel": "A1"
@@ -6421,8 +7229,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-4",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-4",
+        "nodeId": "a1_node_9",
         "title": "4. Vocabulario Integrado A1",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -6563,7 +7371,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"My family has dinner together every evening at home.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "My family has dinner together every evening at home.",
             "explanation": "Práctica de producción escrita para 4. Vocabulario Integrado A1.",
             "cefrLevel": "A1"
@@ -6571,7 +7379,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I am proud of my progress in English level A1.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I am proud of my progress in English level A1.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Vocabulario Integrado A1.",
             "cefrLevel": "A1"
@@ -6579,8 +7387,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-5",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-5",
+        "nodeId": "a1_node_9",
         "title": "5. Evaluación de Consolidación A1",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -6721,7 +7529,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I have successfully completed all A1 modules in FlashLens.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I have successfully completed all A1 modules in FlashLens.",
             "explanation": "Práctica de producción escrita para 5. Evaluación de Consolidación A1.",
             "cefrLevel": "A1"
@@ -6729,7 +7537,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I am ready to conquer level A2 with confidence and fluency.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I am ready to conquer level A2 with confidence and fluency.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Evaluación de Consolidación A1.",
             "cefrLevel": "A1"
@@ -6739,24 +7547,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_9",
-    "title": "9. Pasado Simple & Verbos Irregulares",
-    "description": "Verbos regulares (-ed con fonemas /t/, /d/, /ɪd/), verbos irregulares clave (went, saw, had), auxiliar Didn't y Did.",
+    "id": "a2_node_10",
+    "title": "10. Pasado Simple & Verbos Irregulares",
+    "description": "Was/Were, verbos regulares (-ed), verbos irregulares de alta frecuencia y preguntas en pasado (Did).",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 9,
+    "orderIndex": 10,
     "icon": "History",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_8"
+      "a1_node_9"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_9-1",
-        "nodeId": "a2_node_9",
+        "id": "sub-a2_node_10-1",
+        "nodeId": "a2_node_10",
         "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -6897,7 +7705,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"They lived in London for three years.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "They lived in London for three years.",
             "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
@@ -6905,7 +7713,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I visited my grandparents and we talked for hours.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I visited my grandparents and we talked for hours.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "cefrLevel": "A2"
@@ -6913,8 +7721,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_9-2",
-        "nodeId": "a2_node_9",
+        "id": "sub-a2_node_10-2",
+        "nodeId": "a2_node_10",
         "title": "2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -7055,7 +7863,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I bought a new laptop and saw a movie yesterday.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I bought a new laptop and saw a movie yesterday.",
             "explanation": "Práctica de producción escrita para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "cefrLevel": "A2"
@@ -7063,7 +7871,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"She went to Paris last summer and had a wonderful time.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She went to Paris last summer and had a wonderful time.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "cefrLevel": "A2"
@@ -7071,8 +7879,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_9-3",
-        "nodeId": "a2_node_9",
+        "id": "sub-a2_node_10-3",
+        "nodeId": "a2_node_10",
         "title": "3. Negación en Pasado: Auxiliar Didn't",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -7213,7 +8021,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"We didn't watch the movie because we were busy.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "We didn't watch the movie because we were busy.",
             "explanation": "Práctica de producción escrita para 3. Negación en Pasado: Auxiliar Didn't.",
             "cefrLevel": "A2"
@@ -7221,7 +8029,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"He didn't understand the question during the exam.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He didn't understand the question during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Negación en Pasado: Auxiliar Didn't.",
             "cefrLevel": "A2"
@@ -7229,8 +8037,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_9-4",
-        "nodeId": "a2_node_9",
+        "id": "sub-a2_node_10-4",
+        "nodeId": "a2_node_10",
         "title": "4. Preguntas con Did & Expresiones de Tiempo Pasado",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -7371,7 +8179,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Did you see your friends last weekend?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Did you see your friends last weekend?",
             "explanation": "Práctica de producción escrita para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "cefrLevel": "A2"
@@ -7379,7 +8187,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Where did you go on your last vacation?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Where did you go on your last vacation?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "cefrLevel": "A2"
@@ -7387,8 +8195,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_9-5",
-        "nodeId": "a2_node_9",
+        "id": "sub-a2_node_10-5",
+        "nodeId": "a2_node_10",
         "title": "5. Hábitos Pasados con \"Used To\"",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -7529,7 +8337,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He used to study English every day when he was at school.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He used to study English every day when he was at school.",
             "explanation": "Práctica de producción escrita para 5. Hábitos Pasados con \"Used To\".",
             "cefrLevel": "A2"
@@ -7537,7 +8345,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_9-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"We used to go to the countryside on summer holidays.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We used to go to the countryside on summer holidays.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Hábitos Pasados con \"Used To\".",
             "cefrLevel": "A2"
@@ -7547,24 +8355,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_10",
-    "title": "10. Ciudad, Direcciones & Lugares",
-    "description": "Lugares de la ciudad, dar y pedir direcciones (turn left, go straight), preposiciones de movimiento y transporte.",
+    "id": "a2_node_11",
+    "title": "11. Ciudad, Direcciones & Lugares",
+    "description": "Lugares de la ciudad, pedir y dar direcciones, medios de transporte.",
     "category": "VOCABULARY",
     "cefrLevel": "A2",
-    "orderIndex": 10,
+    "orderIndex": 11,
     "icon": "Compass",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_8"
+      "a1_node_9"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_10-1",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-1",
+        "nodeId": "a2_node_11",
         "title": "1. Lugares de la Ciudad & Servicios Públicos",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -7705,7 +8513,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The modern hospital is near the central bus station.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The modern hospital is near the central bus station.",
             "explanation": "Práctica de producción escrita para 1. Lugares de la Ciudad & Servicios Públicos.",
             "cefrLevel": "A2"
@@ -7713,7 +8521,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"There is a famous art museum in the historic center.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "There is a famous art museum in the historic center.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Lugares de la Ciudad & Servicios Públicos.",
             "cefrLevel": "A2"
@@ -7721,8 +8529,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-2",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-2",
+        "nodeId": "a2_node_11",
         "title": "2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -7863,7 +8671,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Turn left at the traffic light and cross the street.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Turn left at the traffic light and cross the street.",
             "explanation": "Práctica de producción escrita para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "cefrLevel": "A2"
@@ -7871,7 +8679,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Excuse me, where is the nearest metro station?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Excuse me, where is the nearest metro station?",
             "explanation": "Práctica oral de fluidez y articulación para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "cefrLevel": "A2"
@@ -7879,8 +8687,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-3",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-3",
+        "nodeId": "a2_node_11",
         "title": "3. Preposiciones de Movimiento: Across, Through, Into",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -8021,7 +8829,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Walk past the supermarket and go through the central park.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Walk past the supermarket and go through the central park.",
             "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
@@ -8029,7 +8837,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The pedestrians walked across the bridge over the river.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The pedestrians walked across the bridge over the river.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Preposiciones de Movimiento: Across, Through, Into.",
             "cefrLevel": "A2"
@@ -8037,8 +8845,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-4",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-4",
+        "nodeId": "a2_node_11",
         "title": "4. Medios de Transporte & Viajes",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -8179,7 +8987,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I take the subway to work every morning at eight o'clock.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I take the subway to work every morning at eight o'clock.",
             "explanation": "Práctica de producción escrita para 4. Medios de Transporte & Viajes.",
             "cefrLevel": "A2"
@@ -8187,7 +8995,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Traveling by train is faster and more comfortable than by bus.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Traveling by train is faster and more comfortable than by bus.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Medios de Transporte & Viajes.",
             "cefrLevel": "A2"
@@ -8195,8 +9003,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-5",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-5",
+        "nodeId": "a2_node_11",
         "title": "5. Describir tu Ciudad o Vecindario",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -8337,7 +9145,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"My neighborhood has green parks, quiet streets and good restaurants.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "My neighborhood has green parks, quiet streets and good restaurants.",
             "explanation": "Práctica de producción escrita para 5. Describir tu Ciudad o Vecindario.",
             "cefrLevel": "A2"
@@ -8345,7 +9153,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_10-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I love living in this city because people are very friendly.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I love living in this city because people are very friendly.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Describir tu Ciudad o Vecindario.",
             "cefrLevel": "A2"
@@ -8355,24 +9163,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_11",
-    "title": "11. Comparativos, Superlativos & As...As",
-    "description": "Comparativos con -er than / more than, superlativos the -est / the most, irregulares better/best, estructura as...as.",
+    "id": "a2_node_12",
+    "title": "12. Comparativos & Superlativos",
+    "description": "Comparar personas y objetos con -er/more y el grado superlativo (-est/the most).",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 11,
+    "orderIndex": 12,
     "icon": "TrendingUp",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_8"
+      "a1_node_9"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_11-1",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-1",
+        "nodeId": "a2_node_12",
         "title": "1. Comparativos Cortos (-er than)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -8513,7 +9321,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"This computer is faster than my old laptop.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "This computer is faster than my old laptop.",
             "explanation": "Práctica de producción escrita para 1. Comparativos Cortos (-er than).",
             "cefrLevel": "A2"
@@ -8521,7 +9329,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Canada is colder than Colombia in winter.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Canada is colder than Colombia in winter.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Comparativos Cortos (-er than).",
             "cefrLevel": "A2"
@@ -8529,8 +9337,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-2",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-2",
+        "nodeId": "a2_node_12",
         "title": "2. Comparativos Largos (More ... than)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -8671,7 +9479,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Traveling by plane is more comfortable than by bus.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Traveling by plane is more comfortable than by bus.",
             "explanation": "Práctica de producción escrita para 2. Comparativos Largos (More ... than).",
             "cefrLevel": "A2"
@@ -8679,7 +9487,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"This book is more interesting than the movie.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "This book is more interesting than the movie.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Comparativos Largos (More ... than).",
             "cefrLevel": "A2"
@@ -8687,8 +9495,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-3",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-3",
+        "nodeId": "a2_node_12",
         "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -8829,7 +9637,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"His English is much better than it was last year.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "His English is much better than it was last year.",
             "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
@@ -8837,7 +9645,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"This coffee is the best in the entire city.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "This coffee is the best in the entire city.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "cefrLevel": "A2"
@@ -8845,8 +9653,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-4",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-4",
+        "nodeId": "a2_node_12",
         "title": "4. Superlativos: The -est & The Most",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -8987,7 +9795,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"This is the most important exam of the semester.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "This is the most important exam of the semester.",
             "explanation": "Práctica de producción escrita para 4. Superlativos: The -est & The Most.",
             "cefrLevel": "A2"
@@ -8995,7 +9803,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The cheetah is the fastest animal on land.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The cheetah is the fastest animal on land.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Superlativos: The -est & The Most.",
             "cefrLevel": "A2"
@@ -9003,8 +9811,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-5",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-5",
+        "nodeId": "a2_node_12",
         "title": "5. Estructura de Igualdad: As ... As",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -9145,7 +9953,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He is as hardworking as his father.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He is as hardworking as his father.",
             "explanation": "Práctica de producción escrita para 5. Estructura de Igualdad: As ... As.",
             "cefrLevel": "A2"
@@ -9153,7 +9961,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_11-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Colombia is as rich in biodiversity as Brazil.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Colombia is as rich in biodiversity as Brazil.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Estructura de Igualdad: As ... As.",
             "cefrLevel": "A2"
@@ -9163,24 +9971,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_12",
-    "title": "12. Presente Continuo & Futuro Be Going To",
-    "description": "Acciones en progreso (am/is/are + -ing), contraste presente simple vs continuo, planes futuros con be going to.",
+    "id": "a2_node_13",
+    "title": "13. Presente Continuo & Futuro (Going To / Will)",
+    "description": "Acciones en progreso ahora mismo (-ing) y planes futuros con Be Going To y Will.",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 12,
+    "orderIndex": 13,
     "icon": "ArrowRightCircle",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_9"
+      "a2_node_10"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_12-1",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_13-1",
+        "nodeId": "a2_node_13",
         "title": "1. Presente Continuo: Acciones en Progreso",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -9321,7 +10129,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I am practicing English on FlashLens right now.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I am practicing English on FlashLens right now.",
             "explanation": "Práctica de producción escrita para 1. Presente Continuo: Acciones en Progreso.",
             "cefrLevel": "A2"
@@ -9329,7 +10137,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The children are playing happily in the garden.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The children are playing happily in the garden.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Presente Continuo: Acciones en Progreso.",
             "cefrLevel": "A2"
@@ -9337,8 +10145,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-2",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_13-2",
+        "nodeId": "a2_node_13",
         "title": "2. Contraste: Presente Simple vs Presente Continuo",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -9479,7 +10287,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"He usually wears jeans, but today he is wearing a suit.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "He usually wears jeans, but today he is wearing a suit.",
             "explanation": "Práctica de producción escrita para 2. Contraste: Presente Simple vs Presente Continuo.",
             "cefrLevel": "A2"
@@ -9487,7 +10295,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"We live in Colombia but we are traveling in Europe this month.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We live in Colombia but we are traveling in Europe this month.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Contraste: Presente Simple vs Presente Continuo.",
             "cefrLevel": "A2"
@@ -9495,8 +10303,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-3",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_13-3",
+        "nodeId": "a2_node_13",
         "title": "3. Futuro con \"Be Going To\" (Planes e Intenciones)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -9637,7 +10445,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I am going to pass my English exam with a high score.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I am going to pass my English exam with a high score.",
             "explanation": "Práctica de producción escrita para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "cefrLevel": "A2"
@@ -9645,7 +10453,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"What are you going to do this weekend with your friends?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "What are you going to do this weekend with your friends?",
             "explanation": "Práctica oral de fluidez y articulación para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "cefrLevel": "A2"
@@ -9653,8 +10461,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-4",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_13-4",
+        "nodeId": "a2_node_13",
         "title": "4. Presente Continuo con Sentido de Futuro Acordado",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -9795,7 +10603,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"We are flying to New York next Friday morning.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "We are flying to New York next Friday morning.",
             "explanation": "Práctica de producción escrita para 4. Presente Continuo con Sentido de Futuro Acordado.",
             "cefrLevel": "A2"
@@ -9803,7 +10611,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Are you attending the international conference next week?\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Are you attending the international conference next week?",
             "explanation": "Práctica oral de fluidez y articulación para 4. Presente Continuo con Sentido de Futuro Acordado.",
             "cefrLevel": "A2"
@@ -9811,8 +10619,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-5",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_13-5",
+        "nodeId": "a2_node_13",
         "title": "5. Preguntas sobre Planes & Predicciones Futuras",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -9953,7 +10761,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"What are you going to do after you graduate?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "What are you going to do after you graduate?",
             "explanation": "Práctica de producción escrita para 5. Preguntas sobre Planes & Predicciones Futuras.",
             "cefrLevel": "A2"
@@ -9961,7 +10769,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Look at those dark clouds, it is going to rain heavily.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Look at those dark clouds, it is going to rain heavily.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas sobre Planes & Predicciones Futuras.",
             "cefrLevel": "A2"
@@ -9971,24 +10779,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_13",
-    "title": "13. Conectores, Modales & Salud",
-    "description": "Conectores and, but, so, because, although; modales should para consejos y must / have to para obligación; salud y cuerpo.",
+    "id": "a2_node_14",
+    "title": "14. Conectores, Modales & Salud",
+    "description": "Conectores lógicos (Although, Because, However), verbos modales Should/Must y síntomas de salud.",
     "category": "CONVERSATION",
     "cefrLevel": "A2",
-    "orderIndex": 13,
+    "orderIndex": 14,
     "icon": "Activity",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_10"
+      "a2_node_11"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_13-1",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_14-1",
+        "nodeId": "a2_node_14",
         "title": "1. Conectores Lógicos: And, But, So, Because, Although",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -10129,7 +10937,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I studied hard because I wanted to pass the test.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I studied hard because I wanted to pass the test.",
             "explanation": "Práctica de producción escrita para 1. Conectores Lógicos: And, But, So, Because, Although.",
             "cefrLevel": "A2"
@@ -10137,7 +10945,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Although English is challenging, I practice every day.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Although English is challenging, I practice every day.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Conectores Lógicos: And, But, So, Because, Although.",
             "cefrLevel": "A2"
@@ -10145,8 +10953,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-2",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_14-2",
+        "nodeId": "a2_node_14",
         "title": "2. Modal Should & Shouldn't (Consejos & Sugerencias)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -10287,7 +11095,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"You should drink eight glasses of water every day.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "You should drink eight glasses of water every day.",
             "explanation": "Práctica de producción escrita para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "cefrLevel": "A2"
@@ -10295,7 +11103,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"If you feel sick, you should stay at home and rest.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "If you feel sick, you should stay at home and rest.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "cefrLevel": "A2"
@@ -10303,8 +11111,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-3",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_14-3",
+        "nodeId": "a2_node_14",
         "title": "3. Modales de Obligación: Must vs Have To",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -10445,7 +11253,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Students have to submit their homework on time.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Students have to submit their homework on time.",
             "explanation": "Práctica de producción escrita para 3. Modales de Obligación: Must vs Have To.",
             "cefrLevel": "A2"
@@ -10453,7 +11261,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"You mustn't use your mobile phone during the exam.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "You mustn't use your mobile phone during the exam.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Modales de Obligación: Must vs Have To.",
             "cefrLevel": "A2"
@@ -10461,8 +11269,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-4",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_14-4",
+        "nodeId": "a2_node_14",
         "title": "4. Salud, Síntomas Médicos & Partes del Cuerpo",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -10603,7 +11411,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I have a sore throat and a bad cough today.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I have a sore throat and a bad cough today.",
             "explanation": "Práctica de producción escrita para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "cefrLevel": "A2"
@@ -10611,7 +11419,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"The doctor advised me to take this medicine twice a day.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The doctor advised me to take this medicine twice a day.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "cefrLevel": "A2"
@@ -10619,8 +11427,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-5",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_14-5",
+        "nodeId": "a2_node_14",
         "title": "5. Expresar Emociones, Estado de Ánimo & Bienestar",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -10761,7 +11569,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Regular exercise makes me feel healthy, calm and energetic.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Regular exercise makes me feel healthy, calm and energetic.",
             "explanation": "Práctica de producción escrita para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "cefrLevel": "A2"
@@ -10769,7 +11577,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_13-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I feel very proud and confident about my progress in English.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I feel very proud and confident about my progress in English.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "cefrLevel": "A2"
@@ -10779,26 +11587,26 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_14",
-    "title": "14. Lectura ICFES & Diálogos Saber Pro",
-    "description": "Práctica oficial tipo ICFES Saber Pro: emparejamiento de carteles, completar conversaciones y lectura inferencial.",
+    "id": "a2_node_15",
+    "title": "15. Lectura ICFES & Diálogos Saber Pro",
+    "description": "Estrategias de comprensión lectora, avisos públicos y completación de diálogos estilo examen oficial.",
     "category": "EXAM_PREP",
     "cefrLevel": "A2",
-    "orderIndex": 14,
+    "orderIndex": 15,
     "icon": "FileText",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_12",
       "a2_node_13",
-      "a2_node_11"
+      "a2_node_14",
+      "a2_node_12"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_14-1",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_15-1",
+        "nodeId": "a2_node_15",
         "title": "1. Carteles & Lugares Públicos (ICFES Parte 1)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -10939,7 +11747,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"You can see this warning notice at the chemistry laboratory.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "You can see this warning notice at the chemistry laboratory.",
             "explanation": "Práctica de producción escrita para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "cefrLevel": "A2"
@@ -10947,7 +11755,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Passengers must wear a face mask inside the hospital.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Passengers must wear a face mask inside the hospital.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "cefrLevel": "A2"
@@ -10955,8 +11763,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-2",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_15-2",
+        "nodeId": "a2_node_15",
         "title": "2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -11097,7 +11905,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Could you please tell me where the nearest pharmacy is located?\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Could you please tell me where the nearest pharmacy is located?",
             "explanation": "Práctica de producción escrita para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "cefrLevel": "A2"
@@ -11105,7 +11913,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I really appreciate your assistance with this difficult project.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I really appreciate your assistance with this difficult project.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "cefrLevel": "A2"
@@ -11113,8 +11921,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-3",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_15-3",
+        "nodeId": "a2_node_15",
         "title": "3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -11255,7 +12063,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Elena started her company in 2021 and photographs wildlife.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Elena started her company in 2021 and photographs wildlife.",
             "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "cefrLevel": "A2"
@@ -11263,7 +12071,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"She has won several international awards for her nature photography.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She has won several international awards for her nature photography.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "cefrLevel": "A2"
@@ -11271,8 +12079,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-4",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_15-4",
+        "nodeId": "a2_node_15",
         "title": "4. Inferencia & Vocabulario en Contexto",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -11413,7 +12221,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Reading between the lines helps you infer implicit meaning.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Reading between the lines helps you infer implicit meaning.",
             "explanation": "Práctica de producción escrita para 4. Inferencia & Vocabulario en Contexto.",
             "cefrLevel": "A2"
@@ -11421,7 +12229,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Context clues provide valuable hints to understand complex vocabulary.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Context clues provide valuable hints to understand complex vocabulary.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Inferencia & Vocabulario en Contexto.",
             "cefrLevel": "A2"
@@ -11429,8 +12237,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-5",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_15-5",
+        "nodeId": "a2_node_15",
         "title": "5. Trampas Frecuentes & Descarte en Saber Pro",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -11571,7 +12379,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Actually, I didn't know the answer until you explained it.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Actually, I didn't know the answer until you explained it.",
             "explanation": "Práctica de producción escrita para 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "cefrLevel": "A2"
@@ -11579,7 +12387,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_14-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"He felt very embarrassed when he forgot his friend's name.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He felt very embarrassed when he forgot his friend's name.",
             "explanation": "Práctica oral de fluidez y articulación para 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "cefrLevel": "A2"
@@ -11589,24 +12397,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_15",
-    "title": "15. Gran Reto Integrador A2",
-    "description": "Simulacro final Saber Pro A2: integración de tiempos verbales, fluidez comunicativa y certificación de nivel A2.",
+    "id": "a2_node_16",
+    "title": "16. Gran Reto Integrador A2",
+    "description": "Evaluación final y certificación del dominio de los niveles A1 y A2.",
     "category": "CHALLENGE",
     "cefrLevel": "A2",
-    "orderIndex": 15,
+    "orderIndex": 16,
     "icon": "Trophy",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_14"
+      "a2_node_15"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_15-1",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_16-1",
+        "nodeId": "a2_node_16",
         "title": "1. Simulacro Saber Pro A2: Comprensión Lectora",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -11747,7 +12555,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"The Coffee Cultural Landscape is celebrated worldwide for its beauty.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
             "explanation": "Práctica de producción escrita para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "cefrLevel": "A2"
@@ -11755,7 +12563,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Colombian coffee is recognized globally for its superior quality and taste.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Colombian coffee is recognized globally for its superior quality and taste.",
             "explanation": "Práctica oral de fluidez y articulación para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "cefrLevel": "A2"
@@ -11763,8 +12571,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-2",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_16-2",
+        "nodeId": "a2_node_16",
         "title": "2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -11905,7 +12713,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
             "explanation": "Práctica de producción escrita para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "cefrLevel": "A2"
@@ -11913,7 +12721,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"I learned basic English in A1 and now I am mastering A2 fluently.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I learned basic English in A1 and now I am mastering A2 fluently.",
             "explanation": "Práctica oral de fluidez y articulación para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "cefrLevel": "A2"
@@ -11921,8 +12729,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-3",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_16-3",
+        "nodeId": "a2_node_16",
         "title": "3. Prueba de Precisión Auditiva & Fonética A2",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -12063,7 +12871,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I listened carefully to the native speaker's pronunciation.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I listened carefully to the native speaker's pronunciation.",
             "explanation": "Práctica de producción escrita para 3. Prueba de Precisión Auditiva & Fonética A2.",
             "cefrLevel": "A2"
@@ -12071,7 +12879,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Mastering phonetic stress allows you to communicate naturally.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Mastering phonetic stress allows you to communicate naturally.",
             "explanation": "Práctica oral de fluidez y articulación para 3. Prueba de Precisión Auditiva & Fonética A2.",
             "cefrLevel": "A2"
@@ -12079,8 +12887,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-4",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_16-4",
+        "nodeId": "a2_node_16",
         "title": "4. Diagnóstico de Producción Escrita A2",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -12221,7 +13029,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I enjoy writing in English because it helps me organize my thoughts.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I enjoy writing in English because it helps me organize my thoughts.",
             "explanation": "Práctica de producción escrita para 4. Diagnóstico de Producción Escrita A2.",
             "cefrLevel": "A2"
@@ -12229,7 +13037,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"With dedication and daily practice, I have achieved level A2 certification.\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "With dedication and daily practice, I have achieved level A2 certification.",
             "explanation": "Práctica oral de fluidez y articulación para 4. Diagnóstico de Producción Escrita A2.",
             "cefrLevel": "A2"
@@ -12237,8 +13045,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-5",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_16-5",
+        "nodeId": "a2_node_16",
         "title": "5. Gran Certificación de Logro Nivel A2",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -12379,7 +13187,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"I am proud to be a certified A2 English speaker with FlashLens.\"",
+            "prompt": "Traduce y construye en inglés esta oración",
             "correctAnswer": "I am proud to be a certified A2 English speaker with FlashLens.",
             "explanation": "Práctica de producción escrita para 5. Gran Certificación de Logro Nivel A2.",
             "cefrLevel": "A2"
@@ -12387,7 +13195,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés: \"Congratulations on completing the entire A1 and A2 roadmap with excellence!\"",
+            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",
             "explanation": "Práctica oral de fluidez y articulación para 5. Gran Certificación de Logro Nivel A2.",
             "cefrLevel": "A2"

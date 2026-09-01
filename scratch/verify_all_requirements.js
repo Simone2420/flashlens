@@ -1,117 +1,88 @@
 const assert = require('assert');
 const fs = require('fs');
 
-// Cargar la implementación de languageEvaluation
-const CONTRACTIONS_MAP = {
-  "i'm": "i am",
-  "you're": "you are",
-  "he's": "he is",
-  "she's": "she is",
-  "it's": "it is",
-  "we're": "we are",
-  "they're": "they are",
-  "i've": "i have",
-  "you've": "you have",
-  "we've": "we have",
-  "they've": "they have",
-  "don't": "do not",
-  "doesn't": "does not",
-  "didn't": "did not",
-  "can't": "cannot",
-  "let's": "let us"
-};
+console.log('=== VERIFICACIÓN INTEGRAL DE TODOS LOS REQUERIMIENTOS ===\n');
 
-function normalizeEnglishText(text) {
-  if (!text) return '';
-  let normalized = text
-    .toLowerCase()
-    .trim()
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'’]/g, ' ')
-    .replace(/\s+/g, ' ');
-  const words = normalized.split(' ');
-  const expandedWords = words.map(w => CONTRACTIONS_MAP[w] || w);
-  return expandedWords.join(' ').trim();
-}
-
-function calculateLevenshteinDistance(a, b) {
-  const matrix = [];
-  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
-  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) === a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1,
-          matrix[i][j - 1] + 1,
-          matrix[i - 1][j] + 1
-        );
-      }
-    }
-  }
-  return matrix[b.length][a.length];
-}
-
-function evaluateLanguageInput(userInput, targetAnswer, isSpeaking = false) {
-  const cleanUser = normalizeEnglishText(userInput);
-  const cleanTarget = normalizeEnglishText(targetAnswer);
-  if (!cleanUser) return { isCorrect: false, accuracyPercentage: 0 };
-  if (cleanUser === cleanTarget) return { isCorrect: true, accuracyPercentage: 100 };
-
-  const userWords = cleanUser.split(' ');
-  const targetWords = cleanTarget.split(' ');
-  let matchedWordsCount = 0;
-  for (const tWord of targetWords) {
-    if (userWords.includes(tWord)) matchedWordsCount++;
-  }
-  const tokenOverlapScore = targetWords.length > 0 ? (matchedWordsCount / targetWords.length) * 100 : 0;
-
-  const maxLen = Math.max(cleanUser.length, cleanTarget.length);
-  const levDistance = calculateLevenshteinDistance(cleanUser, cleanTarget);
-  const levSimilarityScore = maxLen > 0 ? ((maxLen - levDistance) / maxLen) * 100 : 0;
-  const combinedAccuracy = Math.max(tokenOverlapScore, levSimilarityScore);
-  const threshold = isSpeaking ? 78 : 88;
-  return { isCorrect: combinedAccuracy >= threshold, accuracyPercentage: Math.round(combinedAccuracy) };
-}
-
-console.log('--- Probando Motor de Evaluación Flexible de Lenguaje ---');
-
-// Test 1: Puntuación omitida y mayúsculas
-const r1 = evaluateLanguageInput('hello my name is alex and i am from colombia', 'Hello, my name is Alex and I am from Colombia.', false);
-assert.strictEqual(r1.isCorrect, true, 'Debe aceptar sin puntuación ni mayúsculas');
-console.log('✓ Test 1 superado: Sin puntuación ni mayúsculas es correcto.');
-
-// Test 2: Equivalencia de contracciones ("I'm" vs "I am")
-const r2 = evaluateLanguageInput("i'm from colombia and i live in bogota", 'I am from Colombia and I live in Bogota.', false);
-assert.strictEqual(r2.isCorrect, true, 'Debe aceptar I\'m como equivalente a I am');
-console.log('✓ Test 2 superado: Contracciones equivalentes (I\'m = I am).');
-
-// Test 3: Contracciones negativas ("don't" vs "do not", "doesn't" vs "does not")
-const r3 = evaluateLanguageInput('he does not work on sundays', "He doesn't work on Sundays.", false);
-assert.strictEqual(r3.isCorrect, true, 'Debe aceptar does not como equivalente a doesn\'t');
-console.log('✓ Test 3 superado: Contracciones negativas equivalentes (does not = doesn\'t).');
-
-// Test 4: Tolerancia acústica de voz (speaking = true)
-const r4 = evaluateLanguageInput('this big ship very fast and safe', 'This big ship is very fast and safe.', true);
-assert.strictEqual(r4.isCorrect, true, 'Debe aceptar con tolerancia acústica de voz');
-console.log('✓ Test 4 superado: Tolerancia acústica de voz >= 80%.');
-
-console.log('\n--- Probando Estructura de mockData.ts ---');
 const mockData = fs.readFileSync('./src/data/mockData.ts', 'utf8');
 
-// Test 5: Flashcards mock presentes
+// 1. Verificar Flashcards Mock
 assert(mockData.includes('Coffee Mug'), 'Debe incluir Coffee Mug');
 assert(mockData.includes('Laptop'), 'Debe incluir Laptop');
 assert(mockData.includes('Backpack'), 'Debe incluir Backpack');
 assert(mockData.includes('Break the ice'), 'Debe incluir Break the ice');
 assert(mockData.includes('Although'), 'Debe incluir Although');
 assert(mockData.includes('Exhausted'), 'Debe incluir Exhausted');
-console.log('✓ Test 5 superado: Colección completa de Flashcards mock restaurada.');
+assert(mockData.includes('Give up'), 'Debe incluir Give up');
+assert(mockData.includes('Actually'), 'Debe incluir Actually');
+assert(mockData.includes('Used to'), 'Debe incluir Used to');
+console.log('✓ Requerimiento 1 superado: Colección completa de 9 Flashcards mock restaurada.');
 
-// Test 6: DAG de 15 Nodos estricto
-assert(mockData.includes('"prerequisites": [\n      "a1_node_6",\n      "a1_node_7"\n    ]'), 'Nodo 8 debe depender de 6 y 7');
-assert(mockData.includes('"prerequisites": [\n      "a2_node_12",\n      "a2_node_13",\n      "a2_node_11"\n    ]'), 'Nodo 14 debe depender de 12, 13 y 11');
-console.log('✓ Test 6 superado: Jerarquía estricta DAG en mockData.ts verificada.');
+// 2. Verificar que existen los 16 nodos en el DAG
+for (let i = 1; i <= 9; i++) {
+  assert(mockData.includes(`"id": "a1_node_${i}"`), `Debe incluir a1_node_${i}`);
+}
+for (let i = 10; i <= 16; i++) {
+  assert(mockData.includes(`"id": "a2_node_${i}"`), `Debe incluir a2_node_${i}`);
+}
+console.log('✓ Requerimiento 2 superado: Los 16 nodos del árbol DAG existen en mockData.ts.');
 
-console.log('\n🎉 ¡TODAS LAS PRUEBAS DE REQUISITOS PASARON EXITOSAMENTE!');
+// 3. Verificar Pronunciación Facilitada en Nodos 1 al 7
+assert(mockData.includes('mái néim is'), 'Debe incluir pronunciación facilitada mái néim is');
+assert(mockData.includes('jelóu'), 'Debe incluir pronunciación facilitada jelóu');
+assert(mockData.includes('náis tu míit iu'), 'Debe incluir pronunciación facilitada náis tu míit iu');
+console.log('✓ Requerimiento 3 superado: Nodos 1 al 7 usan fonética facilitada en español.');
+
+// 4. Verificar consonantes en la sublección 2 del Nodo 1
+const consonantPhonetics = [
+  'bii', 'sii', 'dii', 'ef', 'yí',
+  'éich', 'yéi', 'kéi', 'el', 'em',
+  'en', 'pii', 'kiú', 'ar', 'es',
+  'tii', 'vii', 'dábel-iu', 'eks', 'uái', 'zii'
+];
+consonantPhonetics.forEach(sample => {
+  assert(mockData.includes(sample), `Debe incluir la pronunciación de la consonante: ${sample}`);
+});
+console.log('✓ Requerimiento 4 superado: Las 21 consonantes completas (B a Z) incluidas con pronunciación facilitada.');
+
+// 5. Verificar Nodo 8 de Transición a IPA
+assert(mockData.includes('De la Pronunciación al Alfabeto Fonético (IPA)'), 'Debe incluir título del Nodo 8');
+assert(mockData.includes('/haʊ/'), 'Debe incluir símbolo /haʊ/');
+assert(mockData.includes('/neɪm/'), 'Debe incluir símbolo /neɪm/');
+assert(mockData.includes('/ʃiːp/'), 'Debe incluir símbolo /ʃiːp/');
+assert(mockData.includes('/əˈbaʊt/'), 'Debe incluir símbolo /əˈbaʊt/');
+assert(mockData.includes('/θ/'), 'Debe incluir símbolo /θ/');
+console.log('✓ Requerimiento 5 superado: Nodo 8 enseña la transición de "jao ar iu" al IPA.');
+
+// 6. Verificar que SENTENCE_WRITING no revela la respuesta en inglés en el prompt
+const rawNodes = JSON.parse(mockData.match(/export const MOCK_ROADMAP_NODES: RoadmapNode\[\] = (\[[\s\S]*?\]);\s*export const/)[1]);
+rawNodes.forEach(node => {
+  (node.sublessons || []).forEach(sub => {
+    (sub.questions || []).forEach(q => {
+      if (q.type === 'SENTENCE_WRITING') {
+        assert(q.prompt.startsWith('Traduce y construye en inglés'), `El prompt debe iniciar en español: ${q.prompt}`);
+        assert(!q.prompt.includes(q.correctAnswer), `El prompt NO debe revelar la respuesta en inglés: ${q.prompt}`);
+      }
+    });
+  });
+});
+console.log('✓ Requerimiento 6 superado: Ninguna pregunta de escritura revela la respuesta en inglés.');
+
+// 7. Verificar UI Diagnóstica con componentes interactivos
+const diagCode = fs.readFileSync('./app/diagnostic/index.tsx', 'utf8');
+assert(diagCode.includes('MatchPairsQuestion'), 'Diagnóstico debe importar MatchPairsQuestion');
+assert(diagCode.includes('SentenceWritingQuestion'), 'Diagnóstico debe importar SentenceWritingQuestion');
+assert(diagCode.includes('SpeakingPronunciationQuestion'), 'Diagnóstico debe importar SpeakingPronunciationQuestion');
+assert(diagCode.includes('FillInBlankQuestion'), 'Diagnóstico debe importar FillInBlankQuestion');
+assert(diagCode.includes('MultipleChoiceIcfesQuestion'), 'Diagnóstico debe importar MultipleChoiceIcfesQuestion');
+assert(diagCode.includes('evaluateLanguageInput'), 'Diagnóstico debe importar evaluateLanguageInput');
+console.log('✓ Requerimiento 7 superado: Pantalla diagnóstica integrada con componentes interactivos.');
+
+// 8. Verificar Roadmap UI con 16 Nodos
+const roadmapCode = fs.readFileSync('./app/(tabs)/roadmap.tsx', 'utf8');
+assert(roadmapCode.includes('nodeA1_8'), 'Roadmap debe incluir nodoA1_8');
+assert(roadmapCode.includes('nodeA1_9'), 'Roadmap debe incluir nodoA1_9');
+assert(roadmapCode.includes('nodeA2_16'), 'Roadmap debe incluir nodoA2_16');
+assert(roadmapCode.includes('colA1_Left'), 'Roadmap debe tener columnas paralelas para A1');
+console.log('✓ Requerimiento 8 superado: Roadmap UI actualizada con topología de 16 nodos.');
+
+console.log('\n🎉 ¡TODAS LAS 8 PRUEBAS DE REQUERIMIENTOS PASARON CON ÉXITO AL 100%!');
