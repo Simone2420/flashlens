@@ -123,12 +123,32 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
     setWordBank(prev => prev.map(item => ({ ...item, used: false })));
   };
 
+  // Extraer la oración en español si viene entre comillas
+  const quoteMatch = prompt.match(/["«]([^"»]+)["»]/);
+  const targetSentenceSpanish = quoteMatch ? quoteMatch[1] : null;
+  const instructionHeader = targetSentenceSpanish
+    ? "TRADUCE Y ORDENA LA FRASE:"
+    : "CONSTRUYE LA ORACIÓN EN INGLÉS:";
+
   return (
     <View style={styles.container}>
       {/* Tarjeta de Consigna */}
       <View style={styles.promptCard}>
-        <Text style={styles.promptLabel}>CONSTRUYE LA ORACIÓN EN INGLÉS:</Text>
-        <Text style={styles.promptText}>{prompt}</Text>
+        <View style={styles.promptHeaderRow}>
+          <Sparkles size={14} color="#765A00" />
+          <Text style={styles.promptLabel}>{instructionHeader}</Text>
+        </View>
+
+        {targetSentenceSpanish ? (
+          <View style={styles.spanishSentenceContainer}>
+            <Text style={styles.spanishSentenceText}>"{targetSentenceSpanish}"</Text>
+            <Text style={styles.spanishSentenceSub}>
+              Toca las fichas de abajo en el orden correcto en inglés:
+            </Text>
+          </View>
+        ) : (
+          <Text style={styles.promptText}>{prompt}</Text>
+        )}
       </View>
 
       {/* Zona de Construcción de Oración con Fichas */}
@@ -227,12 +247,37 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
     ...SHADOWS.card,
   },
+  promptHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
   promptLabel: {
     fontSize: 11,
     fontWeight: '900',
     color: '#765A00',
     letterSpacing: 0.8,
-    marginBottom: 4,
+  },
+  spanishSentenceContainer: {
+    backgroundColor: '#FFF9E6',
+    borderRadius: 14,
+    padding: 12,
+    marginTop: 4,
+    borderLeftWidth: 4,
+    borderLeftColor: '#E8B400',
+  },
+  spanishSentenceText: {
+    fontSize: 17,
+    fontWeight: '800',
+    color: '#1C1B1B',
+    lineHeight: 24,
+  },
+  spanishSentenceSub: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#765A00',
+    marginTop: 6,
   },
   promptText: {
     fontSize: 16,

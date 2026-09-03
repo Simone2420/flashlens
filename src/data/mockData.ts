@@ -516,8 +516,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"Soy colombiano y vivo en Bogotá.\"",
             "correctAnswer": "I am Colombian and I live in Bogota.",
-            "explanation": "Traducción correcta: \"I am Colombian and I live in Bogota.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I am Colombian and I live in Bogota.\"",
+            "cefrLevel": "A1",
+            "contextText": "Soy colombiano y vivo en Bogotá."
           },
           {
             "id": "q-a1_node_1-1-5",
@@ -674,8 +675,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"El alfabeto en inglés tiene veintiséis letras.\"",
             "correctAnswer": "The English alphabet has twenty-six letters.",
-            "explanation": "Traducción correcta: \"The English alphabet has twenty-six letters.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The English alphabet has twenty-six letters.\"",
+            "cefrLevel": "A1",
+            "contextText": "El alfabeto en inglés tiene veintiséis letras."
           },
           {
             "id": "q-a1_node_1-2-5",
@@ -832,8 +834,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"Vivo en una casa grande con mi familia.\"",
             "correctAnswer": "I live in a big house with my family.",
-            "explanation": "Traducción correcta: \"I live in a big house with my family.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I live in a big house with my family.\"",
+            "cefrLevel": "A1",
+            "contextText": "Vivo en una casa grande con mi familia."
           },
           {
             "id": "q-a1_node_1-3-5",
@@ -990,8 +993,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"¿Cómo deletreas tu primer nombre?\"",
             "correctAnswer": "How do you spell your first name?",
-            "explanation": "Traducción correcta: \"How do you spell your first name?\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"How do you spell your first name?\"",
+            "cefrLevel": "A1",
+            "contextText": "¿Cómo deletreas tu primer nombre?"
           },
           {
             "id": "q-a1_node_1-4-5",
@@ -1148,8 +1152,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"¡Gracias por tu ayuda, que tengas un buen día!\"",
             "correctAnswer": "Thank you for your help, have a good one!",
-            "explanation": "Traducción correcta: \"Thank you for your help, have a good one!\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Thank you for your help, have a good one!\"",
+            "cefrLevel": "A1",
+            "contextText": "¡Gracias por tu ayuda, que tengas un buen día!"
           },
           {
             "id": "q-a1_node_1-5-5",
@@ -1322,10 +1327,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Ella es médica y ellos son ingenieros.\"",
             "correctAnswer": "She is a doctor and they are engineers.",
-            "explanation": "Práctica de producción escrita para 1. Pronombres Sujeto en Inglés.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"She is a doctor and they are engineers.\"",
+            "cefrLevel": "A1",
+            "contextText": "Ella es médica y ellos son ingenieros."
           },
           {
             "id": "q-a1_node_2-1-5",
@@ -1480,10 +1486,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Nosotros somos estudiantes y estamos felices.\"",
             "correctAnswer": "We are students and we're happy.",
-            "explanation": "Práctica de producción escrita para 2. Verbo To Be Afirmativo & Contracciones.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"We are students and we're happy.\"",
+            "cefrLevel": "A1",
+            "contextText": "Nosotros somos estudiantes y estamos felices."
           },
           {
             "id": "q-a1_node_2-2-5",
@@ -1638,10 +1645,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"No estoy cansado y ellos no están ocupados.\"",
             "correctAnswer": "I'm not tired and they aren't busy.",
-            "explanation": "Práctica de producción escrita para 3. Verbo To Be Negativo (Isn't / Aren't).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I'm not tired and they aren't busy.\"",
+            "cefrLevel": "A1",
+            "contextText": "No estoy cansado y ellos no están ocupados."
           },
           {
             "id": "q-a1_node_2-3-5",
@@ -1796,10 +1804,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"¿Es ella estudiante en esta universidad?\"",
             "correctAnswer": "Is she a student at this university?",
-            "explanation": "Práctica de producción escrita para 4. Preguntas con To Be & Respuestas Cortas.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Is she a student at this university?\"",
+            "cefrLevel": "A1",
+            "contextText": "¿Es ella estudiante en esta universidad?"
           },
           {
             "id": "q-a1_node_2-4-5",
@@ -1954,10 +1963,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_2-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Esta es mi computadora y ella es arquitecta.\"",
             "correctAnswer": "This is my computer and she is an architect.",
-            "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This / That / These / Those).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"This is my computer and she is an architect.\"",
+            "cefrLevel": "A1",
+            "contextText": "Esta es mi computadora y ella es arquitecta."
           },
           {
             "id": "q-a1_node_2-5-5",
@@ -2130,10 +2140,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El profesor tiene un libro y un borrador.\"",
             "correctAnswer": "The teacher has a book and an eraser.",
-            "explanation": "Práctica de producción escrita para 1. Artículos Indefinidos (A / An) vs Definido (The).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The teacher has a book and an eraser.\"",
+            "cefrLevel": "A1",
+            "contextText": "El profesor tiene un libro y un borrador."
           },
           {
             "id": "q-a1_node_3-1-5",
@@ -2288,10 +2299,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Los niños están leyendo tres libros interesantes.\"",
             "correctAnswer": "The boys are reading three interesting books.",
-            "explanation": "Práctica de producción escrita para 2. Plurales Regulares (-s, -es, -ies).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The boys are reading three interesting books.\"",
+            "cefrLevel": "A1",
+            "contextText": "Los niños están leyendo tres libros interesantes."
           },
           {
             "id": "q-a1_node_3-2-5",
@@ -2446,10 +2458,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Tres hombres y dos mujeres están en la oficina.\"",
             "correctAnswer": "Three men and two women are in the office.",
-            "explanation": "Práctica de producción escrita para 3. Plurales Irregulares (Man/Men, Child/Children).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Three men and two women are in the office.\"",
+            "cefrLevel": "A1",
+            "contextText": "Tres hombres y dos mujeres están en la oficina."
           },
           {
             "id": "q-a1_node_3-3-5",
@@ -2604,10 +2617,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Pon tu portátil y cuaderno en tu mochila.\"",
             "correctAnswer": "Put your laptop and notebook in your backpack.",
-            "explanation": "Práctica de producción escrita para 4. Objetos del Aula & Tecnología.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Put your laptop and notebook in your backpack.\"",
+            "cefrLevel": "A1",
+            "contextText": "Pon tu portátil y cuaderno en tu mochila."
           },
           {
             "id": "q-a1_node_3-4-5",
@@ -2762,10 +2776,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_3-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El libro está sobre la mesa y el bolígrafo está en el bolso.\"",
             "correctAnswer": "The book is on the table and the pen is in the bag.",
-            "explanation": "Práctica de producción escrita para 5. Preposiciones de Lugar: In, On, Under, Next to.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The book is on the table and the pen is in the bag.\"",
+            "cefrLevel": "A1",
+            "contextText": "El libro está sobre la mesa y el bolígrafo está en el bolso."
           },
           {
             "id": "q-a1_node_3-5-5",
@@ -2938,10 +2953,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Ella se despierta temprano y toma café caliente.\"",
             "correctAnswer": "She wakes up early and drinks hot coffee.",
-            "explanation": "Práctica de producción escrita para 1. Rutinas Diarias & 3ra Persona (-s / -es).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"She wakes up early and drinks hot coffee.\"",
+            "cefrLevel": "A1",
+            "contextText": "Ella se despierta temprano y toma café caliente."
           },
           {
             "id": "q-a1_node_4-1-5",
@@ -3096,10 +3112,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él no come carne porque es vegetariano.\"",
             "correctAnswer": "He doesn't eat meat because he is vegetarian.",
-            "explanation": "Práctica de producción escrita para 2. Negación: Don't vs Doesn't.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"He doesn't eat meat because he is vegetarian.\"",
+            "cefrLevel": "A1",
+            "contextText": "Él no come carne porque es vegetariano."
           },
           {
             "id": "q-a1_node_4-2-5",
@@ -3254,10 +3271,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"¿Vives en Colombia y él trabaja aquí?\"",
             "correctAnswer": "Do you live in Colombia and does he work here?",
-            "explanation": "Práctica de producción escrita para 3. Preguntas con Do y Does.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Do you live in Colombia and does he work here?\"",
+            "cefrLevel": "A1",
+            "contextText": "¿Vives en Colombia y él trabaja aquí?"
           },
           {
             "id": "q-a1_node_4-3-5",
@@ -3412,10 +3430,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Usualmente bebo agua y nunca fumo.\"",
             "correctAnswer": "I usually drink water and I never smoke.",
-            "explanation": "Práctica de producción escrita para 4. Adverbios de Frecuencia (Always, Usually, Never).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I usually drink water and I never smoke.\"",
+            "cefrLevel": "A1",
+            "contextText": "Usualmente bebo agua y nunca fumo."
           },
           {
             "id": "q-a1_node_4-4-5",
@@ -3570,10 +3589,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_4-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Vamos al gimnasio los lunes por la tarde.\"",
             "correctAnswer": "We go to the gym on Mondays in the afternoon.",
-            "explanation": "Práctica de producción escrita para 5. Expresiones Temporales: In the morning, On Mondays.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"We go to the gym on Mondays in the afternoon.\"",
+            "cefrLevel": "A1",
+            "contextText": "Vamos al gimnasio los lunes por la tarde."
           },
           {
             "id": "q-a1_node_4-5-5",
@@ -3746,10 +3766,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"La esposa de mi hermano es muy amable e inteligente.\"",
             "correctAnswer": "My brother's wife is very friendly and smart.",
-            "explanation": "Práctica de producción escrita para 1. Miembros de la Familia & Posesivo ('s).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"My brother's wife is very friendly and smart.\"",
+            "cefrLevel": "A1",
+            "contextText": "La esposa de mi hermano es muy amable e inteligente."
           },
           {
             "id": "q-a1_node_5-1-5",
@@ -3904,10 +3925,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El refrigerador y la estufa están en la cocina.\"",
             "correctAnswer": "The refrigerator and the stove are in the kitchen.",
-            "explanation": "Práctica de producción escrita para 2. Partes de la Casa & Muebles.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The refrigerator and the stove are in the kitchen.\"",
+            "cefrLevel": "A1",
+            "contextText": "El refrigerador y la estufa están en la cocina."
           },
           {
             "id": "q-a1_node_5-2-5",
@@ -4062,10 +4084,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Hay una computadora y hay dos sillas en la habitación.\"",
             "correctAnswer": "There is a computer and there are two chairs in the room.",
-            "explanation": "Práctica de producción escrita para 3. Existencia: There is & There are.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"There is a computer and there are two chairs in the room.\"",
+            "cefrLevel": "A1",
+            "contextText": "Hay una computadora y hay dos sillas en la habitación."
           },
           {
             "id": "q-a1_node_5-3-5",
@@ -4220,10 +4243,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él es un hombre trabajador y un padre bondadoso.\"",
             "correctAnswer": "He is a hardworking man and a kind father.",
-            "explanation": "Práctica de producción escrita para 4. Adjetivos de Personalidad & Físico.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"He is a hardworking man and a kind father.\"",
+            "cefrLevel": "A1",
+            "contextText": "Él es un hombre trabajador y un padre bondadoso."
           },
           {
             "id": "q-a1_node_5-4-5",
@@ -4378,10 +4402,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_5-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Tengo dos hermanos y él tiene una hermana.\"",
             "correctAnswer": "I've got two brothers and he has got one sister.",
-            "explanation": "Práctica de producción escrita para 5. Verbo Have Got / Has Got (Posesión).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I've got two brothers and he has got one sister.\"",
+            "cefrLevel": "A1",
+            "contextText": "Tengo dos hermanos y él tiene una hermana."
           },
           {
             "id": "q-a1_node_5-5-5",
@@ -4555,10 +4580,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Dónde estudias inglés todas las tardes?\"",
+            "prompt": "Traduce y construye en inglés: \"¿Dónde estudias inglés todas las tardes?\"",
             "correctAnswer": "Where do you study English every afternoon?",
             "explanation": "Respuesta correcta: \"Where do you study English every afternoon?\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "¿Dónde estudias inglés todas las tardes?"
           },
           {
             "id": "q-a1_node_6-1-5",
@@ -4716,7 +4742,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Mi hermana es médica en el hospital central.\"",
             "correctAnswer": "My sister is a doctor at the central hospital.",
             "explanation": "Respuesta correcta: \"My sister is a doctor at the central hospital.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Mi hermana es médica en el hospital central."
           },
           {
             "id": "q-a1_node_6-2-5",
@@ -4871,10 +4898,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Siempre bebo café y leo las noticias.\"",
+            "prompt": "Traduce y construye en inglés: \"Siempre tomo café y leo las noticias.\"",
             "correctAnswer": "I always drink coffee and read the news.",
             "explanation": "Respuesta correcta: \"I always drink coffee and read the news.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Siempre tomo café y leo las noticias."
           },
           {
             "id": "q-a1_node_6-3-5",
@@ -5032,7 +5060,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Necesito estudiar gramática cada mañana.\"",
             "correctAnswer": "I need to study grammar every morning.",
             "explanation": "Respuesta correcta: \"I need to study grammar every morning.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Necesito estudiar gramática cada mañana."
           },
           {
             "id": "q-a1_node_6-4-5",
@@ -5190,7 +5219,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Trabajo en una oficina y empiezo a las nueve.\"",
             "correctAnswer": "I work in an office and I start at nine.",
             "explanation": "Respuesta correcta: \"I work in an office and I start at nine.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Trabajo en una oficina y empiezo a las nueve."
           },
           {
             "id": "q-a1_node_6-5-5",
@@ -5363,10 +5393,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Hoy es mi cumpleaños número veinticinco.\"",
             "correctAnswer": "Today is my twenty-fifth birthday.",
-            "explanation": "Práctica de producción escrita para 1. Números Cardinales & Ordinales.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Today is my twenty-fifth birthday.\"",
+            "cefrLevel": "A1",
+            "contextText": "Hoy es mi cumpleaños número veinticinco."
           },
           {
             "id": "q-a1_node_7-1-5",
@@ -5521,10 +5552,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El tren llega a las nueve menos cuarto de la mañana.\"",
             "correctAnswer": "The train arrives at quarter to nine in the morning.",
-            "explanation": "Práctica de producción escrita para 2. Decir la Hora: O'clock, Past & To.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The train arrives at quarter to nine in the morning.\"",
+            "cefrLevel": "A1",
+            "contextText": "El tren llega a las nueve menos cuarto de la mañana."
           },
           {
             "id": "q-a1_node_7-2-5",
@@ -5679,10 +5711,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Esta chaqueta cuesta cuarenta y cinco dólares con cincuenta centavos.\"",
             "correctAnswer": "This jacket costs forty-five dollars and fifty cents.",
-            "explanation": "Práctica de producción escrita para 3. Precios & Compras en Tiendas.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"This jacket costs forty-five dollars and fifty cents.\"",
+            "cefrLevel": "A1",
+            "contextText": "Esta chaqueta cuesta cuarenta y cinco dólares con cincuenta centavos."
           },
           {
             "id": "q-a1_node_7-3-5",
@@ -5837,10 +5870,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Vamos a la playa en verano los fines de semana.\"",
             "correctAnswer": "We go to the beach in summer on weekends.",
-            "explanation": "Práctica de producción escrita para 4. Días de la Semana, Meses & Estaciones.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"We go to the beach in summer on weekends.\"",
+            "cefrLevel": "A1",
+            "contextText": "Vamos a la playa en verano los fines de semana."
           },
           {
             "id": "q-a1_node_7-4-5",
@@ -5995,10 +6029,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_7-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él lleva puesta una camisa azul y pantalones negros hoy.\"",
             "correctAnswer": "He is wearing a blue shirt and black pants today.",
-            "explanation": "Práctica de producción escrita para 5. Ropa, Tallas & Colores.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"He is wearing a blue shirt and black pants today.\"",
+            "cefrLevel": "A1",
+            "contextText": "Él lleva puesta una camisa azul y pantalones negros hoy."
           },
           {
             "id": "q-a1_node_7-5-5",
@@ -6175,7 +6210,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Hay una taza de café sobre la mesa.\"",
             "correctAnswer": "There is a coffee mug on the table.",
             "explanation": "Respuesta correcta: \"There is a coffee mug on the table.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Hay una taza de café sobre la mesa."
           },
           {
             "id": "q-a1_node_8-1-5",
@@ -6333,7 +6369,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"¿Cuánta agua bebes todos los días?\"",
             "correctAnswer": "How much water do you drink every day?",
             "explanation": "Respuesta correcta: \"How much water do you drink every day?\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "¿Cuánta agua bebes todos los días?"
           },
           {
             "id": "q-a1_node_8-2-5",
@@ -6491,7 +6528,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Hay algo de café en la cocina.\"",
             "correctAnswer": "There is some coffee in the kitchen.",
             "explanation": "Respuesta correcta: \"There is some coffee in the kitchen.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Hay algo de café en la cocina."
           },
           {
             "id": "q-a1_node_8-3-5",
@@ -6646,10 +6684,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_8-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Por favor escúchame atentamente.\"",
+            "prompt": "Traduce y construye en inglés: \"Por favor escúchame con atención.\"",
             "correctAnswer": "Please listen to me carefully.",
             "explanation": "Respuesta correcta: \"Please listen to me carefully.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Por favor escúchame con atención."
           },
           {
             "id": "q-a1_node_8-4-5",
@@ -6807,7 +6846,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Hay algunas manzanas frescas en la canasta.\"",
             "correctAnswer": "There are some fresh apples in the basket.",
             "explanation": "Respuesta correcta: \"There are some fresh apples in the basket.\"",
-            "cefrLevel": "A1"
+            "cefrLevel": "A1",
+            "contextText": "Hay algunas manzanas frescas en la canasta."
           },
           {
             "id": "q-a1_node_8-5-5",
@@ -6848,7 +6888,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-1-1",
+            "id": "exp-a1_node_9-1-1",
             "sublessonId": "sub-a1_node_9-1",
             "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
             "slideOrder": 1,
@@ -6875,7 +6915,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-1-2",
+            "id": "exp-a1_node_9-1-2",
             "sublessonId": "sub-a1_node_9-1",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
@@ -6911,7 +6951,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-1-3",
+            "id": "exp-a1_node_9-1-3",
             "sublessonId": "sub-a1_node_9-1",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
@@ -6932,7 +6972,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-1-1",
+            "id": "q-a1_node_9-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "En un diccionario en inglés, la palabra \"My\" aparece como /maɪ/. ¿A qué sonido equivale?",
             "options": [
@@ -6946,7 +6986,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-2",
+            "id": "q-a1_node_9-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "The phonetic symbol /eɪ/ in the word \"day\" /deɪ/ sounds like the Spanish letters _____.",
             "options": [
@@ -6959,7 +6999,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-3",
+            "id": "q-a1_node_9-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
@@ -6978,15 +7018,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-4",
+            "id": "q-a1_node_9-1-4",
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"Mi nombre es Carlos y sé cómo hablar inglés.\"",
             "correctAnswer": "My name is Carlos and I know how to speak English.",
-            "explanation": "Traducción correcta: \"My name is Carlos and I know how to speak English.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"My name is Carlos and I know how to speak English.\"",
+            "cefrLevel": "A1",
+            "contextText": "Mi nombre es Carlos y sé cómo hablar inglés."
           },
           {
-            "id": "q-a1_node_8-1-5",
+            "id": "q-a1_node_9-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"Ahora sé cómo leer símbolos fonéticos.\"",
             "correctAnswer": "Now I know how to read phonetic symbols.",
@@ -7006,7 +7047,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-2-1",
+            "id": "exp-a1_node_9-2-1",
             "sublessonId": "sub-a1_node_9-2",
             "title": "2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship)",
             "slideOrder": 1,
@@ -7033,7 +7074,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-2-2",
+            "id": "exp-a1_node_9-2-2",
             "sublessonId": "sub-a1_node_9-2",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
@@ -7069,7 +7110,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-2-3",
+            "id": "exp-a1_node_9-2-3",
             "sublessonId": "sub-a1_node_9-2",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
@@ -7090,7 +7131,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-2-1",
+            "id": "q-a1_node_9-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "¿Qué significan los dos puntos (ː) en el símbolo fonético /iː/?",
             "options": [
@@ -7104,7 +7145,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-2",
+            "id": "q-a1_node_9-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "The word \"ship\" (barco) is transcribed as /ʃɪp/ with a _____ vowel.",
             "options": [
@@ -7117,7 +7158,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-3",
+            "id": "q-a1_node_9-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
@@ -7136,15 +7177,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-4",
+            "id": "q-a1_node_9-2-4",
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"La oveja está en la granja y el barco está en el mar.\"",
             "correctAnswer": "The sheep is on the farm and the ship is in the sea.",
-            "explanation": "Traducción correcta: \"The sheep is on the farm and the ship is in the sea.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The sheep is on the farm and the ship is in the sea.\"",
+            "cefrLevel": "A1",
+            "contextText": "La oveja está en la granja y el barco está en el mar."
           },
           {
-            "id": "q-a1_node_8-2-5",
+            "id": "q-a1_node_9-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"Por favor siéntate en este asiento a mi lado.\"",
             "correctAnswer": "Please sit in this seat next to me.",
@@ -7164,7 +7206,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-3-1",
+            "id": "exp-a1_node_9-3-1",
             "sublessonId": "sub-a1_node_9-3",
             "title": "3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés)",
             "slideOrder": 1,
@@ -7191,7 +7233,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-3-2",
+            "id": "exp-a1_node_9-3-2",
             "sublessonId": "sub-a1_node_9-3",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
@@ -7227,7 +7269,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-3-3",
+            "id": "exp-a1_node_9-3-3",
             "sublessonId": "sub-a1_node_9-3",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
@@ -7248,7 +7290,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-3-1",
+            "id": "q-a1_node_9-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "¿Cómo se pronuncia el símbolo fonético Schwa (/ə/) en palabras como \"about\" /əˈbaʊt/?",
             "options": [
@@ -7262,7 +7304,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-2",
+            "id": "q-a1_node_9-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "In the word \"banana\" /bəˈnæn.ə/, the first and last vowels are the _____ sound.",
             "options": [
@@ -7275,7 +7317,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-3",
+            "id": "q-a1_node_9-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
@@ -7294,15 +7336,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-4",
+            "id": "q-a1_node_9-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"El profesor está hablando sobre una nueva receta de banano.\"",
+            "prompt": "Traduce y construye en inglés: \"El profesor está hablando sobre una nueva receta de plátano.\"",
             "correctAnswer": "The teacher is talking about a new banana recipe.",
-            "explanation": "Traducción correcta: \"The teacher is talking about a new banana recipe.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"The teacher is talking about a new banana recipe.\"",
+            "cefrLevel": "A1",
+            "contextText": "El profesor está hablando sobre una nueva receta de plátano."
           },
           {
-            "id": "q-a1_node_8-3-5",
+            "id": "q-a1_node_9-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"Tengo un lápiz y un libro sobre Colombia.\"",
             "correctAnswer": "I have a pencil and a book about Colombia.",
@@ -7322,7 +7365,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-4-1",
+            "id": "exp-a1_node_9-4-1",
             "sublessonId": "sub-a1_node_9-4",
             "title": "4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/)",
             "slideOrder": 1,
@@ -7349,7 +7392,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-4-2",
+            "id": "exp-a1_node_9-4-2",
             "sublessonId": "sub-a1_node_9-4",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
@@ -7385,7 +7428,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-4-3",
+            "id": "exp-a1_node_9-4-3",
             "sublessonId": "sub-a1_node_9-4",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
@@ -7406,7 +7449,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-4-1",
+            "id": "q-a1_node_9-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "¿Qué símbolo fonético representa el sonido inicial de la palabra \"Thank you\"?",
             "options": [
@@ -7420,7 +7463,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-2",
+            "id": "q-a1_node_9-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "The phonetic symbol /ʃ/ in \"she\" /ʃiː/ sounds like _____.",
             "options": [
@@ -7433,7 +7476,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-3",
+            "id": "q-a1_node_9-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
@@ -7452,15 +7495,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-4",
+            "id": "q-a1_node_9-4-4",
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"Ella piensa que esta silla es muy cómoda.\"",
             "correctAnswer": "She thinks this chair is very comfortable.",
-            "explanation": "Traducción correcta: \"She thinks this chair is very comfortable.\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"She thinks this chair is very comfortable.\"",
+            "cefrLevel": "A1",
+            "contextText": "Ella piensa que esta silla es muy cómoda."
           },
           {
-            "id": "q-a1_node_8-4-5",
+            "id": "q-a1_node_9-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"Gracias por este delicioso pescado fresco.\"",
             "correctAnswer": "Thank you for this delicious fresh fish.",
@@ -7480,7 +7524,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-5-1",
+            "id": "exp-a1_node_9-5-1",
             "sublessonId": "sub-a1_node_9-5",
             "title": "5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ)",
             "slideOrder": 1,
@@ -7507,7 +7551,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-5-2",
+            "id": "exp-a1_node_9-5-2",
             "sublessonId": "sub-a1_node_9-5",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
@@ -7543,7 +7587,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-5-3",
+            "id": "exp-a1_node_9-5-3",
             "sublessonId": "sub-a1_node_9-5",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
@@ -7564,7 +7608,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-5-1",
+            "id": "q-a1_node_9-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "En la transcripción /ˈtiː.tʃər/ (teacher), ¿qué indica el símbolo (ˈ) al inicio?",
             "options": [
@@ -7578,7 +7622,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-2",
+            "id": "q-a1_node_9-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "How is the sentence \"Where do you live?\" written in phonetic symbols?",
             "options": [
@@ -7591,7 +7635,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-3",
+            "id": "q-a1_node_9-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su correspondencia:",
             "options": {
@@ -7610,15 +7654,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-4",
+            "id": "q-a1_node_9-5-4",
             "type": "SENTENCE_WRITING",
             "prompt": "Traduce y construye en inglés: \"¿Dónde vives y cuál es tu nombre?\"",
             "correctAnswer": "Where do you live and what is your name?",
-            "explanation": "Traducción correcta: \"Where do you live and what is your name?\"",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"Where do you live and what is your name?\"",
+            "cefrLevel": "A1",
+            "contextText": "¿Dónde vives y cuál es tu nombre?"
           },
           {
-            "id": "q-a1_node_8-5-5",
+            "id": "q-a1_node_9-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés: \"Hola, ¿cómo estás hoy, mi amigo?\"",
             "correctAnswer": "Hello, how are you today, my friend?",
@@ -7656,7 +7701,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-1-1",
+            "id": "exp-a1_node_10-1-1",
             "sublessonId": "sub-a1_node_10-1",
             "title": "1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 1,
@@ -7693,7 +7738,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-1-2",
+            "id": "exp-a1_node_10-1-2",
             "sublessonId": "sub-a1_node_10-1",
             "title": "Refuerzo de Concepto: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 2,
@@ -7719,7 +7764,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-1-3",
+            "id": "exp-a1_node_10-1-3",
             "sublessonId": "sub-a1_node_10-1",
             "title": "Resumen: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 3,
@@ -7740,7 +7785,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-1-1",
+            "id": "q-a1_node_10-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Where can you see this notice: \"PLEASE SILENCE YOUR PHONES DURING THE MOVIE\"?",
             "options": [
@@ -7754,7 +7799,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-2",
+            "id": "q-a1_node_10-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Notice: \"NO SWIMMING - DANGEROUS WAVES\". Where is this notice?",
             "options": [
@@ -7767,7 +7812,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-3",
+            "id": "q-a1_node_10-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -7786,15 +7831,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-1-4",
+            "id": "q-a1_node_10-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Puedes ver este aviso en el mostrador de facturación del aeropuerto.\"",
             "correctAnswer": "You can see this sign at the airport check-in desk.",
-            "explanation": "Práctica de producción escrita para 1. Avisos Públicos Saber Pro A1 (Parte 1).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"You can see this sign at the airport check-in desk.\"",
+            "cefrLevel": "A1",
+            "contextText": "Puedes ver este aviso en el mostrador de facturación del aeropuerto."
           },
           {
-            "id": "q-a1_node_8-1-5",
+            "id": "q-a1_node_10-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Passengers must show their tickets before boarding the train.",
@@ -7814,7 +7860,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-2-1",
+            "id": "exp-a1_node_10-2-1",
             "sublessonId": "sub-a1_node_10-2",
             "title": "2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 1,
@@ -7851,7 +7897,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-2-2",
+            "id": "exp-a1_node_10-2-2",
             "sublessonId": "sub-a1_node_10-2",
             "title": "Refuerzo de Concepto: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 2,
@@ -7877,7 +7923,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-2-3",
+            "id": "exp-a1_node_10-2-3",
             "sublessonId": "sub-a1_node_10-2",
             "title": "Resumen: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 3,
@@ -7898,7 +7944,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-2-1",
+            "id": "q-a1_node_10-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Speaker A: \"Would you like a cup of Colombian coffee?\" - Speaker B: _____",
             "options": [
@@ -7912,7 +7958,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-2",
+            "id": "q-a1_node_10-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Speaker A: \"How was your English exam yesterday?\" - Speaker B: \"It was _____!\"",
             "options": [
@@ -7925,7 +7971,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-3",
+            "id": "q-a1_node_10-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -7944,15 +7990,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-2-4",
+            "id": "q-a1_node_10-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Disfruto estudiar inglés con FlashLens todos los días.\"",
             "correctAnswer": "I enjoy studying English with FlashLens every day.",
-            "explanation": "Práctica de producción escrita para 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I enjoy studying English with FlashLens every day.\"",
+            "cefrLevel": "A1",
+            "contextText": "Disfruto estudiar inglés con FlashLens todos los días."
           },
           {
-            "id": "q-a1_node_8-2-5",
+            "id": "q-a1_node_10-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Thank you for your advice, it was very helpful.",
@@ -7972,7 +8019,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-3-1",
+            "id": "exp-a1_node_10-3-1",
             "sublessonId": "sub-a1_node_10-3",
             "title": "3. Comprensión Lectora Literal A1",
             "slideOrder": 1,
@@ -8009,7 +8056,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-3-2",
+            "id": "exp-a1_node_10-3-2",
             "sublessonId": "sub-a1_node_10-3",
             "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A1",
             "slideOrder": 2,
@@ -8035,7 +8082,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-3-3",
+            "id": "exp-a1_node_10-3-3",
             "sublessonId": "sub-a1_node_10-3",
             "title": "Resumen: 3. Comprensión Lectora Literal A1",
             "slideOrder": 3,
@@ -8056,7 +8103,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-3-1",
+            "id": "q-a1_node_10-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Text: \"David is 28 years old. He is a graphic designer in Cali. He works from Monday to Friday.\" - What is David's profession?",
             "options": [
@@ -8070,7 +8117,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-2",
+            "id": "q-a1_node_10-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "According to the text, David lives and works in _____.",
             "options": [
@@ -8083,7 +8130,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-3",
+            "id": "q-a1_node_10-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8102,15 +8149,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-3-4",
+            "id": "q-a1_node_10-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"David vive en Cali y trabaja como diseñador.\"",
             "correctAnswer": "David lives in Cali and works as a designer.",
-            "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A1.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"David lives in Cali and works as a designer.\"",
+            "cefrLevel": "A1",
+            "contextText": "David vive en Cali y trabaja como diseñador."
           },
           {
-            "id": "q-a1_node_8-3-5",
+            "id": "q-a1_node_10-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He enjoys his job and speaks English with his international clients.",
@@ -8130,7 +8178,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-4-1",
+            "id": "exp-a1_node_10-4-1",
             "sublessonId": "sub-a1_node_10-4",
             "title": "4. Vocabulario Integrado A1",
             "slideOrder": 1,
@@ -8167,7 +8215,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-4-2",
+            "id": "exp-a1_node_10-4-2",
             "sublessonId": "sub-a1_node_10-4",
             "title": "Refuerzo de Concepto: 4. Vocabulario Integrado A1",
             "slideOrder": 2,
@@ -8193,7 +8241,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-4-3",
+            "id": "exp-a1_node_10-4-3",
             "sublessonId": "sub-a1_node_10-4",
             "title": "Resumen: 4. Vocabulario Integrado A1",
             "slideOrder": 3,
@@ -8214,7 +8262,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-4-1",
+            "id": "q-a1_node_10-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which group contains only professions?",
             "options": [
@@ -8228,7 +8276,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-2",
+            "id": "q-a1_node_10-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "My sister's son is my _____.",
             "options": [
@@ -8241,7 +8289,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-3",
+            "id": "q-a1_node_10-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8260,15 +8308,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-4-4",
+            "id": "q-a1_node_10-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Mi familia cena junta todas las noches en casa.\"",
             "correctAnswer": "My family has dinner together every evening at home.",
-            "explanation": "Práctica de producción escrita para 4. Vocabulario Integrado A1.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"My family has dinner together every evening at home.\"",
+            "cefrLevel": "A1",
+            "contextText": "Mi familia cena junta todas las noches en casa."
           },
           {
-            "id": "q-a1_node_8-4-5",
+            "id": "q-a1_node_10-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I am proud of my progress in English level A1.",
@@ -8288,7 +8337,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a1_node_8-5-1",
+            "id": "exp-a1_node_10-5-1",
             "sublessonId": "sub-a1_node_10-5",
             "title": "5. Evaluación de Consolidación A1",
             "slideOrder": 1,
@@ -8325,7 +8374,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a1_node_8-5-2",
+            "id": "exp-a1_node_10-5-2",
             "sublessonId": "sub-a1_node_10-5",
             "title": "Refuerzo de Concepto: 5. Evaluación de Consolidación A1",
             "slideOrder": 2,
@@ -8351,7 +8400,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a1_node_8-5-3",
+            "id": "exp-a1_node_10-5-3",
             "sublessonId": "sub-a1_node_10-5",
             "title": "Resumen: 5. Evaluación de Consolidación A1",
             "slideOrder": 3,
@@ -8372,7 +8421,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a1_node_8-5-1",
+            "id": "q-a1_node_10-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which sentence demonstrates correct A1 grammar and word order?",
             "options": [
@@ -8386,7 +8435,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-2",
+            "id": "q-a1_node_10-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Congratulations! You are now ready to advance to CEFR level _____.",
             "options": [
@@ -8399,7 +8448,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-3",
+            "id": "q-a1_node_10-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8418,15 +8467,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A1"
           },
           {
-            "id": "q-a1_node_8-5-4",
+            "id": "q-a1_node_10-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"He completado con éxito todos los módulos de A1 en FlashLens.\"",
             "correctAnswer": "I have successfully completed all A1 modules in FlashLens.",
-            "explanation": "Práctica de producción escrita para 5. Evaluación de Consolidación A1.",
-            "cefrLevel": "A1"
+            "explanation": "Respuesta correcta: \"I have successfully completed all A1 modules in FlashLens.\"",
+            "cefrLevel": "A1",
+            "contextText": "He completado con éxito todos los módulos de A1 en FlashLens."
           },
           {
-            "id": "q-a1_node_8-5-5",
+            "id": "q-a1_node_10-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I am ready to conquer level A2 with confidence and fluency.",
@@ -8464,7 +8514,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_9-1-1",
+            "id": "exp-a2_node_11-1-1",
             "sublessonId": "sub-a2_node_11-1",
             "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 1,
@@ -8501,7 +8551,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_9-1-2",
+            "id": "exp-a2_node_11-1-2",
             "sublessonId": "sub-a2_node_11-1",
             "title": "Refuerzo de Concepto: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 2,
@@ -8527,7 +8577,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_9-1-3",
+            "id": "exp-a2_node_11-1-3",
             "sublessonId": "sub-a2_node_11-1",
             "title": "Resumen: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 3,
@@ -8548,7 +8598,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_9-1-1",
+            "id": "q-a2_node_11-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "In which verb is the \"-ed\" ending pronounced as an extra syllable /ɪd/?",
             "options": [
@@ -8562,7 +8612,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-1-2",
+            "id": "q-a2_node_11-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Yesterday evening, Carlos _____ a documentary on TV.",
             "options": [
@@ -8575,7 +8625,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-1-3",
+            "id": "q-a2_node_11-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8594,15 +8644,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-1-4",
+            "id": "q-a2_node_11-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Ellos vivieron en Londres durante tres años.\"",
             "correctAnswer": "They lived in London for three years.",
-            "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"They lived in London for three years.\"",
+            "cefrLevel": "A2",
+            "contextText": "Ellos vivieron en Londres durante tres años."
           },
           {
-            "id": "q-a2_node_9-1-5",
+            "id": "q-a2_node_11-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I visited my grandparents and we talked for hours.",
@@ -8622,7 +8673,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_9-2-1",
+            "id": "exp-a2_node_11-2-1",
             "sublessonId": "sub-a2_node_11-2",
             "title": "2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 1,
@@ -8659,7 +8710,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_9-2-2",
+            "id": "exp-a2_node_11-2-2",
             "sublessonId": "sub-a2_node_11-2",
             "title": "Refuerzo de Concepto: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 2,
@@ -8685,7 +8736,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_9-2-3",
+            "id": "exp-a2_node_11-2-3",
             "sublessonId": "sub-a2_node_11-2",
             "title": "Resumen: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 3,
@@ -8706,7 +8757,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_9-2-1",
+            "id": "q-a2_node_11-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "What is the correct past simple of the verb \"go\"?",
             "options": [
@@ -8720,7 +8771,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-2-2",
+            "id": "q-a2_node_11-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Last night, we _____ a delicious pizza at the Italian restaurant.",
             "options": [
@@ -8733,7 +8784,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-2-3",
+            "id": "q-a2_node_11-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8752,15 +8803,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-2-4",
+            "id": "q-a2_node_11-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Ayer compré un portátil nuevo y vi una película.\"",
             "correctAnswer": "I bought a new laptop and saw a movie yesterday.",
-            "explanation": "Práctica de producción escrita para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I bought a new laptop and saw a movie yesterday.\"",
+            "cefrLevel": "A2",
+            "contextText": "Ayer compré un portátil nuevo y vi una película."
           },
           {
-            "id": "q-a2_node_9-2-5",
+            "id": "q-a2_node_11-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She went to Paris last summer and had a wonderful time.",
@@ -8780,7 +8832,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_9-3-1",
+            "id": "exp-a2_node_11-3-1",
             "sublessonId": "sub-a2_node_11-3",
             "title": "3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 1,
@@ -8817,7 +8869,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_9-3-2",
+            "id": "exp-a2_node_11-3-2",
             "sublessonId": "sub-a2_node_11-3",
             "title": "Refuerzo de Concepto: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 2,
@@ -8843,7 +8895,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_9-3-3",
+            "id": "exp-a2_node_11-3-3",
             "sublessonId": "sub-a2_node_11-3",
             "title": "Resumen: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 3,
@@ -8864,7 +8916,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_9-3-1",
+            "id": "q-a2_node_11-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which sentence is grammatically correct for \"Ella no fue a la fiesta\"?",
             "options": [
@@ -8878,7 +8930,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-3-2",
+            "id": "q-a2_node_11-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "I _____ sleep well last night because of the noise.",
             "options": [
@@ -8891,7 +8943,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-3-3",
+            "id": "q-a2_node_11-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -8910,15 +8962,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-3-4",
+            "id": "q-a2_node_11-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"No vimos la película porque estábamos ocupados.\"",
             "correctAnswer": "We didn't watch the movie because we were busy.",
-            "explanation": "Práctica de producción escrita para 3. Negación en Pasado: Auxiliar Didn't.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"We didn't watch the movie because we were busy.\"",
+            "cefrLevel": "A2",
+            "contextText": "No vimos la película porque estábamos ocupados."
           },
           {
-            "id": "q-a2_node_9-3-5",
+            "id": "q-a2_node_11-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He didn't understand the question during the exam.",
@@ -8938,7 +8991,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_9-4-1",
+            "id": "exp-a2_node_11-4-1",
             "sublessonId": "sub-a2_node_11-4",
             "title": "4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 1,
@@ -8975,7 +9028,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_9-4-2",
+            "id": "exp-a2_node_11-4-2",
             "sublessonId": "sub-a2_node_11-4",
             "title": "Refuerzo de Concepto: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 2,
@@ -9001,7 +9054,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_9-4-3",
+            "id": "exp-a2_node_11-4-3",
             "sublessonId": "sub-a2_node_11-4",
             "title": "Resumen: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 3,
@@ -9022,7 +9075,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_9-4-1",
+            "id": "q-a2_node_11-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Complete the question: \"_____ you finish the report yesterday?\"",
             "options": [
@@ -9036,7 +9089,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-4-2",
+            "id": "q-a2_node_11-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "They traveled to Miami two months _____.",
             "options": [
@@ -9049,7 +9102,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-4-3",
+            "id": "q-a2_node_11-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -9068,15 +9121,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-4-4",
+            "id": "q-a2_node_11-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"¿Viste a tus amigos el fin de semana pasado?\"",
             "correctAnswer": "Did you see your friends last weekend?",
-            "explanation": "Práctica de producción escrita para 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Did you see your friends last weekend?\"",
+            "cefrLevel": "A2",
+            "contextText": "¿Viste a tus amigos el fin de semana pasado?"
           },
           {
-            "id": "q-a2_node_9-4-5",
+            "id": "q-a2_node_11-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Where did you go on your last vacation?",
@@ -9096,7 +9150,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_9-5-1",
+            "id": "exp-a2_node_11-5-1",
             "sublessonId": "sub-a2_node_11-5",
             "title": "5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 1,
@@ -9133,7 +9187,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_9-5-2",
+            "id": "exp-a2_node_11-5-2",
             "sublessonId": "sub-a2_node_11-5",
             "title": "Refuerzo de Concepto: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 2,
@@ -9159,7 +9213,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_9-5-3",
+            "id": "exp-a2_node_11-5-3",
             "sublessonId": "sub-a2_node_11-5",
             "title": "Resumen: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 3,
@@ -9180,7 +9234,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_9-5-1",
+            "id": "q-a2_node_11-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "What does \"She used to play tennis\" mean?",
             "options": [
@@ -9194,7 +9248,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-5-2",
+            "id": "q-a2_node_11-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "When I was a child, I _____ to live near the beach.",
             "options": [
@@ -9207,7 +9261,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-5-3",
+            "id": "q-a2_node_11-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -9226,15 +9280,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_9-5-4",
+            "id": "q-a2_node_11-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él solía estudiar inglés todos los días cuando estaba en la escuela.\"",
             "correctAnswer": "He used to study English every day when he was at school.",
-            "explanation": "Práctica de producción escrita para 5. Hábitos Pasados con \"Used To\".",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"He used to study English every day when he was at school.\"",
+            "cefrLevel": "A2",
+            "contextText": "Él solía estudiar inglés todos los días cuando estaba en la escuela."
           },
           {
-            "id": "q-a2_node_9-5-5",
+            "id": "q-a2_node_11-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We used to go to the countryside on summer holidays.",
@@ -9404,10 +9459,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Estaba estudiando inglés toda la tarde ayer.\"",
+            "prompt": "Traduce y construye en inglés: \"Ayer estuve estudiando inglés toda la tarde.\"",
             "correctAnswer": "I was studying English all afternoon yesterday.",
             "explanation": "Respuesta correcta: \"I was studying English all afternoon yesterday.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Ayer estuve estudiando inglés toda la tarde."
           },
           {
             "id": "q-a2_node_12-1-5",
@@ -9565,7 +9621,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Estaba caminando a casa cuando vi a mi profesor.\"",
             "correctAnswer": "I was walking home when I saw my teacher.",
             "explanation": "Respuesta correcta: \"I was walking home when I saw my teacher.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Estaba caminando a casa cuando vi a mi profesor."
           },
           {
             "id": "q-a2_node_12-2-5",
@@ -9723,7 +9780,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Me tomó una hora terminar mi tarea.\"",
             "correctAnswer": "It took me one hour to finish my homework.",
             "explanation": "Respuesta correcta: \"It took me one hour to finish my homework.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Me tomó una hora terminar mi tarea."
           },
           {
             "id": "q-a2_node_12-3-5",
@@ -9878,10 +9936,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Primero llegamos, y luego pedimos la cena.\"",
+            "prompt": "Traduce y construye en inglés: \"Primero llegamos y luego pedimos la cena.\"",
             "correctAnswer": "First we arrived, and then we ordered dinner.",
             "explanation": "Respuesta correcta: \"First we arrived, and then we ordered dinner.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Primero llegamos y luego pedimos la cena."
           },
           {
             "id": "q-a2_node_12-4-5",
@@ -10036,10 +10095,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_12-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Mientras estábamos esperando, tomamos café colombiano.\"",
+            "prompt": "Traduce y construye en inglés: \"Mientras esperábamos, tomamos café colombiano.\"",
             "correctAnswer": "While we were waiting, we drank Colombian coffee.",
             "explanation": "Respuesta correcta: \"While we were waiting, we drank Colombian coffee.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Mientras esperábamos, tomamos café colombiano."
           },
           {
             "id": "q-a2_node_12-5-5",
@@ -10080,7 +10140,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_10-1-1",
+            "id": "exp-a2_node_13-1-1",
             "sublessonId": "sub-a2_node_13-1",
             "title": "1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 1,
@@ -10117,7 +10177,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_10-1-2",
+            "id": "exp-a2_node_13-1-2",
             "sublessonId": "sub-a2_node_13-1",
             "title": "Refuerzo de Concepto: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 2,
@@ -10143,7 +10203,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_10-1-3",
+            "id": "exp-a2_node_13-1-3",
             "sublessonId": "sub-a2_node_13-1",
             "title": "Resumen: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 3,
@@ -10164,7 +10224,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_10-1-1",
+            "id": "q-a2_node_13-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Where do you go to borrow books or study quietly?",
             "options": [
@@ -10178,7 +10238,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-1-2",
+            "id": "q-a2_node_13-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "I need to buy medicine at the _____.",
             "options": [
@@ -10191,7 +10251,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-1-3",
+            "id": "q-a2_node_13-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -10210,15 +10270,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-1-4",
+            "id": "q-a2_node_13-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El hospital moderno está cerca de la estación central de autobuses.\"",
             "correctAnswer": "The modern hospital is near the central bus station.",
-            "explanation": "Práctica de producción escrita para 1. Lugares de la Ciudad & Servicios Públicos.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"The modern hospital is near the central bus station.\"",
+            "cefrLevel": "A2",
+            "contextText": "El hospital moderno está cerca de la estación central de autobuses."
           },
           {
-            "id": "q-a2_node_10-1-5",
+            "id": "q-a2_node_13-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "There is a famous art museum in the historic center.",
@@ -10238,7 +10299,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_10-2-1",
+            "id": "exp-a2_node_13-2-1",
             "sublessonId": "sub-a2_node_13-2",
             "title": "2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 1,
@@ -10275,7 +10336,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_10-2-2",
+            "id": "exp-a2_node_13-2-2",
             "sublessonId": "sub-a2_node_13-2",
             "title": "Refuerzo de Concepto: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 2,
@@ -10301,7 +10362,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_10-2-3",
+            "id": "exp-a2_node_13-2-3",
             "sublessonId": "sub-a2_node_13-2",
             "title": "Resumen: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 3,
@@ -10322,7 +10383,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_10-2-1",
+            "id": "q-a2_node_13-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "A tourist asks: \"How do I get to the museum?\". You want to say \"Sigue derecho y gira a la derecha\". What do you say?",
             "options": [
@@ -10336,7 +10397,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-2-2",
+            "id": "q-a2_node_13-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "The pharmacy is on the _____ of 5th Avenue and Main Street.",
             "options": [
@@ -10349,7 +10410,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-2-3",
+            "id": "q-a2_node_13-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -10368,15 +10429,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-2-4",
+            "id": "q-a2_node_13-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Gira a la izquierda en el semáforo y cruza la calle.\"",
             "correctAnswer": "Turn left at the traffic light and cross the street.",
-            "explanation": "Práctica de producción escrita para 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Turn left at the traffic light and cross the street.\"",
+            "cefrLevel": "A2",
+            "contextText": "Gira a la izquierda en el semáforo y cruza la calle."
           },
           {
-            "id": "q-a2_node_10-2-5",
+            "id": "q-a2_node_13-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Excuse me, where is the nearest metro station?",
@@ -10396,7 +10458,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_10-3-1",
+            "id": "exp-a2_node_13-3-1",
             "sublessonId": "sub-a2_node_13-3",
             "title": "3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 1,
@@ -10433,7 +10495,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_10-3-2",
+            "id": "exp-a2_node_13-3-2",
             "sublessonId": "sub-a2_node_13-3",
             "title": "Refuerzo de Concepto: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 2,
@@ -10459,7 +10521,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_10-3-3",
+            "id": "exp-a2_node_13-3-3",
             "sublessonId": "sub-a2_node_13-3",
             "title": "Resumen: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 3,
@@ -10480,7 +10542,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_10-3-1",
+            "id": "q-a2_node_13-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Choose the correct preposition: \"The car drove _____ the dark tunnel.\"",
             "options": [
@@ -10494,7 +10556,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-3-2",
+            "id": "q-a2_node_13-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Walk _____ the street carefully when the traffic light is red.",
             "options": [
@@ -10507,7 +10569,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-3-3",
+            "id": "q-a2_node_13-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -10526,15 +10588,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-3-4",
+            "id": "q-a2_node_13-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Pasa el supermercado y cruza el parque central.\"",
             "correctAnswer": "Walk past the supermarket and go through the central park.",
-            "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Walk past the supermarket and go through the central park.\"",
+            "cefrLevel": "A2",
+            "contextText": "Pasa el supermercado y cruza el parque central."
           },
           {
-            "id": "q-a2_node_10-3-5",
+            "id": "q-a2_node_13-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The pedestrians walked across the bridge over the river.",
@@ -10554,7 +10617,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_10-4-1",
+            "id": "exp-a2_node_13-4-1",
             "sublessonId": "sub-a2_node_13-4",
             "title": "4. Medios de Transporte & Viajes",
             "slideOrder": 1,
@@ -10591,7 +10654,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_10-4-2",
+            "id": "exp-a2_node_13-4-2",
             "sublessonId": "sub-a2_node_13-4",
             "title": "Refuerzo de Concepto: 4. Medios de Transporte & Viajes",
             "slideOrder": 2,
@@ -10617,7 +10680,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_10-4-3",
+            "id": "exp-a2_node_13-4-3",
             "sublessonId": "sub-a2_node_13-4",
             "title": "Resumen: 4. Medios de Transporte & Viajes",
             "slideOrder": 3,
@@ -10638,7 +10701,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_10-4-1",
+            "id": "q-a2_node_13-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "How do you say \"Voy al trabajo a pie (caminando)\" in English?",
             "options": [
@@ -10652,7 +10715,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-4-2",
+            "id": "q-a2_node_13-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "We usually travel to Bogota _____ plane.",
             "options": [
@@ -10665,7 +10728,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-4-3",
+            "id": "q-a2_node_13-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -10684,15 +10747,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-4-4",
+            "id": "q-a2_node_13-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Tomo el metro al trabajo todas las mañanas a las ocho en punto.\"",
             "correctAnswer": "I take the subway to work every morning at eight o'clock.",
-            "explanation": "Práctica de producción escrita para 4. Medios de Transporte & Viajes.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I take the subway to work every morning at eight o'clock.\"",
+            "cefrLevel": "A2",
+            "contextText": "Tomo el metro al trabajo todas las mañanas a las ocho en punto."
           },
           {
-            "id": "q-a2_node_10-4-5",
+            "id": "q-a2_node_13-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Traveling by train is faster and more comfortable than by bus.",
@@ -10712,7 +10776,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_10-5-1",
+            "id": "exp-a2_node_13-5-1",
             "sublessonId": "sub-a2_node_13-5",
             "title": "5. Describir tu Ciudad o Vecindario",
             "slideOrder": 1,
@@ -10749,7 +10813,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_10-5-2",
+            "id": "exp-a2_node_13-5-2",
             "sublessonId": "sub-a2_node_13-5",
             "title": "Refuerzo de Concepto: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 2,
@@ -10775,7 +10839,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_10-5-3",
+            "id": "exp-a2_node_13-5-3",
             "sublessonId": "sub-a2_node_13-5",
             "title": "Resumen: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 3,
@@ -10796,7 +10860,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_10-5-1",
+            "id": "q-a2_node_13-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which adjective describes a city with lots of people and cars everywhere?",
             "options": [
@@ -10810,7 +10874,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-5-2",
+            "id": "q-a2_node_13-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Medellín is a very _____ city with great public transportation.",
             "options": [
@@ -10823,7 +10887,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-5-3",
+            "id": "q-a2_node_13-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -10842,15 +10906,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_10-5-4",
+            "id": "q-a2_node_13-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Mi vecindario tiene parques verdes, calles tranquilas y buenos restaurantes.\"",
             "correctAnswer": "My neighborhood has green parks, quiet streets and good restaurants.",
-            "explanation": "Práctica de producción escrita para 5. Describir tu Ciudad o Vecindario.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"My neighborhood has green parks, quiet streets and good restaurants.\"",
+            "cefrLevel": "A2",
+            "contextText": "Mi vecindario tiene parques verdes, calles tranquilas y buenos restaurantes."
           },
           {
-            "id": "q-a2_node_10-5-5",
+            "id": "q-a2_node_13-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I love living in this city because people are very friendly.",
@@ -10888,7 +10953,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_11-1-1",
+            "id": "exp-a2_node_14-1-1",
             "sublessonId": "sub-a2_node_14-1",
             "title": "1. Comparativos Cortos (-er than)",
             "slideOrder": 1,
@@ -10925,7 +10990,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_11-1-2",
+            "id": "exp-a2_node_14-1-2",
             "sublessonId": "sub-a2_node_14-1",
             "title": "Refuerzo de Concepto: 1. Comparativos Cortos (-er than)",
             "slideOrder": 2,
@@ -10951,7 +11016,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_11-1-3",
+            "id": "exp-a2_node_14-1-3",
             "sublessonId": "sub-a2_node_14-1",
             "title": "Resumen: 1. Comparativos Cortos (-er than)",
             "slideOrder": 3,
@@ -10972,7 +11037,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_11-1-1",
+            "id": "q-a2_node_14-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "What is the correct comparative form of \"fast\"?",
             "options": [
@@ -10986,7 +11051,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-1-2",
+            "id": "q-a2_node_14-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Bogota is _____ than Cali in terms of population.",
             "options": [
@@ -10999,7 +11064,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-1-3",
+            "id": "q-a2_node_14-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -11018,15 +11083,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-1-4",
+            "id": "q-a2_node_14-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Esta computadora es más rápida que mi viejo portátil.\"",
             "correctAnswer": "This computer is faster than my old laptop.",
-            "explanation": "Práctica de producción escrita para 1. Comparativos Cortos (-er than).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"This computer is faster than my old laptop.\"",
+            "cefrLevel": "A2",
+            "contextText": "Esta computadora es más rápida que mi viejo portátil."
           },
           {
-            "id": "q-a2_node_11-1-5",
+            "id": "q-a2_node_14-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Canada is colder than Colombia in winter.",
@@ -11046,7 +11112,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_11-2-1",
+            "id": "exp-a2_node_14-2-1",
             "sublessonId": "sub-a2_node_14-2",
             "title": "2. Comparativos Largos (More ... than)",
             "slideOrder": 1,
@@ -11083,7 +11149,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_11-2-2",
+            "id": "exp-a2_node_14-2-2",
             "sublessonId": "sub-a2_node_14-2",
             "title": "Refuerzo de Concepto: 2. Comparativos Largos (More ... than)",
             "slideOrder": 2,
@@ -11109,7 +11175,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_11-2-3",
+            "id": "exp-a2_node_14-2-3",
             "sublessonId": "sub-a2_node_14-2",
             "title": "Resumen: 2. Comparativos Largos (More ... than)",
             "slideOrder": 3,
@@ -11130,7 +11196,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_11-2-1",
+            "id": "q-a2_node_14-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Choose the correct comparison for \"expensive\":",
             "options": [
@@ -11144,7 +11210,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-2-2",
+            "id": "q-a2_node_14-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Learning English is _____ interesting than playing video games.",
             "options": [
@@ -11157,7 +11223,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-2-3",
+            "id": "q-a2_node_14-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -11176,15 +11242,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-2-4",
+            "id": "q-a2_node_14-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Viajar en avión es más cómodo que en autobús.\"",
             "correctAnswer": "Traveling by plane is more comfortable than by bus.",
-            "explanation": "Práctica de producción escrita para 2. Comparativos Largos (More ... than).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Traveling by plane is more comfortable than by bus.\"",
+            "cefrLevel": "A2",
+            "contextText": "Viajar en avión es más cómodo que en autobús."
           },
           {
-            "id": "q-a2_node_11-2-5",
+            "id": "q-a2_node_14-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "This book is more interesting than the movie.",
@@ -11204,7 +11271,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_11-3-1",
+            "id": "exp-a2_node_14-3-1",
             "sublessonId": "sub-a2_node_14-3",
             "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 1,
@@ -11241,7 +11308,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_11-3-2",
+            "id": "exp-a2_node_14-3-2",
             "sublessonId": "sub-a2_node_14-3",
             "title": "Refuerzo de Concepto: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 2,
@@ -11267,7 +11334,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_11-3-3",
+            "id": "exp-a2_node_14-3-3",
             "sublessonId": "sub-a2_node_14-3",
             "title": "Resumen: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 3,
@@ -11288,7 +11355,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_11-3-1",
+            "id": "q-a2_node_14-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "What is the comparative form of the adjective \"bad\"?",
             "options": [
@@ -11302,7 +11369,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-3-2",
+            "id": "q-a2_node_14-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "This is the _____ pizza I have ever eaten in my life!",
             "options": [
@@ -11315,7 +11382,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-3-3",
+            "id": "q-a2_node_14-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -11334,15 +11401,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-3-4",
+            "id": "q-a2_node_14-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Su inglés es mucho mejor de lo que era el año pasado.\"",
             "correctAnswer": "His English is much better than it was last year.",
-            "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"His English is much better than it was last year.\"",
+            "cefrLevel": "A2",
+            "contextText": "Su inglés es mucho mejor de lo que era el año pasado."
           },
           {
-            "id": "q-a2_node_11-3-5",
+            "id": "q-a2_node_14-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "This coffee is the best in the entire city.",
@@ -11362,7 +11430,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_11-4-1",
+            "id": "exp-a2_node_14-4-1",
             "sublessonId": "sub-a2_node_14-4",
             "title": "4. Superlativos: The -est & The Most",
             "slideOrder": 1,
@@ -11399,7 +11467,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_11-4-2",
+            "id": "exp-a2_node_14-4-2",
             "sublessonId": "sub-a2_node_14-4",
             "title": "Refuerzo de Concepto: 4. Superlativos: The -est & The Most",
             "slideOrder": 2,
@@ -11425,7 +11493,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_11-4-3",
+            "id": "exp-a2_node_14-4-3",
             "sublessonId": "sub-a2_node_14-4",
             "title": "Resumen: 4. Superlativos: The -est & The Most",
             "slideOrder": 3,
@@ -11446,7 +11514,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_11-4-1",
+            "id": "q-a2_node_14-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Mount Everest is _____ mountain in the world.",
             "options": [
@@ -11460,7 +11528,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-4-2",
+            "id": "q-a2_node_14-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "She is the _____ intelligent student in our classroom.",
             "options": [
@@ -11473,7 +11541,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-4-3",
+            "id": "q-a2_node_14-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -11492,15 +11560,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-4-4",
+            "id": "q-a2_node_14-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Este es el examen más importante del semestre.\"",
             "correctAnswer": "This is the most important exam of the semester.",
-            "explanation": "Práctica de producción escrita para 4. Superlativos: The -est & The Most.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"This is the most important exam of the semester.\"",
+            "cefrLevel": "A2",
+            "contextText": "Este es el examen más importante del semestre."
           },
           {
-            "id": "q-a2_node_11-4-5",
+            "id": "q-a2_node_14-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The cheetah is the fastest animal on land.",
@@ -11520,7 +11589,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_11-5-1",
+            "id": "exp-a2_node_14-5-1",
             "sublessonId": "sub-a2_node_14-5",
             "title": "5. Estructura de Igualdad: As ... As",
             "slideOrder": 1,
@@ -11557,7 +11626,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_11-5-2",
+            "id": "exp-a2_node_14-5-2",
             "sublessonId": "sub-a2_node_14-5",
             "title": "Refuerzo de Concepto: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 2,
@@ -11583,7 +11652,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_11-5-3",
+            "id": "exp-a2_node_14-5-3",
             "sublessonId": "sub-a2_node_14-5",
             "title": "Resumen: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 3,
@@ -11604,7 +11673,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_11-5-1",
+            "id": "q-a2_node_14-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "How do you say \"Este carro es tan rápido como ese\" in English?",
             "options": [
@@ -11618,7 +11687,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-5-2",
+            "id": "q-a2_node_14-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "My new phone is not as expensive _____ my computer.",
             "options": [
@@ -11631,7 +11700,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-5-3",
+            "id": "q-a2_node_14-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -11650,15 +11719,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_11-5-4",
+            "id": "q-a2_node_14-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él es tan trabajador como su padre.\"",
             "correctAnswer": "He is as hardworking as his father.",
-            "explanation": "Práctica de producción escrita para 5. Estructura de Igualdad: As ... As.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"He is as hardworking as his father.\"",
+            "cefrLevel": "A2",
+            "contextText": "Él es tan trabajador como su padre."
           },
           {
-            "id": "q-a2_node_11-5-5",
+            "id": "q-a2_node_14-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Colombia is as rich in biodiversity as Brazil.",
@@ -11828,10 +11898,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"Me encanta la música colombiana. - ¡A mí también!\"",
+            "prompt": "Traduce y construye en inglés: \"Amo la música colombiana. - ¡Yo también!\"",
             "correctAnswer": "I love Colombian music. - So do I!",
             "explanation": "Respuesta correcta: \"I love Colombian music. - So do I!\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Amo la música colombiana. - ¡Yo también!"
           },
           {
             "id": "q-a2_node_15-1-5",
@@ -11986,10 +12057,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"No tomo gaseosa. - ¡Yo tampoco!\"",
+            "prompt": "Traduce y construye en inglés: \"No tomo refresco. - Yo tampoco.\"",
             "correctAnswer": "I don't drink soda. - Neither do I.",
             "explanation": "Respuesta correcta: \"I don't drink soda. - Neither do I.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "No tomo refresco. - Yo tampoco."
           },
           {
             "id": "q-a2_node_15-2-5",
@@ -12144,10 +12216,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"¿Te gustaría tomar algo de café colombiano?\"",
+            "prompt": "Traduce y construye en inglés: \"¿Te gustaría tomar un poco de café colombiano?\"",
             "correctAnswer": "Would you like to drink some Colombian coffee?",
             "explanation": "Respuesta correcta: \"Would you like to drink some Colombian coffee?\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "¿Te gustaría tomar un poco de café colombiano?"
           },
           {
             "id": "q-a2_node_15-3-5",
@@ -12305,7 +12378,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"¿Qué tal si estudiamos juntos este fin de semana?\"",
             "correctAnswer": "How about studying together this weekend?",
             "explanation": "Respuesta correcta: \"How about studying together this weekend?\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "¿Qué tal si estudiamos juntos este fin de semana?"
           },
           {
             "id": "q-a2_node_15-4-5",
@@ -12460,10 +12534,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_15-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"¿Te gustaría unirte a nosotros para el almuerzo?\"",
+            "prompt": "Traduce y construye en inglés: \"¿Te gustaría unirte a nosotros para almorzar?\"",
             "correctAnswer": "Would you like to join us for lunch?",
             "explanation": "Respuesta correcta: \"Would you like to join us for lunch?\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "¿Te gustaría unirte a nosotros para almorzar?"
           },
           {
             "id": "q-a2_node_15-5-5",
@@ -12504,7 +12579,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_12-1-1",
+            "id": "exp-a2_node_16-1-1",
             "sublessonId": "sub-a2_node_16-1",
             "title": "1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 1,
@@ -12541,7 +12616,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_12-1-2",
+            "id": "exp-a2_node_16-1-2",
             "sublessonId": "sub-a2_node_16-1",
             "title": "Refuerzo de Concepto: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 2,
@@ -12567,7 +12642,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_12-1-3",
+            "id": "exp-a2_node_16-1-3",
             "sublessonId": "sub-a2_node_16-1",
             "title": "Resumen: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 3,
@@ -12588,7 +12663,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_12-1-1",
+            "id": "q-a2_node_16-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Look at the situation: \"Listen! Somebody _____ the piano in the other room.\"",
             "options": [
@@ -12602,7 +12677,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-1-2",
+            "id": "q-a2_node_16-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "We _____ preparing our bags for the trip right now.",
             "options": [
@@ -12615,7 +12690,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-1-3",
+            "id": "q-a2_node_16-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -12634,15 +12709,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-1-4",
+            "id": "q-a2_node_16-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Estoy practicando inglés en FlashLens ahora mismo.\"",
             "correctAnswer": "I am practicing English on FlashLens right now.",
-            "explanation": "Práctica de producción escrita para 1. Presente Continuo: Acciones en Progreso.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I am practicing English on FlashLens right now.\"",
+            "cefrLevel": "A2",
+            "contextText": "Estoy practicando inglés en FlashLens ahora mismo."
           },
           {
-            "id": "q-a2_node_12-1-5",
+            "id": "q-a2_node_16-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The children are playing happily in the garden.",
@@ -12662,7 +12738,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_12-2-1",
+            "id": "exp-a2_node_16-2-1",
             "sublessonId": "sub-a2_node_16-2",
             "title": "2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 1,
@@ -12699,7 +12775,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_12-2-2",
+            "id": "exp-a2_node_16-2-2",
             "sublessonId": "sub-a2_node_16-2",
             "title": "Refuerzo de Concepto: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 2,
@@ -12725,7 +12801,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_12-2-3",
+            "id": "exp-a2_node_16-2-3",
             "sublessonId": "sub-a2_node_16-2",
             "title": "Resumen: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 3,
@@ -12746,7 +12822,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_12-2-1",
+            "id": "q-a2_node_16-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Complete: \"I usually _____ coffee, but today I _____ tea.\"",
             "options": [
@@ -12760,7 +12836,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-2-2",
+            "id": "q-a2_node_16-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "He _____ English every single day.",
             "options": [
@@ -12773,7 +12849,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-2-3",
+            "id": "q-a2_node_16-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -12792,15 +12868,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-2-4",
+            "id": "q-a2_node_16-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Él usualmente usa jeans, pero hoy lleva puesto un traje.\"",
             "correctAnswer": "He usually wears jeans, but today he is wearing a suit.",
-            "explanation": "Práctica de producción escrita para 2. Contraste: Presente Simple vs Presente Continuo.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"He usually wears jeans, but today he is wearing a suit.\"",
+            "cefrLevel": "A2",
+            "contextText": "Él usualmente usa jeans, pero hoy lleva puesto un traje."
           },
           {
-            "id": "q-a2_node_12-2-5",
+            "id": "q-a2_node_16-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "We live in Colombia but we are traveling in Europe this month.",
@@ -12820,7 +12897,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_12-3-1",
+            "id": "exp-a2_node_16-3-1",
             "sublessonId": "sub-a2_node_16-3",
             "title": "3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 1,
@@ -12857,7 +12934,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_12-3-2",
+            "id": "exp-a2_node_16-3-2",
             "sublessonId": "sub-a2_node_16-3",
             "title": "Refuerzo de Concepto: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 2,
@@ -12883,7 +12960,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_12-3-3",
+            "id": "exp-a2_node_16-3-3",
             "sublessonId": "sub-a2_node_16-3",
             "title": "Resumen: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 3,
@@ -12904,7 +12981,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_12-3-1",
+            "id": "q-a2_node_16-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "You have your flight tickets for next month. What do you say?",
             "options": [
@@ -12918,7 +12995,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-3-2",
+            "id": "q-a2_node_16-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "David _____ start a new job next Monday.",
             "options": [
@@ -12931,7 +13008,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-3-3",
+            "id": "q-a2_node_16-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -12950,15 +13027,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-3-4",
+            "id": "q-a2_node_16-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Voy a aprobar mi examen de inglés con una puntuación alta.\"",
             "correctAnswer": "I am going to pass my English exam with a high score.",
-            "explanation": "Práctica de producción escrita para 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I am going to pass my English exam with a high score.\"",
+            "cefrLevel": "A2",
+            "contextText": "Voy a aprobar mi examen de inglés con una puntuación alta."
           },
           {
-            "id": "q-a2_node_12-3-5",
+            "id": "q-a2_node_16-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "What are you going to do this weekend with your friends?",
@@ -12978,7 +13056,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_12-4-1",
+            "id": "exp-a2_node_16-4-1",
             "sublessonId": "sub-a2_node_16-4",
             "title": "4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 1,
@@ -13015,7 +13093,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_12-4-2",
+            "id": "exp-a2_node_16-4-2",
             "sublessonId": "sub-a2_node_16-4",
             "title": "Refuerzo de Concepto: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 2,
@@ -13041,7 +13119,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_12-4-3",
+            "id": "exp-a2_node_16-4-3",
             "sublessonId": "sub-a2_node_16-4",
             "title": "Resumen: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 3,
@@ -13062,7 +13140,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_12-4-1",
+            "id": "q-a2_node_16-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which sentence expresses a confirmed future appointment?",
             "options": [
@@ -13076,7 +13154,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-4-2",
+            "id": "q-a2_node_16-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "We _____ dinner with our parents tonight at eight.",
             "options": [
@@ -13089,7 +13167,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-4-3",
+            "id": "q-a2_node_16-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13108,15 +13186,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-4-4",
+            "id": "q-a2_node_16-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Volaremos a Nueva York el próximo viernes por la mañana.\"",
             "correctAnswer": "We are flying to New York next Friday morning.",
-            "explanation": "Práctica de producción escrita para 4. Presente Continuo con Sentido de Futuro Acordado.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"We are flying to New York next Friday morning.\"",
+            "cefrLevel": "A2",
+            "contextText": "Volaremos a Nueva York el próximo viernes por la mañana."
           },
           {
-            "id": "q-a2_node_12-4-5",
+            "id": "q-a2_node_16-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Are you attending the international conference next week?",
@@ -13136,7 +13215,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_12-5-1",
+            "id": "exp-a2_node_16-5-1",
             "sublessonId": "sub-a2_node_16-5",
             "title": "5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 1,
@@ -13173,7 +13252,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_12-5-2",
+            "id": "exp-a2_node_16-5-2",
             "sublessonId": "sub-a2_node_16-5",
             "title": "Refuerzo de Concepto: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 2,
@@ -13199,7 +13278,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_12-5-3",
+            "id": "exp-a2_node_16-5-3",
             "sublessonId": "sub-a2_node_16-5",
             "title": "Resumen: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 3,
@@ -13220,7 +13299,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_12-5-1",
+            "id": "q-a2_node_16-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Look at the dark black clouds in the sky! What prediction is correct?",
             "options": [
@@ -13234,7 +13313,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-5-2",
+            "id": "q-a2_node_16-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "What _____ you going to study at the university?",
             "options": [
@@ -13247,7 +13326,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-5-3",
+            "id": "q-a2_node_16-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13266,15 +13345,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_12-5-4",
+            "id": "q-a2_node_16-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"¿Qué vas a hacer después de graduarte?\"",
             "correctAnswer": "What are you going to do after you graduate?",
-            "explanation": "Práctica de producción escrita para 5. Preguntas sobre Planes & Predicciones Futuras.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"What are you going to do after you graduate?\"",
+            "cefrLevel": "A2",
+            "contextText": "¿Qué vas a hacer después de graduarte?"
           },
           {
-            "id": "q-a2_node_12-5-5",
+            "id": "q-a2_node_16-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Look at those dark clouds, it is going to rain heavily.",
@@ -13312,7 +13392,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_13-1-1",
+            "id": "exp-a2_node_17-1-1",
             "sublessonId": "sub-a2_node_17-1",
             "title": "1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 1,
@@ -13349,7 +13429,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_13-1-2",
+            "id": "exp-a2_node_17-1-2",
             "sublessonId": "sub-a2_node_17-1",
             "title": "Refuerzo de Concepto: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 2,
@@ -13375,7 +13455,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_13-1-3",
+            "id": "exp-a2_node_17-1-3",
             "sublessonId": "sub-a2_node_17-1",
             "title": "Resumen: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 3,
@@ -13396,7 +13476,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_13-1-1",
+            "id": "q-a2_node_17-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Choose the correct connector: \"I was very tired, _____ I went to bed early.\"",
             "options": [
@@ -13410,7 +13490,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-1-2",
+            "id": "q-a2_node_17-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "She passed the exam _____ it was very difficult.",
             "options": [
@@ -13423,7 +13503,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-1-3",
+            "id": "q-a2_node_17-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13442,15 +13522,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-1-4",
+            "id": "q-a2_node_17-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Estudié mucho porque quería aprobar el examen.\"",
             "correctAnswer": "I studied hard because I wanted to pass the test.",
-            "explanation": "Práctica de producción escrita para 1. Conectores Lógicos: And, But, So, Because, Although.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I studied hard because I wanted to pass the test.\"",
+            "cefrLevel": "A2",
+            "contextText": "Estudié mucho porque quería aprobar el examen."
           },
           {
-            "id": "q-a2_node_13-1-5",
+            "id": "q-a2_node_17-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Although English is challenging, I practice every day.",
@@ -13470,7 +13551,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_13-2-1",
+            "id": "exp-a2_node_17-2-1",
             "sublessonId": "sub-a2_node_17-2",
             "title": "2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 1,
@@ -13507,7 +13588,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_13-2-2",
+            "id": "exp-a2_node_17-2-2",
             "sublessonId": "sub-a2_node_17-2",
             "title": "Refuerzo de Concepto: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 2,
@@ -13533,7 +13614,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_13-2-3",
+            "id": "exp-a2_node_17-2-3",
             "sublessonId": "sub-a2_node_17-2",
             "title": "Resumen: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 3,
@@ -13554,7 +13635,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_13-2-1",
+            "id": "q-a2_node_17-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "A friend has a terrible headache. What advice do you give them?",
             "options": [
@@ -13568,7 +13649,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-2-2",
+            "id": "q-a2_node_17-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "You _____ drive when you are very tired.",
             "options": [
@@ -13581,7 +13662,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-2-3",
+            "id": "q-a2_node_17-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13600,15 +13681,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-2-4",
+            "id": "q-a2_node_17-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Deberías beber ocho vasos de agua todos los días.\"",
             "correctAnswer": "You should drink eight glasses of water every day.",
-            "explanation": "Práctica de producción escrita para 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"You should drink eight glasses of water every day.\"",
+            "cefrLevel": "A2",
+            "contextText": "Deberías beber ocho vasos de agua todos los días."
           },
           {
-            "id": "q-a2_node_13-2-5",
+            "id": "q-a2_node_17-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "If you feel sick, you should stay at home and rest.",
@@ -13628,7 +13710,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_13-3-1",
+            "id": "exp-a2_node_17-3-1",
             "sublessonId": "sub-a2_node_17-3",
             "title": "3. Modales de Obligación: Must vs Have To",
             "slideOrder": 1,
@@ -13665,7 +13747,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_13-3-2",
+            "id": "exp-a2_node_17-3-2",
             "sublessonId": "sub-a2_node_17-3",
             "title": "Refuerzo de Concepto: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 2,
@@ -13691,7 +13773,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_13-3-3",
+            "id": "exp-a2_node_17-3-3",
             "sublessonId": "sub-a2_node_17-3",
             "title": "Resumen: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 3,
@@ -13712,7 +13794,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_13-3-1",
+            "id": "q-a2_node_17-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Tomorrow is Sunday and you don't have classes. What do you say?",
             "options": [
@@ -13726,7 +13808,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-3-2",
+            "id": "q-a2_node_17-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "In airport security, passengers _____ show their passport.",
             "options": [
@@ -13739,7 +13821,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-3-3",
+            "id": "q-a2_node_17-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13758,15 +13840,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-3-4",
+            "id": "q-a2_node_17-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Los estudiantes tienen que entregar sus tareas a tiempo.\"",
             "correctAnswer": "Students have to submit their homework on time.",
-            "explanation": "Práctica de producción escrita para 3. Modales de Obligación: Must vs Have To.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Students have to submit their homework on time.\"",
+            "cefrLevel": "A2",
+            "contextText": "Los estudiantes tienen que entregar sus tareas a tiempo."
           },
           {
-            "id": "q-a2_node_13-3-5",
+            "id": "q-a2_node_17-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "You mustn't use your mobile phone during the exam.",
@@ -13786,7 +13869,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_13-4-1",
+            "id": "exp-a2_node_17-4-1",
             "sublessonId": "sub-a2_node_17-4",
             "title": "4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 1,
@@ -13823,7 +13906,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_13-4-2",
+            "id": "exp-a2_node_17-4-2",
             "sublessonId": "sub-a2_node_17-4",
             "title": "Refuerzo de Concepto: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 2,
@@ -13849,7 +13932,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_13-4-3",
+            "id": "exp-a2_node_17-4-3",
             "sublessonId": "sub-a2_node_17-4",
             "title": "Resumen: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 3,
@@ -13870,7 +13953,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_13-4-1",
+            "id": "q-a2_node_17-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "When your body temperature is 39°C, what symptom do you have?",
             "options": [
@@ -13884,7 +13967,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-4-2",
+            "id": "q-a2_node_17-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "My throat is sore and my head _____.",
             "options": [
@@ -13897,7 +13980,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-4-3",
+            "id": "q-a2_node_17-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -13916,15 +13999,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-4-4",
+            "id": "q-a2_node_17-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Tengo dolor de garganta y una tos fuerte hoy.\"",
             "correctAnswer": "I have a sore throat and a bad cough today.",
-            "explanation": "Práctica de producción escrita para 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I have a sore throat and a bad cough today.\"",
+            "cefrLevel": "A2",
+            "contextText": "Tengo dolor de garganta y una tos fuerte hoy."
           },
           {
-            "id": "q-a2_node_13-4-5",
+            "id": "q-a2_node_17-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "The doctor advised me to take this medicine twice a day.",
@@ -13944,7 +14028,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_13-5-1",
+            "id": "exp-a2_node_17-5-1",
             "sublessonId": "sub-a2_node_17-5",
             "title": "5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 1,
@@ -13981,7 +14065,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_13-5-2",
+            "id": "exp-a2_node_17-5-2",
             "sublessonId": "sub-a2_node_17-5",
             "title": "Refuerzo de Concepto: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 2,
@@ -14007,7 +14091,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_13-5-3",
+            "id": "exp-a2_node_17-5-3",
             "sublessonId": "sub-a2_node_17-5",
             "title": "Resumen: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 3,
@@ -14028,7 +14112,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_13-5-1",
+            "id": "q-a2_node_17-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "How do you describe someone who feels full of energy and happiness?",
             "options": [
@@ -14042,7 +14126,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-5-2",
+            "id": "q-a2_node_17-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "After working twelve hours straight, I feel completely _____.",
             "options": [
@@ -14055,7 +14139,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-5-3",
+            "id": "q-a2_node_17-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -14074,15 +14158,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_13-5-4",
+            "id": "q-a2_node_17-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El ejercicio regular me hace sentir saludable, tranquilo y con energía.\"",
             "correctAnswer": "Regular exercise makes me feel healthy, calm and energetic.",
-            "explanation": "Práctica de producción escrita para 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Regular exercise makes me feel healthy, calm and energetic.\"",
+            "cefrLevel": "A2",
+            "contextText": "El ejercicio regular me hace sentir saludable, tranquilo y con energía."
           },
           {
-            "id": "q-a2_node_13-5-5",
+            "id": "q-a2_node_17-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I feel very proud and confident about my progress in English.",
@@ -14255,7 +14340,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"He estudiado inglés todos los días este mes.\"",
             "correctAnswer": "I have studied English every day this month.",
             "explanation": "Respuesta correcta: \"I have studied English every day this month.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "He estudiado inglés todos los días este mes."
           },
           {
             "id": "q-a2_node_18-1-5",
@@ -14413,7 +14499,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visitado un país extranjero?\"",
             "correctAnswer": "Have you ever visited a foreign country?",
             "explanation": "Respuesta correcta: \"Have you ever visited a foreign country?\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "¿Alguna vez has visitado un país extranjero?"
           },
           {
             "id": "q-a2_node_18-2-5",
@@ -14571,7 +14658,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"Ya he terminado mi tarea de inglés.\"",
             "correctAnswer": "I have already finished my English homework.",
             "explanation": "Respuesta correcta: \"I have already finished my English homework.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "Ya he terminado mi tarea de inglés."
           },
           {
             "id": "q-a2_node_18-3-5",
@@ -14729,7 +14817,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "prompt": "Traduce y construye en inglés: \"He vivido en esta ciudad desde que era joven.\"",
             "correctAnswer": "I have lived in this city since I was young.",
             "explanation": "Respuesta correcta: \"I have lived in this city since I was young.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "He vivido en esta ciudad desde que era joven."
           },
           {
             "id": "q-a2_node_18-4-5",
@@ -14884,10 +14973,11 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_18-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visto esa película? - Sí, la vi la semana pasada.\"",
+            "prompt": "Traduce y construye en inglés: \"¿Has visto alguna vez esa película? - Sí, la vi la semana pasada.\"",
             "correctAnswer": "Have you ever seen that movie? - Yes, I saw it last week.",
             "explanation": "Respuesta correcta: \"Have you ever seen that movie? - Yes, I saw it last week.\"",
-            "cefrLevel": "A2"
+            "cefrLevel": "A2",
+            "contextText": "¿Has visto alguna vez esa película? - Sí, la vi la semana pasada."
           },
           {
             "id": "q-a2_node_18-5-5",
@@ -14930,7 +15020,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_14-1-1",
+            "id": "exp-a2_node_19-1-1",
             "sublessonId": "sub-a2_node_19-1",
             "title": "1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 1,
@@ -14967,7 +15057,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_14-1-2",
+            "id": "exp-a2_node_19-1-2",
             "sublessonId": "sub-a2_node_19-1",
             "title": "Refuerzo de Concepto: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 2,
@@ -14993,7 +15083,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_14-1-3",
+            "id": "exp-a2_node_19-1-3",
             "sublessonId": "sub-a2_node_19-1",
             "title": "Resumen: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 3,
@@ -15014,7 +15104,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_14-1-1",
+            "id": "q-a2_node_19-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Notice: \"50% DISCOUNT ON ALL SHOES AND BOOTS\". Where do you see this?",
             "options": [
@@ -15028,7 +15118,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-1-2",
+            "id": "q-a2_node_19-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Notice: \"EMERGENCY EXIT - DO NOT BLOCK\". Where is this notice?",
             "options": [
@@ -15041,7 +15131,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-1-3",
+            "id": "q-a2_node_19-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15060,15 +15150,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-1-4",
+            "id": "q-a2_node_19-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Puedes ver este aviso de advertencia en el laboratorio de química.\"",
             "correctAnswer": "You can see this warning notice at the chemistry laboratory.",
-            "explanation": "Práctica de producción escrita para 1. Carteles & Lugares Públicos (ICFES Parte 1).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"You can see this warning notice at the chemistry laboratory.\"",
+            "cefrLevel": "A2",
+            "contextText": "Puedes ver este aviso de advertencia en el laboratorio de química."
           },
           {
-            "id": "q-a2_node_14-1-5",
+            "id": "q-a2_node_19-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Passengers must wear a face mask inside the hospital.",
@@ -15088,7 +15179,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_14-2-1",
+            "id": "exp-a2_node_19-2-1",
             "sublessonId": "sub-a2_node_19-2",
             "title": "2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 1,
@@ -15125,7 +15216,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_14-2-2",
+            "id": "exp-a2_node_19-2-2",
             "sublessonId": "sub-a2_node_19-2",
             "title": "Refuerzo de Concepto: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 2,
@@ -15151,7 +15242,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_14-2-3",
+            "id": "exp-a2_node_19-2-3",
             "sublessonId": "sub-a2_node_19-2",
             "title": "Resumen: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 3,
@@ -15172,7 +15263,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_14-2-1",
+            "id": "q-a2_node_19-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Speaker A: \"I'm afraid I won't be able to come to your party tonight.\" - Speaker B: _____",
             "options": [
@@ -15186,7 +15277,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-2-2",
+            "id": "q-a2_node_19-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Speaker A: \"Do you mind if I open the window?\" - Speaker B: \"_____\"",
             "options": [
@@ -15199,7 +15290,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-2-3",
+            "id": "q-a2_node_19-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15218,15 +15309,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-2-4",
+            "id": "q-a2_node_19-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"¿Podría decirme por favor dónde está ubicada la farmacia más cercana?\"",
             "correctAnswer": "Could you please tell me where the nearest pharmacy is located?",
-            "explanation": "Práctica de producción escrita para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Could you please tell me where the nearest pharmacy is located?\"",
+            "cefrLevel": "A2",
+            "contextText": "¿Podría decirme por favor dónde está ubicada la farmacia más cercana?"
           },
           {
-            "id": "q-a2_node_14-2-5",
+            "id": "q-a2_node_19-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I really appreciate your assistance with this difficult project.",
@@ -15246,7 +15338,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_14-3-1",
+            "id": "exp-a2_node_19-3-1",
             "sublessonId": "sub-a2_node_19-3",
             "title": "3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 1,
@@ -15283,7 +15375,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_14-3-2",
+            "id": "exp-a2_node_19-3-2",
             "sublessonId": "sub-a2_node_19-3",
             "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 2,
@@ -15309,7 +15401,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_14-3-3",
+            "id": "exp-a2_node_19-3-3",
             "sublessonId": "sub-a2_node_19-3",
             "title": "Resumen: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 3,
@@ -15330,7 +15422,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_14-3-1",
+            "id": "q-a2_node_19-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Text: \"Elena started her photography company in 2021. Today, she travels across South America taking pictures of wildlife.\" - When did Elena start her business?",
             "options": [
@@ -15344,7 +15436,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-3-2",
+            "id": "q-a2_node_19-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "According to the article, what does Elena photograph?",
             "options": [
@@ -15357,7 +15449,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-3-3",
+            "id": "q-a2_node_19-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15376,15 +15468,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-3-4",
+            "id": "q-a2_node_19-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Elena comenzó su empresa en 2021 y fotografía la vida silvestre.\"",
             "correctAnswer": "Elena started her company in 2021 and photographs wildlife.",
-            "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Elena started her company in 2021 and photographs wildlife.\"",
+            "cefrLevel": "A2",
+            "contextText": "Elena comenzó su empresa en 2021 y fotografía la vida silvestre."
           },
           {
-            "id": "q-a2_node_14-3-5",
+            "id": "q-a2_node_19-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "She has won several international awards for her nature photography.",
@@ -15404,7 +15497,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_14-4-1",
+            "id": "exp-a2_node_19-4-1",
             "sublessonId": "sub-a2_node_19-4",
             "title": "4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 1,
@@ -15441,7 +15534,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_14-4-2",
+            "id": "exp-a2_node_19-4-2",
             "sublessonId": "sub-a2_node_19-4",
             "title": "Refuerzo de Concepto: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 2,
@@ -15467,7 +15560,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_14-4-3",
+            "id": "exp-a2_node_19-4-3",
             "sublessonId": "sub-a2_node_19-4",
             "title": "Resumen: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 3,
@@ -15488,7 +15581,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_14-4-1",
+            "id": "q-a2_node_19-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Sentence: \"The weather was arid; it hadn't rained in six months and the soil was cracked.\" - What does \"arid\" mean?",
             "options": [
@@ -15502,7 +15595,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-4-2",
+            "id": "q-a2_node_19-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "In the sentence \"He is an avid reader who finishes two books a week\", \"avid\" means _____.",
             "options": [
@@ -15515,7 +15608,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-4-3",
+            "id": "q-a2_node_19-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15534,15 +15627,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-4-4",
+            "id": "q-a2_node_19-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Leer entre líneas te ayuda a inferir el significado implícito.\"",
             "correctAnswer": "Reading between the lines helps you infer implicit meaning.",
-            "explanation": "Práctica de producción escrita para 4. Inferencia & Vocabulario en Contexto.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Reading between the lines helps you infer implicit meaning.\"",
+            "cefrLevel": "A2",
+            "contextText": "Leer entre líneas te ayuda a inferir el significado implícito."
           },
           {
-            "id": "q-a2_node_14-4-5",
+            "id": "q-a2_node_19-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Context clues provide valuable hints to understand complex vocabulary.",
@@ -15562,7 +15656,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_14-5-1",
+            "id": "exp-a2_node_19-5-1",
             "sublessonId": "sub-a2_node_19-5",
             "title": "5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 1,
@@ -15599,7 +15693,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_14-5-2",
+            "id": "exp-a2_node_19-5-2",
             "sublessonId": "sub-a2_node_19-5",
             "title": "Refuerzo de Concepto: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 2,
@@ -15625,7 +15719,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_14-5-3",
+            "id": "exp-a2_node_19-5-3",
             "sublessonId": "sub-a2_node_19-5",
             "title": "Resumen: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 3,
@@ -15646,7 +15740,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_14-5-1",
+            "id": "q-a2_node_19-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Identify the false friend: In English, \"actually\" means _____ (NOT \"actualmente\").",
             "options": [
@@ -15660,7 +15754,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-5-2",
+            "id": "q-a2_node_19-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "The word \"embarrassed\" in English means _____.",
             "options": [
@@ -15673,7 +15767,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-5-3",
+            "id": "q-a2_node_19-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15692,15 +15786,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_14-5-4",
+            "id": "q-a2_node_19-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"En realidad, no sabía la respuesta hasta que la explicaste.\"",
             "correctAnswer": "Actually, I didn't know the answer until you explained it.",
-            "explanation": "Práctica de producción escrita para 5. Trampas Frecuentes & Descarte en Saber Pro.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Actually, I didn't know the answer until you explained it.\"",
+            "cefrLevel": "A2",
+            "contextText": "En realidad, no sabía la respuesta hasta que la explicaste."
           },
           {
-            "id": "q-a2_node_14-5-5",
+            "id": "q-a2_node_19-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "He felt very embarrassed when he forgot his friend's name.",
@@ -15738,7 +15833,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_15-1-1",
+            "id": "exp-a2_node_20-1-1",
             "sublessonId": "sub-a2_node_20-1",
             "title": "1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 1,
@@ -15775,7 +15870,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_15-1-2",
+            "id": "exp-a2_node_20-1-2",
             "sublessonId": "sub-a2_node_20-1",
             "title": "Refuerzo de Concepto: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 2,
@@ -15801,7 +15896,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_15-1-3",
+            "id": "exp-a2_node_20-1-3",
             "sublessonId": "sub-a2_node_20-1",
             "title": "Resumen: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 3,
@@ -15822,7 +15917,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_15-1-1",
+            "id": "q-a2_node_20-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Text: \"Over 500,000 tourists visit the Coffee Cultural Landscape of Colombia every year. It was declared a World Heritage Site by UNESCO in 2011.\" - What occurred in 2011?",
             "options": [
@@ -15836,7 +15931,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-1-2",
+            "id": "q-a2_node_20-1-2",
             "type": "FILL_IN_BLANK",
             "prompt": "According to the text, the landscape is located in _____.",
             "options": [
@@ -15849,7 +15944,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-1-3",
+            "id": "q-a2_node_20-1-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -15868,15 +15963,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-1-4",
+            "id": "q-a2_node_20-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"El Paisaje Cultural Cafetero es celebrado mundialmente por su belleza.\"",
             "correctAnswer": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
-            "explanation": "Práctica de producción escrita para 1. Simulacro Saber Pro A2: Comprensión Lectora.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"The Coffee Cultural Landscape is celebrated worldwide for its beauty.\"",
+            "cefrLevel": "A2",
+            "contextText": "El Paisaje Cultural Cafetero es celebrado mundialmente por su belleza."
           },
           {
-            "id": "q-a2_node_15-1-5",
+            "id": "q-a2_node_20-1-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Colombian coffee is recognized globally for its superior quality and taste.",
@@ -15896,7 +15992,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_15-2-1",
+            "id": "exp-a2_node_20-2-1",
             "sublessonId": "sub-a2_node_20-2",
             "title": "2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 1,
@@ -15933,7 +16029,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_15-2-2",
+            "id": "exp-a2_node_20-2-2",
             "sublessonId": "sub-a2_node_20-2",
             "title": "Refuerzo de Concepto: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 2,
@@ -15959,7 +16055,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_15-2-3",
+            "id": "exp-a2_node_20-2-3",
             "sublessonId": "sub-a2_node_20-2",
             "title": "Resumen: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 3,
@@ -15980,7 +16076,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_15-2-1",
+            "id": "q-a2_node_20-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Choose the correct combination: \"Last year I _____ in Cali, now I _____ in Medellin, and next year I _____ to Bogota.\"",
             "options": [
@@ -15994,7 +16090,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-2-2",
+            "id": "q-a2_node_20-2-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Yesterday I _____ tired, but today I _____ energetic.",
             "options": [
@@ -16007,7 +16103,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-2-3",
+            "id": "q-a2_node_20-2-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -16026,15 +16122,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-2-4",
+            "id": "q-a2_node_20-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Ayer cociné pasta, hoy estoy comiendo ensalada y mañana comeré pescado.\"",
             "correctAnswer": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
-            "explanation": "Práctica de producción escrita para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.\"",
+            "cefrLevel": "A2",
+            "contextText": "Ayer cociné pasta, hoy estoy comiendo ensalada y mañana comeré pescado."
           },
           {
-            "id": "q-a2_node_15-2-5",
+            "id": "q-a2_node_20-2-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "I learned basic English in A1 and now I am mastering A2 fluently.",
@@ -16054,7 +16151,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_15-3-1",
+            "id": "exp-a2_node_20-3-1",
             "sublessonId": "sub-a2_node_20-3",
             "title": "3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 1,
@@ -16091,7 +16188,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_15-3-2",
+            "id": "exp-a2_node_20-3-2",
             "sublessonId": "sub-a2_node_20-3",
             "title": "Refuerzo de Concepto: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 2,
@@ -16117,7 +16214,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_15-3-3",
+            "id": "exp-a2_node_20-3-3",
             "sublessonId": "sub-a2_node_20-3",
             "title": "Resumen: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 3,
@@ -16138,7 +16235,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_15-3-1",
+            "id": "q-a2_node_20-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which sentence correctly transcribes: \"/aɪ wəz ˈwɜːkɪŋ wɛn juː kɔːld/\"?",
             "options": [
@@ -16152,7 +16249,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-3-2",
+            "id": "q-a2_node_20-3-2",
             "type": "FILL_IN_BLANK",
             "prompt": "In spoken English, \"going to\" is frequently contracted as _____.",
             "options": [
@@ -16165,7 +16262,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-3-3",
+            "id": "q-a2_node_20-3-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -16184,15 +16281,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-3-4",
+            "id": "q-a2_node_20-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Escuché atentamente la pronunciación del hablante nativo.\"",
             "correctAnswer": "I listened carefully to the native speaker's pronunciation.",
-            "explanation": "Práctica de producción escrita para 3. Prueba de Precisión Auditiva & Fonética A2.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I listened carefully to the native speaker's pronunciation.\"",
+            "cefrLevel": "A2",
+            "contextText": "Escuché atentamente la pronunciación del hablante nativo."
           },
           {
-            "id": "q-a2_node_15-3-5",
+            "id": "q-a2_node_20-3-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Mastering phonetic stress allows you to communicate naturally.",
@@ -16212,7 +16310,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_15-4-1",
+            "id": "exp-a2_node_20-4-1",
             "sublessonId": "sub-a2_node_20-4",
             "title": "4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 1,
@@ -16249,7 +16347,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_15-4-2",
+            "id": "exp-a2_node_20-4-2",
             "sublessonId": "sub-a2_node_20-4",
             "title": "Refuerzo de Concepto: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 2,
@@ -16275,7 +16373,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_15-4-3",
+            "id": "exp-a2_node_20-4-3",
             "sublessonId": "sub-a2_node_20-4",
             "title": "Resumen: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 3,
@@ -16296,7 +16394,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_15-4-1",
+            "id": "q-a2_node_20-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "Which paragraph demonstrates the best CEFR A2 writing quality?",
             "options": [
@@ -16310,7 +16408,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-4-2",
+            "id": "q-a2_node_20-4-2",
             "type": "FILL_IN_BLANK",
             "prompt": "To connect a reason in writing, we use the connector _____.",
             "options": [
@@ -16323,7 +16421,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-4-3",
+            "id": "q-a2_node_20-4-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -16342,15 +16440,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-4-4",
+            "id": "q-a2_node_20-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Disfruto escribir en inglés porque me ayuda a organizar mis pensamientos.\"",
             "correctAnswer": "I enjoy writing in English because it helps me organize my thoughts.",
-            "explanation": "Práctica de producción escrita para 4. Diagnóstico de Producción Escrita A2.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I enjoy writing in English because it helps me organize my thoughts.\"",
+            "cefrLevel": "A2",
+            "contextText": "Disfruto escribir en inglés porque me ayuda a organizar mis pensamientos."
           },
           {
-            "id": "q-a2_node_15-4-5",
+            "id": "q-a2_node_20-4-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "With dedication and daily practice, I have achieved level A2 certification.",
@@ -16370,7 +16469,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "score": 0,
         "explanations": [
           {
-            "id": "exp-a2_node_15-5-1",
+            "id": "exp-a2_node_20-5-1",
             "sublessonId": "sub-a2_node_20-5",
             "title": "5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 1,
@@ -16407,7 +16506,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             ]
           },
           {
-            "id": "exp-a2_node_15-5-2",
+            "id": "exp-a2_node_20-5-2",
             "sublessonId": "sub-a2_node_20-5",
             "title": "Refuerzo de Concepto: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 2,
@@ -16433,7 +16532,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "commonPitfalls": []
           },
           {
-            "id": "exp-a2_node_15-5-3",
+            "id": "exp-a2_node_20-5-3",
             "sublessonId": "sub-a2_node_20-5",
             "title": "Resumen: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 3,
@@ -16454,7 +16553,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ],
         "questions": [
           {
-            "id": "q-a2_node_15-5-1",
+            "id": "q-a2_node_20-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
             "prompt": "What does achieving CEFR Level A2 mean for your English journey?",
             "options": [
@@ -16468,7 +16567,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-5-2",
+            "id": "q-a2_node_20-5-2",
             "type": "FILL_IN_BLANK",
             "prompt": "Your overall CEFR English proficiency is now validated at level _____.",
             "options": [
@@ -16481,7 +16580,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-5-3",
+            "id": "q-a2_node_20-5-3",
             "type": "MATCH_PAIRS",
             "prompt": "Empareja cada elemento con su significado o correspondencia:",
             "options": {
@@ -16500,15 +16599,16 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "cefrLevel": "A2"
           },
           {
-            "id": "q-a2_node_15-5-4",
+            "id": "q-a2_node_20-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
+            "prompt": "Traduce y construye en inglés: \"Estoy orgulloso de ser un hablante de inglés certificado en A2 con FlashLens.\"",
             "correctAnswer": "I am proud to be a certified A2 English speaker with FlashLens.",
-            "explanation": "Práctica de producción escrita para 5. Gran Certificación de Logro Nivel A2.",
-            "cefrLevel": "A2"
+            "explanation": "Respuesta correcta: \"I am proud to be a certified A2 English speaker with FlashLens.\"",
+            "cefrLevel": "A2",
+            "contextText": "Estoy orgulloso de ser un hablante de inglés certificado en A2 con FlashLens."
           },
           {
-            "id": "q-a2_node_15-5-5",
+            "id": "q-a2_node_20-5-5",
             "type": "SPEAKING_PRONUNCIATION",
             "prompt": "Pronuncia en voz alta en inglés con buena entonación",
             "correctAnswer": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",

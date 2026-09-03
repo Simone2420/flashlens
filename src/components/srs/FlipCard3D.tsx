@@ -44,6 +44,25 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
     : (card.facilitatedPhonetics || card.phoneticScript);
   const rotation = useSharedValue(0);
 
+  // Obtener otros significados / sinónimos admitidos excluyendo la traducción principal
+  const primaryText = (card.primaryTranslation || card.nativeTranslation || '').toLowerCase().trim();
+  const rawAccepted = Array.isArray(card.acceptedTranslations) ? card.acceptedTranslations : [];
+  const otherMeanings = Array.from(
+    new Set(
+      rawAccepted
+        .map(m => m.trim())
+        .filter(m => {
+          const lower = m.toLowerCase();
+          return (
+            lower.length > 0 &&
+            lower !== primaryText &&
+            !primaryText.startsWith(lower) &&
+            !lower.startsWith(primaryText)
+          );
+        })
+    )
+  );
+
   useEffect(() => {
     // Reset flip state when card changes
     setIsFlipped(false);
@@ -149,7 +168,21 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             
             <View style={styles.divider} />
             
-            <Text style={styles.nativeTranslation}>{card.displayTranslation || card.nativeTranslation}</Text>
+            <Text style={styles.nativeTranslation}>{card.primaryTranslation || card.nativeTranslation}</Text>
+
+            {/* 🌟 OTROS SIGNIFICADOS / SINÓNIMOS ADMITIDOS */}
+            {otherMeanings.length > 0 && (
+              <View style={styles.otherMeaningsContainer}>
+                <Text style={styles.otherMeaningsLabel}>Otros significados:</Text>
+                <View style={styles.otherMeaningsRow}>
+                  {otherMeanings.map((meaning, idx) => (
+                    <View key={idx} style={styles.otherMeaningChip}>
+                      <Text style={styles.otherMeaningText}>{meaning}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
 
             {card.contextSentence ? (
               <View style={styles.contextContainer}>
@@ -332,7 +365,39 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: COLORS.onSurface,
     textAlign: 'center',
-    marginBottom: SPACING.md,
+    marginBottom: 6,
+  },
+  otherMeaningsContainer: {
+    alignItems: 'center',
+    marginBottom: SPACING.sm,
+    width: '100%',
+  },
+  otherMeaningsLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: COLORS.onSurfaceVariant,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+    marginBottom: 4,
+  },
+  otherMeaningsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  otherMeaningChip: {
+    backgroundColor: '#FFF9E6',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  otherMeaningText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#765A00',
   },
   contextContainer: {
     width: '100%',
