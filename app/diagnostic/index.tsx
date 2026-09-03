@@ -36,8 +36,38 @@ export default function DiagnosticScreen() {
   const [writtenInput, setWrittenInput] = useState('');
   const [isPairDone, setIsPairDone] = useState(false);
 
-  const currentItem: DiagnosticQuestion = questions[currentIdx];
+  const currentItem: DiagnosticQuestion | undefined = questions[currentIdx];
   const q = currentItem?.question;
+
+  const SECTION_METADATA: Record<string, { label: string; icon: string }> = {
+    PHONETICS: { label: 'FONÉTICA & DISCRIMINACIÓN', icon: '🔊' },
+    GRAMMAR: { label: 'ESTRUCTURAS GRAMATICALES', icon: '📐' },
+    VOCABULARY: { label: 'VOCABULARIO CLAVE', icon: '📚' },
+    READING_ICFES: { label: 'LECTURA & COMPRENSIÓN ICFES', icon: '📖' },
+    PRODUCTION: { label: 'PRODUCCIÓN ESCRITA Y ORAL', icon: '✍️' },
+  };
+
+  const currentSectionInfo = currentItem
+    ? SECTION_METADATA[currentItem.section] || { label: currentItem.section, icon: '✨' }
+    : { label: 'EVALUACIÓN DIAGNÓSTICA', icon: '✨' };
+
+  if (!currentItem || questions.length === 0) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 }}>
+          <Text style={{ fontSize: 20, fontWeight: '700', color: '#1C1B1B', marginBottom: 12, textAlign: 'center' }}>
+            Cargando Cuestionario Diagnóstico...
+          </Text>
+          <Text style={{ fontSize: 14, color: '#5E5E5E', textAlign: 'center', marginBottom: 24 }}>
+            Preparando las 25 preguntas calibradas según el Marco Común Europeo.
+          </Text>
+          <TouchableOpacity onPress={() => router.back()} style={styles.nextBtn}>
+            <Text style={styles.nextBtnText}>Regresar</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   const handleNext = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -119,7 +149,8 @@ export default function DiagnosticScreen() {
   const hasAnswer =
     (q?.type === 'MATCH_PAIRS' && isPairDone) ||
     Boolean(selectedOption && selectedOption.trim().length > 0) ||
-    Boolean(writtenInput && writtenInput.trim().length > 0);
+    Boolean(writtenInput && writtenInput.trim().length > 0) ||
+    q?.type === 'SPEAKING_PRONUNCIATION'; // Permite avanzar en emuladores o entornos sin micrófono físico
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -137,9 +168,9 @@ export default function DiagnosticScreen() {
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.sectionBadge}>
-          <Sparkles size={14} color="#765A00" />
+          <Text style={{ fontSize: 14 }}>{currentSectionInfo.icon}</Text>
           <Text style={styles.sectionBadgeText}>
-            BLOQUE: {currentItem.section} • NIVEL {q?.cefrLevel}
+            SECCIÓN: {currentSectionInfo.label} • NIVEL {q?.cefrLevel}
           </Text>
         </View>
 
@@ -164,8 +195,8 @@ export default function DiagnosticScreen() {
           />
         )}
 
-        {/* 3. MULTIPLE CHOICE ICFES & READING */}
-        {(q?.type === 'MULTIPLE_CHOICE_ICFES' || (q?.options && Array.isArray(q.options) && q?.type !== 'FILL_IN_BLANK')) && (
+        {/* 3. MULTIPLE CHOICE ICFES & IMAGE WORD MATCH */}
+        {(q?.type === 'MULTIPLE_CHOICE_ICFES' || q?.type === 'IMAGE_WORD_MATCH') && (
           <MultipleChoiceIcfesQuestion
             prompt={q.prompt}
             options={Array.isArray(q.options) ? q.options : []}

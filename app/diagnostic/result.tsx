@@ -124,7 +124,7 @@ export default function DiagnosticResultScreen() {
                 Ritmo Lento (SLOW) {pace === 'SLOW' && '★ Recomendado'}
               </Text>
               <Text style={styles.paceDesc}>
-                5 sublecciones por nodo • Dictado con texto libre amplio.
+                Andamiaje guiado con pistas léxicas • Meta 15 XP / día.
               </Text>
             </View>
             <ArrowRight size={18} color="#765A00" />
@@ -140,7 +140,7 @@ export default function DiagnosticResultScreen() {
                 Ritmo Medio (MEDIUM) {pace === 'MEDIUM' && '★ Recomendado'}
               </Text>
               <Text style={styles.paceDesc}>
-                4 sublecciones por nodo • Casillas exactas letra a letra.
+                Andamiaje equilibrado y casillas elásticas • Meta 30 XP / día.
               </Text>
             </View>
             <ArrowRight size={18} color="#765A00" />
@@ -156,7 +156,7 @@ export default function DiagnosticResultScreen() {
                 Ritmo Rápido (FAST) {pace === 'FAST' && '★ Recomendado'}
               </Text>
               <Text style={styles.paceDesc}>
-                3 sublecciones por nodo • 3 casillas dinámicas ciegas.
+                Producción oral y escrita directa • Meta 50 XP / día.
               </Text>
             </View>
             <ArrowRight size={18} color="#765A00" />
