@@ -11,6 +11,7 @@ interface RoadmapState {
   // Actions
   selectNode: (nodeId: string) => void;
   getNodeById: (nodeId: string) => RoadmapNode | undefined;
+  isNodeCompleted: (nodeId: string) => boolean;
   getVisibleSublessons: (nodeId: string, pace: LearningPace) => Sublesson[];
   completeSublesson: (nodeId: string, sublessonId: string, score: number) => { xpEarned: number; nodeCompleted: boolean };
   recalculatePaceTransition: (newPace: LearningPace) => void;
@@ -30,6 +31,11 @@ export const useRoadmapStore = create<RoadmapState>()(
 
       getNodeById: (nodeId: string) => {
         return get().nodes.find(n => n.id === nodeId);
+      },
+
+      isNodeCompleted: (nodeId: string) => {
+        const node = get().nodes.find(n => n.id === nodeId);
+        return node?.status === 'COMPLETED';
       },
 
       getVisibleSublessons: (nodeId: string, pace: LearningPace) => {
@@ -141,9 +147,9 @@ export const useRoadmapStore = create<RoadmapState>()(
             }
             // Los 3 primeros nodos paralelos de A2 se activan simultáneamente
             if (
-              node.id === 'a2_node_10' ||
               node.id === 'a2_node_11' ||
-              node.id === 'a2_node_12'
+              node.id === 'a2_node_13' ||
+              node.id === 'a2_node_16'
             ) {
               return {
                 ...node,
@@ -156,7 +162,7 @@ export const useRoadmapStore = create<RoadmapState>()(
 
         set({
           nodes: updatedNodes,
-          selectedNodeId: level === 'A2' ? 'a2_node_10' : 'a1_node_1',
+          selectedNodeId: level === 'A2' ? 'a2_node_11' : 'a1_node_1',
         });
       },
 

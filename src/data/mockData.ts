@@ -10,10 +10,21 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     "id": "fc-obj-1",
     "targetWord": "Coffee Mug",
+    "primaryTranslation": "Taza",
+    "acceptedTranslations": [
+      "taza",
+      "pocillo",
+      "mug",
+      "taza de café",
+      "taza de cafe"
+    ],
+    "minInputLength": 4,
+    "displayTranslation": "Taza de Café (Mug)",
     "nativeTranslation": "Taza de Café",
     "cardType": "VOCABULARY",
     "partOfSpeech": "NOUN",
     "conceptCategory": "OBJECT",
+    "facilitatedPhonetics": "kófi mag",
     "phoneticScript": "/ˈkɒf.i mʌɡ/",
     "contextSentence": "She poured hot Colombian coffee into her ceramic mug.",
     "contextTranslation": "Ella sirvió café colombiano caliente en su taza de cerámica.",
@@ -31,10 +42,22 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     "id": "fc-obj-2",
     "targetWord": "Laptop",
+    "primaryTranslation": "Portátil",
+    "acceptedTranslations": [
+      "portátil",
+      "portatil",
+      "computador",
+      "laptop",
+      "computadora",
+      "computador portátil"
+    ],
+    "minInputLength": 6,
+    "displayTranslation": "Portátil / Computadora",
     "nativeTranslation": "Computadora Portátil",
     "cardType": "VOCABULARY",
     "partOfSpeech": "NOUN",
     "conceptCategory": "OBJECT",
+    "facilitatedPhonetics": "láptop",
     "phoneticScript": "/ˈlæp.tɒp/",
     "contextSentence": "Open your laptop to start coding the mobile application.",
     "contextTranslation": "Abre tu portátil para empezar a programar la aplicación móvil.",
@@ -51,10 +74,20 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     "id": "fc-obj-3",
     "targetWord": "Backpack",
+    "primaryTranslation": "Mochila",
+    "acceptedTranslations": [
+      "mochila",
+      "morral",
+      "bolso",
+      "bulto"
+    ],
+    "minInputLength": 5,
+    "displayTranslation": "Mochila / Morral",
     "nativeTranslation": "Mochila / Morral",
     "cardType": "VOCABULARY",
     "partOfSpeech": "NOUN",
     "conceptCategory": "OBJECT",
+    "facilitatedPhonetics": "bákpak",
     "phoneticScript": "/ˈbæk.pæk/",
     "contextSentence": "He packed his laptop and notebook inside his sturdy backpack.",
     "contextTranslation": "Empacó su portátil y cuaderno dentro de su mochila resistente.",
@@ -69,20 +102,29 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
-    "id": "fc-abs-1",
+    "id": "fc-idiom-1",
     "targetWord": "Break the ice",
+    "primaryTranslation": "Romper el hielo",
+    "acceptedTranslations": [
+      "romper el hielo",
+      "romper el silencio",
+      "iniciar conversación",
+      "iniciar conversacion"
+    ],
+    "minInputLength": 15,
+    "displayTranslation": "Romper el hielo",
     "nativeTranslation": "Romper el hielo",
     "cardType": "ABSTRACT",
-    "partOfSpeech": "IDIOM",
+    "partOfSpeech": "PHRASE",
     "conceptCategory": "IDIOM_EXPRESSION",
+    "facilitatedPhonetics": "bréik di áis",
     "phoneticScript": "/breɪk ðiː aɪs/",
-    "contextSentence": "A friendly smile and a warm greeting can easily break the ice with new colleagues.",
-    "contextTranslation": "Una sonrisa amigable y un saludo cálido pueden fácilmente romper el hielo con nuevos compañeros.",
-    "literalMeaning": "Destrozar un bloque de hielo sólido.",
-    "mnemonicHint": "Imagina un barco rompehielos abriendo camino en el mar para comunicarse.",
-    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23",
-    "imageSource": "AI_GENERATED",
-    "createdVia": "VOICE_SPANISH",
+    "contextSentence": "Telling a friendly joke is a great way to break the ice in Colombia.",
+    "contextTranslation": "Contar un chiste amistoso es una excelente forma de romper el hielo en Colombia.",
+    "mnemonicHint": "Imagina romper un témpano frío para que fluya la conversación.",
+    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+    "imageSource": "PRESET",
+    "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
     "easeFactor": 2.5,
@@ -90,62 +132,27 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
-    "id": "fc-abs-2",
+    "id": "fc-con-1",
     "targetWord": "Although",
+    "primaryTranslation": "Aunque",
+    "acceptedTranslations": [
+      "aunque",
+      "a pesar de que",
+      "si bien"
+    ],
+    "minInputLength": 6,
+    "displayTranslation": "Aunque / A pesar de que",
     "nativeTranslation": "Aunque / A pesar de que",
     "cardType": "ABSTRACT",
     "partOfSpeech": "CONJUNCTION",
     "conceptCategory": "CONNECTOR_TRANSITION",
+    "facilitatedPhonetics": "ol-dóu",
     "phoneticScript": "/ɔːlˈðoʊ/",
-    "contextSentence": "Although it was raining heavily, we continued practicing English outdoors.",
-    "contextTranslation": "Aunque estaba lloviendo fuerte, continuamos practicando inglés al aire libre.",
-    "grammarFormula": "Although + [Cláusula A (contraste)], [Cláusula B (resultado)]",
-    "commonMistake": "No uses \"Although\" y \"But\" en la misma oración (doble conector).",
-    "mnemonicHint": "All (todo) + though (a través): aunque todo esté en contra, sigues adelante.",
-    "imageUrl": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0",
-    "imageSource": "AI_GENERATED",
-    "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T23:07:16.832Z",
-    "repetitionNumber": 1,
-    "easeFactor": 2.5,
-    "intervalDays": 1,
-    "lastRating": "GOOD",
-    "nextReviewAt": "2026-09-02T23:07:16.832Z"
-  },
-  {
-    "id": "fc-abs-3",
-    "targetWord": "Exhausted",
-    "nativeTranslation": "Agotado / Exhausto",
-    "cardType": "ABSTRACT",
-    "partOfSpeech": "ADJECTIVE",
-    "conceptCategory": "EMOTION_STATE",
-    "phoneticScript": "/ɪɡˈzɔː.stɪd/",
-    "contextSentence": "After studying all night for the Saber Pro exam, she felt completely exhausted.",
-    "contextTranslation": "Después de estudiar toda la noche para el examen Saber Pro, se sintió completamente exhausta.",
-    "mnemonicHint": "Suena como \"exhausto\": como un auto sin energía apagado.",
-    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474",
-    "imageSource": "AI_GENERATED",
-    "createdVia": "SEARCH",
-    "createdAt": "2026-09-01T23:07:16.832Z",
-    "repetitionNumber": 2,
-    "easeFactor": 2.6,
-    "intervalDays": 3,
-    "lastRating": "EASY",
-    "nextReviewAt": "2026-09-04T23:07:16.832Z"
-  },
-  {
-    "id": "fc-abs-4",
-    "targetWord": "Give up",
-    "nativeTranslation": "Rendirse / Abandonar",
-    "cardType": "ABSTRACT",
-    "partOfSpeech": "VERB",
-    "conceptCategory": "PHRASAL_VERB",
-    "phoneticScript": "/ɡɪv ʌp/",
-    "contextSentence": "Never give up on your dreams of mastering the English language.",
-    "contextTranslation": "Nunca te rindas en tus sueños de dominar el idioma inglés.",
-    "mnemonicHint": "Levantar las manos hacia arriba (UP) para soltar la toalla.",
-    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5",
-    "imageSource": "AI_GENERATED",
+    "contextSentence": "Although it rained heavily in Bogota, we went to the university.",
+    "contextTranslation": "Aunque llovió fuertemente en Bogotá, fuimos a la universidad.",
+    "mnemonicHint": "Al-though: todo a través de la dificultad (a pesar de).",
+    "imageUrl": "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17",
+    "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
@@ -154,42 +161,117 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
-    "id": "fc-abs-5",
+    "id": "fc-adj-1",
+    "targetWord": "Exhausted",
+    "primaryTranslation": "Agotado",
+    "acceptedTranslations": [
+      "agotado",
+      "exhausto",
+      "muy cansado",
+      "cansado"
+    ],
+    "minInputLength": 7,
+    "displayTranslation": "Agotado / Exhausto",
+    "nativeTranslation": "Agotado / Exhausto",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "ADJECTIVE",
+    "conceptCategory": "EMOTION_STATE",
+    "facilitatedPhonetics": "ig-zós-tid",
+    "phoneticScript": "/ɪɡˈzɔː.stɪd/",
+    "contextSentence": "After studying English for five hours, I was completely exhausted.",
+    "contextTranslation": "Después de estudiar inglés durante cinco horas, estaba completamente agotado.",
+    "mnemonicHint": "Como el tubo de escape de un auto: sin energía.",
+    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474",
+    "imageSource": "PRESET",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T23:07:16.832Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
+  },
+  {
+    "id": "fc-phrasal-1",
+    "targetWord": "Give up",
+    "primaryTranslation": "Rendirse",
+    "acceptedTranslations": [
+      "rendirse",
+      "abandonar",
+      "darse por vencido"
+    ],
+    "minInputLength": 8,
+    "displayTranslation": "Rendirse / Darse por vencido",
+    "nativeTranslation": "Rendirse / Darse por vencido",
+    "cardType": "ABSTRACT",
+    "partOfSpeech": "VERB",
+    "conceptCategory": "PHRASAL_VERB",
+    "facilitatedPhonetics": "giv áp",
+    "phoneticScript": "/ɡɪv ʌp/",
+    "contextSentence": "Never give up when learning English grammar rules.",
+    "contextTranslation": "Nunca te rindas al aprender las reglas gramaticales del inglés.",
+    "mnemonicHint": "Dar hacia arriba tus brazos en señal de entrega.",
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5",
+    "imageSource": "PRESET",
+    "createdVia": "SEARCH",
+    "createdAt": "2026-09-01T23:07:16.832Z",
+    "repetitionNumber": 0,
+    "easeFactor": 2.5,
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
+  },
+  {
+    "id": "fc-adv-1",
     "targetWord": "Actually",
-    "nativeTranslation": "En realidad / De hecho (¡No actualmente!)",
+    "primaryTranslation": "En realidad",
+    "acceptedTranslations": [
+      "en realidad",
+      "de hecho",
+      "realmente"
+    ],
+    "minInputLength": 9,
+    "displayTranslation": "En realidad / De hecho",
+    "nativeTranslation": "En realidad / De hecho",
     "cardType": "ABSTRACT",
     "partOfSpeech": "ADVERB",
     "conceptCategory": "FALSE_FRIEND",
+    "facilitatedPhonetics": "ák-chu-a-li",
     "phoneticScript": "/ˈæk.tʃu.ə.li/",
-    "contextSentence": "Actually, I am from Bogota, but I currently live in Medellin.",
-    "contextTranslation": "En realidad soy de Bogotá, pero actualmente vivo en Medellín.",
-    "commonMistake": "Actually NO significa actualmente. Para actualmente di \"Currently\".",
-    "mnemonicHint": "Actually = Actual fact (hecho real en el presente).",
+    "contextSentence": "Actually, I have never been to London before.",
+    "contextTranslation": "En realidad, nunca he estado en Londres antes.",
+    "mnemonicHint": "Falso amigo: no significa actualmente, sino de hecho/en verdad.",
     "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8",
-    "imageSource": "AI_GENERATED",
+    "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
-    "repetitionNumber": 1,
+    "repetitionNumber": 0,
     "easeFactor": 2.5,
-    "intervalDays": 1,
-    "lastRating": "GOOD",
-    "nextReviewAt": "2026-09-02T23:07:16.832Z"
+    "intervalDays": 0,
+    "nextReviewAt": "2026-09-01T23:07:16.832Z"
   },
   {
-    "id": "fc-abs-6",
+    "id": "fc-hab-1",
     "targetWord": "Used to",
-    "nativeTranslation": "Solía (hábito del pasado)",
+    "primaryTranslation": "Solía",
+    "acceptedTranslations": [
+      "solía",
+      "solia",
+      "acostumbraba",
+      "antes hacía",
+      "antes hacia"
+    ],
+    "minInputLength": 5,
+    "displayTranslation": "Solía (hábito pasado)",
+    "nativeTranslation": "Solía (hábito pasado)",
     "cardType": "ABSTRACT",
     "partOfSpeech": "VERB",
     "conceptCategory": "GRAMMAR_RULE",
+    "facilitatedPhonetics": "iúzd tu",
     "phoneticScript": "/ˈjuːzd tuː/",
-    "contextSentence": "I used to play soccer every weekend when I was a teenager.",
-    "contextTranslation": "Solía jugar fútbol todos los fines de semana cuando era adolescente.",
-    "grammarFormula": "Subject + used to + base verb (acción habitual que ya no ocurre)",
-    "commonMistake": "En negativo di \"didn't use to\" (sin d final en use).",
-    "mnemonicHint": "Usa \"used to\" para lo que solías usar en tu vida pasada.",
+    "contextSentence": "I used to live in Cali before moving to Bogota.",
+    "contextTranslation": "Solía vivir en Cali antes de mudarme a Bogotá.",
+    "mnemonicHint": "Cosas que usabas hacer en el pasado regularmente.",
     "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
-    "imageSource": "AI_GENERATED",
+    "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
     "repetitionNumber": 0,
@@ -205,24 +287,24 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "targetWord": "Break the ice",
     "nativeTranslation": "Romper el hielo",
     "category": "IDIOM_EXPRESSION",
-    "partOfSpeech": "IDIOM",
+    "partOfSpeech": "PHRASE",
     "phoneticScript": "/breɪk ðiː aɪs/",
-    "contextSentence": "A friendly smile can easily break the ice with new coworkers.",
-    "contextTranslation": "Una sonrisa amigable puede fácilmente romper el hielo con nuevos compañeros.",
-    "mnemonicHint": "Imagina un barco rompehielos abriendo paso para comunicarse.",
-    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
+    "contextSentence": "Telling a friendly joke is a great way to break the ice in Colombia.",
+    "contextTranslation": "Contar un chiste amistoso es una excelente forma de romper el hielo en Colombia.",
+    "mnemonicHint": "Imagina romper un témpano frío para que fluya la conversación.",
+    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9"
   },
   {
     "spanishTrigger": "arrepentirse",
-    "targetWord": "To Regret",
+    "targetWord": "Regret",
     "nativeTranslation": "Arrepentirse / Lamentar",
     "category": "ACTION_COGNITIVE",
     "partOfSpeech": "VERB",
     "phoneticScript": "/rɪˈɡret/",
-    "contextSentence": "I regret not practicing my English pronunciation earlier.",
-    "contextTranslation": "Me arrepiento de no haber practicado mi pronunciación de inglés antes.",
-    "mnemonicHint": "Regret suena a \"re-grieta\": una grieta en tu corazón por algo del pasado.",
-    "imageUrl": "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c"
+    "contextSentence": "I never regret dedicating an hour a day to my English practice.",
+    "contextTranslation": "Nunca me arrepiento de dedicar una hora al día a mi práctica de inglés.",
+    "mnemonicHint": "Re-gret: regresar mentalmente a un error lamentándolo.",
+    "imageUrl": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
   },
   {
     "spanishTrigger": "agotado",
@@ -231,21 +313,21 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "category": "EMOTION_STATE",
     "partOfSpeech": "ADJECTIVE",
     "phoneticScript": "/ɪɡˈzɔː.stɪd/",
-    "contextSentence": "After running a marathon, he was completely exhausted.",
-    "contextTranslation": "Después de correr una maratón, estaba completamente agotado.",
-    "mnemonicHint": "Exhausto: sin combustible, como un auto apagado.",
+    "contextSentence": "After studying English for five hours, I was completely exhausted.",
+    "contextTranslation": "Después de estudiar inglés durante cinco horas, estaba completamente agotado.",
+    "mnemonicHint": "Como el tubo de escape de un auto: sin energía.",
     "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474"
   },
   {
     "spanishTrigger": "rendirse",
     "targetWord": "Give up",
-    "nativeTranslation": "Rendirse / Abandonar",
+    "nativeTranslation": "Rendirse / Darse por vencido",
     "category": "PHRASAL_VERB",
     "partOfSpeech": "VERB",
     "phoneticScript": "/ɡɪv ʌp/",
-    "contextSentence": "Never give up when facing difficult challenges.",
-    "contextTranslation": "Nunca te rindas cuando enfrentes desafíos difíciles.",
-    "mnemonicHint": "Levantar las manos hacia arriba (UP) en señal de rendición.",
+    "contextSentence": "Never give up when learning English grammar rules.",
+    "contextTranslation": "Nunca te rindas al aprender las reglas gramaticales del inglés.",
+    "mnemonicHint": "Dar hacia arriba tus brazos en señal de entrega.",
     "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5"
   },
   {
@@ -2699,7 +2781,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   },
   {
     "id": "a1_node_4",
-    "title": "4. Presente Simple: Hábitos",
+    "title": "4. Presente Simple I: Hábitos & 3ra Persona",
     "description": "Rutinas diarias, reglas de tercera persona (-s, -es, -ies), auxiliares Do y Does, adverbios de frecuencia always/never.",
     "category": "GRAMMAR",
     "cefrLevel": "A1",
@@ -4315,9 +4397,9 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   },
   {
     "id": "a1_node_6",
-    "title": "6. Habilidades, Gustos & Comida",
-    "description": "Modal Can / Can't para habilidades, verbos like / love / hate + -ing, sustantivos contables e incontables, some / any.",
-    "category": "CONVERSATION",
+    "title": "6. Presente Simple II: Preguntas WH-, Ocupaciones & Frecuencia",
+    "description": "Aprende a formular preguntas para pedir información específica usando palabras interrogativas.",
+    "category": "GRAMMAR",
     "cefrLevel": "A1",
     "orderIndex": 6,
     "icon": "Coffee",
@@ -4332,7 +4414,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_6-1",
         "nodeId": "a1_node_6",
-        "title": "1. Modal Can & Can't (Habilidades)",
+        "title": "1. Preguntas de Información: Who, What, Where, When",
         "orderIndex": 1,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -4342,81 +4424,81 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-1-1",
             "sublessonId": "sub-a1_node_6-1",
-            "title": "1. Modal Can & Can't (Habilidades)",
+            "title": "1. Preguntas de Información: Who, What, Where, When",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
-            "summaryShort": "\"Can\" expresa habilidad o permiso; no cambia con he/she/it y va seguido del verbo base sin \"to\".",
-            "conceptBreakdown": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
-            "deepDiveNotes": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
+            "grammarFormula": "WH- + DO / DOES + Sujeto + Verbo Base ?\nEj: Where do you live? / What does she do?",
+            "summaryShort": "Aprende a formular preguntas para pedir información específica usando palabras interrogativas.",
+            "conceptBreakdown": "Para preguntar detalles usamos WH-words: What (qué), Where (dónde), When (cuándo), Who (quién), Why (por qué), How (cómo). El auxiliar do/does es obligatorio.",
+            "deepDiveNotes": "Estructura clave: WH- + DO / DOES + Sujeto + Verbo Base ?\nEj: Where do you live? / What does she do?\n\nUso comunicativo: Para preguntar detalles usamos WH-words: What (qué), Where (dónde), When (cuándo), Who (quién), Why (por qué), How (cómo). El auxiliar do/does es obligatorio.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
             ],
             "contrastExamples": [
               {
-                "en": "My brother can play the guitar very well.",
-                "es": "Ejemplo contextual en inglés estándar.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_6_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "He can to swim / She cans speak",
-                "correctExample": "He can swim / She can speak",
-                "fastPill": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
-                "mediumExplanation": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
-                "slowDeepDive": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim)."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_6-1-2",
-            "sublessonId": "sub-a1_node_6-1",
-            "title": "Refuerzo de Concepto: 1. Modal Can & Can't (Habilidades)",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 1. Modal Can & Can't (Habilidades) antes de los ejercicios de producción.",
-            "conceptBreakdown": "Nunca se dice \"he cans\" ni \"can to speak\". El modal \"can\" es invariable.",
-            "deepDiveNotes": "Ten en cuenta que \"can\" va seguido directamente del verbo en su forma base sin \"to\" (I can swim).",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "Can you speak English and Spanish fluently?",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "en": "Where do you study English every afternoon?",
+                "es": "Dónde estudias inglés todas las tardes?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_6-1-2",
+            "sublessonId": "sub-a1_node_6-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "WH- + DO / DOES + Sujeto + Verbo Base ?\nEj: Where do you live? / What does she do?",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En inglés nunca omitas el auxiliar Do/Does en preguntas de presente simple.",
+            "deepDiveNotes": "En 'Where' se pronuncia /weər/ con 'w' suave, no como 'g'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "What do you do on weekends?",
+                "es": "¿Qué haces los fines de semana?",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_6_1",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "Where you live? ❌",
+                "correctExample": "Where do you live? ✅",
+                "fastPill": "En inglés nunca omitas el auxiliar Do/Does en preguntas de presente simple.",
+                "mediumExplanation": "Para preguntar detalles usamos WH-words: What (qué), Where (dónde), When (cuándo), Who (quién), Why (por qué), How (cómo). El auxiliar do/does es obligatorio.",
+                "slowDeepDive": "En 'Where' se pronuncia /weər/ con 'w' suave, no como 'g'."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_6-1-3",
             "sublessonId": "sub-a1_node_6-1",
-            "title": "Resumen: 1. Modal Can & Can't (Habilidades)",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Afirmativo: Subject + can + base verb (I can swim / She can drive)\n2. Negativo: Subject + can't + base verb (He can't cook)\n3. Pregunta: Can you speak English? ➔ Yes, I can. / No, I can't.",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Modal Can & Can't (Habilidades).",
-            "conceptBreakdown": "Recuerda la regla central: 1. Afirmativo: Subject + can + base verb (I can swim / She can drive)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "WH- + DO / DOES + Sujeto + Verbo Base ?\nEj: Where do you live? / What does she do?",
+            "summaryShort": "¡Excelente! Has dominado '1. Preguntas de Información: Who, What, Where, When'.",
+            "conceptBreakdown": "⚡ Regla: WH + Auxiliar + Sujeto + Verbo Base.",
+            "deepDiveNotes": "Atajo mental: ⚡ Regla: WH + Auxiliar + Sujeto + Verbo Base.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Regla: WH + Auxiliar + Sujeto + Verbo Base.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4426,63 +4508,64 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-1-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Which sentence is grammatically correct for \"Él puede hablar tres idiomas\"?",
+            "prompt": "En una conversación, quieres saber dónde trabaja Laura. ¿Cuál pregunta es la correcta?",
             "options": [
-              "He can speak three languages.",
-              "He can speaks three languages.",
-              "He cans speak three languages.",
-              "He can to speak three languages."
+              "Where does Laura work?",
+              "Where Laura works?",
+              "Where do Laura work?",
+              "Where is Laura work?"
             ],
-            "correctAnswer": "He can speak three languages.",
-            "explanation": "\"Can\" no añade -s ni lleva \"to\".",
+            "correctAnswer": "Where does Laura work?",
+            "explanation": "Laura es 3ra persona singular (she), por lo que requiere el auxiliar 'does'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-1-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "I'm sorry, but I _____ attend the meeting tomorrow.",
+            "prompt": "_____ do you study English? - At the university in Bogota.",
             "options": [
-              "can't",
-              "cannot to",
-              "don't can"
+              "Where",
+              "What",
+              "Who",
+              "When"
             ],
-            "correctAnswer": "can't",
-            "explanation": "\"Can't\" es la negación de habilidad/posibilidad.",
+            "correctAnswer": "Where",
+            "explanation": "'At the university' es un lugar, por lo que la pregunta requiere 'Where'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-1-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
             "options": {
-              "I can swim": "Puedo nadar",
-              "She can drive": "Ella puede conducir",
-              "Can you cook?": "¿Sabes cocinar?",
-              "They can't come": "Ellos no pueden venir"
+              "Where?": "¿Dónde?",
+              "What?": "¿Qué? / ¿Cuál?",
+              "When?": "¿Cuándo?",
+              "Who?": "¿Quién?"
             },
             "correctAnswer": {
-              "I can swim": "Puedo nadar",
-              "She can drive": "Ella puede conducir",
-              "Can you cook?": "¿Sabes cocinar?",
-              "They can't come": "Ellos no pueden venir"
+              "Where?": "¿Dónde?",
+              "What?": "¿Qué? / ¿Cuál?",
+              "When?": "¿Cuándo?",
+              "Who?": "¿Quién?"
             },
-            "explanation": "Asociación conceptual clave para 1. Modal Can & Can't (Habilidades).",
+            "explanation": "Correspondencia de 1. Preguntas de Información: Who, What, Where, When.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-1-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
-            "correctAnswer": "My brother can play the guitar very well.",
-            "explanation": "Práctica de producción escrita para 1. Modal Can & Can't (Habilidades).",
+            "prompt": "Traduce y construye en inglés: \"Dónde estudias inglés todas las tardes?\"",
+            "correctAnswer": "Where do you study English every afternoon?",
+            "explanation": "Respuesta correcta: \"Where do you study English every afternoon?\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-1-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
-            "correctAnswer": "Can you speak English and Spanish fluently?",
-            "explanation": "Práctica oral de fluidez y articulación para 1. Modal Can & Can't (Habilidades).",
+            "prompt": "Pronuncia en voz alta en inglés: \"¿Qué haces los fines de semana?\"",
+            "correctAnswer": "What do you do on weekends?",
+            "explanation": "Pronunciación modelo: \"What do you do on weekends?\"",
             "cefrLevel": "A1"
           }
         ]
@@ -4490,7 +4573,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_6-2",
         "nodeId": "a1_node_6",
-        "title": "2. Verbos de Preferencia: Like, Love, Hate + -ing",
+        "title": "2. Ocupaciones & Preguntar '¿A qué te dedicas?'",
         "orderIndex": 2,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -4500,81 +4583,81 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-2-1",
             "sublessonId": "sub-a1_node_6-2",
-            "title": "2. Verbos de Preferencia: Like, Love, Hate + -ing",
+            "title": "2. Ocupaciones & Preguntar '¿A qué te dedicas?'",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
-            "summaryShort": "Los verbos de gusto o preferencia van seguidos de gerundio (-ing) para denotar actividades habituales.",
-            "conceptBreakdown": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
-            "deepDiveNotes": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
+            "grammarFormula": "Q: What do you do? = ¿A qué te dedicas?\nA: I am a / an + [Profesión]\nEj: I am an engineer. / She is a doctor.",
+            "summaryShort": "Aprende a hablar sobre trabajos y profesiones usando los artículos A y An correctamente.",
+            "conceptBreakdown": "Para preguntar la profesión de alguien decimos 'What do you do?'. Para responder, en inglés es OBLIGATORIO usar 'a' o 'an' antes de la profesión.",
+            "deepDiveNotes": "Estructura clave: Q: What do you do? = ¿A qué te dedicas?\nA: I am a / an + [Profesión]\nEj: I am an engineer. / She is a doctor.\n\nUso comunicativo: Para preguntar la profesión de alguien decimos 'What do you do?'. Para responder, en inglés es OBLIGATORIO usar 'a' o 'an' antes de la profesión.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
             ],
             "contrastExamples": [
               {
-                "en": "She likes listening to music when she studies.",
-                "es": "Ejemplo contextual en inglés estándar.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_6_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I enjoy to cook / She likes read",
-                "correctExample": "I enjoy cooking / She likes reading",
-                "fastPill": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
-                "mediumExplanation": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
-                "slowDeepDive": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading)."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_6-2-2",
-            "sublessonId": "sub-a1_node_6-2",
-            "title": "Refuerzo de Concepto: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 2. Verbos de Preferencia: Like, Love, Hate + -ing antes de los ejercicios de producción.",
-            "conceptBreakdown": "Usa -ing tras like, love, hate y enjoy para hablar de pasatiempos.",
-            "deepDiveNotes": "Ten en cuenta que tras \"enjoy\" es estrictamente obligatorio usar la forma en -ing (enjoy reading).",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "We love traveling to new countries every summer.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "en": "My sister is a doctor at the central hospital.",
+                "es": "Mi hermana es médica en el hospital central.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_6-2-2",
+            "sublessonId": "sub-a1_node_6-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Q: What do you do? = ¿A qué te dedicas?\nA: I am a / an + [Profesión]\nEj: I am an engineer. / She is a doctor.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En español decimos 'Soy ingeniero', pero en inglés siempre es 'I am an engineer'.",
+            "deepDiveNotes": "'Engineer' lleva el acento al final: /ˌen.dʒɪˈnɪər/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "What do you do for a living?",
+                "es": "¿A qué te dedicas para ganarte la vida?",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_6_2",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I am engineer ❌",
+                "correctExample": "I am an engineer ✅",
+                "fastPill": "En español decimos 'Soy ingeniero', pero en inglés siempre es 'I am an engineer'.",
+                "mediumExplanation": "Para preguntar la profesión de alguien decimos 'What do you do?'. Para responder, en inglés es OBLIGATORIO usar 'a' o 'an' antes de la profesión.",
+                "slowDeepDive": "'Engineer' lleva el acento al final: /ˌen.dʒɪˈnɪər/."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_6-2-3",
             "sublessonId": "sub-a1_node_6-2",
-            "title": "Resumen: 2. Verbos de Preferencia: Like, Love, Hate + -ing",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Like / Love / Hate / Enjoy + verb(-ing)\n2. I love cooking (Me encanta cocinar)\n3. She likes reading novels (Le gusta leer novelas)",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
-            "conceptBreakdown": "Recuerda la regla central: 1. Like / Love / Hate / Enjoy + verb(-ing)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "Q: What do you do? = ¿A qué te dedicas?\nA: I am a / an + [Profesión]\nEj: I am an engineer. / She is a doctor.",
+            "summaryShort": "¡Excelente! Has dominado '2. Ocupaciones & Preguntar '¿A qué te dedicas?''.",
+            "conceptBreakdown": "⚡ Recuerda: 'an' antes de vocal (an architect), 'a' antes de consonante (a teacher).",
+            "deepDiveNotes": "Atajo mental: ⚡ Recuerda: 'an' antes de vocal (an architect), 'a' antes de consonante (a teacher).",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Recuerda: 'an' antes de vocal (an architect), 'a' antes de consonante (a teacher).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4584,63 +4667,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-2-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Choose the correct form: \"Maria really enjoys _____ novels on weekends.\"",
+            "prompt": "Conoces a una persona en una reunión y preguntas 'What do you do?'. Ella responde correctamente:",
             "options": [
-              "reading",
-              "read",
-              "reads",
-              "to reading"
+              "I am a software developer.",
+              "I am developer software.",
+              "I do developer.",
+              "I have an engineer."
             ],
-            "correctAnswer": "reading",
-            "explanation": "Tras enjoy se usa -ing (reading).",
+            "correctAnswer": "I am a software developer.",
+            "explanation": "La respuesta estándar a 'What do you do?' es 'I am a [profesión]'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-2-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "I hate _____ up early on Sunday mornings.",
+            "prompt": "Daniel designs modern buildings. He is _____ architect.",
             "options": [
-              "waking",
-              "wake",
-              "wakes"
+              "an",
+              "a",
+              "the"
             ],
-            "correctAnswer": "waking",
-            "explanation": "Con hate usamos -ing (waking).",
+            "correctAnswer": "an",
+            "explanation": "'Architect' empieza con sonido vocálico, por lo que requiere 'an'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-2-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
             "options": {
-              "I love dancing": "Me encanta bailar",
-              "I like reading": "Me gusta leer",
-              "I don't like cooking": "No me gusta cocinar",
-              "I hate cleaning": "Odio limpiar"
+              "Doctor": "Médico / Doctor",
+              "Teacher": "Profesor / Maestro",
+              "Lawyer": "Abogado",
+              "Nurse": "Enfermero / Enfermera"
             },
             "correctAnswer": {
-              "I love dancing": "Me encanta bailar",
-              "I like reading": "Me gusta leer",
-              "I don't like cooking": "No me gusta cocinar",
-              "I hate cleaning": "Odio limpiar"
+              "Doctor": "Médico / Doctor",
+              "Teacher": "Profesor / Maestro",
+              "Lawyer": "Abogado",
+              "Nurse": "Enfermero / Enfermera"
             },
-            "explanation": "Asociación conceptual clave para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
+            "explanation": "Correspondencia de 2. Ocupaciones & Preguntar '¿A qué te dedicas?'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-2-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
-            "correctAnswer": "She likes listening to music when she studies.",
-            "explanation": "Práctica de producción escrita para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
+            "prompt": "Traduce y construye en inglés: \"Mi hermana es médica en el hospital central.\"",
+            "correctAnswer": "My sister is a doctor at the central hospital.",
+            "explanation": "Respuesta correcta: \"My sister is a doctor at the central hospital.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-2-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
-            "correctAnswer": "We love traveling to new countries every summer.",
-            "explanation": "Práctica oral de fluidez y articulación para 2. Verbos de Preferencia: Like, Love, Hate + -ing.",
+            "prompt": "Pronuncia en voz alta en inglés: \"¿A qué te dedicas para ganarte la vida?\"",
+            "correctAnswer": "What do you do for a living?",
+            "explanation": "Pronunciación modelo: \"What do you do for a living?\"",
             "cefrLevel": "A1"
           }
         ]
@@ -4648,7 +4731,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_6-3",
         "nodeId": "a1_node_6",
-        "title": "3. Comidas & Bebidas Cotidianas",
+        "title": "3. Adverbios de Frecuencia: Always, Usually, Sometimes, Never",
         "orderIndex": 3,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -4658,81 +4741,81 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-3-1",
             "sublessonId": "sub-a1_node_6-3",
-            "title": "3. Comidas & Bebidas Cotidianas",
+            "title": "3. Adverbios de Frecuencia: Always, Usually, Sometimes, Never",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
-            "summaryShort": "Vocabulario esencial de alimentos para desenvolverte en restaurantes y supermercados.",
-            "conceptBreakdown": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
-            "deepDiveNotes": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
+            "grammarFormula": "Sujeto + Adverbio + Verbo Principal (Always / Usually / Often / Sometimes / Never)\nEXCEPCIÓN To Be: Sujeto + AM/IS/ARE + Adverbio",
+            "summaryShort": "Aprende a expresar con qué frecuencia realizas tus actividades cotidianas.",
+            "conceptBreakdown": "Los adverbios indican frecuencia: Always (100%), Usually (80%), Sometimes (50%), Never (0%). Van ANTES del verbo normal, pero DESPUÉS del verbo To Be.",
+            "deepDiveNotes": "Estructura clave: Sujeto + Adverbio + Verbo Principal (Always / Usually / Often / Sometimes / Never)\nEXCEPCIÓN To Be: Sujeto + AM/IS/ARE + Adverbio\n\nUso comunicativo: Los adverbios indican frecuencia: Always (100%), Usually (80%), Sometimes (50%), Never (0%). Van ANTES del verbo normal, pero DESPUÉS del verbo To Be.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
             ],
             "contrastExamples": [
               {
-                "en": "I eat fruit and drink coffee for breakfast.",
-                "es": "Ejemplo contextual en inglés estándar.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_6_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I drink breakfast at 8 AM",
-                "correctExample": "I have breakfast at 8 AM",
-                "fastPill": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
-                "mediumExplanation": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
-                "slowDeepDive": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\"."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_6-3-2",
-            "sublessonId": "sub-a1_node_6-3",
-            "title": "Refuerzo de Concepto: 3. Comidas & Bebidas Cotidianas",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 3. Comidas & Bebidas Cotidianas antes de los ejercicios de producción.",
-            "conceptBreakdown": "Usa \"have breakfast\" para desayunar, \"have lunch\" para almorzar y \"have dinner\" para cenar.",
-            "deepDiveNotes": "Ten en cuenta que para las comidas del día se dice \"have breakfast\", no \"eat the breakfast\".",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "We usually have lunch at one o'clock in the afternoon.",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "en": "I always drink coffee and read the news.",
+                "es": "Siempre bebo café y leo las noticias.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_6-3-2",
+            "sublessonId": "sub-a1_node_6-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Sujeto + Adverbio + Verbo Principal (Always / Usually / Often / Sometimes / Never)\nEXCEPCIÓN To Be: Sujeto + AM/IS/ARE + Adverbio",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En inglés el adverbio de frecuencia va inmediatamente antes del verbo principal.",
+            "deepDiveNotes": "'Usually' se pronuncia /ˈjuː.ʒu.ə.li/, con un sonido 'zh' suave.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "She is always happy to practice English.",
+                "es": "Ella siempre está feliz de practicar inglés.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_6_3",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I go always to the gym ❌",
+                "correctExample": "I always go to the gym ✅",
+                "fastPill": "En inglés el adverbio de frecuencia va inmediatamente antes del verbo principal.",
+                "mediumExplanation": "Los adverbios indican frecuencia: Always (100%), Usually (80%), Sometimes (50%), Never (0%). Van ANTES del verbo normal, pero DESPUÉS del verbo To Be.",
+                "slowDeepDive": "'Usually' se pronuncia /ˈjuː.ʒu.ə.li/, con un sonido 'zh' suave."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_6-3-3",
             "sublessonId": "sub-a1_node_6-3",
-            "title": "Resumen: 3. Comidas & Bebidas Cotidianas",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)\n2. Alimentos: bread, rice, chicken, vegetables, fruit, coffee, water",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comidas & Bebidas Cotidianas.",
-            "conceptBreakdown": "Recuerda la regla central: 1. Comidas: breakfast (desayuno), lunch (almuerzo), dinner (cena)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "Sujeto + Adverbio + Verbo Principal (Always / Usually / Often / Sometimes / Never)\nEXCEPCIÓN To Be: Sujeto + AM/IS/ARE + Adverbio",
+            "summaryShort": "¡Excelente! Has dominado '3. Adverbios de Frecuencia: Always, Usually, Sometimes, Never'.",
+            "conceptBreakdown": "⚡ Regla de oro: Antes de verbos normales, después del verbo To Be.",
+            "deepDiveNotes": "Atajo mental: ⚡ Regla de oro: Antes de verbos normales, después del verbo To Be.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Regla de oro: Antes de verbos normales, después del verbo To Be.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4742,63 +4825,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-3-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "What is the first meal of the day eaten in the morning?",
+            "prompt": "¿Cuál oración está escrita con el orden de palabras correcto en inglés?",
             "options": [
-              "Breakfast",
-              "Lunch",
-              "Dinner",
-              "Dessert"
+              "Carlos always drinks Colombian coffee in the morning.",
+              "Carlos drinks always Colombian coffee in the morning.",
+              "Always Carlos drinks coffee in morning.",
+              "Carlos drinks coffee always morning."
             ],
-            "correctAnswer": "Breakfast",
-            "explanation": "\"Breakfast\" es el desayuno matutino.",
+            "correctAnswer": "Carlos always drinks Colombian coffee in the morning.",
+            "explanation": "El adverbio 'always' va antes del verbo principal 'drinks'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-3-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Would you like a glass of fresh _____ with your meal?",
+            "prompt": "She is _____ late for her English classes. She is very punctual!",
             "options": [
-              "water",
-              "bread",
-              "meat"
+              "never",
+              "always",
+              "usually"
             ],
-            "correctAnswer": "water",
-            "explanation": "\"Water\" es agua.",
+            "correctAnswer": "never",
+            "explanation": "Si es muy puntual, 'nunca' (never) llega tarde.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-3-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
             "options": {
-              "Breakfast": "Desayuno",
-              "Lunch": "Almuerzo",
-              "Dinner": "Cena",
-              "Snack": "Merienda / Refrigerio"
+              "Always": "Siempre (100%)",
+              "Usually": "Usualmente (80%)",
+              "Sometimes": "A veces (50%)",
+              "Never": "Nunca (0%)"
             },
             "correctAnswer": {
-              "Breakfast": "Desayuno",
-              "Lunch": "Almuerzo",
-              "Dinner": "Cena",
-              "Snack": "Merienda / Refrigerio"
+              "Always": "Siempre (100%)",
+              "Usually": "Usualmente (80%)",
+              "Sometimes": "A veces (50%)",
+              "Never": "Nunca (0%)"
             },
-            "explanation": "Asociación conceptual clave para 3. Comidas & Bebidas Cotidianas.",
+            "explanation": "Correspondencia de 3. Adverbios de Frecuencia: Always, Usually, Sometimes, Never.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-3-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
-            "correctAnswer": "I eat fruit and drink coffee for breakfast.",
-            "explanation": "Práctica de producción escrita para 3. Comidas & Bebidas Cotidianas.",
+            "prompt": "Traduce y construye en inglés: \"Siempre bebo café y leo las noticias.\"",
+            "correctAnswer": "I always drink coffee and read the news.",
+            "explanation": "Respuesta correcta: \"I always drink coffee and read the news.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-3-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
-            "correctAnswer": "We usually have lunch at one o'clock in the afternoon.",
-            "explanation": "Práctica oral de fluidez y articulación para 3. Comidas & Bebidas Cotidianas.",
+            "prompt": "Pronuncia en voz alta en inglés: \"Ella siempre está feliz de practicar inglés.\"",
+            "correctAnswer": "She is always happy to practice English.",
+            "explanation": "Pronunciación modelo: \"She is always happy to practice English.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -4806,7 +4889,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_6-4",
         "nodeId": "a1_node_6",
-        "title": "4. Sustantivos Contables e Incontables (Some / Any)",
+        "title": "4. Verbos de Estado vs Acción (Like, Love, Want, Need)",
         "orderIndex": 4,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -4816,81 +4899,81 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-4-1",
             "sublessonId": "sub-a1_node_6-4",
-            "title": "4. Sustantivos Contables e Incontables (Some / Any)",
+            "title": "4. Verbos de Estado vs Acción (Like, Love, Want, Need)",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
-            "summaryShort": "Usa \"some\" para afirmaciones u ofrecimientos y \"any\" para negaciones y preguntas.",
-            "conceptBreakdown": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
-            "deepDiveNotes": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
+            "grammarFormula": "Sujeto + Verbo de Estado + Sustantivo / to + Verbo Base\nEj: I want a coffee. / I need to study.",
+            "summaryShort": "Comprende los verbos que expresan deseos, necesidades y emociones en presente simple.",
+            "conceptBreakdown": "Verbos como 'want' (querer), 'need' (necesitar), 'like' (gustar) y 'love' (encantar) describen estados mentales. Si conectas dos verbos, usa 'to': 'I want to speak'.",
+            "deepDiveNotes": "Estructura clave: Sujeto + Verbo de Estado + Sustantivo / to + Verbo Base\nEj: I want a coffee. / I need to study.\n\nUso comunicativo: Verbos como 'want' (querer), 'need' (necesitar), 'like' (gustar) y 'love' (encantar) describen estados mentales. Si conectas dos verbos, usa 'to': 'I want to speak'.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
             ],
             "contrastExamples": [
               {
-                "en": "There are some apples on the table but there isn't any milk.",
-                "es": "Ejemplo contextual en inglés estándar.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_6_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I don't have some money / two breads",
-                "correctExample": "I don't have any money / two pieces of bread",
-                "fastPill": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
-                "mediumExplanation": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
-                "slowDeepDive": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money)."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_6-4-2",
-            "sublessonId": "sub-a1_node_6-4",
-            "title": "Refuerzo de Concepto: 4. Sustantivos Contables e Incontables (Some / Any)",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 4. Sustantivos Contables e Incontables (Some / Any) antes de los ejercicios de producción.",
-            "conceptBreakdown": "Los sustantivos incontables (water, milk, money, bread) no tienen plural.",
-            "deepDiveNotes": "Ten en cuenta que en oraciones negativas siempre usamos \"any\" (I don't have any money).",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "Can I have some water and some bread, please?",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "en": "I need to study grammar every morning.",
+                "es": "Necesito estudiar gramática cada mañana.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_6-4-2",
+            "sublessonId": "sub-a1_node_6-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Sujeto + Verbo de Estado + Sustantivo / to + Verbo Base\nEj: I want a coffee. / I need to study.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Cuando unes dos verbos, el segundo va con 'to' infinitivo: 'want to learn', 'need to practice'.",
+            "deepDiveNotes": "'Need to' suele sonar en habla fluida conectado como 'niid-tu'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I love to travel and meet new people.",
+                "es": "Me encanta viajar y conocer nuevas personas.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_6_4",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I want speak English ❌",
+                "correctExample": "I want to speak English ✅",
+                "fastPill": "Cuando unes dos verbos, el segundo va con 'to' infinitivo: 'want to learn', 'need to practice'.",
+                "mediumExplanation": "Verbos como 'want' (querer), 'need' (necesitar), 'like' (gustar) y 'love' (encantar) describen estados mentales. Si conectas dos verbos, usa 'to': 'I want to speak'.",
+                "slowDeepDive": "'Need to' suele sonar en habla fluida conectado como 'niid-tu'."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_6-4-3",
             "sublessonId": "sub-a1_node_6-4",
-            "title": "Resumen: 4. Sustantivos Contables e Incontables (Some / Any)",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)\n2. Any: oraciones negativas y preguntas (We don't have any milk / Is there any sugar?)",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Sustantivos Contables e Incontables (Some / Any).",
-            "conceptBreakdown": "Recuerda la regla central: 1. Some: oraciones afirmativas y ofertas amables (There is some milk / Would you like some water?)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "Sujeto + Verbo de Estado + Sustantivo / to + Verbo Base\nEj: I want a coffee. / I need to study.",
+            "summaryShort": "¡Excelente! Has dominado '4. Verbos de Estado vs Acción (Like, Love, Want, Need)'.",
+            "conceptBreakdown": "⚡ Querer/Necesitar hacer algo = WANT TO / NEED TO + verbo.",
+            "deepDiveNotes": "Atajo mental: ⚡ Querer/Necesitar hacer algo = WANT TO / NEED TO + verbo.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ Querer/Necesitar hacer algo = WANT TO / NEED TO + verbo.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -4900,63 +4983,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-4-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Look at the sentence: \"We don't have _____ milk in the fridge.\" Which word is correct?",
+            "prompt": "Quieres pedirle a tu profesor que practiquen conversación. ¿Qué dices?",
             "options": [
-              "any",
-              "some",
-              "a",
-              "many"
+              "I want to practice conversation today.",
+              "I want practice conversation today.",
+              "I am wanting conversation today.",
+              "I need practice conversation today."
             ],
-            "correctAnswer": "any",
-            "explanation": "En oraciones negativas se usa \"any\".",
+            "correctAnswer": "I want to practice conversation today.",
+            "explanation": "El verbo 'want' se conecta con el siguiente verbo mediante 'to' (want to practice).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-4-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Would you like _____ hot tea?",
+            "prompt": "We _____ a new laptop for our English course.",
             "options": [
-              "some",
-              "any",
-              "a"
+              "need",
+              "needs",
+              "needing"
             ],
-            "correctAnswer": "some",
-            "explanation": "En ofertas amables se usa \"some\".",
+            "correctAnswer": "need",
+            "explanation": "Con el sujeto 'We' el verbo va en forma base 'need'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-4-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
             "options": {
-              "Some apples": "Algunas manzanas (contable)",
-              "Some water": "Algo de agua (incontable)",
-              "I don't have any money": "No tengo nada de dinero",
-              "Is there any cheese?": "¿Hay queso?"
+              "I want": "Yo quiero",
+              "I need": "Yo necesito",
+              "I like": "Me gusta",
+              "I prefer": "Yo prefiero"
             },
             "correctAnswer": {
-              "Some apples": "Algunas manzanas (contable)",
-              "Some water": "Algo de agua (incontable)",
-              "I don't have any money": "No tengo nada de dinero",
-              "Is there any cheese?": "¿Hay queso?"
+              "I want": "Yo quiero",
+              "I need": "Yo necesito",
+              "I like": "Me gusta",
+              "I prefer": "Yo prefiero"
             },
-            "explanation": "Asociación conceptual clave para 4. Sustantivos Contables e Incontables (Some / Any).",
+            "explanation": "Correspondencia de 4. Verbos de Estado vs Acción (Like, Love, Want, Need).",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-4-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
-            "correctAnswer": "There are some apples on the table but there isn't any milk.",
-            "explanation": "Práctica de producción escrita para 4. Sustantivos Contables e Incontables (Some / Any).",
+            "prompt": "Traduce y construye en inglés: \"Necesito estudiar gramática cada mañana.\"",
+            "correctAnswer": "I need to study grammar every morning.",
+            "explanation": "Respuesta correcta: \"I need to study grammar every morning.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-4-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
-            "correctAnswer": "Can I have some water and some bread, please?",
-            "explanation": "Práctica oral de fluidez y articulación para 4. Sustantivos Contables e Incontables (Some / Any).",
+            "prompt": "Pronuncia en voz alta en inglés: \"Me encanta viajar y conocer nuevas personas.\"",
+            "correctAnswer": "I love to travel and meet new people.",
+            "explanation": "Pronunciación modelo: \"I love to travel and meet new people.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -4964,7 +5047,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_6-5",
         "nodeId": "a1_node_6",
-        "title": "5. Preguntas de Cantidad: How Much vs How Many",
+        "title": "5. Integración: Entrevista de Trabajo & Rutina Profesional",
         "orderIndex": 5,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -4974,81 +5057,81 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_6-5-1",
             "sublessonId": "sub-a1_node_6-5",
-            "title": "5. Preguntas de Cantidad: How Much vs How Many",
+            "title": "5. Integración: Entrevista de Trabajo & Rutina Profesional",
             "slideOrder": 1,
             "placement": "INTRO",
             "triggerQuestionIndex": 0,
-            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
-            "summaryShort": "Usa \"How many\" para cosas que puedes contar y \"How much\" para cantidades continuas y precios.",
-            "conceptBreakdown": "Diferenciación crucial para compras y cantidades de comida.",
-            "deepDiveNotes": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
+            "grammarFormula": "Integración de WH-, ocupaciones, hábitos y necesidades en un diálogo laboral simulado.",
+            "summaryShort": "Aplica todo lo aprendido en una conversación realista de presentación y perfil profesional.",
+            "conceptBreakdown": "Combina: 'What do you do?', 'Where do you work?', 'I usually start at 8:00 AM' y 'I need to improve my English'.",
+            "deepDiveNotes": "Estructura clave: Integración de WH-, ocupaciones, hábitos y necesidades en un diálogo laboral simulado.\n\nUso comunicativo: Combina: 'What do you do?', 'Where do you work?', 'I usually start at 8:00 AM' y 'I need to improve my English'.",
             "keyTakeaways": [
-              "Aplica la estructura gramatical o fórmula del concepto.",
-              "Presta atención a las diferencias clave con el español.",
-              "Practica con los ejercicios interactivos de comprobación."
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
             ],
             "contrastExamples": [
               {
-                "en": "How many students are in the classroom today?",
-                "es": "Ejemplo contextual en inglés estándar.",
-                "highlightEn": "pattern",
-                "highlightEs": "patrón",
-                "note": "Estructura central"
-              }
-            ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_6_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "How many money do you have? / How much apples?",
-                "correctExample": "How much money do you have? / How many apples?",
-                "fastPill": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
-                "mediumExplanation": "Diferenciación crucial para compras y cantidades de comida.",
-                "slowDeepDive": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\"."
-              }
-            ]
-          },
-          {
-            "id": "exp-a1_node_6-5-2",
-            "sublessonId": "sub-a1_node_6-5",
-            "title": "Refuerzo de Concepto: 5. Preguntas de Cantidad: How Much vs How Many",
-            "slideOrder": 2,
-            "placement": "MID_CHECKPOINT",
-            "triggerQuestionIndex": 2,
-            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
-            "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Preguntas de Cantidad: How Much vs How Many antes de los ejercicios de producción.",
-            "conceptBreakdown": "Diferenciación crucial para compras y cantidades de comida.",
-            "deepDiveNotes": "Ten en cuenta que \"money\" (dinero) y \"time\" (tiempo) son incontables en inglés: decimos \"How much money?\" y \"How much time?\".",
-            "keyTakeaways": [
-              "Fija el patrón antes de escribir o hablar.",
-              "Verifica la concordancia exacta."
-            ],
-            "contrastExamples": [
-              {
-                "en": "How much sugar do you want in your coffee?",
-                "es": "Segundo ejemplo representativo.",
-                "highlightEn": "example",
-                "highlightEs": "ejemplo",
-                "note": "Refuerzo"
+                "en": "I work in an office and I start at nine.",
+                "es": "Trabajo en una oficina y empiezo a las nueve.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
               }
             ],
             "commonPitfalls": []
           },
           {
+            "id": "exp-a1_node_6-5-2",
+            "sublessonId": "sub-a1_node_6-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Integración de WH-, ocupaciones, hábitos y necesidades en un diálogo laboral simulado.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Usa 'an office' porque 'office' empieza con sonido vocálico.",
+            "deepDiveNotes": "Articula las pausas naturales entre preguntas y respuestas.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I want to improve my English for my career.",
+                "es": "Quiero mejorar mi inglés para mi carrera.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_6_5",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I work in a office ❌",
+                "correctExample": "I work in an office ✅",
+                "fastPill": "Usa 'an office' porque 'office' empieza con sonido vocálico.",
+                "mediumExplanation": "Combina: 'What do you do?', 'Where do you work?', 'I usually start at 8:00 AM' y 'I need to improve my English'.",
+                "slowDeepDive": "Articula las pausas naturales entre preguntas y respuestas."
+              }
+            ]
+          },
+          {
             "id": "exp-a1_node_6-5-3",
             "sublessonId": "sub-a1_node_6-5",
-            "title": "Resumen: 5. Preguntas de Cantidad: How Much vs How Many",
+            "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
             "triggerQuestionIndex": 5,
-            "grammarFormula": "1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)\n2. How much + sustantivo incontable o precio: How much water? / How much does it cost?",
-            "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preguntas de Cantidad: How Much vs How Many.",
-            "conceptBreakdown": "Recuerda la regla central: 1. How many + sustantivo contable plural: How many cups of coffee? (¿Cuántas tazas?)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "grammarFormula": "Integración de WH-, ocupaciones, hábitos y necesidades en un diálogo laboral simulado.",
+            "summaryShort": "¡Excelente! Has dominado '5. Integración: Entrevista de Trabajo & Rutina Profesional'.",
+            "conceptBreakdown": "⚡ En entrevistas: responde primero con la profesión y añade un detalle de tu rutina.",
+            "deepDiveNotes": "Atajo mental: ⚡ En entrevistas: responde primero con la profesión y añade un detalle de tu rutina.",
             "keyTakeaways": [
-              "Concepto dominado",
-              "Sin errores de transferencia L1",
-              "Listo para avanzar"
+              "⚡ En entrevistas: responde primero con la profesión y añade un detalle de tu rutina.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
             ],
             "contrastExamples": [],
             "commonPitfalls": []
@@ -5058,63 +5141,63 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_6-5-1",
             "type": "MULTIPLE_CHOICE_ICFES",
-            "prompt": "Complete the question: \"_____ cups of coffee do you drink every day?\"",
+            "prompt": "Entrevistador: 'What do you usually do in the morning at work?' Candidato:",
             "options": [
-              "How many",
-              "How much",
-              "How long",
-              "How often"
+              "I usually check emails and organize my team's tasks.",
+              "I am check emails usually.",
+              "I always to check emails.",
+              "I checking emails usually."
             ],
-            "correctAnswer": "How many",
-            "explanation": "\"Cups\" es contable plural (How many).",
+            "correctAnswer": "I usually check emails and organize my team's tasks.",
+            "explanation": "Respuesta completa, natural y gramaticalmente correcta con 'usually'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-5-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "_____ money do you need for the bus ticket?",
+            "prompt": "_____ do you start work every day? - At 8:30 AM.",
             "options": [
-              "How much",
-              "How many",
-              "How price"
+              "What time",
+              "Where",
+              "Who"
             ],
-            "correctAnswer": "How much",
-            "explanation": "\"Money\" es incontable (How much).",
+            "correctAnswer": "What time",
+            "explanation": "Para preguntar una hora específica usamos 'What time'.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-5-3",
             "type": "MATCH_PAIRS",
-            "prompt": "Empareja cada elemento con su significado o correspondencia:",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
             "options": {
-              "How many people?": "¿Cuántas personas?",
-              "How much time?": "¿Cuánto tiempo?",
-              "How much does it cost?": "¿Cuánto cuesta?",
-              "How many siblings?": "¿Cuántos hermanos?"
+              "What do you do?": "¿A qué te dedicas?",
+              "Where do you work?": "¿Dónde trabajas?",
+              "What time do you start?": "¿A qué hora empiezas?",
+              "I love my job": "Me encanta mi trabajo"
             },
             "correctAnswer": {
-              "How many people?": "¿Cuántas personas?",
-              "How much time?": "¿Cuánto tiempo?",
-              "How much does it cost?": "¿Cuánto cuesta?",
-              "How many siblings?": "¿Cuántos hermanos?"
+              "What do you do?": "¿A qué te dedicas?",
+              "Where do you work?": "¿Dónde trabajas?",
+              "What time do you start?": "¿A qué hora empiezas?",
+              "I love my job": "Me encanta mi trabajo"
             },
-            "explanation": "Asociación conceptual clave para 5. Preguntas de Cantidad: How Much vs How Many.",
+            "explanation": "Correspondencia de 5. Integración: Entrevista de Trabajo & Rutina Profesional.",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-5-4",
             "type": "SENTENCE_WRITING",
-            "prompt": "Traduce y construye en inglés esta oración",
-            "correctAnswer": "How many students are in the classroom today?",
-            "explanation": "Práctica de producción escrita para 5. Preguntas de Cantidad: How Much vs How Many.",
+            "prompt": "Traduce y construye en inglés: \"Trabajo en una oficina y empiezo a las nueve.\"",
+            "correctAnswer": "I work in an office and I start at nine.",
+            "explanation": "Respuesta correcta: \"I work in an office and I start at nine.\"",
             "cefrLevel": "A1"
           },
           {
             "id": "q-a1_node_6-5-5",
             "type": "SPEAKING_PRONUNCIATION",
-            "prompt": "Pronuncia en voz alta en inglés con buena entonación",
-            "correctAnswer": "How much sugar do you want in your coffee?",
-            "explanation": "Práctica oral de fluidez y articulación para 5. Preguntas de Cantidad: How Much vs How Many.",
+            "prompt": "Pronuncia en voz alta en inglés: \"Quiero mejorar mi inglés para mi carrera.\"",
+            "correctAnswer": "I want to improve my English for my career.",
+            "explanation": "Pronunciación modelo: \"I want to improve my English for my career.\"",
             "cefrLevel": "A1"
           }
         ]
@@ -5125,7 +5208,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     "id": "a1_node_7",
     "title": "7. Números, Horas & Compras",
     "description": "Números cardinales y ordinales, decir la hora (past / to), precios, compras en tiendas y ropa.",
-    "category": "PRACTICE",
+    "category": "VOCABULARY",
     "cefrLevel": "A1",
     "orderIndex": 7,
     "icon": "Clock",
@@ -5931,12 +6014,12 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   },
   {
     "id": "a1_node_8",
-    "title": "8. De la Pronunciación al Alfabeto Fonético (IPA)",
-    "description": "Aprende a leer los símbolos fonéticos internacionales (IPA) para dejar de depender de escribir en español antes de pasar a A2.",
-    "category": "PHONETICS",
+    "title": "8. Existencia (There is/are), Cuantificadores & Pronombres Objeto",
+    "description": "Aprende a indicar la existencia de cosas en singular y plural usando 'There is' y 'There are'.",
+    "category": "GRAMMAR",
     "cefrLevel": "A1",
     "orderIndex": 8,
-    "icon": "Headphones",
+    "icon": "Layers",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
@@ -5949,7 +6032,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
       {
         "id": "sub-a1_node_8-1",
         "nodeId": "a1_node_8",
-        "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
+        "title": "1. Existencia: There is vs There are",
         "orderIndex": 1,
         "paceTier": "ALL",
         "xpReward": 20,
@@ -5959,6 +6042,814 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "exp-a1_node_8-1-1",
             "sublessonId": "sub-a1_node_8-1",
+            "title": "1. Existencia: There is vs There are",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Singular / Incontable: There is a book / There is some water.\nPlural: There are two books / There are many cars.\nNegativa: There isn't / There aren't.\nPregunta: Is there...? / Are there...?",
+            "summaryShort": "Aprende a indicar la existencia de cosas en singular y plural usando 'There is' y 'There are'.",
+            "conceptBreakdown": "En español decimos 'Hay' para todo. En inglés: 'There is' para una sola cosa o incontables, y 'There are' para dos o más cosas.",
+            "deepDiveNotes": "Estructura clave: Singular / Incontable: There is a book / There is some water.\nPlural: There are two books / There are many cars.\nNegativa: There isn't / There aren't.\nPregunta: Is there...? / Are there...?\n\nUso comunicativo: En español decimos 'Hay' para todo. En inglés: 'There is' para una sola cosa o incontables, y 'There are' para dos o más cosas.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "There is a coffee mug on the table.",
+                "es": "Hay una taza de café sobre la mesa.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-1-2",
+            "sublessonId": "sub-a1_node_8-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Singular / Incontable: There is a book / There is some water.\nPlural: There are two books / There are many cars.\nNegativa: There isn't / There aren't.\nPregunta: Is there...? / Are there...?",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "No uses el verbo 'have' (tener) para decir 'hay'. La existencia siempre es 'There is' o 'There are'.",
+            "deepDiveNotes": "'There is' se pronuncia facilitado 'dér is' (o contracción 'dérs').",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "There are many students in the English class.",
+                "es": "Hay muchos estudiantes en la clase de inglés.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_1",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "Have three chairs in the room ❌",
+                "correctExample": "There are three chairs in the room ✅",
+                "fastPill": "No uses el verbo 'have' (tener) para decir 'hay'. La existencia siempre es 'There is' o 'There are'.",
+                "mediumExplanation": "En español decimos 'Hay' para todo. En inglés: 'There is' para una sola cosa o incontables, y 'There are' para dos o más cosas.",
+                "slowDeepDive": "'There is' se pronuncia facilitado 'dér is' (o contracción 'dérs')."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-1-3",
+            "sublessonId": "sub-a1_node_8-1",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Singular / Incontable: There is a book / There is some water.\nPlural: There are two books / There are many cars.\nNegativa: There isn't / There aren't.\nPregunta: Is there...? / Are there...?",
+            "summaryShort": "¡Excelente! Has dominado '1. Existencia: There is vs There are'.",
+            "conceptBreakdown": "⚡ Si es 1 = There is. Si son 2 o más = There are.",
+            "deepDiveNotes": "Atajo mental: ⚡ Si es 1 = There is. Si son 2 o más = There are.",
+            "keyTakeaways": [
+              "⚡ Si es 1 = There is. Si son 2 o más = There are.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-1-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Entras a una oficina y quieres decir que hay cuatro computadores sobre el escritorio:",
+            "options": [
+              "There are four computers on the desk.",
+              "There is four computers on the desk.",
+              "Have four computers on the desk.",
+              "Are four computers on the desk."
+            ],
+            "correctAnswer": "There are four computers on the desk.",
+            "explanation": "Para elementos en plural (four computers) se usa 'There are'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "Excuse me, _____ a bank near here?",
+            "options": [
+              "is there",
+              "are there",
+              "there is"
+            ],
+            "correctAnswer": "is there",
+            "explanation": "En preguntas singulares se invierte a 'Is there a bank...?'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "There is": "Hay (singular / incontable)",
+              "There are": "Hay (plural)",
+              "Is there?": "¿Hay? (singular)",
+              "Are there?": "¿Hay? (plural)"
+            },
+            "correctAnswer": {
+              "There is": "Hay (singular / incontable)",
+              "There are": "Hay (plural)",
+              "Is there?": "¿Hay? (singular)",
+              "Are there?": "¿Hay? (plural)"
+            },
+            "explanation": "Correspondencia de 1. Existencia: There is vs There are.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Hay una taza de café sobre la mesa.\"",
+            "correctAnswer": "There is a coffee mug on the table.",
+            "explanation": "Respuesta correcta: \"There is a coffee mug on the table.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-1-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hay muchos estudiantes en la clase de inglés.\"",
+            "correctAnswer": "There are many students in the English class.",
+            "explanation": "Pronunciación modelo: \"There are many students in the English class.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-2",
+        "nodeId": "a1_node_8",
+        "title": "2. Contables vs Incontables: Much, Many, A lot of",
+        "orderIndex": 2,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-2-1",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "2. Contables vs Incontables: Much, Many, A lot of",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Contables (se pueden contar por unidades): Many books, Many apples.\nIncontables (líquidos, masa, conceptos abstractos): Much water, Much money.\nAmbos en afirmativo: A lot of coffee, A lot of friends.",
+            "summaryShort": "Distingue entre sustantivos contables e incontables y utiliza los cuantificadores correctos.",
+            "conceptBreakdown": "Cosas como 'water' (agua), 'money' (dinero) o 'time' (tiempo) no tienen plural; usan 'much' en negativas/preguntas. Cosas contables usan 'many'. 'A lot of' sirve para ambos.",
+            "deepDiveNotes": "Estructura clave: Contables (se pueden contar por unidades): Many books, Many apples.\nIncontables (líquidos, masa, conceptos abstractos): Much water, Much money.\nAmbos en afirmativo: A lot of coffee, A lot of friends.\n\nUso comunicativo: Cosas como 'water' (agua), 'money' (dinero) o 'time' (tiempo) no tienen plural; usan 'much' en negativas/preguntas. Cosas contables usan 'many'. 'A lot of' sirve para ambos.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "How much water do you drink every day?",
+                "es": "¿Cuánta agua bebes todos los días?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-2-2",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Contables (se pueden contar por unidades): Many books, Many apples.\nIncontables (líquidos, masa, conceptos abstractos): Much water, Much money.\nAmbos en afirmativo: A lot of coffee, A lot of friends.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "'Apples' se pueden contar individualmente, por eso se pregunta con 'How many'.",
+            "deepDiveNotes": "'A lot of' se pronuncia fluido /ə ˈlɒt əv/ ('a lotov').",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "There are a lot of cars on the street.",
+                "es": "Hay muchos autos en la calle.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_2",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "How much apples do you have? ❌",
+                "correctExample": "How many apples do you have? ✅",
+                "fastPill": "'Apples' se pueden contar individualmente, por eso se pregunta con 'How many'.",
+                "mediumExplanation": "Cosas como 'water' (agua), 'money' (dinero) o 'time' (tiempo) no tienen plural; usan 'much' en negativas/preguntas. Cosas contables usan 'many'. 'A lot of' sirve para ambos.",
+                "slowDeepDive": "'A lot of' se pronuncia fluido /ə ˈlɒt əv/ ('a lotov')."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-2-3",
+            "sublessonId": "sub-a1_node_8-2",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Contables (se pueden contar por unidades): Many books, Many apples.\nIncontables (líquidos, masa, conceptos abstractos): Much water, Much money.\nAmbos en afirmativo: A lot of coffee, A lot of friends.",
+            "summaryShort": "¡Excelente! Has dominado '2. Contables vs Incontables: Much, Many, A lot of'.",
+            "conceptBreakdown": "⚡ How many = ¿Cuántos? (contables). How much = ¿Cuánto? (incontables / precios).",
+            "deepDiveNotes": "Atajo mental: ⚡ How many = ¿Cuántos? (contables). How much = ¿Cuánto? (incontables / precios).",
+            "keyTakeaways": [
+              "⚡ How many = ¿Cuántos? (contables). How much = ¿Cuánto? (incontables / precios).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-2-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Quieres saber cuánto dinero cuesta una matrícula o cuánto dinero tiene alguien:",
+            "options": [
+              "How much money do you need?",
+              "How many money do you need?",
+              "How much moneys do you need?",
+              "How money do you need?"
+            ],
+            "correctAnswer": "How much money do you need?",
+            "explanation": "'Money' es incontable, por lo que se pregunta con 'How much'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "There are _____ chairs in the meeting room.",
+            "options": [
+              "a lot of",
+              "much",
+              "any"
+            ],
+            "correctAnswer": "a lot of",
+            "explanation": "En oraciones afirmativas plurales usamos 'a lot of' (muchas sillas).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "How much?": "¿Cuánto? (incontable)",
+              "How many?": "¿Cuántos? (contable)",
+              "A lot of": "Mucho / Muchos",
+              "Too much": "Demasiado"
+            },
+            "correctAnswer": {
+              "How much?": "¿Cuánto? (incontable)",
+              "How many?": "¿Cuántos? (contable)",
+              "A lot of": "Mucho / Muchos",
+              "Too much": "Demasiado"
+            },
+            "explanation": "Correspondencia de 2. Contables vs Incontables: Much, Many, A lot of.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Cuánta agua bebes todos los días?\"",
+            "correctAnswer": "How much water do you drink every day?",
+            "explanation": "Respuesta correcta: \"How much water do you drink every day?\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-2-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hay muchos autos en la calle.\"",
+            "correctAnswer": "There are a lot of cars on the street.",
+            "explanation": "Pronunciación modelo: \"There are a lot of cars on the street.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-3",
+        "nodeId": "a1_node_8",
+        "title": "3. Cuantificadores: Some, Any, No",
+        "orderIndex": 3,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-3-1",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "3. Cuantificadores: Some, Any, No",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "SOME: Afirmativas y ofrecimientos (I have some milk / Would you like some water?)\nANY: Negativas y preguntas generales (I don't have any milk / Do you have any milk?)\nNO: Verbo afirmativo con significado negativo (There is no milk).",
+            "summaryShort": "Aprende a indicar cantidades no especificadas en oraciones afirmativas, negativas y preguntas.",
+            "conceptBreakdown": "'Some' significa algo de / algunos en frases afirmativas. 'Any' se usa en preguntas y en oraciones negativas con 'not'. 'No' se usa con verbo en positivo.",
+            "deepDiveNotes": "Estructura clave: SOME: Afirmativas y ofrecimientos (I have some milk / Would you like some water?)\nANY: Negativas y preguntas generales (I don't have any milk / Do you have any milk?)\nNO: Verbo afirmativo con significado negativo (There is no milk).\n\nUso comunicativo: 'Some' significa algo de / algunos en frases afirmativas. 'Any' se usa en preguntas y en oraciones negativas con 'not'. 'No' se usa con verbo en positivo.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "There is some coffee in the kitchen.",
+                "es": "Hay algo de café en la cocina.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-3-2",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "SOME: Afirmativas y ofrecimientos (I have some milk / Would you like some water?)\nANY: Negativas y preguntas generales (I don't have any milk / Do you have any milk?)\nNO: Verbo afirmativo con significado negativo (There is no milk).",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Doble negación es incorrecta en inglés estándar. Si usas 'don't', acompaña con 'any'.",
+            "deepDiveNotes": "'Some' se pronuncia con vocal corta /sʌm/ (como 'sam' con boca relajada).",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I don't have any homework today.",
+                "es": "No tengo nada de tarea hoy.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_3",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I don't have no money ❌",
+                "correctExample": "I don't have any money ✅",
+                "fastPill": "Doble negación es incorrecta en inglés estándar. Si usas 'don't', acompaña con 'any'.",
+                "mediumExplanation": "'Some' significa algo de / algunos en frases afirmativas. 'Any' se usa en preguntas y en oraciones negativas con 'not'. 'No' se usa con verbo en positivo.",
+                "slowDeepDive": "'Some' se pronuncia con vocal corta /sʌm/ (como 'sam' con boca relajada)."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-3-3",
+            "sublessonId": "sub-a1_node_8-3",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "SOME: Afirmativas y ofrecimientos (I have some milk / Would you like some water?)\nANY: Negativas y preguntas generales (I don't have any milk / Do you have any milk?)\nNO: Verbo afirmativo con significado negativo (There is no milk).",
+            "summaryShort": "¡Excelente! Has dominado '3. Cuantificadores: Some, Any, No'.",
+            "conceptBreakdown": "⚡ Some en (+) / Any en (?) y (-) / No en (+) con sentido negativo.",
+            "deepDiveNotes": "Atajo mental: ⚡ Some en (+) / Any en (?) y (-) / No en (+) con sentido negativo.",
+            "keyTakeaways": [
+              "⚡ Some en (+) / Any en (?) y (-) / No en (+) con sentido negativo.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-3-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Estás cocinando y revisas la nevera. Quieres decir que no hay nada de leche:",
+            "options": [
+              "There isn't any milk in the fridge.",
+              "There isn't no milk in the fridge.",
+              "There is some not milk.",
+              "There are no any milk."
+            ],
+            "correctAnswer": "There isn't any milk in the fridge.",
+            "explanation": "La negación correcta combina 'isn't' + 'any' (o 'is no milk').",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "Do you have _____ questions about the lesson?",
+            "options": [
+              "any",
+              "some",
+              "no"
+            ],
+            "correctAnswer": "any",
+            "explanation": "En preguntas abiertas estándar usamos 'any' (¿Tienes alguna pregunta?).",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Some milk": "Algo de leche",
+              "Any questions?": "¿Alguna pregunta?",
+              "No problem": "Ningún problema",
+              "Not any": "Nada de"
+            },
+            "correctAnswer": {
+              "Some milk": "Algo de leche",
+              "Any questions?": "¿Alguna pregunta?",
+              "No problem": "Ningún problema",
+              "Not any": "Nada de"
+            },
+            "explanation": "Correspondencia de 3. Cuantificadores: Some, Any, No.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Hay algo de café en la cocina.\"",
+            "correctAnswer": "There is some coffee in the kitchen.",
+            "explanation": "Respuesta correcta: \"There is some coffee in the kitchen.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-3-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"No tengo nada de tarea hoy.\"",
+            "correctAnswer": "I don't have any homework today.",
+            "explanation": "Pronunciación modelo: \"I don't have any homework today.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-4",
+        "nodeId": "a1_node_8",
+        "title": "4. Pronombres Objeto: Me, You, Him, Her, It, Us, Them",
+        "orderIndex": 4,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-4-1",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "4. Pronombres Objeto: Me, You, Him, Her, It, Us, Them",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Sujeto (hace la acción): I, You, He, She, It, We, They\nObjeto (recibe la acción): Me, You, Him, Her, It, Us, Them\nEj: She called me. / I saw him yesterday.",
+            "summaryShort": "Aprende a reemplazar nombres cuando la persona recibe la acción de un verbo o va después de una preposición.",
+            "conceptBreakdown": "Los pronombres objeto van DESPUÉS del verbo o de preposiciones (with, for, to). En lugar de decir 'Listen to I', se dice 'Listen to me'.",
+            "deepDiveNotes": "Estructura clave: Sujeto (hace la acción): I, You, He, She, It, We, They\nObjeto (recibe la acción): Me, You, Him, Her, It, Us, Them\nEj: She called me. / I saw him yesterday.\n\nUso comunicativo: Los pronombres objeto van DESPUÉS del verbo o de preposiciones (with, for, to). En lugar de decir 'Listen to I', se dice 'Listen to me'.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Please listen to me carefully.",
+                "es": "Por favor escúchame atentamente.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-4-2",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Sujeto (hace la acción): I, You, He, She, It, We, They\nObjeto (recibe la acción): Me, You, Him, Her, It, Us, Them\nEj: She called me. / I saw him yesterday.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Después de un verbo transitivo (help) se debe usar el pronombre objeto 'me'.",
+            "deepDiveNotes": "'Them' se pronuncia con la lengua entre los dientes /ðem/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I want to invite them to our meeting.",
+                "es": "Quiero invitarlos a ellos a nuestra reunión.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_4",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "Can you help I? ❌",
+                "correctExample": "Can you help me? ✅",
+                "fastPill": "Después de un verbo transitivo (help) se debe usar el pronombre objeto 'me'.",
+                "mediumExplanation": "Los pronombres objeto van DESPUÉS del verbo o de preposiciones (with, for, to). En lugar de decir 'Listen to I', se dice 'Listen to me'.",
+                "slowDeepDive": "'Them' se pronuncia con la lengua entre los dientes /ðem/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-4-3",
+            "sublessonId": "sub-a1_node_8-4",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Sujeto (hace la acción): I, You, He, She, It, We, They\nObjeto (recibe la acción): Me, You, Him, Her, It, Us, Them\nEj: She called me. / I saw him yesterday.",
+            "summaryShort": "¡Excelente! Has dominado '4. Pronombres Objeto: Me, You, Him, Her, It, Us, Them'.",
+            "conceptBreakdown": "⚡ ¿Hace la acción? Usa I/He/She. ¿Recibe la acción? Usa Me/Him/Her.",
+            "deepDiveNotes": "Atajo mental: ⚡ ¿Hace la acción? Usa I/He/She. ¿Recibe la acción? Usa Me/Him/Her.",
+            "keyTakeaways": [
+              "⚡ ¿Hace la acción? Usa I/He/She. ¿Recibe la acción? Usa Me/Him/Her.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-4-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Tu profesor de inglés te explica un tema y quieres decir: '¿Puedes ayudarme, por favor?':",
+            "options": [
+              "Can you help me, please?",
+              "Can you help I, please?",
+              "Can you help to I, please?",
+              "Can help me you, please?"
+            ],
+            "correctAnswer": "Can you help me, please?",
+            "explanation": "'Help' recibe el pronombre objeto 'me'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "My mother called yesterday and I answered _____ immediately.",
+            "options": [
+              "her",
+              "she",
+              "him"
+            ],
+            "correctAnswer": "her",
+            "explanation": "Para referirse a 'my mother' como objeto de la acción se usa 'her'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Help me": "Ayúdame",
+              "Listen to him": "Escúchalo a él",
+              "Look at her": "Mírala a ella",
+              "Tell us": "Dinos a nosotros"
+            },
+            "correctAnswer": {
+              "Help me": "Ayúdame",
+              "Listen to him": "Escúchalo a él",
+              "Look at her": "Mírala a ella",
+              "Tell us": "Dinos a nosotros"
+            },
+            "explanation": "Correspondencia de 4. Pronombres Objeto: Me, You, Him, Her, It, Us, Them.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Por favor escúchame atentamente.\"",
+            "correctAnswer": "Please listen to me carefully.",
+            "explanation": "Respuesta correcta: \"Please listen to me carefully.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-4-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Quiero invitarlos a ellos a nuestra reunión.\"",
+            "correctAnswer": "I want to invite them to our meeting.",
+            "explanation": "Pronunciación modelo: \"I want to invite them to our meeting.\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      },
+      {
+        "id": "sub-a1_node_8-5",
+        "nodeId": "a1_node_8",
+        "title": "5. Integración: En el Supermercado & Despensa del Hogar",
+        "orderIndex": 5,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-5-1",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "5. Integración: En el Supermercado & Despensa del Hogar",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Integración de There is/are, some, any, much, many y pronombres objeto en una compra real.",
+            "summaryShort": "Aplica todos los cuantificadores y formas de existencia en un diálogo de despensa y compras.",
+            "conceptBreakdown": "Escenario: Planear el mercado, revisar qué hay en la alacena y pedir ayuda a un dependiente.",
+            "deepDiveNotes": "Estructura clave: Integración de There is/are, some, any, much, many y pronombres objeto en una compra real.\n\nUso comunicativo: Escenario: Planear el mercado, revisar qué hay en la alacena y pedir ayuda a un dependiente.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "There are some fresh apples in the basket.",
+                "es": "Hay algunas manzanas frescas en la canasta.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a1_node_8-5-2",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Integración de There is/are, some, any, much, many y pronombres objeto en una compra real.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Para precios en tiendas siempre se pregunta 'How much is...?' nunca 'How many'.",
+            "deepDiveNotes": "Mantén un ritmo fluido al conectar 'Is there any...' /ɪz ðeər ˈeni/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "How much does this backpack cost?",
+                "es": "¿Cuánto cuesta esta mochila?",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_5",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "How many is this t-shirt? ❌",
+                "correctExample": "How much is this t-shirt? ✅",
+                "fastPill": "Para precios en tiendas siempre se pregunta 'How much is...?' nunca 'How many'.",
+                "mediumExplanation": "Escenario: Planear el mercado, revisar qué hay en la alacena y pedir ayuda a un dependiente.",
+                "slowDeepDive": "Mantén un ritmo fluido al conectar 'Is there any...' /ɪz ðeər ˈeni/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a1_node_8-5-3",
+            "sublessonId": "sub-a1_node_8-5",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Integración de There is/are, some, any, much, many y pronombres objeto en una compra real.",
+            "summaryShort": "¡Excelente! Has dominado '5. Integración: En el Supermercado & Despensa del Hogar'.",
+            "conceptBreakdown": "⚡ Para existencias: There is/are. Para comprar: How much is it?",
+            "deepDiveNotes": "Atajo mental: ⚡ Para existencias: There is/are. Para comprar: How much is it?",
+            "keyTakeaways": [
+              "⚡ Para existencias: There is/are. Para comprar: How much is it?",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a1_node_8-5-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "En el supermercado preguntas al cajero por manzanas rojas:",
+            "options": [
+              "Are there any red apples available?",
+              "Is there some red apples available?",
+              "Have you red apples in the store?",
+              "There are red apples available?"
+            ],
+            "correctAnswer": "Are there any red apples available?",
+            "explanation": "Pregunta plural correcta con 'Are there any...'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "How _____ is this bottle of water?",
+            "options": [
+              "much",
+              "many",
+              "any"
+            ],
+            "correctAnswer": "much",
+            "explanation": "Para consultar el precio de un artículo se usa 'How much'.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "How much is this?": "¿Cuánto cuesta esto?",
+              "Is there any milk?": "¿Hay algo de leche?",
+              "I'll take it": "Me lo llevo",
+              "Can you help us?": "¿Puedes ayudarnos?"
+            },
+            "correctAnswer": {
+              "How much is this?": "¿Cuánto cuesta esto?",
+              "Is there any milk?": "¿Hay algo de leche?",
+              "I'll take it": "Me lo llevo",
+              "Can you help us?": "¿Puedes ayudarnos?"
+            },
+            "explanation": "Correspondencia de 5. Integración: En el Supermercado & Despensa del Hogar.",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Hay algunas manzanas frescas en la canasta.\"",
+            "correctAnswer": "There are some fresh apples in the basket.",
+            "explanation": "Respuesta correcta: \"There are some fresh apples in the basket.\"",
+            "cefrLevel": "A1"
+          },
+          {
+            "id": "q-a1_node_8-5-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"¿Cuánto cuesta esta mochila?\"",
+            "correctAnswer": "How much does this backpack cost?",
+            "explanation": "Pronunciación modelo: \"How much does this backpack cost?\"",
+            "cefrLevel": "A1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1_node_9",
+    "title": "9. De la Pronunciación al Alfabeto Fonético (IPA)",
+    "description": "Aprende a leer los símbolos fonéticos internacionales (IPA) para dejar de depender de escribir en español antes de pasar a A2.",
+    "category": "PHONETICS",
+    "cefrLevel": "A1",
+    "orderIndex": 9,
+    "icon": "Headphones",
+    "status": "LOCKED",
+    "starsEarned": 0,
+    "prerequisites": [
+      "a1_node_8"
+    ],
+    "totalSublessons": 5,
+    "completedSublessons": 0,
+    "sublessons": [
+      {
+        "id": "sub-a1_node_9-1",
+        "nodeId": "a1_node_9",
+        "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
+        "orderIndex": 1,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a1_node_8-1-1",
+            "sublessonId": "sub-a1_node_9-1",
             "title": "1. De \"Jao\", \"Éi\" y \"Ái\" a los Diptongos IPA (/aʊ/, /eɪ/, /aɪ/, /oʊ/)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -5985,7 +6876,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-1-2",
-            "sublessonId": "sub-a1_node_8-1",
+            "sublessonId": "sub-a1_node_9-1",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6021,7 +6912,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-1-3",
-            "sublessonId": "sub-a1_node_8-1",
+            "sublessonId": "sub-a1_node_9-1",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6105,8 +6996,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-2",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-2",
+        "nodeId": "a1_node_9",
         "title": "2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -6116,7 +7007,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-2-1",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_9-2",
             "title": "2. El Símbolo de Duración /iː/ vs /ɪ/ (Sheep vs Ship)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6143,7 +7034,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-2-2",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_9-2",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6179,7 +7070,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-2-3",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_9-2",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6263,8 +7154,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-3",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-3",
+        "nodeId": "a1_node_9",
         "title": "3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -6274,7 +7165,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-3-1",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_9-3",
             "title": "3. El Símbolo Schwa /ə/ (La Vocal Universal del Inglés)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6301,7 +7192,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-3-2",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_9-3",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6337,7 +7228,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-3-3",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_9-3",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6421,8 +7312,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-4",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-4",
+        "nodeId": "a1_node_9",
         "title": "4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/)",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -6432,7 +7323,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-4-1",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_9-4",
             "title": "4. Los Símbolos Consonánticos Especiales (/θ/, /ð/, /ʃ/, /tʃ/, /dʒ/, /ŋ/)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6459,7 +7350,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-4-2",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_9-4",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6495,7 +7386,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-4-3",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_9-4",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6579,8 +7470,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_8-5",
-        "nodeId": "a1_node_8",
+        "id": "sub-a1_node_9-5",
+        "nodeId": "a1_node_9",
         "title": "5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ)",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -6590,7 +7481,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-5-1",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_9-5",
             "title": "5. Lectura de Transcripciones Completas & El Acento Tónico (ˈ)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6617,7 +7508,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-5-2",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_9-5",
             "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Pronunciación",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6653,7 +7544,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-5-3",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_9-5",
             "title": "Resumen: Regla de 5 Segundos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6739,24 +7630,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a1_node_9",
-    "title": "9. Gran Reto Integrador A1",
+    "id": "a1_node_10",
+    "title": "10. Gran Reto Integrador A1",
     "description": "Consolidación de gramática, vocabulario y fonética de nivel A1.",
-    "category": "CHALLENGE",
+    "category": "GRAMMAR",
     "cefrLevel": "A1",
-    "orderIndex": 9,
+    "orderIndex": 10,
     "icon": "Award",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_8"
+      "a1_node_9"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a1_node_9-1",
-        "nodeId": "a1_node_9",
+        "id": "sub-a1_node_10-1",
+        "nodeId": "a1_node_10",
         "title": "1. Avisos Públicos Saber Pro A1 (Parte 1)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -6766,7 +7657,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-1-1",
-            "sublessonId": "sub-a1_node_8-1",
+            "sublessonId": "sub-a1_node_10-1",
             "title": "1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6803,7 +7694,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-1-2",
-            "sublessonId": "sub-a1_node_8-1",
+            "sublessonId": "sub-a1_node_10-1",
             "title": "Refuerzo de Concepto: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6829,7 +7720,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-1-3",
-            "sublessonId": "sub-a1_node_8-1",
+            "sublessonId": "sub-a1_node_10-1",
             "title": "Resumen: 1. Avisos Públicos Saber Pro A1 (Parte 1)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -6913,8 +7804,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_9-2",
-        "nodeId": "a1_node_9",
+        "id": "sub-a1_node_10-2",
+        "nodeId": "a1_node_10",
         "title": "2. Diálogos Cortos Saber Pro A1 (Parte 2)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -6924,7 +7815,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-2-1",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_10-2",
             "title": "2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -6961,7 +7852,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-2-2",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_10-2",
             "title": "Refuerzo de Concepto: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -6987,7 +7878,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-2-3",
-            "sublessonId": "sub-a1_node_8-2",
+            "sublessonId": "sub-a1_node_10-2",
             "title": "Resumen: 2. Diálogos Cortos Saber Pro A1 (Parte 2)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7071,8 +7962,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_9-3",
-        "nodeId": "a1_node_9",
+        "id": "sub-a1_node_10-3",
+        "nodeId": "a1_node_10",
         "title": "3. Comprensión Lectora Literal A1",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -7082,7 +7973,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-3-1",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_10-3",
             "title": "3. Comprensión Lectora Literal A1",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7119,7 +8010,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-3-2",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_10-3",
             "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7145,7 +8036,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-3-3",
-            "sublessonId": "sub-a1_node_8-3",
+            "sublessonId": "sub-a1_node_10-3",
             "title": "Resumen: 3. Comprensión Lectora Literal A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7229,8 +8120,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_9-4",
-        "nodeId": "a1_node_9",
+        "id": "sub-a1_node_10-4",
+        "nodeId": "a1_node_10",
         "title": "4. Vocabulario Integrado A1",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -7240,7 +8131,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-4-1",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_10-4",
             "title": "4. Vocabulario Integrado A1",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7277,7 +8168,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-4-2",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_10-4",
             "title": "Refuerzo de Concepto: 4. Vocabulario Integrado A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7303,7 +8194,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-4-3",
-            "sublessonId": "sub-a1_node_8-4",
+            "sublessonId": "sub-a1_node_10-4",
             "title": "Resumen: 4. Vocabulario Integrado A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7387,8 +8278,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a1_node_9-5",
-        "nodeId": "a1_node_9",
+        "id": "sub-a1_node_10-5",
+        "nodeId": "a1_node_10",
         "title": "5. Evaluación de Consolidación A1",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -7398,7 +8289,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a1_node_8-5-1",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_10-5",
             "title": "5. Evaluación de Consolidación A1",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7435,7 +8326,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-5-2",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_10-5",
             "title": "Refuerzo de Concepto: 5. Evaluación de Consolidación A1",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7461,7 +8352,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a1_node_8-5-3",
-            "sublessonId": "sub-a1_node_8-5",
+            "sublessonId": "sub-a1_node_10-5",
             "title": "Resumen: 5. Evaluación de Consolidación A1",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7547,24 +8438,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_10",
-    "title": "10. Pasado Simple & Verbos Irregulares",
+    "id": "a2_node_11",
+    "title": "11. Pasado Simple & Verbos Irregulares",
     "description": "Was/Were, verbos regulares (-ed), verbos irregulares de alta frecuencia y preguntas en pasado (Did).",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 10,
+    "orderIndex": 11,
     "icon": "History",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_9"
+      "a1_node_10"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_10-1",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-1",
+        "nodeId": "a2_node_11",
         "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -7574,7 +8465,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_9-1-1",
-            "sublessonId": "sub-a2_node_9-1",
+            "sublessonId": "sub-a2_node_11-1",
             "title": "1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7611,7 +8502,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-1-2",
-            "sublessonId": "sub-a2_node_9-1",
+            "sublessonId": "sub-a2_node_11-1",
             "title": "Refuerzo de Concepto: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7637,7 +8528,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-1-3",
-            "sublessonId": "sub-a2_node_9-1",
+            "sublessonId": "sub-a2_node_11-1",
             "title": "Resumen: 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7721,8 +8612,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-2",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-2",
+        "nodeId": "a2_node_11",
         "title": "2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -7732,7 +8623,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_9-2-1",
-            "sublessonId": "sub-a2_node_9-2",
+            "sublessonId": "sub-a2_node_11-2",
             "title": "2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7769,7 +8660,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-2-2",
-            "sublessonId": "sub-a2_node_9-2",
+            "sublessonId": "sub-a2_node_11-2",
             "title": "Refuerzo de Concepto: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7795,7 +8686,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-2-3",
-            "sublessonId": "sub-a2_node_9-2",
+            "sublessonId": "sub-a2_node_11-2",
             "title": "Resumen: 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -7879,8 +8770,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-3",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-3",
+        "nodeId": "a2_node_11",
         "title": "3. Negación en Pasado: Auxiliar Didn't",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -7890,7 +8781,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_9-3-1",
-            "sublessonId": "sub-a2_node_9-3",
+            "sublessonId": "sub-a2_node_11-3",
             "title": "3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -7927,7 +8818,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-3-2",
-            "sublessonId": "sub-a2_node_9-3",
+            "sublessonId": "sub-a2_node_11-3",
             "title": "Refuerzo de Concepto: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -7953,7 +8844,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-3-3",
-            "sublessonId": "sub-a2_node_9-3",
+            "sublessonId": "sub-a2_node_11-3",
             "title": "Resumen: 3. Negación en Pasado: Auxiliar Didn't",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8037,8 +8928,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-4",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-4",
+        "nodeId": "a2_node_11",
         "title": "4. Preguntas con Did & Expresiones de Tiempo Pasado",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -8048,7 +8939,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_9-4-1",
-            "sublessonId": "sub-a2_node_9-4",
+            "sublessonId": "sub-a2_node_11-4",
             "title": "4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8085,7 +8976,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-4-2",
-            "sublessonId": "sub-a2_node_9-4",
+            "sublessonId": "sub-a2_node_11-4",
             "title": "Refuerzo de Concepto: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8111,7 +9002,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-4-3",
-            "sublessonId": "sub-a2_node_9-4",
+            "sublessonId": "sub-a2_node_11-4",
             "title": "Resumen: 4. Preguntas con Did & Expresiones de Tiempo Pasado",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8195,8 +9086,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_10-5",
-        "nodeId": "a2_node_10",
+        "id": "sub-a2_node_11-5",
+        "nodeId": "a2_node_11",
         "title": "5. Hábitos Pasados con \"Used To\"",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -8206,7 +9097,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_9-5-1",
-            "sublessonId": "sub-a2_node_9-5",
+            "sublessonId": "sub-a2_node_11-5",
             "title": "5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8243,7 +9134,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-5-2",
-            "sublessonId": "sub-a2_node_9-5",
+            "sublessonId": "sub-a2_node_11-5",
             "title": "Refuerzo de Concepto: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8269,7 +9160,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_9-5-3",
-            "sublessonId": "sub-a2_node_9-5",
+            "sublessonId": "sub-a2_node_11-5",
             "title": "Resumen: 5. Hábitos Pasados con \"Used To\"",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8355,24 +9246,832 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_11",
-    "title": "11. Ciudad, Direcciones & Lugares",
-    "description": "Lugares de la ciudad, pedir y dar direcciones, medios de transporte.",
-    "category": "VOCABULARY",
+    "id": "a2_node_12",
+    "title": "12. Pasado Continuo: Anécdotas (When / While) & Expresiones con Take",
+    "description": "Aprende a describir acciones que estaban en progreso en un momento específico del pasado.",
+    "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 11,
-    "icon": "Compass",
+    "orderIndex": 12,
+    "icon": "Clock",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_9"
+      "a2_node_11"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_11-1",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_12-1",
+        "nodeId": "a2_node_12",
+        "title": "1. Estructura del Pasado Continuo: Was/Were + Verbo-ing",
+        "orderIndex": 1,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_12-1-1",
+            "sublessonId": "sub-a2_node_12-1",
+            "title": "1. Estructura del Pasado Continuo: Was/Were + Verbo-ing",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Afirmativa: Sujeto + WAS / WERE + Verbo-ing\nNegativa: Sujeto + WASN'T / WEREN'T + Verbo-ing\nPregunta: WAS / WERE + Sujeto + Verbo-ing?\nEj: I was studying at 8 PM. / They were sleeping.",
+            "summaryShort": "Aprende a describir acciones que estaban en progreso en un momento específico del pasado.",
+            "conceptBreakdown": "Usa 'was' con I, he, she, it. Usa 'were' con you, we, they. Añade '-ing' al verbo principal para indicar que la acción estaba ocurriendo.",
+            "deepDiveNotes": "Estructura clave: Afirmativa: Sujeto + WAS / WERE + Verbo-ing\nNegativa: Sujeto + WASN'T / WEREN'T + Verbo-ing\nPregunta: WAS / WERE + Sujeto + Verbo-ing?\nEj: I was studying at 8 PM. / They were sleeping.\n\nUso comunicativo: Usa 'was' con I, he, she, it. Usa 'were' con you, we, they. Añade '-ing' al verbo principal para indicar que la acción estaba ocurriendo.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I was studying English all afternoon yesterday.",
+                "es": "Estaba estudiando inglés toda la tarde ayer.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_12-1-2",
+            "sublessonId": "sub-a2_node_12-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Afirmativa: Sujeto + WAS / WERE + Verbo-ing\nNegativa: Sujeto + WASN'T / WEREN'T + Verbo-ing\nPregunta: WAS / WERE + Sujeto + Verbo-ing?\nEj: I was studying at 8 PM. / They were sleeping.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En pasado continuo el verbo principal SIEMPRE lleva la terminación -ing.",
+            "deepDiveNotes": "'Were' se pronuncia /wɜːr/ sin sonido de 'i' intermedia (no confundir con 'where').",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "What were you doing at nine o'clock last night?",
+                "es": "¿Qué estabas haciendo a las nueve anoche?",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_1",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I was study English yesterday at seven ❌",
+                "correctExample": "I was studying English yesterday at seven ✅",
+                "fastPill": "En pasado continuo el verbo principal SIEMPRE lleva la terminación -ing.",
+                "mediumExplanation": "Usa 'was' con I, he, she, it. Usa 'were' con you, we, they. Añade '-ing' al verbo principal para indicar que la acción estaba ocurriendo.",
+                "slowDeepDive": "'Were' se pronuncia /wɜːr/ sin sonido de 'i' intermedia (no confundir con 'where')."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_12-1-3",
+            "sublessonId": "sub-a2_node_12-1",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Afirmativa: Sujeto + WAS / WERE + Verbo-ing\nNegativa: Sujeto + WASN'T / WEREN'T + Verbo-ing\nPregunta: WAS / WERE + Sujeto + Verbo-ing?\nEj: I was studying at 8 PM. / They were sleeping.",
+            "summaryShort": "¡Excelente! Has dominado '1. Estructura del Pasado Continuo: Was/Were + Verbo-ing'.",
+            "conceptBreakdown": "⚡ Pasado Continuo = Acción en progreso en el pasado (estaba haciendo).",
+            "deepDiveNotes": "Atajo mental: ⚡ Pasado Continuo = Acción en progreso en el pasado (estaba haciendo).",
+            "keyTakeaways": [
+              "⚡ Pasado Continuo = Acción en progreso en el pasado (estaba haciendo).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_12-1-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Tu amigo te llama y te pregunta qué estabas haciendo ayer a las 7:00 PM. Tú respondes:",
+            "options": [
+              "I was studying English with my friends.",
+              "I was study English with my friends.",
+              "I were studying English with my friends.",
+              "I did studying English yesterday."
+            ],
+            "correctAnswer": "I was studying English with my friends.",
+            "explanation": "Con 'I' se usa 'was' y el verbo en gerundio 'studying'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-1-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "They _____ watching a movie when the power went out.",
+            "options": [
+              "were",
+              "was",
+              "are"
+            ],
+            "correctAnswer": "were",
+            "explanation": "Con el sujeto plural 'They' se utiliza 'were'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-1-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "I was reading": "Yo estaba leyendo",
+              "She was cooking": "Ella estaba cocinando",
+              "We were studying": "Estábamos estudiando",
+              "They were playing": "Ellos estaban jugando"
+            },
+            "correctAnswer": {
+              "I was reading": "Yo estaba leyendo",
+              "She was cooking": "Ella estaba cocinando",
+              "We were studying": "Estábamos estudiando",
+              "They were playing": "Ellos estaban jugando"
+            },
+            "explanation": "Correspondencia de 1. Estructura del Pasado Continuo: Was/Were + Verbo-ing.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-1-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Estaba estudiando inglés toda la tarde ayer.\"",
+            "correctAnswer": "I was studying English all afternoon yesterday.",
+            "explanation": "Respuesta correcta: \"I was studying English all afternoon yesterday.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-1-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"¿Qué estabas haciendo a las nueve anoche?\"",
+            "correctAnswer": "What were you doing at nine o'clock last night?",
+            "explanation": "Pronunciación modelo: \"What were you doing at nine o'clock last night?\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_12-2",
+        "nodeId": "a2_node_12",
+        "title": "2. Anécdotas con When & While (Acción Interrumpida)",
+        "orderIndex": 2,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_12-2-1",
+            "sublessonId": "sub-a2_node_12-2",
+            "title": "2. Anécdotas con When & While (Acción Interrumpida)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Acción Larga (en progreso) + WHEN + Acción Corta (que interrumpe en Pasado Simple)\nEj: I was cooking dinner WHEN the telephone rang.\nDos acciones largas paralelas con WHILE:\nEj: WHILE I was studying, my brother was playing guitar.",
+            "summaryShort": "Aprende a narrar anécdotas donde una acción larga en progreso es interrumpida por un evento repentino.",
+            "conceptBreakdown": "'When' introduce el evento puntual en Pasado Simple. 'While' introduce la acción continua en Pasado Continuo.",
+            "deepDiveNotes": "Estructura clave: Acción Larga (en progreso) + WHEN + Acción Corta (que interrumpe en Pasado Simple)\nEj: I was cooking dinner WHEN the telephone rang.\nDos acciones largas paralelas con WHILE:\nEj: WHILE I was studying, my brother was playing guitar.\n\nUso comunicativo: 'When' introduce el evento puntual en Pasado Simple. 'While' introduce la acción continua en Pasado Continuo.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I was walking home when I saw my teacher.",
+                "es": "Estaba caminando a casa cuando vi a mi profesor.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_12-2-2",
+            "sublessonId": "sub-a2_node_12-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Acción Larga (en progreso) + WHEN + Acción Corta (que interrumpe en Pasado Simple)\nEj: I was cooking dinner WHEN the telephone rang.\nDos acciones largas paralelas con WHILE:\nEj: WHILE I was studying, my brother was playing guitar.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "La acción que interrumpe se expresa en Pasado Simple ('the phone rang').",
+            "deepDiveNotes": "Conecta 'when the' de forma natural sin pausas /wen ðə/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "While I was cooking, my friend arrived.",
+                "es": "Mientras estaba cocinando, mi amigo llegó.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_2",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I was cooking when the phone was ringing ❌",
+                "correctExample": "I was cooking when the phone rang ✅",
+                "fastPill": "La acción que interrumpe se expresa en Pasado Simple ('the phone rang').",
+                "mediumExplanation": "'When' introduce el evento puntual en Pasado Simple. 'While' introduce la acción continua en Pasado Continuo.",
+                "slowDeepDive": "Conecta 'when the' de forma natural sin pausas /wen ðə/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_12-2-3",
+            "sublessonId": "sub-a2_node_12-2",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Acción Larga (en progreso) + WHEN + Acción Corta (que interrumpe en Pasado Simple)\nEj: I was cooking dinner WHEN the telephone rang.\nDos acciones largas paralelas con WHILE:\nEj: WHILE I was studying, my brother was playing guitar.",
+            "summaryShort": "¡Excelente! Has dominado '2. Anécdotas con When & While (Acción Interrumpida)'.",
+            "conceptBreakdown": "⚡ While + Pasado Continuo (durante). When + Pasado Simple (de repente).",
+            "deepDiveNotes": "Atajo mental: ⚡ While + Pasado Continuo (durante). When + Pasado Simple (de repente).",
+            "keyTakeaways": [
+              "⚡ While + Pasado Continuo (durante). When + Pasado Simple (de repente).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_12-2-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "¿Cuál de las siguientes oraciones narra correctamente una interrupción en el pasado?",
+            "options": [
+              "I was walking to the university when it started to rain.",
+              "I walked to university when it was starting to rain.",
+              "While it started to rain, I was walked.",
+              "I was walk when started rain."
+            ],
+            "correctAnswer": "I was walking to the university when it started to rain.",
+            "explanation": "La acción larga 'was walking' es interrumpida puntualmente por 'it started to rain'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-2-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "The light went out while we _____ dinner.",
+            "options": [
+              "were having",
+              "had",
+              "are having"
+            ],
+            "correctAnswer": "were having",
+            "explanation": "Después de 'while' expresamos la acción continua con pasado continuo ('were having').",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-2-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "When the phone rang": "Cuando sonó el teléfono",
+              "While I was driving": "Mientras estaba conduciendo",
+              "Suddenly": "De repente",
+              "It started to rain": "Empezó a llover"
+            },
+            "correctAnswer": {
+              "When the phone rang": "Cuando sonó el teléfono",
+              "While I was driving": "Mientras estaba conduciendo",
+              "Suddenly": "De repente",
+              "It started to rain": "Empezó a llover"
+            },
+            "explanation": "Correspondencia de 2. Anécdotas con When & While (Acción Interrumpida).",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-2-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Estaba caminando a casa cuando vi a mi profesor.\"",
+            "correctAnswer": "I was walking home when I saw my teacher.",
+            "explanation": "Respuesta correcta: \"I was walking home when I saw my teacher.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-2-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Mientras estaba cocinando, mi amigo llegó.\"",
+            "correctAnswer": "While I was cooking, my friend arrived.",
+            "explanation": "Pronunciación modelo: \"While I was cooking, my friend arrived.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_12-3",
+        "nodeId": "a2_node_12",
+        "title": "3. Expresiones Idiomáticas con 'Take' en Pasado",
+        "orderIndex": 3,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_12-3-1",
+            "sublessonId": "sub-a2_node_12-3",
+            "title": "3. Expresiones Idiomáticas con 'Take' en Pasado",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Take time = Tomar tiempo (It took two hours)\nTake a bus/train = Tomar un transporte (I took the subway)\nTake photos = Tomar fotos (She took beautiful photos)\nTake care = Cuidarse / Cuidar de (He took care of his brother)",
+            "summaryShort": "Domina los múltiples usos cotidianos del verbo 'take' y su forma pasada irregular 'took'.",
+            "conceptBreakdown": "En inglés 'take' es uno de los verbos más versátiles. En pasado es 'took' /tʊk/. No se dice 'catch photos', se dice 'take photos'.",
+            "deepDiveNotes": "Estructura clave: Take time = Tomar tiempo (It took two hours)\nTake a bus/train = Tomar un transporte (I took the subway)\nTake photos = Tomar fotos (She took beautiful photos)\nTake care = Cuidarse / Cuidar de (He took care of his brother)\n\nUso comunicativo: En inglés 'take' es uno de los verbos más versátiles. En pasado es 'took' /tʊk/. No se dice 'catch photos', se dice 'take photos'.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "It took me one hour to finish my homework.",
+                "es": "Me tomó una hora terminar mi tarea.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_12-3-2",
+            "sublessonId": "sub-a2_node_12-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Take time = Tomar tiempo (It took two hours)\nTake a bus/train = Tomar un transporte (I took the subway)\nTake photos = Tomar fotos (She took beautiful photos)\nTake care = Cuidarse / Cuidar de (He took care of his brother)",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "'Take' es un verbo irregular: take ➔ took ➔ taken.",
+            "deepDiveNotes": "'Took' tiene sonido de vocal corta /tʊk/ similar a 'book' y 'look'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "We took the subway to the city center.",
+                "es": "Tomamos el metro hacia el centro de la ciudad.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_3",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "It taked three hours to finish ❌",
+                "correctExample": "It took three hours to finish ✅",
+                "fastPill": "'Take' es un verbo irregular: take ➔ took ➔ taken.",
+                "mediumExplanation": "En inglés 'take' es uno de los verbos más versátiles. En pasado es 'took' /tʊk/. No se dice 'catch photos', se dice 'take photos'.",
+                "slowDeepDive": "'Took' tiene sonido de vocal corta /tʊk/ similar a 'book' y 'look'."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_12-3-3",
+            "sublessonId": "sub-a2_node_12-3",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Take time = Tomar tiempo (It took two hours)\nTake a bus/train = Tomar un transporte (I took the subway)\nTake photos = Tomar fotos (She took beautiful photos)\nTake care = Cuidarse / Cuidar de (He took care of his brother)",
+            "summaryShort": "¡Excelente! Has dominado '3. Expresiones Idiomáticas con 'Take' en Pasado'.",
+            "conceptBreakdown": "⚡ Para transporte, fotos y duración de tiempo: siempre usa TAKE (en pasado TOOK).",
+            "deepDiveNotes": "Atajo mental: ⚡ Para transporte, fotos y duración de tiempo: siempre usa TAKE (en pasado TOOK).",
+            "keyTakeaways": [
+              "⚡ Para transporte, fotos y duración de tiempo: siempre usa TAKE (en pasado TOOK).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_12-3-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Quieres contar que el viaje en autobús a Medellín tardó cinco horas:",
+            "options": [
+              "The bus trip took five hours.",
+              "The bus trip taked five hours.",
+              "The bus trip was take five hours.",
+              "The bus tooked five hours."
+            ],
+            "correctAnswer": "The bus trip took five hours.",
+            "explanation": "El pasado irregular de 'take' es 'took'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-3-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "During our vacation in Cartagena, we _____ many photos.",
+            "options": [
+              "took",
+              "take",
+              "taked"
+            ],
+            "correctAnswer": "took",
+            "explanation": "La colocación en inglés para fotos en pasado es 'took photos'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-3-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "It took time": "Tomó tiempo",
+              "He took a taxi": "Él tomó un taxi",
+              "We took photos": "Tomamos fotos",
+              "She took a shower": "Ella se duchó"
+            },
+            "correctAnswer": {
+              "It took time": "Tomó tiempo",
+              "He took a taxi": "Él tomó un taxi",
+              "We took photos": "Tomamos fotos",
+              "She took a shower": "Ella se duchó"
+            },
+            "explanation": "Correspondencia de 3. Expresiones Idiomáticas con 'Take' en Pasado.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-3-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Me tomó una hora terminar mi tarea.\"",
+            "correctAnswer": "It took me one hour to finish my homework.",
+            "explanation": "Respuesta correcta: \"It took me one hour to finish my homework.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-3-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Tomamos el metro hacia el centro de la ciudad.\"",
+            "correctAnswer": "We took the subway to the city center.",
+            "explanation": "Pronunciación modelo: \"We took the subway to the city center.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_12-4",
+        "nodeId": "a2_node_12",
+        "title": "4. Relatar un Suceso Inesperado (Narrativa de Pasado)",
+        "orderIndex": 4,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_12-4-1",
+            "sublessonId": "sub-a2_node_12-4",
+            "title": "4. Relatar un Suceso Inesperado (Narrativa de Pasado)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Conectores de narrativa: First, Then, Suddenly, In the end.\nCombinación de Pasado Simple + Pasado Continuo.",
+            "summaryShort": "Aprende a hilar una historia coherente en el pasado combinando acciones continuas y eventos puntuales.",
+            "conceptBreakdown": "Usa 'First' para iniciar, 'Suddenly' para el giro inesperado, y 'Fortunately' o 'In the end' para concluir.",
+            "deepDiveNotes": "Estructura clave: Conectores de narrativa: First, Then, Suddenly, In the end.\nCombinación de Pasado Simple + Pasado Continuo.\n\nUso comunicativo: Usa 'First' para iniciar, 'Suddenly' para el giro inesperado, y 'Fortunately' o 'In the end' para concluir.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "First we arrived, and then we ordered dinner.",
+                "es": "Primero llegamos, y luego pedimos la cena.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_12-4-2",
+            "sublessonId": "sub-a2_node_12-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Conectores de narrativa: First, Then, Suddenly, In the end.\nCombinación de Pasado Simple + Pasado Continuo.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Para secuencias de acciones sucesivas usa Pasado Simple (woke up ➔ ate).",
+            "deepDiveNotes": "Entona 'Suddenly' con énfasis para captar el interés del interlocutor.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Suddenly, the lights went out in the room.",
+                "es": "De repente, las luces se apagaron en la habitación.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_4",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "First I was wake up, then I ate ❌",
+                "correctExample": "First I woke up, then I ate breakfast ✅",
+                "fastPill": "Para secuencias de acciones sucesivas usa Pasado Simple (woke up ➔ ate).",
+                "mediumExplanation": "Usa 'First' para iniciar, 'Suddenly' para el giro inesperado, y 'Fortunately' o 'In the end' para concluir.",
+                "slowDeepDive": "Entona 'Suddenly' con énfasis para captar el interés del interlocutor."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_12-4-3",
+            "sublessonId": "sub-a2_node_12-4",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Conectores de narrativa: First, Then, Suddenly, In the end.\nCombinación de Pasado Simple + Pasado Continuo.",
+            "summaryShort": "¡Excelente! Has dominado '4. Relatar un Suceso Inesperado (Narrativa de Pasado)'.",
+            "conceptBreakdown": "⚡ Secuencia = Pasado Simple. Escenario de fondo = Pasado Continuo.",
+            "deepDiveNotes": "Atajo mental: ⚡ Secuencia = Pasado Simple. Escenario de fondo = Pasado Continuo.",
+            "keyTakeaways": [
+              "⚡ Secuencia = Pasado Simple. Escenario de fondo = Pasado Continuo.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_12-4-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "¿Cuál conector es el más apropiado para introducir un evento sorpresivo en tu anécdota?",
+            "options": [
+              "Suddenly, the car stopped completely.",
+              "First, the car stopped completely.",
+              "Always, the car stopped completely.",
+              "Since, the car stopped completely."
+            ],
+            "correctAnswer": "Suddenly, the car stopped completely.",
+            "explanation": "'Suddenly' (de repente) es el marcador discursivo ideal para eventos inesperados.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-4-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "I was waiting for the bus when _____ I remembered my keys.",
+            "options": [
+              "suddenly",
+              "while",
+              "during"
+            ],
+            "correctAnswer": "suddenly",
+            "explanation": "'Suddenly' introduce la realización abrupta en pasado simple.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-4-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "First": "Primero",
+              "Then": "Luego",
+              "Suddenly": "De repente",
+              "In the end": "Al final"
+            },
+            "correctAnswer": {
+              "First": "Primero",
+              "Then": "Luego",
+              "Suddenly": "De repente",
+              "In the end": "Al final"
+            },
+            "explanation": "Correspondencia de 4. Relatar un Suceso Inesperado (Narrativa de Pasado).",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-4-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Primero llegamos, y luego pedimos la cena.\"",
+            "correctAnswer": "First we arrived, and then we ordered dinner.",
+            "explanation": "Respuesta correcta: \"First we arrived, and then we ordered dinner.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-4-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"De repente, las luces se apagaron en la habitación.\"",
+            "correctAnswer": "Suddenly, the lights went out in the room.",
+            "explanation": "Pronunciación modelo: \"Suddenly, the lights went out in the room.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_12-5",
+        "nodeId": "a2_node_12",
+        "title": "5. Integración: Una Historia Real de Viaje",
+        "orderIndex": 5,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_12-5-1",
+            "sublessonId": "sub-a2_node_12-5",
+            "title": "5. Integración: Una Historia Real de Viaje",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Integración de pasado continuo, when/while, expresiones con take y vocabulario de viaje.",
+            "summaryShort": "Consolida tu habilidad para relatar anécdotas de viajes con fluidez y precisión gramatical.",
+            "conceptBreakdown": "Narración completa: Transporte, el trayecto, un imprevisto con el clima o equipaje y la resolución.",
+            "deepDiveNotes": "Estructura clave: Integración de pasado continuo, when/while, expresiones con take y vocabulario de viaje.\n\nUso comunicativo: Narración completa: Transporte, el trayecto, un imprevisto con el clima o equipaje y la resolución.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "While we were waiting, we drank Colombian coffee.",
+                "es": "Mientras estábamos esperando, tomamos café colombiano.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_12-5-2",
+            "sublessonId": "sub-a2_node_12-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Integración de pasado continuo, when/while, expresiones con take y vocabulario de viaje.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Mantén la coherencia en las acciones simultáneas de fondo.",
+            "deepDiveNotes": "Varía la entonación para hacer la historia dinámica y natural.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Fortunately, the hotel was very comfortable.",
+                "es": "Afortunadamente, el hotel era muy cómodo.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_5",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "While we traveled, it was rain ❌",
+                "correctExample": "While we were traveling, it was raining ✅",
+                "fastPill": "Mantén la coherencia en las acciones simultáneas de fondo.",
+                "mediumExplanation": "Narración completa: Transporte, el trayecto, un imprevisto con el clima o equipaje y la resolución.",
+                "slowDeepDive": "Varía la entonación para hacer la historia dinámica y natural."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_12-5-3",
+            "sublessonId": "sub-a2_node_12-5",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Integración de pasado continuo, when/while, expresiones con take y vocabulario de viaje.",
+            "summaryShort": "¡Excelente! Has dominado '5. Integración: Una Historia Real de Viaje'.",
+            "conceptBreakdown": "⚡ Una buena anécdota tiene: Contexto (Past Continuous) + Conflicto (When) + Desenlace.",
+            "deepDiveNotes": "Atajo mental: ⚡ Una buena anécdota tiene: Contexto (Past Continuous) + Conflicto (When) + Desenlace.",
+            "keyTakeaways": [
+              "⚡ Una buena anécdota tiene: Contexto (Past Continuous) + Conflicto (When) + Desenlace.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_12-5-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Terminas de contar una anécdota sobre cómo perdiste un vuelo y cómo lo solucionaste:",
+            "options": [
+              "Fortunately, the airline gave us tickets for the next flight.",
+              "Fortunately, airline was giving us tickets.",
+              "In the end, we was happy.",
+              "Suddenly, we taked another plane."
+            ],
+            "correctAnswer": "Fortunately, the airline gave us tickets for the next flight.",
+            "explanation": "Cierre narrativo formal y gramaticalmente impecable.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-5-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "While I was looking for my passport, the plane _____.",
+            "options": [
+              "left",
+              "was leaving",
+              "leaves"
+            ],
+            "correctAnswer": "left",
+            "explanation": "El despegue del avión es el evento puntual que interrumpe ('the plane left').",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-5-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Lost luggage": "Equipaje perdido",
+              "Flight delayed": "Vuelo retrasado",
+              "Fortunately": "Afortunadamente",
+              "What an adventure!": "¡Qué aventura!"
+            },
+            "correctAnswer": {
+              "Lost luggage": "Equipaje perdido",
+              "Flight delayed": "Vuelo retrasado",
+              "Fortunately": "Afortunadamente",
+              "What an adventure!": "¡Qué aventura!"
+            },
+            "explanation": "Correspondencia de 5. Integración: Una Historia Real de Viaje.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-5-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Mientras estábamos esperando, tomamos café colombiano.\"",
+            "correctAnswer": "While we were waiting, we drank Colombian coffee.",
+            "explanation": "Respuesta correcta: \"While we were waiting, we drank Colombian coffee.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_12-5-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Afortunadamente, el hotel era muy cómodo.\"",
+            "correctAnswer": "Fortunately, the hotel was very comfortable.",
+            "explanation": "Pronunciación modelo: \"Fortunately, the hotel was very comfortable.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2_node_13",
+    "title": "13. Ciudad, Direcciones & Lugares",
+    "description": "Lugares de la ciudad, pedir y dar direcciones, medios de transporte.",
+    "category": "VOCABULARY",
+    "cefrLevel": "A2",
+    "orderIndex": 13,
+    "icon": "MapPin",
+    "status": "LOCKED",
+    "starsEarned": 0,
+    "prerequisites": [
+      "a1_node_10"
+    ],
+    "totalSublessons": 5,
+    "completedSublessons": 0,
+    "sublessons": [
+      {
+        "id": "sub-a2_node_13-1",
+        "nodeId": "a2_node_13",
         "title": "1. Lugares de la Ciudad & Servicios Públicos",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -8382,7 +10081,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_10-1-1",
-            "sublessonId": "sub-a2_node_10-1",
+            "sublessonId": "sub-a2_node_13-1",
             "title": "1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8419,7 +10118,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-1-2",
-            "sublessonId": "sub-a2_node_10-1",
+            "sublessonId": "sub-a2_node_13-1",
             "title": "Refuerzo de Concepto: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8445,7 +10144,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-1-3",
-            "sublessonId": "sub-a2_node_10-1",
+            "sublessonId": "sub-a2_node_13-1",
             "title": "Resumen: 1. Lugares de la Ciudad & Servicios Públicos",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8529,8 +10228,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-2",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_13-2",
+        "nodeId": "a2_node_13",
         "title": "2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -8540,7 +10239,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_10-2-1",
-            "sublessonId": "sub-a2_node_10-2",
+            "sublessonId": "sub-a2_node_13-2",
             "title": "2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8577,7 +10276,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-2-2",
-            "sublessonId": "sub-a2_node_10-2",
+            "sublessonId": "sub-a2_node_13-2",
             "title": "Refuerzo de Concepto: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8603,7 +10302,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-2-3",
-            "sublessonId": "sub-a2_node_10-2",
+            "sublessonId": "sub-a2_node_13-2",
             "title": "Resumen: 2. Dar y Pedir Direcciones (Turn Left, Go Straight)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8687,8 +10386,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-3",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_13-3",
+        "nodeId": "a2_node_13",
         "title": "3. Preposiciones de Movimiento: Across, Through, Into",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -8698,7 +10397,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_10-3-1",
-            "sublessonId": "sub-a2_node_10-3",
+            "sublessonId": "sub-a2_node_13-3",
             "title": "3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8735,7 +10434,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-3-2",
-            "sublessonId": "sub-a2_node_10-3",
+            "sublessonId": "sub-a2_node_13-3",
             "title": "Refuerzo de Concepto: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8761,7 +10460,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-3-3",
-            "sublessonId": "sub-a2_node_10-3",
+            "sublessonId": "sub-a2_node_13-3",
             "title": "Resumen: 3. Preposiciones de Movimiento: Across, Through, Into",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -8845,8 +10544,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-4",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_13-4",
+        "nodeId": "a2_node_13",
         "title": "4. Medios de Transporte & Viajes",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -8856,7 +10555,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_10-4-1",
-            "sublessonId": "sub-a2_node_10-4",
+            "sublessonId": "sub-a2_node_13-4",
             "title": "4. Medios de Transporte & Viajes",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -8893,7 +10592,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-4-2",
-            "sublessonId": "sub-a2_node_10-4",
+            "sublessonId": "sub-a2_node_13-4",
             "title": "Refuerzo de Concepto: 4. Medios de Transporte & Viajes",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -8919,7 +10618,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-4-3",
-            "sublessonId": "sub-a2_node_10-4",
+            "sublessonId": "sub-a2_node_13-4",
             "title": "Resumen: 4. Medios de Transporte & Viajes",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9003,8 +10702,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_11-5",
-        "nodeId": "a2_node_11",
+        "id": "sub-a2_node_13-5",
+        "nodeId": "a2_node_13",
         "title": "5. Describir tu Ciudad o Vecindario",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -9014,7 +10713,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_10-5-1",
-            "sublessonId": "sub-a2_node_10-5",
+            "sublessonId": "sub-a2_node_13-5",
             "title": "5. Describir tu Ciudad o Vecindario",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9051,7 +10750,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-5-2",
-            "sublessonId": "sub-a2_node_10-5",
+            "sublessonId": "sub-a2_node_13-5",
             "title": "Refuerzo de Concepto: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9077,7 +10776,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_10-5-3",
-            "sublessonId": "sub-a2_node_10-5",
+            "sublessonId": "sub-a2_node_13-5",
             "title": "Resumen: 5. Describir tu Ciudad o Vecindario",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9163,24 +10862,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_12",
-    "title": "12. Comparativos & Superlativos",
+    "id": "a2_node_14",
+    "title": "14. Comparativos, Superlativos & Igualdad",
     "description": "Comparar personas y objetos con -er/more y el grado superlativo (-est/the most).",
     "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 12,
-    "icon": "TrendingUp",
+    "orderIndex": 14,
+    "icon": "BarChart2",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a1_node_9"
+      "a2_node_13"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_12-1",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_14-1",
+        "nodeId": "a2_node_14",
         "title": "1. Comparativos Cortos (-er than)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -9190,7 +10889,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_11-1-1",
-            "sublessonId": "sub-a2_node_11-1",
+            "sublessonId": "sub-a2_node_14-1",
             "title": "1. Comparativos Cortos (-er than)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9227,7 +10926,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-1-2",
-            "sublessonId": "sub-a2_node_11-1",
+            "sublessonId": "sub-a2_node_14-1",
             "title": "Refuerzo de Concepto: 1. Comparativos Cortos (-er than)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9253,7 +10952,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-1-3",
-            "sublessonId": "sub-a2_node_11-1",
+            "sublessonId": "sub-a2_node_14-1",
             "title": "Resumen: 1. Comparativos Cortos (-er than)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9337,8 +11036,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-2",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_14-2",
+        "nodeId": "a2_node_14",
         "title": "2. Comparativos Largos (More ... than)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -9348,7 +11047,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_11-2-1",
-            "sublessonId": "sub-a2_node_11-2",
+            "sublessonId": "sub-a2_node_14-2",
             "title": "2. Comparativos Largos (More ... than)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9385,7 +11084,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-2-2",
-            "sublessonId": "sub-a2_node_11-2",
+            "sublessonId": "sub-a2_node_14-2",
             "title": "Refuerzo de Concepto: 2. Comparativos Largos (More ... than)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9411,7 +11110,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-2-3",
-            "sublessonId": "sub-a2_node_11-2",
+            "sublessonId": "sub-a2_node_14-2",
             "title": "Resumen: 2. Comparativos Largos (More ... than)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9495,8 +11194,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-3",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_14-3",
+        "nodeId": "a2_node_14",
         "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -9506,7 +11205,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_11-3-1",
-            "sublessonId": "sub-a2_node_11-3",
+            "sublessonId": "sub-a2_node_14-3",
             "title": "3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9543,7 +11242,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-3-2",
-            "sublessonId": "sub-a2_node_11-3",
+            "sublessonId": "sub-a2_node_14-3",
             "title": "Refuerzo de Concepto: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9569,7 +11268,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-3-3",
-            "sublessonId": "sub-a2_node_11-3",
+            "sublessonId": "sub-a2_node_14-3",
             "title": "Resumen: 3. Comparativos y Superlativos Irregulares (Good / Bad)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9653,8 +11352,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-4",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_14-4",
+        "nodeId": "a2_node_14",
         "title": "4. Superlativos: The -est & The Most",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -9664,7 +11363,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_11-4-1",
-            "sublessonId": "sub-a2_node_11-4",
+            "sublessonId": "sub-a2_node_14-4",
             "title": "4. Superlativos: The -est & The Most",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9701,7 +11400,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-4-2",
-            "sublessonId": "sub-a2_node_11-4",
+            "sublessonId": "sub-a2_node_14-4",
             "title": "Refuerzo de Concepto: 4. Superlativos: The -est & The Most",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9727,7 +11426,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-4-3",
-            "sublessonId": "sub-a2_node_11-4",
+            "sublessonId": "sub-a2_node_14-4",
             "title": "Resumen: 4. Superlativos: The -est & The Most",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9811,8 +11510,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_12-5",
-        "nodeId": "a2_node_12",
+        "id": "sub-a2_node_14-5",
+        "nodeId": "a2_node_14",
         "title": "5. Estructura de Igualdad: As ... As",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -9822,7 +11521,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_11-5-1",
-            "sublessonId": "sub-a2_node_11-5",
+            "sublessonId": "sub-a2_node_14-5",
             "title": "5. Estructura de Igualdad: As ... As",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -9859,7 +11558,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-5-2",
-            "sublessonId": "sub-a2_node_11-5",
+            "sublessonId": "sub-a2_node_14-5",
             "title": "Refuerzo de Concepto: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -9885,7 +11584,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_11-5-3",
-            "sublessonId": "sub-a2_node_11-5",
+            "sublessonId": "sub-a2_node_14-5",
             "title": "Resumen: 5. Estructura de Igualdad: As ... As",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -9971,24 +11670,832 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_13",
-    "title": "13. Presente Continuo & Futuro (Going To / Will)",
-    "description": "Acciones en progreso ahora mismo (-ing) y planes futuros con Be Going To y Will.",
-    "category": "GRAMMAR",
+    "id": "a2_node_15",
+    "title": "15. Coincidencias (So do I / Neither do I), Cortesía & Sugerencias",
+    "description": "Aprende a coincidir elegantemente con afirmaciones de otras personas sin repetir toda la oración.",
+    "category": "VOCABULARY",
     "cefrLevel": "A2",
-    "orderIndex": 13,
-    "icon": "ArrowRightCircle",
+    "orderIndex": 15,
+    "icon": "MessageSquare",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_10"
+      "a2_node_14"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_13-1",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_15-1",
+        "nodeId": "a2_node_15",
+        "title": "1. Coincidencias Afirmativas: So do I & Me too",
+        "orderIndex": 1,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_15-1-1",
+            "sublessonId": "sub-a2_node_15-1",
+            "title": "1. Coincidencias Afirmativas: So do I & Me too",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Para coincidir con oraciones afirmativas:\nOpción informal: Me too! (¡Yo también!)\nOpción formal/precisa: SO + Auxiliar correspondiente + Sujeto\nEj: A: I like coffee. ➔ B: So do I.\nEj: A: I am tired. ➔ B: So am I.\nEj: A: I watched the game. ➔ B: So did I.",
+            "summaryShort": "Aprende a coincidir elegantemente con afirmaciones de otras personas sin repetir toda la oración.",
+            "conceptBreakdown": "En español decimos 'Yo también' para todo. En inglés puedes decir 'Me too' de manera casual, pero en situaciones profesionales se usa 'So do I', 'So am I' o 'So did I' dependiendo del auxiliar.",
+            "deepDiveNotes": "Estructura clave: Para coincidir con oraciones afirmativas:\nOpción informal: Me too! (¡Yo también!)\nOpción formal/precisa: SO + Auxiliar correspondiente + Sujeto\nEj: A: I like coffee. ➔ B: So do I.\nEj: A: I am tired. ➔ B: So am I.\nEj: A: I watched the game. ➔ B: So did I.\n\nUso comunicativo: En español decimos 'Yo también' para todo. En inglés puedes decir 'Me too' de manera casual, pero en situaciones profesionales se usa 'So do I', 'So am I' o 'So did I' dependiendo del auxiliar.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I love Colombian music. - So do I!",
+                "es": "Me encanta la música colombiana. - ¡A mí también!",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_15-1-2",
+            "sublessonId": "sub-a2_node_15-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Para coincidir con oraciones afirmativas:\nOpción informal: Me too! (¡Yo también!)\nOpción formal/precisa: SO + Auxiliar correspondiente + Sujeto\nEj: A: I like coffee. ➔ B: So do I.\nEj: A: I am tired. ➔ B: So am I.\nEj: A: I watched the game. ➔ B: So did I.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Si la oración original usa un verbo en presente simple (live), el auxiliar debe ser 'do' (So do I).",
+            "deepDiveNotes": "El acento tónico cae en el pronombre: 'So do *I*'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I am ready for the interview. - So am I!",
+                "es": "Estoy listo para la entrevista. - ¡Yo también!",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_1",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "A: I live in Bogota. - B: So am I ❌",
+                "correctExample": "A: I live in Bogota. - B: So do I ✅",
+                "fastPill": "Si la oración original usa un verbo en presente simple (live), el auxiliar debe ser 'do' (So do I).",
+                "mediumExplanation": "En español decimos 'Yo también' para todo. En inglés puedes decir 'Me too' de manera casual, pero en situaciones profesionales se usa 'So do I', 'So am I' o 'So did I' dependiendo del auxiliar.",
+                "slowDeepDive": "El acento tónico cae en el pronombre: 'So do *I*'."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_15-1-3",
+            "sublessonId": "sub-a2_node_15-1",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Para coincidir con oraciones afirmativas:\nOpción informal: Me too! (¡Yo también!)\nOpción formal/precisa: SO + Auxiliar correspondiente + Sujeto\nEj: A: I like coffee. ➔ B: So do I.\nEj: A: I am tired. ➔ B: So am I.\nEj: A: I watched the game. ➔ B: So did I.",
+            "summaryShort": "¡Excelente! Has dominado '1. Coincidencias Afirmativas: So do I & Me too'.",
+            "conceptBreakdown": "⚡ Verbo To Be ➔ So am I. Verbos normales ➔ So do I. Pasado ➔ So did I.",
+            "deepDiveNotes": "Atajo mental: ⚡ Verbo To Be ➔ So am I. Verbos normales ➔ So do I. Pasado ➔ So did I.",
+            "keyTakeaways": [
+              "⚡ Verbo To Be ➔ So am I. Verbos normales ➔ So do I. Pasado ➔ So did I.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_15-1-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Tu colega dice: 'I love drinking Colombian coffee every morning.' Tú coincides formalmente:",
+            "options": [
+              "So do I.",
+              "So am I.",
+              "Neither do I.",
+              "Me neither."
+            ],
+            "correctAnswer": "So do I.",
+            "explanation": "Con el verbo 'love' (presente simple ordinario), la coincidencia afirmativa correcta es 'So do I'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-1-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "Carlos: 'I am very excited about the trip.' Sofia: 'So _____ I!'",
+            "options": [
+              "am",
+              "do",
+              "did"
+            ],
+            "correctAnswer": "am",
+            "explanation": "Carlos usó el verbo To Be 'am', por lo que Sofía responde con 'So am I'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-1-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "So do I": "Yo también (verbos normales)",
+              "So am I": "Yo también (To Be)",
+              "So did I": "Yo también (en pasado)",
+              "Me too": "Yo también (informal)"
+            },
+            "correctAnswer": {
+              "So do I": "Yo también (verbos normales)",
+              "So am I": "Yo también (To Be)",
+              "So did I": "Yo también (en pasado)",
+              "Me too": "Yo también (informal)"
+            },
+            "explanation": "Correspondencia de 1. Coincidencias Afirmativas: So do I & Me too.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-1-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Me encanta la música colombiana. - ¡A mí también!\"",
+            "correctAnswer": "I love Colombian music. - So do I!",
+            "explanation": "Respuesta correcta: \"I love Colombian music. - So do I!\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-1-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Estoy listo para la entrevista. - ¡Yo también!\"",
+            "correctAnswer": "I am ready for the interview. - So am I!",
+            "explanation": "Pronunciación modelo: \"I am ready for the interview. - So am I!\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_15-2",
+        "nodeId": "a2_node_15",
+        "title": "2. Coincidencias Negativas: Neither do I, Me neither & Either",
+        "orderIndex": 2,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_15-2-1",
+            "sublessonId": "sub-a2_node_15-2",
+            "title": "2. Coincidencias Negativas: Neither do I, Me neither & Either",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Para coincidir con oraciones negativas:\nOpción casual: Me neither! (¡Yo tampoco!)\nOpción formal: NEITHER + Auxiliar afirmativo + Sujeto\nEj: A: I don't like spicy food. ➔ B: Neither do I.\nUso de Either al final: I don't like it either.",
+            "summaryShort": "Aprende a decir 'Yo tampoco' correctamente en inglés, dominando 'Neither do I' y 'Either'.",
+            "conceptBreakdown": "En inglés nunca digas 'Me also no' o 'I neither'. Para decir 'yo tampoco' usa 'Neither do I' o 'Me neither'. Si usas 'either', colócalo al final con verbo negativo.",
+            "deepDiveNotes": "Estructura clave: Para coincidir con oraciones negativas:\nOpción casual: Me neither! (¡Yo tampoco!)\nOpción formal: NEITHER + Auxiliar afirmativo + Sujeto\nEj: A: I don't like spicy food. ➔ B: Neither do I.\nUso de Either al final: I don't like it either.\n\nUso comunicativo: En inglés nunca digas 'Me also no' o 'I neither'. Para decir 'yo tampoco' usa 'Neither do I' o 'Me neither'. Si usas 'either', colócalo al final con verbo negativo.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I don't drink soda. - Neither do I.",
+                "es": "No tomo gaseosa. - ¡Yo tampoco!",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_15-2-2",
+            "sublessonId": "sub-a2_node_15-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Para coincidir con oraciones negativas:\nOpción casual: Me neither! (¡Yo tampoco!)\nOpción formal: NEITHER + Auxiliar afirmativo + Sujeto\nEj: A: I don't like spicy food. ➔ B: Neither do I.\nUso de Either al final: I don't like it either.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "'Me also no' no existe en inglés. Lo correcto es 'Neither do I' o 'Me neither'.",
+            "deepDiveNotes": "'Neither' se pronuncia /ˈnaɪ.ðər/ o /ˈniː.ðər/, con sonido 'th' sonoro /ð/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I didn't understand the question either.",
+                "es": "Yo tampoco entendí la pregunta.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_2",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "A: I don't eat meat. - B: Me also no ❌",
+                "correctExample": "A: I don't eat meat. - B: Neither do I ✅",
+                "fastPill": "'Me also no' no existe en inglés. Lo correcto es 'Neither do I' o 'Me neither'.",
+                "mediumExplanation": "En inglés nunca digas 'Me also no' o 'I neither'. Para decir 'yo tampoco' usa 'Neither do I' o 'Me neither'. Si usas 'either', colócalo al final con verbo negativo.",
+                "slowDeepDive": "'Neither' se pronuncia /ˈnaɪ.ðər/ o /ˈniː.ðər/, con sonido 'th' sonoro /ð/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_15-2-3",
+            "sublessonId": "sub-a2_node_15-2",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Para coincidir con oraciones negativas:\nOpción casual: Me neither! (¡Yo tampoco!)\nOpción formal: NEITHER + Auxiliar afirmativo + Sujeto\nEj: A: I don't like spicy food. ➔ B: Neither do I.\nUso de Either al final: I don't like it either.",
+            "summaryShort": "¡Excelente! Has dominado '2. Coincidencias Negativas: Neither do I, Me neither & Either'.",
+            "conceptBreakdown": "⚡ Ni tampoco: NEITHER al inicio con auxiliar positivo, o EITHER al final con negación.",
+            "deepDiveNotes": "Atajo mental: ⚡ Ni tampoco: NEITHER al inicio con auxiliar positivo, o EITHER al final con negación.",
+            "keyTakeaways": [
+              "⚡ Ni tampoco: NEITHER al inicio con auxiliar positivo, o EITHER al final con negación.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_15-2-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Alguien dice: 'I didn't watch the football match last night.' ¿Cuál es la forma correcta de decir 'Yo tampoco'?",
+            "options": [
+              "Neither did I.",
+              "So did I.",
+              "Me also not.",
+              "Neither do I."
+            ],
+            "correctAnswer": "Neither did I.",
+            "explanation": "Como la oración original estaba en pasado negativo ('didn't'), la coincidencia es 'Neither did I'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-2-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "I don't have enough time to finish this today, and my colleague doesn't _____.",
+            "options": [
+              "either",
+              "neither",
+              "too"
+            ],
+            "correctAnswer": "either",
+            "explanation": "Al final de una oración negativa ('doesn't'), se utiliza 'either' para significar 'tampoco'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-2-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Neither do I": "Yo tampoco (presente)",
+              "Neither did I": "Yo tampoco (pasado)",
+              "Me neither": "Yo tampoco (casual)",
+              "Not either": "Tampoco (al final)"
+            },
+            "correctAnswer": {
+              "Neither do I": "Yo tampoco (presente)",
+              "Neither did I": "Yo tampoco (pasado)",
+              "Me neither": "Yo tampoco (casual)",
+              "Not either": "Tampoco (al final)"
+            },
+            "explanation": "Correspondencia de 2. Coincidencias Negativas: Neither do I, Me neither & Either.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-2-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"No tomo gaseosa. - ¡Yo tampoco!\"",
+            "correctAnswer": "I don't drink soda. - Neither do I.",
+            "explanation": "Respuesta correcta: \"I don't drink soda. - Neither do I.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-2-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Yo tampoco entendí la pregunta.\"",
+            "correctAnswer": "I didn't understand the question either.",
+            "explanation": "Pronunciación modelo: \"I didn't understand the question either.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_15-3",
+        "nodeId": "a2_node_15",
+        "title": "3. Fórmulas de Cortesía: Would you like...? & Could you...?",
+        "orderIndex": 3,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_15-3-1",
+            "sublessonId": "sub-a2_node_15-3",
+            "title": "3. Fórmulas de Cortesía: Would you like...? & Could you...?",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Ofrecer amablemente: Would you like + sustantivo / to + verbo?\nEj: Would you like some coffee? / Would you like to sit down?\nPedir favores amablemente: Could you please + verbo base?\nEj: Could you please help me with this?",
+            "summaryShort": "Aprende las estructuras formales y educadas para ofrecer algo y pedir favores en inglés.",
+            "conceptBreakdown": "'Do you want...?' puede sonar muy directo o seco. 'Would you like...?' es la forma cortés universal (¿Le gustaría / Quieres...?). Para favores, usa 'Could you please...?' (¿Podrías...?).",
+            "deepDiveNotes": "Estructura clave: Ofrecer amablemente: Would you like + sustantivo / to + verbo?\nEj: Would you like some coffee? / Would you like to sit down?\nPedir favores amablemente: Could you please + verbo base?\nEj: Could you please help me with this?\n\nUso comunicativo: 'Do you want...?' puede sonar muy directo o seco. 'Would you like...?' es la forma cortés universal (¿Le gustaría / Quieres...?). Para favores, usa 'Could you please...?' (¿Podrías...?).",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Would you like to drink some Colombian coffee?",
+                "es": "¿Te gustaría tomar algo de café colombiano?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_15-3-2",
+            "sublessonId": "sub-a2_node_15-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Ofrecer amablemente: Would you like + sustantivo / to + verbo?\nEj: Would you like some coffee? / Would you like to sit down?\nPedir favores amablemente: Could you please + verbo base?\nEj: Could you please help me with this?",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "'Would you like' es infinitamente más amable y profesional.",
+            "deepDiveNotes": "'Would you' se fusiona fonéticamente como /ˈwʊdʒuː/ ('wú-dchu').",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Could you please repeat that more slowly?",
+                "es": "¿Podría por favor repetir eso más despacio?",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_3",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "Do you want coffee? (en restaurante formal) ❌",
+                "correctExample": "Would you like some coffee? ✅",
+                "fastPill": "'Would you like' es infinitamente más amable y profesional.",
+                "mediumExplanation": "'Do you want...?' puede sonar muy directo o seco. 'Would you like...?' es la forma cortés universal (¿Le gustaría / Quieres...?). Para favores, usa 'Could you please...?' (¿Podrías...?).",
+                "slowDeepDive": "'Would you' se fusiona fonéticamente como /ˈwʊdʒuː/ ('wú-dchu')."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_15-3-3",
+            "sublessonId": "sub-a2_node_15-3",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Ofrecer amablemente: Would you like + sustantivo / to + verbo?\nEj: Would you like some coffee? / Would you like to sit down?\nPedir favores amablemente: Could you please + verbo base?\nEj: Could you please help me with this?",
+            "summaryShort": "¡Excelente! Has dominado '3. Fórmulas de Cortesía: Would you like...? & Could you...?'.",
+            "conceptBreakdown": "⚡ Para sonar educado en inglés: Would you like (ofrecer) y Could you (pedir).",
+            "deepDiveNotes": "Atajo mental: ⚡ Para sonar educado en inglés: Would you like (ofrecer) y Could you (pedir).",
+            "keyTakeaways": [
+              "⚡ Para sonar educado en inglés: Would you like (ofrecer) y Could you (pedir).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_15-3-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Estás en una reunión y quieres ofrecerle un vaso de agua a un cliente extranjero:",
+            "options": [
+              "Would you like a glass of water?",
+              "Do you want drink water now?",
+              "You want a glass of water?",
+              "Could you drink water?"
+            ],
+            "correctAnswer": "Would you like a glass of water?",
+            "explanation": "'Would you like...?' es la fórmula de hospitalidad por excelencia.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-3-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "_____ you please pass me the salt, sir?",
+            "options": [
+              "Could",
+              "Do",
+              "Should"
+            ],
+            "correctAnswer": "Could",
+            "explanation": "'Could you please...' es la forma estándar y educada para solicitar algo en la mesa o trabajo.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-3-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Would you like?": "¿Le gustaría?",
+              "I would like": "Me gustaría",
+              "Could you please?": "¿Podría por favor?",
+              "With pleasure": "Con mucho gusto"
+            },
+            "correctAnswer": {
+              "Would you like?": "¿Le gustaría?",
+              "I would like": "Me gustaría",
+              "Could you please?": "¿Podría por favor?",
+              "With pleasure": "Con mucho gusto"
+            },
+            "explanation": "Correspondencia de 3. Fórmulas de Cortesía: Would you like...? & Could you...?.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-3-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Te gustaría tomar algo de café colombiano?\"",
+            "correctAnswer": "Would you like to drink some Colombian coffee?",
+            "explanation": "Respuesta correcta: \"Would you like to drink some Colombian coffee?\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-3-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"¿Podría por favor repetir eso más despacio?\"",
+            "correctAnswer": "Could you please repeat that more slowly?",
+            "explanation": "Pronunciación modelo: \"Could you please repeat that more slowly?\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_15-4",
+        "nodeId": "a2_node_15",
+        "title": "4. Hacer Sugerencias: How about...?, What about...? & Let's",
+        "orderIndex": 4,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_15-4-1",
+            "sublessonId": "sub-a2_node_15-4",
+            "title": "4. Hacer Sugerencias: How about...?, What about...? & Let's",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Let's + Verbo Base (propuesta directa): Let's go to the cinema!\nHow about / What about + Verbo-ing (sugerencia consultiva):\nEj: How about ordering pizza tonight? / What about going to the park?\nWhy don't we + Verbo Base: Why don't we take a break?",
+            "summaryShort": "Aprende a proponer planes y sugerencias de forma colaborativa y amena con amigos o colegas.",
+            "conceptBreakdown": "Cuando uses 'How about' o 'What about' seguido de una acción, el verbo DEBE llevar terminación -ing ('How about having dinner?'). Con 'Let's' y 'Why don't we' va en forma base.",
+            "deepDiveNotes": "Estructura clave: Let's + Verbo Base (propuesta directa): Let's go to the cinema!\nHow about / What about + Verbo-ing (sugerencia consultiva):\nEj: How about ordering pizza tonight? / What about going to the park?\nWhy don't we + Verbo Base: Why don't we take a break?\n\nUso comunicativo: Cuando uses 'How about' o 'What about' seguido de una acción, el verbo DEBE llevar terminación -ing ('How about having dinner?'). Con 'Let's' y 'Why don't we' va en forma base.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "How about studying together this weekend?",
+                "es": "¿Qué tal si estudiamos juntos este fin de semana?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_15-4-2",
+            "sublessonId": "sub-a2_node_15-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Let's + Verbo Base (propuesta directa): Let's go to the cinema!\nHow about / What about + Verbo-ing (sugerencia consultiva):\nEj: How about ordering pizza tonight? / What about going to the park?\nWhy don't we + Verbo Base: Why don't we take a break?",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Después de preposiciones como 'about', el verbo toma obligatoriamente la forma -ing.",
+            "deepDiveNotes": "'Let's' es la contracción de 'let us', pronunciado con 's' clara al final /lets/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Let's practice our pronunciation right now.",
+                "es": "Practiquemos nuestra pronunciación ahora mismo.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_4",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "How about to go to the park? ❌",
+                "correctExample": "How about going to the park? ✅",
+                "fastPill": "Después de preposiciones como 'about', el verbo toma obligatoriamente la forma -ing.",
+                "mediumExplanation": "Cuando uses 'How about' o 'What about' seguido de una acción, el verbo DEBE llevar terminación -ing ('How about having dinner?'). Con 'Let's' y 'Why don't we' va en forma base.",
+                "slowDeepDive": "'Let's' es la contracción de 'let us', pronunciado con 's' clara al final /lets/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_15-4-3",
+            "sublessonId": "sub-a2_node_15-4",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Let's + Verbo Base (propuesta directa): Let's go to the cinema!\nHow about / What about + Verbo-ing (sugerencia consultiva):\nEj: How about ordering pizza tonight? / What about going to the park?\nWhy don't we + Verbo Base: Why don't we take a break?",
+            "summaryShort": "¡Excelente! Has dominado '4. Hacer Sugerencias: How about...?, What about...? & Let's'.",
+            "conceptBreakdown": "⚡ Let's + Verbo base. How about + Verbo-ING.",
+            "deepDiveNotes": "Atajo mental: ⚡ Let's + Verbo base. How about + Verbo-ING.",
+            "keyTakeaways": [
+              "⚡ Let's + Verbo base. How about + Verbo-ING.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_15-4-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Tú y tus compañeros de estudio están cansados y quieres sugerir hacer una pausa de 10 minutos:",
+            "options": [
+              "Why don't we take a short break?",
+              "How about to take a break?",
+              "Let's to take a break now.",
+              "What about take a break?"
+            ],
+            "correctAnswer": "Why don't we take a short break?",
+            "explanation": "'Why don't we take...' tiene la estructura correcta con el verbo en forma base.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-4-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "How about _____ Italian food for lunch today?",
+            "options": [
+              "eating",
+              "eat",
+              "to eat"
+            ],
+            "correctAnswer": "eating",
+            "explanation": "Después de 'How about' se requiere el gerundio en -ing ('eating').",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-4-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Let's go!": "¡Vamos!",
+              "How about...?": "¿Qué tal si...?",
+              "Why don't we...?": "¿Por qué no...?",
+              "That sounds great!": "¡Eso suena genial!"
+            },
+            "correctAnswer": {
+              "Let's go!": "¡Vamos!",
+              "How about...?": "¿Qué tal si...?",
+              "Why don't we...?": "¿Por qué no...?",
+              "That sounds great!": "¡Eso suena genial!"
+            },
+            "explanation": "Correspondencia de 4. Hacer Sugerencias: How about...?, What about...? & Let's.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-4-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Qué tal si estudiamos juntos este fin de semana?\"",
+            "correctAnswer": "How about studying together this weekend?",
+            "explanation": "Respuesta correcta: \"How about studying together this weekend?\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-4-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Practiquemos nuestra pronunciación ahora mismo.\"",
+            "correctAnswer": "Let's practice our pronunciation right now.",
+            "explanation": "Pronunciación modelo: \"Let's practice our pronunciation right now.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_15-5",
+        "nodeId": "a2_node_15",
+        "title": "5. Integración: Diálogo de Negociación y Acuerdo Social",
+        "orderIndex": 5,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_15-5-1",
+            "sublessonId": "sub-a2_node_15-5",
+            "title": "5. Integración: Diálogo de Negociación y Acuerdo Social",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Integración de coincidencias (So/Neither), cortesía (Would you like) y sugerencias (How about) en una conversación.",
+            "summaryShort": "Aplica todas las fórmulas conversacionales para interactuar con naturalidad y carisma en inglés.",
+            "conceptBreakdown": "Escenario: Dos colegas planifican un almuerzo de trabajo, coinciden en sus gustos culinarios y acuerdan la hora.",
+            "deepDiveNotes": "Estructura clave: Integración de coincidencias (So/Neither), cortesía (Would you like) y sugerencias (How about) en una conversación.\n\nUso comunicativo: Escenario: Dos colegas planifican un almuerzo de trabajo, coinciden en sus gustos culinarios y acuerdan la hora.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Would you like to join us for lunch?",
+                "es": "¿Te gustaría unirte a nosotros para el almuerzo?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_15-5-2",
+            "sublessonId": "sub-a2_node_15-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Integración de coincidencias (So/Neither), cortesía (Would you like) y sugerencias (How about) en una conversación.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Para coincidir con una preferencia negativa siempre usa 'Neither do I'.",
+            "deepDiveNotes": "Practica la modulación de voz amable y entusiasta en las respuestas.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Neither do I, so let's choose another option.",
+                "es": "Yo tampoco, así que escojamos otra opción.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_5",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I don't like sushi. - So do I ❌",
+                "correctExample": "I don't like sushi. - Neither do I ✅",
+                "fastPill": "Para coincidir con una preferencia negativa siempre usa 'Neither do I'.",
+                "mediumExplanation": "Escenario: Dos colegas planifican un almuerzo de trabajo, coinciden en sus gustos culinarios y acuerdan la hora.",
+                "slowDeepDive": "Practica la modulación de voz amable y entusiasta en las respuestas."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_15-5-3",
+            "sublessonId": "sub-a2_node_15-5",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Integración de coincidencias (So/Neither), cortesía (Would you like) y sugerencias (How about) en una conversación.",
+            "summaryShort": "¡Excelente! Has dominado '5. Integración: Diálogo de Negociación y Acuerdo Social'.",
+            "conceptBreakdown": "⚡ En interacciones sociales: primero muestra acuerdo ('So do I'), luego sugiere un plan ('How about...').",
+            "deepDiveNotes": "Atajo mental: ⚡ En interacciones sociales: primero muestra acuerdo ('So do I'), luego sugiere un plan ('How about...').",
+            "keyTakeaways": [
+              "⚡ En interacciones sociales: primero muestra acuerdo ('So do I'), luego sugiere un plan ('How about...').",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_15-5-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Colega: 'I'm really hungry, but I don't want fast food.' Tú respondes coincidiendo y sugiriendo:",
+            "options": [
+              "Neither do I. How about going to that traditional restaurant?",
+              "So do I. Let's eating at the corner.",
+              "Me too. Why don't we to go home?",
+              "I neither. Would you like eat fast food?"
+            ],
+            "correctAnswer": "Neither do I. How about going to that traditional restaurant?",
+            "explanation": "Usa 'Neither do I' ante la negativa y propone con 'How about going...' impecablemente.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-5-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "Sofia: 'I'd love to learn another language.' Alex: 'So _____ I! It opens many doors.'",
+            "options": [
+              "would",
+              "do",
+              "am"
+            ],
+            "correctAnswer": "would",
+            "explanation": "'I'd love' es la contracción de 'I would love', por lo que la coincidencia formal es 'So would I'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-5-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "That sounds like a plan": "Me parece un buen plan",
+              "I agree with you": "Estoy de acuerdo contigo",
+              "In my opinion": "En mi opinión",
+              "Count me in": "Cuenta conmigo"
+            },
+            "correctAnswer": {
+              "That sounds like a plan": "Me parece un buen plan",
+              "I agree with you": "Estoy de acuerdo contigo",
+              "In my opinion": "En mi opinión",
+              "Count me in": "Cuenta conmigo"
+            },
+            "explanation": "Correspondencia de 5. Integración: Diálogo de Negociación y Acuerdo Social.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-5-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Te gustaría unirte a nosotros para el almuerzo?\"",
+            "correctAnswer": "Would you like to join us for lunch?",
+            "explanation": "Respuesta correcta: \"Would you like to join us for lunch?\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_15-5-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Yo tampoco, así que escojamos otra opción.\"",
+            "correctAnswer": "Neither do I, so let's choose another option.",
+            "explanation": "Pronunciación modelo: \"Neither do I, so let's choose another option.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2_node_16",
+    "title": "16. Formas de Futuro: Predicciones (Will) vs Planes (Going To)",
+    "description": "Acciones en progreso ahora mismo (-ing) y planes futuros con Be Going To y Will.",
+    "category": "GRAMMAR",
+    "cefrLevel": "A2",
+    "orderIndex": 16,
+    "icon": "Compass",
+    "status": "LOCKED",
+    "starsEarned": 0,
+    "prerequisites": [
+      "a1_node_10"
+    ],
+    "totalSublessons": 5,
+    "completedSublessons": 0,
+    "sublessons": [
+      {
+        "id": "sub-a2_node_16-1",
+        "nodeId": "a2_node_16",
         "title": "1. Presente Continuo: Acciones en Progreso",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -9998,7 +12505,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_12-1-1",
-            "sublessonId": "sub-a2_node_12-1",
+            "sublessonId": "sub-a2_node_16-1",
             "title": "1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10035,7 +12542,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-1-2",
-            "sublessonId": "sub-a2_node_12-1",
+            "sublessonId": "sub-a2_node_16-1",
             "title": "Refuerzo de Concepto: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10061,7 +12568,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-1-3",
-            "sublessonId": "sub-a2_node_12-1",
+            "sublessonId": "sub-a2_node_16-1",
             "title": "Resumen: 1. Presente Continuo: Acciones en Progreso",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10145,8 +12652,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-2",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_16-2",
+        "nodeId": "a2_node_16",
         "title": "2. Contraste: Presente Simple vs Presente Continuo",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -10156,7 +12663,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_12-2-1",
-            "sublessonId": "sub-a2_node_12-2",
+            "sublessonId": "sub-a2_node_16-2",
             "title": "2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10193,7 +12700,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-2-2",
-            "sublessonId": "sub-a2_node_12-2",
+            "sublessonId": "sub-a2_node_16-2",
             "title": "Refuerzo de Concepto: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10219,7 +12726,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-2-3",
-            "sublessonId": "sub-a2_node_12-2",
+            "sublessonId": "sub-a2_node_16-2",
             "title": "Resumen: 2. Contraste: Presente Simple vs Presente Continuo",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10303,8 +12810,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-3",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_16-3",
+        "nodeId": "a2_node_16",
         "title": "3. Futuro con \"Be Going To\" (Planes e Intenciones)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -10314,7 +12821,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_12-3-1",
-            "sublessonId": "sub-a2_node_12-3",
+            "sublessonId": "sub-a2_node_16-3",
             "title": "3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10351,7 +12858,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-3-2",
-            "sublessonId": "sub-a2_node_12-3",
+            "sublessonId": "sub-a2_node_16-3",
             "title": "Refuerzo de Concepto: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10377,7 +12884,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-3-3",
-            "sublessonId": "sub-a2_node_12-3",
+            "sublessonId": "sub-a2_node_16-3",
             "title": "Resumen: 3. Futuro con \"Be Going To\" (Planes e Intenciones)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10461,8 +12968,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-4",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_16-4",
+        "nodeId": "a2_node_16",
         "title": "4. Presente Continuo con Sentido de Futuro Acordado",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -10472,7 +12979,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_12-4-1",
-            "sublessonId": "sub-a2_node_12-4",
+            "sublessonId": "sub-a2_node_16-4",
             "title": "4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10509,7 +13016,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-4-2",
-            "sublessonId": "sub-a2_node_12-4",
+            "sublessonId": "sub-a2_node_16-4",
             "title": "Refuerzo de Concepto: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10535,7 +13042,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-4-3",
-            "sublessonId": "sub-a2_node_12-4",
+            "sublessonId": "sub-a2_node_16-4",
             "title": "Resumen: 4. Presente Continuo con Sentido de Futuro Acordado",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10619,8 +13126,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_13-5",
-        "nodeId": "a2_node_13",
+        "id": "sub-a2_node_16-5",
+        "nodeId": "a2_node_16",
         "title": "5. Preguntas sobre Planes & Predicciones Futuras",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -10630,7 +13137,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_12-5-1",
-            "sublessonId": "sub-a2_node_12-5",
+            "sublessonId": "sub-a2_node_16-5",
             "title": "5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10667,7 +13174,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-5-2",
-            "sublessonId": "sub-a2_node_12-5",
+            "sublessonId": "sub-a2_node_16-5",
             "title": "Refuerzo de Concepto: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10693,7 +13200,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_12-5-3",
-            "sublessonId": "sub-a2_node_12-5",
+            "sublessonId": "sub-a2_node_16-5",
             "title": "Resumen: 5. Preguntas sobre Planes & Predicciones Futuras",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10779,24 +13286,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_14",
-    "title": "14. Conectores, Modales & Salud",
+    "id": "a2_node_17",
+    "title": "17. Conectores, Modales & Salud",
     "description": "Conectores lógicos (Although, Because, However), verbos modales Should/Must y síntomas de salud.",
-    "category": "CONVERSATION",
+    "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 14,
+    "orderIndex": 17,
     "icon": "Activity",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_11"
+      "a2_node_16"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_14-1",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_17-1",
+        "nodeId": "a2_node_17",
         "title": "1. Conectores Lógicos: And, But, So, Because, Although",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -10806,7 +13313,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_13-1-1",
-            "sublessonId": "sub-a2_node_13-1",
+            "sublessonId": "sub-a2_node_17-1",
             "title": "1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -10843,7 +13350,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-1-2",
-            "sublessonId": "sub-a2_node_13-1",
+            "sublessonId": "sub-a2_node_17-1",
             "title": "Refuerzo de Concepto: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -10869,7 +13376,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-1-3",
-            "sublessonId": "sub-a2_node_13-1",
+            "sublessonId": "sub-a2_node_17-1",
             "title": "Resumen: 1. Conectores Lógicos: And, But, So, Because, Although",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -10953,8 +13460,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-2",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_17-2",
+        "nodeId": "a2_node_17",
         "title": "2. Modal Should & Shouldn't (Consejos & Sugerencias)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -10964,7 +13471,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_13-2-1",
-            "sublessonId": "sub-a2_node_13-2",
+            "sublessonId": "sub-a2_node_17-2",
             "title": "2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11001,7 +13508,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-2-2",
-            "sublessonId": "sub-a2_node_13-2",
+            "sublessonId": "sub-a2_node_17-2",
             "title": "Refuerzo de Concepto: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11027,7 +13534,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-2-3",
-            "sublessonId": "sub-a2_node_13-2",
+            "sublessonId": "sub-a2_node_17-2",
             "title": "Resumen: 2. Modal Should & Shouldn't (Consejos & Sugerencias)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11111,8 +13618,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-3",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_17-3",
+        "nodeId": "a2_node_17",
         "title": "3. Modales de Obligación: Must vs Have To",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -11122,7 +13629,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_13-3-1",
-            "sublessonId": "sub-a2_node_13-3",
+            "sublessonId": "sub-a2_node_17-3",
             "title": "3. Modales de Obligación: Must vs Have To",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11159,7 +13666,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-3-2",
-            "sublessonId": "sub-a2_node_13-3",
+            "sublessonId": "sub-a2_node_17-3",
             "title": "Refuerzo de Concepto: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11185,7 +13692,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-3-3",
-            "sublessonId": "sub-a2_node_13-3",
+            "sublessonId": "sub-a2_node_17-3",
             "title": "Resumen: 3. Modales de Obligación: Must vs Have To",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11269,8 +13776,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-4",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_17-4",
+        "nodeId": "a2_node_17",
         "title": "4. Salud, Síntomas Médicos & Partes del Cuerpo",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -11280,7 +13787,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_13-4-1",
-            "sublessonId": "sub-a2_node_13-4",
+            "sublessonId": "sub-a2_node_17-4",
             "title": "4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11317,7 +13824,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-4-2",
-            "sublessonId": "sub-a2_node_13-4",
+            "sublessonId": "sub-a2_node_17-4",
             "title": "Refuerzo de Concepto: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11343,7 +13850,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-4-3",
-            "sublessonId": "sub-a2_node_13-4",
+            "sublessonId": "sub-a2_node_17-4",
             "title": "Resumen: 4. Salud, Síntomas Médicos & Partes del Cuerpo",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11427,8 +13934,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_14-5",
-        "nodeId": "a2_node_14",
+        "id": "sub-a2_node_17-5",
+        "nodeId": "a2_node_17",
         "title": "5. Expresar Emociones, Estado de Ánimo & Bienestar",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -11438,7 +13945,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_13-5-1",
-            "sublessonId": "sub-a2_node_13-5",
+            "sublessonId": "sub-a2_node_17-5",
             "title": "5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11475,7 +13982,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-5-2",
-            "sublessonId": "sub-a2_node_13-5",
+            "sublessonId": "sub-a2_node_17-5",
             "title": "Refuerzo de Concepto: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11501,7 +14008,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_13-5-3",
-            "sublessonId": "sub-a2_node_13-5",
+            "sublessonId": "sub-a2_node_17-5",
             "title": "Resumen: 5. Expresar Emociones, Estado de Ánimo & Bienestar",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11587,26 +14094,834 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_15",
-    "title": "15. Lectura ICFES & Diálogos Saber Pro",
-    "description": "Estrategias de comprensión lectora, avisos públicos y completación de diálogos estilo examen oficial.",
-    "category": "EXAM_PREP",
+    "id": "a2_node_18",
+    "title": "18. Presente Perfecto A2: Experiencias (Ever/Never) & Marcadores Temporales",
+    "description": "Aprende la estructura del presente perfecto para conectar acciones del pasado con el momento presente.",
+    "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 15,
-    "icon": "FileText",
+    "orderIndex": 18,
+    "icon": "CheckCircle",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_13",
-      "a2_node_14",
-      "a2_node_12"
+      "a2_node_17"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_15-1",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_18-1",
+        "nodeId": "a2_node_18",
+        "title": "1. Estructura del Presente Perfecto: Have / Has + Participio Pasado",
+        "orderIndex": 1,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_18-1-1",
+            "sublessonId": "sub-a2_node_18-1",
+            "title": "1. Estructura del Presente Perfecto: Have / Has + Participio Pasado",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Afirmativa: Sujeto + HAVE / HAS + Participio Pasado (3ra columna)\nNegativa: Sujeto + HAVEN'T / HASN'T + Participio Pasado\nPregunta: HAVE / HAS + Sujeto + Participio Pasado?\nEj: I have visited Bogota. / She has lived in Canada.",
+            "summaryShort": "Aprende la estructura del presente perfecto para conectar acciones del pasado con el momento presente.",
+            "conceptBreakdown": "Usa 'have' con I, you, we, they. Usa 'has' con he, she, it. El verbo va en participio pasado: regulares añaden -ed (visited), irregulares usan la 3ra forma (seen, eaten, gone).",
+            "deepDiveNotes": "Estructura clave: Afirmativa: Sujeto + HAVE / HAS + Participio Pasado (3ra columna)\nNegativa: Sujeto + HAVEN'T / HASN'T + Participio Pasado\nPregunta: HAVE / HAS + Sujeto + Participio Pasado?\nEj: I have visited Bogota. / She has lived in Canada.\n\nUso comunicativo: Usa 'have' con I, you, we, they. Usa 'has' con he, she, it. El verbo va en participio pasado: regulares añaden -ed (visited), irregulares usan la 3ra forma (seen, eaten, gone).",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have studied English every day this month.",
+                "es": "He estudiado inglés todos los días este mes.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_18-1-2",
+            "sublessonId": "sub-a2_node_18-1",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Afirmativa: Sujeto + HAVE / HAS + Participio Pasado (3ra columna)\nNegativa: Sujeto + HAVEN'T / HASN'T + Participio Pasado\nPregunta: HAVE / HAS + Sujeto + Participio Pasado?\nEj: I have visited Bogota. / She has lived in Canada.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Con la tercera persona singular (he, she, it) es obligatorio usar 'has'.",
+            "deepDiveNotes": "En habla natural 'I have' se contrae como 'I've' /aɪv/, y 'She has' como 'She's' /ʃiːz/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "She has worked as an engineer for three years.",
+                "es": "Ella ha trabajado como ingeniera durante tres años.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_18_1",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "She have visited London ❌",
+                "correctExample": "She has visited London ✅",
+                "fastPill": "Con la tercera persona singular (he, she, it) es obligatorio usar 'has'.",
+                "mediumExplanation": "Usa 'have' con I, you, we, they. Usa 'has' con he, she, it. El verbo va en participio pasado: regulares añaden -ed (visited), irregulares usan la 3ra forma (seen, eaten, gone).",
+                "slowDeepDive": "En habla natural 'I have' se contrae como 'I've' /aɪv/, y 'She has' como 'She's' /ʃiːz/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_18-1-3",
+            "sublessonId": "sub-a2_node_18-1",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Afirmativa: Sujeto + HAVE / HAS + Participio Pasado (3ra columna)\nNegativa: Sujeto + HAVEN'T / HASN'T + Participio Pasado\nPregunta: HAVE / HAS + Sujeto + Participio Pasado?\nEj: I have visited Bogota. / She has lived in Canada.",
+            "summaryShort": "¡Excelente! Has dominado '1. Estructura del Presente Perfecto: Have / Has + Participio Pasado'.",
+            "conceptBreakdown": "⚡ Presente Perfecto = Conexión entre el pasado y el presente sin fecha exacta.",
+            "deepDiveNotes": "Atajo mental: ⚡ Presente Perfecto = Conexión entre el pasado y el presente sin fecha exacta.",
+            "keyTakeaways": [
+              "⚡ Presente Perfecto = Conexión entre el pasado y el presente sin fecha exacta.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_18-1-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Quieres contarle a alguien que has vivido en Colombia durante cinco años:",
+            "options": [
+              "I have lived in Colombia for five years.",
+              "I has lived in Colombia for five years.",
+              "I have live in Colombia for five years.",
+              "I lived have in Colombia for five years."
+            ],
+            "correctAnswer": "I have lived in Colombia for five years.",
+            "explanation": "Con 'I' se usa el auxiliar 'have' seguido del participio pasado 'lived'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-1-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "She _____ finished all her English lessons for today.",
+            "options": [
+              "has",
+              "have",
+              "is"
+            ],
+            "correctAnswer": "has",
+            "explanation": "Con el sujeto 'She' el auxiliar correcto del presente perfecto es 'has'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-1-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "I have worked": "He trabajado",
+              "She has studied": "Ella ha estudiado",
+              "We have traveled": "Hemos viajado",
+              "They have eaten": "Ellos han comido"
+            },
+            "correctAnswer": {
+              "I have worked": "He trabajado",
+              "She has studied": "Ella ha estudiado",
+              "We have traveled": "Hemos viajado",
+              "They have eaten": "Ellos han comido"
+            },
+            "explanation": "Correspondencia de 1. Estructura del Presente Perfecto: Have / Has + Participio Pasado.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-1-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"He estudiado inglés todos los días este mes.\"",
+            "correctAnswer": "I have studied English every day this month.",
+            "explanation": "Respuesta correcta: \"I have studied English every day this month.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-1-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Ella ha trabajado como ingeniera durante tres años.\"",
+            "correctAnswer": "She has worked as an engineer for three years.",
+            "explanation": "Pronunciación modelo: \"She has worked as an engineer for three years.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_18-2",
+        "nodeId": "a2_node_18",
+        "title": "2. Experiencias de Vida con Ever & Never",
+        "orderIndex": 2,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_18-2-1",
+            "sublessonId": "sub-a2_node_18-2",
+            "title": "2. Experiencias de Vida con Ever & Never",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "Preguntas de experiencia: HAVE YOU EVER + Participio Pasado?\nEj: Have you ever been to England? (¿Alguna vez has estado...?)\nRespuestas negativas de vida: I HAVE NEVER + Participio Pasado\nEj: I have never eaten sushi. (Nunca he comido sushi).",
+            "summaryShort": "Aprende a preguntar y responder sobre experiencias que han ocurrido en cualquier momento de la vida.",
+            "conceptBreakdown": "'Ever' se usa en preguntas con el significado de 'alguna vez en la vida'. 'Never' significa 'nunca', y como ya es negativo, el verbo va en forma afirmativa ('have never', no 'haven't never').",
+            "deepDiveNotes": "Estructura clave: Preguntas de experiencia: HAVE YOU EVER + Participio Pasado?\nEj: Have you ever been to England? (¿Alguna vez has estado...?)\nRespuestas negativas de vida: I HAVE NEVER + Participio Pasado\nEj: I have never eaten sushi. (Nunca he comido sushi).\n\nUso comunicativo: 'Ever' se usa en preguntas con el significado de 'alguna vez en la vida'. 'Never' significa 'nunca', y como ya es negativo, el verbo va en forma afirmativa ('have never', no 'haven't never').",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Have you ever visited a foreign country?",
+                "es": "¿Alguna vez has visitado un país extranjero?",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_18-2-2",
+            "sublessonId": "sub-a2_node_18-2",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "Preguntas de experiencia: HAVE YOU EVER + Participio Pasado?\nEj: Have you ever been to England? (¿Alguna vez has estado...?)\nRespuestas negativas de vida: I HAVE NEVER + Participio Pasado\nEj: I have never eaten sushi. (Nunca he comido sushi).",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En presente perfecto se usa el participio 'been' (o 'gone'), no el pasado simple 'went'.",
+            "deepDiveNotes": "'Ever' se pronuncia con acento claro /ˈev.ər/.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have never lost my luggage on a trip.",
+                "es": "Nunca he perdido mi equipaje en un viaje.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_18_2",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "Have you ever went to Paris? ❌",
+                "correctExample": "Have you ever been to Paris? ✅",
+                "fastPill": "En presente perfecto se usa el participio 'been' (o 'gone'), no el pasado simple 'went'.",
+                "mediumExplanation": "'Ever' se usa en preguntas con el significado de 'alguna vez en la vida'. 'Never' significa 'nunca', y como ya es negativo, el verbo va en forma afirmativa ('have never', no 'haven't never').",
+                "slowDeepDive": "'Ever' se pronuncia con acento claro /ˈev.ər/."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_18-2-3",
+            "sublessonId": "sub-a2_node_18-2",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "Preguntas de experiencia: HAVE YOU EVER + Participio Pasado?\nEj: Have you ever been to England? (¿Alguna vez has estado...?)\nRespuestas negativas de vida: I HAVE NEVER + Participio Pasado\nEj: I have never eaten sushi. (Nunca he comido sushi).",
+            "summaryShort": "¡Excelente! Has dominado '2. Experiencias de Vida con Ever & Never'.",
+            "conceptBreakdown": "⚡ Have you ever...? = ¿Alguna vez has...? / I have never... = Nunca he...",
+            "deepDiveNotes": "Atajo mental: ⚡ Have you ever...? = ¿Alguna vez has...? / I have never... = Nunca he...",
+            "keyTakeaways": [
+              "⚡ Have you ever...? = ¿Alguna vez has...? / I have never... = Nunca he...",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_18-2-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "En una conversación casual quieres preguntarle a un compañero si alguna vez ha probado comida mexicana:",
+            "options": [
+              "Have you ever tried Mexican food?",
+              "Have you never tried Mexican food?",
+              "Did you ever tried Mexican food?",
+              "Were you ever try Mexican food?"
+            ],
+            "correctAnswer": "Have you ever tried Mexican food?",
+            "explanation": "La fórmula estándar para indagar sobre experiencias de vida es 'Have you ever + participio'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-2-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "I have _____ traveled by plane. This is my first flight!",
+            "options": [
+              "never",
+              "ever",
+              "already"
+            ],
+            "correctAnswer": "never",
+            "explanation": "Si es su primer vuelo, 'nunca' (never) ha viajado en avión antes.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-2-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Have you ever been to...?": "¿Alguna vez has estado en...?",
+              "I have never seen that": "Nunca he visto eso",
+              "In my whole life": "En toda mi vida",
+              "Once in a lifetime": "Una vez en la vida"
+            },
+            "correctAnswer": {
+              "Have you ever been to...?": "¿Alguna vez has estado en...?",
+              "I have never seen that": "Nunca he visto eso",
+              "In my whole life": "En toda mi vida",
+              "Once in a lifetime": "Una vez en la vida"
+            },
+            "explanation": "Correspondencia de 2. Experiencias de Vida con Ever & Never.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-2-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visitado un país extranjero?\"",
+            "correctAnswer": "Have you ever visited a foreign country?",
+            "explanation": "Respuesta correcta: \"Have you ever visited a foreign country?\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-2-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Nunca he perdido mi equipaje en un viaje.\"",
+            "correctAnswer": "I have never lost my luggage on a trip.",
+            "explanation": "Pronunciación modelo: \"I have never lost my luggage on a trip.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_18-3",
+        "nodeId": "a2_node_18",
+        "title": "3. Marcadores de Relevancia: Already, Yet & Just",
+        "orderIndex": 3,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_18-3-1",
+            "sublessonId": "sub-a2_node_18-3",
+            "title": "3. Marcadores de Relevancia: Already, Yet & Just",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "JUST (acaba de suceder hace segundos): I have just finished my coffee.\nALREADY (ya sucedió antes de lo esperado): I have already done my homework.\nYET (aún no en negativas / ya en preguntas al final):\nEj: I haven't finished yet. / Have you finished yet?",
+            "summaryShort": "Aprende a indicar la novedad y el momento exacto de culminación de una acción con respecto al presente.",
+            "conceptBreakdown": "'Just' y 'Already' se ubican entre el auxiliar y el participio ('have just arrived', 'have already eaten'). 'Yet' se coloca siempre al final de la oración.",
+            "deepDiveNotes": "Estructura clave: JUST (acaba de suceder hace segundos): I have just finished my coffee.\nALREADY (ya sucedió antes de lo esperado): I have already done my homework.\nYET (aún no en negativas / ya en preguntas al final):\nEj: I haven't finished yet. / Have you finished yet?\n\nUso comunicativo: 'Just' y 'Already' se ubican entre el auxiliar y el participio ('have just arrived', 'have already eaten'). 'Yet' se coloca siempre al final de la oración.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have already finished my English homework.",
+                "es": "Ya he terminado mi tarea de inglés.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_18-3-2",
+            "sublessonId": "sub-a2_node_18-3",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "JUST (acaba de suceder hace segundos): I have just finished my coffee.\nALREADY (ya sucedió antes de lo esperado): I have already done my homework.\nYET (aún no en negativas / ya en preguntas al final):\nEj: I haven't finished yet. / Have you finished yet?",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "En oraciones negativas que indican 'todavía no', se usa 'yet' al final.",
+            "deepDiveNotes": "'Just' tiene una pronunciación suave /dʒʌst/, no como 'yast'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have just received an important email.",
+                "es": "Acabo de recibir un correo electrónico importante.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_18_3",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I haven't finished already ❌",
+                "correctExample": "I haven't finished yet ✅",
+                "fastPill": "En oraciones negativas que indican 'todavía no', se usa 'yet' al final.",
+                "mediumExplanation": "'Just' y 'Already' se ubican entre el auxiliar y el participio ('have just arrived', 'have already eaten'). 'Yet' se coloca siempre al final de la oración.",
+                "slowDeepDive": "'Just' tiene una pronunciación suave /dʒʌst/, no como 'yast'."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_18-3-3",
+            "sublessonId": "sub-a2_node_18-3",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "JUST (acaba de suceder hace segundos): I have just finished my coffee.\nALREADY (ya sucedió antes de lo esperado): I have already done my homework.\nYET (aún no en negativas / ya en preguntas al final):\nEj: I haven't finished yet. / Have you finished yet?",
+            "summaryShort": "¡Excelente! Has dominado '3. Marcadores de Relevancia: Already, Yet & Just'.",
+            "conceptBreakdown": "⚡ Just = Recién hecho. Already = Ya hecho. Yet = Aún no (al final).",
+            "deepDiveNotes": "Atajo mental: ⚡ Just = Recién hecho. Already = Ya hecho. Yet = Aún no (al final).",
+            "keyTakeaways": [
+              "⚡ Just = Recién hecho. Already = Ya hecho. Yet = Aún no (al final).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_18-3-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Tu jefe te pregunta si ya enviaste el reporte que terminaste hace 2 minutos:",
+            "options": [
+              "I have just sent the report to the client.",
+              "I have sent already yet the report.",
+              "I just sent already the report.",
+              "I haven't just sent the report."
+            ],
+            "correctAnswer": "I have just sent the report to the client.",
+            "explanation": "'I have just sent' indica con total precisión que la acción se completó hace escasos instantes.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-3-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "Have you called the doctor _____? - Not yet, I will call now.",
+            "options": [
+              "yet",
+              "already",
+              "just"
+            ],
+            "correctAnswer": "yet",
+            "explanation": "Al final de preguntas sobre si una acción ya fue realizada, se utiliza 'yet'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-3-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "I have just arrived": "Acabo de llegar",
+              "I have already seen it": "Ya lo he visto",
+              "Not yet": "Todavía no",
+              "Have you finished yet?": "¿Ya terminaste?"
+            },
+            "correctAnswer": {
+              "I have just arrived": "Acabo de llegar",
+              "I have already seen it": "Ya lo he visto",
+              "Not yet": "Todavía no",
+              "Have you finished yet?": "¿Ya terminaste?"
+            },
+            "explanation": "Correspondencia de 3. Marcadores de Relevancia: Already, Yet & Just.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-3-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"Ya he terminado mi tarea de inglés.\"",
+            "correctAnswer": "I have already finished my English homework.",
+            "explanation": "Respuesta correcta: \"I have already finished my English homework.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-3-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Acabo de recibir un correo electrónico importante.\"",
+            "correctAnswer": "I have just received an important email.",
+            "explanation": "Pronunciación modelo: \"I have just received an important email.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_18-4",
+        "nodeId": "a2_node_18",
+        "title": "4. Marcadores Durativos: Since (Punto de Partida) vs For (Periodo)",
+        "orderIndex": 4,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_18-4-1",
+            "sublessonId": "sub-a2_node_18-4",
+            "title": "4. Marcadores Durativos: Since (Punto de Partida) vs For (Periodo)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "SINCE + Punto específico en el tiempo (fecha, hora, evento):\nEj: Since 2020 / Since yesterday / Since I was a child.\nFOR + Duración o cantidad de tiempo acumulada:\nEj: For three years / For two hours / For a long time.",
+            "summaryShort": "Aprende a expresar cuánto tiempo ha durado una situación que comenzó en el pasado y continúa en el presente.",
+            "conceptBreakdown": "Usa 'Since' cuando mencionas el año, mes o momento exacto en que inició la acción. Usa 'For' cuando cuentas la cantidad de horas, días o años acumulados.",
+            "deepDiveNotes": "Estructura clave: SINCE + Punto específico en el tiempo (fecha, hora, evento):\nEj: Since 2020 / Since yesterday / Since I was a child.\nFOR + Duración o cantidad de tiempo acumulada:\nEj: For three years / For two hours / For a long time.\n\nUso comunicativo: Usa 'Since' cuando mencionas el año, mes o momento exacto en que inició la acción. Usa 'For' cuando cuentas la cantidad de horas, días o años acumulados.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have lived in this city since I was young.",
+                "es": "He vivido en esta ciudad desde que era joven.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_18-4-2",
+            "sublessonId": "sub-a2_node_18-4",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "SINCE + Punto específico en el tiempo (fecha, hora, evento):\nEj: Since 2020 / Since yesterday / Since I was a child.\nFOR + Duración o cantidad de tiempo acumulada:\nEj: For three years / For two hours / For a long time.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "'Three years' es una duración de tiempo, por lo que exige la preposición 'for'.",
+            "deepDiveNotes": "'Since' se pronuncia con vocal corta /sɪns/, nunca 'sains'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "We have practiced conversation for two hours.",
+                "es": "Hemos practicado conversación durante dos horas.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_18_4",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I have lived here since three years ❌",
+                "correctExample": "I have lived here for three years ✅",
+                "fastPill": "'Three years' es una duración de tiempo, por lo que exige la preposición 'for'.",
+                "mediumExplanation": "Usa 'Since' cuando mencionas el año, mes o momento exacto en que inició la acción. Usa 'For' cuando cuentas la cantidad de horas, días o años acumulados.",
+                "slowDeepDive": "'Since' se pronuncia con vocal corta /sɪns/, nunca 'sains'."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_18-4-3",
+            "sublessonId": "sub-a2_node_18-4",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "SINCE + Punto específico en el tiempo (fecha, hora, evento):\nEj: Since 2020 / Since yesterday / Since I was a child.\nFOR + Duración o cantidad de tiempo acumulada:\nEj: For three years / For two hours / For a long time.",
+            "summaryShort": "¡Excelente! Has dominado '4. Marcadores Durativos: Since (Punto de Partida) vs For (Periodo)'.",
+            "conceptBreakdown": "⚡ Since responde ¿DESDE CUÁNDO? (punto). For responde ¿CUÁNTO TIEMPO? (duración).",
+            "deepDiveNotes": "Atajo mental: ⚡ Since responde ¿DESDE CUÁNDO? (punto). For responde ¿CUÁNTO TIEMPO? (duración).",
+            "keyTakeaways": [
+              "⚡ Since responde ¿DESDE CUÁNDO? (punto). For responde ¿CUÁNTO TIEMPO? (duración).",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_18-4-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Quieres expresar que trabajas en tu empresa actual desde el año 2021:",
+            "options": [
+              "I have worked at this company since 2021.",
+              "I have worked at this company for 2021.",
+              "I work here since 2021.",
+              "I worked here for 2021."
+            ],
+            "correctAnswer": "I have worked at this company since 2021.",
+            "explanation": "2021 es un año puntual de inicio, por lo que se utiliza 'since' con presente perfecto.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-4-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "We have studied in this academy _____ six months.",
+            "options": [
+              "for",
+              "since",
+              "during"
+            ],
+            "correctAnswer": "for",
+            "explanation": "'Six months' es un periodo acumulado de tiempo, por lo que requiere 'for'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-4-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Since 2018": "Desde 2018",
+              "For two days": "Por dos días",
+              "Since this morning": "Desde esta mañana",
+              "For a long time": "Por mucho tiempo"
+            },
+            "correctAnswer": {
+              "Since 2018": "Desde 2018",
+              "For two days": "Por dos días",
+              "Since this morning": "Desde esta mañana",
+              "For a long time": "Por mucho tiempo"
+            },
+            "explanation": "Correspondencia de 4. Marcadores Durativos: Since (Punto de Partida) vs For (Periodo).",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-4-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"He vivido en esta ciudad desde que era joven.\"",
+            "correctAnswer": "I have lived in this city since I was young.",
+            "explanation": "Respuesta correcta: \"I have lived in this city since I was young.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-4-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"Hemos practicado conversación durante dos horas.\"",
+            "correctAnswer": "We have practiced conversation for two hours.",
+            "explanation": "Pronunciación modelo: \"We have practiced conversation for two hours.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      },
+      {
+        "id": "sub-a2_node_18-5",
+        "nodeId": "a2_node_18",
+        "title": "5. Integración: Pasado Simple (Cuándo) vs Presente Perfecto (Experiencia)",
+        "orderIndex": 5,
+        "paceTier": "ALL",
+        "xpReward": 20,
+        "isCompleted": false,
+        "score": 0,
+        "explanations": [
+          {
+            "id": "exp-a2_node_18-5-1",
+            "sublessonId": "sub-a2_node_18-5",
+            "title": "5. Integración: Pasado Simple (Cuándo) vs Presente Perfecto (Experiencia)",
+            "slideOrder": 1,
+            "placement": "INTRO",
+            "triggerQuestionIndex": 0,
+            "grammarFormula": "PRESENTE PERFECTO: Experiencia sin fecha exacta (I have been to London).\nPASADO SIMPLE: Momento específico definido (I went to London in 2022).\nDiálogo clásico: Q: Have you ever eaten sushi? ➔ A: Yes, I have. I tried it last year in Tokyo.",
+            "summaryShort": "Aprende a alternar fluidamente entre el Presente Perfecto y el Pasado Simple en una conversación real.",
+            "conceptBreakdown": "La regla de oro comunicativa: Empiezas con Presente Perfecto para preguntar si algo ha ocurrido ('Have you ever...?'). En cuanto das detalles de cuándo o dónde ocurrió, cambias inmediatamente a Pasado Simple.",
+            "deepDiveNotes": "Estructura clave: PRESENTE PERFECTO: Experiencia sin fecha exacta (I have been to London).\nPASADO SIMPLE: Momento específico definido (I went to London in 2022).\nDiálogo clásico: Q: Have you ever eaten sushi? ➔ A: Yes, I have. I tried it last year in Tokyo.\n\nUso comunicativo: La regla de oro comunicativa: Empiezas con Presente Perfecto para preguntar si algo ha ocurrido ('Have you ever...?'). En cuanto das detalles de cuándo o dónde ocurrió, cambias inmediatamente a Pasado Simple.",
+            "keyTakeaways": [
+              "Paso 1: Comprende el patrón y significado en contexto.",
+              "Paso 2: Lee la pronunciación modelo en voz alta.",
+              "Paso 3: Construye tus propias oraciones guiadas."
+            ],
+            "contrastExamples": [
+              {
+                "en": "Have you ever seen that movie? - Yes, I saw it last week.",
+                "es": "¿Alguna vez has visto esa película? - Sí, la vi la semana pasada.",
+                "highlightEn": "structure",
+                "highlightEs": "estructura",
+                "note": "Ejemplo en uso real"
+              }
+            ],
+            "commonPitfalls": []
+          },
+          {
+            "id": "exp-a2_node_18-5-2",
+            "sublessonId": "sub-a2_node_18-5",
+            "title": "Checkpoint: Don't Say ❌ vs Say ✅ & Articulación",
+            "slideOrder": 2,
+            "placement": "MID_CHECKPOINT",
+            "triggerQuestionIndex": 2,
+            "grammarFormula": "PRESENTE PERFECTO: Experiencia sin fecha exacta (I have been to London).\nPASADO SIMPLE: Momento específico definido (I went to London in 2022).\nDiálogo clásico: Q: Have you ever eaten sushi? ➔ A: Yes, I have. I tried it last year in Tokyo.",
+            "summaryShort": "Atención a errores típicos de traducción directa del español.",
+            "conceptBreakdown": "Si mencionas un tiempo específico pasado ('last year', 'yesterday'), NO puedes usar presente perfecto; usa Pasado Simple.",
+            "deepDiveNotes": "Presta atención al cambio de auxiliar en las respuestas cortas: 'Yes, I have' vs 'Yes, I did'.",
+            "keyTakeaways": [
+              "No traduzcas palabra por palabra del español.",
+              "Presta atención a la concordancia y los auxiliares."
+            ],
+            "contrastExamples": [
+              {
+                "en": "I have learned a lot of English, and I started last year.",
+                "es": "He aprendido mucho inglés, y empecé el año pasado.",
+                "highlightEn": "correct",
+                "highlightEs": "correcto",
+                "note": "Expresión modelo"
+              }
+            ],
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_18_5",
+                "ruleTitle": "Interferencia del español:",
+                "wrongExample": "I have visited Paris last year ❌",
+                "correctExample": "I visited Paris last year ✅",
+                "fastPill": "Si mencionas un tiempo específico pasado ('last year', 'yesterday'), NO puedes usar presente perfecto; usa Pasado Simple.",
+                "mediumExplanation": "La regla de oro comunicativa: Empiezas con Presente Perfecto para preguntar si algo ha ocurrido ('Have you ever...?'). En cuanto das detalles de cuándo o dónde ocurrió, cambias inmediatamente a Pasado Simple.",
+                "slowDeepDive": "Presta atención al cambio de auxiliar en las respuestas cortas: 'Yes, I have' vs 'Yes, I did'."
+              }
+            ]
+          },
+          {
+            "id": "exp-a2_node_18-5-3",
+            "sublessonId": "sub-a2_node_18-5",
+            "title": "Resumen: Regla de 5 Segundos",
+            "slideOrder": 3,
+            "placement": "FINAL_SUMMARY",
+            "triggerQuestionIndex": 5,
+            "grammarFormula": "PRESENTE PERFECTO: Experiencia sin fecha exacta (I have been to London).\nPASADO SIMPLE: Momento específico definido (I went to London in 2022).\nDiálogo clásico: Q: Have you ever eaten sushi? ➔ A: Yes, I have. I tried it last year in Tokyo.",
+            "summaryShort": "¡Excelente! Has dominado '5. Integración: Pasado Simple (Cuándo) vs Presente Perfecto (Experiencia)'.",
+            "conceptBreakdown": "⚡ Experiencia general = Present Perfect. Detalles y fechas = Past Simple.",
+            "deepDiveNotes": "Atajo mental: ⚡ Experiencia general = Present Perfect. Detalles y fechas = Past Simple.",
+            "keyTakeaways": [
+              "⚡ Experiencia general = Present Perfect. Detalles y fechas = Past Simple.",
+              "Práctica de comprensión y pronunciación completada.",
+              "+20 XP Ganados para tu progreso diario."
+            ],
+            "contrastExamples": [],
+            "commonPitfalls": []
+          }
+        ],
+        "questions": [
+          {
+            "id": "q-a2_node_18-5-1",
+            "type": "MULTIPLE_CHOICE_ICFES",
+            "prompt": "Una persona te pregunta 'Have you ever met a famous person?'. Tú respondes con detalles:",
+            "options": [
+              "Yes, I have. I met a famous singer two years ago in Bogota.",
+              "Yes, I did. I have met him two years ago.",
+              "Yes, I have meet him yesterday.",
+              "No, I haven't. I didn't never meet one."
+            ],
+            "correctAnswer": "Yes, I have. I met a famous singer two years ago in Bogota.",
+            "explanation": "Responde afirmativo en Presente Perfecto y añade el detalle específico con Pasado Simple ('I met... two years ago').",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-5-2",
+            "type": "FILL_IN_BLANK",
+            "prompt": "A: '_____ you ever visited New York?' B: 'Yes, I _____ there in 2019.'",
+            "options": [
+              "Have / went",
+              "Did / went",
+              "Have / have been"
+            ],
+            "correctAnswer": "Have / went",
+            "explanation": "La pregunta de experiencia usa 'Have you ever visited', y el detalle con año definido usa 'went'.",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-5-3",
+            "type": "MATCH_PAIRS",
+            "prompt": "Empareja cada concepto con su significado o respuesta:",
+            "options": {
+              "Have you ever...?": "¿Alguna vez has...?",
+              "Yes, I have": "Sí, lo he hecho",
+              "I did it last year": "Lo hice el año pasado",
+              "What an experience!": "¡Qué experiencia!"
+            },
+            "correctAnswer": {
+              "Have you ever...?": "¿Alguna vez has...?",
+              "Yes, I have": "Sí, lo he hecho",
+              "I did it last year": "Lo hice el año pasado",
+              "What an experience!": "¡Qué experiencia!"
+            },
+            "explanation": "Correspondencia de 5. Integración: Pasado Simple (Cuándo) vs Presente Perfecto (Experiencia).",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-5-4",
+            "type": "SENTENCE_WRITING",
+            "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visto esa película? - Sí, la vi la semana pasada.\"",
+            "correctAnswer": "Have you ever seen that movie? - Yes, I saw it last week.",
+            "explanation": "Respuesta correcta: \"Have you ever seen that movie? - Yes, I saw it last week.\"",
+            "cefrLevel": "A2"
+          },
+          {
+            "id": "q-a2_node_18-5-5",
+            "type": "SPEAKING_PRONUNCIATION",
+            "prompt": "Pronuncia en voz alta en inglés: \"He aprendido mucho inglés, y empecé el año pasado.\"",
+            "correctAnswer": "I have learned a lot of English, and I started last year.",
+            "explanation": "Pronunciación modelo: \"I have learned a lot of English, and I started last year.\"",
+            "cefrLevel": "A2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2_node_19",
+    "title": "19. Lectura ICFES & Diálogos Saber Pro",
+    "description": "Estrategias de comprensión lectora, avisos públicos y completación de diálogos estilo examen oficial.",
+    "category": "VOCABULARY",
+    "cefrLevel": "A2",
+    "orderIndex": 19,
+    "icon": "BookOpen",
+    "status": "LOCKED",
+    "starsEarned": 0,
+    "prerequisites": [
+      "a2_node_12",
+      "a2_node_15",
+      "a2_node_18"
+    ],
+    "totalSublessons": 5,
+    "completedSublessons": 0,
+    "sublessons": [
+      {
+        "id": "sub-a2_node_19-1",
+        "nodeId": "a2_node_19",
         "title": "1. Carteles & Lugares Públicos (ICFES Parte 1)",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -11616,7 +14931,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_14-1-1",
-            "sublessonId": "sub-a2_node_14-1",
+            "sublessonId": "sub-a2_node_19-1",
             "title": "1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11653,7 +14968,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-1-2",
-            "sublessonId": "sub-a2_node_14-1",
+            "sublessonId": "sub-a2_node_19-1",
             "title": "Refuerzo de Concepto: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11679,7 +14994,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-1-3",
-            "sublessonId": "sub-a2_node_14-1",
+            "sublessonId": "sub-a2_node_19-1",
             "title": "Resumen: 1. Carteles & Lugares Públicos (ICFES Parte 1)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11763,8 +15078,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-2",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_19-2",
+        "nodeId": "a2_node_19",
         "title": "2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -11774,7 +15089,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_14-2-1",
-            "sublessonId": "sub-a2_node_14-2",
+            "sublessonId": "sub-a2_node_19-2",
             "title": "2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11811,7 +15126,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-2-2",
-            "sublessonId": "sub-a2_node_14-2",
+            "sublessonId": "sub-a2_node_19-2",
             "title": "Refuerzo de Concepto: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11837,7 +15152,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-2-3",
-            "sublessonId": "sub-a2_node_14-2",
+            "sublessonId": "sub-a2_node_19-2",
             "title": "Resumen: 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -11921,8 +15236,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-3",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_19-3",
+        "nodeId": "a2_node_19",
         "title": "3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -11932,7 +15247,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_14-3-1",
-            "sublessonId": "sub-a2_node_14-3",
+            "sublessonId": "sub-a2_node_19-3",
             "title": "3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -11969,7 +15284,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-3-2",
-            "sublessonId": "sub-a2_node_14-3",
+            "sublessonId": "sub-a2_node_19-3",
             "title": "Refuerzo de Concepto: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -11995,7 +15310,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-3-3",
-            "sublessonId": "sub-a2_node_14-3",
+            "sublessonId": "sub-a2_node_19-3",
             "title": "Resumen: 3. Comprensión Lectora Literal A2 (ICFES Parte 3)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12079,8 +15394,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-4",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_19-4",
+        "nodeId": "a2_node_19",
         "title": "4. Inferencia & Vocabulario en Contexto",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -12090,7 +15405,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_14-4-1",
-            "sublessonId": "sub-a2_node_14-4",
+            "sublessonId": "sub-a2_node_19-4",
             "title": "4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12127,7 +15442,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-4-2",
-            "sublessonId": "sub-a2_node_14-4",
+            "sublessonId": "sub-a2_node_19-4",
             "title": "Refuerzo de Concepto: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12153,7 +15468,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-4-3",
-            "sublessonId": "sub-a2_node_14-4",
+            "sublessonId": "sub-a2_node_19-4",
             "title": "Resumen: 4. Inferencia & Vocabulario en Contexto",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12237,8 +15552,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_15-5",
-        "nodeId": "a2_node_15",
+        "id": "sub-a2_node_19-5",
+        "nodeId": "a2_node_19",
         "title": "5. Trampas Frecuentes & Descarte en Saber Pro",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -12248,7 +15563,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_14-5-1",
-            "sublessonId": "sub-a2_node_14-5",
+            "sublessonId": "sub-a2_node_19-5",
             "title": "5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12285,7 +15600,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-5-2",
-            "sublessonId": "sub-a2_node_14-5",
+            "sublessonId": "sub-a2_node_19-5",
             "title": "Refuerzo de Concepto: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12311,7 +15626,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_14-5-3",
-            "sublessonId": "sub-a2_node_14-5",
+            "sublessonId": "sub-a2_node_19-5",
             "title": "Resumen: 5. Trampas Frecuentes & Descarte en Saber Pro",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12397,24 +15712,24 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
     ]
   },
   {
-    "id": "a2_node_16",
-    "title": "16. Gran Reto Integrador A2",
+    "id": "a2_node_20",
+    "title": "20. Gran Reto Integrador A2",
     "description": "Evaluación final y certificación del dominio de los niveles A1 y A2.",
-    "category": "CHALLENGE",
+    "category": "GRAMMAR",
     "cefrLevel": "A2",
-    "orderIndex": 16,
+    "orderIndex": 20,
     "icon": "Trophy",
     "status": "LOCKED",
     "starsEarned": 0,
     "prerequisites": [
-      "a2_node_15"
+      "a2_node_19"
     ],
     "totalSublessons": 5,
     "completedSublessons": 0,
     "sublessons": [
       {
-        "id": "sub-a2_node_16-1",
-        "nodeId": "a2_node_16",
+        "id": "sub-a2_node_20-1",
+        "nodeId": "a2_node_20",
         "title": "1. Simulacro Saber Pro A2: Comprensión Lectora",
         "orderIndex": 1,
         "paceTier": "ALL",
@@ -12424,7 +15739,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_15-1-1",
-            "sublessonId": "sub-a2_node_15-1",
+            "sublessonId": "sub-a2_node_20-1",
             "title": "1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12461,7 +15776,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-1-2",
-            "sublessonId": "sub-a2_node_15-1",
+            "sublessonId": "sub-a2_node_20-1",
             "title": "Refuerzo de Concepto: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12487,7 +15802,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-1-3",
-            "sublessonId": "sub-a2_node_15-1",
+            "sublessonId": "sub-a2_node_20-1",
             "title": "Resumen: 1. Simulacro Saber Pro A2: Comprensión Lectora",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12571,8 +15886,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_16-2",
-        "nodeId": "a2_node_16",
+        "id": "sub-a2_node_20-2",
+        "nodeId": "a2_node_20",
         "title": "2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
         "orderIndex": 2,
         "paceTier": "ALL",
@@ -12582,7 +15897,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_15-2-1",
-            "sublessonId": "sub-a2_node_15-2",
+            "sublessonId": "sub-a2_node_20-2",
             "title": "2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12619,7 +15934,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-2-2",
-            "sublessonId": "sub-a2_node_15-2",
+            "sublessonId": "sub-a2_node_20-2",
             "title": "Refuerzo de Concepto: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12645,7 +15960,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-2-3",
-            "sublessonId": "sub-a2_node_15-2",
+            "sublessonId": "sub-a2_node_20-2",
             "title": "Resumen: 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12729,8 +16044,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_16-3",
-        "nodeId": "a2_node_16",
+        "id": "sub-a2_node_20-3",
+        "nodeId": "a2_node_20",
         "title": "3. Prueba de Precisión Auditiva & Fonética A2",
         "orderIndex": 3,
         "paceTier": "ALL",
@@ -12740,7 +16055,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_15-3-1",
-            "sublessonId": "sub-a2_node_15-3",
+            "sublessonId": "sub-a2_node_20-3",
             "title": "3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12777,7 +16092,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-3-2",
-            "sublessonId": "sub-a2_node_15-3",
+            "sublessonId": "sub-a2_node_20-3",
             "title": "Refuerzo de Concepto: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12803,7 +16118,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-3-3",
-            "sublessonId": "sub-a2_node_15-3",
+            "sublessonId": "sub-a2_node_20-3",
             "title": "Resumen: 3. Prueba de Precisión Auditiva & Fonética A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -12887,8 +16202,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_16-4",
-        "nodeId": "a2_node_16",
+        "id": "sub-a2_node_20-4",
+        "nodeId": "a2_node_20",
         "title": "4. Diagnóstico de Producción Escrita A2",
         "orderIndex": 4,
         "paceTier": "ALL",
@@ -12898,7 +16213,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_15-4-1",
-            "sublessonId": "sub-a2_node_15-4",
+            "sublessonId": "sub-a2_node_20-4",
             "title": "4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -12935,7 +16250,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-4-2",
-            "sublessonId": "sub-a2_node_15-4",
+            "sublessonId": "sub-a2_node_20-4",
             "title": "Refuerzo de Concepto: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -12961,7 +16276,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-4-3",
-            "sublessonId": "sub-a2_node_15-4",
+            "sublessonId": "sub-a2_node_20-4",
             "title": "Resumen: 4. Diagnóstico de Producción Escrita A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -13045,8 +16360,8 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         ]
       },
       {
-        "id": "sub-a2_node_16-5",
-        "nodeId": "a2_node_16",
+        "id": "sub-a2_node_20-5",
+        "nodeId": "a2_node_20",
         "title": "5. Gran Certificación de Logro Nivel A2",
         "orderIndex": 5,
         "paceTier": "ALL",
@@ -13056,7 +16371,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
         "explanations": [
           {
             "id": "exp-a2_node_15-5-1",
-            "sublessonId": "sub-a2_node_15-5",
+            "sublessonId": "sub-a2_node_20-5",
             "title": "5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 1,
             "placement": "INTRO",
@@ -13093,7 +16408,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-5-2",
-            "sublessonId": "sub-a2_node_15-5",
+            "sublessonId": "sub-a2_node_20-5",
             "title": "Refuerzo de Concepto: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 2,
             "placement": "MID_CHECKPOINT",
@@ -13119,7 +16434,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           },
           {
             "id": "exp-a2_node_15-5-3",
-            "sublessonId": "sub-a2_node_15-5",
+            "sublessonId": "sub-a2_node_20-5",
             "title": "Resumen: 5. Gran Certificación de Logro Nivel A2",
             "slideOrder": 3,
             "placement": "FINAL_SUMMARY",
@@ -13206,8 +16521,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   }
 ];
 
-export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
-  // Bloque I: Fonética (5)
+export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [// Bloque I: Fonética (5)
   {
     id: 'diag-1',
     section: 'PHONETICS',
@@ -13561,7 +16875,6 @@ export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       cefrLevel: 'A2',
     },
   },
-
 ];
 
 export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = MOCK_DIAGNOSTIC_QUESTIONS;

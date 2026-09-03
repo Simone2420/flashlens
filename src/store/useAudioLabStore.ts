@@ -83,7 +83,7 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       targetText =
         dictationMode === 'SENTENCE'
           ? (currentCard.contextTranslation || currentCard.nativeTranslation)
-          : currentCard.nativeTranslation;
+          : (currentCard.primaryTranslation || currentCard.nativeTranslation);
     } else {
       // Dictado Normal o Inverso Tradicional: la respuesta esperada es en INGLÉS
       targetText =
@@ -92,8 +92,13 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
           : currentCard.targetWord;
     }
 
-    // DictationAlgorithm.evaluate con soporte para español
-    const result = DictationAlgorithm.evaluate(userInput, targetText, isNativeInverse);
+    // DictationAlgorithm.evaluate con soporte para español y lista de traducciones aceptadas
+    const result = DictationAlgorithm.evaluate(
+      userInput,
+      targetText,
+      isNativeInverse,
+      currentCard.acceptedTranslations
+    );
 
     if (result.isCorrect) {
       const newCombo = comboCount + 1;

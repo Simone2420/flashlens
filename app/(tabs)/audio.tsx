@@ -538,11 +538,13 @@ export default function AudioLabScreen() {
                   dictationDirection === 'NATIVE_INVERSE'
                     ? dictationMode === 'SENTENCE'
                       ? (activeCard.contextTranslation || activeCard.nativeTranslation)
-                      : activeCard.nativeTranslation
+                      : (activeCard.primaryTranslation || activeCard.nativeTranslation)
                     : dictationMode === 'SENTENCE'
                     ? activeCard.contextSentence
                     : activeCard.targetWord
                 }
+                acceptedTranslations={dictationDirection === 'NATIVE_INVERSE' ? activeCard.acceptedTranslations : undefined}
+                minInputLength={dictationDirection === 'NATIVE_INVERSE' ? activeCard.minInputLength : undefined}
                 isSentenceMode={dictationMode === 'SENTENCE'}
                 onInputChange={setCurrentTextValue}
                 onSubmit={handleSubmitEvaluation}

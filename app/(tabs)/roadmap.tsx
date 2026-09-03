@@ -57,7 +57,7 @@ export default function RoadmapScreen() {
   const col2X = treeWidth * 0.5; // Centro
   const col3X = treeWidth * 0.82;
 
-  // Filtrado de nodos A1 (1 a 9)
+  // Filtrado de nodos A1 (1 a 10)
   const nodeA1_1 = nodes.find((n) => n.id === 'a1_node_1') || nodes[0];
   const nodeA1_2 = nodes.find((n) => n.id === 'a1_node_2') || nodes[1];
   const nodeA1_3 = nodes.find((n) => n.id === 'a1_node_3') || nodes[2];
@@ -67,15 +67,19 @@ export default function RoadmapScreen() {
   const nodeA1_7 = nodes.find((n) => n.id === 'a1_node_7') || nodes[6];
   const nodeA1_8 = nodes.find((n) => n.id === 'a1_node_8') || nodes[7];
   const nodeA1_9 = nodes.find((n) => n.id === 'a1_node_9') || nodes[8];
+  const nodeA1_10 = nodes.find((n) => n.id === 'a1_node_10') || nodes[9];
 
-  // Filtrado de nodos A2 (10 a 16)
-  const nodeA2_10 = nodes.find((n) => n.id === 'a2_node_10') || nodes[9];
+  // Filtrado de nodos A2 (11 a 20)
   const nodeA2_11 = nodes.find((n) => n.id === 'a2_node_11') || nodes[10];
   const nodeA2_12 = nodes.find((n) => n.id === 'a2_node_12') || nodes[11];
   const nodeA2_13 = nodes.find((n) => n.id === 'a2_node_13') || nodes[12];
   const nodeA2_14 = nodes.find((n) => n.id === 'a2_node_14') || nodes[13];
   const nodeA2_15 = nodes.find((n) => n.id === 'a2_node_15') || nodes[14];
   const nodeA2_16 = nodes.find((n) => n.id === 'a2_node_16') || nodes[15];
+  const nodeA2_17 = nodes.find((n) => n.id === 'a2_node_17') || nodes[16];
+  const nodeA2_18 = nodes.find((n) => n.id === 'a2_node_18') || nodes[17];
+  const nodeA2_19 = nodes.find((n) => n.id === 'a2_node_19') || nodes[18];
+  const nodeA2_20 = nodes.find((n) => n.id === 'a2_node_20') || nodes[19];
 
   // Helper para color de conexión según estado del nodo destino
   const getConnectorProps = (targetNode?: RoadmapNode) => {
@@ -87,7 +91,7 @@ export default function RoadmapScreen() {
     };
   };
 
-  const isA1Completed = nodeA1_9?.status === 'COMPLETED';
+  const isA1Completed = nodeA1_10?.status === 'COMPLETED';
 
   return (
     <View style={styles.container}>
@@ -116,8 +120,8 @@ export default function RoadmapScreen() {
         {/* Header Resumen del Árbol */}
         <View style={styles.roadmapHeader}>
           <View>
-            <Text style={styles.levelTag}>ÁRBOL DE HABILIDADES DAG (16 NODOS)</Text>
-            <Text style={styles.roadmapTitle}>Rutas Paralelas & Fonética Real</Text>
+            <Text style={styles.levelTag}>ÁRBOL DE HABILIDADES DAG (20 NODOS)</Text>
+            <Text style={styles.roadmapTitle}>Rutas Paralelas & Fonética Gradual</Text>
           </View>
           <View style={styles.starsPill}>
             <Trophy size={14} color="#765A00" />
@@ -130,17 +134,17 @@ export default function RoadmapScreen() {
         {/* ÁRBOL DE NODOS ESTILO DUOLINGO CON CONEXIONES */}
         <View style={styles.treeContainer} onLayout={onTreeLayout}>
           {/* ========================================================
-              SECCIÓN 1: FUNDAMENTOS A1 (Pronunciación Facilitada)
+              SECCIÓN 1: FUNDAMENTOS A1 (10 NODOS)
              ======================================================== */}
           <View style={styles.sectionBannerA1}>
             <View style={styles.sectionBadgeRow}>
               <View style={styles.sectionBadgeA1}>
                 <Text style={styles.sectionBadgeTextA1}>NIVEL A1</Text>
               </View>
-              <Text style={styles.sectionTitleText}>SECCIÓN 1: FUNDAMENTOS</Text>
+              <Text style={styles.sectionTitleText}>SECCIÓN 1: FUNDAMENTOS (10 NODOS)</Text>
             </View>
             <Text style={styles.sectionSubtitleText}>
-              Saludos, Verbo To Be, Rutinas, Hogar y Pronunciación Facilitada en Español
+              Saludos, To Be, Rutinas, Hogar, Compras, Existencia y Puente al Alfabeto Fonético IPA
             </Text>
           </View>
 
@@ -183,7 +187,7 @@ export default function RoadmapScreen() {
             </Svg>
           </View>
 
-          {/* NIVEL 3: 2 RAMAS PARALELAS (Presente Simple & Familia) */}
+          {/* NIVEL 3: 2 RAMAS PARALELAS (Presente Simple I & Familia) */}
           <View style={styles.rowDual}>
             <View style={styles.colDualSlot}>
               {nodeA1_4 && <RoadmapNodeItem node={nodeA1_4} onPress={handleSelectNode} />}
@@ -201,7 +205,7 @@ export default function RoadmapScreen() {
             </Svg>
           </View>
 
-          {/* NIVEL 4: 2 RAMAS PARALELAS (Comida & Compras) */}
+          {/* NIVEL 4: 2 RAMAS PARALELAS (Presente Simple II WH- & Compras) */}
           <View style={styles.rowDual}>
             <View style={styles.colDualSlot}>
               {nodeA1_6 && <RoadmapNodeItem node={nodeA1_6} onPress={handleSelectNode} />}
@@ -211,7 +215,7 @@ export default function RoadmapScreen() {
             </View>
           </View>
 
-          {/* CONECTOR CONVERGENTE: 2 Ramas ➔ Nodo 8 (Puente Fonética IPA) */}
+          {/* CONECTOR CONVERGENTE: 2 Ramas ➔ Nodo 8 (Existencia & Cuantificadores) */}
           <View style={styles.connectorBlock}>
             <Svg width={treeWidth} height={36}>
               <Path
@@ -227,24 +231,38 @@ export default function RoadmapScreen() {
             </Svg>
           </View>
 
-          {/* NIVEL 5: PUENTE FONÉTICO (NODO 8: De la Pronunciación al IPA) */}
+          {/* NIVEL 5: EXISTENCIA & CUANTIFICADORES (NODO 8 - Centrado) */}
           <View style={styles.rowSingle}>
             {nodeA1_8 && (
-              <RoadmapNodeItem node={nodeA1_8} isCheckpoint onPress={handleSelectNode} />
+              <RoadmapNodeItem node={nodeA1_8} onPress={handleSelectNode} />
             )}
           </View>
 
-          {/* CONECTOR VERTICAL: Nodo 8 ➔ Gran Reto A1 (Nodo 9) */}
+          {/* CONECTOR VERTICAL: Nodo 8 ➔ Puente Fonético IPA (Nodo 9) */}
           <View style={styles.connectorBlock}>
             <Svg width={treeWidth} height={28}>
               <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA1_9)} />
             </Svg>
           </View>
 
-          {/* NIVEL 6: GRAN RETO INTEGRADOR A1 (Nodo 9 - Centrado) */}
+          {/* NIVEL 6: PUENTE FONÉTICO AL IPA (NODO 9 - Centrado) */}
           <View style={styles.rowSingle}>
             {nodeA1_9 && (
               <RoadmapNodeItem node={nodeA1_9} isCheckpoint onPress={handleSelectNode} />
+            )}
+          </View>
+
+          {/* CONECTOR VERTICAL: Nodo 9 ➔ Gran Reto Integrador A1 (Nodo 10) */}
+          <View style={styles.connectorBlock}>
+            <Svg width={treeWidth} height={28}>
+              <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA1_10)} />
+            </Svg>
+          </View>
+
+          {/* NIVEL 7: GRAN RETO INTEGRADOR A1 (Nodo 10 - Centrado) */}
+          <View style={styles.rowSingle}>
+            {nodeA1_10 && (
+              <RoadmapNodeItem node={nodeA1_10} isCheckpoint onPress={handleSelectNode} />
             )}
           </View>
 
@@ -277,17 +295,17 @@ export default function RoadmapScreen() {
           </View>
 
           {/* ========================================================
-              SECCIÓN 2: CONSOLIDACIÓN A2 (Fonética IPA & Fluidez)
+              SECCIÓN 2: CONSOLIDACIÓN A2 (10 NODOS)
              ======================================================== */}
           <View style={styles.sectionBannerA2}>
             <View style={styles.sectionBadgeRow}>
               <View style={styles.sectionBadgeA2}>
                 <Text style={styles.sectionBadgeTextA2}>NIVEL A2</Text>
               </View>
-              <Text style={styles.sectionTitleText}>SECCIÓN 2: CONSOLIDACIÓN</Text>
+              <Text style={styles.sectionTitleText}>SECCIÓN 2: CONSOLIDACIÓN (10 NODOS)</Text>
             </View>
             <Text style={styles.sectionSubtitleText}>
-              Pasado Simple, Lugares, Comparativos, Futuro y Lectura Saber Pro
+              Pasado Simple, Continuo, Ciudad, Comparativos, Acuerdos, Futuro, Modales y Presente Perfecto
             </Text>
           </View>
 
@@ -297,85 +315,106 @@ export default function RoadmapScreen() {
               <Path
                 d={`M ${col2X} 0 C ${col2X} 18, ${col1X} 18, ${col1X} 36`}
                 fill="none"
-                {...getConnectorProps(nodeA2_10)}
+                {...getConnectorProps(nodeA2_11)}
               />
-              <Line x1={col2X} y1={0} x2={col2X} y2={36} {...getConnectorProps(nodeA2_11)} />
+              <Line x1={col2X} y1={0} x2={col2X} y2={36} {...getConnectorProps(nodeA2_13)} />
               <Path
                 d={`M ${col2X} 0 C ${col2X} 18, ${col3X} 18, ${col3X} 36`}
                 fill="none"
-                {...getConnectorProps(nodeA2_12)}
+                {...getConnectorProps(nodeA2_16)}
               />
             </Svg>
           </View>
 
-          {/* NIVEL 7: 3 RAMAS A2 EN PARALELO */}
+          {/* NIVEL 8: 3 RAMAS A2 EN PARALELO (Pasado, Ciudad, Futuro) */}
           <View style={styles.rowThree}>
-            <View style={styles.colSlot}>
-              {nodeA2_10 && <RoadmapNodeItem node={nodeA2_10} onPress={handleSelectNode} />}
-            </View>
             <View style={styles.colSlot}>
               {nodeA2_11 && <RoadmapNodeItem node={nodeA2_11} onPress={handleSelectNode} />}
             </View>
             <View style={styles.colSlot}>
-              {nodeA2_12 && <RoadmapNodeItem node={nodeA2_12} onPress={handleSelectNode} />}
+              {nodeA2_13 && <RoadmapNodeItem node={nodeA2_13} onPress={handleSelectNode} />}
+            </View>
+            <View style={styles.colSlot}>
+              {nodeA2_16 && <RoadmapNodeItem node={nodeA2_16} onPress={handleSelectNode} />}
             </View>
           </View>
 
-          {/* CONECTOR VERTICAL: Ramas A2 ➔ Nivel 8 */}
+          {/* CONECTOR VERTICAL: Ramas A2 Nivel 8 ➔ Nivel 9 */}
           <View style={styles.connectorBlock}>
             <Svg width={treeWidth} height={28}>
-              <Line x1={col1X} y1={0} x2={col1X} y2={28} {...getConnectorProps(nodeA2_13)} />
+              <Line x1={col1X} y1={0} x2={col1X} y2={28} {...getConnectorProps(nodeA2_12)} />
               <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA2_14)} />
-              <Line x1={col3X} y1={0} x2={col3X} y2={28} {...getConnectorProps(nodeA2_15)} />
+              <Line x1={col3X} y1={0} x2={col3X} y2={28} {...getConnectorProps(nodeA2_17)} />
             </Svg>
           </View>
 
-          {/* NIVEL 8: 2 RAMAS EN CASCADA (Futuro & Salud) + LÍNEA A ICFES */}
+          {/* NIVEL 9: 3 RAMAS EN CASCADA (Pasado Continuo, Comparativos, Modales) */}
           <View style={styles.rowThree}>
             <View style={styles.colSlot}>
-              {nodeA2_13 && <RoadmapNodeItem node={nodeA2_13} onPress={handleSelectNode} />}
+              {nodeA2_12 && <RoadmapNodeItem node={nodeA2_12} onPress={handleSelectNode} />}
             </View>
             <View style={styles.colSlot}>
               {nodeA2_14 && <RoadmapNodeItem node={nodeA2_14} onPress={handleSelectNode} />}
             </View>
-            <View style={styles.colSlot} />
+            <View style={styles.colSlot}>
+              {nodeA2_17 && <RoadmapNodeItem node={nodeA2_17} onPress={handleSelectNode} />}
+            </View>
           </View>
 
-          {/* CONECTOR CONVERGENTE: 3 Ramas A2 ➔ Lectura ICFES (Nodo 15) */}
+          {/* CONECTOR VERTICAL: Ramas Nivel 9 ➔ Nivel 10 (Centro y Derecha) */}
+          <View style={styles.connectorBlock}>
+            <Svg width={treeWidth} height={28}>
+              <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA2_15)} />
+              <Line x1={col3X} y1={0} x2={col3X} y2={28} {...getConnectorProps(nodeA2_18)} />
+            </Svg>
+          </View>
+
+          {/* NIVEL 10: RAMAS EN PROFUNDIZACIÓN (Coincidencias & Presente Perfecto) */}
+          <View style={styles.rowThree}>
+            <View style={styles.colSlot} />
+            <View style={styles.colSlot}>
+              {nodeA2_15 && <RoadmapNodeItem node={nodeA2_15} onPress={handleSelectNode} />}
+            </View>
+            <View style={styles.colSlot}>
+              {nodeA2_18 && <RoadmapNodeItem node={nodeA2_18} onPress={handleSelectNode} />}
+            </View>
+          </View>
+
+          {/* CONECTOR CONVERGENTE: 3 Ramas A2 ➔ Lectura ICFES (Nodo 19) */}
           <View style={styles.connectorBlock}>
             <Svg width={treeWidth} height={36}>
               <Path
                 d={`M ${col1X} 0 C ${col1X} 18, ${col2X} 18, ${col2X} 36`}
                 fill="none"
-                {...getConnectorProps(nodeA2_15)}
+                {...getConnectorProps(nodeA2_19)}
               />
-              <Line x1={col2X} y1={0} x2={col2X} y2={36} {...getConnectorProps(nodeA2_15)} />
+              <Line x1={col2X} y1={0} x2={col2X} y2={36} {...getConnectorProps(nodeA2_19)} />
               <Path
                 d={`M ${col3X} 0 C ${col3X} 18, ${col2X} 18, ${col2X} 36`}
                 fill="none"
-                {...getConnectorProps(nodeA2_15)}
+                {...getConnectorProps(nodeA2_19)}
               />
             </Svg>
           </View>
 
-          {/* NIVEL 9: LECTURA ICFES SABER PRO (Nodo 15 - Centrado) */}
+          {/* NIVEL 11: LECTURA ICFES SABER PRO (Nodo 19 - Centrado) */}
           <View style={styles.rowSingle}>
-            {nodeA2_15 && (
-              <RoadmapNodeItem node={nodeA2_15} isCheckpoint onPress={handleSelectNode} />
+            {nodeA2_19 && (
+              <RoadmapNodeItem node={nodeA2_19} isCheckpoint onPress={handleSelectNode} />
             )}
           </View>
 
-          {/* CONECTOR VERTICAL: Nodo 15 ➔ Gran Reto Final A2 (Nodo 16) */}
+          {/* CONECTOR VERTICAL: Nodo 19 ➔ Gran Reto Final A2 (Nodo 20) */}
           <View style={styles.connectorBlock}>
             <Svg width={treeWidth} height={28}>
-              <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA2_16)} />
+              <Line x1={col2X} y1={0} x2={col2X} y2={28} {...getConnectorProps(nodeA2_20)} />
             </Svg>
           </View>
 
-          {/* NIVEL 10: GRAN RETO FINAL A2 (Nodo 16 - Centrado) */}
+          {/* NIVEL 12: GRAN RETO FINAL A2 (Nodo 20 - Centrado) */}
           <View style={styles.rowSingle}>
-            {nodeA2_16 && (
-              <RoadmapNodeItem node={nodeA2_16} isCheckpoint onPress={handleSelectNode} />
+            {nodeA2_20 && (
+              <RoadmapNodeItem node={nodeA2_20} isCheckpoint onPress={handleSelectNode} />
             )}
           </View>
 

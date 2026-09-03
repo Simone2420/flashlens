@@ -20,6 +20,7 @@ import { COLORS, SPACING } from '../../constants/theme';
 import { Flashcard, ReviewRating } from '../../types';
 import { AudioService } from '../../services/audioService';
 import { Badge } from '../common/Badge';
+import { useRoadmapStore } from '../../store/useRoadmapStore';
 
 interface FlipCard3DProps {
   card: Flashcard;
@@ -34,9 +35,13 @@ const CARD_HEIGHT = 460;
 export const FlipCard3D: React.FC<FlipCard3DProps> = ({
   card,
   onRate,
-  autoPlayAudio = true,
+  autoPlayAudio = false,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
+  const displayedPhonetics = isIpaUnlocked
+    ? card.phoneticScript
+    : (card.facilitatedPhonetics || card.phoneticScript);
   const rotation = useSharedValue(0);
 
   useEffect(() => {
@@ -135,13 +140,16 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
 
           <View style={styles.backContent}>
             <Text style={styles.targetWord}>{card.targetWord}</Text>
-            {card.phoneticScript ? (
-              <Text style={styles.phonetic}>{card.phoneticScript}</Text>
+            {displayedPhonetics ? (
+              <Text style={styles.phonetic}>
+                {displayedPhonetics}
+                {!isIpaUnlocked && card.facilitatedPhonetics ? ' (habla fácil)' : ''}
+              </Text>
             ) : null}
             
             <View style={styles.divider} />
             
-            <Text style={styles.nativeTranslation}>{card.nativeTranslation}</Text>
+            <Text style={styles.nativeTranslation}>{card.displayTranslation || card.nativeTranslation}</Text>
 
             {card.contextSentence ? (
               <View style={styles.contextContainer}>

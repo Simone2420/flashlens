@@ -55,7 +55,7 @@ export default function DiagnosticResultScreen() {
     router.replace({
       pathname: '/(tabs)/roadmap' as any,
       params: {
-        focusNode: level === 'A2' ? 'a2_node_9' : 'a1_node_1',
+        focusNode: level === 'A2' ? 'a2_node_11' : 'a1_node_1',
       },
     });
   };

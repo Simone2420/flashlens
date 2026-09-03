@@ -248,13 +248,29 @@ export const CameraViewfinder: React.FC = () => {
       return;
     }
 
+    const rawTranslation = translationInput.trim();
+    const acceptedList = rawTranslation
+      .split(/[/,;()]+/)
+      .map(s => s.trim().toLowerCase())
+      .filter(Boolean);
+    if (!acceptedList.includes(rawTranslation.toLowerCase())) {
+      acceptedList.unshift(rawTranslation.toLowerCase());
+    }
+
+    const minLen = Math.min(...acceptedList.map(s => s.length));
+
     addCard({
       targetWord: wordInput.trim(),
-      nativeTranslation: translationInput.trim(),
+      primaryTranslation: acceptedList[0] || rawTranslation,
+      acceptedTranslations: acceptedList,
+      minInputLength: minLen,
+      displayTranslation: rawTranslation,
+      nativeTranslation: rawTranslation,
+      facilitatedPhonetics: phoneticInput.trim().replace(/[/ˈˌ]/g, '') || wordInput.toLowerCase().trim(),
+      phoneticScript: phoneticInput.trim() || `/${wordInput.toLowerCase()}/`,
       cardType: 'VOCABULARY',
       partOfSpeech: 'NOUN',
       conceptCategory: 'OBJECT',
-      phoneticScript: phoneticInput.trim() || `/${wordInput.toLowerCase()}/`,
       contextSentence: sentenceInput.trim(),
       contextTranslation: contextEsInput.trim(),
       imageUrl: activePhotoUri || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',

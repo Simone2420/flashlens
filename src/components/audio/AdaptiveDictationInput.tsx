@@ -21,6 +21,8 @@ interface AdaptiveDictationInputProps {
   onSubmit: (text: string) => void;
   diffs?: CharacterDiff[] | null;
   disabled?: boolean;
+  acceptedTranslations?: string[];
+  minInputLength?: number;
 }
 
 export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
@@ -31,6 +33,8 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   onSubmit,
   diffs,
   disabled = false,
+  acceptedTranslations,
+  minInputLength,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -72,6 +76,17 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
 
   const cleanTarget = targetText.trim();
   const targetLength = cleanTarget.length;
+
+  const calculatedMinLength =
+    minInputLength ||
+    (acceptedTranslations && acceptedTranslations.length > 0
+      ? Math.min(...acceptedTranslations.map(w => w.trim().length))
+      : targetLength);
+
+  const calculatedMaxLength =
+    acceptedTranslations && acceptedTranslations.length > 0
+      ? Math.max(...acceptedTranslations.map(w => w.trim().length), targetLength)
+      : targetLength;
 
   const handleChangeText = (text: string) => {
     let sanitized = text;
@@ -223,12 +238,19 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS EXACTAS (LONGITUD VISIBLE)
+  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS CON LONGITUD MÍNIMA Y EXPANSIÓN ELÁSTICA
   if (learningPace === 'MEDIUM') {
+    const visibleBoxesCount = Math.max(
+      calculatedMinLength,
+      Math.min(Math.max(inputValue.length, calculatedMinLength), calculatedMaxLength)
+    );
+
     return (
       <View style={styles.container}>
         <View style={styles.paceTag}>
-          <Text style={styles.paceTagText}>⚖️ MODO MEDIO: {targetLength} CASILLAS EXACTAS</Text>
+          <Text style={styles.paceTagText}>
+            ⚖️ MODO MEDIO: MÍNIMO {calculatedMinLength} CASILLAS (acepta sinónimos)
+          </Text>
         </View>
 
         <TextInput
@@ -236,7 +258,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           style={styles.hiddenInput}
           value={inputValue}
           onChangeText={handleChangeText}
-          maxLength={targetLength}
+          maxLength={calculatedMaxLength}
           autoCapitalize="none"
           autoCorrect={false}
           spellCheck={false}
@@ -252,7 +274,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           onPress={() => inputRef.current?.focus()}
           style={styles.boxesRow}
         >
-          {Array.from({ length: targetLength }).map((_, idx) => {
+          {Array.from({ length: visibleBoxesCount }).map((_, idx) => {
             const char = inputValue[idx] || '';
             const isCurrent = idx === inputValue.length && !disabled;
             const diff = diffs ? diffs[idx] : null;

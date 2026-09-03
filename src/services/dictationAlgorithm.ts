@@ -43,11 +43,32 @@ export class DictationAlgorithm {
   public static evaluate(
     userInput: string,
     targetText: string,
-    isSpanishTarget: boolean = false
+    isSpanishTarget: boolean = false,
+    acceptedTranslations?: string[]
   ): DictationResult {
     const userClean = userInput.trim().toLowerCase();
     const targetClean = targetText.trim().toLowerCase();
     const normUser = this.normalizeText(userClean);
+
+    // 0. Si se proporciona lista de traducciones aceptadas (sinónimos)
+    if (acceptedTranslations && acceptedTranslations.length > 0 && normUser.length > 0) {
+      const isAcceptedMatch = acceptedTranslations.some(accepted => {
+        const normAccepted = this.normalizeText(accepted);
+        return normUser === normAccepted || (normUser.length >= 3 && (normAccepted.startsWith(normUser) || normAccepted.endsWith(normUser)));
+      });
+
+      if (isAcceptedMatch) {
+        return {
+          isCorrect: true,
+          accuracyPercentage: 100,
+          diffs: normUser.split('').map(char => ({
+            char,
+            status: 'CORRECT' as const,
+          })),
+          feedback: '¡Excelente! Sinónimo en español aceptado.',
+        };
+      }
+    }
 
     // 1. Comparación estricta exacta
     if (userClean === targetClean && userClean.length > 0) {

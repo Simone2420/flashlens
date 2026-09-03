@@ -259,9 +259,24 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
     const categoryImg = CATEGORY_IMAGE_MAP[selectedCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
 
+    const rawTranslation = nativeTranslation.trim();
+    const acceptedList = rawTranslation
+      .split(/[/,;()]+/)
+      .map(s => s.trim().toLowerCase())
+      .filter(Boolean);
+    if (!acceptedList.includes(rawTranslation.toLowerCase())) {
+      acceptedList.unshift(rawTranslation.toLowerCase());
+    }
+    const minLen = Math.min(...acceptedList.map(s => s.length));
+
     const newCard = addCard({
       targetWord: targetWord.trim(),
-      nativeTranslation: nativeTranslation.trim(),
+      primaryTranslation: acceptedList[0] || rawTranslation,
+      acceptedTranslations: acceptedList,
+      minInputLength: minLen,
+      displayTranslation: rawTranslation,
+      nativeTranslation: rawTranslation,
+      facilitatedPhonetics: targetWord.toLowerCase().trim(),
       cardType: 'ABSTRACT',
       partOfSpeech: config?.part || 'NOUN',
       conceptCategory: selectedCategory,
@@ -285,9 +300,24 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   const handleSaveVoicePreviewCard = () => {
     if (!generatedPreviewCard) return;
 
+    const rawTrans = generatedPreviewCard.nativeTranslation.trim();
+    const acceptedList = rawTrans
+      .split(/[/,;()]+/)
+      .map(s => s.trim().toLowerCase())
+      .filter(Boolean);
+    if (!acceptedList.includes(rawTrans.toLowerCase())) {
+      acceptedList.unshift(rawTrans.toLowerCase());
+    }
+    const minLen = Math.min(...acceptedList.map(s => s.length));
+
     const saved = addCard({
       targetWord: generatedPreviewCard.targetWord,
-      nativeTranslation: generatedPreviewCard.nativeTranslation,
+      primaryTranslation: acceptedList[0] || rawTrans,
+      acceptedTranslations: acceptedList,
+      minInputLength: minLen,
+      displayTranslation: rawTrans,
+      nativeTranslation: rawTrans,
+      facilitatedPhonetics: generatedPreviewCard.targetWord.toLowerCase().trim(),
       cardType: 'ABSTRACT',
       partOfSpeech: generatedPreviewCard.partOfSpeech,
       conceptCategory: generatedPreviewCard.conceptCategory,

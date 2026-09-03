@@ -70,6 +70,12 @@ export interface Flashcard {
   id: string;
   targetWord: string;
   nativeTranslation: string;
+  // 🌟 Dualidad fonética y traducción flexible
+  facilitatedPhonetics?: string; // Fonética en español para A1 (ej: "bákpak")
+  primaryTranslation?: string; // Traducción canónica concisa (ej: "Mochila")
+  acceptedTranslations?: string[]; // Lista de traducciones y sinónimos válidos (ej: ["mochila", "morral", "bolso", "bulto"])
+  minInputLength?: number; // Longitud del término más corto para casillas (ej: 6)
+  displayTranslation?: string; // Texto informativo (ej: "Mochila / Morral")
   cardType: CardType;
   partOfSpeech: PartOfSpeech;
   conceptCategory: ConceptCategory;
