@@ -1,0 +1,802 @@
+[
+  {
+    "node": "a1_node_1",
+    "sub": "sub-a1_node_1-1",
+    "id": "q-a1_node_1-1-4",
+    "prompt": "Traduce y construye en inglés: \"Soy colombiano y vivo en Bogotá.\"",
+    "correctAnswer": "I am Colombian and I live in Bogota.",
+    "explanation": "Traducción correcta: \"I am Colombian and I live in Bogota.\""
+  },
+  {
+    "node": "a1_node_1",
+    "sub": "sub-a1_node_1-2",
+    "id": "q-a1_node_1-2-4",
+    "prompt": "Traduce y construye en inglés: \"El alfabeto en inglés tiene veintiséis letras.\"",
+    "correctAnswer": "The English alphabet has twenty-six letters.",
+    "explanation": "Traducción correcta: \"The English alphabet has twenty-six letters.\""
+  },
+  {
+    "node": "a1_node_1",
+    "sub": "sub-a1_node_1-3",
+    "id": "q-a1_node_1-3-4",
+    "prompt": "Traduce y construye en inglés: \"Vivo en una casa grande con mi familia.\"",
+    "correctAnswer": "I live in a big house with my family.",
+    "explanation": "Traducción correcta: \"I live in a big house with my family.\""
+  },
+  {
+    "node": "a1_node_1",
+    "sub": "sub-a1_node_1-4",
+    "id": "q-a1_node_1-4-4",
+    "prompt": "Traduce y construye en inglés: \"¿Cómo deletreas tu primer nombre?\"",
+    "correctAnswer": "How do you spell your first name?",
+    "explanation": "Traducción correcta: \"How do you spell your first name?\""
+  },
+  {
+    "node": "a1_node_1",
+    "sub": "sub-a1_node_1-5",
+    "id": "q-a1_node_1-5-4",
+    "prompt": "Traduce y construye en inglés: \"¡Gracias por tu ayuda, que tengas un buen día!\"",
+    "correctAnswer": "Thank you for your help, have a good one!",
+    "explanation": "Traducción correcta: \"Thank you for your help, have a good one!\""
+  },
+  {
+    "node": "a1_node_2",
+    "sub": "sub-a1_node_2-1",
+    "id": "q-a1_node_2-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "She is a doctor and they are engineers.",
+    "explanation": "Práctica de producción escrita para 1. Pronombres Sujeto en Inglés."
+  },
+  {
+    "node": "a1_node_2",
+    "sub": "sub-a1_node_2-2",
+    "id": "q-a1_node_2-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "We are students and we're happy.",
+    "explanation": "Práctica de producción escrita para 2. Verbo To Be Afirmativo & Contracciones."
+  },
+  {
+    "node": "a1_node_2",
+    "sub": "sub-a1_node_2-3",
+    "id": "q-a1_node_2-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I'm not tired and they aren't busy.",
+    "explanation": "Práctica de producción escrita para 3. Verbo To Be Negativo (Isn't / Aren't)."
+  },
+  {
+    "node": "a1_node_2",
+    "sub": "sub-a1_node_2-4",
+    "id": "q-a1_node_2-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Is she a student at this university?",
+    "explanation": "Práctica de producción escrita para 4. Preguntas con To Be & Respuestas Cortas."
+  },
+  {
+    "node": "a1_node_2",
+    "sub": "sub-a1_node_2-5",
+    "id": "q-a1_node_2-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "This is my computer and she is an architect.",
+    "explanation": "Práctica de producción escrita para 5. Profesiones & Demostrativos (This / That / These / Those)."
+  },
+  {
+    "node": "a1_node_3",
+    "sub": "sub-a1_node_3-1",
+    "id": "q-a1_node_3-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The teacher has a book and an eraser.",
+    "explanation": "Práctica de producción escrita para 1. Artículos Indefinidos (A / An) vs Definido (The)."
+  },
+  {
+    "node": "a1_node_3",
+    "sub": "sub-a1_node_3-2",
+    "id": "q-a1_node_3-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The boys are reading three interesting books.",
+    "explanation": "Práctica de producción escrita para 2. Plurales Regulares (-s, -es, -ies)."
+  },
+  {
+    "node": "a1_node_3",
+    "sub": "sub-a1_node_3-3",
+    "id": "q-a1_node_3-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Three men and two women are in the office.",
+    "explanation": "Práctica de producción escrita para 3. Plurales Irregulares (Man/Men, Child/Children)."
+  },
+  {
+    "node": "a1_node_3",
+    "sub": "sub-a1_node_3-4",
+    "id": "q-a1_node_3-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Put your laptop and notebook in your backpack.",
+    "explanation": "Práctica de producción escrita para 4. Objetos del Aula & Tecnología."
+  },
+  {
+    "node": "a1_node_3",
+    "sub": "sub-a1_node_3-5",
+    "id": "q-a1_node_3-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The book is on the table and the pen is in the bag.",
+    "explanation": "Práctica de producción escrita para 5. Preposiciones de Lugar: In, On, Under, Next to."
+  },
+  {
+    "node": "a1_node_4",
+    "sub": "sub-a1_node_4-1",
+    "id": "q-a1_node_4-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "She wakes up early and drinks hot coffee.",
+    "explanation": "Práctica de producción escrita para 1. Rutinas Diarias & 3ra Persona (-s / -es)."
+  },
+  {
+    "node": "a1_node_4",
+    "sub": "sub-a1_node_4-2",
+    "id": "q-a1_node_4-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He doesn't eat meat because he is vegetarian.",
+    "explanation": "Práctica de producción escrita para 2. Negación: Don't vs Doesn't."
+  },
+  {
+    "node": "a1_node_4",
+    "sub": "sub-a1_node_4-3",
+    "id": "q-a1_node_4-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Do you live in Colombia and does he work here?",
+    "explanation": "Práctica de producción escrita para 3. Preguntas con Do y Does."
+  },
+  {
+    "node": "a1_node_4",
+    "sub": "sub-a1_node_4-4",
+    "id": "q-a1_node_4-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I usually drink water and I never smoke.",
+    "explanation": "Práctica de producción escrita para 4. Adverbios de Frecuencia (Always, Usually, Never)."
+  },
+  {
+    "node": "a1_node_4",
+    "sub": "sub-a1_node_4-5",
+    "id": "q-a1_node_4-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "We go to the gym on Mondays in the afternoon.",
+    "explanation": "Práctica de producción escrita para 5. Expresiones Temporales: In the morning, On Mondays."
+  },
+  {
+    "node": "a1_node_5",
+    "sub": "sub-a1_node_5-1",
+    "id": "q-a1_node_5-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "My brother's wife is very friendly and smart.",
+    "explanation": "Práctica de producción escrita para 1. Miembros de la Familia & Posesivo ('s)."
+  },
+  {
+    "node": "a1_node_5",
+    "sub": "sub-a1_node_5-2",
+    "id": "q-a1_node_5-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The refrigerator and the stove are in the kitchen.",
+    "explanation": "Práctica de producción escrita para 2. Partes de la Casa & Muebles."
+  },
+  {
+    "node": "a1_node_5",
+    "sub": "sub-a1_node_5-3",
+    "id": "q-a1_node_5-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "There is a computer and there are two chairs in the room.",
+    "explanation": "Práctica de producción escrita para 3. Existencia: There is & There are."
+  },
+  {
+    "node": "a1_node_5",
+    "sub": "sub-a1_node_5-4",
+    "id": "q-a1_node_5-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He is a hardworking man and a kind father.",
+    "explanation": "Práctica de producción escrita para 4. Adjetivos de Personalidad & Físico."
+  },
+  {
+    "node": "a1_node_5",
+    "sub": "sub-a1_node_5-5",
+    "id": "q-a1_node_5-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I've got two brothers and he has got one sister.",
+    "explanation": "Práctica de producción escrita para 5. Verbo Have Got / Has Got (Posesión)."
+  },
+  {
+    "node": "a1_node_6",
+    "sub": "sub-a1_node_6-1",
+    "id": "q-a1_node_6-1-4",
+    "prompt": "Traduce y construye en inglés: \"Dónde estudias inglés todas las tardes?\"",
+    "correctAnswer": "Where do you study English every afternoon?",
+    "explanation": "Respuesta correcta: \"Where do you study English every afternoon?\""
+  },
+  {
+    "node": "a1_node_6",
+    "sub": "sub-a1_node_6-2",
+    "id": "q-a1_node_6-2-4",
+    "prompt": "Traduce y construye en inglés: \"Mi hermana es médica en el hospital central.\"",
+    "correctAnswer": "My sister is a doctor at the central hospital.",
+    "explanation": "Respuesta correcta: \"My sister is a doctor at the central hospital.\""
+  },
+  {
+    "node": "a1_node_6",
+    "sub": "sub-a1_node_6-3",
+    "id": "q-a1_node_6-3-4",
+    "prompt": "Traduce y construye en inglés: \"Siempre bebo café y leo las noticias.\"",
+    "correctAnswer": "I always drink coffee and read the news.",
+    "explanation": "Respuesta correcta: \"I always drink coffee and read the news.\""
+  },
+  {
+    "node": "a1_node_6",
+    "sub": "sub-a1_node_6-4",
+    "id": "q-a1_node_6-4-4",
+    "prompt": "Traduce y construye en inglés: \"Necesito estudiar gramática cada mañana.\"",
+    "correctAnswer": "I need to study grammar every morning.",
+    "explanation": "Respuesta correcta: \"I need to study grammar every morning.\""
+  },
+  {
+    "node": "a1_node_6",
+    "sub": "sub-a1_node_6-5",
+    "id": "q-a1_node_6-5-4",
+    "prompt": "Traduce y construye en inglés: \"Trabajo en una oficina y empiezo a las nueve.\"",
+    "correctAnswer": "I work in an office and I start at nine.",
+    "explanation": "Respuesta correcta: \"I work in an office and I start at nine.\""
+  },
+  {
+    "node": "a1_node_7",
+    "sub": "sub-a1_node_7-1",
+    "id": "q-a1_node_7-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Today is my twenty-fifth birthday.",
+    "explanation": "Práctica de producción escrita para 1. Números Cardinales & Ordinales."
+  },
+  {
+    "node": "a1_node_7",
+    "sub": "sub-a1_node_7-2",
+    "id": "q-a1_node_7-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The train arrives at quarter to nine in the morning.",
+    "explanation": "Práctica de producción escrita para 2. Decir la Hora: O'clock, Past & To."
+  },
+  {
+    "node": "a1_node_7",
+    "sub": "sub-a1_node_7-3",
+    "id": "q-a1_node_7-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "This jacket costs forty-five dollars and fifty cents.",
+    "explanation": "Práctica de producción escrita para 3. Precios & Compras en Tiendas."
+  },
+  {
+    "node": "a1_node_7",
+    "sub": "sub-a1_node_7-4",
+    "id": "q-a1_node_7-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "We go to the beach in summer on weekends.",
+    "explanation": "Práctica de producción escrita para 4. Días de la Semana, Meses & Estaciones."
+  },
+  {
+    "node": "a1_node_7",
+    "sub": "sub-a1_node_7-5",
+    "id": "q-a1_node_7-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He is wearing a blue shirt and black pants today.",
+    "explanation": "Práctica de producción escrita para 5. Ropa, Tallas & Colores."
+  },
+  {
+    "node": "a1_node_8",
+    "sub": "sub-a1_node_8-1",
+    "id": "q-a1_node_8-1-4",
+    "prompt": "Traduce y construye en inglés: \"Hay una taza de café sobre la mesa.\"",
+    "correctAnswer": "There is a coffee mug on the table.",
+    "explanation": "Respuesta correcta: \"There is a coffee mug on the table.\""
+  },
+  {
+    "node": "a1_node_8",
+    "sub": "sub-a1_node_8-2",
+    "id": "q-a1_node_8-2-4",
+    "prompt": "Traduce y construye en inglés: \"¿Cuánta agua bebes todos los días?\"",
+    "correctAnswer": "How much water do you drink every day?",
+    "explanation": "Respuesta correcta: \"How much water do you drink every day?\""
+  },
+  {
+    "node": "a1_node_8",
+    "sub": "sub-a1_node_8-3",
+    "id": "q-a1_node_8-3-4",
+    "prompt": "Traduce y construye en inglés: \"Hay algo de café en la cocina.\"",
+    "correctAnswer": "There is some coffee in the kitchen.",
+    "explanation": "Respuesta correcta: \"There is some coffee in the kitchen.\""
+  },
+  {
+    "node": "a1_node_8",
+    "sub": "sub-a1_node_8-4",
+    "id": "q-a1_node_8-4-4",
+    "prompt": "Traduce y construye en inglés: \"Por favor escúchame atentamente.\"",
+    "correctAnswer": "Please listen to me carefully.",
+    "explanation": "Respuesta correcta: \"Please listen to me carefully.\""
+  },
+  {
+    "node": "a1_node_8",
+    "sub": "sub-a1_node_8-5",
+    "id": "q-a1_node_8-5-4",
+    "prompt": "Traduce y construye en inglés: \"Hay algunas manzanas frescas en la canasta.\"",
+    "correctAnswer": "There are some fresh apples in the basket.",
+    "explanation": "Respuesta correcta: \"There are some fresh apples in the basket.\""
+  },
+  {
+    "node": "a1_node_9",
+    "sub": "sub-a1_node_9-1",
+    "id": "q-a1_node_8-1-4",
+    "prompt": "Traduce y construye en inglés: \"Mi nombre es Carlos y sé cómo hablar inglés.\"",
+    "correctAnswer": "My name is Carlos and I know how to speak English.",
+    "explanation": "Traducción correcta: \"My name is Carlos and I know how to speak English.\""
+  },
+  {
+    "node": "a1_node_9",
+    "sub": "sub-a1_node_9-2",
+    "id": "q-a1_node_8-2-4",
+    "prompt": "Traduce y construye en inglés: \"La oveja está en la granja y el barco está en el mar.\"",
+    "correctAnswer": "The sheep is on the farm and the ship is in the sea.",
+    "explanation": "Traducción correcta: \"The sheep is on the farm and the ship is in the sea.\""
+  },
+  {
+    "node": "a1_node_9",
+    "sub": "sub-a1_node_9-3",
+    "id": "q-a1_node_8-3-4",
+    "prompt": "Traduce y construye en inglés: \"El profesor está hablando sobre una nueva receta de banano.\"",
+    "correctAnswer": "The teacher is talking about a new banana recipe.",
+    "explanation": "Traducción correcta: \"The teacher is talking about a new banana recipe.\""
+  },
+  {
+    "node": "a1_node_9",
+    "sub": "sub-a1_node_9-4",
+    "id": "q-a1_node_8-4-4",
+    "prompt": "Traduce y construye en inglés: \"Ella piensa que esta silla es muy cómoda.\"",
+    "correctAnswer": "She thinks this chair is very comfortable.",
+    "explanation": "Traducción correcta: \"She thinks this chair is very comfortable.\""
+  },
+  {
+    "node": "a1_node_9",
+    "sub": "sub-a1_node_9-5",
+    "id": "q-a1_node_8-5-4",
+    "prompt": "Traduce y construye en inglés: \"¿Dónde vives y cuál es tu nombre?\"",
+    "correctAnswer": "Where do you live and what is your name?",
+    "explanation": "Traducción correcta: \"Where do you live and what is your name?\""
+  },
+  {
+    "node": "a1_node_10",
+    "sub": "sub-a1_node_10-1",
+    "id": "q-a1_node_8-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "You can see this sign at the airport check-in desk.",
+    "explanation": "Práctica de producción escrita para 1. Avisos Públicos Saber Pro A1 (Parte 1)."
+  },
+  {
+    "node": "a1_node_10",
+    "sub": "sub-a1_node_10-2",
+    "id": "q-a1_node_8-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I enjoy studying English with FlashLens every day.",
+    "explanation": "Práctica de producción escrita para 2. Diálogos Cortos Saber Pro A1 (Parte 2)."
+  },
+  {
+    "node": "a1_node_10",
+    "sub": "sub-a1_node_10-3",
+    "id": "q-a1_node_8-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "David lives in Cali and works as a designer.",
+    "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A1."
+  },
+  {
+    "node": "a1_node_10",
+    "sub": "sub-a1_node_10-4",
+    "id": "q-a1_node_8-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "My family has dinner together every evening at home.",
+    "explanation": "Práctica de producción escrita para 4. Vocabulario Integrado A1."
+  },
+  {
+    "node": "a1_node_10",
+    "sub": "sub-a1_node_10-5",
+    "id": "q-a1_node_8-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I have successfully completed all A1 modules in FlashLens.",
+    "explanation": "Práctica de producción escrita para 5. Evaluación de Consolidación A1."
+  },
+  {
+    "node": "a2_node_11",
+    "sub": "sub-a2_node_11-1",
+    "id": "q-a2_node_9-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "They lived in London for three years.",
+    "explanation": "Práctica de producción escrita para 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/)."
+  },
+  {
+    "node": "a2_node_11",
+    "sub": "sub-a2_node_11-2",
+    "id": "q-a2_node_9-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I bought a new laptop and saw a movie yesterday.",
+    "explanation": "Práctica de producción escrita para 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw)."
+  },
+  {
+    "node": "a2_node_11",
+    "sub": "sub-a2_node_11-3",
+    "id": "q-a2_node_9-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "We didn't watch the movie because we were busy.",
+    "explanation": "Práctica de producción escrita para 3. Negación en Pasado: Auxiliar Didn't."
+  },
+  {
+    "node": "a2_node_11",
+    "sub": "sub-a2_node_11-4",
+    "id": "q-a2_node_9-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Did you see your friends last weekend?",
+    "explanation": "Práctica de producción escrita para 4. Preguntas con Did & Expresiones de Tiempo Pasado."
+  },
+  {
+    "node": "a2_node_11",
+    "sub": "sub-a2_node_11-5",
+    "id": "q-a2_node_9-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He used to study English every day when he was at school.",
+    "explanation": "Práctica de producción escrita para 5. Hábitos Pasados con \"Used To\"."
+  },
+  {
+    "node": "a2_node_12",
+    "sub": "sub-a2_node_12-1",
+    "id": "q-a2_node_12-1-4",
+    "prompt": "Traduce y construye en inglés: \"Estaba estudiando inglés toda la tarde ayer.\"",
+    "correctAnswer": "I was studying English all afternoon yesterday.",
+    "explanation": "Respuesta correcta: \"I was studying English all afternoon yesterday.\""
+  },
+  {
+    "node": "a2_node_12",
+    "sub": "sub-a2_node_12-2",
+    "id": "q-a2_node_12-2-4",
+    "prompt": "Traduce y construye en inglés: \"Estaba caminando a casa cuando vi a mi profesor.\"",
+    "correctAnswer": "I was walking home when I saw my teacher.",
+    "explanation": "Respuesta correcta: \"I was walking home when I saw my teacher.\""
+  },
+  {
+    "node": "a2_node_12",
+    "sub": "sub-a2_node_12-3",
+    "id": "q-a2_node_12-3-4",
+    "prompt": "Traduce y construye en inglés: \"Me tomó una hora terminar mi tarea.\"",
+    "correctAnswer": "It took me one hour to finish my homework.",
+    "explanation": "Respuesta correcta: \"It took me one hour to finish my homework.\""
+  },
+  {
+    "node": "a2_node_12",
+    "sub": "sub-a2_node_12-4",
+    "id": "q-a2_node_12-4-4",
+    "prompt": "Traduce y construye en inglés: \"Primero llegamos, y luego pedimos la cena.\"",
+    "correctAnswer": "First we arrived, and then we ordered dinner.",
+    "explanation": "Respuesta correcta: \"First we arrived, and then we ordered dinner.\""
+  },
+  {
+    "node": "a2_node_12",
+    "sub": "sub-a2_node_12-5",
+    "id": "q-a2_node_12-5-4",
+    "prompt": "Traduce y construye en inglés: \"Mientras estábamos esperando, tomamos café colombiano.\"",
+    "correctAnswer": "While we were waiting, we drank Colombian coffee.",
+    "explanation": "Respuesta correcta: \"While we were waiting, we drank Colombian coffee.\""
+  },
+  {
+    "node": "a2_node_13",
+    "sub": "sub-a2_node_13-1",
+    "id": "q-a2_node_10-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The modern hospital is near the central bus station.",
+    "explanation": "Práctica de producción escrita para 1. Lugares de la Ciudad & Servicios Públicos."
+  },
+  {
+    "node": "a2_node_13",
+    "sub": "sub-a2_node_13-2",
+    "id": "q-a2_node_10-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Turn left at the traffic light and cross the street.",
+    "explanation": "Práctica de producción escrita para 2. Dar y Pedir Direcciones (Turn Left, Go Straight)."
+  },
+  {
+    "node": "a2_node_13",
+    "sub": "sub-a2_node_13-3",
+    "id": "q-a2_node_10-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Walk past the supermarket and go through the central park.",
+    "explanation": "Práctica de producción escrita para 3. Preposiciones de Movimiento: Across, Through, Into."
+  },
+  {
+    "node": "a2_node_13",
+    "sub": "sub-a2_node_13-4",
+    "id": "q-a2_node_10-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I take the subway to work every morning at eight o'clock.",
+    "explanation": "Práctica de producción escrita para 4. Medios de Transporte & Viajes."
+  },
+  {
+    "node": "a2_node_13",
+    "sub": "sub-a2_node_13-5",
+    "id": "q-a2_node_10-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "My neighborhood has green parks, quiet streets and good restaurants.",
+    "explanation": "Práctica de producción escrita para 5. Describir tu Ciudad o Vecindario."
+  },
+  {
+    "node": "a2_node_14",
+    "sub": "sub-a2_node_14-1",
+    "id": "q-a2_node_11-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "This computer is faster than my old laptop.",
+    "explanation": "Práctica de producción escrita para 1. Comparativos Cortos (-er than)."
+  },
+  {
+    "node": "a2_node_14",
+    "sub": "sub-a2_node_14-2",
+    "id": "q-a2_node_11-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Traveling by plane is more comfortable than by bus.",
+    "explanation": "Práctica de producción escrita para 2. Comparativos Largos (More ... than)."
+  },
+  {
+    "node": "a2_node_14",
+    "sub": "sub-a2_node_14-3",
+    "id": "q-a2_node_11-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "His English is much better than it was last year.",
+    "explanation": "Práctica de producción escrita para 3. Comparativos y Superlativos Irregulares (Good / Bad)."
+  },
+  {
+    "node": "a2_node_14",
+    "sub": "sub-a2_node_14-4",
+    "id": "q-a2_node_11-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "This is the most important exam of the semester.",
+    "explanation": "Práctica de producción escrita para 4. Superlativos: The -est & The Most."
+  },
+  {
+    "node": "a2_node_14",
+    "sub": "sub-a2_node_14-5",
+    "id": "q-a2_node_11-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He is as hardworking as his father.",
+    "explanation": "Práctica de producción escrita para 5. Estructura de Igualdad: As ... As."
+  },
+  {
+    "node": "a2_node_15",
+    "sub": "sub-a2_node_15-1",
+    "id": "q-a2_node_15-1-4",
+    "prompt": "Traduce y construye en inglés: \"Me encanta la música colombiana. - ¡A mí también!\"",
+    "correctAnswer": "I love Colombian music. - So do I!",
+    "explanation": "Respuesta correcta: \"I love Colombian music. - So do I!\""
+  },
+  {
+    "node": "a2_node_15",
+    "sub": "sub-a2_node_15-2",
+    "id": "q-a2_node_15-2-4",
+    "prompt": "Traduce y construye en inglés: \"No tomo gaseosa. - ¡Yo tampoco!\"",
+    "correctAnswer": "I don't drink soda. - Neither do I.",
+    "explanation": "Respuesta correcta: \"I don't drink soda. - Neither do I.\""
+  },
+  {
+    "node": "a2_node_15",
+    "sub": "sub-a2_node_15-3",
+    "id": "q-a2_node_15-3-4",
+    "prompt": "Traduce y construye en inglés: \"¿Te gustaría tomar algo de café colombiano?\"",
+    "correctAnswer": "Would you like to drink some Colombian coffee?",
+    "explanation": "Respuesta correcta: \"Would you like to drink some Colombian coffee?\""
+  },
+  {
+    "node": "a2_node_15",
+    "sub": "sub-a2_node_15-4",
+    "id": "q-a2_node_15-4-4",
+    "prompt": "Traduce y construye en inglés: \"¿Qué tal si estudiamos juntos este fin de semana?\"",
+    "correctAnswer": "How about studying together this weekend?",
+    "explanation": "Respuesta correcta: \"How about studying together this weekend?\""
+  },
+  {
+    "node": "a2_node_15",
+    "sub": "sub-a2_node_15-5",
+    "id": "q-a2_node_15-5-4",
+    "prompt": "Traduce y construye en inglés: \"¿Te gustaría unirte a nosotros para el almuerzo?\"",
+    "correctAnswer": "Would you like to join us for lunch?",
+    "explanation": "Respuesta correcta: \"Would you like to join us for lunch?\""
+  },
+  {
+    "node": "a2_node_16",
+    "sub": "sub-a2_node_16-1",
+    "id": "q-a2_node_12-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I am practicing English on FlashLens right now.",
+    "explanation": "Práctica de producción escrita para 1. Presente Continuo: Acciones en Progreso."
+  },
+  {
+    "node": "a2_node_16",
+    "sub": "sub-a2_node_16-2",
+    "id": "q-a2_node_12-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "He usually wears jeans, but today he is wearing a suit.",
+    "explanation": "Práctica de producción escrita para 2. Contraste: Presente Simple vs Presente Continuo."
+  },
+  {
+    "node": "a2_node_16",
+    "sub": "sub-a2_node_16-3",
+    "id": "q-a2_node_12-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I am going to pass my English exam with a high score.",
+    "explanation": "Práctica de producción escrita para 3. Futuro con \"Be Going To\" (Planes e Intenciones)."
+  },
+  {
+    "node": "a2_node_16",
+    "sub": "sub-a2_node_16-4",
+    "id": "q-a2_node_12-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "We are flying to New York next Friday morning.",
+    "explanation": "Práctica de producción escrita para 4. Presente Continuo con Sentido de Futuro Acordado."
+  },
+  {
+    "node": "a2_node_16",
+    "sub": "sub-a2_node_16-5",
+    "id": "q-a2_node_12-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "What are you going to do after you graduate?",
+    "explanation": "Práctica de producción escrita para 5. Preguntas sobre Planes & Predicciones Futuras."
+  },
+  {
+    "node": "a2_node_17",
+    "sub": "sub-a2_node_17-1",
+    "id": "q-a2_node_13-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I studied hard because I wanted to pass the test.",
+    "explanation": "Práctica de producción escrita para 1. Conectores Lógicos: And, But, So, Because, Although."
+  },
+  {
+    "node": "a2_node_17",
+    "sub": "sub-a2_node_17-2",
+    "id": "q-a2_node_13-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "You should drink eight glasses of water every day.",
+    "explanation": "Práctica de producción escrita para 2. Modal Should & Shouldn't (Consejos & Sugerencias)."
+  },
+  {
+    "node": "a2_node_17",
+    "sub": "sub-a2_node_17-3",
+    "id": "q-a2_node_13-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Students have to submit their homework on time.",
+    "explanation": "Práctica de producción escrita para 3. Modales de Obligación: Must vs Have To."
+  },
+  {
+    "node": "a2_node_17",
+    "sub": "sub-a2_node_17-4",
+    "id": "q-a2_node_13-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I have a sore throat and a bad cough today.",
+    "explanation": "Práctica de producción escrita para 4. Salud, Síntomas Médicos & Partes del Cuerpo."
+  },
+  {
+    "node": "a2_node_17",
+    "sub": "sub-a2_node_17-5",
+    "id": "q-a2_node_13-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Regular exercise makes me feel healthy, calm and energetic.",
+    "explanation": "Práctica de producción escrita para 5. Expresar Emociones, Estado de Ánimo & Bienestar."
+  },
+  {
+    "node": "a2_node_18",
+    "sub": "sub-a2_node_18-1",
+    "id": "q-a2_node_18-1-4",
+    "prompt": "Traduce y construye en inglés: \"He estudiado inglés todos los días este mes.\"",
+    "correctAnswer": "I have studied English every day this month.",
+    "explanation": "Respuesta correcta: \"I have studied English every day this month.\""
+  },
+  {
+    "node": "a2_node_18",
+    "sub": "sub-a2_node_18-2",
+    "id": "q-a2_node_18-2-4",
+    "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visitado un país extranjero?\"",
+    "correctAnswer": "Have you ever visited a foreign country?",
+    "explanation": "Respuesta correcta: \"Have you ever visited a foreign country?\""
+  },
+  {
+    "node": "a2_node_18",
+    "sub": "sub-a2_node_18-3",
+    "id": "q-a2_node_18-3-4",
+    "prompt": "Traduce y construye en inglés: \"Ya he terminado mi tarea de inglés.\"",
+    "correctAnswer": "I have already finished my English homework.",
+    "explanation": "Respuesta correcta: \"I have already finished my English homework.\""
+  },
+  {
+    "node": "a2_node_18",
+    "sub": "sub-a2_node_18-4",
+    "id": "q-a2_node_18-4-4",
+    "prompt": "Traduce y construye en inglés: \"He vivido en esta ciudad desde que era joven.\"",
+    "correctAnswer": "I have lived in this city since I was young.",
+    "explanation": "Respuesta correcta: \"I have lived in this city since I was young.\""
+  },
+  {
+    "node": "a2_node_18",
+    "sub": "sub-a2_node_18-5",
+    "id": "q-a2_node_18-5-4",
+    "prompt": "Traduce y construye en inglés: \"¿Alguna vez has visto esa película? - Sí, la vi la semana pasada.\"",
+    "correctAnswer": "Have you ever seen that movie? - Yes, I saw it last week.",
+    "explanation": "Respuesta correcta: \"Have you ever seen that movie? - Yes, I saw it last week.\""
+  },
+  {
+    "node": "a2_node_19",
+    "sub": "sub-a2_node_19-1",
+    "id": "q-a2_node_14-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "You can see this warning notice at the chemistry laboratory.",
+    "explanation": "Práctica de producción escrita para 1. Carteles & Lugares Públicos (ICFES Parte 1)."
+  },
+  {
+    "node": "a2_node_19",
+    "sub": "sub-a2_node_19-2",
+    "id": "q-a2_node_14-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Could you please tell me where the nearest pharmacy is located?",
+    "explanation": "Práctica de producción escrita para 2. Conversaciones Cortas Saber Pro (ICFES Parte 2)."
+  },
+  {
+    "node": "a2_node_19",
+    "sub": "sub-a2_node_19-3",
+    "id": "q-a2_node_14-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Elena started her company in 2021 and photographs wildlife.",
+    "explanation": "Práctica de producción escrita para 3. Comprensión Lectora Literal A2 (ICFES Parte 3)."
+  },
+  {
+    "node": "a2_node_19",
+    "sub": "sub-a2_node_19-4",
+    "id": "q-a2_node_14-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Reading between the lines helps you infer implicit meaning.",
+    "explanation": "Práctica de producción escrita para 4. Inferencia & Vocabulario en Contexto."
+  },
+  {
+    "node": "a2_node_19",
+    "sub": "sub-a2_node_19-5",
+    "id": "q-a2_node_14-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Actually, I didn't know the answer until you explained it.",
+    "explanation": "Práctica de producción escrita para 5. Trampas Frecuentes & Descarte en Saber Pro."
+  },
+  {
+    "node": "a2_node_20",
+    "sub": "sub-a2_node_20-1",
+    "id": "q-a2_node_15-1-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
+    "explanation": "Práctica de producción escrita para 1. Simulacro Saber Pro A2: Comprensión Lectora."
+  },
+  {
+    "node": "a2_node_20",
+    "sub": "sub-a2_node_20-2",
+    "id": "q-a2_node_15-2-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
+    "explanation": "Práctica de producción escrita para 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro)."
+  },
+  {
+    "node": "a2_node_20",
+    "sub": "sub-a2_node_20-3",
+    "id": "q-a2_node_15-3-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I listened carefully to the native speaker's pronunciation.",
+    "explanation": "Práctica de producción escrita para 3. Prueba de Precisión Auditiva & Fonética A2."
+  },
+  {
+    "node": "a2_node_20",
+    "sub": "sub-a2_node_20-4",
+    "id": "q-a2_node_15-4-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I enjoy writing in English because it helps me organize my thoughts.",
+    "explanation": "Práctica de producción escrita para 4. Diagnóstico de Producción Escrita A2."
+  },
+  {
+    "node": "a2_node_20",
+    "sub": "sub-a2_node_20-5",
+    "id": "q-a2_node_15-5-4",
+    "prompt": "Traduce y construye en inglés esta oración",
+    "correctAnswer": "I am proud to be a certified A2 English speaker with FlashLens.",
+    "explanation": "Práctica de producción escrita para 5. Gran Certificación de Logro Nivel A2."
+  }
+]
