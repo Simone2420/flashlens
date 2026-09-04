@@ -71,35 +71,50 @@ Schema:
   ]
 }`;
 
-      const response = await fetch(API_CONFIG.OPENROUTER.BASE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_CONFIG.OPENROUTER.API_KEY}`,
-          'HTTP-Referer': 'https://flashlens.app',
-          'X-Title': 'FlashLens Language App',
-        },
-        body: JSON.stringify({
-          models: API_CONFIG.OPENROUTER.MODELS,
-          messages: [
-            {
-              role: 'user',
-              content: [
-                { type: 'text', text: prompt },
-                {
-                  type: 'image_url',
-                  image_url: {
-                    url: `data:image/jpeg;base64,${base64Data}`,
+      const sendRequest = async (modelConfig: { models?: string[]; model?: string }) => {
+        return await fetch(API_CONFIG.OPENROUTER.BASE_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_CONFIG.OPENROUTER.API_KEY}`,
+            'HTTP-Referer': 'https://flashlens.app',
+            'X-Title': 'FlashLens Language App',
+          },
+          body: JSON.stringify({
+            ...modelConfig,
+            messages: [
+              {
+                role: 'user',
+                content: [
+                  { type: 'text', text: prompt },
+                  {
+                    type: 'image_url',
+                    image_url: {
+                      url: `data:image/jpeg;base64,${base64Data}`,
+                    },
                   },
-                },
-              ],
-            },
-          ],
-          temperature: 0.2,
-          max_tokens: 700,
-        }),
-        signal: controller.signal,
+                ],
+              },
+            ],
+            temperature: 0.2,
+            max_tokens: 700,
+          }),
+          signal: controller.signal,
+        });
+      };
+
+      // 1. Intento primario: Array en cascada limitado estrictamente a 3 modelos (límite OpenRouter)
+      let response = await sendRequest({
+        models: (API_CONFIG.OPENROUTER.MODELS || []).slice(0, 3),
       });
+
+      // 2. Si falla con 400 (parámetros no soportados) o 429, reintentar con el modelo individual primario
+      if (!response.ok && (response.status === 400 || response.status === 429)) {
+        console.warn(`Reintentando con modelo individual ${API_CONFIG.OPENROUTER.PRIMARY_VISION_MODEL}...`);
+        response = await sendRequest({
+          model: API_CONFIG.OPENROUTER.PRIMARY_VISION_MODEL,
+        });
+      }
 
       clearTimeout(timeoutId);
 
@@ -108,7 +123,7 @@ Schema:
         console.warn('OpenRouter API Error:', response.status, errText);
         return {
           success: false,
-          error: `Error de API (${response.status})`,
+          error: `Error ${response.status}`,
         };
       }
 

@@ -9,12 +9,11 @@ export const API_CONFIG = {
   OPENROUTER: {
     API_KEY: process.env.EXPO_PUBLIC_OPENROUTER_API_KEY || '',
     BASE_URL: 'https://openrouter.ai/api/v1/chat/completions',
-    // Lista de modelos multimodales gratuitos activos con auto-enrutamiento en cascada
+    // Lista de modelos multimodales gratuitos activos (OpenRouter permite máx 3 items)
     MODELS: [
       'dots-studio/dots-3-note-preview:free',
       'google/gemma-4-31b-it:free',
       'google/gemma-4-26b-a4b-it:free',
-      'openrouter/free'
     ],
     PRIMARY_VISION_MODEL: 'dots-studio/dots-3-note-preview:free',
     FALLBACK_VISION_MODEL: 'google/gemma-4-31b-it:free',
