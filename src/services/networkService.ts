@@ -8,10 +8,11 @@ class NetworkService {
   private isChecking = false;
   private checkInterval: any = null;
   private listeners: ((isConnected: boolean) => void)[] = [];
+  private consecutiveFailures = 0;
   private lastKnownState: boolean = true;
 
   /**
-   * Realiza un probe ultraligero (HEAD request) con timeout de 2.5s
+   * Realiza un probe ligero (GET generate_204 estándar) con timeout prudente de 5s
    */
   public async checkInternetConnectivity(): Promise<boolean> {
     if (this.isChecking) return this.lastKnownState;
@@ -19,26 +20,46 @@ class NetworkService {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      // Endpoint 204 universal de Google (sin cuerpo, ~100 bytes)
-      const response = await fetch('https://www.google.com/generate_204', {
-        method: 'HEAD',
+      // Endpoint estándar Android de conectividad (204 No Content, sin cuerpo)
+      const response = await fetch('https://connectivitycheck.gstatic.com/generate_204', {
+        method: 'GET',
         signal: controller.signal,
         cache: 'no-cache',
       });
 
       clearTimeout(timeoutId);
       const connected = response.status === 204 || response.ok;
-      this.notifyListeners(connected);
-      return connected;
+      
+      if (connected) {
+        this.consecutiveFailures = 0;
+        this.notifyListeners(true);
+        return true;
+      } else {
+        this.consecutiveFailures++;
+      }
     } catch {
-      // Si falla o da timeout, no hay acceso a internet
-      this.notifyListeners(false);
-      return false;
+      this.consecutiveFailures++;
     } finally {
       this.isChecking = false;
     }
+
+    // Solo notificar desconexión tras 2 fallos consecutivos para evitar falsos positivos por latencia móvil
+    if (this.consecutiveFailures >= 2) {
+      this.notifyListeners(false);
+      return false;
+    }
+
+    return this.lastKnownState;
+  }
+
+  /**
+   * Permite que cualquier servicio exitoso (ej. OpenRouter o Google Sheets) marque inmediatamente la red como activa
+   */
+  public markConnected() {
+    this.consecutiveFailures = 0;
+    this.notifyListeners(true);
   }
 
   public subscribe(callback: (isConnected: boolean) => void): () => void {

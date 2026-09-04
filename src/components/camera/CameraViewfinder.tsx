@@ -118,14 +118,14 @@ export const CameraViewfinder: React.FC = () => {
    * Clasifica la imagen usando Visión en la Nube (OpenRouter Gemini) o IA Local (Google ML Kit)
    */
   const classifyPhoto = async (uri: string, level: CEFRLevel) => {
-    if (activeProvider === 'CLOUD_VISION' && isConnected) {
+    if (activeProvider === 'CLOUD_VISION') {
       setAnalyzingTitle('Analizando con Visión en la Nube...');
       setAnalyzingSub(`IA Multimodal procesando y adaptando nivel ${level}`);
       const cloudResult = await cloudVisionService.classifyAndGenerate(uri, level);
       if (cloudResult.success && cloudResult.payload) {
         return cloudResult.payload;
       }
-      showCustomNotice('Nube no disponible — Alternando a IA Local', 'WARNING');
+      showCustomNotice(`Nube no disponible (${cloudResult.error || 'reintentando'}) — Alternando a IA Local`, 'WARNING');
     }
 
     setAnalyzingTitle('Escaneando con Google ML Kit On-Device...');

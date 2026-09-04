@@ -9,10 +9,16 @@ export const API_CONFIG = {
   OPENROUTER: {
     API_KEY: process.env.EXPO_PUBLIC_OPENROUTER_API_KEY || '',
     BASE_URL: 'https://openrouter.ai/api/v1/chat/completions',
-    // Modelo gratuito multimodal con visión nativa y alta precisión en español/inglés
-    PRIMARY_VISION_MODEL: 'google/gemini-2.0-flash-exp:free',
-    FALLBACK_VISION_MODEL: 'meta-llama/llama-3.2-11b-vision-instruct:free',
-    TIMEOUT_MS: 9000, // 9 segundos límite de respuesta en red móvil
+    // Lista de modelos multimodales gratuitos activos con auto-enrutamiento en cascada
+    MODELS: [
+      'dots-studio/dots-3-note-preview:free',
+      'google/gemma-4-31b-it:free',
+      'google/gemma-4-26b-a4b-it:free',
+      'openrouter/free'
+    ],
+    PRIMARY_VISION_MODEL: 'dots-studio/dots-3-note-preview:free',
+    FALLBACK_VISION_MODEL: 'google/gemma-4-31b-it:free',
+    TIMEOUT_MS: 12000, // 12 segundos límite para subida y procesamiento en red móvil
   },
 
   // 2. Pollinations.ai - Generación de Ilustraciones Conceptuales Serverless

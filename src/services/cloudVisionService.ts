@@ -8,6 +8,7 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import { API_CONFIG } from '../constants/apiConfig';
 import { CEFRLevel } from '../types';
 import { AdaptiveCardPayload, nlpLinguisticService } from './nlpLinguisticService';
+import { networkService } from './networkService';
 
 export interface CloudVisionResponse {
   success: boolean;
@@ -79,7 +80,7 @@ Schema:
           'X-Title': 'FlashLens Language App',
         },
         body: JSON.stringify({
-          model: API_CONFIG.OPENROUTER.PRIMARY_VISION_MODEL,
+          models: API_CONFIG.OPENROUTER.MODELS,
           messages: [
             {
               role: 'user',
@@ -94,9 +95,8 @@ Schema:
               ],
             },
           ],
-          response_format: { type: 'json_object' },
           temperature: 0.2,
-          max_tokens: 600,
+          max_tokens: 700,
         }),
         signal: controller.signal,
       });
@@ -118,9 +118,16 @@ Schema:
         return { success: false, error: 'Respuesta vacía del modelo' };
       }
 
-      // Limpieza anti-marcado markdown ```json ... ```
-      const cleaned = content.replace(/```json\s*|\s*```/g, '').trim();
-      const parsed = JSON.parse(cleaned);
+      // Extracción robusta de JSON resistente a markdown fences y tokens de razonamiento
+      let parsed: any;
+      const firstBrace = content.indexOf('{');
+      const lastBrace = content.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace !== -1) {
+        parsed = JSON.parse(content.slice(firstBrace, lastBrace + 1));
+      } else {
+        const cleaned = content.replace(/```json\s*|\s*```/g, '').trim();
+        parsed = JSON.parse(cleaned);
+      }
 
       const facilitated = nlpLinguisticService.toFacilitatedPhonetics(
         parsed.targetWord,
@@ -154,6 +161,8 @@ Schema:
           confidence: Math.round((c.confidence || 0.8) * 100),
         })),
       };
+
+      networkService.markConnected();
 
       return {
         success: true,
