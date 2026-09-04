@@ -43,7 +43,9 @@ class NetworkService {
 
   public subscribe(callback: (isConnected: boolean) => void): () => void {
     this.listeners.push(callback);
-    callback(this.lastKnownState);
+    setTimeout(() => {
+      callback(this.lastKnownState);
+    }, 0);
     return () => {
       this.listeners = this.listeners.filter(l => l !== callback);
     };
