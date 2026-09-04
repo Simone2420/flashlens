@@ -97,7 +97,8 @@ Schema:
               },
             ],
             temperature: 0.2,
-            max_tokens: 700,
+            max_tokens: 1000,
+            reasoning: { effort: 'none' },
           }),
           signal: controller.signal,
         });
@@ -128,7 +129,8 @@ Schema:
       }
 
       const json = await response.json();
-      const content = json.choices?.[0]?.message?.content;
+      const choiceMsg = json.choices?.[0]?.message;
+      const content = (choiceMsg?.content || choiceMsg?.reasoning || '').trim();
       if (!content) {
         return { success: false, error: 'Respuesta vacía del modelo' };
       }
