@@ -29,7 +29,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "She poured hot Colombian coffee into her ceramic mug.",
     "contextTranslation": "Ella sirvió café colombiano caliente en su taza de cerámica.",
     "mnemonicHint": "Imagina una taza humeante en tu escritorio de trabajo.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
     "createdAt": "2026-09-01T23:07:16.831Z",
@@ -62,7 +62,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "Open your laptop to start coding the mobile application.",
     "contextTranslation": "Abre tu portátil para empezar a programar la aplicación móvil.",
     "mnemonicHint": "Lap (regazo) + Top (encima): la máquina que pones sobre tu regazo.",
-    "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -92,7 +92,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "He packed his laptop and notebook inside his sturdy backpack.",
     "contextTranslation": "Empacó su portátil y cuaderno dentro de su mochila resistente.",
     "mnemonicHint": "Back (espalda) + Pack (paquete): el paquete que llevas en la espalda.",
-    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
     "imageSource": "CAMERA",
     "createdVia": "CAMERA",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -122,7 +122,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "Telling a friendly joke is a great way to break the ice in Colombia.",
     "contextTranslation": "Contar un chiste amistoso es una excelente forma de romper el hielo en Colombia.",
     "mnemonicHint": "Imagina romper un témpano frío para que fluya la conversación.",
-    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -151,7 +151,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "Although it rained heavily in Bogota, we went to the university.",
     "contextTranslation": "Aunque llovió fuertemente en Bogotá, fuimos a la universidad.",
     "mnemonicHint": "Al-though: todo a través de la dificultad (a pesar de).",
-    "imageUrl": "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17",
+    "imageUrl": "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -181,7 +181,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "After studying English for five hours, I was completely exhausted.",
     "contextTranslation": "Después de estudiar inglés durante cinco horas, estaba completamente agotado.",
     "mnemonicHint": "Como el tubo de escape de un auto: sin energía.",
-    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474",
+    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -210,7 +210,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "Never give up when learning English grammar rules.",
     "contextTranslation": "Nunca te rindas al aprender las reglas gramaticales del inglés.",
     "mnemonicHint": "Dar hacia arriba tus brazos en señal de entrega.",
-    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5",
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -239,7 +239,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "Actually, I have never been to London before.",
     "contextTranslation": "En realidad, nunca he estado en Londres antes.",
     "mnemonicHint": "Falso amigo: no significa actualmente, sino de hecho/en verdad.",
-    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8",
+    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -270,7 +270,7 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "contextSentence": "I used to live in Cali before moving to Bogota.",
     "contextTranslation": "Solía vivir en Cali antes de mudarme a Bogotá.",
     "mnemonicHint": "Cosas que usabas hacer en el pasado regularmente.",
-    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
+    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80",
     "imageSource": "PRESET",
     "createdVia": "SEARCH",
     "createdAt": "2026-09-01T23:07:16.832Z",
@@ -292,7 +292,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "Telling a friendly joke is a great way to break the ice in Colombia.",
     "contextTranslation": "Contar un chiste amistoso es una excelente forma de romper el hielo en Colombia.",
     "mnemonicHint": "Imagina romper un témpano frío para que fluya la conversación.",
-    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9"
+    "imageUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
   },
   {
     "spanishTrigger": "arrepentirse",
@@ -304,7 +304,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "I never regret dedicating an hour a day to my English practice.",
     "contextTranslation": "Nunca me arrepiento de dedicar una hora al día a mi práctica de inglés.",
     "mnemonicHint": "Re-gret: regresar mentalmente a un error lamentándolo.",
-    "imageUrl": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    "imageUrl": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80"
   },
   {
     "spanishTrigger": "agotado",
@@ -316,7 +316,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "After studying English for five hours, I was completely exhausted.",
     "contextTranslation": "Después de estudiar inglés durante cinco horas, estaba completamente agotado.",
     "mnemonicHint": "Como el tubo de escape de un auto: sin energía.",
-    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474"
+    "imageUrl": "https://images.unsplash.com/photo-1541199249251-f713e6145474?auto=format&fit=crop&w=600&q=80"
   },
   {
     "spanishTrigger": "rendirse",
@@ -328,7 +328,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "Never give up when learning English grammar rules.",
     "contextTranslation": "Nunca te rindas al aprender las reglas gramaticales del inglés.",
     "mnemonicHint": "Dar hacia arriba tus brazos en señal de entrega.",
-    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5"
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80"
   },
   {
     "spanishTrigger": "en realidad",
@@ -340,7 +340,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "Actually, I have never been to London before.",
     "contextTranslation": "En realidad, nunca he estado en Londres antes.",
     "mnemonicHint": "No es actualmente; es un hecho actual real.",
-    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8"
+    "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80"
   },
   {
     "spanishTrigger": "solía",
@@ -352,7 +352,7 @@ export const VOICE_CONCEPT_DICTIONARY: VoiceConceptMatch[] = [
     "contextSentence": "I used to live in Cali before moving to Bogota.",
     "contextTranslation": "Solía vivir en Cali antes de mudarme a Bogotá.",
     "mnemonicHint": "Cosas que usabas hacer en el pasado.",
-    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211"
+    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80"
   }
 ];
 

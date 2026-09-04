@@ -35,6 +35,7 @@ import * as Speech from 'expo-speech';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { useUserStore } from '../../store/useUserStore';
+import { useRoadmapStore } from '../../store/useRoadmapStore';
 import {
   nlpLinguisticService,
   AdaptiveCardPayload,
@@ -55,8 +56,10 @@ export const CameraViewfinder: React.FC = () => {
 
   const { profile } = useUserStore();
   const { addCard } = useFlashcardStore();
+  const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   // Estados del formulario y nivel seleccionado
+  const [currentPayload, setCurrentPayload] = useState<AdaptiveCardPayload | null>(null);
   const [rawDetectedText, setRawDetectedText] = useState('Coffee Cup');
   const [selectedCefr, setSelectedCefr] = useState<CEFRLevel>(profile.diagnosedLevel || 'A1');
   const [wordInput, setWordInput] = useState('');
@@ -199,10 +202,16 @@ export const CameraViewfinder: React.FC = () => {
     setIsAnalyzing(false);
     setFullPhotoUri(prev => prev || imageUri);
     setActivePhotoUri(imageUri);
+    setCurrentPayload(payload);
     setRawDetectedText(payload.targetWord);
     setWordInput(payload.targetWord);
     setTranslationInput(payload.nativeTranslation);
-    setPhoneticInput(payload.phoneticScript);
+    // En A1 (o antes del nodo puente IPA), mostrar pronunciación facilitada en español ("habla fácil")
+    setPhoneticInput(
+      isIpaUnlocked
+        ? payload.phoneticScript
+        : (payload.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(payload.targetWord, payload.phoneticScript))
+    );
     setSentenceInput(payload.contextSentence);
     setContextEsInput(payload.contextTranslation);
     setSelectedCefr(payload.cefrLevel);
@@ -220,9 +229,14 @@ export const CameraViewfinder: React.FC = () => {
     setRawDetectedText(candidateText);
     setConfidenceScore(candidateConfidence);
     const adapted = nlpLinguisticService.generateCardDataForLevel(candidateText, selectedCefr, candidateConfidence);
+    setCurrentPayload(adapted);
     setWordInput(adapted.targetWord);
     setTranslationInput(adapted.nativeTranslation);
-    setPhoneticInput(adapted.phoneticScript);
+    setPhoneticInput(
+      isIpaUnlocked
+        ? adapted.phoneticScript
+        : (adapted.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(adapted.targetWord, adapted.phoneticScript))
+    );
     setSentenceInput(adapted.contextSentence);
     setContextEsInput(adapted.contextTranslation);
     handleSpeak(adapted.targetWord);
@@ -235,9 +249,14 @@ export const CameraViewfinder: React.FC = () => {
     Haptics.selectionAsync();
     setSelectedCefr(newLevel);
     const adapted = nlpLinguisticService.generateCardDataForLevel(rawDetectedText, newLevel, confidenceScore);
+    setCurrentPayload(adapted);
     setWordInput(adapted.targetWord);
     setTranslationInput(adapted.nativeTranslation);
-    setPhoneticInput(adapted.phoneticScript);
+    setPhoneticInput(
+      isIpaUnlocked
+        ? adapted.phoneticScript
+        : (adapted.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(adapted.targetWord, adapted.phoneticScript))
+    );
     setSentenceInput(adapted.contextSentence);
     setContextEsInput(adapted.contextTranslation);
   };
@@ -259,6 +278,15 @@ export const CameraViewfinder: React.FC = () => {
 
     const minLen = Math.min(...acceptedList.map(s => s.length));
 
+    // Determinar pronunciación facilitada e IPA
+    const savedFacilitated = !isIpaUnlocked
+      ? phoneticInput.trim()
+      : (currentPayload?.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(wordInput.trim()));
+
+    const savedIpa = isIpaUnlocked
+      ? phoneticInput.trim()
+      : (currentPayload?.phoneticScript || `/${wordInput.toLowerCase().trim()}/`);
+
     addCard({
       targetWord: wordInput.trim(),
       primaryTranslation: acceptedList[0] || rawTranslation,
@@ -266,14 +294,14 @@ export const CameraViewfinder: React.FC = () => {
       minInputLength: minLen,
       displayTranslation: rawTranslation,
       nativeTranslation: rawTranslation,
-      facilitatedPhonetics: phoneticInput.trim().replace(/[/ˈˌ]/g, '') || wordInput.toLowerCase().trim(),
-      phoneticScript: phoneticInput.trim() || `/${wordInput.toLowerCase()}/`,
+      facilitatedPhonetics: savedFacilitated,
+      phoneticScript: savedIpa,
       cardType: 'VOCABULARY',
       partOfSpeech: 'NOUN',
       conceptCategory: 'OBJECT',
       contextSentence: sentenceInput.trim(),
       contextTranslation: contextEsInput.trim(),
-      imageUrl: activePhotoUri || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600',
+      imageUrl: activePhotoUri || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
       imageSource: 'CAMERA',
       createdVia: 'CAMERA',
     });
@@ -503,13 +531,15 @@ export const CameraViewfinder: React.FC = () => {
                     placeholderTextColor="#747878"
                   />
                 </View>
-                <View style={{ width: 120 }}>
-                  <Text style={styles.inputLabel}>Fonética IPA:</Text>
+                <View style={{ width: 145 }}>
+                  <Text style={styles.inputLabel} numberOfLines={1}>
+                    {isIpaUnlocked ? 'Fonética IPA:' : 'Pronunciación:'}
+                  </Text>
                   <TextInput
                     style={styles.input}
                     value={phoneticInput}
                     onChangeText={setPhoneticInput}
-                    placeholder="/.../"
+                    placeholder={isIpaUnlocked ? '/.../' : 'ej. kófi kap'}
                     placeholderTextColor="#747878"
                   />
                 </View>

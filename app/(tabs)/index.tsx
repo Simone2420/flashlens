@@ -25,14 +25,17 @@ import {
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
+import { Image as ExpoImage } from 'expo-image';
 import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { useUserStore } from '../../src/store/useUserStore';
+import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { ConceptCategory, CardType, Flashcard } from '../../src/types';
 import { AbstractCardModal } from '../../src/components/flashcards/AbstractCardModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
 import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
+import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 
 const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: string }[] = [
   { category: 'IDIOM_EXPRESSION', label: 'Modismos', icon: '🎭' },
@@ -48,6 +51,31 @@ const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: stri
   { category: 'CONVERSATIONAL_FILLER', label: 'Muletillas', icon: '🗣️' },
   { category: 'ABSTRACT_NOUN', label: 'Abstractos', icon: '💡' },
 ];
+
+const CardThumbnail: React.FC<{ card: Flashcard }> = ({ card }) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (card.imageUrl && !hasError) {
+    return (
+      <ExpoImage
+        source={{ uri: card.imageUrl }}
+        style={styles.cardThumb}
+        contentFit="cover"
+        transition={200}
+        cachePolicy="memory-disk"
+        onError={() => setHasError(true)}
+      />
+    );
+  }
+
+  return (
+    <View style={styles.cardThumbPlaceholder}>
+      <Text style={styles.cardThumbPlaceholderText}>
+        {getCardEmoji(card)}
+      </Text>
+    </View>
+  );
+};
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -67,6 +95,7 @@ export default function HomeScreen() {
 
   const [isAbstractModalVisible, setIsAbstractModalVisible] = useState(false);
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
+  const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   const filteredCards = getFilteredCards();
   const dueCards = getDueCards();
@@ -215,15 +244,7 @@ export default function HomeScreen() {
             <View key={card.id} style={styles.cardItem}>
               <View style={styles.cardMainRow}>
                 {/* Imagen o Ícono de Categoría */}
-                {card.imageUrl ? (
-                  <Image source={{ uri: card.imageUrl }} style={styles.cardThumb} />
-                ) : (
-                  <View style={styles.cardThumbPlaceholder}>
-                    <Text style={styles.cardThumbPlaceholderText}>
-                      {card.conceptCategory === 'IDIOM_EXPRESSION' ? '🎭' : '💡'}
-                    </Text>
-                  </View>
-                )}
+                <CardThumbnail card={card} />
 
                 {/* Contenido de la Tarjeta */}
                 <View style={styles.cardBody}>
@@ -232,7 +253,11 @@ export default function HomeScreen() {
                     <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
                   </View>
                   <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
-                  <Text style={styles.cardPhonetic}>{card.phoneticScript}</Text>
+                  <Text style={styles.cardPhonetic}>
+                    {!isIpaUnlocked && card.facilitatedPhonetics
+                      ? card.facilitatedPhonetics
+                      : (card.phoneticScript || card.facilitatedPhonetics)}
+                  </Text>
                   <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
                 </View>
 

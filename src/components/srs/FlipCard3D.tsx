@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
-  Image,
 } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -21,6 +21,35 @@ import { Flashcard, ReviewRating } from '../../types';
 import { AudioService } from '../../services/audioService';
 import { Badge } from '../common/Badge';
 import { useRoadmapStore } from '../../store/useRoadmapStore';
+
+export const getCardEmoji = (card: Flashcard) => {
+  const w = (card.targetWord || '').toLowerCase();
+  if (w.includes('coffee') || w.includes('mug') || w.includes('cup') || w.includes('taza')) return '☕';
+  if (w.includes('laptop') || w.includes('comput')) return '💻';
+  if (w.includes('backpack') || w.includes('mochila') || w.includes('bag')) return '🎒';
+  if (w.includes('ice') || w.includes('break')) return '🧊';
+  if (w.includes('although') || w.includes('aunque')) return '🔗';
+  if (w.includes('exhausted') || w.includes('agotado')) return '😫';
+  if (w.includes('give up') || w.includes('rendir')) return '🏳️';
+  if (w.includes('actually') || w.includes('real')) return '💡';
+  if (w.includes('used to') || w.includes('solía') || w.includes('solia')) return '⏳';
+  switch (card.conceptCategory) {
+    case 'OBJECT': return '📦';
+    case 'IDIOM_EXPRESSION': return '🎭';
+    case 'CONNECTOR_TRANSITION': return '🔗';
+    case 'PHRASAL_VERB': return '⚡';
+    case 'GRAMMAR_RULE': return '📐';
+    case 'FALSE_FRIEND': return '⚠️';
+    case 'COLLOCATION_PHRASE': return '💬';
+    case 'EMOTION_STATE': return '❤️';
+    case 'ACTION_COGNITIVE': return '🧠';
+    case 'ADVERB_MODIFIER': return '⏱️';
+    case 'QUALITY_PERSONALITY': return '🌟';
+    case 'CONVERSATIONAL_FILLER': return '🗣️';
+    case 'ABSTRACT_NOUN': return '💡';
+    default: return '📸';
+  }
+};
 
 interface FlipCard3DProps {
   card: Flashcard;
@@ -38,6 +67,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
   autoPlayAudio = false,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [hasImageError, setHasImageError] = useState(false);
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
   const displayedPhonetics = isIpaUnlocked
     ? card.phoneticScript
@@ -67,6 +97,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
     // Reset flip state when card changes
     setIsFlipped(false);
     rotation.value = 0;
+    setHasImageError(false);
 
     if (autoPlayAudio) {
       AudioService.speak(card.targetWord, 'en-US');
@@ -129,11 +160,26 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           </View>
 
           <View style={styles.imageContainer}>
-            <Image
-              source={{ uri: card.imageUrl }}
-              style={styles.cardImage}
-              resizeMode="cover"
-            />
+            {card.imageUrl && !hasImageError ? (
+              <ExpoImage
+                source={{ uri: card.imageUrl }}
+                style={styles.cardImage}
+                contentFit="cover"
+                transition={200}
+                cachePolicy="memory-disk"
+                onError={() => setHasImageError(true)}
+              />
+            ) : (
+              <View style={styles.cardImagePlaceholder}>
+                <View style={styles.emojiCircle}>
+                  <Text style={styles.cardEmoji}>{getCardEmoji(card)}</Text>
+                </View>
+                <Text style={styles.placeholderWord}>{card.targetWord}</Text>
+                <Text style={styles.placeholderCategory}>
+                  {card.conceptCategory} • {card.partOfSpeech}
+                </Text>
+              </View>
+            )}
           </View>
 
           <View style={styles.stimulusFooter}>
@@ -313,6 +359,41 @@ const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: '100%',
+  },
+  cardImagePlaceholder: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.surfaceContainerLow,
+    padding: SPACING.md,
+  },
+  emojiCircle: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: COLORS.surfaceContainerHigh,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: SPACING.sm,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  cardEmoji: {
+    fontSize: 44,
+  },
+  placeholderWord: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: COLORS.onSurface,
+    textAlign: 'center',
+  },
+  placeholderCategory: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: COLORS.onSurfaceVariant,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginTop: 4,
   },
   stimulusFooter: {
     alignItems: 'center',

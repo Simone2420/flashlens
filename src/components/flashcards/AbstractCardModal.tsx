@@ -31,6 +31,7 @@ import { ConceptCategory, PartOfSpeech, Flashcard } from '../../types';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { VOICE_CONCEPT_DICTIONARY } from '../../data/mockData';
 import { speechToTextService } from '../../services/speechToTextService';
+import { nlpLinguisticService } from '../../services/nlpLinguisticService';
 
 interface AbstractCardModalProps {
   visible: boolean;
@@ -276,7 +277,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       minInputLength: minLen,
       displayTranslation: rawTranslation,
       nativeTranslation: rawTranslation,
-      facilitatedPhonetics: targetWord.toLowerCase().trim(),
+      facilitatedPhonetics: nlpLinguisticService.toFacilitatedPhonetics(targetWord.trim()),
       cardType: 'ABSTRACT',
       partOfSpeech: config?.part || 'NOUN',
       conceptCategory: selectedCategory,
@@ -317,7 +318,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       minInputLength: minLen,
       displayTranslation: rawTrans,
       nativeTranslation: rawTrans,
-      facilitatedPhonetics: generatedPreviewCard.targetWord.toLowerCase().trim(),
+      facilitatedPhonetics: nlpLinguisticService.toFacilitatedPhonetics(generatedPreviewCard.targetWord.trim(), generatedPreviewCard.phoneticScript),
       cardType: 'ABSTRACT',
       partOfSpeech: generatedPreviewCard.partOfSpeech,
       conceptCategory: generatedPreviewCard.conceptCategory,

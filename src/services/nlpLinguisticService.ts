@@ -11,6 +11,7 @@ export interface AdaptiveCardPayload {
   targetWord: string;
   nativeTranslation: string;
   phoneticScript: string;
+  facilitatedPhonetics: string;
   cefrLevel: CEFRLevel;
   contextSentence: string;
   contextTranslation: string;
@@ -29,6 +30,7 @@ interface LinguisticEntry {
       word: string;
       translation: string;
       phonetic: string;
+      facilitatedPhonetics?: string;
       sentence: string;
       sentenceEs: string;
     }
@@ -543,6 +545,7 @@ export class NLPLinguisticService {
         targetWord: levelData.word,
         nativeTranslation: levelData.translation,
         phoneticScript: levelData.phonetic,
+        facilitatedPhonetics: levelData.facilitatedPhonetics || this.toFacilitatedPhonetics(levelData.word, levelData.phonetic),
         cefrLevel: level,
         contextSentence: levelData.sentence,
         contextTranslation: levelData.sentenceEs,
@@ -560,6 +563,7 @@ export class NLPLinguisticService {
       targetWord: capitalizedWord,
       nativeTranslation: `Objeto: ${capitalizedWord}`,
       phoneticScript: `/${capitalizedWord.toLowerCase()}/`,
+      facilitatedPhonetics: this.toFacilitatedPhonetics(capitalizedWord),
       cefrLevel: level,
       contextSentence: dynamicSentence.en,
       contextTranslation: dynamicSentence.es,
@@ -567,6 +571,124 @@ export class NLPLinguisticService {
       conceptCategory: 'OBJECT',
       confidence: confidenceScore,
     };
+  }
+
+  /**
+   * Convierte una palabra en inglés o transcripción IPA a pronunciación facilitada en español ("habla fácil")
+   * Ej: "Coffee Cup" -> "kófi kap", "Backpack" -> "bákpak", "Laptop" -> "láptop"
+   */
+  public toFacilitatedPhonetics(word: string, ipa?: string): string {
+    const lower = word.toLowerCase().trim();
+
+    // 1. Diccionario directo de términos comunes y objetos detectados
+    const directMap: Record<string, string> = {
+      'coffee cup': 'kófi kap',
+      'coffee mug': 'kófi mag',
+      'cup': 'kap',
+      'mug': 'mag',
+      'ceramic mug': 'serámik mag',
+      'insulated tumbler': 'ínsuleitid támbler',
+      'beverage vessel': 'béverich vésel',
+      'porcelain receptacle': 'pórselin riséptakl',
+      'laptop': 'láptop',
+      'portable computer': 'pórtabl kompiúter',
+      'digital workstation': 'díyital uérksteishon',
+      'computing apparatus': 'kompiúting aparátas',
+      'computational device': 'kompiuteíshonal diváis',
+      'computer': 'kompiúter',
+      'book': 'buk',
+      'textbook': 'tékst-buk',
+      'academic volume': 'akadémik vólium',
+      'scholarly treatise': 'skólarly tríitis',
+      'literary compendium': 'líterari kompendium',
+      'water bottle': 'uáter bótl',
+      'reusable bottle': 'ri-iúsabl bótl',
+      'hydration container': 'jaidreíshon konteíner',
+      'beverage flask': 'béverich flask',
+      'liquid receptacle': 'líkuild riséptakl',
+      'headphones': 'jéd-founs',
+      'wireless earbuds': 'uáierles íar-bads',
+      'acoustic headset': 'akústik jéd-set',
+      'audio monitors': 'ódio mónitors',
+      'listening apparatus': 'lísening aparátas',
+      'smartphone': 'smárt-foun',
+      'mobile device': 'móubail diváis',
+      'cellular handset': 'séliular jánd-set',
+      'telecommunication unit': 'telekomiunikeíshon iúnit',
+      'pocket terminal': 'póket términal',
+      'keyboard': 'kíi-bord',
+      'mechanical keyboard': 'mekánikal kíi-bord',
+      'ergonomic keypad': 'ergonómik kíi-pad',
+      'alphanumeric peripheral': 'alfanumerik periferal',
+      'input interface': 'ínput ínterfeis',
+      'backpack': 'bákpak',
+      'travel bag': 'trável bag',
+      'ergonomic rucksack': 'ergonómik rák-sak',
+      'modular knapsack': 'módiular náp-sak',
+      'utilitarian haversack': 'iutilitérian jáver-sak',
+      'houseplant': 'jáus-plant',
+      'indoor foliage': 'índor fóulich',
+      'botanical specimen': 'botánikal spésimen',
+      'chlorophyll organism': 'klórofil órganism',
+      'photosynthetic plant': 'foutosintétik plant',
+      'chair': 'cher',
+      'ergonomic chair': 'ergonómik cher',
+      'cushioned seat': 'kúshond síit',
+      'lumbar seating': 'lúmbar síiting',
+      'orthopedic armchair': 'ortopédik árm-cher',
+    };
+
+    if (directMap[lower]) {
+      return directMap[lower];
+    }
+
+    // 2. Si viene transcripción IPA, convertir símbolos IPA a aproximación en español
+    if (ipa && ipa.length > 2) {
+      let f = ipa
+        .replace(/[/ˈˌ.]/g, '') // Quitar barras y tildes IPA
+        .replace(/æ/g, 'a')
+        .replace(/ɑː|ʌ|ɐ/g, 'a')
+        .replace(/ɒ|ɔː/g, 'o')
+        .replace(/ə/g, 'e')
+        .replace(/eɪ/g, 'ei')
+        .replace(/aɪ/g, 'ai')
+        .replace(/ɔɪ/g, 'oi')
+        .replace(/aʊ/g, 'au')
+        .replace(/oʊ|əʊ/g, 'ou')
+        .replace(/iː|ɪ/g, 'i')
+        .replace(/uː|ʊ/g, 'u')
+        .replace(/ʃ/g, 'sh')
+        .replace(/tʃ/g, 'ch')
+        .replace(/dʒ/g, 'y')
+        .replace(/θ|ð/g, 'd')
+        .replace(/ŋ/g, 'ng')
+        .replace(/w/g, 'u')
+        .replace(/j/g, 'y')
+        .trim();
+      if (f.length > 0) return f;
+    }
+
+    // 3. Reglas fonéticas basadas en grafías inglesas comunes
+    return lower
+      .replace(/ph/g, 'f')
+      .replace(/tion/g, 'shon')
+      .replace(/sion/g, 'shon')
+      .replace(/ght/g, 't')
+      .replace(/igh/g, 'ai')
+      .replace(/ee/g, 'ii')
+      .replace(/ea/g, 'ii')
+      .replace(/oo/g, 'u')
+      .replace(/ou/g, 'au')
+      .replace(/ow/g, 'au')
+      .replace(/th/g, 'd')
+      .replace(/ch/g, 'ch')
+      .replace(/sh/g, 'sh')
+      .replace(/ck/g, 'k')
+      .replace(/c([eiy])/g, 's$1')
+      .replace(/c([aou])/g, 'k$1')
+      .replace(/qu/g, 'ku')
+      .replace(/w/g, 'u')
+      .replace(/y$/g, 'i');
   }
 
   private buildDynamicSentence(word: string, level: CEFRLevel): { en: string; es: string } {

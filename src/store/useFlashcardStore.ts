@@ -191,6 +191,58 @@ export const useFlashcardStore = create<FlashcardState>()(
     {
       name: 'flashlens-flashcards-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      version: 2,
+      migrate: (persistedState: any) => {
+        if (!persistedState || !Array.isArray(persistedState.cards)) {
+          return persistedState;
+        }
+        const mockMap = new Map(INITIAL_FLASHCARDS.map(c => [c.id, c]));
+        const updatedCards = persistedState.cards.map((c: Flashcard) => {
+          const mockMatch = mockMap.get(c.id);
+          let img = c.imageUrl;
+          if (mockMatch?.imageUrl) {
+            img = mockMatch.imageUrl;
+          } else if (img && img.includes('images.unsplash.com') && !img.includes('w=600')) {
+            img = `${img.split('?')[0]}?auto=format&fit=crop&w=600&q=80`;
+          }
+          return {
+            ...c,
+            imageUrl: img,
+            facilitatedPhonetics: c.facilitatedPhonetics || mockMatch?.facilitatedPhonetics,
+            primaryTranslation: c.primaryTranslation || mockMatch?.primaryTranslation,
+            acceptedTranslations: c.acceptedTranslations || mockMatch?.acceptedTranslations,
+            minInputLength: c.minInputLength || mockMatch?.minInputLength,
+            displayTranslation: c.displayTranslation || mockMatch?.displayTranslation,
+          };
+        });
+        return {
+          ...persistedState,
+          cards: updatedCards,
+        };
+      },
+      onRehydrateStorage: () => (state) => {
+        if (state?.cards) {
+          const mockMap = new Map(INITIAL_FLASHCARDS.map(c => [c.id, c]));
+          state.cards = state.cards.map(c => {
+            const mock = mockMap.get(c.id);
+            let img = c.imageUrl;
+            if (mock?.imageUrl) {
+              img = mock.imageUrl;
+            } else if (img && img.includes('images.unsplash.com') && !img.includes('w=600')) {
+              img = `${img.split('?')[0]}?auto=format&fit=crop&w=600&q=80`;
+            }
+            return {
+              ...c,
+              imageUrl: img,
+              facilitatedPhonetics: c.facilitatedPhonetics || mock?.facilitatedPhonetics,
+              primaryTranslation: c.primaryTranslation || mock?.primaryTranslation,
+              acceptedTranslations: c.acceptedTranslations || mock?.acceptedTranslations,
+              minInputLength: c.minInputLength || mock?.minInputLength,
+              displayTranslation: c.displayTranslation || mock?.displayTranslation,
+            };
+          });
+        }
+      },
     }
   )
 );
