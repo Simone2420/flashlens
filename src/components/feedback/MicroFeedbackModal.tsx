@@ -11,6 +11,8 @@ import {
 import { Star, MessageSquare, X, Check, Heart } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUserStore } from '../../store/useUserStore';
+import { cloudFeedbackService } from '../../services/cloudFeedbackService';
 import { UserFeedback } from '../../types';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 
@@ -31,6 +33,7 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
   visible,
   onClose,
 }) => {
+  const { profile } = useUserStore();
   const [rating, setRating] = useState<number>(5);
   const [category, setCategory] = useState<UserFeedback['category']>('GENERAL');
   const [comment, setComment] = useState('');
@@ -38,25 +41,22 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
 
   const handleSubmit = async () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-
-    const feedbackItem: UserFeedback = {
-      id: `fb-${Date.now()}`,
-      rating,
-      category,
-      comment: comment.trim() || undefined,
-      createdAt: new Date().toISOString(),
-    };
+    setIsSent(true);
 
     try {
-      const stored = await AsyncStorage.getItem('@flashlens_feedback_history');
-      const list = stored ? JSON.parse(stored) : [];
-      list.push(feedbackItem);
-      await AsyncStorage.setItem('@flashlens_feedback_history', JSON.stringify(list));
+      await cloudFeedbackService.sendFeedback({
+        name: profile.fullName || profile.username || 'Carlos Gómez',
+        age: profile.age || 24,
+        level: profile.diagnosedLevel || 'A1',
+        rating,
+        category,
+        comment: comment.trim(),
+        currentStreak: profile.currentStreak,
+      });
     } catch (e) {
-      console.error('Error guardando feedback local:', e);
+      console.warn('Error enviando feedback:', e);
     }
 
-    setIsSent(true);
     setTimeout(() => {
       setIsSent(false);
       setComment('');

@@ -25,13 +25,16 @@ interface UserState {
   toggleNotifications: (enabled?: boolean) => void;
   completeOnboarding: () => void;
   checkLivesRegeneration: () => void;
+  setMockUserCredentials: (fullName: string, age: number, username?: string) => void;
   resetDemoUser: () => void;
 }
 
 const DEFAULT_USER: UserProfile = {
   id: 'user-demo-1',
   email: 'usuario.demo@flashlens.app',
-  username: 'Estudiante Visual',
+  username: 'Carlos Gómez',
+  fullName: 'Carlos Gómez',
+  age: 24,
   isPremium: false,
   currentStreak: 7,
   maxStreak: 14,
@@ -270,6 +273,17 @@ export const useUserStore = create<UserState>()(
           set({ lives: updatedLives });
           widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
         }
+      },
+
+      setMockUserCredentials: (fullName: string, age: number, username?: string) => {
+        set(state => ({
+          profile: {
+            ...state.profile,
+            fullName: fullName.trim(),
+            age: Math.max(5, Math.min(120, age)),
+            username: (username || fullName).trim(),
+          },
+        }));
       },
 
       resetDemoUser: () => {

@@ -46,6 +46,8 @@ export interface UserProfile {
   id: string;
   email: string;
   username: string;
+  fullName?: string;
+  age?: number;
   isPremium: boolean;
   currentStreak: number;
   maxStreak: number;

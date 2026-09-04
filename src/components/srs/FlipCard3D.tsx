@@ -160,26 +160,27 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           </View>
 
           <View style={styles.imageContainer}>
+            {/* Capa Base: Siempre renderizada para cero pantallas en blanco */}
+            <View style={styles.cardImagePlaceholder}>
+              <View style={styles.emojiCircle}>
+                <Text style={styles.cardEmoji}>{getCardEmoji(card)}</Text>
+              </View>
+              <Text style={styles.placeholderCategory}>
+                {card.conceptCategory} • {card.partOfSpeech}
+              </Text>
+            </View>
+
+            {/* Capa Superior: Imagen real montada con transición suave */}
             {card.imageUrl && !hasImageError ? (
               <ExpoImage
                 source={{ uri: card.imageUrl }}
-                style={styles.cardImage}
+                style={[styles.cardImage, StyleSheet.absoluteFillObject]}
                 contentFit="cover"
-                transition={200}
+                transition={250}
                 cachePolicy="memory-disk"
                 onError={() => setHasImageError(true)}
               />
-            ) : (
-              <View style={styles.cardImagePlaceholder}>
-                <View style={styles.emojiCircle}>
-                  <Text style={styles.cardEmoji}>{getCardEmoji(card)}</Text>
-                </View>
-                <Text style={styles.placeholderWord}>{card.targetWord}</Text>
-                <Text style={styles.placeholderCategory}>
-                  {card.conceptCategory} • {card.partOfSpeech}
-                </Text>
-              </View>
-            )}
+            ) : null}
           </View>
 
           <View style={styles.stimulusFooter}>
@@ -204,6 +205,22 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           </View>
 
           <View style={styles.backContent}>
+            {/* Micro-Avatar Visual de Asociación */}
+            <View style={styles.revelationAvatarRow}>
+              {card.imageUrl && !hasImageError ? (
+                <ExpoImage
+                  source={{ uri: card.imageUrl }}
+                  style={styles.revelationThumb}
+                  contentFit="cover"
+                  cachePolicy="memory-disk"
+                />
+              ) : (
+                <View style={styles.revelationEmojiBadge}>
+                  <Text style={styles.revelationEmojiText}>{getCardEmoji(card)}</Text>
+                </View>
+              )}
+            </View>
+
             <Text style={styles.targetWord}>{card.targetWord}</Text>
             {displayedPhonetics ? (
               <Text style={styles.phonetic}>
@@ -422,6 +439,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: SPACING.sm,
+  },
+  revelationAvatarRow: {
+    marginBottom: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  revelationThumb: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    borderWidth: 2,
+    borderColor: COLORS.accent,
+  },
+  revelationEmojiBadge: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: COLORS.surfaceContainerHigh,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  revelationEmojiText: {
+    fontSize: 26,
   },
   targetWord: {
     fontSize: 28,

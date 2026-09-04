@@ -41,6 +41,8 @@ import {
   AdaptiveCardPayload,
   DetectedObjectCandidate,
 } from '../../services/nlpLinguisticService';
+import { cloudVisionService } from '../../services/cloudVisionService';
+import { useNetworkStore } from '../../store/useNetworkStore';
 import { CEFRLevel } from '../../types';
 
 const { width } = Dimensions.get('window');
@@ -57,6 +59,10 @@ export const CameraViewfinder: React.FC = () => {
   const { profile } = useUserStore();
   const { addCard } = useFlashcardStore();
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
+  const { isConnected, activeProvider, setActiveProvider, showCustomNotice } = useNetworkStore();
+
+  const [analyzingTitle, setAnalyzingTitle] = useState('Escaneando...');
+  const [analyzingSub, setAnalyzingSub] = useState('Procesando objeto y adaptando nivel');
 
   // Estados del formulario y nivel seleccionado
   const [currentPayload, setCurrentPayload] = useState<AdaptiveCardPayload | null>(null);
@@ -109,7 +115,26 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Captura la foto con opción de recorte y ejecuta Google ML Kit on-device
+   * Clasifica la imagen usando Visión en la Nube (OpenRouter Gemini) o IA Local (Google ML Kit)
+   */
+  const classifyPhoto = async (uri: string, level: CEFRLevel) => {
+    if (activeProvider === 'CLOUD_VISION' && isConnected) {
+      setAnalyzingTitle('Analizando con Visión en la Nube...');
+      setAnalyzingSub(`IA Multimodal procesando y adaptando nivel ${level}`);
+      const cloudResult = await cloudVisionService.classifyAndGenerate(uri, level);
+      if (cloudResult.success && cloudResult.payload) {
+        return cloudResult.payload;
+      }
+      showCustomNotice('Nube no disponible — Alternando a IA Local', 'WARNING');
+    }
+
+    setAnalyzingTitle('Escaneando con Google ML Kit On-Device...');
+    setAnalyzingSub(`Procesando objeto on-device y adaptando nivel ${level}`);
+    return await nlpLinguisticService.classifyAndGenerateCard(uri, level);
+  };
+
+  /**
+   * Captura la foto con opción de recorte y ejecuta la IA activa (Nube o Local)
    */
   const handleCapture = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -124,7 +149,7 @@ export const CameraViewfinder: React.FC = () => {
         if (photo?.uri) {
           const userLevel = profile.diagnosedLevel || 'A1';
           setSelectedCefr(userLevel);
-          const result = await nlpLinguisticService.classifyAndGenerateCard(photo.uri, userLevel);
+          const result = await classifyPhoto(photo.uri, userLevel);
           populateFormWithResult(photo.uri, result);
           return;
         }
@@ -135,13 +160,13 @@ export const CameraViewfinder: React.FC = () => {
       setIsAnalyzing(false);
     }
 
-    const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600';
-    const fallbackResult = await nlpLinguisticService.classifyAndGenerateCard(fallbackUri, profile.diagnosedLevel || 'A1');
+    const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80';
+    const fallbackResult = await classifyPhoto(fallbackUri, profile.diagnosedLevel || 'A1');
     populateFormWithResult(fallbackUri, fallbackResult);
   };
 
   /**
-   * Selecciona una foto de la galería y la procesa con Google ML Kit on-device
+   * Selecciona una foto de la galería y la procesa con la IA activa
    */
   const handlePickImage = async () => {
     try {
@@ -156,7 +181,7 @@ export const CameraViewfinder: React.FC = () => {
         setIsAnalyzing(true);
         const userLevel = profile.diagnosedLevel || 'A1';
         setSelectedCefr(userLevel);
-        const detection = await nlpLinguisticService.classifyAndGenerateCard(asset.uri, userLevel);
+        const detection = await classifyPhoto(asset.uri, userLevel);
         setIsAnalyzing(false);
         populateFormWithResult(asset.uri, detection);
       }
@@ -175,7 +200,6 @@ export const CameraViewfinder: React.FC = () => {
     try {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-      // Usar ImagePicker con edición manual para recortar la imagen seleccionada
       const cropResult = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ['images'],
         allowsEditing: true,
@@ -186,7 +210,7 @@ export const CameraViewfinder: React.FC = () => {
       if (!cropResult.canceled && cropResult.assets[0]?.uri) {
         const croppedUri = cropResult.assets[0].uri;
         setIsAnalyzing(true);
-        const reclassified = await nlpLinguisticService.classifyAndGenerateCard(croppedUri, selectedCefr);
+        const reclassified = await classifyPhoto(croppedUri, selectedCefr);
         setIsAnalyzing(false);
         setActivePhotoUri(croppedUri);
         populateFormWithResult(croppedUri, reclassified);
@@ -325,6 +349,53 @@ export const CameraViewfinder: React.FC = () => {
               facing={facing}
             />
 
+            {/* Selector de Proveedor IA (Nube vs Local) */}
+            <View style={styles.providerToggleContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  if (!isConnected) {
+                    showCustomNotice('⚠️ Sin conexión a internet: Solo disponible IA Local', 'WARNING');
+                    return;
+                  }
+                  setActiveProvider('CLOUD_VISION');
+                }}
+                style={[
+                  styles.providerChip,
+                  activeProvider === 'CLOUD_VISION' && styles.providerChipActiveCloud,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.providerChipText,
+                    activeProvider === 'CLOUD_VISION' && styles.providerChipTextActive,
+                  ]}
+                >
+                  ☁️ Nube (Gemini)
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  setActiveProvider('LOCAL_ON_DEVICE');
+                }}
+                style={[
+                  styles.providerChip,
+                  activeProvider === 'LOCAL_ON_DEVICE' && styles.providerChipActiveLocal,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.providerChipText,
+                    activeProvider === 'LOCAL_ON_DEVICE' && styles.providerChipTextActive,
+                  ]}
+                >
+                  ⚡ Local (ML Kit)
+                </Text>
+              </TouchableOpacity>
+            </View>
+
             {/* Retícula de Enfoque Óptico */}
             <View style={styles.reticleOverlay} pointerEvents="none">
               <View style={styles.boundingBox}>
@@ -357,7 +428,7 @@ export const CameraViewfinder: React.FC = () => {
             <Scan size={52} color="#747878" />
             <Text style={styles.permissionTitle}>Permiso de Cámara Requerido</Text>
             <Text style={styles.permissionSub}>
-              FlashLens necesita acceso a la cámara para identificar objetos con Google ML Kit local.
+              FlashLens necesita acceso a la cámara para identificar objetos con Google ML Kit local o Nube.
             </Text>
             <TouchableOpacity onPress={requestPermission} style={styles.grantPermissionBtn}>
               <Text style={styles.grantPermissionBtnText}>CONCEDER PERMISO</Text>
@@ -365,13 +436,13 @@ export const CameraViewfinder: React.FC = () => {
           </View>
         )}
 
-        {/* Overlay de Análisis con Google ML Kit */}
+        {/* Overlay de Análisis con IA */}
         {isAnalyzing && (
           <View style={styles.analyzingOverlay}>
             <View style={styles.analyzingCard}>
               <ActivityIndicator size="large" color="#E8B400" />
-              <Text style={styles.analyzingTitle}>Escaneando con Google ML Kit...</Text>
-              <Text style={styles.analyzingSub}>Procesando objeto on-device y adaptando nivel {profile.diagnosedLevel || 'A1'}</Text>
+              <Text style={styles.analyzingTitle}>{analyzingTitle}</Text>
+              <Text style={styles.analyzingSub}>{analyzingSub}</Text>
             </View>
           </View>
         )}
@@ -1024,5 +1095,38 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.5,
+  },
+  providerToggleContainer: {
+    position: 'absolute',
+    top: 18,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'rgba(28, 27, 27, 0.75)',
+    borderRadius: 24,
+    padding: 3,
+    gap: 4,
+    zIndex: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  providerChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+  },
+  providerChipActiveCloud: {
+    backgroundColor: '#0284C7',
+  },
+  providerChipActiveLocal: {
+    backgroundColor: '#E8B400',
+  },
+  providerChipText: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  providerChipTextActive: {
+    color: '#FFFFFF',
+    fontWeight: '900',
   },
 });

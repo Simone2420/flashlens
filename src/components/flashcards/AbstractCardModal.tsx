@@ -32,6 +32,8 @@ import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { VOICE_CONCEPT_DICTIONARY } from '../../data/mockData';
 import { speechToTextService } from '../../services/speechToTextService';
 import { nlpLinguisticService } from '../../services/nlpLinguisticService';
+import { imageGenerationService } from '../../services/imageGenerationService';
+import { useRoadmapStore } from '../../store/useRoadmapStore';
 
 interface AbstractCardModalProps {
   visible: boolean;
@@ -87,11 +89,14 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   // Modo Formulario Asistido
   const [targetWord, setTargetWord] = useState('');
   const [nativeTranslation, setNativeTranslation] = useState('');
+  const [phoneticInput, setPhoneticInput] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<ConceptCategory>('IDIOM_EXPRESSION');
   const [mnemonicHint, setMnemonicHint] = useState('');
   const [contextSentence, setContextSentence] = useState('');
   const [contextTranslation, setContextTranslation] = useState('');
   const [grammarFormula, setGrammarFormula] = useState('');
+
+  const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   // Animación de pulso de grabación de voz
   const pulseAnim = useRef(new Animated.Value(1)).current;
@@ -168,7 +173,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
   };
 
-  const handleProcessSpanishInput = (textToProcess?: string) => {
+  const handleProcessSpanishInput = async (textToProcess?: string) => {
     const rawInput = (textToProcess || spanishVoiceInput).trim().toLowerCase();
     if (!rawInput) {
       Alert.alert('Entrada Vacía', 'Escribe o di en español la palabra o modismo que deseas aprender.');
@@ -186,7 +191,8 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     let resultCard: Flashcard;
 
     if (matched) {
-      const categoryImg = CATEGORY_IMAGE_MAP[matched.category as ConceptCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+      const categoryImg = await imageGenerationService.generateOrFallback(matched.targetWord, matched.category);
+      const facilitated = nlpLinguisticService.toFacilitatedPhonetics(matched.targetWord, matched.phoneticScript);
       resultCard = {
         id: `fc-voice-${Date.now()}`,
         targetWord: matched.targetWord,
@@ -194,6 +200,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         cardType: 'ABSTRACT',
         partOfSpeech: matched.partOfSpeech || 'IDIOM',
         conceptCategory: matched.category,
+        facilitatedPhonetics: facilitated,
         phoneticScript: matched.phoneticScript,
         contextSentence: matched.contextSentence,
         contextTranslation: matched.contextTranslation,
@@ -210,7 +217,8 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       };
     } else {
       const capitalizedEs = rawInput.charAt(0).toUpperCase() + rawInput.slice(1);
-      const categoryImg = CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+      const categoryImg = await imageGenerationService.generateOrFallback(capitalizedEs, 'IDIOM_EXPRESSION');
+      const facilitated = nlpLinguisticService.toFacilitatedPhonetics(capitalizedEs);
       resultCard = {
         id: `fc-voice-${Date.now()}`,
         targetWord: capitalizedEs,
@@ -218,6 +226,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         cardType: 'ABSTRACT',
         partOfSpeech: 'PHRASE',
         conceptCategory: 'IDIOM_EXPRESSION',
+        facilitatedPhonetics: facilitated,
         phoneticScript: `/${rawInput.replace(/\s+/g, '.')}/`,
         contextSentence: `I learned how to express '${capitalizedEs}' naturally in English.`,
         contextTranslation: `Aprendí a expresar '${capitalizedEs}' naturalmente en inglés.`,
@@ -251,14 +260,14 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     setContextTranslation(`Siempre uso '${targetWord}' cuando hablo con hablantes nativos.`);
   };
 
-  const handleSaveMixedForm = () => {
+  const handleSaveMixedForm = async () => {
     if (!targetWord.trim() || !nativeTranslation.trim()) {
       Alert.alert('Campos Incompletos', 'Por favor ingresa la palabra en inglés y su traducción.');
       return;
     }
 
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
-    const categoryImg = CATEGORY_IMAGE_MAP[selectedCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+    const categoryImg = await imageGenerationService.generateOrFallback(targetWord.trim(), selectedCategory);
 
     const rawTranslation = nativeTranslation.trim();
     const acceptedList = rawTranslation
@@ -270,6 +279,14 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
     const minLen = Math.min(...acceptedList.map(s => s.length));
 
+    const savedFacilitated = !isIpaUnlocked
+      ? (phoneticInput.trim() || nlpLinguisticService.toFacilitatedPhonetics(targetWord.trim()))
+      : (nlpLinguisticService.toFacilitatedPhonetics(targetWord.trim()));
+
+    const savedIpa = isIpaUnlocked
+      ? (phoneticInput.trim() || `/${targetWord.toLowerCase().trim()}/`)
+      : `/${targetWord.toLowerCase().trim()}/`;
+
     const newCard = addCard({
       targetWord: targetWord.trim(),
       primaryTranslation: acceptedList[0] || rawTranslation,
@@ -277,11 +294,11 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       minInputLength: minLen,
       displayTranslation: rawTranslation,
       nativeTranslation: rawTranslation,
-      facilitatedPhonetics: nlpLinguisticService.toFacilitatedPhonetics(targetWord.trim()),
+      facilitatedPhonetics: savedFacilitated,
+      phoneticScript: savedIpa,
       cardType: 'ABSTRACT',
       partOfSpeech: config?.part || 'NOUN',
       conceptCategory: selectedCategory,
-      phoneticScript: `/${targetWord.toLowerCase().trim()}/`,
       contextSentence: contextSentence || `Example sentence with ${targetWord}.`,
       contextTranslation: contextTranslation || `Oración de ejemplo con ${targetWord}.`,
       mnemonicHint: mnemonicHint || undefined,
@@ -344,6 +361,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     setGeneratedPreviewCard(null);
     setTargetWord('');
     setNativeTranslation('');
+    setPhoneticInput('');
     setMnemonicHint('');
     setContextSentence('');
     setContextTranslation('');
@@ -459,7 +477,11 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                     )}
 
                     <Text style={styles.previewWord}>{generatedPreviewCard.targetWord}</Text>
-                    <Text style={styles.previewPhonetic}>{generatedPreviewCard.phoneticScript}</Text>
+                    <Text style={styles.previewPhonetic}>
+                      {!isIpaUnlocked && generatedPreviewCard.facilitatedPhonetics
+                        ? `${generatedPreviewCard.facilitatedPhonetics} (habla fácil)`
+                        : generatedPreviewCard.phoneticScript}
+                    </Text>
                     <Text style={styles.previewTranslation}>{generatedPreviewCard.nativeTranslation}</Text>
 
                     {generatedPreviewCard.contextSentence && (
@@ -522,7 +544,26 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   placeholder="Ej. Under the weather"
                   placeholderTextColor="#747878"
                   value={targetWord}
-                  onChangeText={setTargetWord}
+                  onChangeText={(text) => {
+                    setTargetWord(text);
+                    if (text.trim()) {
+                      const fac = nlpLinguisticService.toFacilitatedPhonetics(text.trim());
+                      setPhoneticInput(isIpaUnlocked ? `/${text.toLowerCase().trim()}/` : fac);
+                    } else {
+                      setPhoneticInput('');
+                    }
+                  }}
+                />
+
+                <Text style={styles.inputLabel}>
+                  {isIpaUnlocked ? 'Fonética IPA:' : 'Pronunciación (habla fácil):'}
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder={isIpaUnlocked ? 'Ej. /ˈæn.dər ðə ˈweð.ər/' : 'Ej. ánder de uéder'}
+                  placeholderTextColor="#747878"
+                  value={phoneticInput}
+                  onChangeText={setPhoneticInput}
                 />
 
                 <Text style={styles.inputLabel}>Significado en Español:</Text>

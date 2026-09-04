@@ -12,6 +12,7 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { COLORS } from '../src/constants/theme';
 import { NotificationToast } from '../src/components/notifications/NotificationToast';
+import { NetworkBanner } from '../src/components/common/NetworkBanner';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -33,6 +34,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <StatusBar style="dark" backgroundColor={COLORS.background} />
       <NotificationToast />
+      <NetworkBanner />
       <Stack
         screenOptions={{
           headerShown: false,

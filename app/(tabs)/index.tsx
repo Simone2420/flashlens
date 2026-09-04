@@ -34,6 +34,7 @@ import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { ConceptCategory, CardType, Flashcard } from '../../src/types';
 import { AbstractCardModal } from '../../src/components/flashcards/AbstractCardModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
+import { MockLoginModal } from '../../src/components/auth/MockLoginModal';
 import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 
@@ -95,6 +96,7 @@ export default function HomeScreen() {
 
   const [isAbstractModalVisible, setIsAbstractModalVisible] = useState(false);
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
+  const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   const filteredCards = getFilteredCards();
@@ -112,12 +114,20 @@ export default function HomeScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Barra Superior con Feedback y Estado */}
         <View style={styles.topBar}>
-          <View>
-            <Text style={styles.greetingText}>HOLA, {profile.username.toUpperCase()}</Text>
-            <Text style={styles.subGreeting}>
-              Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => {
+              Haptics.selectionAsync();
+              setIsProfileModalVisible(true);
+            }}
+          >
+            <Text style={styles.greetingText}>
+              HOLA, {(profile.fullName || profile.username || 'Carlos Gómez').toUpperCase()}
             </Text>
-          </View>
+            <Text style={styles.subGreeting}>
+              {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel} ✏️
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -311,6 +321,10 @@ export default function HomeScreen() {
       <MicroFeedbackModal
         visible={isFeedbackModalVisible}
         onClose={() => setIsFeedbackModalVisible(false)}
+      />
+      <MockLoginModal
+        visible={isProfileModalVisible}
+        onClose={() => setIsProfileModalVisible(false)}
       />
     </View>
   );

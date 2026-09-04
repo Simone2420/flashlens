@@ -10,11 +10,16 @@ export interface DetectedObjectCandidate {
 export interface AdaptiveCardPayload {
   targetWord: string;
   nativeTranslation: string;
+  primaryTranslation?: string;
+  acceptedTranslations?: string[];
+  minInputLength?: number;
+  displayTranslation?: string;
   phoneticScript: string;
   facilitatedPhonetics: string;
   cefrLevel: CEFRLevel;
   contextSentence: string;
   contextTranslation: string;
+  mnemonicHint?: string;
   partOfSpeech: 'NOUN';
   conceptCategory: 'OBJECT';
   confidence: number;
@@ -636,6 +641,39 @@ export class NLPLinguisticService {
       'cushioned seat': 'kúshond síit',
       'lumbar seating': 'lúmbar síiting',
       'orthopedic armchair': 'ortopédik árm-cher',
+      // Modismos & Expresiones Abstractas
+      'break the ice': 'bréik di áis',
+      'regret': 'ri-grét',
+      'exhausted': 'ig-zós-tid',
+      'give up': 'giv áp',
+      'actually': 'ák-chu-a-li',
+      'used to': 'iúzd tu',
+      'although': 'ol-dóu',
+      'under the weather': 'ánder de uéder',
+      'piece of cake': 'piis of kéik',
+      'hit the nail on the head': 'jit de néil on de jed',
+      'cost an arm and a leg': 'kost an arm and a leg',
+      'once in a blue moon': 'uáns in a blu mun',
+      'call it a day': 'kol it a déi',
+      'bite the bullet': 'báit de búlet',
+      'barking up the wrong tree': 'bárking áp de rong trii',
+      'spill the beans': 'spil de biins',
+      'burn the midnight oil': 'bern de míd-nait óil',
+      'by the way': 'bai de uéi',
+      'as far as i know': 'as far as ai nóu',
+      'in order to': 'in órder tu',
+      'furthermore': 'férder-mor',
+      'however': 'jau-éver',
+      'nevertheless': 'néver-de-les',
+      'meanwhile': 'míin-uail',
+      'therefore': 'dér-for',
+      'look forward to': 'luk fór-uard tu',
+      'run out of': 'ran áut of',
+      'bring up': 'bring áp',
+      'figure out': 'fíguiur áut',
+      'put off': 'put of',
+      'come across': 'kam a-krós',
+      'get along': 'guet a-lóng',
     };
 
     if (directMap[lower]) {
