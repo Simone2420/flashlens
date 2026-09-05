@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -15,7 +15,9 @@ import {
   ArrowRight,
   TrendingUp,
   RotateCcw,
+  Check,
 } from 'lucide-react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
 import { useUserStore } from '../../src/store/useUserStore';
@@ -24,6 +26,7 @@ import { CEFRLevel, LearningPace } from '../../src/types';
 
 export default function DiagnosticResultScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{
     total?: string;
     correct?: string;
@@ -37,21 +40,24 @@ export default function DiagnosticResultScreen() {
     production?: string;
   }>();
 
-  const { setDiagnosedLevel, setLearningPace, profile } = useUserStore();
+  const { setDiagnosedLevel, setLearningPace } = useUserStore();
   const { recalculatePaceTransition, applyDiagnosticLevel } = useRoadmapStore();
 
   const total = Number(params.total) || 25;
   const correct = Number(params.correct) || 18;
   const percentage = Number(params.percentage) || 72;
   const level: CEFRLevel = (params.level as CEFRLevel) || 'A1';
-  const pace: LearningPace = (params.pace as LearningPace) || 'MEDIUM';
+  const defaultPace: LearningPace = (params.pace as LearningPace) || 'MEDIUM';
 
-  const handleApplyAndContinue = (selectedPace: LearningPace) => {
+  const [selectedPace, setSelectedPace] = useState<LearningPace>(defaultPace);
+
+  const handleConfirmAndApply = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     setDiagnosedLevel(level);
     setLearningPace(selectedPace);
     applyDiagnosticLevel(level);
     recalculatePaceTransition(selectedPace);
+
     router.replace({
       pathname: '/(tabs)/roadmap' as any,
       params: {
@@ -60,9 +66,21 @@ export default function DiagnosticResultScreen() {
     });
   };
 
+  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
+  const bottomPadding = Math.max(insets.bottom, 24);
+
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.safeAreaContainer}>
+      <ScrollView
+        contentContainerStyle={[
+          styles.content,
+          {
+            paddingTop: topPadding + SPACING.sm,
+            paddingBottom: bottomPadding + 50,
+          },
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Tarjeta de Felicitación */}
         <View style={styles.resultCard}>
           <View style={styles.trophyCircle}>
@@ -81,9 +99,25 @@ export default function DiagnosticResultScreen() {
 
             <View style={styles.scoreBox}>
               <Text style={styles.levelValue}>{level}</Text>
-              <Text style={styles.scoreLabel}>Nivel MCER</Text>
+              <Text style={styles.scoreLabel}>Nivel Calibrado</Text>
             </View>
           </View>
+
+          {level === 'A2' ? (
+            <View style={styles.a2BadgeBanner}>
+              <Sparkles size={16} color="#765A00" />
+              <Text style={styles.a2BadgeBannerText}>
+                ¡Excelente! Desbloqueas las lecciones del nivel A2 directamente.
+              </Text>
+            </View>
+          ) : (
+            <View style={styles.a1BadgeBanner}>
+              <CheckCircle2 size={16} color="#16A34A" />
+              <Text style={styles.a1BadgeBannerText}>
+                Comenzarás con bases sólidas desde A1 con andamiaje guiado.
+              </Text>
+            </View>
+          )}
         </View>
 
         {/* Desglose por Secciones */}
@@ -112,69 +146,108 @@ export default function DiagnosticResultScreen() {
         </View>
 
         {/* Selector de Ritmo Calibrado */}
-        <Text style={styles.sectionHeading}>CONFIRMA TU RITMO RECOMENDADO</Text>
+        <Text style={styles.sectionHeading}>CONFIRMA TU RITMO DE APRENDIZAJE</Text>
         <View style={styles.pacesContainer}>
           <TouchableOpacity
-            onPress={() => handleApplyAndContinue('SLOW')}
-            style={[styles.paceCard, pace === 'SLOW' && styles.paceCardRecommended]}
+            activeOpacity={0.85}
+            onPress={() => {
+              Haptics.selectionAsync();
+              setSelectedPace('SLOW');
+            }}
+            style={[
+              styles.paceCard,
+              selectedPace === 'SLOW' && styles.paceCardSelected,
+            ]}
           >
             <Text style={styles.paceEmoji}>🐢</Text>
             <View style={styles.paceInfo}>
               <Text style={styles.paceTitle}>
-                Ritmo Lento (SLOW) {pace === 'SLOW' && '★ Recomendado'}
+                Ritmo Lento (SLOW) {defaultPace === 'SLOW' && '★ Sugerido'}
               </Text>
               <Text style={styles.paceDesc}>
                 Andamiaje guiado con pistas léxicas • Meta 15 XP / día.
               </Text>
             </View>
-            <ArrowRight size={18} color="#765A00" />
+            <View style={[styles.radioCircle, selectedPace === 'SLOW' && styles.radioCircleActive]}>
+              {selectedPace === 'SLOW' && <Check size={14} color="#1C1B1B" />}
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => handleApplyAndContinue('MEDIUM')}
-            style={[styles.paceCard, pace === 'MEDIUM' && styles.paceCardRecommended]}
+            activeOpacity={0.85}
+            onPress={() => {
+              Haptics.selectionAsync();
+              setSelectedPace('MEDIUM');
+            }}
+            style={[
+              styles.paceCard,
+              selectedPace === 'MEDIUM' && styles.paceCardSelected,
+            ]}
           >
             <Text style={styles.paceEmoji}>⚖️</Text>
             <View style={styles.paceInfo}>
               <Text style={styles.paceTitle}>
-                Ritmo Medio (MEDIUM) {pace === 'MEDIUM' && '★ Recomendado'}
+                Ritmo Medio (MEDIUM) {defaultPace === 'MEDIUM' && '★ Sugerido'}
               </Text>
               <Text style={styles.paceDesc}>
                 Andamiaje equilibrado y casillas elásticas • Meta 30 XP / día.
               </Text>
             </View>
-            <ArrowRight size={18} color="#765A00" />
+            <View style={[styles.radioCircle, selectedPace === 'MEDIUM' && styles.radioCircleActive]}>
+              {selectedPace === 'MEDIUM' && <Check size={14} color="#1C1B1B" />}
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => handleApplyAndContinue('FAST')}
-            style={[styles.paceCard, pace === 'FAST' && styles.paceCardRecommended]}
+            activeOpacity={0.85}
+            onPress={() => {
+              Haptics.selectionAsync();
+              setSelectedPace('FAST');
+            }}
+            style={[
+              styles.paceCard,
+              selectedPace === 'FAST' && styles.paceCardSelected,
+            ]}
           >
             <Text style={styles.paceEmoji}>⚡</Text>
             <View style={styles.paceInfo}>
               <Text style={styles.paceTitle}>
-                Ritmo Rápido (FAST) {pace === 'FAST' && '★ Recomendado'}
+                Ritmo Rápido (FAST) {defaultPace === 'FAST' && '★ Sugerido'}
               </Text>
               <Text style={styles.paceDesc}>
                 Producción oral y escrita directa • Meta 50 XP / día.
               </Text>
             </View>
-            <ArrowRight size={18} color="#765A00" />
+            <View style={[styles.radioCircle, selectedPace === 'FAST' && styles.radioCircleActive]}>
+              {selectedPace === 'FAST' && <Check size={14} color="#1C1B1B" />}
+            </View>
           </TouchableOpacity>
         </View>
+
+        {/* Botón Final para Aceptar el Nivel */}
+        <TouchableOpacity
+          activeOpacity={0.88}
+          onPress={handleConfirmAndApply}
+          style={styles.confirmLevelBtn}
+        >
+          <Sparkles size={20} color="#1C1B1B" />
+          <Text style={styles.confirmLevelBtnText}>
+            ACEPTAR NIVEL {level} Y COMENZAR
+          </Text>
+          <ArrowRight size={20} color="#1C1B1B" />
+        </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  safeAreaContainer: {
     flex: 1,
     backgroundColor: '#FDF8F8',
   },
   content: {
     padding: SPACING.lg,
-    paddingBottom: 40,
   },
   resultCard: {
     backgroundColor: '#FFFFFF',
@@ -236,6 +309,42 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginTop: 2,
   },
+  a2BadgeBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: SPACING.md,
+    gap: 8,
+  },
+  a2BadgeBannerText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#765A00',
+    flex: 1,
+  },
+  a1BadgeBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F0FDF4',
+    borderWidth: 1,
+    borderColor: '#BBF7D0',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: SPACING.md,
+    gap: 8,
+  },
+  a1BadgeBannerText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#16A34A',
+    flex: 1,
+  },
   sectionHeading: {
     color: '#1C1B1B',
     fontSize: 11,
@@ -259,36 +368,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   breakdownLabel: {
-    color: '#1C1B1B',
-    fontSize: 12,
+    color: '#5E5E5E',
+    fontSize: 13,
     fontWeight: '600',
-    flex: 1,
   },
   breakdownScore: {
-    color: '#765A00',
-    fontSize: 13,
+    color: '#1C1B1B',
+    fontSize: 14,
     fontWeight: '800',
   },
   pacesContainer: {
-    gap: 8,
+    gap: 10,
+    marginBottom: SPACING.xl,
   },
   paceCard: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    borderRadius: 18,
+    borderRadius: 16,
     padding: 14,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: '#E0E0E0',
     gap: 12,
-    ...SHADOWS.card,
   },
-  paceCardRecommended: {
+  paceCardSelected: {
     borderColor: '#E8B400',
-    backgroundColor: '#FFF8E1',
+    backgroundColor: '#FFFDF5',
   },
   paceEmoji: {
-    fontSize: 26,
+    fontSize: 24,
   },
   paceInfo: {
     flex: 1,
@@ -302,5 +410,35 @@ const styles = StyleSheet.create({
     color: '#5E5E5E',
     fontSize: 11,
     marginTop: 2,
+    lineHeight: 15,
+  },
+  radioCircle: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 1.5,
+    borderColor: '#CCCCCC',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  radioCircleActive: {
+    borderColor: '#E8B400',
+    backgroundColor: '#E8B400',
+  },
+  confirmLevelBtn: {
+    backgroundColor: '#E8B400',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    borderRadius: 16,
+    gap: 10,
+    ...SHADOWS.card,
+  },
+  confirmLevelBtnText: {
+    color: '#1C1B1B',
+    fontSize: 14,
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
 });

@@ -36,16 +36,16 @@ const DEFAULT_USER: UserProfile = {
   fullName: 'Carlos Gómez',
   age: 24,
   isPremium: false,
-  currentStreak: 7,
-  maxStreak: 14,
+  currentStreak: 0,
+  maxStreak: 0,
   lastStreakDate: null,
-  eloRating: 1050,
+  eloRating: 1000,
   targetLanguage: 'en',
-  xp: 450,
+  xp: 0,
   learningPace: 'MEDIUM',
   diagnosedLevel: 'A1',
-  completedLessonsCount: 3,
-  notificationsEnabled: true,
+  completedLessonsCount: 0,
+  notificationsEnabled: false,
 };
 
 const DEFAULT_LIVES: LivesState = {
@@ -60,7 +60,7 @@ export const useUserStore = create<UserState>()(
     (set, get) => ({
       profile: DEFAULT_USER,
       lives: DEFAULT_LIVES,
-      isOnboarded: true,
+      isOnboarded: false,
 
       loseLife: () => {
         const { lives, profile } = get();
@@ -282,7 +282,12 @@ export const useUserStore = create<UserState>()(
             fullName: fullName.trim(),
             age: Math.max(5, Math.min(120, age)),
             username: (username || fullName).trim(),
+            currentStreak: 0,
+            maxStreak: 0,
+            xp: 0,
+            notificationsEnabled: false,
           },
+          isOnboarded: true,
         }));
       },
 
@@ -290,7 +295,7 @@ export const useUserStore = create<UserState>()(
         set({
           profile: DEFAULT_USER,
           lives: DEFAULT_LIVES,
-          isOnboarded: true,
+          isOnboarded: false,
         });
       },
     }),

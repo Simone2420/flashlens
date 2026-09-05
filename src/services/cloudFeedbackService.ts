@@ -1,13 +1,16 @@
 /**
  * FlashLens Cloud Feedback Service
  * Sincroniza sugerencias y calificaciones de los usuarios directamente con Google Sheets (Excel en la nube)
- * mediante el webhook de Google Apps Script, con cola offline de respaldo en AsyncStorage.
+ * mediante el webhook de Google Apps Script, con cola offline de respaldo en AsyncStorage
+ * y auto-sincronización con notificaciones In-App y Push al restablecerse la conexión.
  */
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
+import * as Notifications from 'expo-notifications';
 import { API_CONFIG } from '../constants/apiConfig';
 import { UserFeedback } from '../types';
+import { networkService } from './networkService';
 
 export interface FeedbackPayload {
   timestamp?: string;
@@ -21,10 +24,34 @@ export interface FeedbackPayload {
   deviceInfo?: string;
 }
 
+export type FeedbackSyncListener = (sentCount: number) => void;
+
 const STORAGE_QUEUE_KEY = '@flashlens_feedback_queue';
 const STORAGE_HISTORY_KEY = '@flashlens_feedback_history';
 
 class CloudFeedbackService {
+  private syncListeners: FeedbackSyncListener[] = [];
+  private isFlushing = false;
+
+  constructor() {
+    // Escuchar automáticamente la reconexión a internet para vaciar la cola offline
+    networkService.subscribe((isConnected) => {
+      if (isConnected) {
+        this.flushPendingQueue().catch(() => {});
+      }
+    });
+  }
+
+  /**
+   * Permite que componentes de la interfaz (como toats o modales) se suscriban a confirmaciones de sincronización
+   */
+  public addSyncListener(callback: FeedbackSyncListener): () => void {
+    this.syncListeners.push(callback);
+    return () => {
+      this.syncListeners = this.syncListeners.filter(l => l !== callback);
+    };
+  }
+
   /**
    * Envía una sugerencia al Webhook de Google Sheets.
    * Si no hay conexión o falla, se almacena en la cola local para reintento automático.
@@ -69,7 +96,8 @@ class CloudFeedbackService {
       clearTimeout(timeoutId);
 
       if (response.ok) {
-        // Enviar también elementos pendientes si existen
+        networkService.markConnected();
+        // Enviar también elementos pendientes si existían en cola
         this.flushPendingQueue().catch(() => {});
         return { success: true, queued: false };
       }
@@ -91,9 +119,13 @@ class CloudFeedbackService {
   }
 
   /**
-   * Reintenta enviar los elementos guardados offline cuando vuelve internet
+   * Reintenta enviar los elementos guardados offline cuando vuelve internet.
+   * Dispara notificación In-App y notificación push en el teléfono móvil al completarse.
    */
   public async flushPendingQueue(): Promise<void> {
+    if (this.isFlushing) return;
+    this.isFlushing = true;
+
     try {
       const queueRaw = await AsyncStorage.getItem(STORAGE_QUEUE_KEY);
       if (!queueRaw) return;
@@ -102,15 +134,25 @@ class CloudFeedbackService {
       if (queueList.length === 0) return;
 
       const remaining: FeedbackPayload[] = [];
+      let sentCount = 0;
 
       for (const item of queueList) {
         try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.GOOGLE_SHEETS.TIMEOUT_MS);
+
           const res = await fetch(API_CONFIG.GOOGLE_SHEETS.WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(item),
+            signal: controller.signal,
           });
-          if (!res.ok) {
+
+          clearTimeout(timeoutId);
+
+          if (res.ok) {
+            sentCount++;
+          } else {
             remaining.push(item);
           }
         } catch {
@@ -119,8 +161,38 @@ class CloudFeedbackService {
       }
 
       await AsyncStorage.setItem(STORAGE_QUEUE_KEY, JSON.stringify(remaining));
+
+      if (sentCount > 0) {
+        // 1. Notificación In-App para usuarios activos en la app
+        this.syncListeners.forEach(cb => {
+          try {
+            cb(sentCount);
+          } catch (err) {
+            console.warn('Error en listener in-app de feedback sync:', err);
+          }
+        });
+
+        // 2. Notificación nativa en la barra de estado del celular (si la app está cerrada o en segundo plano)
+        try {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: 'FlashLens Feedback',
+              body: sentCount === 1
+                ? 'Tu opinión y sugerencia se envió exitosamente a Google Sheets.'
+                : `Tus ${sentCount} opiniones pendientes se enviaron exitosamente a Google Sheets.`,
+              data: { route: '/(tabs)/profile' },
+              sound: 'default',
+            },
+            trigger: null, // Inmediata en el sistema
+          });
+        } catch (notifErr) {
+          console.warn('Error programando notificación push de sincronización de feedback:', notifErr);
+        }
+      }
     } catch (e) {
       console.warn('Error vaciando cola de feedback:', e);
+    } finally {
+      this.isFlushing = false;
     }
   }
 

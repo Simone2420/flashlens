@@ -5,13 +5,10 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Animated,
 } from 'react-native';
-import { Mic, MicOff } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { LearningPace, CharacterDiff } from '../../types';
 import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
-import { speechToTextService } from '../../services/speechToTextService';
 
 interface AdaptiveDictationInputProps {
   learningPace: LearningPace;
@@ -37,42 +34,11 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   minInputLength,
 }) => {
   const [inputValue, setInputValue] = useState('');
-  const [isListening, setIsListening] = useState(false);
   const inputRef = useRef<TextInput>(null);
 
   useEffect(() => {
     setInputValue('');
-    setIsListening(false);
-    speechToTextService.stopListening();
   }, [targetText]);
-
-  const toggleSpeechRecognition = async () => {
-    if (disabled) return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    if (isListening) {
-      speechToTextService.stopListening();
-      setIsListening(false);
-    } else {
-      setIsListening(true);
-      const started = await speechToTextService.startListening({
-        language: 'en-US',
-        onResult: (transcript, isFinal) => {
-          setInputValue(transcript);
-          onInputChange(transcript);
-          if (isFinal) {
-            setIsListening(false);
-          }
-        },
-        onError: () => setIsListening(false),
-        onEnd: () => setIsListening(false),
-      });
-
-      if (!started) {
-        setIsListening(false);
-      }
-    }
-  };
 
   const cleanTarget = targetText.trim();
   const targetLength = cleanTarget.length;
@@ -150,25 +116,6 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             ))}
           </View>
         )}
-
-        <TouchableOpacity
-          activeOpacity={0.8}
-          disabled={disabled}
-          onPress={toggleSpeechRecognition}
-          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
-        >
-          {isListening ? (
-            <>
-              <MicOff size={15} color="#BA1A1A" />
-              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
-            </>
-          ) : (
-            <>
-              <Mic size={15} color="#765A00" />
-              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
-            </>
-          )}
-        </TouchableOpacity>
       </View>
     );
   }
@@ -215,25 +162,6 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             ))}
           </View>
         )}
-
-        <TouchableOpacity
-          activeOpacity={0.8}
-          disabled={disabled}
-          onPress={toggleSpeechRecognition}
-          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
-        >
-          {isListening ? (
-            <>
-              <MicOff size={15} color="#BA1A1A" />
-              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
-            </>
-          ) : (
-            <>
-              <Mic size={15} color="#765A00" />
-              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
-            </>
-          )}
-        </TouchableOpacity>
       </View>
     );
   }
@@ -303,25 +231,6 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
             );
           })}
         </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.8}
-          disabled={disabled}
-          onPress={toggleSpeechRecognition}
-          style={[styles.sttBtn, isListening && styles.sttBtnActive]}
-        >
-          {isListening ? (
-            <>
-              <MicOff size={15} color="#BA1A1A" />
-              <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
-            </>
-          ) : (
-            <>
-              <Mic size={15} color="#765A00" />
-              <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
-            </>
-          )}
-        </TouchableOpacity>
       </View>
     );
   }
@@ -386,25 +295,6 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           );
         })}
       </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.8}
-        disabled={disabled}
-        onPress={toggleSpeechRecognition}
-        style={[styles.sttBtn, isListening && styles.sttBtnActive]}
-      >
-        {isListening ? (
-          <>
-            <MicOff size={15} color="#BA1A1A" />
-            <Text style={styles.sttBtnTextActive}>Escuchando voz... Toca para pausar</Text>
-          </>
-        ) : (
-          <>
-            <Mic size={15} color="#765A00" />
-            <Text style={styles.sttBtnText}>Dictar por voz (STT)</Text>
-          </>
-        )}
-      </TouchableOpacity>
     </View>
   );
 };
@@ -418,94 +308,95 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
+    paddingHorizontal: 4,
   },
   sentenceHeaderTag: {
-    fontSize: 11,
-    fontWeight: '800',
     color: '#765A00',
+    fontSize: 10,
+    fontWeight: '800',
     letterSpacing: 0.5,
   },
   sentenceCountTag: {
-    fontSize: 11,
-    fontWeight: '700',
     color: '#747878',
+    fontSize: 11,
+    fontWeight: '600',
   },
   largeSentenceBox: {
-    minHeight: 120,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
-    borderRadius: 18,
-    padding: 16,
-    fontSize: 16,
-    color: '#1C1B1B',
-    lineHeight: 24,
-    textAlignVertical: 'top',
-    ...SHADOWS.card,
-  },
-  freeTextInput: {
+    width: '100%',
+    minHeight: 110,
     backgroundColor: '#FFFFFF',
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
     borderRadius: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
+    padding: SPACING.md,
     fontSize: 16,
+    lineHeight: 22,
     color: '#1C1B1B',
+    textAlignVertical: 'top',
     ...SHADOWS.card,
   },
-  inputEvaluated: {
-    borderColor: '#E8B400',
-  },
-  hiddenInput: {
-    position: 'absolute',
-    opacity: 0.01,
-    height: 1,
-    width: 1,
+  freeTextInput: {
+    width: '100%',
+    height: 56,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+    borderColor: '#E0E0E0',
+    borderRadius: 16,
+    paddingHorizontal: SPACING.md,
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1C1B1B',
+    textAlign: 'center',
+    ...SHADOWS.card,
   },
   paceTag: {
-    backgroundColor: '#F1EDEC',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
     alignSelf: 'center',
-    marginBottom: 12,
+    backgroundColor: '#F1EDEC',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginBottom: 10,
   },
   paceTagFast: {
     backgroundColor: '#FFF8E1',
-    borderWidth: 1,
-    borderColor: '#E8B400',
   },
   paceTagText: {
+    color: '#5E5E5E',
     fontSize: 10,
     fontWeight: '800',
-    color: '#5E5E5E',
     letterSpacing: 0.5,
   },
   paceTagTextFast: {
     color: '#765A00',
   },
+  hiddenInput: {
+    position: 'absolute',
+    opacity: 0.01,
+    width: 1,
+    height: 1,
+  },
   boxesRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 7,
+    gap: 6,
+    paddingVertical: 8,
   },
   box: {
-    width: 36,
-    height: 44,
-    borderRadius: 10,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
+    width: 42,
+    height: 52,
+    borderRadius: 12,
+    borderWidth: 2,
     borderColor: '#E0E0E0',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
+    alignItems: 'center',
     ...SHADOWS.card,
   },
   boxActive: {
     borderColor: '#E8B400',
-    backgroundColor: '#FFF8E1',
+    backgroundColor: '#FFFDF5',
   },
   boxCorrect: {
     borderColor: '#16A34A',
@@ -567,32 +458,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '800',
   },
-  sttBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    backgroundColor: '#FFF8E1',
-    borderWidth: 1,
+  inputEvaluated: {
     borderColor: '#E8B400',
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginTop: 12,
-    alignSelf: 'center',
-  },
-  sttBtnActive: {
-    backgroundColor: '#FEE2E2',
-    borderColor: '#EF4444',
-  },
-  sttBtnText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '800',
-  },
-  sttBtnTextActive: {
-    color: '#BA1A1A',
-    fontSize: 12,
-    fontWeight: '800',
   },
 });

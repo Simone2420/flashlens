@@ -38,31 +38,35 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
   const [category, setCategory] = useState<UserFeedback['category']>('GENERAL');
   const [comment, setComment] = useState('');
   const [isSent, setIsSent] = useState(false);
+  const [wasQueued, setWasQueued] = useState(false);
 
   const handleSubmit = async () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setIsSent(true);
 
     try {
-      await cloudFeedbackService.sendFeedback({
-        name: profile.fullName || profile.username || 'Carlos Gómez',
+      const res = await cloudFeedbackService.sendFeedback({
+        name: profile.fullName || profile.username || 'Estudiante FlashLens',
         age: profile.age || 24,
         level: profile.diagnosedLevel || 'A1',
         rating,
         category,
         comment: comment.trim(),
-        currentStreak: profile.currentStreak,
+        currentStreak: profile.currentStreak || 0,
       });
+      setWasQueued(res.queued);
     } catch (e) {
       console.warn('Error enviando feedback:', e);
+      setWasQueued(true);
     }
 
     setTimeout(() => {
       setIsSent(false);
+      setWasQueued(false);
       setComment('');
       setRating(5);
       onClose();
-    }, 1500);
+    }, 2000);
   };
 
   return (
@@ -72,9 +76,13 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
           {isSent ? (
             <View style={styles.successBox}>
               <Heart size={48} color="#EF4444" fill="#EF4444" />
-              <Text style={styles.successTitle}>¡Gracias por tu opinión!</Text>
+              <Text style={styles.successTitle}>
+                {wasQueued ? '¡Opinión Guardada Offline!' : '¡Gracias por tu opinión!'}
+              </Text>
               <Text style={styles.successSubtitle}>
-                Tu retroalimentación nos ayuda a perfeccionar la experiencia de FlashLens.
+                {wasQueued
+                  ? 'Se enviará automáticamente a Google Sheets en cuanto se restablezca tu conexión a internet.'
+                  : 'Tu retroalimentación nos ayuda a perfeccionar la experiencia de FlashLens.'}
               </Text>
             </View>
           ) : (
