@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
+  ScrollView,
 } from 'react-native';
 import { Image as ExpoImage } from 'expo-image';
 import Animated, {
@@ -48,6 +49,25 @@ export const getCardEmoji = (card: Flashcard) => {
     case 'CONVERSATIONAL_FILLER': return '🗣️';
     case 'ABSTRACT_NOUN': return '💡';
     default: return '📸';
+  }
+};
+
+const getCategoryBadgeLabel = (card: Flashcard): string => {
+  if (card.createdVia === 'CAMERA') return '📸 Captura Lens';
+  switch (card.conceptCategory) {
+    case 'IDIOM_EXPRESSION': return '🎭 Modismo';
+    case 'CONNECTOR_TRANSITION': return '🔗 Conector';
+    case 'PHRASAL_VERB': return '⚡ Phrasal Verb';
+    case 'GRAMMAR_RULE': return '📐 Regla Gramatical';
+    case 'FALSE_FRIEND': return '⚠️ Falso Amigo';
+    case 'COLLOCATION_PHRASE': return '💬 Colocación';
+    case 'EMOTION_STATE': return '❤️ Estado Emocional';
+    case 'ACTION_COGNITIVE': return '🧠 Acción Cognitiva';
+    case 'ADVERB_MODIFIER': return '⏱️ Modificador';
+    case 'QUALITY_PERSONALITY': return '🌟 Personalidad';
+    case 'CONVERSATIONAL_FILLER': return '🗣️ Muletilla';
+    case 'ABSTRACT_NOUN': return '💡 Abstracto';
+    default: return 'Vocabulario A1';
   }
 };
 
@@ -150,7 +170,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
         {/* LADO A: ESTÍMULO VISUAL & AUDITIVO (Texto oculto) */}
         <Animated.View style={[styles.card, styles.cardFront, frontAnimatedStyle]}>
           <View style={styles.cardHeader}>
-            <Badge label={card.createdVia === 'CAMERA' ? 'Captura Lens' : 'Vocabulario A1'} variant="default" />
+            <Badge label={getCategoryBadgeLabel(card)} variant="default" />
             <TouchableOpacity
               onPress={() => handleSpeak(card.targetWord)}
               style={styles.soundButton}
@@ -205,62 +225,84 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           </View>
 
           <View style={styles.backContent}>
-            {/* Micro-Avatar Visual de Asociación */}
-            <View style={styles.revelationAvatarRow}>
-              {card.imageUrl && !hasImageError ? (
-                <ExpoImage
-                  source={{ uri: card.imageUrl }}
-                  style={styles.revelationThumb}
-                  contentFit="cover"
-                  cachePolicy="memory-disk"
-                />
-              ) : (
-                <View style={styles.revelationEmojiBadge}>
-                  <Text style={styles.revelationEmojiText}>{getCardEmoji(card)}</Text>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.backScrollContent}
+              style={{ width: '100%' }}
+            >
+              {/* Micro-Avatar Visual de Asociación */}
+              <View style={styles.revelationAvatarRow}>
+                {card.imageUrl && !hasImageError ? (
+                  <ExpoImage
+                    source={{ uri: card.imageUrl }}
+                    style={styles.revelationThumb}
+                    contentFit="cover"
+                    cachePolicy="memory-disk"
+                  />
+                ) : (
+                  <View style={styles.revelationEmojiBadge}>
+                    <Text style={styles.revelationEmojiText}>{getCardEmoji(card)}</Text>
+                  </View>
+                )}
+              </View>
+
+              <Text style={styles.targetWord}>{card.targetWord}</Text>
+              {displayedPhonetics ? (
+                <Text style={styles.phonetic}>
+                  {displayedPhonetics}
+                  {!isIpaUnlocked && card.facilitatedPhonetics ? ' (habla fácil)' : ''}
+                </Text>
+              ) : null}
+              
+              <View style={styles.divider} />
+              
+              <Text style={styles.nativeTranslation}>{card.primaryTranslation || card.nativeTranslation}</Text>
+
+              {/* 🌟 OTROS SIGNIFICADOS / SINÓNIMOS ADMITIDOS */}
+              {otherMeanings.length > 0 && (
+                <View style={styles.otherMeaningsContainer}>
+                  <Text style={styles.otherMeaningsLabel}>Otros significados:</Text>
+                  <View style={styles.otherMeaningsRow}>
+                    {otherMeanings.map((meaning, idx) => (
+                      <View key={idx} style={styles.otherMeaningChip}>
+                        <Text style={styles.otherMeaningText}>{meaning}</Text>
+                      </View>
+                    ))}
+                  </View>
                 </View>
               )}
-            </View>
 
-            <Text style={styles.targetWord}>{card.targetWord}</Text>
-            {displayedPhonetics ? (
-              <Text style={styles.phonetic}>
-                {displayedPhonetics}
-                {!isIpaUnlocked && card.facilitatedPhonetics ? ' (habla fácil)' : ''}
-              </Text>
-            ) : null}
-            
-            <View style={styles.divider} />
-            
-            <Text style={styles.nativeTranslation}>{card.primaryTranslation || card.nativeTranslation}</Text>
-
-            {/* 🌟 OTROS SIGNIFICADOS / SINÓNIMOS ADMITIDOS */}
-            {otherMeanings.length > 0 && (
-              <View style={styles.otherMeaningsContainer}>
-                <Text style={styles.otherMeaningsLabel}>Otros significados:</Text>
-                <View style={styles.otherMeaningsRow}>
-                  {otherMeanings.map((meaning, idx) => (
-                    <View key={idx} style={styles.otherMeaningChip}>
-                      <Text style={styles.otherMeaningText}>{meaning}</Text>
-                    </View>
-                  ))}
+              {/* 📐 FÓRMULA GRAMATICAL */}
+              {card.grammarFormula ? (
+                <View style={styles.grammarFormulaContainer}>
+                  <Text style={styles.formulaLabel}>📐 Estructura / Regla:</Text>
+                  <Text style={styles.formulaText}>{card.grammarFormula}</Text>
                 </View>
-              </View>
-            )}
+              ) : null}
 
-            {card.contextSentence ? (
-              <View style={styles.contextContainer}>
-                <View style={styles.contextHeader}>
-                  <Text style={styles.contextLabel}>Oración en contexto:</Text>
-                  <TouchableOpacity onPress={() => handleSpeak(card.contextSentence)}>
-                    <Volume2 size={15} color={COLORS.onSurfaceVariant} />
-                  </TouchableOpacity>
+              {/* 💡 TRUCO MNEMOTÉCNICO */}
+              {card.mnemonicHint ? (
+                <View style={styles.mnemonicContainer}>
+                  <Text style={styles.mnemonicLabel}>💡 Nemotécnica:</Text>
+                  <Text style={styles.mnemonicText}>{card.mnemonicHint}</Text>
                 </View>
-                <Text style={styles.contextSentence}>"{card.contextSentence}"</Text>
-                {card.contextTranslation ? (
-                  <Text style={styles.contextTranslation}>"{card.contextTranslation}"</Text>
-                ) : null}
-              </View>
-            ) : null}
+              ) : null}
+
+              {card.contextSentence ? (
+                <View style={styles.contextContainer}>
+                  <View style={styles.contextHeader}>
+                    <Text style={styles.contextLabel}>Oración en contexto:</Text>
+                    <TouchableOpacity onPress={() => handleSpeak(card.contextSentence)}>
+                      <Volume2 size={15} color={COLORS.onSurfaceVariant} />
+                    </TouchableOpacity>
+                  </View>
+                  <Text style={styles.contextSentence}>"{card.contextSentence}"</Text>
+                  {card.contextTranslation ? (
+                    <Text style={styles.contextTranslation}>"{card.contextTranslation}"</Text>
+                  ) : null}
+                </View>
+              ) : null}
+            </ScrollView>
           </View>
 
           <View style={styles.backFooter}>
@@ -553,6 +595,56 @@ const styles = StyleSheet.create({
     color: COLORS.onSurfaceVariant,
     marginTop: 4,
     fontStyle: 'italic',
+  },
+  backScrollContent: {
+    alignItems: 'center',
+    paddingHorizontal: SPACING.xs,
+    paddingBottom: SPACING.md,
+  },
+  grammarFormulaContainer: {
+    width: '100%',
+    backgroundColor: '#F0F9FF',
+    borderWidth: 1,
+    borderColor: '#BAE6FD',
+    padding: SPACING.sm,
+    marginTop: 8,
+    borderRadius: 10,
+  },
+  formulaLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#0369A1',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginBottom: 2,
+  },
+  formulaText: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#0C4A6E',
+  },
+  mnemonicContainer: {
+    width: '100%',
+    backgroundColor: '#FFFBEB',
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    padding: SPACING.sm,
+    marginTop: 8,
+    borderRadius: 10,
+  },
+  mnemonicLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#B45309',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginBottom: 2,
+  },
+  mnemonicText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#78350F',
+    lineHeight: 17,
   },
   backFooter: {
     alignItems: 'center',

@@ -29,6 +29,14 @@ class ImageGenerationService {
    */
   private buildPrompt(targetWord: string, category: string): string {
     const cleanWord = targetWord.replace(/[^a-zA-Z0-9\s]/g, '').trim();
+    if (category === 'IDIOM_EXPRESSION' || category === 'PHRASAL_VERB') {
+      return `metaphorical_clean_minimalist_3d_render_of_${cleanWord}_educational_concept_warm_soft_lighting_claymation_style_isolated_bright_background_no_text`
+        .replace(/\s+/g, '_');
+    }
+    if (category === 'GRAMMAR_RULE' || category === 'CONNECTOR_TRANSITION') {
+      return `abstract_connection_bridge_structure_3d_minimalist_icon_${cleanWord}_educational_vector_style_bright_background_no_text`
+        .replace(/\s+/g, '_');
+    }
     return `clean_minimalist_3d_render_of_${cleanWord}_educational_concept_warm_soft_lighting_vector_style_isolated_bright_background_no_text`
       .replace(/\s+/g, '_');
   }

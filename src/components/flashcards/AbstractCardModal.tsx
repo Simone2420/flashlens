@@ -34,6 +34,7 @@ import { speechToTextService } from '../../services/speechToTextService';
 import { nlpLinguisticService } from '../../services/nlpLinguisticService';
 import { imageGenerationService } from '../../services/imageGenerationService';
 import { useRoadmapStore } from '../../store/useRoadmapStore';
+import { cloudAbstractLinguisticService } from '../../services/cloudAbstractLinguisticService';
 
 interface AbstractCardModalProps {
   visible: boolean;
@@ -95,6 +96,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   const [contextSentence, setContextSentence] = useState('');
   const [contextTranslation, setContextTranslation] = useState('');
   const [grammarFormula, setGrammarFormula] = useState('');
+  const [isAutoFilling, setIsAutoFilling] = useState(false);
 
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
@@ -174,7 +176,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   };
 
   const handleProcessSpanishInput = async (textToProcess?: string) => {
-    const rawInput = (textToProcess || spanishVoiceInput).trim().toLowerCase();
+    const rawInput = (textToProcess || spanishVoiceInput).trim();
     if (!rawInput) {
       Alert.alert('Entrada Vacía', 'Escribe o di en español la palabra o modismo que deseas aprender.');
       return;
@@ -183,30 +185,28 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setIsProcessingVoice(true);
 
-    // Búsqueda semántica / coincidencia difusa en el diccionario
-    const matched = VOICE_CONCEPT_DICTIONARY.find(
-      v => rawInput.includes(v.spanishTrigger.toLowerCase()) || v.spanishTrigger.toLowerCase().includes(rawInput)
-    );
+    try {
+      const generated = await cloudAbstractLinguisticService.generateAbstractCard(rawInput);
+      const minLen = Math.min(...generated.acceptedTranslations.map(s => s.length));
 
-    let resultCard: Flashcard;
-
-    if (matched) {
-      const categoryImg = await imageGenerationService.generateOrFallback(matched.targetWord, matched.category);
-      const facilitated = nlpLinguisticService.toFacilitatedPhonetics(matched.targetWord, matched.phoneticScript);
-      resultCard = {
+      const resultCard: Flashcard = {
         id: `fc-voice-${Date.now()}`,
-        targetWord: matched.targetWord,
-        nativeTranslation: matched.nativeTranslation,
+        targetWord: generated.targetWord,
+        nativeTranslation: generated.primaryTranslation,
+        primaryTranslation: generated.primaryTranslation,
+        acceptedTranslations: generated.acceptedTranslations,
+        minInputLength: minLen,
+        displayTranslation: generated.primaryTranslation,
         cardType: 'ABSTRACT',
-        partOfSpeech: matched.partOfSpeech || 'IDIOM',
-        conceptCategory: matched.category,
-        facilitatedPhonetics: facilitated,
-        phoneticScript: matched.phoneticScript,
-        contextSentence: matched.contextSentence,
-        contextTranslation: matched.contextTranslation,
-        mnemonicHint: matched.mnemonicHint,
-        grammarFormula: matched.grammarFormula,
-        imageUrl: categoryImg,
+        partOfSpeech: generated.partOfSpeech,
+        conceptCategory: generated.conceptCategory,
+        facilitatedPhonetics: generated.facilitatedPhonetics,
+        phoneticScript: generated.phoneticScript,
+        contextSentence: generated.contextSentence,
+        contextTranslation: generated.contextTranslation,
+        mnemonicHint: generated.mnemonicHint,
+        grammarFormula: generated.grammarFormula,
+        imageUrl: generated.imageUrl || CATEGORY_IMAGE_MAP[generated.conceptCategory],
         imageSource: 'AI_GENERATED',
         createdVia: 'VOICE_SPANISH',
         createdAt: new Date().toISOString(),
@@ -215,49 +215,54 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         intervalDays: 0,
         nextReviewAt: new Date().toISOString(),
       };
-    } else {
-      const capitalizedEs = rawInput.charAt(0).toUpperCase() + rawInput.slice(1);
-      const categoryImg = await imageGenerationService.generateOrFallback(capitalizedEs, 'IDIOM_EXPRESSION');
-      const facilitated = nlpLinguisticService.toFacilitatedPhonetics(capitalizedEs);
-      resultCard = {
-        id: `fc-voice-${Date.now()}`,
-        targetWord: capitalizedEs,
-        nativeTranslation: capitalizedEs,
-        cardType: 'ABSTRACT',
-        partOfSpeech: 'PHRASE',
-        conceptCategory: 'IDIOM_EXPRESSION',
-        facilitatedPhonetics: facilitated,
-        phoneticScript: `/${rawInput.replace(/\s+/g, '.')}/`,
-        contextSentence: `I learned how to express '${capitalizedEs}' naturally in English.`,
-        contextTranslation: `Aprendí a expresar '${capitalizedEs}' naturalmente en inglés.`,
-        mnemonicHint: `Visualiza una situación donde usas '${capitalizedEs}' en tu vida cotidiana.`,
-        imageUrl: categoryImg,
-        imageSource: 'AI_GENERATED',
-        createdVia: 'VOICE_SPANISH',
-        createdAt: new Date().toISOString(),
-        repetitionNumber: 0,
-        easeFactor: 2.5,
-        intervalDays: 0,
-        nextReviewAt: new Date().toISOString(),
-      };
+
+      setGeneratedPreviewCard(resultCard);
+      setIsProcessingVoice(false);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      Speech.speak(resultCard.targetWord, { language: 'en-US', rate: 0.9 });
+    } catch (err) {
+      console.warn('Error procesando entrada en español:', err);
+      setIsProcessingVoice(false);
+      Alert.alert('Error', 'No se pudo generar la tarjeta abstracta. Por favor intenta de nuevo.');
     }
-
-    setGeneratedPreviewCard(resultCard);
-    setIsProcessingVoice(false);
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    Speech.speak(resultCard.targetWord, { language: 'en-US', rate: 0.9 });
   };
 
-  const handleAutoGenerateMnemonic = () => {
-    if (!targetWord.trim()) {
-      Alert.alert('Escribe una palabra', 'Ingresa primero el concepto o modismo en inglés.');
+  const handleAutoFillWithAI = async () => {
+    const inputWord = targetWord.trim() || nativeTranslation.trim();
+    if (!inputWord) {
+      Alert.alert('Escribe una palabra o frase', 'Ingresa primero el concepto o modismo en inglés o en español.');
       return;
     }
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    setMnemonicHint(`Asocia '${targetWord}' visualmente con una escena cotidiana para recordar su significado.`);
-    setContextSentence(`I always use '${targetWord}' when talking to native speakers.`);
-    setContextTranslation(`Siempre uso '${targetWord}' cuando hablo con hablantes nativos.`);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setIsAutoFilling(true);
+
+    try {
+      const generated = await cloudAbstractLinguisticService.generateAbstractCard(
+        inputWord,
+        'A1',
+        selectedCategory
+      );
+
+      setTargetWord(generated.targetWord);
+      setNativeTranslation(generated.primaryTranslation);
+      setPhoneticInput(isIpaUnlocked ? generated.phoneticScript : generated.facilitatedPhonetics);
+      setSelectedCategory(generated.conceptCategory);
+      setContextSentence(generated.contextSentence);
+      setContextTranslation(generated.contextTranslation);
+      setMnemonicHint(generated.mnemonicHint);
+      if (generated.grammarFormula) {
+        setGrammarFormula(generated.grammarFormula);
+      }
+
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      Speech.speak(generated.targetWord, { language: 'en-US', rate: 0.9 });
+    } catch (err) {
+      console.warn('Error completando con IA:', err);
+      Alert.alert('Atención', 'No se pudo completar automáticamente. Puedes llenar los campos manualmente.');
+    } finally {
+      setIsAutoFilling(false);
+    }
   };
 
   const handleSaveMixedForm = async () => {
@@ -445,6 +450,29 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   {isRecordingVoice && (
                     <Text style={styles.recordingLabel}>🎙️ Escuchando... Di tu frase en español</Text>
                   )}
+
+                  {isProcessingVoice && (
+                    <Text style={[styles.recordingLabel, { color: '#765A00', marginTop: 10 }]}>
+                      ✨ Analizando expresión lingüística con IA...
+                    </Text>
+                  )}
+
+                  {!isRecordingVoice && spanishVoiceInput.trim().length > 0 && !generatedPreviewCard && (
+                    <TouchableOpacity
+                      activeOpacity={0.85}
+                      disabled={isProcessingVoice}
+                      onPress={() => handleProcessSpanishInput()}
+                      style={[
+                        styles.processTextBtn,
+                        isProcessingVoice && { opacity: 0.6 },
+                      ]}
+                    >
+                      <Sparkles size={16} color="#1C1B1B" />
+                      <Text style={styles.processTextBtnText}>
+                        {isProcessingVoice ? 'Generando con IA...' : 'Generar Flashcard con IA'}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
 
                 {/* Vista Previa de Tarjeta Generada con Imagen Unsplash */}
@@ -575,9 +603,16 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   onChangeText={setNativeTranslation}
                 />
 
-                <TouchableOpacity onPress={handleAutoGenerateMnemonic} style={styles.autoGenerateBtn}>
-                  <Zap size={15} color="#765A00" />
-                  <Text style={styles.autoGenerateBtnText}>Auto-Generar Oración y Nemotécnica</Text>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  disabled={isAutoFilling}
+                  onPress={handleAutoFillWithAI}
+                  style={[styles.autoGenerateBtn, isAutoFilling && { opacity: 0.6 }]}
+                >
+                  <Sparkles size={16} color="#765A00" />
+                  <Text style={styles.autoGenerateBtnText}>
+                    {isAutoFilling ? 'Completando con IA...' : 'Completar con IA ✨'}
+                  </Text>
                 </TouchableOpacity>
 
                 <Text style={styles.inputLabel}>Oración en Contexto (Inglés):</Text>
@@ -975,5 +1010,22 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: '#1C1B1B',
     letterSpacing: 0.5,
+  },
+  processTextBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8B400',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    gap: 8,
+    marginTop: 12,
+    alignSelf: 'center',
+  },
+  processTextBtnText: {
+    color: '#1C1B1B',
+    fontWeight: '800',
+    fontSize: 13,
   },
 });
