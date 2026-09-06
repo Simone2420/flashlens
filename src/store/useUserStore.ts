@@ -9,6 +9,7 @@ interface UserState {
   profile: UserProfile;
   lives: LivesState;
   isOnboarded: boolean;
+  pendingCelebration: { visible: boolean; streak: number; xpEarned: number; title?: string; message?: string } | null;
 
   // Actions
   loseLife: () => boolean; // returns true if user still has lives > 0
@@ -27,6 +28,8 @@ interface UserState {
   checkLivesRegeneration: () => void;
   setMockUserCredentials: (fullName: string, age: number, username?: string) => void;
   resetDemoUser: () => void;
+  triggerCelebration: (data: { streak: number; xpEarned?: number; title?: string; message?: string }) => void;
+  dismissCelebration: () => void;
 }
 
 const DEFAULT_USER: UserProfile = {
@@ -61,6 +64,7 @@ export const useUserStore = create<UserState>()(
       profile: DEFAULT_USER,
       lives: DEFAULT_LIVES,
       isOnboarded: false,
+      pendingCelebration: null,
 
       loseLife: () => {
         const { lives, profile } = get();
@@ -134,10 +138,25 @@ export const useUserStore = create<UserState>()(
 
       addXP: (amount: number) => {
         set(state => {
-          const newXp = state.profile.xp + amount;
+          const oldXp = state.profile.xp;
+          const newXp = oldXp + amount;
           const updatedProfile = { ...state.profile, xp: newXp };
+
+          let celebration = state.pendingCelebration;
+          // Si cruza la meta diaria de 50 XP por primera vez hoy
+          if (oldXp < 50 && newXp >= 50) {
+            celebration = {
+              visible: true,
+              streak: state.profile.currentStreak || 1,
+              xpEarned: amount,
+              title: '🎯 ¡META DIARIA DE 50 XP ALCANZADA!',
+              message: '¡Excelente trabajo! Has completado tu objetivo de estudio diario.',
+            };
+            notificationService.syncDailyNotificationSchedule().catch(() => {});
+          }
+
           widgetService.syncWidgetData(updatedProfile.currentStreak, state.lives, null as any, newXp);
-          return { profile: updatedProfile };
+          return { profile: updatedProfile, pendingCelebration: celebration };
         });
       },
 
@@ -183,7 +202,7 @@ export const useUserStore = create<UserState>()(
         if (profile.lastStreakDate === yesterdayLocal) {
           newStreak = (profile.currentStreak || 0) + 1;
         } else if (!profile.lastStreakDate) {
-          // Primera actividad o manteniendo demo
+          // Primera actividad
           newStreak = Math.max(1, (profile.currentStreak || 0) + 1);
         } else {
           // Racha perdida por inactividad de más de 1 día
@@ -197,8 +216,22 @@ export const useUserStore = create<UserState>()(
           lastStreakDate: todayLocal,
         };
 
-        set({ profile: updatedProfile });
+        const celebrationData = {
+          visible: true,
+          streak: newStreak,
+          xpEarned: 25,
+          title: `¡RACHA DE ${newStreak} ${newStreak === 1 ? 'DÍA' : 'DÍAS'} ASEGURADA! 🔥`,
+          message: 'Tu constancia está creando memoria a largo plazo. ¡Mañana tu racha alcanzará un nuevo récord!',
+        };
+
+        set({
+          profile: updatedProfile,
+          pendingCelebration: celebrationData,
+        });
         widgetService.syncWidgetData(newStreak, lives, null as any, updatedProfile.xp);
+
+        // Cancelar alertas nocturnas de racha para hoy
+        notificationService.syncDailyNotificationSchedule().catch(() => {});
 
         return {
           success: true,
@@ -296,7 +329,24 @@ export const useUserStore = create<UserState>()(
           profile: DEFAULT_USER,
           lives: DEFAULT_LIVES,
           isOnboarded: false,
+          pendingCelebration: null,
         });
+      },
+
+      triggerCelebration: (data) => {
+        set({
+          pendingCelebration: {
+            visible: true,
+            streak: data.streak,
+            xpEarned: data.xpEarned || 25,
+            title: data.title,
+            message: data.message,
+          },
+        });
+      },
+
+      dismissCelebration: () => {
+        set({ pendingCelebration: null });
       },
     }),
     {

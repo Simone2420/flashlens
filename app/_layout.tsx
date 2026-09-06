@@ -8,11 +8,14 @@ import {
   DMSans_700Bold,
 } from '@expo-google-fonts/dm-sans';
 import * as SplashScreen from 'expo-splash-screen';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, AppState } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { COLORS } from '../src/constants/theme';
 import { NotificationToast } from '../src/components/notifications/NotificationToast';
 import { NetworkBanner } from '../src/components/common/NetworkBanner';
+import { StreakCelebrationModal } from '../src/components/gamification/StreakCelebrationModal';
+import { useUserStore } from '../src/store/useUserStore';
+import { notificationService } from '../src/services/notificationService';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -23,6 +26,8 @@ export default function RootLayout() {
     DMSans_700Bold,
   });
 
+  const { pendingCelebration, dismissCelebration } = useUserStore();
+
   useEffect(() => {
     // Si las fuentes cargaron o si hubo error/offline, ocultar splash screen de inmediato
     if (fontsLoaded || fontError) {
@@ -30,11 +35,44 @@ export default function RootLayout() {
     }
   }, [fontsLoaded, fontError]);
 
+  useEffect(() => {
+    // Sincronizar notificaciones diarias de forma reactiva al iniciar
+    notificationService.syncDailyNotificationSchedule().catch(() => {});
+
+    // Sincronizar regeneración de vidas al montar
+    useUserStore.getState().checkLivesRegeneration();
+
+    // Escuchar cuando la app pasa a primer plano (active)
+    const appStateSub = AppState.addEventListener('change', (nextState) => {
+      if (nextState === 'active') {
+        useUserStore.getState().checkLivesRegeneration();
+      }
+    });
+
+    // Intervalo de revisión cada 60 segundos mientras la app está abierta
+    const intervalId = setInterval(() => {
+      useUserStore.getState().checkLivesRegeneration();
+    }, 60000);
+
+    return () => {
+      appStateSub.remove();
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" backgroundColor={COLORS.background} />
       <NotificationToast />
       <NetworkBanner />
+      <StreakCelebrationModal
+        visible={!!pendingCelebration?.visible}
+        streak={pendingCelebration?.streak || 1}
+        xpEarned={pendingCelebration?.xpEarned || 25}
+        title={pendingCelebration?.title}
+        message={pendingCelebration?.message}
+        onClose={dismissCelebration}
+      />
       <Stack
         screenOptions={{
           headerShown: false,
