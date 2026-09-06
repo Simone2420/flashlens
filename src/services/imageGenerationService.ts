@@ -1,7 +1,8 @@
 /**
  * FlashLens Image Generation Service
  * Genera ilustraciones educativas personalizadas para conceptos abstractos y vocabulario
- * utilizando Pollinations.ai (Flux/Stable Diffusion serverless) con un timeout prudente de 5.5 segundos.
+ * utilizando Hugging Face FLUX.1-schnell (Inference API) con persistencia local Base64
+ * y síntesis de metáforas visuales concretas para máxima retención nemotécnica.
  */
 
 import { API_CONFIG } from '../constants/apiConfig';
@@ -23,56 +24,151 @@ const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
   OBJECT: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
 };
 
+// Diccionario de escenas visuales concretas para modismos y expresiones frecuentes de nivel A1/A2
+const CURATED_METAPHORS: Record<string, string> = {
+  'piece of cake': 'A delicious slice of strawberry shortcake on a cute porcelain plate with a happy little fork',
+  'break a leg': 'A miniature theater stage with rich red velvet curtains, wooden floorboards and a warm golden spotlight',
+  'hit the books': 'A cute cartoon student character sitting happily at a wooden desk with an open textbook and glowing reading lamp',
+  'break the ice': 'A cheerful cute penguin with a knitted scarf tapping a glowing ice cube that reveals a friendly smiling face',
+  'under the weather': 'A cute fluffy cartoon cloud holding a tiny yellow umbrella with gentle sparkling raindrops',
+  'figure out': 'A friendly cartoon detective character examining a colorful jigsaw puzzle piece with a shiny magnifying glass',
+  'hang out': 'Two cheerful cute cartoon friends sitting on a sunny park bench laughing and enjoying ice cream',
+  'find out': 'A smiling cartoon owl opening a golden treasure box filled with colorful light and ideas',
+  'make up your mind': 'A cute cartoon character standing at a fun colorful signpost with two clear arrow signs',
+  'run out of': 'A funny cute empty glass milk bottle lying on its side with the last tiny drop splashing out',
+  'by the way': 'A bright cheerful signpost on a sunny trail pointing towards an exciting scenic detour',
+  'fall asleep': 'A cute fluffy bear wearing a nightcap peacefully sleeping on a giant soft moon pillow under stars',
+  'look for': 'A cute curious cartoon cat peering through a golden telescope looking into the distance',
+  'actually': 'A friendly cartoon lightbulb character with glasses holding up an index finger with a bright idea spark',
+  'overwhelmed': 'A cute miniature character playfully buried under a gentle mountain of colorful paper notes',
+  'give up': 'A small cute robotic toy releasing a white celebration flag while smiling on green grass',
+  'call off': 'A friendly cartoon hand placing a red calendar pin next to a canceled party card with confetti',
+  'get along': 'Two cheerful cute cartoon puppies sharing a toy together in harmony in a cozy room',
+  'look forward to': 'A cheerful cute cartoon character looking excitedly out a window at a sunrise',
+  'keep an eye on': 'A friendly cartoon detective glasses icon hovering protectively over a sleeping kitten',
+  'catch up': 'Two friendly cute cartoon birds flying together catching up under a bright blue sky',
+  'so far so good': 'A cheerful cartoon boat sailing smoothly on calm pastel blue water towards a friendly lighthouse',
+  'once in a blue moon': 'A cute smiling pastel blue moon with a sleepy cap resting among soft golden stars',
+};
+
 class ImageGenerationService {
   /**
-   * Construye un prompt estético estilo ilustración minimalista 3D educativa
+   * Construye un prompt estético estilo ilustración 3D minimalista educativa en lenguaje natural
+   * traduciendo conceptos abstractos a escenas visuales concretas y memorables para FLUX.1.
    */
-  private buildPrompt(targetWord: string, category: string): string {
+  public buildNaturalPrompt(
+    targetWord: string,
+    category: ConceptCategory | string = 'OBJECT',
+    visualScene?: string,
+    contextSentence?: string,
+    mnemonicHint?: string
+  ): string {
     const cleanWord = targetWord.replace(/[^a-zA-Z0-9\s]/g, '').trim();
+    const lowerWord = cleanWord.toLowerCase();
+
+    // 1. Escena visual explícita provista por la IA lingüista:
+    if (visualScene && visualScene.trim().length > 10) {
+      const cleanScene = visualScene.replace(/["\n\r]/g, ' ').trim();
+      return `Charming cute 3D claymation illustration depicting ${cleanScene}, Pixar clay render style, educational flashcard concept for "${cleanWord}", soft studio lighting, clean solid pastel background, isometric perspective, octane 3D render, vibrant colors, 8k, no text, no letters, no watermark`;
+    }
+
+    // 2. Metáfora curada conocida:
+    if (CURATED_METAPHORS[lowerWord]) {
+      return `Charming cute 3D claymation illustration of ${CURATED_METAPHORS[lowerWord]}, Pixar clay style, educational flashcard aesthetic, soft studio lighting, clean solid pastel background, isometric view, octane 3D render, vibrant, 8k, no text, no letters, no watermark`;
+    }
+
+    // 3. Síntesis a partir de nemotécnica o contexto si existen:
+    if (mnemonicHint && mnemonicHint.length > 15) {
+      const cleanHint = mnemonicHint.replace(/["\n\r]/g, ' ').slice(0, 120);
+      return `Cute 3D claymation educational illustration representing "${cleanWord}", conceptual visual metaphor: ${cleanHint}, Pixar clay style, soft studio shadows, clean solid pastel background, vibrant, no text, no letters`;
+    }
+
+    // 4. Fallback semántico por categoría:
     if (category === 'IDIOM_EXPRESSION' || category === 'PHRASAL_VERB') {
-      return `metaphorical_clean_minimalist_3d_render_of_${cleanWord}_educational_concept_warm_soft_lighting_claymation_style_isolated_bright_background_no_text`
-        .replace(/\s+/g, '_');
+      return `Cute modern 3D clay render representing the English expression "${cleanWord}", metaphorical educational concept, soft warm lighting, solid pastel clean background, isometric perspective, high quality, no text`;
     }
     if (category === 'GRAMMAR_RULE' || category === 'CONNECTOR_TRANSITION') {
-      return `abstract_connection_bridge_structure_3d_minimalist_icon_${cleanWord}_educational_vector_style_bright_background_no_text`
-        .replace(/\s+/g, '_');
+      return `Minimalist 3D abstract connection bridge or puzzle icon representing "${cleanWord}", educational grammar concept, vector clay style, solid bright background, no text`;
     }
-    return `clean_minimalist_3d_render_of_${cleanWord}_educational_concept_warm_soft_lighting_vector_style_isolated_bright_background_no_text`
-      .replace(/\s+/g, '_');
+    if (category === 'EMOTION_STATE' || category === 'QUALITY_PERSONALITY') {
+      return `Expressive 3D character icon feeling "${cleanWord}", modern Pixar clay style, soft studio lighting, clean background, warm colors, no text`;
+    }
+    return `Clean cute 3D clay render of "${cleanWord}", educational flashcard illustration, isolated on pastel background, soft studio shadows, high detail, no text`;
   }
 
   /**
-   * Obtiene la URL de la imagen generada por Pollinations.
-   * Realiza un test de respuesta con AbortController de 5.5s para no bloquear al usuario.
+   * Genera una imagen utilizando Hugging Face FLUX.1-schnell y la convierte a Base64.
    */
-  public async generateOrFallback(
-    targetWord: string,
-    category: ConceptCategory | string = 'OBJECT'
-  ): Promise<string> {
-    const prompt = this.buildPrompt(targetWord, category);
-    const pollinationsUrl = `${API_CONFIG.POLLINATIONS.BASE_URL}/${encodeURIComponent(prompt)}?width=${API_CONFIG.POLLINATIONS.DEFAULT_WIDTH}&height=${API_CONFIG.POLLINATIONS.DEFAULT_HEIGHT}&nologo=true`;
-    const fallbackUrl = FALLBACK_CATEGORY_IMAGES[category] || FALLBACK_CATEGORY_IMAGES.OBJECT;
+  private async generateWithHuggingFace(prompt: string): Promise<string | null> {
+    const apiKey = API_CONFIG.HUGGING_FACE.API_KEY;
+    if (!apiKey) return null;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.HUGGING_FACE.TIMEOUT_MS);
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.POLLINATIONS.TIMEOUT_MS);
-
-      // Probe de verificación HEAD ultrarrápido
-      const response = await fetch(pollinationsUrl, {
-        method: 'HEAD',
+      const response = await fetch(API_CONFIG.HUGGING_FACE.MODEL_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'x-wait-for-model': 'true',
+        },
+        body: JSON.stringify({ inputs: prompt }),
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
 
-      if (response.ok) {
-        return pollinationsUrl;
+      if (!response.ok) {
+        console.warn(`Hugging Face respondió con estado: ${response.status}`);
+        return null;
       }
-      return fallbackUrl;
-    } catch {
-      // Timeout excedido (> 5.5s) o sin red: retornar de inmediato el fallback
-      return fallbackUrl;
+
+      const blob = await response.blob();
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          if (typeof reader.result === 'string') {
+            resolve(reader.result);
+          } else {
+            reject(new Error('FileReader no produjo string'));
+          }
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+
+      return base64;
+    } catch (e: any) {
+      clearTimeout(timeoutId);
+      console.warn('Error generando imagen con Hugging Face FLUX:', e?.message || e);
+      return null;
     }
+  }
+
+  /**
+   * Obtiene la imagen generada por Hugging Face FLUX.1-schnell (Base64)
+   * empleando metáforas visuales para conceptos abstractos, con fallback veloz por categoría.
+   */
+  public async generateOrFallback(
+    targetWord: string,
+    category: ConceptCategory | string = 'OBJECT',
+    visualScene?: string,
+    contextSentence?: string,
+    mnemonicHint?: string
+  ): Promise<string> {
+    const fallbackUrl = FALLBACK_CATEGORY_IMAGES[category] || FALLBACK_CATEGORY_IMAGES.OBJECT;
+    const prompt = this.buildNaturalPrompt(targetWord, category, visualScene, contextSentence, mnemonicHint);
+
+    // 1. Intentar generación con Hugging Face FLUX.1-schnell
+    const hfImage = await this.generateWithHuggingFace(prompt);
+    if (hfImage) {
+      return hfImage;
+    }
+
+    // 2. Retornar fallback seguro y veloz de categoría
+    return fallbackUrl;
   }
 
   public getCategoryFallback(category: string): string {

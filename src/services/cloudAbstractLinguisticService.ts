@@ -10,9 +10,7 @@ import { CEFRLevel, ConceptCategory, Flashcard, PartOfSpeech } from '../types';
 import { nlpLinguisticService } from './nlpLinguisticService';
 import { networkService } from './networkService';
 import { imageGenerationService } from './imageGenerationService';
-import { VOICE_CONCEPT_DICTIONARY } from '../data/mockData';
-
-export interface AbstractCardResult {
+import { VOICE_CONCEPT_DICTIONARY } from '../data/mockData';export interface AbstractCardResult {
   targetWord: string;
   primaryTranslation: string;
   acceptedTranslations: string[];
@@ -24,7 +22,8 @@ export interface AbstractCardResult {
   contextTranslation: string;
   mnemonicHint: string;
   grammarFormula?: string;
-  imageUrl?: string;
+  visualScene?: string;
+  imageUrl: string;
 }
 
 class CloudAbstractLinguisticService {
@@ -59,6 +58,7 @@ CRITICAL LANGUAGE RULES:
 6. "contextTranslation" MUST be the SPANISH translation of that sentence.
 7. "mnemonicHint" MUST be an educational association in SPANISH.
 8. "grammarFormula" MUST explain the grammatical usage structure.
+9. "visualScene" MUST be a concrete physical visual scene description in English for a 3D educational clay illustration representing the concept (e.g. A cute cartoon character doing a specific action with colorful objects, clear background, Pixar clay style).
 
 Analyze if it is an idiom, phrasal verb, connector, grammar rule, false friend, collocation, emotion, cognitive verb, modifier, or abstract noun.
 
@@ -74,7 +74,9 @@ Respond ONLY with a valid raw JSON object matching this exact schema (no markdow
   "contextSentence": "Telling a light joke is an easy way to break the ice in a meeting.",
   "contextTranslation": "Contar un chiste ligero es una forma fácil de romper el hielo en una reunión.",
   "mnemonicHint": "Imagina un barco rompehielos abriendo paso en un mar congelado para que la conversación fluya.",
-  "grammarFormula": "break the ice (verb phrase / transitive)"
+  "grammarFormula": "break the ice (verb phrase / transitive)",
+  "visualScene": "A cute cartoon penguin with a warm knitted scarf using a small wooden pickaxe to crack a giant glowing translucent ice cube with friendly light inside"
+}e / transitive)"
 }
 
 Valid conceptCategory values:
@@ -159,7 +161,14 @@ Valid partOfSpeech values:
             }
 
             const category: ConceptCategory = parsed.conceptCategory || preferredCategory || 'IDIOM_EXPRESSION';
-            const imgUrl = await imageGenerationService.generateOrFallback(finalTarget, category);
+            const visualScene = parsed.visualScene || undefined;
+            const imgUrl = await imageGenerationService.generateOrFallback(
+              finalTarget,
+              category,
+              visualScene,
+              parsed.contextSentence,
+              parsed.mnemonicHint
+            );
 
             const facilitated = parsed.facilitatedPhonetics ||
               nlpLinguisticService.toFacilitatedPhonetics(finalTarget, parsed.phoneticScript);
@@ -184,6 +193,7 @@ Valid partOfSpeech values:
               contextTranslation: parsed.contextTranslation || `Oración de ejemplo con ${parsed.targetWord}.`,
               mnemonicHint: parsed.mnemonicHint || `Asocia '${parsed.targetWord}' visualmente para fijarlo en tu memoria.`,
               grammarFormula: parsed.grammarFormula || undefined,
+              visualScene,
               imageUrl: imgUrl,
             };
           }

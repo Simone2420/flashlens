@@ -272,7 +272,13 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
 
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
-    const categoryImg = await imageGenerationService.generateOrFallback(targetWord.trim(), selectedCategory);
+    const categoryImg = await imageGenerationService.generateOrFallback(
+      targetWord.trim(),
+      selectedCategory,
+      undefined,
+      contextSentence,
+      mnemonicHint
+    );
 
     const rawTranslation = nativeTranslation.trim();
     const acceptedList = rawTranslation

@@ -20,10 +20,16 @@ export const API_CONFIG = {
     TIMEOUT_MS: 12000, // 12 segundos límite para subida y procesamiento en red móvil
   },
 
-  // 2. Pollinations.ai - Generación de Ilustraciones Conceptuales Serverless
+  // 2. Hugging Face - Generación de Ilustraciones Conceptuales con FLUX.1-schnell
+  HUGGING_FACE: {
+    API_KEY: process.env.EXPO_PUBLIC_HF_API_KEY || '',
+    MODEL_URL: 'https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell',
+    TIMEOUT_MS: 7500,
+  },
+
+  // Fallback auxiliar Pollinations.ai
   POLLINATIONS: {
     BASE_URL: 'https://image.pollinations.ai/prompt',
-    // Tiempo de espera prudente calculado para UX móvil (5.5s)
     TIMEOUT_MS: 5500,
     DEFAULT_WIDTH: 600,
     DEFAULT_HEIGHT: 600,
