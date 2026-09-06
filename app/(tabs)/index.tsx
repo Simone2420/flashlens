@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -22,6 +22,7 @@ import {
   CheckCircle2,
   Flame,
   Heart,
+  ArrowRight,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -31,10 +32,14 @@ import { Header } from '../../src/components/common/Header';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { useUserStore } from '../../src/store/useUserStore';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
-import { ConceptCategory, CardType, Flashcard } from '../../src/types';
+import { ConceptCategory, CardType, Flashcard, DailyPill } from '../../src/types';
 import { AbstractCardModal } from '../../src/components/flashcards/AbstractCardModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
 import { MockLoginModal } from '../../src/components/auth/MockLoginModal';
+import { ReviewModeModal } from '../../src/components/srs/ReviewModeModal';
+import { DailyPillModal } from '../../src/components/dailyPill/DailyPillModal';
+import { dailyPillService } from '../../src/services/dailyPillService';
+import { notificationService } from '../../src/services/notificationService';
 import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 
@@ -97,6 +102,25 @@ export default function HomeScreen() {
   const [isAbstractModalVisible, setIsAbstractModalVisible] = useState(false);
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
+  const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
+  const [isPillModalVisible, setIsPillModalVisible] = useState(false);
+  const [todayPill, setTodayPill] = useState<DailyPill | null>(null);
+
+  useEffect(() => {
+    dailyPillService.getTodayPill().then(pill => setTodayPill(pill));
+  }, []);
+
+  useEffect(() => {
+    const unsub = notificationService.addNavigationListener((route) => {
+      if (route === 'PILL_MODAL') {
+        setIsPillModalVisible(true);
+      } else if (route === 'REVIEW_MODAL') {
+        setIsReviewModalVisible(true);
+      }
+    });
+    return unsub;
+  }, []);
+
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   const filteredCards = getFilteredCards();
@@ -140,9 +164,41 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Banner Píldora del Día */}
+        {todayPill && (
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setIsPillModalVisible(true);
+            }}
+            style={styles.pillBanner}
+          >
+            <View style={styles.pillBannerLeft}>
+              <View style={styles.pillIconBox}>
+                <Text style={{ fontSize: 20 }}>🎲</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <View style={styles.pillBadgeRow}>
+                  <Text style={styles.pillTag}>PÍLDORA DEL DÍA</Text>
+                  <Text style={styles.pillLevelBadge}>{todayPill.cefrLevel || 'A2'}</Text>
+                </View>
+                <Text style={styles.pillWordText}>{todayPill.targetWord}</Text>
+                <Text style={styles.pillTranslationText} numberOfLines={1}>
+                  {todayPill.nativeTranslation}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.pillActionPill}>
+              <Text style={styles.pillActionText}>Descubrir</Text>
+              <ArrowRight size={12} color="#1C1B1B" />
+            </View>
+          </TouchableOpacity>
+        )}
+
         {/* Widget Expandido Interactivo */}
         <View style={styles.widgetSection}>
-          <ExpandedMasteryWidget onPress={() => router.push('/srs/review' as any)} />
+          <ExpandedMasteryWidget onPress={() => setIsReviewModalVisible(true)} />
         </View>
 
         {/* Selector de Mazo Dual (Tabs) */}
@@ -233,7 +289,7 @@ export default function HomeScreen() {
             MI MAZO DE ESTUDIO ({filteredCards.length})
           </Text>
           <TouchableOpacity
-            onPress={() => router.push('/srs/review' as any)}
+            onPress={() => setIsReviewModalVisible(true)}
             style={styles.reviewNowBtn}
           >
             <Play size={12} color="#FFFFFF" fill="#FFFFFF" />
@@ -325,6 +381,18 @@ export default function HomeScreen() {
       <MockLoginModal
         visible={isProfileModalVisible}
         onClose={() => setIsProfileModalVisible(false)}
+      />
+      <ReviewModeModal
+        visible={isReviewModalVisible}
+        onClose={() => setIsReviewModalVisible(false)}
+      />
+      <DailyPillModal
+        visible={isPillModalVisible}
+        pill={todayPill}
+        onClose={() => setIsPillModalVisible(false)}
+        onAddedToDeck={() => {
+          // Actualización reactiva automática
+        }}
       />
     </View>
   );
@@ -627,5 +695,84 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.2,
     shadowRadius: 6,
+  },
+  pillBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFDF5',
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: SPACING.md,
+    borderWidth: 1.5,
+    borderColor: '#FFE082',
+    shadowColor: '#E8B400',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  pillBannerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: 10,
+  },
+  pillIconBox: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#FFE885',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  pillBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 2,
+  },
+  pillTag: {
+    color: '#B45309',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  pillLevelBadge: {
+    color: '#1D4ED8',
+    backgroundColor: '#EBF5FF',
+    borderColor: '#BFDBFE',
+    borderWidth: 1,
+    fontSize: 10,
+    fontWeight: '800',
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 4,
+  },
+  pillWordText: {
+    color: '#1C1B1B',
+    fontSize: 16,
+    fontWeight: '800',
+  },
+  pillTranslationText: {
+    color: '#5E5E5E',
+    fontSize: 12,
+  },
+  pillActionPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E8B400',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 12,
+    gap: 4,
+  },
+  pillActionText: {
+    color: '#1C1B1B',
+    fontSize: 12,
+    fontWeight: '800',
   },
 });

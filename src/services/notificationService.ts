@@ -2,15 +2,18 @@ import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
-import { CEFRLevel, Flashcard } from '../types';
-import { INITIAL_FLASHCARDS } from '../data/mockData';
+import { CEFRLevel, DailyPill } from '../types';
+import { dailyPillService } from './dailyPillService';
+import { useFlashcardStore } from '../store/useFlashcardStore';
+import { useUserStore } from '../store/useUserStore';
 
 export interface LocalNotificationPayload {
   id: string;
   title: string;
   body: string;
-  type: 'LIVES_FULL' | 'STREAK_DANGER' | 'SRS_DUE' | 'LEARNING_PILL';
+  type: 'LIVES_FULL' | 'STREAK_DANGER' | 'STREAK_EMERGENCY' | 'SRS_DUE' | 'LEARNING_PILL' | 'FEEDBACK_SYNC';
   route: string;
+  data?: Record<string, any>;
   scheduledAt: string;
   isDelivered?: boolean;
 }
@@ -32,12 +35,14 @@ Notifications.setNotificationHandler({
 class NotificationService {
   private static instance: NotificationService;
   private listeners: ((notification: LocalNotificationPayload) => void)[] = [];
+  private navigationListeners: ((route: string, data?: any) => void)[] = [];
   private isConfigured: boolean = false;
 
   public static getInstance(): NotificationService {
     if (!NotificationService.instance) {
       NotificationService.instance = new NotificationService();
       NotificationService.instance.setupNotificationChannels();
+      NotificationService.instance.setupResponseListener();
     }
     return NotificationService.instance;
   }
@@ -60,6 +65,19 @@ class NotificationService {
     }
   }
 
+  private setupResponseListener(): void {
+    try {
+      Notifications.addNotificationResponseReceivedListener(response => {
+        const data = response.notification.request.content.data;
+        if (data?.route) {
+          this.notifyNavigationListeners(String(data.route), data);
+        }
+      });
+    } catch (e) {
+      console.warn('Error configurando response listener de notificaciones:', e);
+    }
+  }
+
   public async requestPermissions(): Promise<boolean> {
     try {
       const perm: any = await Notifications.getPermissionsAsync();
@@ -77,9 +95,10 @@ class NotificationService {
   public async isEnabled(): Promise<boolean> {
     try {
       const val = await AsyncStorage.getItem(NOTIFICATION_PREF_KEY);
-      return val !== 'false';
+      // Por defecto desactivada (false) según los requerimientos de la app
+      return val === 'true';
     } catch {
-      return true;
+      return false;
     }
   }
 
@@ -89,7 +108,10 @@ class NotificationService {
       if (!enabled) {
         await this.cancelAll();
       } else {
-        await this.requestPermissions();
+        const granted = await this.requestPermissions();
+        if (granted) {
+          await this.syncDailyNotificationSchedule();
+        }
       }
     } catch (e) {
       console.error('Error guardando preferencia de notificaciones:', e);
@@ -97,59 +119,145 @@ class NotificationService {
   }
 
   /**
-   * Programa la Notificación 1: Vidas al 100% (Android status bar + In-App)
+   * Sincroniza y programa la cadencia estratégica diaria de 4 notificaciones:
+   * 1. 12:00 PM: Píldora del Día (Vocabulario nuevo sorpresa con opción de agregar)
+   * 2. 04:00 PM: Repaso SM-2 (Solo si hay tarjetas vencidas dueCards > 0)
+   * 3. 08:00 PM: Alerta de Racha (Solo si no ha completado su meta hoy)
+   * 4. 10:30 PM: Alerta Roja Duolingo 90 min (Solo si no ha completado su meta hoy)
    */
-  public async scheduleLivesFull(secondsUntilFull: number): Promise<void> {
+  public async syncDailyNotificationSchedule(): Promise<void> {
     if (!(await this.isEnabled())) return;
 
-    const payload: LocalNotificationPayload = {
-      id: 'notif-lives-full',
-      title: '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!',
-      body: 'Recuperaste tus 5 corazones. ¡Entra y continúa tu camino en el Roadmap!',
-      type: 'LIVES_FULL',
-      route: '/roadmap',
-      scheduledAt: new Date(Date.now() + secondsUntilFull * 1000).toISOString(),
-    };
-
-    await this.saveNotification(payload);
-
     try {
-      if (secondsUntilFull > 0) {
+      // 1. Limpiar notificaciones programadas anteriores para evitar duplicados
+      await Notifications.cancelAllScheduledNotificationsAsync();
+
+      const userState = useUserStore.getState().profile;
+      const todayStr = new Date().toISOString().split('T')[0];
+      const hasPracticedToday = userState.lastStreakDate === todayStr || userState.xp >= 50;
+
+      // 2. [12:00 PM] Programar Píldora del Día
+      const todayPill = await dailyPillService.getTodayPill();
+      if (todayPill) {
         await Notifications.scheduleNotificationAsync({
           content: {
-            title: payload.title,
-            body: payload.body,
-            data: { route: payload.route },
+            title: `🎲 Píldora del Día: "${todayPill.targetWord}" ✨`,
+            body: `"${todayPill.contextSentence}" ➔ ${todayPill.nativeTranslation}. ¡Toca para descubrirla!`,
+            data: { route: 'PILL_MODAL', pillId: todayPill.id },
             sound: 'default',
           },
           trigger: {
-            type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-            seconds: Math.max(1, Math.round(secondsUntilFull)),
+            type: Notifications.SchedulableTriggerInputTypes.DAILY,
+            hour: 12,
+            minute: 0,
           },
         });
       }
+
+      // 3. [04:00 PM] Programar Repaso SM-2 si hay tarjetas vencidas
+      const dueCards = useFlashcardStore.getState().getDueCards();
+      const dueCount = dueCards.length;
+      if (dueCount > 0) {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: `🧠 Tienes ${dueCount} ${dueCount === 1 ? 'tarjeta lista' : 'tarjetas listas'} para tu repaso SM-2`,
+            body: 'El algoritmo SM-2 calculó que hoy es el momento óptimo para afianzarlas en tu memoria. ¡Toca para repasar!',
+            data: { route: 'REVIEW_MODAL' },
+            sound: 'default',
+          },
+          trigger: {
+            type: Notifications.SchedulableTriggerInputTypes.DAILY,
+            hour: 16,
+            minute: 0,
+          },
+        });
+      }
+
+      // 4. [08:00 PM & 10:30 PM] Programar Alertas de Racha solo si aún NO ha practicado hoy
+      if (!hasPracticedToday) {
+        const streak = userState.currentStreak || 0;
+
+        // 8:00 PM: Advertencia seria de racha
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: streak > 0 ? `🔥 ¡Protege tu racha de ${streak} días!` : '🔥 ¡Inicia tu racha de hoy!',
+            body: 'La noche avanza y aún no has completado tu práctica de hoy. ¡Solo te toma 2 minutos!',
+            data: { route: 'STREAK_DANGER' },
+            sound: 'default',
+          },
+          trigger: {
+            type: Notifications.SchedulableTriggerInputTypes.DAILY,
+            hour: 20,
+            minute: 0,
+          },
+        });
+
+        // 10:30 PM: Alerta Roja Duolingo (Urgencia de 90 min)
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: streak > 0 ? `🚨 ¡ALERTA FINAL! Tu racha de ${streak} días expira en 90 min ⏳` : '🚨 ¡Última oportunidad del día!',
+            body: '¡Queda menos de hora y media para medianoche! Entra ahora mismo y salva tu fuego 🔥',
+            data: { route: 'STREAK_EMERGENCY' },
+            sound: 'default',
+          },
+          trigger: {
+            type: Notifications.SchedulableTriggerInputTypes.DAILY,
+            hour: 22,
+            minute: 30,
+          },
+        });
+      } else {
+        console.log('El usuario ya completó su racha hoy: Alertas de racha de 8:00 PM y 10:30 PM silenciadas.');
+      }
+    } catch (e) {
+      console.warn('Error sincronizando calendario de notificaciones:', e);
+    }
+  }
+
+  /**
+   * Notificación 1: Vidas al 100%
+   */
+  public async scheduleLivesFull(secondsUntilFull: number): Promise<void> {
+    if (!(await this.isEnabled()) || secondsUntilFull <= 0) return;
+
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!',
+          body: 'Recuperaste tus 5 corazones. ¡Entra y continúa tu camino en el Roadmap!',
+          data: { route: '/(tabs)/roadmap' },
+          sound: 'default',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: Math.max(1, Math.round(secondsUntilFull)),
+        },
+      });
     } catch (e) {
       console.warn('Error programando notificación nativa de vidas:', e);
     }
   }
 
   /**
-   * Programa la Notificación 2: Peligro de Racha
+   * Notificación Inmediata de Feedback Sincronizado (Componente 7)
    */
-  public async scheduleStreakDanger(currentStreak: number): Promise<void> {
-    if (!(await this.isEnabled())) return;
-
+  public async notifyFeedbackSynced(count: number): Promise<void> {
     const payload: LocalNotificationPayload = {
-      id: 'notif-streak-danger',
-      title: `🔥 ¡Protege tu racha de ${currentStreak} días!`,
-      body: 'Solo te toma 2 minutos repasar tu sesión de hoy antes de medianoche.',
-      type: 'STREAK_DANGER',
-      route: '/audio',
-      scheduledAt: new Date(Date.now() + 3600000).toISOString(),
+      id: `fb-synced-${Date.now()}`,
+      title: '✅ Opiniones Enviadas',
+      body: count === 1
+        ? 'Tu sugerencia se sincronizó exitosamente con Google Sheets.'
+        : `Tus ${count} comentarios pendientes se sincronizaron con éxito.`,
+      type: 'FEEDBACK_SYNC',
+      route: '/(tabs)',
+      scheduledAt: new Date().toISOString(),
+      isDelivered: true,
     };
 
-    await this.saveNotification(payload);
+    // 1. Notificar a oyentes in-app
+    this.notifyListeners(payload);
 
+    // 2. Notificación en la barra del teléfono si la app estuviera en background
     try {
       await Notifications.scheduleNotificationAsync({
         content: {
@@ -158,73 +266,11 @@ class NotificationService {
           data: { route: payload.route },
           sound: 'default',
         },
-        trigger: {
-          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-          seconds: 3600,
-        },
+        trigger: null,
       });
     } catch (e) {
-      console.warn('Error programando notificación nativa de racha:', e);
+      console.warn('Error disparando notificación nativa de feedback:', e);
     }
-  }
-
-  /**
-   * Programa la Notificación 3: Repaso Espaciado SM-2
-   */
-  public async scheduleSRSDue(dueCardsCount: number): Promise<void> {
-    if (!(await this.isEnabled()) || dueCardsCount <= 0) return;
-
-    const payload: LocalNotificationPayload = {
-      id: 'notif-srs-due',
-      title: `🧠 Tienes ${dueCardsCount} tarjetas listas para repasar`,
-      body: 'El algoritmo SM-2 ha programado tu repaso diario para fijar la memoria a largo plazo.',
-      type: 'SRS_DUE',
-      route: '/srs',
-      scheduledAt: new Date(Date.now() + 1800000).toISOString(),
-    };
-
-    await this.saveNotification(payload);
-
-    try {
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: payload.title,
-          body: payload.body,
-          data: { route: payload.route },
-          sound: 'default',
-        },
-        trigger: {
-          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-          seconds: 1800,
-        },
-      });
-    } catch (e) {
-      console.warn('Error programando notificación nativa de SRS:', e);
-    }
-  }
-
-  /**
-   * Programa la Notificación 4: Píldora de Aprendizaje Multicategoría Calibrada
-   */
-  public async scheduleLearningPill(
-    userLevel: CEFRLevel = 'A1',
-    allCards: Flashcard[] = INITIAL_FLASHCARDS
-  ): Promise<void> {
-    if (!(await this.isEnabled())) return;
-
-    const targetCards = allCards.length > 0 ? allCards : INITIAL_FLASHCARDS;
-    const randomCard = targetCards[Math.floor(Math.random() * targetCards.length)];
-
-    const payload: LocalNotificationPayload = {
-      id: `notif-pill-${Date.now()}`,
-      title: `🎲 Píldora del Día [${randomCard.partOfSpeech} - ${userLevel}]: "${randomCard.targetWord}"`,
-      body: `"${randomCard.contextSentence}" ➔ ${randomCard.nativeTranslation}`,
-      type: 'LEARNING_PILL',
-      route: '/srs',
-      scheduledAt: new Date(Date.now() + 7200000).toISOString(),
-    };
-
-    await this.saveNotification(payload);
   }
 
   /**
@@ -237,22 +283,22 @@ class NotificationService {
     let body = 'Probando el sistema de notificaciones reales on-device.';
     let route = '/(tabs)';
 
-    if (type === 'LIVES_FULL') {
-      title = '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!';
-      body = 'Recuperaste tus 5 corazones. ¡Entra a practicar tu racha!';
-      route = '/(tabs)/roadmap';
-    } else if (type === 'STREAK_DANGER') {
-      title = '🔥 ¡No pierdas tu racha de 7 días!';
+    if (type === 'STREAK_DANGER') {
+      title = '🔥 ¡No pierdas tu racha!';
       body = 'Solo te toma 2 minutos completar tu meta de hoy antes de medianoche.';
-      route = '/(tabs)/audio';
+      route = 'STREAK_DANGER';
+    } else if (type === 'STREAK_EMERGENCY') {
+      title = '🚨 ¡ALERTA FINAL! Tu racha expira en 90 min ⏳';
+      body = '¡Queda menos de hora y media para medianoche! Entra ahora mismo y salva tu fuego 🔥';
+      route = 'STREAK_EMERGENCY';
     } else if (type === 'SRS_DUE') {
       title = '🧠 Tienes 4 tarjetas listas para repasar';
       body = 'Domínalas hoy antes de que se te olviden con el método SM-2.';
-      route = '/(tabs)';
+      route = 'REVIEW_MODAL';
     } else if (type === 'LEARNING_PILL') {
-      title = '🎲 Píldora del Día [Modismo A1]: "Break the ice"';
+      title = '🎲 Píldora del Día: "Break the ice" ✨';
       body = '"Let\'s break the ice before starting." ➔ Romper el hielo';
-      route = '/(tabs)';
+      route = 'PILL_MODAL';
     }
 
     const payload: LocalNotificationPayload = {
@@ -265,10 +311,8 @@ class NotificationService {
       isDelivered: true,
     };
 
-    // 1. Mostrar banner / toast dentro de la app
     this.notifyListeners(payload);
 
-    // 2. Disparar notificación real en la barra de estado de Android
     try {
       await Notifications.scheduleNotificationAsync({
         content: {
@@ -277,7 +321,7 @@ class NotificationService {
           data: { route: payload.route },
           sound: 'default',
         },
-        trigger: null, // Inmediata
+        trigger: null,
       });
     } catch (e) {
       console.warn('Error disparando notificación nativa de prueba:', e);
@@ -293,19 +337,19 @@ class NotificationService {
     };
   }
 
+  public addNavigationListener(callback: (route: string, data?: any) => void) {
+    this.navigationListeners.push(callback);
+    return () => {
+      this.navigationListeners = this.navigationListeners.filter(l => l !== callback);
+    };
+  }
+
   private notifyListeners(notification: LocalNotificationPayload) {
     this.listeners.forEach(cb => cb(notification));
   }
 
-  private async saveNotification(notification: LocalNotificationPayload): Promise<void> {
-    try {
-      const stored = await AsyncStorage.getItem(NOTIFICATIONS_STORAGE_KEY);
-      const list: LocalNotificationPayload[] = stored ? JSON.parse(stored) : [];
-      list.push(notification);
-      await AsyncStorage.setItem(NOTIFICATIONS_STORAGE_KEY, JSON.stringify(list));
-    } catch (e) {
-      console.error('Error guardando notificación:', e);
-    }
+  private notifyNavigationListeners(route: string, data?: any) {
+    this.navigationListeners.forEach(cb => cb(route, data));
   }
 
   public async cancelAll(): Promise<void> {

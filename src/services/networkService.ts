@@ -1,8 +1,11 @@
 /**
  * FlashLens Network Service
  * Monitorea activamente la conectividad real a internet sin depender de librerías nativas extras.
- * Utiliza sondeo ligero contra el endpoint 204 universal para garantizar conexión verídica.
+ * Utiliza sondeo ligero contra el endpoint 204 universal para garantizar conexión verídica,
+ * con escucha reactiva a cambios de AppState y despacho inmediato de reconexión.
  */
+
+import { AppState, AppStateStatus } from 'react-native';
 
 class NetworkService {
   private isChecking = false;
@@ -10,9 +13,23 @@ class NetworkService {
   private listeners: ((isConnected: boolean) => void)[] = [];
   private consecutiveFailures = 0;
   private lastKnownState: boolean = true;
+  private appStateSubscription: any = null;
+
+  constructor() {
+    // Cuando la aplicación vuelve al primer plano, forzar verificación inmediata
+    try {
+      this.appStateSubscription = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
+        if (nextAppState === 'active') {
+          this.checkInternetConnectivity();
+        }
+      });
+    } catch {
+      // Entorno sin AppState (ej. SSR o Node)
+    }
+  }
 
   /**
-   * Realiza un probe ligero (GET generate_204 estándar) con timeout prudente de 5s
+   * Realiza un probe ligero (GET generate_204 estándar) con timeout prudente de 3.5s
    */
   public async checkInternetConnectivity(): Promise<boolean> {
     if (this.isChecking) return this.lastKnownState;
@@ -20,9 +37,9 @@ class NetworkService {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-      // Endpoint estándar Android de conectividad (204 No Content, sin cuerpo)
+      // Endpoint universal Android/Google de verificación (204 No Content)
       const response = await fetch('https://connectivitycheck.gstatic.com/generate_204', {
         method: 'GET',
         signal: controller.signal,
@@ -31,7 +48,7 @@ class NetworkService {
 
       clearTimeout(timeoutId);
       const connected = response.status === 204 || response.ok;
-      
+
       if (connected) {
         this.consecutiveFailures = 0;
         this.notifyListeners(true);
@@ -45,8 +62,7 @@ class NetworkService {
       this.isChecking = false;
     }
 
-    // Solo notificar desconexión tras 2 fallos consecutivos para evitar falsos positivos por latencia móvil
-    if (this.consecutiveFailures >= 2) {
+    if (this.consecutiveFailures >= 1) {
       this.notifyListeners(false);
       return false;
     }
@@ -75,11 +91,17 @@ class NetworkService {
   private notifyListeners(connected: boolean) {
     if (this.lastKnownState !== connected) {
       this.lastKnownState = connected;
-      this.listeners.forEach(cb => cb(connected));
+      this.listeners.forEach(cb => {
+        try {
+          cb(connected);
+        } catch (e) {
+          console.warn('Error en listener de red:', e);
+        }
+      });
     }
   }
 
-  public startMonitoring(intervalMs = 10000) {
+  public startMonitoring(intervalMs = 4500) {
     if (this.checkInterval) return;
     this.checkInternetConnectivity();
     this.checkInterval = setInterval(() => {

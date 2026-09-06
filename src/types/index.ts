@@ -264,3 +264,21 @@ export interface AudioSessionResult {
   xpEarned: number;
   failedWords: string[];
 }
+
+export interface DailyPill {
+  id: string;
+  targetWord: string;
+  nativeTranslation: string;
+  primaryTranslation?: string;
+  acceptedTranslations?: string[];
+  partOfSpeech: PartOfSpeech;
+  conceptCategory: ConceptCategory;
+  cefrLevel: CEFRLevel;
+  facilitatedPhonetics?: string;
+  phoneticScript: string;
+  contextSentence: string;
+  contextTranslation: string;
+  mnemonicHint: string;
+  grammarFormula?: string;
+  imageUrl?: string;
+}

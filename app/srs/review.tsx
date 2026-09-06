@@ -7,8 +7,8 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import { useRouter } from 'expo-router';
-import { X, Trophy, CheckCircle, ArrowLeft } from 'lucide-react-native';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { X, Trophy, ArrowLeft } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING } from '../../src/constants/theme';
 import { FlipCard3D } from '../../src/components/srs/FlipCard3D';
@@ -22,11 +22,30 @@ import { ProgressBar } from '../../src/components/common/ProgressBar';
 export default function SRSReviewScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { mode = 'DUE' } = useLocalSearchParams<{ mode?: 'DUE' | 'HARD' | 'ALL' }>();
+
   const { cards, reviewCard, getDueCards } = useFlashcardStore();
   const { addXP, registerDailyActivity } = useUserStore();
 
   const dueCards = getDueCards();
-  const reviewDeck = dueCards.length > 0 ? dueCards : cards;
+  const hardCards = cards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
+
+  // Seleccionar mazo según el modo elegido
+  let reviewDeck = cards;
+  let modeTitle = 'REPASO ESPACIADO SM-2';
+  let emptyStateMsg = 'No hay tarjetas pendientes hoy. ¡Vas al día!';
+
+  if (mode === 'HARD') {
+    reviewDeck = hardCards.length > 0 ? hardCards : cards;
+    modeTitle = 'VOCABULARIO DIFÍCIL';
+    emptyStateMsg = 'No tienes palabras marcadas como difíciles actualmente.';
+  } else if (mode === 'ALL') {
+    reviewDeck = cards;
+    modeTitle = 'TODO EL MAZO';
+  } else {
+    reviewDeck = dueCards.length > 0 ? dueCards : cards;
+    modeTitle = 'REPASO ESPACIADO SM-2';
+  }
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sessionCompleted, setSessionCompleted] = useState(false);
@@ -64,31 +83,53 @@ export default function SRSReviewScreen() {
           <X size={22} color={COLORS.onSurface} />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>REPASO ESPACIADO</Text>
+        <Text style={styles.headerTitle}>{modeTitle}</Text>
 
         <View style={styles.counterBox}>
           <Text style={styles.counterText}>
-            {sessionCompleted ? reviewDeck.length : currentIndex + 1}/{reviewDeck.length}
+            {reviewDeck.length === 0
+              ? '0/0'
+              : sessionCompleted
+              ? `${reviewDeck.length}/${reviewDeck.length}`
+              : `${currentIndex + 1}/${reviewDeck.length}`}
           </Text>
         </View>
       </View>
 
       <ProgressBar
-        progress={sessionCompleted ? 1 : currentIndex / reviewDeck.length}
+        progress={reviewDeck.length === 0 || sessionCompleted ? 1 : currentIndex / reviewDeck.length}
         height={2}
       />
 
-      {sessionCompleted ? (
+      {reviewDeck.length === 0 ? (
+        <View style={[styles.completedContainer, { paddingBottom: bottomPadding }]}>
+          <Text style={styles.completedTitle}>¡Todo al día!</Text>
+          <Text style={styles.completedSub}>{emptyStateMsg}</Text>
+          <Button
+            title="VOLVER"
+            onPress={handleFinish}
+            variant="accent"
+            size="lg"
+            style={{ width: '100%', maxWidth: 320, marginTop: SPACING.lg }}
+          />
+        </View>
+      ) : sessionCompleted ? (
         /* PANTALLA DE SESIÓN SRS COMPLETADA */
         <View style={[styles.completedContainer, { paddingBottom: bottomPadding }]}>
           <View style={styles.trophyBox}>
             <Trophy size={48} color={COLORS.onSurface} />
           </View>
 
-          <Badge label="REPASO FINALIZADO" variant="accent" style={{ alignSelf: 'center', marginBottom: 8 }} />
-          <Text style={styles.completedTitle}>¡Mazo al Día!</Text>
+          <Badge
+            label={mode === 'HARD' ? 'DIFICULTADES SUPERADAS' : 'REPASO FINALIZADO'}
+            variant="accent"
+            style={{ alignSelf: 'center', marginBottom: 8 }}
+          />
+          <Text style={styles.completedTitle}>¡Sesión Completada!</Text>
           <Text style={styles.completedSub}>
-            Has repasado {ratedCount} tarjetas. El algoritmo SM-2 ha programado las próximas fechas de recuperación neuronal.
+            {mode === 'HARD'
+              ? `Has repasado y fortalecido ${ratedCount} tarjetas difíciles.`
+              : `Has repasado ${ratedCount} tarjetas. El algoritmo SM-2 ha programado las próximas fechas de recuperación neuronal.`}
           </Text>
 
           <View style={styles.xpBox}>
