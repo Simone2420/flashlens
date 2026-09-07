@@ -114,8 +114,8 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
       </FlexWidget>
 
       {/* Contenido de la Tarjeta */}
-      <FlexWidget style={{ flexDirection: 'column' }}>
-        <FlexWidget style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <FlexWidget style={{ flexDirection: 'column', marginVertical: 2 }}>
+        <FlexWidget style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
           <FlexWidget
             style={{
               backgroundColor: '#FFFBEB',
@@ -124,7 +124,6 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
               borderRadius: 4,
               borderColor: '#FDE68A',
               borderWidth: 1,
-              marginRight: 6,
             }}
           >
             <TextWidget
@@ -136,23 +135,23 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
               }}
             />
           </FlexWidget>
-          <TextWidget
-            text={targetWord}
-            style={{
-              color: '#1C1B1B',
-              fontSize: 17,
-              fontWeight: 'bold',
-            }}
-          />
         </FlexWidget>
 
+        <TextWidget
+          text={targetWord}
+          style={{
+            color: '#1C1B1B',
+            fontSize: 18,
+            fontWeight: 'bold',
+          }}
+        />
         <TextWidget
           text={translation}
           style={{
             color: '#92400E',
             fontSize: 12.5,
             fontWeight: 'bold',
-            marginTop: 1.5,
+            marginTop: 1,
           }}
         />
         {sentence ? (
