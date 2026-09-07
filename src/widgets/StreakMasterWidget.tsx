@@ -29,9 +29,9 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         backgroundColor: '#FFFFFF',
         borderRadius: 16,
         paddingHorizontal: 8,
-        paddingVertical: 6,
+        paddingVertical: 5,
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#E2E8F0',
         borderWidth: 1,
@@ -44,6 +44,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           justifyContent: 'space-between',
           alignItems: 'center',
           width: 'match_parent',
+          marginBottom: 2,
         }}
       >
         <TextWidget
@@ -117,11 +118,12 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
           borderWidth: 1,
           paddingHorizontal: 6,
-          paddingVertical: 3,
+          paddingVertical: 2.5,
           borderRadius: 6,
           width: 'match_parent',
           alignItems: 'center',
           justifyContent: 'center',
+          marginTop: 2,
         }}
       >
         <TextWidget

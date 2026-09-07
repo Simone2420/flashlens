@@ -43,9 +43,9 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
         backgroundColor: '#FFFFFF',
         borderRadius: 16,
         paddingHorizontal: 10,
-        paddingVertical: 6,
+        paddingVertical: 5,
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         borderColor: '#E2E8F0',
         borderWidth: 1,
       }}
@@ -57,6 +57,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           justifyContent: 'space-between',
           alignItems: 'center',
           width: 'match_parent',
+          marginBottom: 2,
         }}
       >
         <FlexWidget style={{ flexDirection: 'row', alignItems: 'center' }}>
