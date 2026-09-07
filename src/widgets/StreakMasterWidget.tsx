@@ -27,11 +27,10 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         height: 'match_parent',
         width: 'match_parent',
         backgroundColor: '#FFFFFF',
-        borderRadius: 16,
-        paddingHorizontal: 8,
-        paddingVertical: 5,
+        borderRadius: 22,
+        padding: 10,
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         borderColor: '#E2E8F0',
         borderWidth: 1,
@@ -44,7 +43,6 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           justifyContent: 'space-between',
           alignItems: 'center',
           width: 'match_parent',
-          marginBottom: 2,
         }}
       >
         <TextWidget
@@ -58,9 +56,9 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         <FlexWidget
           style={{
             backgroundColor: safeLives > 1 ? '#FFF1F2' : '#FEE2E2',
-            paddingHorizontal: 5,
-            paddingVertical: 1.5,
-            borderRadius: 5,
+            paddingHorizontal: 6,
+            paddingVertical: 2,
+            borderRadius: 6,
             borderColor: safeLives > 1 ? '#FECDD3' : '#FCA5A5',
             borderWidth: 1,
           }}
@@ -82,7 +80,6 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          marginVertical: 1,
         }}
       >
         <TextWidget
@@ -117,13 +114,12 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEE2E2',
           borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
           borderWidth: 1,
-          paddingHorizontal: 6,
-          paddingVertical: 2.5,
-          borderRadius: 6,
+          paddingHorizontal: 8,
+          paddingVertical: 3.5,
+          borderRadius: 8,
           width: 'match_parent',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: 2,
         }}
       >
         <TextWidget
@@ -133,7 +129,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
               : '🚨 ¡Salva tu racha!'
           }
           style={{
-            color: hasPracticedToday ? '#16A34A' : '#DC2626',
+            color: hasPracticedToday ? '#15803D' : '#DC2626',
             fontSize: 8.5,
             fontWeight: 'bold',
           }}
