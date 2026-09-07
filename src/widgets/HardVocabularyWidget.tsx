@@ -53,7 +53,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
       <FlexWidget
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           width: 'match_parent',
         }}
@@ -170,7 +170,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
       <FlexWidget
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           width: 'match_parent',
         }}

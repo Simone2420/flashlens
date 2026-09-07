@@ -40,7 +40,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
       <FlexWidget
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           width: 'match_parent',
         }}
@@ -114,10 +114,10 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEE2E2',
           borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
           borderWidth: 1,
-          paddingHorizontal: 8,
+          paddingHorizontal: 5,
           paddingVertical: 3.5,
           borderRadius: 8,
-          width: 'match_parent',
+          width: 'wrap_content',
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -132,6 +132,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
             color: hasPracticedToday ? '#15803D' : '#DC2626',
             fontSize: 8.5,
             fontWeight: 'bold',
+            textAlign: 'center',
           }}
         />
       </FlexWidget>
