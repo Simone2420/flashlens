@@ -27,13 +27,14 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         height: 'match_parent',
         width: 'match_parent',
         backgroundColor: '#FFFFFF',
-        borderRadius: 22,
-        padding: 13,
+        borderRadius: 16,
+        paddingHorizontal: 8,
+        paddingVertical: 6,
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderColor: '#E2E8F0',
-        borderWidth: 1.5,
+        borderWidth: 1,
       }}
     >
       {/* Encabezado: Marca y Vidas */}
@@ -49,16 +50,16 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           text="⚡ FLASHLENS"
           style={{
             color: '#D97706',
-            fontSize: 10.5,
+            fontSize: 10,
             fontWeight: 'bold',
           }}
         />
         <FlexWidget
           style={{
             backgroundColor: safeLives > 1 ? '#FFF1F2' : '#FEE2E2',
-            paddingHorizontal: 6,
-            paddingVertical: 2,
-            borderRadius: 6,
+            paddingHorizontal: 5,
+            paddingVertical: 1.5,
+            borderRadius: 5,
             borderColor: safeLives > 1 ? '#FECDD3' : '#FCA5A5',
             borderWidth: 1,
           }}
@@ -67,7 +68,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
             text={`❤️ ${safeLives}/${maxLives}`}
             style={{
               color: safeLives > 1 ? '#E11D48' : '#DC2626',
-              fontSize: 9.5,
+              fontSize: 9,
               fontWeight: 'bold',
             }}
           />
@@ -80,31 +81,31 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          marginVertical: 2,
+          marginVertical: 1,
         }}
       >
         <TextWidget
           text="🔥"
           style={{
-            fontSize: 34,
+            fontSize: 22,
           }}
         />
         <TextWidget
           text={`${currentStreak} ${currentStreak === 1 ? 'DÍA' : 'DÍAS'}`}
           style={{
             color: '#1C1B1B',
-            fontSize: 19,
+            fontSize: 15,
             fontWeight: 'bold',
-            marginTop: 1,
+            marginTop: 0,
           }}
         />
         <TextWidget
           text={`${xp} XP`}
           style={{
             color: '#64748B',
-            fontSize: 10,
+            fontSize: 9.5,
             fontWeight: 'bold',
-            marginTop: 1,
+            marginTop: 0,
           }}
         />
       </FlexWidget>
@@ -115,9 +116,9 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEE2E2',
           borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
           borderWidth: 1,
-          paddingHorizontal: 8,
-          paddingVertical: 5,
-          borderRadius: 9,
+          paddingHorizontal: 6,
+          paddingVertical: 3,
+          borderRadius: 6,
           width: 'match_parent',
           alignItems: 'center',
           justifyContent: 'center',
@@ -126,12 +127,12 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         <TextWidget
           text={
             hasPracticedToday
-              ? '✓ ¡Racha asegurada hoy!'
+              ? '✓ Racha asegurada'
               : '🚨 ¡Salva tu racha!'
           }
           style={{
             color: hasPracticedToday ? '#16A34A' : '#DC2626',
-            fontSize: 9.5,
+            fontSize: 8.5,
             fontWeight: 'bold',
           }}
         />

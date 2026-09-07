@@ -55,8 +55,8 @@
               "name": "HardVocabularyWidget",
               "label": "Vocabulario Difícil FlashLens",
               "description": "Repasa tus palabras difíciles y rota entre ellas.",
-              "minWidth": "320dp",
-              "minHeight": "140dp",
+              "minWidth": "250dp",
+              "minHeight": "100dp",
               "targetCellWidth": 4,
               "targetCellHeight": 2,
               "previewImage": "./assets/images/flashlens_logo.png"
@@ -65,8 +65,8 @@
               "name": "StreakMasterWidget",
               "label": "Racha FlashLens",
               "description": "Monitorea tu racha y vidas al estilo Duolingo.",
-              "minWidth": "160dp",
-              "minHeight": "120dp",
+              "minWidth": "110dp",
+              "minHeight": "100dp",
               "targetCellWidth": 2,
               "targetCellHeight": 2,
               "previewImage": "./assets/images/flashlens_logo.png"

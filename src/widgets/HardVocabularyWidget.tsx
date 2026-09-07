@@ -26,7 +26,9 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
 }) => {
   const targetWord = card?.targetWord || 'Piece of cake';
   const translation = card?.nativeTranslation || card?.primaryTranslation || 'Pan comido / Muy fácil';
-  const sentence = card?.contextSentence ? `"${card.contextSentence}"` : null;
+  const rawSentence = card?.contextSentence ? `"${card.contextSentence}"` : null;
+  // Truncate sentence to prevent multi-line overflow from pushing buttons out of the widget frame
+  const sentence = rawSentence && rawSentence.length > 48 ? `${rawSentence.slice(0, 45)}..."` : rawSentence;
   const partOfSpeech = card?.partOfSpeech || (card?.conceptCategory === 'IDIOM_EXPRESSION' ? 'IDIOM' : 'A1/A2');
 
   const reviewUri = isHardMode
@@ -39,12 +41,13 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
         height: 'match_parent',
         width: 'match_parent',
         backgroundColor: '#FFFFFF',
-        borderRadius: 22,
-        padding: 14,
+        borderRadius: 16,
+        paddingHorizontal: 10,
+        paddingVertical: 6,
         flexDirection: 'column',
         justifyContent: 'space-between',
         borderColor: '#E2E8F0',
-        borderWidth: 1.5,
+        borderWidth: 1,
       }}
     >
       {/* Barra Superior del Widget */}
@@ -61,24 +64,24 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             text="⚡ FLASHLENS"
             style={{
               color: '#D97706',
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: 'bold',
             }}
           />
           <FlexWidget
             style={{
               backgroundColor: isHardMode ? '#FEE2E2' : '#EFF6FF',
-              paddingHorizontal: 6,
-              paddingVertical: 2,
-              borderRadius: 6,
-              marginLeft: 6,
+              paddingHorizontal: 5,
+              paddingVertical: 1.5,
+              borderRadius: 4,
+              marginLeft: 5,
             }}
           >
             <TextWidget
               text={isHardMode ? `DIFÍCIL (${currentIndex}/${totalCards})` : `MAZO (${currentIndex}/${totalCards})`}
               style={{
                 color: isHardMode ? '#DC2626' : '#2563EB',
-                fontSize: 9,
+                fontSize: 8,
                 fontWeight: 'bold',
               }}
             />
@@ -89,9 +92,9 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
         <FlexWidget
           style={{
             backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEF2F2',
-            paddingHorizontal: 7,
-            paddingVertical: 2.5,
-            borderRadius: 7,
+            paddingHorizontal: 5,
+            paddingVertical: 1.5,
+            borderRadius: 5,
             flexDirection: 'row',
             alignItems: 'center',
           }}
@@ -100,7 +103,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             text={hasPracticedToday ? `🔥 ${currentStreak}d • ❤️ ${livesCount}/${maxLives}` : `⚠️ ${currentStreak}d • ❤️ ${livesCount}/${maxLives}`}
             style={{
               color: hasPracticedToday ? '#16A34A' : '#DC2626',
-              fontSize: 9,
+              fontSize: 8.5,
               fontWeight: 'bold',
             }}
           />
@@ -108,14 +111,14 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
       </FlexWidget>
 
       {/* Contenido de la Tarjeta */}
-      <FlexWidget style={{ flexDirection: 'column', marginVertical: 4 }}>
-        <FlexWidget style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+      <FlexWidget style={{ flexDirection: 'column', marginVertical: 1 }}>
+        <FlexWidget style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 1 }}>
           <FlexWidget
             style={{
               backgroundColor: '#FFFBEB',
-              paddingHorizontal: 5,
-              paddingVertical: 1.5,
-              borderRadius: 4,
+              paddingHorizontal: 4,
+              paddingVertical: 1,
+              borderRadius: 3,
               borderColor: '#FDE68A',
               borderWidth: 1,
             }}
@@ -124,7 +127,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
               text={partOfSpeech.toUpperCase()}
               style={{
                 color: '#B45309',
-                fontSize: 8,
+                fontSize: 7.5,
                 fontWeight: 'bold',
               }}
             />
@@ -135,7 +138,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           text={targetWord}
           style={{
             color: '#1C1B1B',
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: 'bold',
           }}
         />
@@ -143,7 +146,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           text={translation}
           style={{
             color: '#92400E',
-            fontSize: 13,
+            fontSize: 11.5,
             fontWeight: 'bold',
             marginTop: 1,
           }}
@@ -153,8 +156,8 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             text={sentence}
             style={{
               color: '#64748B',
-              fontSize: 10.5,
-              marginTop: 3,
+              fontSize: 9.5,
+              marginTop: 1,
             }}
           />
         ) : null}
@@ -167,7 +170,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           justifyContent: 'space-between',
           alignItems: 'center',
           width: 'match_parent',
-          marginTop: 2,
+          marginTop: 1,
         }}
       >
         {/* Botón 1: Repasar (Abre la app en modo adecuado) */}
@@ -176,16 +179,16 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           clickActionData={{ uri: reviewUri }}
           style={{
             backgroundColor: '#E8B400',
-            paddingHorizontal: 16,
-            paddingVertical: 7,
-            borderRadius: 9,
+            paddingHorizontal: 12,
+            paddingVertical: 4.5,
+            borderRadius: 6,
           }}
         >
           <TextWidget
-            text="🧠 REPASAR AHORA"
+            text="🧠 REPASAR"
             style={{
               color: '#1C1B1B',
-              fontSize: 11,
+              fontSize: 9.5,
               fontWeight: 'bold',
             }}
           />
@@ -196,9 +199,9 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           clickAction="NEXT_HARD_WORD"
           style={{
             backgroundColor: '#F8FAFC',
-            paddingHorizontal: 14,
-            paddingVertical: 7,
-            borderRadius: 9,
+            paddingHorizontal: 10,
+            paddingVertical: 4.5,
+            borderRadius: 6,
             borderColor: '#CBD5E1',
             borderWidth: 1,
           }}
@@ -207,7 +210,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             text="SIGUIENTE ➔"
             style={{
               color: '#1C1B1B',
-              fontSize: 11,
+              fontSize: 9.5,
               fontWeight: 'bold',
             }}
           />
