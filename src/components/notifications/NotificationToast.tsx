@@ -45,7 +45,14 @@ export const NotificationToast: React.FC = () => {
 
   const handlePress = () => {
     if (currentNotif?.route) {
-      router.push(currentNotif.route as any);
+      if (currentNotif.route.startsWith('/')) {
+        router.push(currentNotif.route as any);
+      } else if (currentNotif.route === 'STREAK_DANGER' || currentNotif.route === 'STREAK_EMERGENCY') {
+        router.push('/(tabs)/roadmap' as any);
+      } else {
+        router.push('/(tabs)' as any);
+        notificationService.notifyNavigationListeners(currentNotif.route, currentNotif.data);
+      }
     }
     hideToast();
   };

@@ -26,6 +26,7 @@ export type PartOfSpeech =
 
 export type ConceptCategory =
   | 'OBJECT'
+  | 'ACTION_VERB'
   | 'ADVERB_MODIFIER'
   | 'GRAMMAR_RULE'
   | 'IDIOM_EXPRESSION'
@@ -57,6 +58,7 @@ export interface UserProfile {
   xp: number;
   learningPace: LearningPace;
   diagnosedLevel: CEFRLevel;
+  hasCompletedDiagnostic?: boolean;
   completedLessonsCount: number;
   notificationsEnabled: boolean;
 }

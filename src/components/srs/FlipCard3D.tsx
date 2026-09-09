@@ -36,6 +36,7 @@ export const getCardEmoji = (card: Flashcard) => {
   if (w.includes('used to') || w.includes('solía') || w.includes('solia')) return '⏳';
   switch (card.conceptCategory) {
     case 'OBJECT': return '📦';
+    case 'ACTION_VERB': return '🏃‍♂️';
     case 'IDIOM_EXPRESSION': return '🎭';
     case 'CONNECTOR_TRANSITION': return '🔗';
     case 'PHRASAL_VERB': return '⚡';
@@ -55,6 +56,7 @@ export const getCardEmoji = (card: Flashcard) => {
 const getCategoryBadgeLabel = (card: Flashcard): string => {
   if (card.createdVia === 'CAMERA') return '📸 Captura Lens';
   switch (card.conceptCategory) {
+    case 'ACTION_VERB': return '🏃‍♂️ Verbo de Acción';
     case 'IDIOM_EXPRESSION': return '🎭 Modismo';
     case 'CONNECTOR_TRANSITION': return '🔗 Conector';
     case 'PHRASAL_VERB': return '⚡ Phrasal Verb';

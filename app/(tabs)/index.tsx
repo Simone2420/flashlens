@@ -44,6 +44,7 @@ import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWi
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 
 const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: string }[] = [
+  { category: 'ACTION_VERB', label: 'Verbos', icon: '🏃‍♂️' },
   { category: 'IDIOM_EXPRESSION', label: 'Modismos', icon: '🎭' },
   { category: 'CONNECTOR_TRANSITION', label: 'Conectores', icon: '🔗' },
   { category: 'PHRASAL_VERB', label: 'Phrasal Verbs', icon: '⚡' },
@@ -51,7 +52,7 @@ const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: stri
   { category: 'FALSE_FRIEND', label: 'Falsos Amigos', icon: '⚠️' },
   { category: 'COLLOCATION_PHRASE', label: 'Colocaciones', icon: '💬' },
   { category: 'EMOTION_STATE', label: 'Emociones', icon: '❤️' },
-  { category: 'ACTION_COGNITIVE', label: 'Acciones', icon: '🧠' },
+  { category: 'ACTION_COGNITIVE', label: 'Cognitivos', icon: '🧠' },
   { category: 'ADVERB_MODIFIER', label: 'Adverbios', icon: '⏱️' },
   { category: 'QUALITY_PERSONALITY', label: 'Personalidad', icon: '🌟' },
   { category: 'CONVERSATIONAL_FILLER', label: 'Muletillas', icon: '🗣️' },

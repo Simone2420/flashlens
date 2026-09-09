@@ -16,6 +16,7 @@ const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
   FALSE_FRIEND: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
   COLLOCATION_PHRASE: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80',
   EMOTION_STATE: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80',
+  ACTION_VERB: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80',
   ACTION_COGNITIVE: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=600&q=80',
   ADVERB_MODIFIER: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80',
   QUALITY_PERSONALITY: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
@@ -84,6 +85,9 @@ class ImageGenerationService {
     }
 
     // 4. Fallback semántico por categoría:
+    if (category === 'ACTION_VERB') {
+      return `Charming cute 3D claymation illustration of a friendly character actively performing the physical action of "${cleanWord}" in dynamic mid-motion with tactile physical props, Pixar clay style, visible motion cues, soft studio lighting, clean solid pastel background, isometric perspective, octane 3D render, vibrant colors, 8k, zero text, no letters, no watermark`;
+    }
     if (category === 'IDIOM_EXPRESSION' || category === 'PHRASAL_VERB') {
       return `Cute modern 3D clay render representing the English expression "${cleanWord}", metaphorical educational concept, soft warm lighting, solid pastel clean background, isometric perspective, high quality, no text`;
     }

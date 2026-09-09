@@ -76,11 +76,14 @@ Respond ONLY with a valid raw JSON object matching this exact schema (no markdow
   "mnemonicHint": "Imagina un barco rompehielos abriendo paso en un mar congelado para que la conversación fluya.",
   "grammarFormula": "break the ice (verb phrase / transitive)",
   "visualScene": "A cute cartoon penguin with a warm knitted scarf using a small wooden pickaxe to crack a giant glowing translucent ice cube with friendly light inside"
-}e / transitive)"
 }
 
 Valid conceptCategory values:
-"IDIOM_EXPRESSION", "CONNECTOR_TRANSITION", "PHRASAL_VERB", "GRAMMAR_RULE", "FALSE_FRIEND", "COLLOCATION_PHRASE", "EMOTION_STATE", "ACTION_COGNITIVE", "ADVERB_MODIFIER", "QUALITY_PERSONALITY", "CONVERSATIONAL_FILLER", "ABSTRACT_NOUN".
+"ACTION_VERB", "IDIOM_EXPRESSION", "CONNECTOR_TRANSITION", "PHRASAL_VERB", "GRAMMAR_RULE", "FALSE_FRIEND", "COLLOCATION_PHRASE", "EMOTION_STATE", "ACTION_COGNITIVE", "ADVERB_MODIFIER", "QUALITY_PERSONALITY", "CONVERSATIONAL_FILLER", "ABSTRACT_NOUN".
+
+CRITICAL RULES FOR VERBS:
+- If the word is a physical action verb (e.g. pour, sprint, climb, break, grab, slice, tie, jump, build, throw), classify it strictly as "ACTION_VERB" with partOfSpeech="VERB". Its "visualScene" MUST depict a friendly 3D clay character actively executing that physical motion with tangible props in mid-action, with dynamic motion cues (splashes, motion lines).
+- Do NOT classify cognitive or mental state verbs (e.g. think, believe, consider, realize, know) as ACTION_VERB. Mental/state verbs belong to "ACTION_COGNITIVE".
 
 Valid partOfSpeech values:
 "NOUN", "VERB", "ADJECTIVE", "ADVERB", "PREPOSITION", "CONJUNCTION", "PRONOUN", "INTERJECTION", "PHRASE", "IDIOM".`;

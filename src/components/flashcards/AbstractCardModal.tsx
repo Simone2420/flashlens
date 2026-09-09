@@ -43,6 +43,7 @@ interface AbstractCardModalProps {
 }
 
 const CATEGORY_IMAGE_MAP: Record<ConceptCategory, string> = {
+  ACTION_VERB: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600', // Acción física / movimiento
   IDIOM_EXPRESSION: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600', // Expresión / teatro
   CONNECTOR_TRANSITION: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600', // Puente / conexión
   PHRASAL_VERB: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600', // Acción / camino
@@ -59,6 +60,7 @@ const CATEGORY_IMAGE_MAP: Record<ConceptCategory, string> = {
 };
 
 const SUBCATEGORIES_CONFIG: { category: ConceptCategory; label: string; icon: string; part: PartOfSpeech }[] = [
+  { category: 'ACTION_VERB', label: 'Verbos de Acción', icon: '🏃‍♂️', part: 'VERB' },
   { category: 'IDIOM_EXPRESSION', label: 'Modismo / Idiom', icon: '🎭', part: 'IDIOM' },
   { category: 'CONNECTOR_TRANSITION', label: 'Conector / Transición', icon: '🔗', part: 'CONJUNCTION' },
   { category: 'PHRASAL_VERB', label: 'Phrasal Verb', icon: '⚡', part: 'VERB' },

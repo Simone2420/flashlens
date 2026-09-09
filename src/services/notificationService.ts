@@ -125,6 +125,8 @@ class NotificationService {
    * 3. 08:00 PM: Alerta de Racha (Solo si no ha completado su meta hoy)
    * 4. 10:30 PM: Alerta Roja Duolingo 90 min (Solo si no ha completado su meta hoy)
    */
+  private scheduledLivesFullId: string | null = null;
+
   public async syncDailyNotificationSchedule(): Promise<void> {
     if (!(await this.isEnabled())) return;
 
@@ -133,16 +135,17 @@ class NotificationService {
       await Notifications.cancelAllScheduledNotificationsAsync();
 
       const userState = useUserStore.getState().profile;
-      const todayStr = new Date().toISOString().split('T')[0];
-      const hasPracticedToday = userState.lastStreakDate === todayStr || userState.xp >= 50;
+      const now = new Date();
+      const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      const hasPracticedToday = userState.lastStreakDate === todayStr;
 
       // 2. [12:00 PM] Programar Píldora del Día
       const todayPill = await dailyPillService.getTodayPill();
       if (todayPill) {
         await Notifications.scheduleNotificationAsync({
           content: {
-            title: `🎲 Píldora del Día: "${todayPill.targetWord}" ✨`,
-            body: `"${todayPill.contextSentence}" ➔ ${todayPill.nativeTranslation}. ¡Toca para descubrirla!`,
+            title: `💊 Píldora del Día: "${todayPill.targetWord}" ✨`,
+            body: '¿Sabes cómo usar esta expresión en una conversación real? Toca para escuchar su pronunciación y añadirla a tu mazo.',
             data: { route: 'PILL_MODAL', pillId: todayPill.id },
             sound: 'default',
           },
@@ -221,7 +224,12 @@ class NotificationService {
     if (!(await this.isEnabled()) || secondsUntilFull <= 0) return;
 
     try {
-      await Notifications.scheduleNotificationAsync({
+      if (this.scheduledLivesFullId) {
+        await Notifications.cancelScheduledNotificationAsync(this.scheduledLivesFullId).catch(() => {});
+        this.scheduledLivesFullId = null;
+      }
+
+      this.scheduledLivesFullId = await Notifications.scheduleNotificationAsync({
         content: {
           title: '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!',
           body: 'Recuperaste tus 5 corazones. ¡Entra y continúa tu camino en el Roadmap!',
@@ -296,8 +304,8 @@ class NotificationService {
       body = 'Domínalas hoy antes de que se te olviden con el método SM-2.';
       route = 'REVIEW_MODAL';
     } else if (type === 'LEARNING_PILL') {
-      title = '🎲 Píldora del Día: "Break the ice" ✨';
-      body = '"Let\'s break the ice before starting." ➔ Romper el hielo';
+      title = '💊 Píldora del Día: "Break the ice" ✨';
+      body = '¿Sabes cómo usar esta expresión en una conversación real? Toca para escuchar su pronunciación y añadirla a tu mazo.';
       route = 'PILL_MODAL';
     }
 
@@ -348,7 +356,7 @@ class NotificationService {
     this.listeners.forEach(cb => cb(notification));
   }
 
-  private notifyNavigationListeners(route: string, data?: any) {
+  public notifyNavigationListeners(route: string, data?: any) {
     this.navigationListeners.forEach(cb => cb(route, data));
   }
 
