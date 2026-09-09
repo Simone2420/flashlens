@@ -16,6 +16,7 @@ import { NetworkBanner } from '../src/components/common/NetworkBanner';
 import { StreakCelebrationModal } from '../src/components/gamification/StreakCelebrationModal';
 import { useUserStore } from '../src/store/useUserStore';
 import { notificationService } from '../src/services/notificationService';
+import { widgetService } from '../src/services/widgetService';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -39,13 +40,24 @@ export default function RootLayout() {
     // Sincronizar notificaciones diarias de forma reactiva al iniciar
     notificationService.syncDailyNotificationSchedule().catch(() => {});
 
-    // Sincronizar regeneración de vidas al montar
+    // Sincronizar regeneración de vidas y widgets al montar
     useUserStore.getState().checkLivesRegeneration();
+    const initSync = () => {
+      const state = useUserStore.getState();
+      widgetService.syncWidgetData(
+        state.profile.currentStreak,
+        state.lives,
+        null as any,
+        state.profile.xp
+      ).catch(() => {});
+    };
+    initSync();
 
     // Escuchar cuando la app pasa a primer plano (active)
     const appStateSub = AppState.addEventListener('change', (nextState) => {
       if (nextState === 'active') {
         useUserStore.getState().checkLivesRegeneration();
+        initSync();
       }
     });
 

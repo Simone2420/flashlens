@@ -12,13 +12,13 @@ interface NoLivesModalProps {
 
 export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) => {
   const { lives, refillLivesDemo, checkLivesRegeneration } = useUserStore();
-  const [timeLeft, setTimeLeft] = useState<string>('04:00:00');
+  const [timeLeft, setTimeLeft] = useState<string>('00:15:00');
 
   useEffect(() => {
     const updateCountdown = () => {
       checkLivesRegeneration();
       if (!lives.nextRegenerationAt) {
-        setTimeLeft('04:00:00');
+        setTimeLeft('00:15:00');
         return;
       }
 
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     padding: SPACING.xl,
-    borderRadius: 0, // 0px
+    borderRadius: 22,
   },
   closeBtn: {
     position: 'absolute',

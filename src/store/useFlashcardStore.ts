@@ -5,6 +5,7 @@ import { Flashcard, ReviewRating, ConceptCategory, CardType } from '../types';
 import { INITIAL_FLASHCARDS, VOICE_CONCEPT_DICTIONARY } from '../data/mockData';
 import { calculateNextSRSState } from '../services/srsAlgorithm';
 import { widgetService } from '../services/widgetService';
+import { useUserStore } from './useUserStore';
 
 interface FlashcardState {
   cards: Flashcard[];
@@ -103,7 +104,15 @@ export const useFlashcardStore = create<FlashcardState>()(
 
         set(state => {
           const updated = [newCard, ...state.cards];
-          widgetService.syncWidgetData(7, { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null }, newCard);
+          try {
+            const userState = useUserStore.getState();
+            const streak = userState?.profile?.currentStreak ?? 0;
+            const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
+            const xp = userState?.profile?.xp ?? 0;
+            widgetService.syncWidgetData(streak, lives, newCard, xp);
+          } catch (e) {
+            console.warn('Error sincronizando widget al añadir tarjeta:', e);
+          }
           return { cards: updated };
         });
 
@@ -168,6 +177,18 @@ export const useFlashcardStore = create<FlashcardState>()(
 
           const updatedCards = [...state.cards];
           updatedCards[cardIndex] = updatedCard;
+
+          if (rating === 'HARD' || rating === 'AGAIN') {
+            try {
+              const userState = useUserStore.getState();
+              widgetService.syncWidgetData(
+                userState?.profile?.currentStreak ?? 0,
+                userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null },
+                updatedCard,
+                userState?.profile?.xp ?? 0
+              );
+            } catch {}
+          }
 
           return { cards: updatedCards };
         });

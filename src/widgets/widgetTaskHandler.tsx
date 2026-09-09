@@ -41,9 +41,31 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
 
     // 3. Regeneración autónoma de vidas por tiempo si pasaron intervalos de 15 minutos
     if (currentLives < maxLives && nextRegenTimestamp > 0 && Date.now() >= nextRegenTimestamp) {
+      const intervalMs = 15 * 60 * 1000;
       const elapsedSinceNext = Date.now() - nextRegenTimestamp;
-      const additionalLives = 1 + Math.floor(elapsedSinceNext / (15 * 60 * 1000));
-      currentLives = Math.min(maxLives, currentLives + additionalLives);
+      const additionalLives = 1 + Math.floor(elapsedSinceNext / intervalMs);
+      const newLives = Math.min(maxLives, currentLives + additionalLives);
+      const isNowFull = newLives >= maxLives;
+      const newNextRegen = isNowFull ? 0 : nextRegenTimestamp + (additionalLives * intervalMs);
+      currentLives = newLives;
+
+      // Persistir de inmediato en el almacenamiento compartido
+      try {
+        const updatedShared = {
+          ...(shared || {}),
+          streakDays,
+          currentLives,
+          maxLives,
+          nextRegenTimestamp: newNextRegen,
+          dailyXp: xp,
+          lastStreakDate,
+          hasPracticedToday,
+          lastUpdated: new Date().toISOString(),
+        };
+        await AsyncStorage.setItem(STORAGE_SHARED_DATA_KEY, JSON.stringify(updatedShared));
+      } catch (e) {
+        console.warn('Error guardando shared widget data regenerado:', e);
+      }
     }
 
     // 4. Obtener mazo de tarjetas (difíciles o mazo completo)
