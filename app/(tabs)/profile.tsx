@@ -23,6 +23,7 @@ import {
   MessageSquare,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
 import { useUserStore } from '../../src/store/useUserStore';
@@ -52,11 +53,16 @@ export default function ProfileScreen() {
     await notificationService.triggerTestNotification(type);
   };
 
+  const insets = useSafeAreaInsets();
+
   return (
     <View style={styles.container}>
       <Header title="PERFIL & CONFIGURACIÓN" />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 40, 60) }]}
+      >
         {/* Tarjeta Principal del Perfil */}
         <View style={styles.profileHeaderCard}>
           <View style={styles.avatarCircle}>
@@ -84,6 +90,38 @@ export default function ProfileScreen() {
             </View>
           </View>
         </View>
+
+        {/* EVALUACIÓN DE NIVEL CEFR / DIAGNÓSTICO */}
+        <Text style={styles.sectionHeading}>EVALUACIÓN DE NIVEL CEFR</Text>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push('/diagnostic' as any);
+          }}
+          style={styles.diagnosticProfileCard}
+        >
+          <View style={styles.diagProfileLeft}>
+            <View style={styles.diagProfileIcon}>
+              <Sparkles size={20} color="#765A00" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.diagProfileTitle}>
+                Prueba Diagnóstica Oficial (25 Preguntas)
+              </Text>
+              <Text style={styles.diagProfileSub}>
+                {profile.hasCompletedDiagnostic
+                  ? `Nivel calibrado: ${profile.diagnosedLevel}. Toca para volver a evaluarte.`
+                  : 'Calibra tu nivel real para desbloquear lecciones recomendadas.'}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.diagProfilePill}>
+            <Text style={styles.diagProfilePillText}>
+              {profile.hasCompletedDiagnostic ? 'Recalibrar' : 'Empezar'} ➔
+            </Text>
+          </View>
+        </TouchableOpacity>
 
         {/* 1. SELECTOR DE RITMO DE APRENDIZAJE */}
         <Text style={styles.sectionHeading}>RITMO DE APRENDIZAJE (ADAPTATIVO)</Text>
@@ -457,5 +495,56 @@ const styles = StyleSheet.create({
     color: '#BA1A1A',
     fontSize: 13,
     fontWeight: '700',
+  },
+  diagnosticProfileCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
+    padding: SPACING.md,
+    borderWidth: 1.5,
+    borderColor: '#E8B400',
+    marginBottom: SPACING.lg,
+    ...SHADOWS.card,
+  },
+  diagProfileLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    gap: 12,
+  },
+  diagProfileIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: '#FFF8E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+  },
+  diagProfileTitle: {
+    color: '#1C1B1B',
+    fontSize: 14,
+    fontWeight: '800',
+  },
+  diagProfileSub: {
+    color: '#5E5E5E',
+    fontSize: 11,
+    marginTop: 2,
+    lineHeight: 15,
+  },
+  diagProfilePill: {
+    backgroundColor: '#E8B400',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+    marginLeft: 8,
+  },
+  diagProfilePillText: {
+    color: '#1C1B1B',
+    fontSize: 11,
+    fontWeight: '800',
   },
 });

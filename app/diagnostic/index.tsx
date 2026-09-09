@@ -3,10 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import {
   X,
@@ -28,6 +29,10 @@ import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/ques
 
 export default function DiagnosticScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
+  const bottomPadding = Math.max(insets.bottom, 16);
+
   const questions = MOCK_DIAGNOSTIC_QUESTIONS;
 
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -53,7 +58,7 @@ export default function DiagnosticScreen() {
 
   if (!currentItem || questions.length === 0) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.safeArea, { paddingTop: topPadding, paddingBottom: bottomPadding }]}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 }}>
           <Text style={{ fontSize: 20, fontWeight: '700', color: '#1C1B1B', marginBottom: 12, textAlign: 'center' }}>
             Cargando Cuestionario Diagnóstico...
@@ -65,7 +70,7 @@ export default function DiagnosticScreen() {
             <Text style={styles.nextBtnText}>Regresar</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
@@ -153,7 +158,7 @@ export default function DiagnosticScreen() {
     q?.type === 'SPEAKING_PRONUNCIATION'; // Permite avanzar en emuladores o entornos sin micrófono físico
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={[styles.safeArea, { paddingTop: topPadding }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.closeBtn}>
           <X size={20} color="#5E5E5E" />
@@ -232,7 +237,7 @@ export default function DiagnosticScreen() {
       </ScrollView>
 
       {/* Footer de Navegación */}
-      <View style={styles.footer}>
+      <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
         <TouchableOpacity
           onPress={handleNext}
           disabled={!hasAnswer}
@@ -244,7 +249,7 @@ export default function DiagnosticScreen() {
           <ArrowRight size={18} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

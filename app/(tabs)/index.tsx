@@ -42,6 +42,7 @@ import { dailyPillService } from '../../src/services/dailyPillService';
 import { notificationService } from '../../src/services/notificationService';
 import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: string }[] = [
   { category: 'ACTION_VERB', label: 'Verbos', icon: '🏃‍♂️' },
@@ -122,6 +123,7 @@ export default function HomeScreen() {
     return unsub;
   }, []);
 
+  const insets = useSafeAreaInsets();
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   const filteredCards = getFilteredCards();
@@ -136,7 +138,10 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Header title="FLASHLENS" />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 90, 110) }]}
+      >
         {/* Barra Superior con Feedback y Estado */}
         <View style={styles.topBar}>
           <TouchableOpacity
@@ -165,6 +170,54 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Banner de Diagnóstico para Calibrar Nivel Inicial */}
+        {!profile.hasCompletedDiagnostic ? (
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              router.push('/diagnostic' as any);
+            }}
+            style={styles.diagHomeBanner}
+          >
+            <View style={styles.diagHomeBannerIcon}>
+              <Sparkles size={22} color="#765A00" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.diagBadgeRow}>
+                <Text style={styles.diagTag}>CALIBRACIÓN INICIAL</Text>
+                <Text style={styles.diagQuestionsCount}>25 Preguntas ICFES/CEFR</Text>
+              </View>
+              <Text style={styles.diagTitle}>¿Cuál es tu nivel real de inglés?</Text>
+              <Text style={styles.diagSubtitle}>
+                Haz la prueba diagnóstica oficial para calibrar tu árbol de lecciones y vocabulario a tu medida.
+              </Text>
+              <View style={styles.diagActionBtn}>
+                <Text style={styles.diagActionBtnText}>INICIAR PRUEBA DIAGNÓSTICA</Text>
+                <ArrowRight size={14} color="#1C1B1B" />
+              </View>
+            </View>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.diagCompletedPill}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <CheckCircle2 size={15} color="#16A34A" />
+              <Text style={styles.diagCompletedText}>
+                Nivel Diagnosticado: <Text style={{ fontWeight: '900', color: '#16A34A' }}>{profile.diagnosedLevel}</Text>
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                Haptics.selectionAsync();
+                router.push('/diagnostic' as any);
+              }}
+              style={styles.diagRecalibrateBtn}
+            >
+              <Text style={styles.diagRecalibrateText}>Recalibrar ➔</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
         {/* Banner Píldora del Día */}
         {todayPill && (
           <TouchableOpacity
@@ -177,7 +230,7 @@ export default function HomeScreen() {
           >
             <View style={styles.pillBannerLeft}>
               <View style={styles.pillIconBox}>
-                <Text style={{ fontSize: 20 }}>🎲</Text>
+                <Text style={{ fontSize: 20 }}>💊</Text>
               </View>
               <View style={{ flex: 1 }}>
                 <View style={styles.pillBadgeRow}>
@@ -774,6 +827,105 @@ const styles = StyleSheet.create({
   pillActionText: {
     color: '#1C1B1B',
     fontSize: 12,
+    fontWeight: '800',
+  },
+  diagHomeBanner: {
+    flexDirection: 'row',
+    backgroundColor: '#FFFDF5',
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: SPACING.md,
+    borderWidth: 1.5,
+    borderColor: '#E8B400',
+    shadowColor: '#E8B400',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  diagHomeBannerIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: 14,
+    backgroundColor: '#FFF8E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    marginRight: 12,
+  },
+  diagBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 4,
+  },
+  diagTag: {
+    color: '#765A00',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  diagQuestionsCount: {
+    color: '#16A34A',
+    backgroundColor: '#DCFCE7',
+    fontSize: 9.5,
+    fontWeight: '800',
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 4,
+  },
+  diagTitle: {
+    color: '#1C1B1B',
+    fontSize: 15,
+    fontWeight: '800',
+    marginBottom: 2,
+  },
+  diagSubtitle: {
+    color: '#5E5E5E',
+    fontSize: 11.5,
+    lineHeight: 16,
+    marginBottom: 8,
+  },
+  diagActionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E8B400',
+    alignSelf: 'flex-start',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+    gap: 4,
+  },
+  diagActionBtnText: {
+    color: '#1C1B1B',
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  diagCompletedPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#F0FDF4',
+    borderWidth: 1,
+    borderColor: '#BBF7D0',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginBottom: SPACING.md,
+  },
+  diagCompletedText: {
+    color: '#166534',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  diagRecalibrateBtn: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+  },
+  diagRecalibrateText: {
+    color: '#16A34A',
+    fontSize: 11.5,
     fontWeight: '800',
   },
 });

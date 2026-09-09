@@ -33,6 +33,7 @@ import { SentenceWritingQuestion } from '../../src/components/roadmap/questions/
 import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/questions/SpeakingPronunciationQuestion';
 import { ImageWordMatchQuestion } from '../../src/components/roadmap/questions/ImageWordMatchQuestion';
 import { evaluateLanguageInput } from '../../src/services/languageEvaluation';
+import { NoLivesModal } from '../../src/components/modal/NoLivesModal';
 
 type LessonPhase = 'SUBLESSON_PICKER' | 'THEORY' | 'QUESTION' | 'CHECKPOINT' | 'SUMMARY' | 'COMPLETE';
 
@@ -58,6 +59,7 @@ export default function LessonScreen() {
   const [writtenInput, setWrittenInput] = useState('');
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [showNoLivesModal, setShowNoLivesModal] = useState(false);
 
   if (!node) {
     return (
@@ -84,10 +86,14 @@ export default function LessonScreen() {
             <Text style={styles.nodeCategoryTag}>{node.category} • {node.cefrLevel}</Text>
             <Text style={styles.nodeMainTitle} numberOfLines={1}>{node.title}</Text>
           </View>
-          <View style={styles.livesBadge}>
-            <Heart size={16} color="#EF4444" fill="#EF4444" />
+          <TouchableOpacity
+            style={styles.livesBadge}
+            onPress={() => setShowNoLivesModal(true)}
+            activeOpacity={0.7}
+          >
+            <Heart size={16} color="#EF4444" fill={lives.currentLives > 0 ? "#EF4444" : "transparent"} />
             <Text style={styles.livesText}>{lives.currentLives}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <ScrollView
@@ -114,6 +120,10 @@ export default function LessonScreen() {
                 key={sub.id}
                 activeOpacity={0.88}
                 onPress={() => {
+                  if (lives.currentLives <= 0) {
+                    setShowNoLivesModal(true);
+                    return;
+                  }
                   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                   setActiveSublesson(sub);
                   setQuestionIdx(0);
@@ -154,6 +164,11 @@ export default function LessonScreen() {
             );
           })}
         </ScrollView>
+
+        <NoLivesModal
+          visible={showNoLivesModal}
+          onClose={() => setShowNoLivesModal(false)}
+        />
       </View>
     );
   }
@@ -179,10 +194,14 @@ export default function LessonScreen() {
             <Text style={styles.nodeCategoryTag}>{activeSublesson.title}</Text>
             <Text style={styles.nodeMainTitle} numberOfLines={1}>{currentExplanation.title}</Text>
           </View>
-          <View style={styles.livesBadge}>
-            <Heart size={16} color="#EF4444" fill="#EF4444" />
+          <TouchableOpacity
+            style={styles.livesBadge}
+            onPress={() => setShowNoLivesModal(true)}
+            activeOpacity={0.7}
+          >
+            <Heart size={16} color="#EF4444" fill={lives.currentLives > 0 ? "#EF4444" : "transparent"} />
             <Text style={styles.livesText}>{lives.currentLives}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <TheoryExplanationCard
@@ -197,6 +216,11 @@ export default function LessonScreen() {
               setLessonPhase('COMPLETE');
             }
           }}
+        />
+
+        <NoLivesModal
+          visible={showNoLivesModal}
+          onClose={() => setShowNoLivesModal(false)}
         />
       </View>
     );
@@ -263,11 +287,18 @@ export default function LessonScreen() {
       addXP(10);
     } else {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-      loseLife();
+      const hasLivesRemaining = loseLife();
+      if (!hasLivesRemaining) {
+        setShowNoLivesModal(true);
+      }
     }
   };
 
   const handleNextQuestion = () => {
+    if (lives.currentLives <= 0) {
+      setShowNoLivesModal(true);
+      return;
+    }
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     // Verificar si hay una explicación MID_CHECKPOINT para el siguiente índice
@@ -326,10 +357,14 @@ export default function LessonScreen() {
             ]}
           />
         </View>
-        <View style={styles.livesBadge}>
-          <Heart size={16} color="#EF4444" fill="#EF4444" />
+        <TouchableOpacity
+          style={styles.livesBadge}
+          onPress={() => setShowNoLivesModal(true)}
+          activeOpacity={0.7}
+        >
+          <Heart size={16} color="#EF4444" fill={lives.currentLives > 0 ? "#EF4444" : "transparent"} />
           <Text style={styles.livesText}>{lives.currentLives}</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {currentQ && (
@@ -448,6 +483,11 @@ export default function LessonScreen() {
           </TouchableOpacity>
         )}
       </View>
+
+      <NoLivesModal
+        visible={showNoLivesModal}
+        onClose={() => setShowNoLivesModal(false)}
+      />
     </View>
   );
 }

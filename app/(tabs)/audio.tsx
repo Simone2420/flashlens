@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {
   Headphones,
@@ -25,8 +26,10 @@ import {
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
+import { NoLivesModal } from '../../src/components/modal/NoLivesModal';
 import { useAudioLabStore } from '../../src/store/useAudioLabStore';
 import { useUserStore } from '../../src/store/useUserStore';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
@@ -34,8 +37,10 @@ import { AdaptiveDictationInput } from '../../src/components/audio/AdaptiveDicta
 import { DictationDirection } from '../../src/types';
 
 export default function AudioLabScreen() {
-  const { profile, addXP, loseLife, registerDailyActivity } = useUserStore();
+  const insets = useSafeAreaInsets();
+  const { profile, addXP, loseLife, registerDailyActivity, lives } = useUserStore();
   const { cards } = useFlashcardStore();
+  const [showNoLivesModal, setShowNoLivesModal] = useState(false);
   const {
     currentCardIndex,
     sessionCards,
@@ -113,6 +118,10 @@ export default function AudioLabScreen() {
     selectedMode: 'WORD' | 'SENTENCE' | 'BURST' = dictationMode,
     selectedDirection: DictationDirection = dictationDirection
   ) => {
+    if (lives.currentLives <= 0) {
+      setShowNoLivesModal(true);
+      return;
+    }
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const targetDeck = cards.length > 0 ? cards : [];
     startSession(targetDeck, selectedMode, selectedDirection);
@@ -185,7 +194,10 @@ export default function AudioLabScreen() {
       addXP(dictationMode === 'BURST' ? 25 : dictationMode === 'SENTENCE' ? 20 : 15);
     } else {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-      loseLife();
+      const hasLivesRemaining = loseLife();
+      if (!hasLivesRemaining) {
+        setShowNoLivesModal(true);
+      }
     }
   };
 
@@ -196,6 +208,10 @@ export default function AudioLabScreen() {
   };
 
   const handleNextWord = () => {
+    if (lives.currentLives <= 0) {
+      setShowNoLivesModal(true);
+      return;
+    }
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setCurrentTextValue('');
     setSelectedBurstOption(null);
@@ -226,7 +242,13 @@ export default function AudioLabScreen() {
 
       {!isPlaying && !isCompleted ? (
         // 1. PANTALLA DE BIENVENIDA Y SELECCIÓN DE MODALIDAD
-        <ScrollView contentContainerStyle={styles.introContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={[
+            styles.introContent,
+            { paddingBottom: Math.max(insets.bottom + 60, 80) },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.heroCard}>
             <View style={styles.headphonesCircle}>
               <Headphones size={36} color="#765A00" />
@@ -253,6 +275,7 @@ export default function AudioLabScreen() {
                 >
                   <Headphones size={13} color={dictationDirection === 'NORMAL' ? '#1C1B1B' : '#5E5E5E'} />
                   <Text
+                    numberOfLines={1}
                     style={[
                       styles.directionTabText,
                       dictationDirection === 'NORMAL' && styles.directionTabTextActive,
@@ -275,6 +298,7 @@ export default function AudioLabScreen() {
                 >
                   <Repeat size={13} color={dictationDirection === 'INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
                   <Text
+                    numberOfLines={1}
                     style={[
                       styles.directionTabText,
                       dictationDirection === 'INVERSE' && styles.directionTabTextActive,
@@ -297,12 +321,13 @@ export default function AudioLabScreen() {
                 >
                   <Sparkles size={13} color={dictationDirection === 'NATIVE_INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
                   <Text
+                    numberOfLines={1}
                     style={[
                       styles.directionTabText,
                       dictationDirection === 'NATIVE_INVERSE' && styles.directionTabTextActive,
                     ]}
                   >
-                    Inverso Nativo
+                    Inv. Nativo
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -395,7 +420,16 @@ export default function AudioLabScreen() {
         </ScrollView>
       ) : isPlaying && !isCompleted ? (
         // 2. PANTALLA DE SESIÓN ACTIVA
-        <ScrollView contentContainerStyle={styles.sessionContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={[
+            styles.sessionContent,
+            {
+              paddingTop: Math.max(insets.top, Platform.OS === 'android' ? 24 : 12) + SPACING.sm,
+              paddingBottom: Math.max(insets.bottom + 40, 60),
+            },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
           {/* Header de la Sesión */}
           <View style={styles.sessionHeader}>
             <TouchableOpacity onPress={handleExitSession} style={styles.exitBtn}>
@@ -494,40 +528,45 @@ export default function AudioLabScreen() {
                   : 'Selecciona la traducción en español correcta:'}
               </Text>
 
-              <View style={styles.multipleChoiceGrid}>
-                {burstOptions.map((opt, idx) => {
-                  const isSelected = selectedBurstOption === opt;
-                  const isCorrect =
-                    dictationDirection === 'NATIVE_INVERSE'
-                      ? opt === activeCard.nativeTranslation
-                      : opt === activeCard.targetWord;
+              {(() => {
+                const hasLongOption = burstOptions.some(opt => opt.length > 15);
+                return (
+                  <View style={[styles.multipleChoiceGrid, hasLongOption && { flexDirection: 'column' }]}>
+                    {burstOptions.map((opt, idx) => {
+                      const isSelected = selectedBurstOption === opt;
+                      const isCorrect =
+                        dictationDirection === 'NATIVE_INVERSE'
+                          ? opt === activeCard.nativeTranslation
+                          : opt === activeCard.targetWord;
 
-                  let btnStyle: any = styles.mcOptionBtn;
-                  let textStyle: any = styles.mcOptionText;
+                      let btnStyle: any = [styles.mcOptionBtn, hasLongOption && styles.mcOptionBtnFull];
+                      let textStyle: any = [styles.mcOptionText, hasLongOption && styles.mcOptionTextFull];
 
-                  if (lastResult) {
-                    if (isCorrect) {
-                      btnStyle = [styles.mcOptionBtn, styles.mcOptionCorrect];
-                      textStyle = [styles.mcOptionText, styles.mcOptionTextCorrect];
-                    } else if (isSelected) {
-                      btnStyle = [styles.mcOptionBtn, styles.mcOptionWrong];
-                      textStyle = [styles.mcOptionText, styles.mcOptionTextWrong];
-                    }
-                  }
+                      if (lastResult) {
+                        if (isCorrect) {
+                          btnStyle.push(styles.mcOptionCorrect);
+                          textStyle.push(styles.mcOptionTextCorrect);
+                        } else if (isSelected) {
+                          btnStyle.push(styles.mcOptionWrong);
+                          textStyle.push(styles.mcOptionTextWrong);
+                        }
+                      }
 
-                  return (
-                    <TouchableOpacity
-                      key={idx}
-                      activeOpacity={0.8}
-                      disabled={!!lastResult}
-                      onPress={() => handleSelectBurstOption(opt)}
-                      style={btnStyle}
-                    >
-                      <Text style={textStyle}>{opt}</Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
+                      return (
+                        <TouchableOpacity
+                          key={idx}
+                          activeOpacity={0.8}
+                          disabled={!!lastResult}
+                          onPress={() => handleSelectBurstOption(opt)}
+                          style={btnStyle}
+                        >
+                          <Text style={textStyle}>{opt}</Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                );
+              })()}
             </View>
           ) : (
             /* CASO B: ENTRADA ADAPTATIVA DE DICTADO (PALABRAS, ORACIONES Y RÁFAGA RÁPIDO) */
@@ -626,7 +665,16 @@ export default function AudioLabScreen() {
         </ScrollView>
       ) : (
         // 3. PANTALLA DE RESULTADOS
-        <ScrollView contentContainerStyle={styles.resultContent}>
+        <ScrollView
+          contentContainerStyle={[
+            styles.resultContent,
+            {
+              paddingTop: Math.max(insets.top, Platform.OS === 'android' ? 24 : 12) + SPACING.sm,
+              paddingBottom: Math.max(insets.bottom + 40, 60),
+            },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.resultCard}>
             <Trophy size={56} color="#E8B400" />
             <Text style={styles.resultTitle}>¡Sesión Completada!</Text>
@@ -661,6 +709,12 @@ export default function AudioLabScreen() {
           </View>
         </ScrollView>
       )}
+
+      {/* Modal de Vidas Agotadas */}
+      <NoLivesModal
+        visible={showNoLivesModal}
+        onClose={() => setShowNoLivesModal(false)}
+      />
     </View>
   );
 }
@@ -672,7 +726,7 @@ const styles = StyleSheet.create({
   },
   introContent: {
     padding: SPACING.lg,
-    paddingBottom: 90,
+    paddingBottom: 100,
   },
   heroCard: {
     backgroundColor: '#FFFFFF',
@@ -728,7 +782,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#EAE5E5',
     borderRadius: 12,
-    padding: 4,
+    padding: 3,
     gap: 4,
   },
   directionTab: {
@@ -736,16 +790,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
+    paddingVertical: 9,
+    paddingHorizontal: 4,
     borderRadius: 9,
-    gap: 6,
+    gap: 4,
   },
   directionTabActive: {
     backgroundColor: '#E8B400',
   },
   directionTabText: {
     color: '#5E5E5E',
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: '700',
   },
   directionTabTextActive: {
@@ -1025,17 +1080,27 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
     borderRadius: 16,
-    paddingVertical: 18,
-    paddingHorizontal: 12,
+    minHeight: 56,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
     ...SHADOWS.card,
   },
+  mcOptionBtnFull: {
+    width: '100%',
+    minHeight: 52,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+  },
   mcOptionText: {
     color: '#1C1B1B',
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '800',
     textAlign: 'center',
+  },
+  mcOptionTextFull: {
+    fontSize: 14.5,
   },
   mcOptionCorrect: {
     backgroundColor: '#DCFCE7',

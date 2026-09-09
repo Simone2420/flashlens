@@ -21,6 +21,7 @@ import {
 } from 'lucide-react-native';
 import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RoadmapNodeItem } from '../../src/components/roadmap/RoadmapNodeItem';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { useUserStore } from '../../src/store/useUserStore';
@@ -28,6 +29,7 @@ import { RoadmapNode } from '../../src/types';
 
 export default function RoadmapScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{ focusNode?: string }>();
   const { nodes, selectNode } = useRoadmapStore();
   const { profile } = useUserStore();
@@ -58,35 +60,36 @@ export default function RoadmapScreen() {
   const col3X = treeWidth * 0.82;
 
   // Filtrado de nodos A1 (1 a 10)
-  const nodeA1_1 = nodes.find((n) => n.id === 'a1_node_1') || nodes[0];
-  const nodeA1_2 = nodes.find((n) => n.id === 'a1_node_2') || nodes[1];
-  const nodeA1_3 = nodes.find((n) => n.id === 'a1_node_3') || nodes[2];
-  const nodeA1_4 = nodes.find((n) => n.id === 'a1_node_4') || nodes[3];
-  const nodeA1_5 = nodes.find((n) => n.id === 'a1_node_5') || nodes[4];
-  const nodeA1_6 = nodes.find((n) => n.id === 'a1_node_6') || nodes[5];
-  const nodeA1_7 = nodes.find((n) => n.id === 'a1_node_7') || nodes[6];
-  const nodeA1_8 = nodes.find((n) => n.id === 'a1_node_8') || nodes[7];
-  const nodeA1_9 = nodes.find((n) => n.id === 'a1_node_9') || nodes[8];
-  const nodeA1_10 = nodes.find((n) => n.id === 'a1_node_10') || nodes[9];
+  const nodeA1_1 = nodes.find((n) => n.id === 'a1_node_1');
+  const nodeA1_2 = nodes.find((n) => n.id === 'a1_node_2');
+  const nodeA1_3 = nodes.find((n) => n.id === 'a1_node_3');
+  const nodeA1_4 = nodes.find((n) => n.id === 'a1_node_4');
+  const nodeA1_5 = nodes.find((n) => n.id === 'a1_node_5');
+  const nodeA1_6 = nodes.find((n) => n.id === 'a1_node_6');
+  const nodeA1_7 = nodes.find((n) => n.id === 'a1_node_7');
+  const nodeA1_8 = nodes.find((n) => n.id === 'a1_node_8');
+  const nodeA1_9 = nodes.find((n) => n.id === 'a1_node_9');
+  const nodeA1_10 = nodes.find((n) => n.id === 'a1_node_10');
 
   // Filtrado de nodos A2 (11 a 20)
-  const nodeA2_11 = nodes.find((n) => n.id === 'a2_node_11') || nodes[10];
-  const nodeA2_12 = nodes.find((n) => n.id === 'a2_node_12') || nodes[11];
-  const nodeA2_13 = nodes.find((n) => n.id === 'a2_node_13') || nodes[12];
-  const nodeA2_14 = nodes.find((n) => n.id === 'a2_node_14') || nodes[13];
-  const nodeA2_15 = nodes.find((n) => n.id === 'a2_node_15') || nodes[14];
-  const nodeA2_16 = nodes.find((n) => n.id === 'a2_node_16') || nodes[15];
-  const nodeA2_17 = nodes.find((n) => n.id === 'a2_node_17') || nodes[16];
-  const nodeA2_18 = nodes.find((n) => n.id === 'a2_node_18') || nodes[17];
-  const nodeA2_19 = nodes.find((n) => n.id === 'a2_node_19') || nodes[18];
-  const nodeA2_20 = nodes.find((n) => n.id === 'a2_node_20') || nodes[19];
+  const nodeA2_11 = nodes.find((n) => n.id === 'a2_node_11');
+  const nodeA2_12 = nodes.find((n) => n.id === 'a2_node_12');
+  const nodeA2_13 = nodes.find((n) => n.id === 'a2_node_13');
+  const nodeA2_14 = nodes.find((n) => n.id === 'a2_node_14');
+  const nodeA2_15 = nodes.find((n) => n.id === 'a2_node_15');
+  const nodeA2_16 = nodes.find((n) => n.id === 'a2_node_16');
+  const nodeA2_17 = nodes.find((n) => n.id === 'a2_node_17');
+  const nodeA2_18 = nodes.find((n) => n.id === 'a2_node_18');
+  const nodeA2_19 = nodes.find((n) => n.id === 'a2_node_19');
+  const nodeA2_20 = nodes.find((n) => n.id === 'a2_node_20');
 
   // Helper para color de conexión según estado del nodo destino
   const getConnectorProps = (targetNode?: RoadmapNode) => {
     const isUnlocked = targetNode && targetNode.status !== 'LOCKED';
+    const isCompleted = targetNode && targetNode.status === 'COMPLETED';
     return {
-      stroke: isUnlocked ? '#E8B400' : '#D6D6D6',
-      strokeWidth: isUnlocked ? 3.5 : 2,
+      stroke: isCompleted ? '#16A34A' : isUnlocked ? '#E8B400' : '#E0E0E0',
+      strokeWidth: isCompleted || isUnlocked ? 3 : 2,
       strokeDasharray: isUnlocked ? undefined : '4,4',
     };
   };
@@ -97,7 +100,13 @@ export default function RoadmapScreen() {
     <View style={styles.container}>
       <Header title="RUTA DE APRENDIZAJE DAG" />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: Math.max(insets.bottom + 40, 60) },
+        ]}
+      >
         {/* Banner de Diagnóstico Oficial */}
         <TouchableOpacity
           activeOpacity={0.88}

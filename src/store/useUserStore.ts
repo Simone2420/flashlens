@@ -47,6 +47,7 @@ const DEFAULT_USER: UserProfile = {
   xp: 0,
   learningPace: 'MEDIUM',
   diagnosedLevel: 'A1',
+  hasCompletedDiagnostic: false,
   completedLessonsCount: 0,
   notificationsEnabled: false,
 };
@@ -254,7 +255,11 @@ export const useUserStore = create<UserState>()(
 
       setDiagnosedLevel: (level: CEFRLevel) => {
         set(state => ({
-          profile: { ...state.profile, diagnosedLevel: level },
+          profile: {
+            ...state.profile,
+            diagnosedLevel: level,
+            hasCompletedDiagnostic: true,
+          },
         }));
       },
 
