@@ -97,6 +97,12 @@ export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) 
               style={{ marginTop: SPACING.sm }}
             />
           </View>
+
+          <View style={styles.widgetTipBox}>
+            <Text style={styles.widgetTipText}>
+              💡 <Text style={{ fontWeight: '800' }}>Tip:</Text> Agrega el Widget de FlashLens a tu pantalla de inicio para vigilar tus vidas en tiempo real sin abrir la app.
+            </Text>
+          </View>
         </View>
       </View>
     </Modal>
@@ -166,5 +172,19 @@ const styles = StyleSheet.create({
   },
   actions: {
     width: '100%',
+  },
+  widgetTipBox: {
+    backgroundColor: '#FFFBEB',
+    borderRadius: 14,
+    padding: 10,
+    marginTop: SPACING.md,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  widgetTipText: {
+    color: '#765A00',
+    fontSize: 11.5,
+    lineHeight: 16,
+    textAlign: 'center',
   },
 });

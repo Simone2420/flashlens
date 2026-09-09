@@ -118,6 +118,13 @@ export const StreakCelebrationModal: React.FC<StreakCelebrationModalProps> = ({
           >
             <Text style={styles.continueBtnText}>¡CONTINUAR MI RACHA! 🚀</Text>
           </TouchableOpacity>
+
+          {/* Tip de Widget para proteger la racha */}
+          <View style={styles.widgetStreakTipBox}>
+            <Text style={styles.widgetStreakTipText}>
+              📌 <Text style={{ fontWeight: '800' }}>Consejo:</Text> Agrega el Widget en tu pantalla de inicio para mantener tu racha visible y no olvidarla mañana.
+            </Text>
+          </View>
         </Animated.View>
       </View>
     </Modal>
@@ -243,5 +250,21 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '900',
     letterSpacing: 0.5,
+  },
+  widgetStreakTipBox: {
+    backgroundColor: '#FFFBEB',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: 12,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    width: '100%',
+  },
+  widgetStreakTipText: {
+    color: '#765A00',
+    fontSize: 11,
+    textAlign: 'center',
+    lineHeight: 15,
   },
 });

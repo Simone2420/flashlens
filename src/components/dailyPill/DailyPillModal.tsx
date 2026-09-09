@@ -210,6 +210,12 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
             >
               <Text style={styles.skipBtnText}>👍 Ya me la sé / Omitir</Text>
             </TouchableOpacity>
+
+            <View style={styles.widgetSubtextTip}>
+              <Text style={styles.widgetSubtextTipContent}>
+                💡 Al agregarla, rotará en tu Widget de pantalla para que la memorices de reojo sin esfuerzo.
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -491,5 +497,20 @@ const styles = StyleSheet.create({
     color: '#5E5E5E',
     fontSize: 13,
     fontWeight: '700',
+  },
+  widgetSubtextTip: {
+    backgroundColor: '#FFFBEB',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: 6,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  widgetSubtextTipContent: {
+    color: '#765A00',
+    fontSize: 11,
+    lineHeight: 15,
+    textAlign: 'center',
   },
 });

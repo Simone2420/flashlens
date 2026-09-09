@@ -32,6 +32,7 @@ import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { notificationService } from '../../src/services/notificationService';
 import { LearningPace } from '../../src/types';
 import { CompactStreakWidget, ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
+import { WidgetHowToModal } from '../../src/components/widgets/WidgetHowToModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
 
 export default function ProfileScreen() {
@@ -42,6 +43,7 @@ export default function ProfileScreen() {
   const { resetToMockDeck } = useFlashcardStore();
 
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
+  const [showWidgetHowTo, setShowWidgetHowTo] = useState(false);
 
   const handlePaceChange = (newPace: LearningPace) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -171,16 +173,28 @@ export default function ProfileScreen() {
 
         <View style={styles.widgetsPreviewContainer}>
           <View style={styles.widgetSubSection}>
-            <Text style={styles.widgetTagLabel}>Widget Compacto (2x2):</Text>
+            <Text style={styles.widgetTagLabel}>Widget Compacto (2x2 • Radar de Racha):</Text>
             <View style={{ alignItems: 'center' }}>
               <CompactStreakWidget />
             </View>
           </View>
 
           <View style={styles.widgetSubSection}>
-            <Text style={styles.widgetTagLabel}>Widget Expandido (4x2):</Text>
+            <Text style={styles.widgetTagLabel}>Widget Inteligente (4x2 • Vocabulario Activo):</Text>
             <ExpandedMasteryWidget />
           </View>
+
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              setShowWidgetHowTo(true);
+            }}
+            style={styles.howToWidgetBtn}
+          >
+            <Sparkles size={16} color="#765A00" />
+            <Text style={styles.howToWidgetBtnText}>¿CÓMO AGREGARLOS A TU PANTALLA DE INICIO?</Text>
+          </TouchableOpacity>
         </View>
 
         {/* 3. NOTIFICACIONES LOCALES ON-DEVICE */}
@@ -277,6 +291,11 @@ export default function ProfileScreen() {
       <MicroFeedbackModal
         visible={isFeedbackModalVisible}
         onClose={() => setIsFeedbackModalVisible(false)}
+      />
+
+      <WidgetHowToModal
+        visible={showWidgetHowTo}
+        onClose={() => setShowWidgetHowTo(false)}
       />
     </View>
   );
@@ -407,7 +426,27 @@ const styles = StyleSheet.create({
   widgetTagLabel: {
     color: '#765A00',
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '800',
+    marginBottom: 8,
+  },
+  howToWidgetBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFF8E1',
+    borderRadius: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderWidth: 1.5,
+    borderColor: '#E8B400',
+    marginTop: 10,
+    gap: 8,
+  },
+  howToWidgetBtnText: {
+    color: '#765A00',
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
   settingsCard: {
     backgroundColor: '#FFFFFF',

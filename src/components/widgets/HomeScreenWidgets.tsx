@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,377 +6,423 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Flame, Heart, Zap, Sparkles, Clock } from 'lucide-react-native';
-import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
+import * as Haptics from 'expo-haptics';
+import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import { useUserStore } from '../../store/useUserStore';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
+import { INITIAL_FLASHCARDS } from '../../data/mockData';
+import { NoLivesModal } from '../modal/NoLivesModal';
 
-// ==========================================
-// 1. WIDGET COMPACTO (2x2) - ESTILO DUOLINGO
-// ==========================================
+// =========================================================================
+// 1. WIDGET COMPACTO (2x2) - RÉPLICA 1:1 DE StreakMasterWidget DE ANDROID
+// =========================================================================
 export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPress }) => {
   const router = useRouter();
   const { profile, lives } = useUserStore();
+  const [showNoLivesModal, setShowNoLivesModal] = useState(false);
+
+  const now = new Date();
+  const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const hasPracticedToday = profile.lastStreakDate === todayLocal;
+  const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
   const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (onPress) {
       onPress();
+      return;
+    }
+    if (safeLives === 0) {
+      setShowNoLivesModal(true);
     } else {
       router.push('/(tabs)/audio');
     }
   };
 
-  const isDanger = lives.currentLives <= 1;
-  const isHealthy = lives.currentLives === 5;
-
   return (
-    <TouchableOpacity
-      activeOpacity={0.88}
-      onPress={handlePress}
-      style={styles.compactContainer}
-    >
-      {/* Encabezado: Racha & Vidas */}
-      <View style={styles.compactHeader}>
-        <View style={styles.streakBadge}>
-          <Flame size={15} color="#E8B400" fill="#E8B400" />
-          <Text style={styles.streakText}>{profile.currentStreak}D</Text>
+    <>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={handlePress}
+        style={styles.compactCard}
+      >
+        {/* Encabezado: Marca y Vidas */}
+        <View style={styles.compactHeaderRow}>
+          <Text style={styles.compactBrandText}>⚡ FLASHLENS</Text>
+          <View style={[styles.compactLivesBadge, safeLives <= 1 && styles.compactLivesBadgeDanger]}>
+            <Text style={[styles.compactLivesText, safeLives <= 1 && styles.compactLivesTextDanger]}>
+              ❤️ {safeLives}/{lives.maxLives}
+            </Text>
+          </View>
         </View>
 
-        <View style={styles.heartsRow}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Heart
-              key={i}
-              size={12}
-              color={i < lives.currentLives ? '#EF4444' : '#E0E0E0'}
-              fill={i < lives.currentLives ? '#EF4444' : 'transparent'}
-              style={{ marginLeft: 2 }}
-            />
-          ))}
+        {/* Centro Hero: Fuego, Racha y XP */}
+        <View style={styles.compactHeroCol}>
+          <Text style={styles.compactFireEmoji}>🔥</Text>
+          <Text style={styles.compactStreakText}>
+            {profile.currentStreak} {profile.currentStreak === 1 ? 'DÍA' : 'DÍAS'}
+          </Text>
+          <Text style={styles.compactXpText}>{profile.xp} XP</Text>
         </View>
-      </View>
 
-      {/* Mascota Lens Reactiva */}
-      <View style={styles.mascotCenter}>
-        <View
-          style={[
-            styles.lensEye,
-            isDanger && styles.lensEyeDanger,
-            isHealthy && styles.lensEyeHealthy,
-          ]}
-        >
-          <Text style={styles.lensEmoji}>
-            {isDanger ? '🩹' : isHealthy ? '🔥' : '👁️'}
+        {/* Banner de Estado Dinámico de Racha */}
+        <View style={[styles.compactStatusBanner, hasPracticedToday ? styles.statusSafe : styles.statusDanger]}>
+          <Text style={[styles.compactStatusText, hasPracticedToday ? styles.statusSafeText : styles.statusDangerText]}>
+            {hasPracticedToday ? '✓ Racha asegurada' : '🚨 ¡Salva tu racha!'}
           </Text>
         </View>
-        <Text style={styles.compactTitle}>
-          {isDanger ? '¡Cuidado con tus vidas!' : '¡Mantén tu racha activa!'}
-        </Text>
-      </View>
+      </TouchableOpacity>
 
-      {/* Botón de Práctica Rápida */}
-      <View style={styles.compactActionBtn}>
-        <Zap size={12} color="#1C1B1B" fill="#1C1B1B" />
-        <Text style={styles.compactActionText}>PRACTICAR</Text>
-      </View>
-    </TouchableOpacity>
+      <NoLivesModal
+        visible={showNoLivesModal}
+        onClose={() => setShowNoLivesModal(false)}
+      />
+    </>
   );
 };
 
-// ==========================================
-// 2. WIDGET EXPANDIDO (4x2) - ESTILO DUOLINGO
-// ==========================================
+// =========================================================================
+// 2. WIDGET EXPANDIDO (4x2) - RÉPLICA 1:1 DE HardVocabularyWidget DE ANDROID
+// =========================================================================
 export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPress }) => {
   const router = useRouter();
   const { profile, lives } = useUserStore();
   const { cards } = useFlashcardStore();
+  const [localIndex, setLocalIndex] = useState(0);
 
-  const cardOfTheDay = cards[0] || {
-    targetWord: 'Break the ice',
-    nativeTranslation: 'Romper el hielo',
-    contextSentence: "Let's break the ice before starting.",
-    conceptCategory: 'IDIOM_EXPRESSION',
-  };
+  const now = new Date();
+  const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const hasPracticedToday = profile.lastStreakDate === todayLocal;
+  const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
-  const handlePress = () => {
+  // Obtener mazo dinámico: tarjetas difíciles primero, o mazo completo
+  let allCards = cards && cards.length > 0 ? cards : INITIAL_FLASHCARDS;
+  const hardCards = allCards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
+  const isHardMode = hardCards.length > 0;
+  const targetDeck = isHardMode ? hardCards : allCards;
+
+  const safeIndex = localIndex % targetDeck.length;
+  const currentCard = targetDeck[safeIndex] || targetDeck[0];
+
+  const targetWord = currentCard?.targetWord || 'Piece of cake';
+  const translation = currentCard?.nativeTranslation || currentCard?.primaryTranslation || 'Pan comido / Muy fácil';
+  const rawSentence = currentCard?.contextSentence ? `"${currentCard.contextSentence}"` : null;
+  const sentence = rawSentence && rawSentence.length > 55 ? `${rawSentence.slice(0, 52)}..."` : rawSentence;
+  const partOfSpeech = currentCard?.partOfSpeech || (currentCard?.conceptCategory === 'IDIOM_EXPRESSION' ? 'IDIOM' : 'A1/A2');
+
+  const handleReview = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     if (onPress) {
       onPress();
-    } else {
-      router.push('/srs/review' as any);
+      return;
     }
+    router.push((isHardMode ? '/srs/review?mode=HARD' : '/srs/review?mode=ALL') as any);
   };
 
-  let minutesLeft = 15;
-  if (lives.nextRegenerationAt) {
-    const diff = new Date(lives.nextRegenerationAt).getTime() - Date.now();
-    minutesLeft = Math.max(1, Math.ceil(diff / (60 * 1000)));
-  }
+  const handleNextWord = (e: any) => {
+    e?.stopPropagation?.();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setLocalIndex(prev => (prev + 1) % targetDeck.length);
+  };
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.9}
-      onPress={handlePress}
-      style={styles.expandedContainer}
-    >
-      {/* Barra Superior */}
-      <View style={styles.expandedHeader}>
-        <View style={styles.streakBadge}>
-          <Flame size={16} color="#E8B400" fill="#E8B400" />
-          <Text style={styles.expandedStreakText}>
-            {profile.currentStreak} Días en Racha
+    <View style={styles.expandedCard}>
+      {/* Barra Superior del Widget */}
+      <View style={styles.expandedHeaderRow}>
+        <View style={styles.brandAndModeRow}>
+          <Text style={styles.expandedBrandText}>⚡ FLASHLENS</Text>
+          <View style={[styles.modeBadge, isHardMode ? styles.modeBadgeHard : styles.modeBadgeAll]}>
+            <Text style={[styles.modeBadgeText, isHardMode ? styles.modeBadgeTextHard : styles.modeBadgeTextAll]}>
+              {isHardMode ? `DIFÍCIL (${safeIndex + 1}/${targetDeck.length})` : `MAZO (${safeIndex + 1}/${targetDeck.length})`}
+            </Text>
+          </View>
+        </View>
+
+        {/* Indicador de Racha y Vidas */}
+        <View style={[styles.expandedStreakPill, hasPracticedToday ? styles.streakPillSafe : styles.streakPillDanger]}>
+          <Text style={[styles.expandedStreakPillText, hasPracticedToday ? styles.streakPillTextSafe : styles.streakPillTextDanger]}>
+            {hasPracticedToday ? `🔥 ${profile.currentStreak}d • ❤️ ${safeLives}/${lives.maxLives}` : `⚠️ ${profile.currentStreak}d • ❤️ ${safeLives}/${lives.maxLives}`}
           </Text>
         </View>
-
-        <View style={styles.expandedLivesBox}>
-          <View style={styles.heartsRow}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Heart
-                key={i}
-                size={13}
-                color={i < lives.currentLives ? '#EF4444' : '#E0E0E0'}
-                fill={i < lives.currentLives ? '#EF4444' : 'transparent'}
-                style={{ marginLeft: 3 }}
-              />
-            ))}
-          </View>
-          {lives.currentLives < 5 && (
-            <View style={styles.timerTag}>
-              <Clock size={10} color="#5E5E5E" />
-              <Text style={styles.timerText}>{minutesLeft}m</Text>
-            </View>
-          )}
-        </View>
       </View>
 
-      {/* Contenido: Palabra del Día */}
-      <View style={styles.wordOfTheDayBox}>
-        <View style={styles.wordTitleRow}>
-          <Sparkles size={13} color="#765A00" />
-          <Text style={styles.wordCategoryTag}>
-            {cardOfTheDay.conceptCategory || 'PALABRA DEL DÍA'}
-          </Text>
+      {/* Contenido de la Tarjeta */}
+      <View style={styles.cardContentBody}>
+        <View style={styles.partOfSpeechBadge}>
+          <Text style={styles.partOfSpeechText}>{partOfSpeech.toUpperCase()}</Text>
         </View>
-        <Text style={styles.targetWordText}>{cardOfTheDay.targetWord}</Text>
-        <Text style={styles.translationText} numberOfLines={1}>
-          "{cardOfTheDay.contextSentence}" ➔ {cardOfTheDay.nativeTranslation}
-        </Text>
+        <Text style={styles.targetWordText} numberOfLines={1}>{targetWord}</Text>
+        <Text style={styles.translationText} numberOfLines={1}>{translation}</Text>
+        {sentence ? (
+          <Text style={styles.sentenceText} numberOfLines={2}>{sentence}</Text>
+        ) : null}
       </View>
 
-      {/* Footer con Meta de XP y Botón */}
-      <View style={styles.expandedFooter}>
-        <View style={styles.xpProgressContainer}>
-          <View style={styles.xpProgressTrack}>
-            <View
-              style={[
-                styles.xpProgressBar,
-                { width: `${Math.min(100, ((profile.xp % 50) / 50) * 100)}%` },
-              ]}
-            />
-          </View>
-          <Text style={styles.xpProgressText}>Meta: {profile.xp % 50}/50 XP</Text>
-        </View>
+      {/* Fila de Botones Interactivos */}
+      <View style={styles.expandedActionsRow}>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={handleReview}
+          style={styles.reviewBtn}
+        >
+          <Text style={styles.reviewBtnText}>🧠 REPASAR</Text>
+        </TouchableOpacity>
 
-        <View style={styles.expandedActionBtn}>
-          <Text style={styles.expandedActionText}>REPASAR</Text>
-        </View>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={handleNextWord}
+          style={styles.nextWordBtn}
+        >
+          <Text style={styles.nextWordBtnText}>SIGUIENTE ➔</Text>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  // --- Compact Widget (2x2) ---
-  compactContainer: {
+  // ==========================================
+  // ESTILOS WIDGET 2x2 (CompactStreakWidget)
+  // ==========================================
+  compactCard: {
     width: 155,
     height: 155,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: SPACING.md,
+    borderRadius: 22,
+    padding: 10,
     justifyContent: 'space-between',
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
     ...SHADOWS.card,
   },
-  compactHeader: {
+  compactHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    width: '100%',
   },
-  streakBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF8E1',
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#D4A400',
-  },
-  streakText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '800',
-    marginLeft: 3,
-  },
-  heartsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  mascotCenter: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 2,
-  },
-  lensEye: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: '#FFF8E1',
-    borderWidth: 2,
-    borderColor: '#E8B400',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 4,
-  },
-  lensEyeDanger: {
-    borderColor: '#EF4444',
-    backgroundColor: '#FEE2E2',
-  },
-  lensEyeHealthy: {
-    borderColor: '#16A34A',
-    backgroundColor: '#DCFCE7',
-  },
-  lensEmoji: {
-    fontSize: 20,
-  },
-  compactTitle: {
-    color: '#5E5E5E',
-    fontSize: 10,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  compactActionBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#E8B400',
-    borderRadius: 12,
-    paddingVertical: 6,
-    gap: 4,
-  },
-  compactActionText: {
-    color: '#1C1B1B',
-    fontSize: 11,
+  compactBrandText: {
+    color: '#D97706',
+    fontSize: 9.5,
     fontWeight: '900',
     letterSpacing: 0.5,
   },
+  compactLivesBadge: {
+    backgroundColor: '#FFF1F2',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#FECDD3',
+  },
+  compactLivesBadgeDanger: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#FCA5A5',
+  },
+  compactLivesText: {
+    color: '#E11D48',
+    fontSize: 9,
+    fontWeight: '800',
+  },
+  compactLivesTextDanger: {
+    color: '#DC2626',
+  },
+  compactHeroCol: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  compactFireEmoji: {
+    fontSize: 24,
+    marginBottom: 2,
+  },
+  compactStreakText: {
+    color: '#1C1B1B',
+    fontSize: 15,
+    fontWeight: '900',
+  },
+  compactXpText: {
+    color: '#64748B',
+    fontSize: 9.5,
+    fontWeight: '700',
+    marginTop: 1,
+  },
+  compactStatusBanner: {
+    paddingHorizontal: 7,
+    paddingVertical: 3.5,
+    borderRadius: 8,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statusSafe: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+  },
+  statusDanger: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#FCA5A5',
+  },
+  compactStatusText: {
+    fontSize: 8.5,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  statusSafeText: {
+    color: '#15803D',
+  },
+  statusDangerText: {
+    color: '#DC2626',
+  },
 
-  // --- Expanded Widget (4x2) ---
-  expandedContainer: {
+  // ==========================================
+  // ESTILOS WIDGET 4x2 (ExpandedMasteryWidget)
+  // ==========================================
+  expandedCard: {
     width: '100%',
-    height: 165,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: SPACING.md,
-    justifyContent: 'space-between',
-    borderWidth: 1.5,
-    borderColor: '#E0E0E0',
+    borderRadius: 22,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
     ...SHADOWS.card,
   },
-  expandedHeader: {
+  expandedHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 8,
   },
-  expandedStreakText: {
-    color: '#765A00',
-    fontSize: 12,
-    fontWeight: '800',
-    marginLeft: 4,
-  },
-  expandedLivesBox: {
+  brandAndModeRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
   },
-  timerTag: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 2,
-    backgroundColor: '#F1EDEC',
-    paddingHorizontal: 5,
+  expandedBrandText: {
+    color: '#D97706',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 0.5,
+  },
+  modeBadge: {
+    paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
+    borderWidth: 1,
   },
-  timerText: {
-    color: '#5E5E5E',
-    fontSize: 10,
-    fontWeight: '700',
+  modeBadgeHard: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#FECDD3',
   },
-  wordOfTheDayBox: {
-    backgroundColor: '#F7F3F2',
-    borderRadius: 14,
-    padding: 10,
-    borderLeftWidth: 3,
-    borderLeftColor: '#E8B400',
+  modeBadgeAll: {
+    backgroundColor: '#EFF6FF',
+    borderColor: '#DBEAFE',
   },
-  wordTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    marginBottom: 2,
-  },
-  wordCategoryTag: {
-    color: '#765A00',
-    fontSize: 10,
+  modeBadgeText: {
+    fontSize: 8.5,
     fontWeight: '800',
-    letterSpacing: 0.5,
+  },
+  modeBadgeTextHard: {
+    color: '#DC2626',
+  },
+  modeBadgeTextAll: {
+    color: '#2563EB',
+  },
+  expandedStreakPill: {
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  streakPillSafe: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+  },
+  streakPillDanger: {
+    backgroundColor: '#FEF2F2',
+    borderColor: '#FECDD3',
+  },
+  expandedStreakPillText: {
+    fontSize: 8.5,
+    fontWeight: '800',
+  },
+  streakPillTextSafe: {
+    color: '#15803D',
+  },
+  streakPillTextDanger: {
+    color: '#DC2626',
+  },
+  cardContentBody: {
+    marginVertical: 4,
+  },
+  partOfSpeechBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFFBEB',
+    paddingHorizontal: 5,
+    paddingVertical: 1.5,
+    borderRadius: 4,
+    borderColor: '#FDE68A',
+    borderWidth: 1,
+    marginBottom: 3,
+  },
+  partOfSpeechText: {
+    color: '#B45309',
+    fontSize: 8,
+    fontWeight: '800',
   },
   targetWordText: {
     color: '#1C1B1B',
-    fontSize: 16,
-    fontWeight: '800',
+    fontSize: 18,
+    fontWeight: '900',
+    letterSpacing: 0.3,
   },
   translationText: {
-    color: '#5E5E5E',
-    fontSize: 12,
-    fontWeight: '500',
-    marginTop: 2,
-  },
-  expandedFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 12,
-  },
-  xpProgressContainer: {
-    flex: 1,
-  },
-  xpProgressTrack: {
-    height: 6,
-    backgroundColor: '#E0E0E0',
-    borderRadius: 3,
-    overflow: 'hidden',
-    marginBottom: 3,
-  },
-  xpProgressBar: {
-    height: '100%',
-    backgroundColor: '#E8B400',
-    borderRadius: 3,
-  },
-  xpProgressText: {
-    color: '#5E5E5E',
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  expandedActionBtn: {
-    backgroundColor: '#1C1B1B',
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 12,
-  },
-  expandedActionText: {
-    color: '#FFFFFF',
-    fontSize: 11,
+    color: '#92400E',
+    fontSize: 12.5,
     fontWeight: '800',
+    marginTop: 1,
+  },
+  sentenceText: {
+    color: '#64748B',
+    fontSize: 10.5,
+    marginTop: 3,
+    lineHeight: 14,
+  },
+  expandedActionsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+    gap: 10,
+  },
+  reviewBtn: {
+    flex: 1,
+    backgroundColor: '#E8B400',
+    paddingVertical: 7,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  reviewBtnText: {
+    color: '#1C1B1B',
+    fontSize: 10.5,
+    fontWeight: '900',
+    letterSpacing: 0.5,
+  },
+  nextWordBtn: {
+    flex: 1,
+    backgroundColor: '#F8FAFC',
+    paddingVertical: 7,
+    borderRadius: 8,
+    borderColor: '#CBD5E1',
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nextWordBtnText: {
+    color: '#1C1B1B',
+    fontSize: 10.5,
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
 });
