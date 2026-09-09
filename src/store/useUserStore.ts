@@ -279,13 +279,27 @@ export const useUserStore = create<UserState>()(
 
       checkLivesRegeneration: () => {
         const { lives, profile } = get();
-        if (lives.currentLives >= lives.maxLives || !lives.lastLifeLostAt) {
+        if (lives.currentLives >= lives.maxLives) {
           return;
         }
 
         const now = Date.now();
-        const lostTime = new Date(lives.lastLifeLostAt).getTime();
         const intervalMs = 15 * 60 * 1000; // 15 minutos por cada corazón
+
+        if (!lives.lastLifeLostAt) {
+          const nowIso = new Date(now).toISOString();
+          const nextIso = new Date(now + intervalMs).toISOString();
+          const updatedLives: LivesState = {
+            ...lives,
+            lastLifeLostAt: nowIso,
+            nextRegenerationAt: nextIso,
+          };
+          set({ lives: updatedLives });
+          widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+          return;
+        }
+
+        const lostTime = new Date(lives.lastLifeLostAt).getTime();
         const elapsed = now - lostTime;
         const livesToRegenerate = Math.floor(elapsed / intervalMs);
 

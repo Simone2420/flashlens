@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  AppState,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -107,10 +108,32 @@ export default function HomeScreen() {
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   const [isPillModalVisible, setIsPillModalVisible] = useState(false);
   const [todayPill, setTodayPill] = useState<DailyPill | null>(null);
+  const pillDateRef = useRef<string>('');
+
+  const loadDailyPill = useCallback(async () => {
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    if (pillDateRef.current !== todayStr) {
+      const pill = await dailyPillService.getTodayPill();
+      setTodayPill(pill);
+      pillDateRef.current = todayStr;
+    }
+  }, []);
 
   useEffect(() => {
-    dailyPillService.getTodayPill().then(pill => setTodayPill(pill));
-  }, []);
+    loadDailyPill();
+
+    // Re-verificar fecha al volver a primer plano (p.ej. si pasó la medianoche)
+    const appStateSub = AppState.addEventListener('change', (nextState) => {
+      if (nextState === 'active') {
+        loadDailyPill();
+      }
+    });
+
+    return () => {
+      appStateSub.remove();
+    };
+  }, [loadDailyPill]);
 
   useEffect(() => {
     const unsub = notificationService.addNavigationListener((route) => {

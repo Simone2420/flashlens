@@ -224,6 +224,19 @@ export default function DiagnosticResultScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Banner de Seguridad y Preservación de Progreso */}
+        <View style={styles.progressSafetyCard}>
+          <View style={styles.progressSafetyIconWrap}>
+            <CheckCircle2 size={18} color="#15803D" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.progressSafetyTitle}>Tu progreso previo está 100% seguro</Text>
+            <Text style={styles.progressSafetyText}>
+              Las lecciones que ya completaste, tus estrellas y tus XP acumulados se conservan intactos. Esta recalibración solo ajusta las sugerencias pedagógicas y el nivel en tu perfil.
+            </Text>
+          </View>
+        </View>
+
         {/* Botón Final para Aceptar el Nivel */}
         <TouchableOpacity
           activeOpacity={0.88}
@@ -440,5 +453,37 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.5,
+  },
+  progressSafetyCard: {
+    backgroundColor: '#F0FDF4',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#BBF7D0',
+    padding: SPACING.md,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    marginBottom: SPACING.lg,
+  },
+  progressSafetyIconWrap: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#DCFCE7',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 2,
+  },
+  progressSafetyTitle: {
+    color: '#166534',
+    fontSize: 13,
+    fontWeight: '800',
+    marginBottom: 3,
+  },
+  progressSafetyText: {
+    color: '#15803D',
+    fontSize: 11,
+    lineHeight: 16,
+    fontWeight: '500',
   },
 });

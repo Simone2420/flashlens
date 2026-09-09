@@ -157,12 +157,17 @@ export const useRoadmapStore = create<RoadmapState>()(
               };
             }
           }
+          // Si el nivel diagnosticado es A1, NUNCA se revierte ningún progreso previo
           return node;
         });
 
+        const suggestedNodeId = level === 'A2'
+          ? 'a2_node_11'
+          : (updatedNodes.find(n => n.status === 'ACTIVE')?.id || 'a1_node_1');
+
         set({
           nodes: updatedNodes,
-          selectedNodeId: level === 'A2' ? 'a2_node_11' : 'a1_node_1',
+          selectedNodeId: suggestedNodeId,
         });
       },
 

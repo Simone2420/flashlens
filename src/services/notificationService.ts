@@ -140,22 +140,19 @@ class NotificationService {
       const hasPracticedToday = userState.lastStreakDate === todayStr;
 
       // 2. [12:00 PM] Programar Píldora del Día
-      const todayPill = await dailyPillService.getTodayPill();
-      if (todayPill) {
-        await Notifications.scheduleNotificationAsync({
-          content: {
-            title: `💊 Píldora del Día: "${todayPill.targetWord}" ✨`,
-            body: '¿Sabes cómo usar esta expresión en una conversación real? Toca para escuchar su pronunciación y añadirla a tu mazo.',
-            data: { route: 'PILL_MODAL', pillId: todayPill.id },
-            sound: 'default',
-          },
-          trigger: {
-            type: Notifications.SchedulableTriggerInputTypes.DAILY,
-            hour: 12,
-            minute: 0,
-          },
-        });
-      }
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: '💊 Píldora del Día: Descubre tu nueva expresión ✨',
+          body: '¿Listo para tu dosis de vocabulario de hoy? Toca para escuchar su pronunciación nativa y añadirla a tu mazo.',
+          data: { route: 'PILL_MODAL' },
+          sound: 'default',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DAILY,
+          hour: 12,
+          minute: 0,
+        },
+      });
 
       // 3. [04:00 PM] Programar Repaso SM-2 si hay tarjetas vencidas
       const dueCards = useFlashcardStore.getState().getDueCards();
@@ -304,8 +301,8 @@ class NotificationService {
       body = 'Domínalas hoy antes de que se te olviden con el método SM-2.';
       route = 'REVIEW_MODAL';
     } else if (type === 'LEARNING_PILL') {
-      title = '💊 Píldora del Día: "Break the ice" ✨';
-      body = '¿Sabes cómo usar esta expresión en una conversación real? Toca para escuchar su pronunciación y añadirla a tu mazo.';
+      title = '💊 Píldora del Día: Descubre tu nueva expresión ✨';
+      body = 'Una dosis fresca de vocabulario te espera hoy. Toca para escuchar su pronunciación nativa y añadirla a tu mazo.';
       route = 'PILL_MODAL';
     }
 

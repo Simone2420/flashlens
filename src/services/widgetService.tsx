@@ -186,6 +186,25 @@ class WidgetService {
       return null;
     }
   }
+
+  /**
+   * Fuerza la regeneración de vidas y refresca los widgets nativos
+   * cuando la aplicación cambia de estado (active o background).
+   */
+  public async refreshWidgetsOnResume(): Promise<void> {
+    try {
+      useUserStore.getState().checkLivesRegeneration();
+      const state = useUserStore.getState();
+      await this.syncWidgetData(
+        state.profile.currentStreak,
+        state.lives,
+        null as any,
+        state.profile.xp
+      );
+    } catch (e) {
+      console.warn('Error en refreshWidgetsOnResume:', e);
+    }
+  }
 }
 
 export const widgetService = WidgetService.getInstance();

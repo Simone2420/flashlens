@@ -41,23 +41,12 @@ export default function RootLayout() {
     notificationService.syncDailyNotificationSchedule().catch(() => {});
 
     // Sincronizar regeneración de vidas y widgets al montar
-    useUserStore.getState().checkLivesRegeneration();
-    const initSync = () => {
-      const state = useUserStore.getState();
-      widgetService.syncWidgetData(
-        state.profile.currentStreak,
-        state.lives,
-        null as any,
-        state.profile.xp
-      ).catch(() => {});
-    };
-    initSync();
+    widgetService.refreshWidgetsOnResume().catch(() => {});
 
-    // Escuchar cuando la app pasa a primer plano (active)
+    // Escuchar cuando la app pasa a primer plano (active) o se envía al fondo (background)
     const appStateSub = AppState.addEventListener('change', (nextState) => {
-      if (nextState === 'active') {
-        useUserStore.getState().checkLivesRegeneration();
-        initSync();
+      if (nextState === 'active' || nextState === 'background') {
+        widgetService.refreshWidgetsOnResume().catch(() => {});
       }
     });
 

@@ -40,31 +40,50 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
     const xp = shared?.dailyXp ?? userProfile?.xp ?? 0;
 
     // 3. Regeneración autónoma de vidas por tiempo si pasaron intervalos de 15 minutos
-    if (currentLives < maxLives && nextRegenTimestamp > 0 && Date.now() >= nextRegenTimestamp) {
-      const intervalMs = 15 * 60 * 1000;
-      const elapsedSinceNext = Date.now() - nextRegenTimestamp;
-      const additionalLives = 1 + Math.floor(elapsedSinceNext / intervalMs);
-      const newLives = Math.min(maxLives, currentLives + additionalLives);
-      const isNowFull = newLives >= maxLives;
-      const newNextRegen = isNowFull ? 0 : nextRegenTimestamp + (additionalLives * intervalMs);
-      currentLives = newLives;
+    const intervalMs = 15 * 60 * 1000;
+    if (currentLives < maxLives) {
+      if (nextRegenTimestamp > 0 && Date.now() >= nextRegenTimestamp) {
+        const elapsedSinceNext = Date.now() - nextRegenTimestamp;
+        const additionalLives = 1 + Math.floor(elapsedSinceNext / intervalMs);
+        const newLives = Math.min(maxLives, currentLives + additionalLives);
+        const isNowFull = newLives >= maxLives;
+        const newNextRegen = isNowFull ? 0 : nextRegenTimestamp + (additionalLives * intervalMs);
+        currentLives = newLives;
 
-      // Persistir de inmediato en el almacenamiento compartido
-      try {
-        const updatedShared = {
-          ...(shared || {}),
-          streakDays,
-          currentLives,
-          maxLives,
-          nextRegenTimestamp: newNextRegen,
-          dailyXp: xp,
-          lastStreakDate,
-          hasPracticedToday,
-          lastUpdated: new Date().toISOString(),
-        };
-        await AsyncStorage.setItem(STORAGE_SHARED_DATA_KEY, JSON.stringify(updatedShared));
-      } catch (e) {
-        console.warn('Error guardando shared widget data regenerado:', e);
+        // Persistir de inmediato en el almacenamiento compartido
+        try {
+          const updatedShared = {
+            ...(shared || {}),
+            streakDays,
+            currentLives,
+            maxLives,
+            nextRegenTimestamp: newNextRegen,
+            dailyXp: xp,
+            lastStreakDate,
+            hasPracticedToday,
+            lastUpdated: new Date().toISOString(),
+          };
+          await AsyncStorage.setItem(STORAGE_SHARED_DATA_KEY, JSON.stringify(updatedShared));
+        } catch (e) {
+          console.warn('Error guardando shared widget data regenerado:', e);
+        }
+      } else if (nextRegenTimestamp <= 0) {
+        // Si no había timestamp fijado, inicializar el próximo ciclo de 15 minutos
+        const fallbackNext = Date.now() + intervalMs;
+        try {
+          const updatedShared = {
+            ...(shared || {}),
+            streakDays,
+            currentLives,
+            maxLives,
+            nextRegenTimestamp: fallbackNext,
+            dailyXp: xp,
+            lastStreakDate,
+            hasPracticedToday,
+            lastUpdated: new Date().toISOString(),
+          };
+          await AsyncStorage.setItem(STORAGE_SHARED_DATA_KEY, JSON.stringify(updatedShared));
+        } catch {}
       }
     }
 
