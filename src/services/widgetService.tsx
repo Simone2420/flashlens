@@ -109,7 +109,7 @@ class WidgetService {
       }
     } catch {}
 
-    const safeIndex = currentIndex % targetDeck.length;
+    const safeIndex = targetDeck.length > 0 ? (currentIndex % targetDeck.length) : 0;
     const activeCard: Flashcard = cardOfTheDay || targetDeck[safeIndex] || targetDeck[0] || {
       id: 'w-default',
       targetWord: 'Piece of cake',
@@ -163,7 +163,7 @@ class WidgetService {
                 currentStreak={streakDays}
                 hasPracticedToday={hasPracticedToday}
                 currentIndex={safeIndex + 1}
-                totalCards={targetDeck.length}
+                totalCards={Math.max(1, targetDeck.length)}
                 isHardMode={storedMode === 'HARD'}
                 deckMode={storedMode}
                 livesCount={lives.currentLives}

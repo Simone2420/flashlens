@@ -155,7 +155,7 @@ Schema:
         ? parsed.acceptedTranslations.map((s: string) => s.trim().toLowerCase())
         : [parsed.primaryTranslation?.toLowerCase().trim() || ''];
 
-      const minLen = Math.min(...acceptedList.map(s => s.length));
+      const minLen = acceptedList.length > 0 ? Math.min(...acceptedList.map(s => s.length)) : 4;
 
       const primaryTargetWord = parsed.targetWord || 'Object';
       const otherCands = (parsed.otherDetectedCandidates || [])

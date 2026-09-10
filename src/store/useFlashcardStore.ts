@@ -177,11 +177,21 @@ export const useFlashcardStore = create<FlashcardState>()(
       },
 
       toggleFavorite: (cardId: string) => {
-        set(state => ({
-          cards: state.cards.map(c =>
+        set(state => {
+          const updated = state.cards.map(c =>
             c.id === cardId ? { ...c, isFavorite: !c.isFavorite } : c
-          ),
-        }));
+          );
+          try {
+            const userState = useUserStore.getState();
+            const streak = userState?.profile?.currentStreak ?? 0;
+            const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
+            const xp = userState?.profile?.xp ?? 0;
+            widgetService.syncWidgetData(streak, lives, null as any, xp);
+          } catch (e) {
+            console.warn('Error sincronizando widget al alternar favorita:', e);
+          }
+          return { cards: updated };
+        });
       },
 
       createFromVoiceSpanish: (spokenText) => {

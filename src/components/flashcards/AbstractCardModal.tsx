@@ -290,7 +290,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     if (!acceptedList.includes(rawTranslation.toLowerCase())) {
       acceptedList.unshift(rawTranslation.toLowerCase());
     }
-    const minLen = Math.min(...acceptedList.map(s => s.length));
+    const minLen = acceptedList.length > 0 ? Math.min(...acceptedList.map(s => s.length)) : 4;
 
     const savedFacilitated = !isIpaUnlocked
       ? (phoneticInput.trim() || nlpLinguisticService.toFacilitatedPhonetics(targetWord.trim()))
@@ -339,7 +339,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     if (!acceptedList.includes(rawTrans.toLowerCase())) {
       acceptedList.unshift(rawTrans.toLowerCase());
     }
-    const minLen = Math.min(...acceptedList.map(s => s.length));
+    const minLen = acceptedList.length > 0 ? Math.min(...acceptedList.map(s => s.length)) : 4;
 
     const saved = addCard({
       targetWord: generatedPreviewCard.targetWord,

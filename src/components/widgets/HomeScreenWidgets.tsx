@@ -136,8 +136,8 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
     targetDeck = favoriteCards;
   }
 
-  const safeIndex = localIndex % targetDeck.length;
-  const currentCard = targetDeck[safeIndex] || targetDeck[0];
+  const safeIndex = targetDeck.length > 0 ? (localIndex % targetDeck.length) : 0;
+  const currentCard = targetDeck[safeIndex] || targetDeck[0] || INITIAL_FLASHCARDS[0];
 
   const targetWord = currentCard?.targetWord || 'Piece of cake';
   const translation = currentCard?.nativeTranslation || currentCard?.primaryTranslation || 'Pan comido / Muy fácil';

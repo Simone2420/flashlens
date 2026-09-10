@@ -300,7 +300,7 @@ export const CameraViewfinder: React.FC = () => {
       acceptedList.unshift(rawTranslation.toLowerCase());
     }
 
-    const minLen = Math.min(...acceptedList.map(s => s.length));
+    const minLen = acceptedList.length > 0 ? Math.min(...acceptedList.map(s => s.length)) : 4;
 
     // Determinar pronunciación facilitada e IPA
     const savedFacilitated = !isIpaUnlocked

@@ -39,7 +39,7 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
 
     let persistedCards: any[] | null = null;
     try {
-      const cardsRaw = await AsyncStorage.getItem('flashlens-flashcard-storage');
+      const cardsRaw = (await AsyncStorage.getItem('flashlens-flashcards-storage')) || (await AsyncStorage.getItem('flashlens-flashcard-storage'));
       if (cardsRaw) {
         persistedCards = JSON.parse(cardsRaw)?.state?.cards;
       }
@@ -188,8 +188,9 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
         currentIndex = 0;
       }
 
+      const deckLength = Math.max(1, targetDeck.length);
       if (widgetAction === 'WIDGET_CLICK' && clickAction === 'NEXT_HARD_WORD') {
-        currentIndex = (currentIndex + 1) % targetDeck.length;
+        currentIndex = (currentIndex + 1) % deckLength;
         try {
           await AsyncStorage.setItem(STORAGE_HARD_INDEX_KEY, currentIndex.toString());
         } catch (e) {
@@ -197,15 +198,16 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
         }
       }
 
-      const currentCard = targetDeck[currentIndex % targetDeck.length];
+      const safeIdx = targetDeck.length > 0 ? (currentIndex % targetDeck.length) : 0;
+      const currentCard = targetDeck[safeIdx] || INITIAL_FLASHCARDS[0];
 
       renderWidget(
         <HardVocabularyWidget
           card={currentCard}
           currentStreak={streakDays}
           hasPracticedToday={hasPracticedToday}
-          currentIndex={(currentIndex % targetDeck.length) + 1}
-          totalCards={targetDeck.length}
+          currentIndex={targetDeck.length > 0 ? safeIdx + 1 : 1}
+          totalCards={Math.max(1, targetDeck.length)}
           isHardMode={storedMode === 'HARD'}
           deckMode={storedMode}
           livesCount={currentLives}

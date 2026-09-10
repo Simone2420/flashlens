@@ -288,6 +288,22 @@ export const useUserStore = create<UserState>()(
 
         if (!lives.lastLifeLostAt) {
           const nextTime = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
+          if (nextTime > 0 && nextTime <= now) {
+            const elapsed = now - (nextTime - intervalMs);
+            const livesToRegen = Math.max(1, Math.floor(elapsed / intervalMs));
+            const newCount = Math.min(lives.maxLives, lives.currentLives + livesToRegen);
+            const isFull = newCount >= lives.maxLives;
+            const updatedLives: LivesState = {
+              ...lives,
+              currentLives: newCount,
+              nextRegenerationAt: isFull ? null : new Date(nextTime + livesToRegen * intervalMs).toISOString(),
+              lastLifeLostAt: isFull ? null : new Date(nextTime + (livesToRegen - 1) * intervalMs).toISOString(),
+            };
+            set({ lives: updatedLives });
+            widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+            return;
+          }
+
           let calculatedLostTime = now;
           if (nextTime > now) {
             calculatedLostTime = nextTime - intervalMs;

@@ -35,6 +35,7 @@ import { useUserStore } from '../../src/store/useUserStore';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { AdaptiveDictationInput } from '../../src/components/audio/AdaptiveDictationInput';
 import { DictationDirection } from '../../src/types';
+import { INITIAL_FLASHCARDS } from '../../src/data/mockData';
 
 export default function AudioLabScreen() {
   const insets = useSafeAreaInsets();
@@ -66,7 +67,7 @@ export default function AudioLabScreen() {
   const [burstTimeLeft, setBurstTimeLeft] = useState(15);
   const [selectedBurstOption, setSelectedBurstOption] = useState<string | null>(null);
 
-  const activeCard = sessionCards[currentCardIndex] || cards[0];
+  const activeCard = sessionCards[currentCardIndex] || cards[0] || INITIAL_FLASHCARDS[0];
 
   // 4 opciones para modo Ráfaga con Selección Múltiple (Ritmo Lento y Medio)
   const burstOptions = useMemo(() => {
