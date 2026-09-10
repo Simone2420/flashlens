@@ -31,9 +31,7 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
     ? Math.max(1, Math.ceil((nextRegen - Date.now()) / (60 * 1000)))
     : null;
 
-  const livesBadgeText = remainingMinutes !== null
-    ? `❤️ ${safeLives}/${lives.maxLives} (+1 en ${remainingMinutes}m)`
-    : `❤️ ${safeLives}/${lives.maxLives}`;
+  const isRecovering = safeLives < lives.maxLives && remainingMinutes !== null;
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -60,7 +58,7 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
           <Text style={styles.compactBrandText}>⚡ FLASHLENS</Text>
           <View style={[styles.compactLivesBadge, safeLives <= 1 && styles.compactLivesBadgeDanger]}>
             <Text style={[styles.compactLivesText, safeLives <= 1 && styles.compactLivesTextDanger]}>
-              {livesBadgeText}
+              {`❤️ ${safeLives}/${lives.maxLives}`}
             </Text>
           </View>
         </View>
@@ -74,11 +72,20 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
           <Text style={styles.compactXpText}>{profile.xp} XP</Text>
         </View>
 
-        {/* Banner de Estado Dinámico de Racha */}
-        <View style={[styles.compactStatusBanner, hasPracticedToday ? styles.statusSafe : styles.statusDanger]}>
-          <Text style={[styles.compactStatusText, hasPracticedToday ? styles.statusSafeText : styles.statusDangerText]}>
-            {hasPracticedToday ? '✓ Racha asegurada' : '🚨 ¡Salva tu racha!'}
-          </Text>
+        {/* Sección Inferior: Estado de Racha y Temporizador de Vidas */}
+        <View style={{ alignItems: 'center', width: '100%' }}>
+          {isRecovering && (
+            <View style={[styles.compactStatusBanner, styles.timerPill, { marginBottom: 3 }]}>
+              <Text style={styles.timerPillText}>
+                {`⏱️ +1 vida en ${remainingMinutes}m`}
+              </Text>
+            </View>
+          )}
+          <View style={[styles.compactStatusBanner, hasPracticedToday ? styles.statusSafe : styles.statusDanger]}>
+            <Text style={[styles.compactStatusText, hasPracticedToday ? styles.statusSafeText : styles.statusDangerText]}>
+              {hasPracticedToday ? '✓ Racha asegurada' : '🚨 ¡Salva tu racha!'}
+            </Text>
+          </View>
         </View>
       </TouchableOpacity>
 
@@ -344,6 +351,16 @@ const styles = StyleSheet.create({
   },
   statusDangerText: {
     color: '#DC2626',
+  },
+  timerPill: {
+    backgroundColor: '#FFF1F2',
+    borderColor: '#FECDD3',
+  },
+  timerPillText: {
+    color: '#E11D48',
+    fontSize: 8,
+    fontWeight: '800',
+    textAlign: 'center',
   },
 
   // ==========================================

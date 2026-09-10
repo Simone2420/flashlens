@@ -51,8 +51,9 @@ export default function RootLayout() {
     });
 
     // Intervalo de revisión cada 60 segundos mientras la app está abierta
+    // Recalcula minutos restantes del temporizador y sincroniza widgets en tiempo real
     const intervalId = setInterval(() => {
-      useUserStore.getState().checkLivesRegeneration();
+      widgetService.refreshWidgetsOnResume().catch(() => {});
     }, 60000);
 
     return () => {

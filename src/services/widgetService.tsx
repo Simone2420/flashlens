@@ -52,7 +52,7 @@ class WidgetService {
     dailyXp: number = 0,
     dailyGoalXp: number = 50
   ): Promise<WidgetSyncData> {
-    let nextRegenMinutes = 0;
+    let nextRegenMinutes: number | null = null;
     let nextRegenTimestamp = 0;
 
     if (lives.currentLives < lives.maxLives) {
@@ -62,7 +62,7 @@ class WidgetService {
         nextRegenTimestamp = Date.now() + 15 * 60 * 1000;
       }
       const diffMs = nextRegenTimestamp - Date.now();
-      nextRegenMinutes = Math.max(0, Math.ceil(diffMs / 60000));
+      nextRegenMinutes = Math.max(1, Math.ceil(diffMs / 60000));
     }
 
     const now = new Date();
@@ -71,14 +71,35 @@ class WidgetService {
     const lastStreakDate = userProfile?.lastStreakDate ?? null;
     const hasPracticedToday = lastStreakDate === todayLocal;
 
-    // Obtener mazo real dinámico (difíciles o mazo completo si no hay difíciles)
+    // Obtener modo persistido del widget: HARD | FAVORITES | ALL
+    let storedMode: 'HARD' | 'FAVORITES' | 'ALL' = 'HARD';
+    try {
+      const modeRaw = await AsyncStorage.getItem('@flashlens_widget_deck_mode');
+      if (modeRaw === 'HARD' || modeRaw === 'FAVORITES' || modeRaw === 'ALL') {
+        storedMode = modeRaw;
+      }
+    } catch {}
+
+    // Obtener mazo real dinámico (difíciles, favoritas o mazo completo)
     let allCards = useFlashcardStore.getState()?.cards || [];
     if (allCards.length === 0) {
       allCards = INITIAL_FLASHCARDS;
     }
     const hardCards = allCards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
-    const isHardMode = hardCards.length > 0;
-    const targetDeck = isHardMode ? hardCards : allCards;
+    const favoriteCards = allCards.filter(c => c.isFavorite);
+
+    if (storedMode === 'HARD' && hardCards.length === 0) {
+      storedMode = favoriteCards.length > 0 ? 'FAVORITES' : 'ALL';
+    } else if (storedMode === 'FAVORITES' && favoriteCards.length === 0) {
+      storedMode = 'ALL';
+    }
+
+    let targetDeck = allCards;
+    if (storedMode === 'HARD' && hardCards.length > 0) {
+      targetDeck = hardCards;
+    } else if (storedMode === 'FAVORITES' && favoriteCards.length > 0) {
+      targetDeck = favoriteCards;
+    }
 
     let currentIndex = 0;
     try {
@@ -113,7 +134,7 @@ class WidgetService {
       streakDays,
       currentLives: lives.currentLives,
       maxLives: lives.maxLives,
-      nextRegenMinutes,
+      nextRegenMinutes: nextRegenMinutes ?? 0,
       nextRegenTimestamp,
       wordOfTheDay: {
         targetWord: activeCard.targetWord,
@@ -132,7 +153,7 @@ class WidgetService {
       await AsyncStorage.setItem(WIDGET_DATA_KEY, JSON.stringify(payload));
 
       if (Platform.OS === 'android') {
-        // 1. Actualizar Widget de Vocabulario (Difícil o Todo el Mazo)
+        // 1. Actualizar Widget de Vocabulario (Difícil, Favoritas o Todo el Mazo)
         try {
           await requestWidgetUpdate({
             widgetName: 'HardVocabularyWidget',
@@ -143,9 +164,11 @@ class WidgetService {
                 hasPracticedToday={hasPracticedToday}
                 currentIndex={safeIndex + 1}
                 totalCards={targetDeck.length}
-                isHardMode={isHardMode}
+                isHardMode={storedMode === 'HARD'}
+                deckMode={storedMode}
                 livesCount={lives.currentLives}
                 maxLives={lives.maxLives}
+                remainingMinutes={nextRegenMinutes}
               />
             ),
           });
@@ -153,7 +176,7 @@ class WidgetService {
           // Widget no agregado en pantalla de inicio actualmente
         }
 
-        // 2. Actualizar Widget de Racha y Vidas
+        // 2. Actualizar Widget de Racha y Vidas con Temporizador Sincronizado
         try {
           await requestWidgetUpdate({
             widgetName: 'StreakMasterWidget',
@@ -163,6 +186,7 @@ class WidgetService {
                 hasPracticedToday={hasPracticedToday}
                 livesCount={lives.currentLives}
                 maxLives={lives.maxLives}
+                remainingMinutes={nextRegenMinutes}
                 xp={dailyXp}
               />
             ),

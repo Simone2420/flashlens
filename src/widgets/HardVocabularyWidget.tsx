@@ -67,7 +67,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
     : '#2563EB';
 
   const livesText = remainingMinutes !== null && remainingMinutes !== undefined && livesCount < maxLives
-    ? `❤️ ${livesCount}/${maxLives} • +1 en ${remainingMinutes}m`
+    ? `❤️ ${livesCount}/${maxLives} (+1 en ${remainingMinutes}m)`
     : `❤️ ${livesCount}/${maxLives}`;
 
   const streakBadgeText = hasPracticedToday
