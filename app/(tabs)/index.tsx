@@ -93,9 +93,11 @@ export default function HomeScreen() {
     cards,
     activeCardTypeFilter,
     selectedCategories,
+    isFavoriteFilter,
     searchQuery,
     setCardTypeFilter,
     toggleCategoryFilter,
+    toggleFavoriteFilter,
     clearCategoryFilters,
     setSearchQuery,
     getFilteredCards,
@@ -329,14 +331,41 @@ export default function HomeScreen() {
           />
         </View>
 
-        {/* Carrusel Horizontal de Chips de las 12 Subcategorías */}
+        {/* Carrusel Horizontal de Chips de las 12 Subcategorías + Favoritas */}
         <View style={styles.categoryFiltersContainer}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScroll}>
-            {selectedCategories.length > 0 && (
-              <TouchableOpacity onPress={clearCategoryFilters} style={styles.clearFilterChip}>
+            {(selectedCategories.length > 0 || isFavoriteFilter) && (
+              <TouchableOpacity
+                onPress={() => {
+                  clearCategoryFilters();
+                  if (isFavoriteFilter) toggleFavoriteFilter();
+                }}
+                style={styles.clearFilterChip}
+              >
                 <Text style={styles.clearFilterText}>✕ Limpiar</Text>
               </TouchableOpacity>
             )}
+            {/* Chip de Filtro Especial: Favoritas */}
+            <TouchableOpacity
+              onPress={() => {
+                Haptics.selectionAsync();
+                toggleFavoriteFilter();
+              }}
+              style={[
+                styles.subcatChip,
+                isFavoriteFilter && styles.favoriteChipSelected,
+              ]}
+            >
+              <Text style={styles.subcatIcon}>⭐</Text>
+              <Text
+                style={[
+                  styles.subcatLabel,
+                  isFavoriteFilter && styles.favoriteLabelSelected,
+                ]}
+              >
+                Favoritas ({cards.filter(c => c.isFavorite).length})
+              </Text>
+            </TouchableOpacity>
             {SUBCATEGORIES_LIST.map(cat => {
               const isSelected = selectedCategories.includes(cat.category);
               const count = cards.filter(c => c.conceptCategory === cat.category).length;
@@ -599,6 +628,15 @@ const styles = StyleSheet.create({
   subcatChipSelected: {
     backgroundColor: '#FFF8E1',
     borderColor: '#E8B400',
+  },
+  favoriteChipSelected: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#D97706',
+    borderWidth: 1.5,
+  },
+  favoriteLabelSelected: {
+    color: '#92400E',
+    fontWeight: '800',
   },
   subcatIcon: {
     fontSize: 12,

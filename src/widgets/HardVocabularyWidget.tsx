@@ -3,6 +3,8 @@ import React from 'react';
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 import { Flashcard } from '../types';
 
+export type WidgetDeckMode = 'HARD' | 'FAVORITES' | 'ALL';
+
 interface HardVocabularyWidgetProps {
   card: Flashcard;
   currentStreak?: number;
@@ -10,8 +12,10 @@ interface HardVocabularyWidgetProps {
   currentIndex?: number;
   totalCards?: number;
   isHardMode?: boolean;
+  deckMode?: WidgetDeckMode;
   livesCount?: number;
   maxLives?: number;
+  remainingMinutes?: number | null;
 }
 
 export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
@@ -21,19 +25,54 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
   currentIndex = 1,
   totalCards = 1,
   isHardMode = true,
+  deckMode = isHardMode ? 'HARD' : 'ALL',
   livesCount = 5,
   maxLives = 5,
+  remainingMinutes = null,
 }) => {
   const targetWord = card?.targetWord || 'Piece of cake';
   const translation = card?.nativeTranslation || card?.primaryTranslation || 'Pan comido / Muy fácil';
-  const rawSentence = card?.contextSentence ? `"${card.contextSentence}"` : null;
-  // Truncate sentence to prevent multi-line overflow from pushing buttons out of the widget frame
-  const sentence = rawSentence && rawSentence.length > 48 ? `${rawSentence.slice(0, 45)}..."` : rawSentence;
+  // Oración de contexto completa sin cortes artificiales
+  const sentence = card?.contextSentence ? `"${card.contextSentence}"` : null;
   const partOfSpeech = card?.partOfSpeech || (card?.conceptCategory === 'IDIOM_EXPRESSION' ? 'IDIOM' : 'A1/A2');
 
-  const reviewUri = isHardMode
+  const reviewUri = deckMode === 'FAVORITES'
+    ? 'flashlens://srs/review?mode=FAVORITES'
+    : deckMode === 'HARD'
     ? 'flashlens://srs/review?mode=HARD'
     : 'flashlens://srs/review?mode=ALL';
+
+  const modeBadgeText = deckMode === 'FAVORITES'
+    ? `⭐ FAV (${currentIndex}/${totalCards}) ↻`
+    : deckMode === 'HARD'
+    ? `DIFÍCIL (${currentIndex}/${totalCards}) ↻`
+    : `TODO (${currentIndex}/${totalCards}) ↻`;
+
+  const modeBadgeBg = deckMode === 'FAVORITES'
+    ? '#FEF3C7'
+    : deckMode === 'HARD'
+    ? '#FEE2E2'
+    : '#EFF6FF';
+
+  const modeBadgeBorder = deckMode === 'FAVORITES'
+    ? '#FDE68A'
+    : deckMode === 'HARD'
+    ? '#FECDD3'
+    : '#DBEAFE';
+
+  const modeBadgeColor = deckMode === 'FAVORITES'
+    ? '#D97706'
+    : deckMode === 'HARD'
+    ? '#DC2626'
+    : '#2563EB';
+
+  const livesText = remainingMinutes !== null && remainingMinutes !== undefined && livesCount < maxLives
+    ? `❤️ ${livesCount}/${maxLives} • +1 en ${remainingMinutes}m`
+    : `❤️ ${livesCount}/${maxLives}`;
+
+  const streakBadgeText = hasPracticedToday
+    ? `🔥 ${currentStreak}d • ${livesText}`
+    : `⚠️ ${currentStreak}d • ${livesText}`;
 
   return (
     <FlexWidget
@@ -68,9 +107,10 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             }}
           />
           <FlexWidget
+            clickAction="TOGGLE_WIDGET_DECK_MODE"
             style={{
-              backgroundColor: isHardMode ? '#FEE2E2' : '#EFF6FF',
-              borderColor: isHardMode ? '#FECDD3' : '#DBEAFE',
+              backgroundColor: modeBadgeBg,
+              borderColor: modeBadgeBorder,
               borderWidth: 1,
               paddingHorizontal: 6,
               paddingVertical: 2,
@@ -79,9 +119,9 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
             }}
           >
             <TextWidget
-              text={isHardMode ? `DIFÍCIL (${currentIndex}/${totalCards})` : `MAZO (${currentIndex}/${totalCards})`}
+              text={modeBadgeText}
               style={{
-                color: isHardMode ? '#DC2626' : '#2563EB',
+                color: modeBadgeColor,
                 fontSize: 8.5,
                 fontWeight: 'bold',
               }}
@@ -103,7 +143,7 @@ export const HardVocabularyWidget: React.FC<HardVocabularyWidgetProps> = ({
           }}
         >
           <TextWidget
-            text={hasPracticedToday ? `🔥 ${currentStreak}d • ❤️ ${livesCount}/${maxLives}` : `⚠️ ${currentStreak}d • ❤️ ${livesCount}/${maxLives}`}
+            text={streakBadgeText}
             style={{
               color: hasPracticedToday ? '#15803D' : '#DC2626',
               fontSize: 8.5,

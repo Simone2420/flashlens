@@ -157,26 +157,36 @@ Schema:
 
       const minLen = Math.min(...acceptedList.map(s => s.length));
 
+      const primaryTargetWord = parsed.targetWord || 'Object';
+      const otherCands = (parsed.otherDetectedCandidates || [])
+        .filter((c: any) => c.label && c.label.toLowerCase() !== primaryTargetWord.toLowerCase())
+        .map((c: any) => ({
+          text: c.label,
+          confidence: Math.round((c.confidence || 0.8) * 100),
+        }));
+
+      const topDetections = [
+        { text: primaryTargetWord, confidence: 98 },
+        ...otherCands,
+      ];
+
       const payload: AdaptiveCardPayload = {
-        targetWord: parsed.targetWord || 'Object',
+        targetWord: primaryTargetWord,
         primaryTranslation: parsed.primaryTranslation || 'Objeto',
         acceptedTranslations: acceptedList,
         minInputLength: minLen > 0 ? minLen : 4,
         displayTranslation: parsed.primaryTranslation || 'Objeto',
         nativeTranslation: parsed.primaryTranslation || 'Objeto',
         facilitatedPhonetics: facilitated,
-        phoneticScript: parsed.phoneticScript || `/${parsed.targetWord.toLowerCase()}/`,
-        contextSentence: parsed.contextSentence || `This is a ${parsed.targetWord}.`,
+        phoneticScript: parsed.phoneticScript || `/${primaryTargetWord.toLowerCase()}/`,
+        contextSentence: parsed.contextSentence || `This is a ${primaryTargetWord}.`,
         contextTranslation: parsed.contextTranslation || `Esto es un(a) ${parsed.primaryTranslation}.`,
         mnemonicHint: parsed.mnemonicHint,
         cefrLevel: targetCefr,
         partOfSpeech: parsed.partOfSpeech || 'NOUN',
         conceptCategory: parsed.conceptCategory || 'OBJECT',
         confidence: 98,
-        topDetections: (parsed.otherDetectedCandidates || []).map((c: any) => ({
-          text: c.label,
-          confidence: Math.round((c.confidence || 0.8) * 100),
-        })),
+        topDetections,
       };
 
       networkService.markConnected();

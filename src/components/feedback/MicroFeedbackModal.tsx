@@ -39,6 +39,19 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
   const [comment, setComment] = useState('');
   const [isSent, setIsSent] = useState(false);
   const [wasQueued, setWasQueued] = useState(false);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleCloseNow = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsSent(false);
+    setWasQueued(false);
+    setComment('');
+    setRating(5);
+    onClose();
+  };
 
   const handleSubmit = async () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -60,13 +73,9 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
       setWasQueued(true);
     }
 
-    setTimeout(() => {
-      setIsSent(false);
-      setWasQueued(false);
-      setComment('');
-      setRating(5);
-      onClose();
-    }, 2000);
+    timeoutRef.current = setTimeout(() => {
+      handleCloseNow();
+    }, 3000);
   };
 
   return (
@@ -75,6 +84,9 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
         <View style={styles.cardContainer}>
           {isSent ? (
             <View style={styles.successBox}>
+              <TouchableOpacity onPress={handleCloseNow} style={styles.successCloseBtn}>
+                <X size={18} color="#5E5E5E" />
+              </TouchableOpacity>
               <Heart size={48} color="#EF4444" fill="#EF4444" />
               <Text style={styles.successTitle}>
                 {wasQueued ? '¡Opinión Guardada Offline!' : '¡Gracias por tu opinión!'}
@@ -84,6 +96,9 @@ export const MicroFeedbackModal: React.FC<MicroFeedbackModalProps> = ({
                   ? 'Se enviará automáticamente a Google Sheets en cuanto se restablezca tu conexión a internet.'
                   : 'Tu retroalimentación nos ayuda a perfeccionar la experiencia de FlashLens.'}
               </Text>
+              <TouchableOpacity onPress={handleCloseNow} style={styles.successActionBtn}>
+                <Text style={styles.successActionBtnText}>Entendido</Text>
+              </TouchableOpacity>
             </View>
           ) : (
             <>
@@ -280,7 +295,18 @@ const styles = StyleSheet.create({
   },
   successBox: {
     alignItems: 'center',
-    paddingVertical: SPACING.lg,
+    paddingVertical: SPACING.md,
+    position: 'relative',
+    width: '100%',
+  },
+  successCloseBtn: {
+    position: 'absolute',
+    top: -6,
+    right: -6,
+    padding: 6,
+    borderRadius: 16,
+    backgroundColor: '#F1EDEC',
+    zIndex: 10,
   },
   successTitle: {
     fontSize: 18,
@@ -294,5 +320,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 6,
     lineHeight: 18,
+  },
+  successActionBtn: {
+    marginTop: 18,
+    backgroundColor: '#E8B400',
+    paddingVertical: 10,
+    paddingHorizontal: 28,
+    borderRadius: 14,
+  },
+  successActionBtnText: {
+    color: '#1C1B1B',
+    fontSize: 14,
+    fontWeight: '800',
   },
 });

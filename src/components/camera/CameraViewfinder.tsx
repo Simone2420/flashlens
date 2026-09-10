@@ -566,34 +566,10 @@ export const CameraViewfinder: React.FC = () => {
                 </View>
               )}
 
-              {/* Selector Adaptativo de Nivel CEFR (A1 a C1) */}
-              <View style={styles.cefrSelectorContainer}>
-                <View style={styles.cefrTitleRow}>
-                  <Award size={14} color="#765A00" />
-                  <Text style={styles.cefrTitle}>NIVEL CEFR DE LA FLASHCARD:</Text>
-                </View>
-                <View style={styles.cefrChipsRow}>
-                  {CEFR_LEVELS.map(level => {
-                    const isSelected = selectedCefr === level;
-                    return (
-                      <TouchableOpacity
-                        key={level}
-                        onPress={() => handleLevelChange(level)}
-                        style={[styles.cefrChip, isSelected && styles.cefrChipActive]}
-                      >
-                        <Text style={[styles.cefrChipText, isSelected && styles.cefrChipTextActive]}>
-                          {level}
-                        </Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </View>
-              </View>
-
               {/* Input Palabra en Inglés y Fonética */}
               <View style={styles.inputRow}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.inputLabel}>Palabra en Inglés ({selectedCefr}):</Text>
+                  <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
                   <TextInput
                     style={styles.input}
                     value={wordInput}

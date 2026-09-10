@@ -102,6 +102,7 @@ export interface Flashcard {
   intervalDays: number;
   lastRating?: ReviewRating;
   nextReviewAt: string; // ISO date
+  isFavorite?: boolean; // Tarjeta marcada como favorita
 }
 
 export interface VoiceConceptMatch {

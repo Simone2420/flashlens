@@ -287,8 +287,13 @@ export const useUserStore = create<UserState>()(
         const intervalMs = 15 * 60 * 1000; // 15 minutos por cada corazón
 
         if (!lives.lastLifeLostAt) {
-          const nowIso = new Date(now).toISOString();
-          const nextIso = new Date(now + intervalMs).toISOString();
+          const nextTime = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
+          let calculatedLostTime = now;
+          if (nextTime > now) {
+            calculatedLostTime = nextTime - intervalMs;
+          }
+          const nowIso = new Date(calculatedLostTime).toISOString();
+          const nextIso = new Date(calculatedLostTime + intervalMs).toISOString();
           const updatedLives: LivesState = {
             ...lives,
             lastLifeLostAt: nowIso,

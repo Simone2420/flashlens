@@ -26,6 +26,15 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
   const hasPracticedToday = profile.lastStreakDate === todayLocal;
   const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
+  const nextRegen = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
+  const remainingMinutes = (safeLives < lives.maxLives && nextRegen > Date.now())
+    ? Math.max(1, Math.ceil((nextRegen - Date.now()) / (60 * 1000)))
+    : null;
+
+  const livesBadgeText = remainingMinutes !== null
+    ? `❤️ ${safeLives}/${lives.maxLives} (+1 en ${remainingMinutes}m)`
+    : `❤️ ${safeLives}/${lives.maxLives}`;
+
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (onPress) {
@@ -51,7 +60,7 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
           <Text style={styles.compactBrandText}>⚡ FLASHLENS</Text>
           <View style={[styles.compactLivesBadge, safeLives <= 1 && styles.compactLivesBadgeDanger]}>
             <Text style={[styles.compactLivesText, safeLives <= 1 && styles.compactLivesTextDanger]}>
-              ❤️ {safeLives}/{lives.maxLives}
+              {livesBadgeText}
             </Text>
           </View>
         </View>
@@ -89,25 +98,44 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
   const { profile, lives } = useUserStore();
   const { cards } = useFlashcardStore();
   const [localIndex, setLocalIndex] = useState(0);
+  const [deckMode, setDeckMode] = useState<'HARD' | 'FAVORITES' | 'ALL'>('HARD');
 
   const now = new Date();
   const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   const hasPracticedToday = profile.lastStreakDate === todayLocal;
   const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
-  // Obtener mazo dinámico: tarjetas difíciles primero, o mazo completo
+  const nextRegen = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
+  const remainingMinutes = (safeLives < lives.maxLives && nextRegen > Date.now())
+    ? Math.max(1, Math.ceil((nextRegen - Date.now()) / (60 * 1000)))
+    : null;
+
+  // Obtener mazos según modo
   let allCards = cards && cards.length > 0 ? cards : INITIAL_FLASHCARDS;
   const hardCards = allCards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
-  const isHardMode = hardCards.length > 0;
-  const targetDeck = isHardMode ? hardCards : allCards;
+  const favoriteCards = allCards.filter(c => c.isFavorite);
+
+  let effectiveMode = deckMode;
+  if (effectiveMode === 'HARD' && hardCards.length === 0) {
+    effectiveMode = favoriteCards.length > 0 ? 'FAVORITES' : 'ALL';
+  } else if (effectiveMode === 'FAVORITES' && favoriteCards.length === 0) {
+    effectiveMode = 'ALL';
+  }
+
+  let targetDeck = allCards;
+  if (effectiveMode === 'HARD' && hardCards.length > 0) {
+    targetDeck = hardCards;
+  } else if (effectiveMode === 'FAVORITES' && favoriteCards.length > 0) {
+    targetDeck = favoriteCards;
+  }
 
   const safeIndex = localIndex % targetDeck.length;
   const currentCard = targetDeck[safeIndex] || targetDeck[0];
 
   const targetWord = currentCard?.targetWord || 'Piece of cake';
   const translation = currentCard?.nativeTranslation || currentCard?.primaryTranslation || 'Pan comido / Muy fácil';
-  const rawSentence = currentCard?.contextSentence ? `"${currentCard.contextSentence}"` : null;
-  const sentence = rawSentence && rawSentence.length > 55 ? `${rawSentence.slice(0, 52)}..."` : rawSentence;
+  // Oración de contexto completa sin cortes
+  const sentence = currentCard?.contextSentence ? `"${currentCard.contextSentence}"` : null;
   const partOfSpeech = currentCard?.partOfSpeech || (currentCard?.conceptCategory === 'IDIOM_EXPRESSION' ? 'IDIOM' : 'A1/A2');
 
   const handleReview = () => {
@@ -116,7 +144,7 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
       onPress();
       return;
     }
-    router.push((isHardMode ? '/srs/review?mode=HARD' : '/srs/review?mode=ALL') as any);
+    router.push(`/srs/review?mode=${effectiveMode}` as any);
   };
 
   const handleNextWord = (e: any) => {
@@ -125,23 +153,66 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
     setLocalIndex(prev => (prev + 1) % targetDeck.length);
   };
 
+  const handleToggleMode = (e: any) => {
+    e?.stopPropagation?.();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setLocalIndex(0);
+    if (effectiveMode === 'HARD') {
+      setDeckMode(favoriteCards.length > 0 ? 'FAVORITES' : 'ALL');
+    } else if (effectiveMode === 'FAVORITES') {
+      setDeckMode('ALL');
+    } else {
+      setDeckMode(hardCards.length > 0 ? 'HARD' : (favoriteCards.length > 0 ? 'FAVORITES' : 'ALL'));
+    }
+  };
+
+  const modeBadgeText = effectiveMode === 'FAVORITES'
+    ? `⭐ FAV (${safeIndex + 1}/${targetDeck.length}) ↻`
+    : effectiveMode === 'HARD'
+    ? `DIFÍCIL (${safeIndex + 1}/${targetDeck.length}) ↻`
+    : `TODO (${safeIndex + 1}/${targetDeck.length}) ↻`;
+
+  const livesText = remainingMinutes !== null
+    ? `❤️ ${safeLives}/${lives.maxLives} • +1 en ${remainingMinutes}m`
+    : `❤️ ${safeLives}/${lives.maxLives}`;
+
   return (
     <View style={styles.expandedCard}>
       {/* Barra Superior del Widget */}
       <View style={styles.expandedHeaderRow}>
         <View style={styles.brandAndModeRow}>
           <Text style={styles.expandedBrandText}>⚡ FLASHLENS</Text>
-          <View style={[styles.modeBadge, isHardMode ? styles.modeBadgeHard : styles.modeBadgeAll]}>
-            <Text style={[styles.modeBadgeText, isHardMode ? styles.modeBadgeTextHard : styles.modeBadgeTextAll]}>
-              {isHardMode ? `DIFÍCIL (${safeIndex + 1}/${targetDeck.length})` : `MAZO (${safeIndex + 1}/${targetDeck.length})`}
+          <TouchableOpacity
+            onPress={handleToggleMode}
+            activeOpacity={0.7}
+            style={[
+              styles.modeBadge,
+              effectiveMode === 'FAVORITES'
+                ? styles.modeBadgeFav
+                : effectiveMode === 'HARD'
+                ? styles.modeBadgeHard
+                : styles.modeBadgeAll,
+            ]}
+          >
+            <Text
+              style={[
+                styles.modeBadgeText,
+                effectiveMode === 'FAVORITES'
+                  ? styles.modeBadgeTextFav
+                  : effectiveMode === 'HARD'
+                  ? styles.modeBadgeTextHard
+                  : styles.modeBadgeTextAll,
+              ]}
+            >
+              {modeBadgeText}
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
-        {/* Indicador de Racha y Vidas */}
+        {/* Indicador de Racha y Vidas con Temporizador de Minutos */}
         <View style={[styles.expandedStreakPill, hasPracticedToday ? styles.streakPillSafe : styles.streakPillDanger]}>
           <Text style={[styles.expandedStreakPillText, hasPracticedToday ? styles.streakPillTextSafe : styles.streakPillTextDanger]}>
-            {hasPracticedToday ? `🔥 ${profile.currentStreak}d • ❤️ ${safeLives}/${lives.maxLives}` : `⚠️ ${profile.currentStreak}d • ❤️ ${safeLives}/${lives.maxLives}`}
+            {hasPracticedToday ? `🔥 ${profile.currentStreak}d • ${livesText}` : `⚠️ ${profile.currentStreak}d • ${livesText}`}
           </Text>
         </View>
       </View>
@@ -154,7 +225,7 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
         <Text style={styles.targetWordText} numberOfLines={1}>{targetWord}</Text>
         <Text style={styles.translationText} numberOfLines={1}>{translation}</Text>
         {sentence ? (
-          <Text style={styles.sentenceText} numberOfLines={2}>{sentence}</Text>
+          <Text style={styles.sentenceText}>{sentence}</Text>
         ) : null}
       </View>
 
@@ -314,6 +385,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FEE2E2',
     borderColor: '#FECDD3',
   },
+  modeBadgeFav: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#FDE68A',
+  },
   modeBadgeAll: {
     backgroundColor: '#EFF6FF',
     borderColor: '#DBEAFE',
@@ -324,6 +399,9 @@ const styles = StyleSheet.create({
   },
   modeBadgeTextHard: {
     color: '#DC2626',
+  },
+  modeBadgeTextFav: {
+    color: '#D97706',
   },
   modeBadgeTextAll: {
     color: '#2563EB',

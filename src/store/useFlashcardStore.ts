@@ -18,11 +18,14 @@ interface FlashcardState {
   toggleCategoryFilter: (category: ConceptCategory) => void;
   clearCategoryFilters: () => void;
   setSearchQuery: (query: string) => void;
+  isFavoriteFilter: boolean;
+  toggleFavoriteFilter: () => void;
   getFilteredCards: () => Flashcard[];
   getDueCards: () => Flashcard[];
 
   // Card Creation & Review
   addCard: (card: Omit<Flashcard, 'id' | 'createdAt' | 'repetitionNumber' | 'easeFactor' | 'intervalDays' | 'nextReviewAt'>) => Flashcard;
+  toggleFavorite: (cardId: string) => void;
   createFromVoiceSpanish: (spokenText: string) => Flashcard | null;
   reviewCard: (cardId: string, rating: ReviewRating) => void;
   deleteCard: (cardId: string) => void;
@@ -36,6 +39,7 @@ export const useFlashcardStore = create<FlashcardState>()(
       activeCardTypeFilter: 'ALL',
       selectedCategories: [],
       searchQuery: '',
+      isFavoriteFilter: false,
 
       setCardTypeFilter: (filter) => {
         set({ activeCardTypeFilter: filter });
@@ -59,9 +63,18 @@ export const useFlashcardStore = create<FlashcardState>()(
         set({ searchQuery: query });
       },
 
+      toggleFavoriteFilter: () => {
+        set(state => ({ isFavoriteFilter: !state.isFavoriteFilter }));
+      },
+
       getFilteredCards: () => {
-        const { cards, activeCardTypeFilter, selectedCategories, searchQuery } = get();
+        const { cards, activeCardTypeFilter, selectedCategories, searchQuery, isFavoriteFilter } = get();
         return cards.filter(card => {
+          // Filtro por favoritas
+          if (isFavoriteFilter && !card.isFavorite) {
+            return false;
+          }
+
           // Filtro por tipo de tarjeta (Vocabulario vs Abstracto)
           if (activeCardTypeFilter !== 'ALL' && card.cardType !== activeCardTypeFilter) {
             return false;
@@ -92,6 +105,49 @@ export const useFlashcardStore = create<FlashcardState>()(
       },
 
       addCard: (cardData) => {
+        const { cards } = get();
+        const targetClean = cardData.targetWord.trim().toLowerCase();
+        const existingIndex = cards.findIndex(c => c.targetWord.trim().toLowerCase() === targetClean);
+
+        // 🌟 Reutilización Inteligente: Si ya existe en el mazo, actualizar foto y contexto manteniendo el historial SRS
+        if (existingIndex >= 0) {
+          const existing = cards[existingIndex];
+          const updatedCard: Flashcard = {
+            ...existing,
+            ...cardData,
+            id: existing.id,
+            createdAt: existing.createdAt,
+            repetitionNumber: existing.repetitionNumber,
+            easeFactor: existing.easeFactor,
+            intervalDays: existing.intervalDays,
+            nextReviewAt: existing.nextReviewAt,
+            lastRating: existing.lastRating,
+            isFavorite: existing.isFavorite ?? false,
+            imageUrl: cardData.imageUrl || existing.imageUrl,
+            contextSentence: cardData.contextSentence || existing.contextSentence,
+            contextTranslation: cardData.contextTranslation || existing.contextTranslation,
+            nativeTranslation: cardData.nativeTranslation || existing.nativeTranslation,
+            primaryTranslation: cardData.primaryTranslation || existing.primaryTranslation,
+            facilitatedPhonetics: cardData.facilitatedPhonetics || existing.facilitatedPhonetics,
+            phoneticScript: cardData.phoneticScript || existing.phoneticScript,
+          };
+
+          const newCards = [updatedCard, ...cards.filter((_, idx) => idx !== existingIndex)];
+          set({ cards: newCards });
+
+          try {
+            const userState = useUserStore.getState();
+            const streak = userState?.profile?.currentStreak ?? 0;
+            const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
+            const xp = userState?.profile?.xp ?? 0;
+            widgetService.syncWidgetData(streak, lives, updatedCard, xp);
+          } catch (e) {
+            console.warn('Error sincronizando widget al actualizar tarjeta:', e);
+          }
+
+          return updatedCard;
+        }
+
         const newCard: Flashcard = {
           ...cardData,
           id: `fc-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
@@ -100,6 +156,7 @@ export const useFlashcardStore = create<FlashcardState>()(
           easeFactor: 2.5,
           intervalDays: 0,
           nextReviewAt: new Date().toISOString(),
+          isFavorite: false,
         };
 
         set(state => {
@@ -117,6 +174,14 @@ export const useFlashcardStore = create<FlashcardState>()(
         });
 
         return newCard;
+      },
+
+      toggleFavorite: (cardId: string) => {
+        set(state => ({
+          cards: state.cards.map(c =>
+            c.id === cardId ? { ...c, isFavorite: !c.isFavorite } : c
+          ),
+        }));
       },
 
       createFromVoiceSpanish: (spokenText) => {

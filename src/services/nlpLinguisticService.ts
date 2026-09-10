@@ -51,6 +51,361 @@ const ABSTRACT_EXCLUSIONS = [
   'furniture', 'appliance', 'fixture', 'building'
 ];
 
+interface CommonObjectEntry {
+  es: string;
+  ipa: string;
+  phonetics: string;
+  sentenceEn: string;
+  sentenceEs: string;
+}
+
+// Mapa enriquecido de objetos cotidianos comunes detectados por cámara / sugerencias
+export const COMMON_OBJECT_MAP: Record<string, CommonObjectEntry> = {
+  desk: {
+    es: 'Escritorio',
+    ipa: '/dɛsk/',
+    phonetics: 'desk',
+    sentenceEn: 'I keep my notebooks neatly arranged on the desk.',
+    sentenceEs: 'Mantengo mis cuadernos ordenados en el escritorio.',
+  },
+  table: {
+    es: 'Mesa',
+    ipa: '/ˈteɪbəl/',
+    phonetics: 'téibl',
+    sentenceEn: 'The dinner is served on the wooden table.',
+    sentenceEs: 'La cena está servida en la mesa de madera.',
+  },
+  chair: {
+    es: 'Silla',
+    ipa: '/tʃɛər/',
+    phonetics: 'cher',
+    sentenceEn: 'Please take a seat on this comfortable chair.',
+    sentenceEs: 'Por favor toma asiento en esta silla cómoda.',
+  },
+  bottle: {
+    es: 'Botella',
+    ipa: '/ˈbɒtl/',
+    phonetics: 'bótl',
+    sentenceEn: 'Keep a water bottle near you while studying.',
+    sentenceEs: 'Mantén una botella de agua cerca mientras estudias.',
+  },
+  'water bottle': {
+    es: 'Botella de Agua',
+    ipa: '/ˈwɔː.tər ˈbɒt.əl/',
+    phonetics: 'uáter bótl',
+    sentenceEn: 'Drink fresh water from your bottle during the study session.',
+    sentenceEs: 'Bebe agua fresca de tu botella durante la sesión de estudio.',
+  },
+  phone: {
+    es: 'Teléfono',
+    ipa: '/foʊn/',
+    phonetics: 'foun',
+    sentenceEn: 'My phone screen automatically dims at night.',
+    sentenceEs: 'La pantalla de mi teléfono se atenúa de noche.',
+  },
+  smartphone: {
+    es: 'Teléfono Inteligente / Celular',
+    ipa: '/ˈsmɑːrtfoʊn/',
+    phonetics: 'smárt-foun',
+    sentenceEn: 'You can practice English daily on your smartphone.',
+    sentenceEs: 'Puedes practicar inglés a diario en tu teléfono celular.',
+  },
+  keyboard: {
+    es: 'Teclado',
+    ipa: '/ˈkiːbɔːrd/',
+    phonetics: 'kíi-bord',
+    sentenceEn: 'Typing on a mechanical keyboard is very satisfying.',
+    sentenceEs: 'Escribir en un teclado mecánico es muy satisfactorio.',
+  },
+  mouse: {
+    es: 'Ratón / Mouse',
+    ipa: '/maʊs/',
+    phonetics: 'maus',
+    sentenceEn: 'Move the mouse pointer to select the option.',
+    sentenceEs: 'Mueve el ratón para seleccionar la opción.',
+  },
+  bag: {
+    es: 'Bolso / Mochila',
+    ipa: '/bæɡ/',
+    phonetics: 'bag',
+    sentenceEn: 'He placed the heavy bag on the shelf.',
+    sentenceEs: 'Él colocó la bolsa pesada en el estante.',
+  },
+  pen: {
+    es: 'Bolígrafo / Lapicero',
+    ipa: '/pɛn/',
+    phonetics: 'pen',
+    sentenceEn: 'Write your signature using a black pen.',
+    sentenceEs: 'Escribe tu firma usando un bolígrafo negro.',
+  },
+  pencil: {
+    es: 'Lápiz',
+    ipa: '/ˈpɛn.səl/',
+    phonetics: 'pénsl',
+    sentenceEn: 'Use a pencil to sketch notes in your textbook.',
+    sentenceEs: 'Usa un lápiz para tomar notas en tu libro de texto.',
+  },
+  watch: {
+    es: 'Reloj de Pulsera',
+    ipa: '/wɒtʃ/',
+    phonetics: 'uoch',
+    sentenceEn: 'He glanced at his watch to check the time.',
+    sentenceEs: 'Miró su reloj para comprobar la hora.',
+  },
+  clock: {
+    es: 'Reloj',
+    ipa: '/klɒk/',
+    phonetics: 'klok',
+    sentenceEn: 'The clock on the wall ticks quietly in the study room.',
+    sentenceEs: 'El reloj en la pared marca el tiempo silenciosamente.',
+  },
+  window: {
+    es: 'Ventana',
+    ipa: '/ˈwɪndoʊ/',
+    phonetics: 'uíndou',
+    sentenceEn: 'Open the window to let fresh air into the room.',
+    sentenceEs: 'Abre la ventana para que entre aire fresco a la habitación.',
+  },
+  door: {
+    es: 'Puerta',
+    ipa: '/dɔːr/',
+    phonetics: 'dor',
+    sentenceEn: 'Remember to lock the front door before leaving.',
+    sentenceEs: 'Recuerda cerrar la puerta principal antes de salir.',
+  },
+  lamp: {
+    es: 'Lámpara',
+    ipa: '/læmp/',
+    phonetics: 'lamp',
+    sentenceEn: 'The desk lamp provides plenty of light for reading.',
+    sentenceEs: 'La lámpara de escritorio proporciona suficiente luz para leer.',
+  },
+  notebook: {
+    es: 'Cuaderno',
+    ipa: '/ˈnoʊtbʊk/',
+    phonetics: 'nóutbuk',
+    sentenceEn: 'Write down new vocabulary in your personal notebook.',
+    sentenceEs: 'Anota el nuevo vocabulario en tu cuaderno personal.',
+  },
+  glasses: {
+    es: 'Gafas / Lentes',
+    ipa: '/ˈɡlæsɪz/',
+    phonetics: 'glásis',
+    sentenceEn: 'She wears reading glasses when reviewing flashcards.',
+    sentenceEs: 'Ella usa gafas para leer cuando repasa las flashcards.',
+  },
+  cup: {
+    es: 'Taza',
+    ipa: '/kʌp/',
+    phonetics: 'kap',
+    sentenceEn: 'Enjoy a hot cup of tea during your study break.',
+    sentenceEs: 'Disfruta de una taza de té caliente durante el descanso.',
+  },
+  mug: {
+    es: 'Tazón / Mug',
+    ipa: '/mʌɡ/',
+    phonetics: 'mag',
+    sentenceEn: 'Her favorite ceramic mug is filled with warm coffee.',
+    sentenceEs: 'Su tazón de cerámica favorito está lleno de café caliente.',
+  },
+  'coffee cup': {
+    es: 'Taza de Café',
+    ipa: '/ˈkɒf.i kʌp/',
+    phonetics: 'kófi kap',
+    sentenceEn: 'She drinks hot coffee from a cup.',
+    sentenceEs: 'Ella bebe café caliente de una taza.',
+  },
+  'coffee mug': {
+    es: 'Taza de Café',
+    ipa: '/ˈkɒf.i mʌɡ/',
+    phonetics: 'kófi mag',
+    sentenceEn: 'I always keep a coffee mug on my desk.',
+    sentenceEs: 'Siempre tengo una taza de café en mi escritorio.',
+  },
+  screen: {
+    es: 'Pantalla',
+    ipa: '/skriːn/',
+    phonetics: 'skriin',
+    sentenceEn: 'The computer screen displays the lesson in high resolution.',
+    sentenceEs: 'La pantalla de la computadora muestra la lección en alta resolución.',
+  },
+  monitor: {
+    es: 'Monitor / Pantalla',
+    ipa: '/ˈmɒn.ɪ.tər/',
+    phonetics: 'mónitor',
+    sentenceEn: 'Adjust the monitor height for better posture.',
+    sentenceEs: 'Ajusta la altura del monitor para una mejor postura.',
+  },
+  wallet: {
+    es: 'Billetera / Cartera',
+    ipa: '/ˈwɒl.ɪt/',
+    phonetics: 'uólet',
+    sentenceEn: 'He placed his identification card inside the leather wallet.',
+    sentenceEs: 'Colocó su identificación dentro de la billetera de cuero.',
+  },
+  key: {
+    es: 'Llave',
+    ipa: '/kiː/',
+    phonetics: 'kii',
+    sentenceEn: 'Keep the room key safely in your pocket.',
+    sentenceEs: 'Guarda la llave de la habitación en tu bolsillo.',
+  },
+  headphones: {
+    es: 'Auriculares',
+    ipa: '/ˈhɛd.foʊnz/',
+    phonetics: 'jéd-founs',
+    sentenceEn: 'Put on your headphones to listen to the audio session.',
+    sentenceEs: 'Ponte los auriculares para escuchar la sesión de audio.',
+  },
+  backpack: {
+    es: 'Mochila',
+    ipa: '/ˈbæk.pæk/',
+    phonetics: 'bákpak',
+    sentenceEn: 'Pack your books into your backpack before going to class.',
+    sentenceEs: 'Guarda tus libros en la mochila antes de ir a clase.',
+  },
+  book: {
+    es: 'Libro',
+    ipa: '/bʊk/',
+    phonetics: 'buk',
+    sentenceEn: 'Reading an English book every day strengthens your comprehension.',
+    sentenceEs: 'Leer un libro en inglés todos los días fortalece tu comprensión.',
+  },
+  laptop: {
+    es: 'Computadora Portátil',
+    ipa: '/ˈlæp.tɒp/',
+    phonetics: 'láptop',
+    sentenceEn: 'He opened his laptop to practice with FlashLens.',
+    sentenceEs: 'Abrió su computadora portátil para practicar con FlashLens.',
+  },
+  computer: {
+    es: 'Computadora',
+    ipa: '/kəmˈpjuː.tər/',
+    phonetics: 'kompiúter',
+    sentenceEn: 'Turn on the computer to access the learning portal.',
+    sentenceEs: 'Enciende la computadora para acceder al portal de aprendizaje.',
+  },
+  bed: {
+    es: 'Cama',
+    ipa: '/bɛd/',
+    phonetics: 'bed',
+    sentenceEn: 'Make your bed every morning to start the day organized.',
+    sentenceEs: 'Tiende tu cama cada mañana para comenzar el día organizado.',
+  },
+  pillow: {
+    es: 'Almohada',
+    ipa: '/ˈpɪloʊ/',
+    phonetics: 'pílou',
+    sentenceEn: 'Rest your head on the soft pillow to sleep soundly.',
+    sentenceEs: 'Apoya tu cabeza en la almohada suave para dormir profundamente.',
+  },
+  plant: {
+    es: 'Planta',
+    ipa: '/plænt/',
+    phonetics: 'plant',
+    sentenceEn: 'Water the green plant once a week to keep it healthy.',
+    sentenceEs: 'Riega la planta verde una vez a la semana para mantenerla sana.',
+  },
+  shoe: {
+    es: 'Zapato',
+    ipa: '/ʃuː/',
+    phonetics: 'shu',
+    sentenceEn: 'Tie your shoe laces before going for a run.',
+    sentenceEs: 'Átate los cordones del zapato antes de salir a correr.',
+  },
+  shoes: {
+    es: 'Zapatos',
+    ipa: '/ʃuːz/',
+    phonetics: 'shus',
+    sentenceEn: 'Leave your shoes by the entrance door.',
+    sentenceEs: 'Deja tus zapatos cerca de la puerta de entrada.',
+  },
+  jacket: {
+    es: 'Chaqueta / Casaca',
+    ipa: '/ˈdʒæk.ɪt/',
+    phonetics: 'yáket',
+    sentenceEn: 'Wear a warm jacket because the weather is cold outside.',
+    sentenceEs: 'Ponte una chaqueta abrigada porque hace frío afuera.',
+  },
+  car: {
+    es: 'Carro / Auto / Coche',
+    ipa: '/kɑːr/',
+    phonetics: 'kar',
+    sentenceEn: 'He parked his car in front of the building.',
+    sentenceEs: 'Estacionó su carro frente al edificio.',
+  },
+  bicycle: {
+    es: 'Bicicleta',
+    ipa: '/ˈbaɪ.sɪ.kəl/',
+    phonetics: 'báisikl',
+    sentenceEn: 'Riding a bicycle is an eco-friendly way to travel.',
+    sentenceEs: 'Andar en bicicleta es una forma ecológica de desplazarse.',
+  },
+  bike: {
+    es: 'Bicicleta',
+    ipa: '/baɪk/',
+    phonetics: 'báik',
+    sentenceEn: 'He rides his bike to the university every day.',
+    sentenceEs: 'Él va en su bicicleta a la universidad todos los días.',
+  },
+  camera: {
+    es: 'Cámara',
+    ipa: '/ˈkæm.rə/',
+    phonetics: 'kámera',
+    sentenceEn: 'Point the camera at any object to create a flashcard.',
+    sentenceEs: 'Apunta la cámara a cualquier objeto para crear una flashcard.',
+  },
+  box: {
+    es: 'Caja',
+    ipa: '/bɒks/',
+    phonetics: 'boks',
+    sentenceEn: 'Store old items inside this cardboard box.',
+    sentenceEs: 'Guarda los artículos viejos dentro de esta caja de cartón.',
+  },
+  guitar: {
+    es: 'Guitarra',
+    ipa: '/ɡɪˈtɑːr/',
+    phonetics: 'guitár',
+    sentenceEn: 'He plays the acoustic guitar in the evenings.',
+    sentenceEs: 'Él toca la guitarra acústica por las tardes.',
+  },
+  umbrella: {
+    es: 'Paraguas',
+    ipa: '/ʌmˈbrɛlə/',
+    phonetics: 'ambréla',
+    sentenceEn: 'Take an umbrella with you in case it rains.',
+    sentenceEs: 'Lleva un paraguas contigo por si llueve.',
+  },
+  mirror: {
+    es: 'Espejo',
+    ipa: '/ˈmɪr.ər/',
+    phonetics: 'míror',
+    sentenceEn: 'She adjusted her collar while looking into the mirror.',
+    sentenceEs: 'Se arregló el cuello mientras se miraba en el espejo.',
+  },
+  plate: {
+    es: 'Plato',
+    ipa: '/pleɪt/',
+    phonetics: 'pleit',
+    sentenceEn: 'Place the clean plate on the dining table.',
+    sentenceEs: 'Coloca el plato limpio sobre la mesa del comedor.',
+  },
+  fork: {
+    es: 'Tenedor',
+    ipa: '/fɔːrk/',
+    phonetics: 'fork',
+    sentenceEn: 'Use a fork and knife to eat your lunch.',
+    sentenceEs: 'Usa un tenedor y un cuchillo para comer tu almuerzo.',
+  },
+  spoon: {
+    es: 'Cuchara',
+    ipa: '/spuːn/',
+    phonetics: 'spun',
+    sentenceEn: 'Stir your tea using a small spoon.',
+    sentenceEs: 'Revuelve tu té usando una cuchara pequeña.',
+  },
+};
+
 // Base de conocimiento léxica adaptativa calibrada de A1 a C1
 const LINGUISTIC_KNOWLEDGE_BASE: LinguisticEntry[] = [
   {
@@ -533,9 +888,33 @@ export class NLPLinguisticService {
     level: CEFRLevel = 'A1',
     confidenceScore: number = 96
   ): AdaptiveCardPayload {
-    const cleanLower = rawText.toLowerCase();
+    const cleanLower = rawText.toLowerCase().trim();
 
-    // Buscar coincidencia semántica en la base de conocimiento léxica
+    // 1. Coincidencia directa en COMMON_OBJECT_MAP (objetos cotidianos capturados por cámara o sugerencias)
+    const directObj =
+      COMMON_OBJECT_MAP[cleanLower] ||
+      Object.entries(COMMON_OBJECT_MAP).find(
+        ([k]) => cleanLower === k || cleanLower.includes(k) || k.includes(cleanLower)
+      )?.[1];
+
+    if (directObj) {
+      const capitalizedWord = rawText.charAt(0).toUpperCase() + rawText.slice(1);
+      return {
+        targetWord: capitalizedWord,
+        nativeTranslation: directObj.es,
+        primaryTranslation: directObj.es.split('/')[0].trim(),
+        phoneticScript: directObj.ipa,
+        facilitatedPhonetics: directObj.phonetics,
+        cefrLevel: level,
+        contextSentence: directObj.sentenceEn,
+        contextTranslation: directObj.sentenceEs,
+        partOfSpeech: 'NOUN',
+        conceptCategory: 'OBJECT',
+        confidence: confidenceScore,
+      };
+    }
+
+    // 2. Coincidencia semántica en la base de conocimiento léxica
     const matchedEntry = LINGUISTIC_KNOWLEDGE_BASE.find(entry =>
       entry.keywords.some(kw => cleanLower.includes(kw) || kw.includes(cleanLower))
     );
@@ -560,13 +939,14 @@ export class NLPLinguisticService {
       };
     }
 
-    // Generador dinámico para cualquier otra palabra devuelta por ML Kit fuera de las categorías principales
+    // 3. Generador dinámico para cualquier otra palabra devuelta por ML Kit fuera de las categorías principales
     const capitalizedWord = rawText.charAt(0).toUpperCase() + rawText.slice(1);
     const dynamicSentence = this.buildDynamicSentence(capitalizedWord, level);
 
     return {
       targetWord: capitalizedWord,
-      nativeTranslation: `Objeto: ${capitalizedWord}`,
+      nativeTranslation: capitalizedWord,
+      primaryTranslation: capitalizedWord,
       phoneticScript: `/${capitalizedWord.toLowerCase()}/`,
       facilitatedPhonetics: this.toFacilitatedPhonetics(capitalizedWord),
       cefrLevel: level,
@@ -585,9 +965,13 @@ export class NLPLinguisticService {
   public toFacilitatedPhonetics(word: string, ipa?: string): string {
     const lower = word.toLowerCase().trim();
 
+    // Comprobar coincidencia en COMMON_OBJECT_MAP
+    if (COMMON_OBJECT_MAP[lower]) {
+      return COMMON_OBJECT_MAP[lower].phonetics;
+    }
+
     // 1. Diccionario directo de términos comunes y objetos detectados
     const directMap: Record<string, string> = {
-      'coffee cup': 'kófi kap',
       'coffee mug': 'kófi mag',
       'cup': 'kap',
       'mug': 'mag',

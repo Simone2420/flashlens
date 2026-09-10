@@ -25,8 +25,9 @@ export const ReviewModeModal: React.FC<ReviewModeModalProps> = ({
 
   const dueCards = getDueCards();
   const hardCards = cards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
+  const favoriteCards = cards.filter(c => c.isFavorite);
 
-  const handleSelectMode = (mode: 'DUE' | 'HARD' | 'ALL') => {
+  const handleSelectMode = (mode: 'DUE' | 'HARD' | 'FAVORITES' | 'ALL') => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onClose();
     router.push({
@@ -105,7 +106,31 @@ export const ReviewModeModal: React.FC<ReviewModeModalProps> = ({
               </View>
             </TouchableOpacity>
 
-            {/* Opción 3: Todas las flashcards */}
+            {/* Opción 3: Flashcards Favoritas */}
+            <TouchableOpacity
+              style={[styles.optionCard, favoriteCards.length > 0 && styles.optionCardActiveGold]}
+              onPress={() => handleSelectMode('FAVORITES')}
+              activeOpacity={0.7}
+            >
+              <View style={[styles.iconBox, { backgroundColor: '#FEF3C7' }]}>
+                <Ionicons name="star" size={24} color="#D97706" />
+              </View>
+              <View style={styles.cardInfo}>
+                <View style={styles.cardHeaderRow}>
+                  <Text style={styles.cardTitle}>Flashcards Favoritas</Text>
+                  <View style={[styles.badge, favoriteCards.length > 0 ? styles.badgeGold : styles.badgeMuted]}>
+                    <Text style={styles.badgeText}>{favoriteCards.length}</Text>
+                  </View>
+                </View>
+                <Text style={styles.cardDescription}>
+                  {favoriteCards.length > 0
+                    ? 'Tus tarjetas preferidas y destacadas con estrella.'
+                    : 'Aún no tienes flashcards favoritas. ¡Marca algunas con la estrella!'}
+                </Text>
+              </View>
+            </TouchableOpacity>
+
+            {/* Opción 4: Todas las flashcards */}
             <TouchableOpacity
               style={styles.optionCard}
               onPress={() => handleSelectMode('ALL')}
@@ -196,6 +221,10 @@ const styles = StyleSheet.create({
     borderColor: '#FECDD3',
     backgroundColor: '#FFF1F2',
   },
+  optionCardActiveGold: {
+    borderColor: '#FDE68A',
+    backgroundColor: '#FFFDF5',
+  },
   iconBox: {
     width: 46,
     height: 46,
@@ -233,6 +262,9 @@ const styles = StyleSheet.create({
   },
   badgeDanger: {
     backgroundColor: '#E11D48',
+  },
+  badgeGold: {
+    backgroundColor: '#D97706',
   },
   badgeMuted: {
     backgroundColor: '#94A3B8',

@@ -7,6 +7,7 @@ interface StreakMasterWidgetProps {
   hasPracticedToday: boolean;
   livesCount: number;
   maxLives?: number;
+  remainingMinutes?: number | null;
   xp: number;
 }
 
@@ -15,10 +16,15 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
   hasPracticedToday = false,
   livesCount = 5,
   maxLives = 5,
+  remainingMinutes = null,
   xp = 0,
 }) => {
   const safeLives = Math.max(0, Math.min(maxLives, livesCount));
   const heartsDisplay = '❤️'.repeat(safeLives) + '🤍'.repeat(Math.max(0, maxLives - safeLives));
+
+  const livesText = remainingMinutes !== null && remainingMinutes !== undefined && safeLives < maxLives
+    ? `❤️ ${safeLives}/${maxLives} (+1 en ${remainingMinutes}m)`
+    : `❤️ ${safeLives}/${maxLives}`;
 
   return (
     <FlexWidget
@@ -64,10 +70,10 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           }}
         >
           <TextWidget
-            text={`❤️ ${safeLives}/${maxLives}`}
+            text={livesText}
             style={{
               color: safeLives > 1 ? '#E11D48' : '#DC2626',
-              fontSize: 9,
+              fontSize: 8.5,
               fontWeight: 'bold',
             }}
           />

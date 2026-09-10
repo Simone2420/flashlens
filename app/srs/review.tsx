@@ -22,20 +22,25 @@ import { ProgressBar } from '../../src/components/common/ProgressBar';
 export default function SRSReviewScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { mode = 'DUE' } = useLocalSearchParams<{ mode?: 'DUE' | 'HARD' | 'ALL' }>();
+  const { mode = 'DUE' } = useLocalSearchParams<{ mode?: 'DUE' | 'HARD' | 'FAVORITES' | 'ALL' }>();
 
   const { cards, reviewCard, getDueCards } = useFlashcardStore();
   const { addXP, registerDailyActivity } = useUserStore();
 
   const dueCards = getDueCards();
   const hardCards = cards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
+  const favoriteCards = cards.filter(c => c.isFavorite);
 
   // Seleccionar mazo según el modo elegido
   let reviewDeck = cards;
   let modeTitle = 'REPASO ESPACIADO SM-2';
   let emptyStateMsg = 'No hay tarjetas pendientes hoy. ¡Vas al día!';
 
-  if (mode === 'HARD') {
+  if (mode === 'FAVORITES') {
+    reviewDeck = favoriteCards.length > 0 ? favoriteCards : [];
+    modeTitle = 'FLASHCARDS FAVORITAS';
+    emptyStateMsg = 'No tienes flashcards marcadas como favoritas todavía. ¡Marca algunas con la estrella para repasarlas aquí!';
+  } else if (mode === 'HARD') {
     reviewDeck = hardCards.length > 0 ? hardCards : cards;
     modeTitle = 'VOCABULARIO DIFÍCIL';
     emptyStateMsg = 'No tienes palabras marcadas como difíciles actualmente.';
@@ -121,13 +126,21 @@ export default function SRSReviewScreen() {
           </View>
 
           <Badge
-            label={mode === 'HARD' ? 'DIFICULTADES SUPERADAS' : 'REPASO FINALIZADO'}
+            label={
+              mode === 'FAVORITES'
+                ? 'FAVORITAS AFIANZADAS'
+                : mode === 'HARD'
+                ? 'DIFICULTADES SUPERADAS'
+                : 'REPASO FINALIZADO'
+            }
             variant="accent"
             style={{ alignSelf: 'center', marginBottom: 8 }}
           />
           <Text style={styles.completedTitle}>¡Sesión Completada!</Text>
           <Text style={styles.completedSub}>
-            {mode === 'HARD'
+            {mode === 'FAVORITES'
+              ? `Has repasado y fortalecido ${ratedCount} de tus flashcards favoritas.`
+              : mode === 'HARD'
               ? `Has repasado y fortalecido ${ratedCount} tarjetas difíciles.`
               : `Has repasado ${ratedCount} tarjetas. El algoritmo SM-2 ha programado las próximas fechas de recuperación neuronal.`}
           </Text>

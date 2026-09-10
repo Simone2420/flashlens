@@ -16,12 +16,14 @@ import Animated, {
   interpolate,
   Easing,
 } from 'react-native-reanimated';
-import { Volume2, RotateCw, Eye } from 'lucide-react-native';
+import { Volume2, RotateCw, Eye, Star } from 'lucide-react-native';
+import * as Haptics from 'expo-haptics';
 import { COLORS, SPACING } from '../../constants/theme';
 import { Flashcard, ReviewRating } from '../../types';
 import { AudioService } from '../../services/audioService';
 import { Badge } from '../common/Badge';
 import { useRoadmapStore } from '../../store/useRoadmapStore';
+import { useFlashcardStore } from '../../store/useFlashcardStore';
 
 export const getCardEmoji = (card: Flashcard) => {
   const w = (card.targetWord || '').toLowerCase();
@@ -139,6 +141,15 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
     }
   };
 
+  const toggleFavorite = useFlashcardStore(state => state.toggleFavorite);
+  const isFav = !!card.isFavorite;
+
+  const handleToggleFavorite = (e?: any) => {
+    e?.stopPropagation?.();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    toggleFavorite(card.id);
+  };
+
   const frontAnimatedStyle = useAnimatedStyle(() => {
     const rotateValue = interpolate(rotation.value, [0, 180], [0, 180]);
     return {
@@ -165,20 +176,35 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
     <View style={styles.container}>
       {/* Contenedor de la Tarjeta Flip */}
       <TouchableOpacity
-        activeOpacity={0.95}
-        onPress={toggleFlip}
+        activeOpacity={1}
+        onPress={!isFlipped ? toggleFlip : undefined}
+        disabled={isFlipped}
         style={styles.cardWrapper}
       >
         {/* LADO A: ESTÍMULO VISUAL & AUDITIVO (Texto oculto) */}
         <Animated.View style={[styles.card, styles.cardFront, frontAnimatedStyle]}>
           <View style={styles.cardHeader}>
             <Badge label={getCategoryBadgeLabel(card)} variant="default" />
-            <TouchableOpacity
-              onPress={() => handleSpeak(card.targetWord)}
-              style={styles.soundButton}
-            >
-              <Volume2 size={20} color={COLORS.onSurface} />
-            </TouchableOpacity>
+            <View style={styles.headerActions}>
+              <TouchableOpacity
+                onPress={handleToggleFavorite}
+                style={styles.soundButton}
+                activeOpacity={0.7}
+              >
+                <Star
+                  size={19}
+                  color={isFav ? '#E8B400' : COLORS.onSurfaceVariant}
+                  fill={isFav ? '#E8B400' : 'transparent'}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSpeak(card.targetWord)}
+                style={styles.soundButton}
+                activeOpacity={0.7}
+              >
+                <Volume2 size={20} color={COLORS.onSurface} />
+              </TouchableOpacity>
+            </View>
           </View>
 
           <View style={styles.imageContainer}>
@@ -218,12 +244,33 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
         <Animated.View style={[styles.card, styles.cardBack, backAnimatedStyle]}>
           <View style={styles.cardHeader}>
             <Badge label="Revelación" variant="accent" />
-            <TouchableOpacity
-              onPress={() => handleSpeak(card.targetWord)}
-              style={styles.soundButton}
-            >
-              <Volume2 size={20} color={COLORS.onSurface} />
-            </TouchableOpacity>
+            <View style={styles.headerActions}>
+              <TouchableOpacity
+                onPress={handleToggleFavorite}
+                style={styles.soundButton}
+                activeOpacity={0.7}
+              >
+                <Star
+                  size={19}
+                  color={isFav ? '#E8B400' : COLORS.onSurfaceVariant}
+                  fill={isFav ? '#E8B400' : 'transparent'}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSpeak(card.targetWord)}
+                style={styles.soundButton}
+                activeOpacity={0.7}
+              >
+                <Volume2 size={20} color={COLORS.onSurface} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={toggleFlip}
+                style={styles.soundButton}
+                activeOpacity={0.7}
+              >
+                <RotateCw size={18} color={COLORS.onSurfaceVariant} />
+              </TouchableOpacity>
+            </View>
           </View>
 
           <View style={styles.backContent}>
@@ -231,6 +278,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.backScrollContent}
               style={{ width: '100%' }}
+              nestedScrollEnabled
             >
               {/* Micro-Avatar Visual de Asociación */}
               <View style={styles.revelationAvatarRow}>
@@ -249,12 +297,18 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
               </View>
 
               <Text style={styles.targetWord}>{card.targetWord}</Text>
-              {displayedPhonetics ? (
-                <Text style={styles.phonetic}>
-                  {displayedPhonetics}
-                  {!isIpaUnlocked && card.facilitatedPhonetics ? ' (habla fácil)' : ''}
-                </Text>
-              ) : null}
+              
+              {/* Pronunciación Dual: IPA y Facilitada al estilo Píldora del Día */}
+              <View style={styles.phoneticsRow}>
+                {card.phoneticScript ? (
+                  <Text style={styles.ipaText}>{card.phoneticScript}</Text>
+                ) : null}
+                {card.facilitatedPhonetics ? (
+                  <View style={styles.facilitatedBadge}>
+                    <Text style={styles.facilitatedText}>🗣️ "{card.facilitatedPhonetics}"</Text>
+                  </View>
+                ) : null}
+              </View>
               
               <View style={styles.divider} />
               
@@ -480,9 +534,40 @@ const styles = StyleSheet.create({
   },
   backContent: {
     flex: 1,
-    justifyContent: 'center',
+    width: '100%',
+    overflow: 'hidden',
+  },
+  headerActions: {
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: SPACING.sm,
+    gap: 8,
+  },
+  phoneticsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 4,
+    marginBottom: 6,
+  },
+  ipaText: {
+    color: '#64748B',
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
+  },
+  facilitatedBadge: {
+    backgroundColor: '#F1EDEC',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E2DDDC',
+  },
+  facilitatedText: {
+    color: '#334155',
+    fontSize: 12,
+    fontWeight: '700',
   },
   revelationAvatarRow: {
     marginBottom: 6,
