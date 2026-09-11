@@ -1,6 +1,6 @@
 "use no memo";
 import React from 'react';
-import type { WidgetTaskHandlerProps } from 'react-native-android-widget';
+import { requestWidgetUpdate, type WidgetTaskHandlerProps } from 'react-native-android-widget';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HardVocabularyWidget } from './HardVocabularyWidget';
 import { StreakMasterWidget } from './StreakMasterWidget';
@@ -177,30 +177,31 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
       targetDeck = favoriteCards;
     }
 
-    if (widgetInfo.widgetName === 'HardVocabularyWidget') {
-      let currentIndex = 0;
+    let currentIndex = 0;
+    try {
+      const storedIdx = await AsyncStorage.getItem(STORAGE_HARD_INDEX_KEY);
+      if (storedIdx) {
+        currentIndex = parseInt(storedIdx, 10) || 0;
+      }
+    } catch {
+      currentIndex = 0;
+    }
+
+    const deckLength = Math.max(1, targetDeck.length);
+    if (widgetAction === 'WIDGET_CLICK' && clickAction === 'NEXT_HARD_WORD') {
+      currentIndex = (currentIndex + 1) % deckLength;
       try {
-        const storedIdx = await AsyncStorage.getItem(STORAGE_HARD_INDEX_KEY);
-        if (storedIdx) {
-          currentIndex = parseInt(storedIdx, 10) || 0;
-        }
-      } catch {
-        currentIndex = 0;
+        await AsyncStorage.setItem(STORAGE_HARD_INDEX_KEY, currentIndex.toString());
+      } catch (e) {
+        console.warn('Error guardando índice de widget difícil:', e);
       }
+    }
 
-      const deckLength = Math.max(1, targetDeck.length);
-      if (widgetAction === 'WIDGET_CLICK' && clickAction === 'NEXT_HARD_WORD') {
-        currentIndex = (currentIndex + 1) % deckLength;
-        try {
-          await AsyncStorage.setItem(STORAGE_HARD_INDEX_KEY, currentIndex.toString());
-        } catch (e) {
-          console.warn('Error guardando índice de widget difícil:', e);
-        }
-      }
+    const safeIdx = targetDeck.length > 0 ? (currentIndex % targetDeck.length) : 0;
+    const currentCard = targetDeck[safeIdx] || INITIAL_FLASHCARDS[0];
 
-      const safeIdx = targetDeck.length > 0 ? (currentIndex % targetDeck.length) : 0;
-      const currentCard = targetDeck[safeIdx] || INITIAL_FLASHCARDS[0];
-
+    if (widgetInfo.widgetName === 'HardVocabularyWidget') {
+      // 1. Renderizar widget de vocabulario objetivo
       renderWidget(
         <HardVocabularyWidget
           card={currentCard}
@@ -215,7 +216,27 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
           remainingMinutes={remainingMinutes}
         />
       );
+
+      // 2. Actualización Cruzada: Sincronizar simultáneamente el widget de racha y vidas
+      try {
+        await requestWidgetUpdate({
+          widgetName: 'StreakMasterWidget',
+          renderWidget: () => (
+            <StreakMasterWidget
+              currentStreak={streakDays}
+              hasPracticedToday={hasPracticedToday}
+              livesCount={currentLives}
+              maxLives={maxLives}
+              remainingMinutes={remainingMinutes}
+              xp={xp}
+            />
+          ),
+        });
+      } catch {
+        // StreakMasterWidget no está añadido en el escritorio actualmente
+      }
     } else if (widgetInfo.widgetName === 'StreakMasterWidget') {
+      // 1. Renderizar widget de racha objetivo
       renderWidget(
         <StreakMasterWidget
           currentStreak={streakDays}
@@ -226,6 +247,29 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
           xp={xp}
         />
       );
+
+      // 2. Actualización Cruzada: Sincronizar simultáneamente el widget de vocabulario
+      try {
+        await requestWidgetUpdate({
+          widgetName: 'HardVocabularyWidget',
+          renderWidget: () => (
+            <HardVocabularyWidget
+              card={currentCard}
+              currentStreak={streakDays}
+              hasPracticedToday={hasPracticedToday}
+              currentIndex={targetDeck.length > 0 ? safeIdx + 1 : 1}
+              totalCards={Math.max(1, targetDeck.length)}
+              isHardMode={storedMode === 'HARD'}
+              deckMode={storedMode}
+              livesCount={currentLives}
+              maxLives={maxLives}
+              remainingMinutes={remainingMinutes}
+            />
+          ),
+        });
+      } catch {
+        // HardVocabularyWidget no está añadido en el escritorio actualmente
+      }
     }
   } catch (error) {
     console.error('Error en widgetTaskHandler:', error);

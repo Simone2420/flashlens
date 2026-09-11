@@ -21,6 +21,9 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
 }) => {
   const safeLives = Math.max(0, Math.min(maxLives, livesCount));
   const isRecovering = safeLives < maxLives && remainingMinutes !== null && remainingMinutes !== undefined;
+  const livesText = isRecovering
+    ? `❤️ ${safeLives}/${maxLives} (${remainingMinutes}m)`
+    : `❤️ ${safeLives}/${maxLives}`;
 
   return (
     <FlexWidget
@@ -30,7 +33,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
         width: 'match_parent',
         backgroundColor: '#FFFFFF',
         borderRadius: 22,
-        padding: 9,
+        padding: 10,
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -42,7 +45,7 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
       <FlexWidget
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           width: 'match_parent',
         }}
@@ -51,11 +54,12 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           text="⚡ FLASHLENS"
           style={{
             color: '#D97706',
-            fontSize: 9.5,
+            fontSize: 10,
             fontWeight: 'bold',
           }}
         />
         <FlexWidget
+          clickAction="REFRESH_WIDGET"
           style={{
             backgroundColor: safeLives > 1 ? '#FFF1F2' : '#FEE2E2',
             paddingHorizontal: 6,
@@ -66,10 +70,10 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           }}
         >
           <TextWidget
-            text={`❤️ ${safeLives}/${maxLives}`}
+            text={livesText}
             style={{
               color: safeLives > 1 ? '#E11D48' : '#DC2626',
-              fontSize: 9,
+              fontSize: isRecovering ? 8.5 : 9,
               fontWeight: 'bold',
             }}
           />
@@ -103,76 +107,40 @@ export const StreakMasterWidget: React.FC<StreakMasterWidgetProps> = ({
           text={`${xp} XP`}
           style={{
             color: '#64748B',
-            fontSize: 9,
+            fontSize: 9.5,
             fontWeight: 'bold',
             marginTop: 0,
           }}
         />
       </FlexWidget>
 
-      {/* Sección Inferior: Estado de Racha y Temporizador de Vidas */}
+      {/* Banner de Estado Dinámico de Racha */}
       <FlexWidget
         style={{
-          flexDirection: 'column',
+          backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEE2E2',
+          borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
+          borderWidth: 1,
+          paddingHorizontal: 5,
+          paddingVertical: 3.5,
+          borderRadius: 8,
+          width: 'wrap_content',
           alignItems: 'center',
           justifyContent: 'center',
-          width: 'match_parent',
         }}
       >
-        {isRecovering && (
-          <FlexWidget
-            style={{
-              backgroundColor: '#FFF1F2',
-              borderColor: '#FECDD3',
-              borderWidth: 1,
-              paddingHorizontal: 6,
-              paddingVertical: 2.5,
-              borderRadius: 6,
-              width: 'wrap_content',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 3,
-            }}
-          >
-            <TextWidget
-              text={`⏱️ +1 vida en ${remainingMinutes}m`}
-              style={{
-                color: '#E11D48',
-                fontSize: 8,
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            />
-          </FlexWidget>
-        )}
-
-        <FlexWidget
+        <TextWidget
+          text={
+            hasPracticedToday
+              ? '✓ Racha asegurada'
+              : '🚨 ¡Salva tu racha!'
+          }
           style={{
-            backgroundColor: hasPracticedToday ? '#DCFCE7' : '#FEE2E2',
-            borderColor: hasPracticedToday ? '#86EFAC' : '#FCA5A5',
-            borderWidth: 1,
-            paddingHorizontal: 6,
-            paddingVertical: 2.5,
-            borderRadius: 6,
-            width: 'wrap_content',
-            alignItems: 'center',
-            justifyContent: 'center',
+            color: hasPracticedToday ? '#15803D' : '#DC2626',
+            fontSize: 8.5,
+            fontWeight: 'bold',
+            textAlign: 'center',
           }}
-        >
-          <TextWidget
-            text={
-              hasPracticedToday
-                ? '✓ Racha asegurada'
-                : '🚨 ¡Salva tu racha!'
-            }
-            style={{
-              color: hasPracticedToday ? '#15803D' : '#DC2626',
-              fontSize: 8,
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}
-          />
-        </FlexWidget>
+        />
       </FlexWidget>
     </FlexWidget>
   );
