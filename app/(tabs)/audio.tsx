@@ -146,6 +146,12 @@ export default function AudioLabScreen() {
     setSelectedBurstOption(null);
   };
 
+  useEffect(() => {
+    return () => {
+      Speech.stop();
+    };
+  }, []);
+
   const playTargetAudio = (
     card = activeCard,
     mode = dictationMode,
@@ -178,6 +184,7 @@ export default function AudioLabScreen() {
 
     const rate = mode === 'BURST' ? 1.05 : profile.learningPace === 'SLOW' ? 0.75 : 0.95;
 
+    Speech.stop();
     Speech.speak(textToSpeak, {
       language,
       rate,

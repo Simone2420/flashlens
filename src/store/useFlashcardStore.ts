@@ -270,9 +270,21 @@ export const useFlashcardStore = create<FlashcardState>()(
       },
 
       deleteCard: (cardId) => {
-        set(state => ({
-          cards: state.cards.filter(c => c.id !== cardId),
-        }));
+        set(state => {
+          const updated = state.cards.filter(c => c.id !== cardId);
+          try {
+            const userState = useUserStore.getState();
+            const streak = userState?.profile?.currentStreak ?? 0;
+            const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
+            const todayStr = new Date().toISOString().split('T')[0];
+            const dailyXp = userState?.profile?.lastDailyXpDate === todayStr ? (userState?.profile?.dailyXp || 0) : 0;
+            const nextActiveCard = updated.length > 0 ? updated[0] : null;
+            widgetService.syncWidgetData(streak, lives, nextActiveCard, dailyXp);
+          } catch (e) {
+            console.warn('Error sincronizando widget al eliminar tarjeta:', e);
+          }
+          return { cards: updated };
+        });
       },
 
       resetToMockDeck: () => {

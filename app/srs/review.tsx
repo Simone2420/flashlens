@@ -41,15 +41,17 @@ export default function SRSReviewScreen() {
     modeTitle = 'FLASHCARDS FAVORITAS';
     emptyStateMsg = 'No tienes flashcards marcadas como favoritas todavía. ¡Marca algunas con la estrella para repasarlas aquí!';
   } else if (mode === 'HARD') {
-    reviewDeck = hardCards.length > 0 ? hardCards : cards;
+    reviewDeck = hardCards.length > 0 ? hardCards : [];
     modeTitle = 'VOCABULARIO DIFÍCIL';
     emptyStateMsg = 'No tienes palabras marcadas como difíciles actualmente.';
   } else if (mode === 'ALL') {
     reviewDeck = cards;
     modeTitle = 'TODO EL MAZO';
+    emptyStateMsg = 'Tu mazo de flashcards está vacío actualmente.';
   } else {
-    reviewDeck = dueCards.length > 0 ? dueCards : cards;
+    reviewDeck = dueCards.length > 0 ? dueCards : [];
     modeTitle = 'REPASO ESPACIADO SM-2';
+    emptyStateMsg = 'No hay tarjetas pendientes hoy. ¡Vas al día!';
   }
 
   const [currentIndex, setCurrentIndex] = useState(0);

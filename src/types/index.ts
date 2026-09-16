@@ -56,6 +56,8 @@ export interface UserProfile {
   eloRating: number;
   targetLanguage: TargetLanguage;
   xp: number;
+  dailyXp?: number;
+  lastDailyXpDate?: string | null; // ISO date 'YYYY-MM-DD' in local timezone
   learningPace: LearningPace;
   diagnosedLevel: CEFRLevel;
   hasCompletedDiagnostic?: boolean;

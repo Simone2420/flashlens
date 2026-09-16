@@ -101,6 +101,77 @@ class ImageGenerationService {
   }
 
   /**
+   * Genera una ilustración mediante la API de Pollinations.ai (FLUX)
+   * Devuelve la URL pública de la imagen lista para React Native Image.
+   */
+  private async generateWithPollinations(prompt: string): Promise<string | null> {
+    const apiKey = API_CONFIG.POLLINATIONS.API_KEY;
+    if (!apiKey) {
+      console.warn('[ImageGenerationService] EXPO_PUBLIC_POLLINATIONS_API_KEY no configurada');
+      return null;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.POLLINATIONS.TIMEOUT_MS);
+
+    // Payload limpio y validado (estrictamente sin nulls ni campos vacíos para evitar error 400 Zod)
+    const payload = {
+      prompt,
+      model: API_CONFIG.POLLINATIONS.MODEL,
+      n: 1,
+      size: API_CONFIG.POLLINATIONS.SIZE,
+      response_format: 'url',
+    };
+
+    try {
+      const response = await fetch(API_CONFIG.POLLINATIONS.API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errorBody = await response.text();
+        console.warn(`[Pollinations] Error HTTP ${response.status}:`, errorBody);
+        return null;
+      }
+
+      const json = await response.json();
+
+      // Formato compatible: data[0].url o data[0].b64_json
+      if (json.data && json.data.length > 0) {
+        if (json.data[0].url) {
+          return json.data[0].url;
+        }
+        if (json.data[0].b64_json) {
+          return `data:image/jpeg;base64,${json.data[0].b64_json}`;
+        }
+      }
+
+      // Fallback si la API devuelve directamente { url: "..." }
+      if (json.url) {
+        return json.url;
+      }
+
+      return null;
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        console.warn('[Pollinations] Timeout al generar imagen en móvil');
+      } else {
+        console.warn('[Pollinations] Error en petición:', error?.message || error);
+      }
+      return null;
+    }
+  }
+
+  /**
    * Genera una imagen utilizando Hugging Face FLUX.1-schnell y la convierte a Base64.
    */
   private async generateWithHuggingFace(prompt: string): Promise<string | null> {
@@ -152,8 +223,9 @@ class ImageGenerationService {
   }
 
   /**
-   * Obtiene la imagen generada por Hugging Face FLUX.1-schnell (Base64)
-   * empleando metáforas visuales para conceptos abstractos, con fallback veloz por categoría.
+   * Obtiene la ilustración educativa generada por Pollinations AI (FLUX) o Hugging Face,
+   * empleando metáforas visuales para conceptos abstractos y píldora del día,
+   * con fallback veloz por categoría.
    */
   public async generateOrFallback(
     targetWord: string,
@@ -165,13 +237,19 @@ class ImageGenerationService {
     const fallbackUrl = FALLBACK_CATEGORY_IMAGES[category] || FALLBACK_CATEGORY_IMAGES.OBJECT;
     const prompt = this.buildNaturalPrompt(targetWord, category, visualScene, contextSentence, mnemonicHint);
 
-    // 1. Intentar generación con Hugging Face FLUX.1-schnell
+    // 1. Intentar generación primaria con Pollinations AI (FLUX - URL directa 512x512)
+    const pollinationsImg = await this.generateWithPollinations(prompt);
+    if (pollinationsImg) {
+      return pollinationsImg;
+    }
+
+    // 2. Fallback secundario con Hugging Face FLUX si está configurado
     const hfImage = await this.generateWithHuggingFace(prompt);
     if (hfImage) {
       return hfImage;
     }
 
-    // 2. Retornar fallback seguro y veloz de categoría
+    // 3. Retornar fallback seguro y veloz de categoría
     return fallbackUrl;
   }
 

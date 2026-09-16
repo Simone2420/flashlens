@@ -6,11 +6,10 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import { Mic, MicOff, Volume2, RotateCcw, Sparkles } from 'lucide-react-native';
+import { Volume2, RotateCcw, Sparkles } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
 import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../../constants/theme';
-import { speechToTextService } from '../../../services/speechToTextService';
 
 interface SentenceWritingQuestionProps {
   prompt: string;
@@ -27,7 +26,6 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
   onChangeValue,
   disabled = false,
 }) => {
-  const [isListening, setIsListening] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [wordBank, setWordBank] = useState<{ id: string; word: string; used: boolean }[]>([]);
 
@@ -47,38 +45,16 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
 
     setWordBank(allTokens);
     setSelectedWords([]);
+
+    return () => {
+      Speech.stop();
+    };
   }, [correctAnswer]);
 
   const handleSpeak = (text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Speech.stop();
     Speech.speak(text, { language: 'en-US' });
-  };
-
-  const toggleMic = async () => {
-    if (disabled) return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    if (isListening) {
-      speechToTextService.stopListening();
-      setIsListening(false);
-    } else {
-      setIsListening(true);
-      const started = await speechToTextService.startListening({
-        language: 'en-US',
-        onResult: (transcript, isFinal) => {
-          onChangeValue(transcript);
-          if (isFinal) {
-            setIsListening(false);
-          }
-        },
-        onError: () => setIsListening(false),
-        onEnd: () => setIsListening(false),
-      });
-
-      if (!started) {
-        setIsListening(false);
-      }
-    }
   };
 
   const handleTapWordChip = (token: { id: string; word: string; used: boolean }) => {
@@ -206,10 +182,10 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
         ))}
       </View>
 
-      {/* Entrada Manual y Micrófono */}
+      {/* Entrada Manual de Escritura */}
       <View style={styles.inputRow}>
         <TextInput
-          style={styles.textInput}
+          style={[styles.textInput, { flex: 1 }]}
           placeholder="O escribe manualmente aquí..."
           placeholderTextColor="#747878"
           value={value}
@@ -217,18 +193,6 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
           editable={!disabled}
           autoCapitalize="none"
         />
-
-        <TouchableOpacity
-          onPress={toggleMic}
-          disabled={disabled}
-          style={[styles.micBtn, isListening && styles.micBtnActive]}
-        >
-          {isListening ? (
-            <MicOff size={20} color="#BA1A1A" />
-          ) : (
-            <Mic size={20} color="#1C1B1B" />
-          )}
-        </TouchableOpacity>
       </View>
     </View>
   );

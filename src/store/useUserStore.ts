@@ -26,6 +26,7 @@ interface UserState {
   toggleNotifications: (enabled?: boolean) => void;
   completeOnboarding: () => void;
   checkLivesRegeneration: () => void;
+  checkStreakIntegrity: () => void;
   setMockUserCredentials: (fullName: string, age: number, username?: string) => void;
   resetDemoUser: () => void;
   triggerCelebration: (data: { streak: number; xpEarned?: number; title?: string; message?: string }) => void;
@@ -45,6 +46,8 @@ const DEFAULT_USER: UserProfile = {
   eloRating: 1000,
   targetLanguage: 'en',
   xp: 0,
+  dailyXp: 0,
+  lastDailyXpDate: null,
   learningPace: 'MEDIUM',
   diagnosedLevel: 'A1',
   hasCompletedDiagnostic: false,
@@ -95,10 +98,15 @@ export const useUserStore = create<UserState>()(
         set({ lives: updatedLives });
 
         // Sincronizar con widgets
-        widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+        const dailyXp = profile.lastDailyXpDate === new Date().toISOString().split('T')[0] ? (profile.dailyXp || 0) : 0;
+        widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
 
-        // Programar notificación de recuperación completa
-        const secondsUntilFull = (5 - newLivesCount) * 15 * 60;
+        // Programar notificación de recuperación completa teniendo en cuenta el corazón en curso
+        const nowMs = Date.now();
+        const nextTime = nextRegen ? new Date(nextRegen).getTime() : nowMs + intervalMs;
+        const msUntilNext = Math.max(0, nextTime - nowMs);
+        const remainingLivesToRegen = Math.max(0, lives.maxLives - newLivesCount - 1);
+        const secondsUntilFull = Math.ceil(msUntilNext / 1000) + remainingLivesToRegen * 15 * 60;
         notificationService.scheduleLivesFull(secondsUntilFull);
 
         return newLivesCount > 0;
@@ -139,13 +147,25 @@ export const useUserStore = create<UserState>()(
 
       addXP: (amount: number) => {
         set(state => {
-          const oldXp = state.profile.xp;
-          const newXp = oldXp + amount;
-          const updatedProfile = { ...state.profile, xp: newXp };
+          const now = new Date();
+          const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+          const isSameDay = state.profile.lastDailyXpDate === todayLocal;
+          const oldDailyXp = isSameDay ? (state.profile.dailyXp || 0) : 0;
+          const newDailyXp = oldDailyXp + amount;
+          const oldTotalXp = state.profile.xp || 0;
+          const newTotalXp = oldTotalXp + amount;
+
+          const updatedProfile: UserProfile = {
+            ...state.profile,
+            xp: newTotalXp,
+            dailyXp: newDailyXp,
+            lastDailyXpDate: todayLocal,
+          };
 
           let celebration = state.pendingCelebration;
-          // Si cruza la meta diaria de 50 XP por primera vez hoy
-          if (oldXp < 50 && newXp >= 50) {
+          // Si cruza la meta diaria de 50 XP por primera vez HOY
+          if (oldDailyXp < 50 && newDailyXp >= 50) {
             celebration = {
               visible: true,
               streak: state.profile.currentStreak || 1,
@@ -156,7 +176,7 @@ export const useUserStore = create<UserState>()(
             notificationService.syncDailyNotificationSchedule().catch(() => {});
           }
 
-          widgetService.syncWidgetData(updatedProfile.currentStreak, state.lives, null as any, newXp);
+          widgetService.syncWidgetData(updatedProfile.currentStreak, state.lives, null as any, newDailyXp);
           return { profile: updatedProfile, pendingCelebration: celebration };
         });
       },
@@ -275,6 +295,29 @@ export const useUserStore = create<UserState>()(
 
       completeOnboarding: () => {
         set({ isOnboarded: true });
+      },
+
+      checkStreakIntegrity: () => {
+        const { profile, lives } = get();
+        if (!profile.lastStreakDate || profile.currentStreak <= 0) return;
+
+        const now = new Date();
+        const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+        const yesterday = new Date(now);
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayLocal = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
+        // Si la última actividad no fue hoy ni ayer (han pasado 2 o más días sin estudiar)
+        if (profile.lastStreakDate !== todayLocal && profile.lastStreakDate !== yesterdayLocal) {
+          const updatedProfile: UserProfile = {
+            ...profile,
+            currentStreak: 0,
+          };
+          set({ profile: updatedProfile });
+          const dailyXp = profile.lastDailyXpDate === todayLocal ? (profile.dailyXp || 0) : 0;
+          widgetService.syncWidgetData(0, lives, null as any, dailyXp);
+        }
       },
 
       checkLivesRegeneration: () => {

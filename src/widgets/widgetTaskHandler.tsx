@@ -49,13 +49,23 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
     const userProfile = persistedUser?.profile || useUserStore.getState()?.profile;
     const livesState = persistedUser?.lives || useUserStore.getState()?.lives;
 
-    const streakDays = shared?.streakDays ?? userProfile?.currentStreak ?? 0;
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayLocal = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
+    let streakDays = shared?.streakDays ?? userProfile?.currentStreak ?? 0;
     const lastStreakDate = shared?.lastStreakDate ?? userProfile?.lastStreakDate ?? null;
     const hasPracticedToday = lastStreakDate === todayLocal;
+
+    // Si pasaron 2 o más días sin estudiar, la racha visible cae inmediatamente a 0
+    if (lastStreakDate && lastStreakDate !== todayLocal && lastStreakDate !== yesterdayLocal) {
+      streakDays = 0;
+    }
+
     let currentLives = shared?.currentLives ?? livesState?.currentLives ?? 5;
     const maxLives = shared?.maxLives ?? livesState?.maxLives ?? 5;
     let nextRegenTimestamp = shared?.nextRegenTimestamp ?? (livesState?.nextRegenerationAt ? new Date(livesState.nextRegenerationAt).getTime() : 0);
-    const xp = shared?.dailyXp ?? userProfile?.xp ?? 0;
+    const xp = shared?.dailyXp ?? userProfile?.dailyXp ?? 0;
 
     // 3. Regeneración autónoma de vidas por tiempo si pasaron intervalos de 15 minutos
     const intervalMs = 15 * 60 * 1000;

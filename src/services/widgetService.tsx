@@ -218,12 +218,15 @@ class WidgetService {
   public async refreshWidgetsOnResume(): Promise<void> {
     try {
       useUserStore.getState().checkLivesRegeneration();
+      useUserStore.getState().checkStreakIntegrity();
       const state = useUserStore.getState();
+      const todayStr = new Date().toISOString().split('T')[0];
+      const dailyXp = state.profile.lastDailyXpDate === todayStr ? (state.profile.dailyXp || 0) : 0;
       await this.syncWidgetData(
         state.profile.currentStreak,
         state.lives,
         null as any,
-        state.profile.xp
+        dailyXp
       );
     } catch (e) {
       console.warn('Error en refreshWidgetsOnResume:', e);

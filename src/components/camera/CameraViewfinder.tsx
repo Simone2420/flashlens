@@ -108,9 +108,16 @@ export const CameraViewfinder: React.FC = () => {
     return () => scanLoop.stop();
   }, [scanLineAnim]);
 
+  useEffect(() => {
+    return () => {
+      Speech.stop();
+    };
+  }, []);
+
   const handleSpeak = (text: string) => {
     if (!text.trim()) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Speech.stop();
     Speech.speak(text, { language: 'en-US', rate: 0.9 });
   };
 
@@ -154,15 +161,15 @@ export const CameraViewfinder: React.FC = () => {
           return;
         }
       }
+
+      const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80';
+      const fallbackResult = await classifyPhoto(fallbackUri, profile.diagnosedLevel || 'A1');
+      populateFormWithResult(fallbackUri, fallbackResult);
     } catch (e) {
       console.warn('Error capturando foto:', e);
     } finally {
       setIsAnalyzing(false);
     }
-
-    const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80';
-    const fallbackResult = await classifyPhoto(fallbackUri, profile.diagnosedLevel || 'A1');
-    populateFormWithResult(fallbackUri, fallbackResult);
   };
 
   /**

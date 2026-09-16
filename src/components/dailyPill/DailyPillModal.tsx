@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Modal,
   View,
@@ -32,6 +32,12 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
   const [isAdded, setIsAdded] = useState(false);
   const cards = useFlashcardStore(state => state.cards) || [];
 
+  useEffect(() => {
+    return () => {
+      Speech.stop();
+    };
+  }, []);
+
   if (!pill) return null;
 
   const isAlreadyInDeck = cards.some(
@@ -40,6 +46,7 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
 
   const handlePlayAudio = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Speech.stop();
     Speech.speak(pill.targetWord, {
       language: 'en-US',
       rate: 0.85,

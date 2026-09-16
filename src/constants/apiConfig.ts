@@ -20,19 +20,20 @@ export const API_CONFIG = {
     TIMEOUT_MS: 12000, // 12 segundos límite para subida y procesamiento en red móvil
   },
 
-  // 2. Hugging Face - Generación de Ilustraciones Conceptuales con FLUX.1-schnell
+  // 2. Pollinations.ai - Generación de Ilustraciones Conceptuales con FLUX (Demo v1.1)
+  POLLINATIONS: {
+    API_KEY: process.env.EXPO_PUBLIC_POLLINATIONS_API_KEY || '',
+    API_URL: 'https://gen.pollinations.ai/v1/images/generations',
+    MODEL: 'flux',
+    SIZE: '512x512',
+    TIMEOUT_MS: 12000,
+  },
+
+  // Fallback auxiliar Hugging Face FLUX
   HUGGING_FACE: {
     API_KEY: process.env.EXPO_PUBLIC_HF_API_KEY || '',
     MODEL_URL: 'https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell',
     TIMEOUT_MS: 7500,
-  },
-
-  // Fallback auxiliar Pollinations.ai
-  POLLINATIONS: {
-    BASE_URL: 'https://image.pollinations.ai/prompt',
-    TIMEOUT_MS: 5500,
-    DEFAULT_WIDTH: 600,
-    DEFAULT_HEIGHT: 600,
   },
 
   // 3. Google Sheets Webhook - Recolección de Sugerencias y Feedback en Vivo
