@@ -81,6 +81,14 @@ function withNativeStreakWidget(config) {
           dest: path.join(javaWidgetDir, 'StreakMasterWidgetProvider.kt'),
         },
         {
+          src: path.join(templatesDir, 'NativeStreakWidgetModule.kt'),
+          dest: path.join(javaWidgetDir, 'NativeStreakWidgetModule.kt'),
+        },
+        {
+          src: path.join(templatesDir, 'NativeStreakWidgetPackage.kt'),
+          dest: path.join(javaWidgetDir, 'NativeStreakWidgetPackage.kt'),
+        },
+        {
           src: path.join(templatesDir, 'widget_streak_master_native.xml'),
           dest: path.join(resLayoutDir, 'widget_streak_master_native.xml'),
         },
@@ -109,6 +117,20 @@ function withNativeStreakWidget(config) {
       for (const item of filesToCopy) {
         if (fs.existsSync(item.src)) {
           fs.copyFileSync(item.src, item.dest);
+        }
+      }
+
+      // 3. Registrar NativeStreakWidgetPackage en MainApplication.kt si no está presente
+      const mainAppFile = path.join(androidAppDir, 'java', 'com', 'flashlens', 'app', 'MainApplication.kt');
+      if (fs.existsSync(mainAppFile)) {
+        let content = fs.readFileSync(mainAppFile, 'utf8');
+        const pkgEntry = 'add(com.flashlens.app.widget.NativeStreakWidgetPackage())';
+        if (!content.includes(pkgEntry)) {
+          content = content.replace(
+            /PackageList\(this\)\.packages\.apply\s*\{([\s\S]*?)\}/,
+            `PackageList(this).packages.apply {$1\n              ${pkgEntry}\n            }`
+          );
+          fs.writeFileSync(mainAppFile, content, 'utf8');
         }
       }
 

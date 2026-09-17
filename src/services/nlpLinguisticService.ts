@@ -5,6 +5,12 @@ import { CEFRLevel } from '../types';
 export interface DetectedObjectCandidate {
   text: string;
   confidence: number;
+  primaryTranslation?: string;
+  acceptedTranslations?: string[];
+  phoneticScript?: string;
+  facilitatedPhonetics?: string;
+  contextSentence?: string;
+  contextTranslation?: string;
 }
 
 export interface AdaptiveCardPayload {

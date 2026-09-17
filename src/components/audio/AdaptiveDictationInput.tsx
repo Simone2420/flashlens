@@ -57,9 +57,10 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   const handleChangeText = (text: string) => {
     let sanitized = text;
 
-    // En ritmos Medio y Rápido para palabras individuales, si el teclado inserta una sugerencia completa,
-    // se filtra estrictamente para permitir únicamente el avance de 1 carácter por paso.
-    if (!isSentenceMode && (learningPace === 'MEDIUM' || learningPace === 'FAST')) {
+    // En ritmo Rápido para palabras individuales, si se inserta una sugerencia masiva externa,
+    // se restringe para permitir únicamente el avance de 1 carácter por paso.
+    // En ritmo Medio se permite la escritura natural y fluida con soporte de sinónimos y edición.
+    if (!isSentenceMode && learningPace === 'FAST') {
       if (text.length > inputValue.length + 1) {
         const nextChar = text.slice(inputValue.length, inputValue.length + 1);
         sanitized = inputValue + nextChar;
@@ -166,18 +167,20 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
     );
   }
 
-  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS CON LONGITUD MÍNIMA Y EXPANSIÓN ELÁSTICA
+  // CASO 3: MODO MEDIO (MEDIUM) - CASILLAS ELÁSTICAS CON GUÍA DE LONGITUD BASE
   if (learningPace === 'MEDIUM') {
+    const baseLength = calculatedMinLength || targetLength;
+    // Las casillas inician en baseLength como guía visual, pero se expanden elásticamente conforme el usuario escribe
     const visibleBoxesCount = Math.max(
-      calculatedMinLength,
-      Math.min(Math.max(inputValue.length, calculatedMinLength), calculatedMaxLength)
+      baseLength,
+      inputValue.length + (disabled ? 0 : 1)
     );
 
     return (
       <View style={styles.container}>
         <View style={styles.paceTag}>
           <Text style={styles.paceTagText}>
-            ⚖️ MODO MEDIO: MÍNIMO {calculatedMinLength} CASILLAS (acepta sinónimos)
+            ⚖️ MODO MEDIO: GUÍA BASE DE {baseLength} CASILLAS (dinámico y elástico)
           </Text>
         </View>
 
@@ -186,12 +189,10 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           style={styles.hiddenInput}
           value={inputValue}
           onChangeText={handleChangeText}
-          maxLength={calculatedMaxLength}
           autoCapitalize="none"
           autoCorrect={false}
           spellCheck={false}
           autoComplete="off"
-          keyboardType="visible-password"
           editable={!disabled}
           returnKeyType="done"
           onSubmitEditing={() => onSubmit(inputValue)}

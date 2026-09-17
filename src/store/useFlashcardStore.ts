@@ -100,8 +100,10 @@ export const useFlashcardStore = create<FlashcardState>()(
 
       getDueCards: () => {
         const { cards } = get();
-        const now = new Date();
-        return cards.filter(card => new Date(card.nextReviewAt) <= now);
+        // Todas las tarjetas con fecha de repaso para hoy (o anteriores) están disponibles
+        const endOfToday = new Date();
+        endOfToday.setHours(23, 59, 59, 999);
+        return cards.filter(card => new Date(card.nextReviewAt) <= endOfToday);
       },
 
       addCard: (cardData) => {

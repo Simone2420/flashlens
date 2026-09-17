@@ -1,6 +1,6 @@
 "use no memo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
+import { Platform, NativeModules } from 'react-native';
 import React from 'react';
 import { requestWidgetUpdate } from 'react-native-android-widget';
 import { Flashcard, LivesState } from '../types';
@@ -153,6 +153,23 @@ class WidgetService {
       await AsyncStorage.setItem(WIDGET_DATA_KEY, JSON.stringify(payload));
 
       if (Platform.OS === 'android') {
+        // 0. Sincronización instantánea (0 ms) con el Widget Nativo (SharedPreferences + Broadcast)
+        try {
+          const { NativeStreakWidgetModule } = NativeModules;
+          if (NativeStreakWidgetModule?.syncData) {
+            NativeStreakWidgetModule.syncData({
+              streakDays,
+              currentLives: lives.currentLives,
+              maxLives: lives.maxLives,
+              nextRegenMinutes: nextRegenMinutes ?? 0,
+              hasPracticedToday,
+              dailyXp,
+            });
+          }
+        } catch (err) {
+          console.warn('Fallo notificando al widget nativo:', err);
+        }
+
         // 1. Actualizar Widget de Vocabulario (Difícil, Favoritas o Todo el Mazo)
         try {
           await requestWidgetUpdate({

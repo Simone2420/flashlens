@@ -66,8 +66,15 @@ Schema:
   "contextTranslation": "Ella está bebiendo café caliente de una taza de cerámica.",
   "mnemonicHint": "Imagina una taza humeante en tu escritorio de trabajo.",
   "otherDetectedCandidates": [
-    { "label": "Desk", "confidence": 0.85 },
-    { "label": "Coffee", "confidence": 0.80 }
+    {
+      "label": "Desk",
+      "primaryTranslation": "Escritorio",
+      "acceptedTranslations": ["escritorio", "mesa"],
+      "phoneticScript": "/dɛsk/",
+      "contextSentence": "The laptop is on the desk.",
+      "contextTranslation": "La computadora portátil está sobre el escritorio.",
+      "confidence": 0.85
+    }
   ]
 }`;
 
@@ -159,14 +166,35 @@ Schema:
 
       const primaryTargetWord = parsed.targetWord || 'Object';
       const otherCands = (parsed.otherDetectedCandidates || [])
-        .filter((c: any) => c.label && c.label.toLowerCase() !== primaryTargetWord.toLowerCase())
-        .map((c: any) => ({
-          text: c.label,
-          confidence: Math.round((c.confidence || 0.8) * 100),
-        }));
+        .filter((c: any) => (c.label || c.targetWord) && (c.label || c.targetWord).toLowerCase() !== primaryTargetWord.toLowerCase())
+        .map((c: any) => {
+          const word = c.label || c.targetWord;
+          const translation = c.primaryTranslation || c.translation || '';
+          return {
+            text: word,
+            confidence: Math.round((c.confidence || 0.8) * 100),
+            primaryTranslation: translation,
+            acceptedTranslations: Array.isArray(c.acceptedTranslations) && c.acceptedTranslations.length > 0
+              ? c.acceptedTranslations
+              : translation ? [translation.toLowerCase()] : undefined,
+            phoneticScript: c.phoneticScript,
+            facilitatedPhonetics: c.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(word, c.phoneticScript),
+            contextSentence: c.contextSentence,
+            contextTranslation: c.contextTranslation,
+          };
+        });
 
       const topDetections = [
-        { text: primaryTargetWord, confidence: 98 },
+        {
+          text: primaryTargetWord,
+          confidence: 98,
+          primaryTranslation: parsed.primaryTranslation,
+          acceptedTranslations: acceptedList,
+          phoneticScript: parsed.phoneticScript,
+          facilitatedPhonetics: facilitated,
+          contextSentence: parsed.contextSentence,
+          contextTranslation: parsed.contextTranslation,
+        },
         ...otherCands,
       ];
 

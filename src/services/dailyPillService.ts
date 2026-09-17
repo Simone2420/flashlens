@@ -143,7 +143,7 @@ class DailyPillService {
       const existingWords = currentPool.map(p => p.targetWord).slice(-80).join(', ');
 
       const prompt = `Actúa como un lingüista y pedagogo experto en enseñanza de inglés para hispanohablantes.
-Genera un array JSON estricto con exactamente 50 nuevas píldoras de vocabulario en inglés EXCLUSIVAMENTE para niveles A1 y A2.
+Genera un array JSON estricto con exactamente 12 nuevas píldoras de vocabulario en inglés EXCLUSIVAMENTE para niveles A1 y A2.
 Incluye modismos frecuentes, phrasal verbs indispensables y expresiones de uso diario para principiantes.
 REGLA OBLIGATORIA: Todas las palabras deben ser estrictamente de nivel A1 o A2. NO generes ninguna palabra de nivel B1, B2 o C1.
 IMPORTANTE: NO repitas ninguna de estas palabras ya vistas: [${existingWords}].
@@ -168,7 +168,7 @@ Cada objeto del array debe tener EXACTAMENTE esta estructura:
 Devuelve ÚNICAMENTE el array JSON válido comenzando con [ y terminando con ]. Sin introducciones ni texto extra.`;
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 20000);
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
 
       const response = await fetch(API_CONFIG.OPENROUTER.BASE_URL, {
         method: 'POST',

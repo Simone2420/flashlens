@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { DictationResult, Flashcard, DictationDirection } from '../types';
 import { DictationAlgorithm } from '../services/dictationAlgorithm';
+import { useUserStore } from './useUserStore';
 
 interface AudioLabState {
   currentCardIndex: number;
@@ -92,12 +93,14 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
           : currentCard.targetWord;
     }
 
-    // DictationAlgorithm.evaluate con soporte para español y lista de traducciones aceptadas
+    // DictationAlgorithm.evaluate con soporte para español, lista de traducciones aceptadas y ritmo pedagógico
+    const learningPace = useUserStore.getState()?.profile?.learningPace || 'MEDIUM';
     const result = DictationAlgorithm.evaluate(
       userInput,
       targetText,
       isNativeInverse,
-      currentCard.acceptedTranslations
+      currentCard.acceptedTranslations,
+      learningPace
     );
 
     if (result.isCorrect) {

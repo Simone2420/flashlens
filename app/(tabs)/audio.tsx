@@ -213,6 +213,11 @@ export default function AudioLabScreen() {
     if (lastResult) return;
     setSelectedBurstOption(option);
     handleSubmitEvaluation(option);
+
+    // En Modo Ráfaga para ritmos Lento y Medio: avance automático fluido sin botón "Continuar"
+    setTimeout(() => {
+      handleNextWord();
+    }, 600);
   };
 
   const handleNextWord = () => {
@@ -243,6 +248,10 @@ export default function AudioLabScreen() {
   const isBurstMultipleChoice =
     dictationMode === 'BURST' &&
     (profile.learningPace === 'SLOW' || profile.learningPace === 'MEDIUM');
+
+  // ¿Modo Ráfaga rápido con escritura manual?
+  const isBurstFast =
+    dictationMode === 'BURST' && profile.learningPace === 'FAST';
 
   return (
     <View style={styles.container}>
@@ -659,16 +668,21 @@ export default function AudioLabScreen() {
               <TouchableOpacity
                 activeOpacity={0.85}
                 onPress={() => handleSubmitEvaluation(currentTextValue)}
-                style={styles.verifyBtn}
+                style={[styles.verifyBtn, isBurstFast && styles.thumbZoneBtn]}
               >
                 <Text style={styles.verifyBtnText}>VERIFICAR RESPUESTA</Text>
               </TouchableOpacity>
             )
           ) : (
-            <TouchableOpacity onPress={handleNextWord} style={styles.nextWordBtn}>
-              <Text style={styles.nextWordBtnText}>CONTINUAR</Text>
-              <ArrowRight size={18} color="#1C1B1B" />
-            </TouchableOpacity>
+            !isBurstMultipleChoice && (
+              <TouchableOpacity
+                onPress={handleNextWord}
+                style={[styles.nextWordBtn, isBurstFast && styles.thumbZoneBtn]}
+              >
+                <Text style={styles.nextWordBtnText}>CONTINUAR</Text>
+                <ArrowRight size={18} color="#1C1B1B" />
+              </TouchableOpacity>
+            )
           )}
         </ScrollView>
       ) : (
@@ -1212,6 +1226,19 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: '#1C1B1B',
     letterSpacing: 0.5,
+  },
+  thumbZoneBtn: {
+    paddingVertical: 18,
+    marginTop: SPACING.lg,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#C69200',
+    backgroundColor: '#F5C518',
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
   },
   resultContent: {
     padding: SPACING.lg,

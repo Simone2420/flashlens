@@ -244,36 +244,43 @@ export default function HomeScreen() {
         )}
 
         {/* Banner Píldora del Día */}
-        {todayPill && (
-          <TouchableOpacity
-            activeOpacity={0.88}
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              setIsPillModalVisible(true);
-            }}
-            style={styles.pillBanner}
-          >
-            <View style={styles.pillBannerLeft}>
-              <View style={styles.pillIconBox}>
-                <Text style={{ fontSize: 20 }}>💊</Text>
-              </View>
-              <View style={{ flex: 1 }}>
-                <View style={styles.pillBadgeRow}>
-                  <Text style={styles.pillTag}>PÍLDORA DEL DÍA</Text>
-                  <Text style={styles.pillLevelBadge}>{todayPill.cefrLevel || 'A2'}</Text>
+        {todayPill && (() => {
+          const isPillInDeck = cards.some(
+            c => c.targetWord.trim().toLowerCase() === todayPill.targetWord.trim().toLowerCase()
+          );
+          return (
+            <TouchableOpacity
+              activeOpacity={0.88}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                setIsPillModalVisible(true);
+              }}
+              style={[styles.pillBanner, isPillInDeck && styles.pillBannerAdded]}
+            >
+              <View style={styles.pillBannerLeft}>
+                <View style={[styles.pillIconBox, isPillInDeck && styles.pillIconBoxAdded]}>
+                  <Text style={{ fontSize: 20 }}>{isPillInDeck ? '✅' : '💊'}</Text>
                 </View>
-                <Text style={styles.pillWordText}>{todayPill.targetWord}</Text>
-                <Text style={styles.pillTranslationText} numberOfLines={1}>
-                  {todayPill.nativeTranslation}
-                </Text>
+                <View style={{ flex: 1 }}>
+                  <View style={styles.pillBadgeRow}>
+                    <Text style={[styles.pillTag, isPillInDeck && styles.pillTagAdded]}>PÍLDORA DEL DÍA</Text>
+                    <Text style={styles.pillLevelBadge}>{todayPill.cefrLevel || 'A2'}</Text>
+                  </View>
+                  <Text style={styles.pillWordText}>{todayPill.targetWord}</Text>
+                  <Text style={styles.pillTranslationText} numberOfLines={1}>
+                    {todayPill.nativeTranslation}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.pillActionPill}>
-              <Text style={styles.pillActionText}>Descubrir</Text>
-              <ArrowRight size={12} color="#1C1B1B" />
-            </View>
-          </TouchableOpacity>
-        )}
+              <View style={[styles.pillActionPill, isPillInDeck && styles.pillActionPillAdded]}>
+                <Text style={[styles.pillActionText, isPillInDeck && styles.pillActionTextAdded]}>
+                  {isPillInDeck ? '✓ En tu mazo' : 'Descubrir'}
+                </Text>
+                {!isPillInDeck && <ArrowRight size={12} color="#1C1B1B" />}
+              </View>
+            </TouchableOpacity>
+          );
+        })()}
 
         {/* Widget Expandido Interactivo */}
         <View style={styles.widgetSection}>
@@ -889,6 +896,27 @@ const styles = StyleSheet.create({
     color: '#1C1B1B',
     fontSize: 12,
     fontWeight: '800',
+  },
+  pillBannerAdded: {
+    borderColor: '#86EFAC',
+    backgroundColor: '#F0FDF4',
+  },
+  pillIconBoxAdded: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+  },
+  pillTagAdded: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+    color: '#166534',
+  },
+  pillActionPillAdded: {
+    backgroundColor: '#DCFCE7',
+    borderWidth: 1,
+    borderColor: '#86EFAC',
+  },
+  pillActionTextAdded: {
+    color: '#166534',
   },
   diagHomeBanner: {
     flexDirection: 'row',

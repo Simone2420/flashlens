@@ -253,13 +253,42 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Cambia dinámicamente al objeto seleccionado entre los Top 3 detectados por ML Kit
+   * Cambia dinámicamente al objeto seleccionado entre los Top 3 detectados
    */
   const handleSelectCandidate = (candidateText: string, candidateConfidence: number) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setRawDetectedText(candidateText);
     setConfidenceScore(candidateConfidence);
-    const adapted = nlpLinguisticService.generateCardDataForLevel(candidateText, selectedCefr, candidateConfidence);
+
+    // Si el candidato ya fue enriquecido con IA en la nube, usar sus datos completos de traducción
+    const candidateObj = detectedCandidates.find(
+      c => c.text.toLowerCase() === candidateText.toLowerCase()
+    );
+
+    let adapted: AdaptiveCardPayload;
+    if (candidateObj?.primaryTranslation) {
+      adapted = {
+        targetWord: candidateObj.text,
+        primaryTranslation: candidateObj.primaryTranslation,
+        nativeTranslation: candidateObj.primaryTranslation,
+        acceptedTranslations: candidateObj.acceptedTranslations || [candidateObj.primaryTranslation.toLowerCase()],
+        minInputLength: 4,
+        displayTranslation: candidateObj.primaryTranslation,
+        phoneticScript: candidateObj.phoneticScript || `/${candidateObj.text.toLowerCase()}/`,
+        facilitatedPhonetics: candidateObj.facilitatedPhonetics || nlpLinguisticService.toFacilitatedPhonetics(candidateObj.text, candidateObj.phoneticScript),
+        contextSentence: candidateObj.contextSentence || `This is a ${candidateObj.text}.`,
+        contextTranslation: candidateObj.contextTranslation || `Esto es un(a) ${candidateObj.primaryTranslation}.`,
+        cefrLevel: selectedCefr,
+        partOfSpeech: 'NOUN',
+        conceptCategory: 'OBJECT',
+        confidence: candidateConfidence,
+        topDetections: detectedCandidates,
+      };
+    } else {
+      adapted = nlpLinguisticService.generateCardDataForLevel(candidateText, selectedCefr, candidateConfidence);
+      adapted.topDetections = detectedCandidates;
+    }
+
     setCurrentPayload(adapted);
     setWordInput(adapted.targetWord);
     setTranslationInput(adapted.nativeTranslation);

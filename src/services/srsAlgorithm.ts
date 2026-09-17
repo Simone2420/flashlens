@@ -44,9 +44,9 @@ export function calculateSM2({
       if (newRepetition === 0) {
         newInterval = 1;
       } else if (newRepetition === 1) {
-        newInterval = 6;
+        newInterval = 3;
       } else {
-        newInterval = Math.round(newInterval * newEaseFactor);
+        newInterval = Math.max(1, Math.round(newInterval * newEaseFactor));
       }
       newRepetition += 1;
       break;
@@ -55,9 +55,9 @@ export function calculateSM2({
       if (newRepetition === 0) {
         newInterval = 2;
       } else if (newRepetition === 1) {
-        newInterval = 7;
+        newInterval = 4;
       } else {
-        newInterval = Math.round(newInterval * newEaseFactor * 1.3);
+        newInterval = Math.max(1, Math.round(newInterval * newEaseFactor * 1.3));
       }
       newRepetition += 1;
       newEaseFactor = Math.min(3.0, newEaseFactor + 0.15);
@@ -65,8 +65,10 @@ export function calculateSM2({
   }
 
   // Calcular la fecha del próximo repaso sumando newInterval días
+  // Normalizado a las 00:00:00 locales para que esté disponible desde la mañana del día programado
   const nextDate = new Date();
   nextDate.setDate(nextDate.getDate() + newInterval);
+  nextDate.setHours(0, 0, 0, 0);
 
   return {
     repetitionNumber: newRepetition,

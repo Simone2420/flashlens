@@ -65,29 +65,54 @@ class StreakMasterWidgetProvider : AppWidgetProvider() {
                 hasPracticedToday = prefs.getBoolean("hasPracticedToday", false)
                 dailyXp = prefs.getInt("dailyXp", 0)
             } else {
-                // 2. Fallback de lectura directa SQLite (RKStorage de React Native AsyncStorage) en 0ms
+                // 2. Fallback de lectura directa SQLite (Room AsyncStorage o RKStorage) en 0ms
                 try {
-                    val dbPath = context.getDatabasePath("RKStorage")
-                    if (dbPath != null && dbPath.exists()) {
-                        val db = SQLiteDatabase.openDatabase(dbPath.path, null, SQLiteDatabase.OPEN_READONLY)
-                        val cursor = db.rawQuery(
-                            "SELECT value FROM catalystLocalStorage WHERE key = ?",
-                            arrayOf("@flashlens_widget_shared_data")
-                        )
-                        if (cursor.moveToFirst()) {
-                            val jsonRaw = cursor.getString(0)
-                            if (!jsonRaw.isNullOrEmpty()) {
-                                val json = JSONObject(jsonRaw)
-                                streakDays = json.optInt("streakDays", 0)
-                                currentLives = json.optInt("currentLives", 5)
-                                maxLives = json.optInt("maxLives", 5)
-                                nextRegenMinutes = json.optInt("nextRegenMinutes", 0)
-                                hasPracticedToday = json.optBoolean("hasPracticedToday", false)
-                                dailyXp = json.optInt("dailyXp", 0)
+                    var jsonRaw: String? = null
+
+                    // 2a. Probar base de datos moderna de AsyncStorage (Room: "AsyncStorage" -> tabla "Storage")
+                    val roomDbPath = context.getDatabasePath("AsyncStorage")
+                    if (roomDbPath != null && roomDbPath.exists()) {
+                        try {
+                            val db = SQLiteDatabase.openDatabase(roomDbPath.path, null, SQLiteDatabase.OPEN_READONLY)
+                            val cursor = db.rawQuery(
+                                "SELECT value FROM Storage WHERE `key` = ?",
+                                arrayOf("@flashlens_widget_shared_data")
+                            )
+                            if (cursor.moveToFirst()) {
+                                jsonRaw = cursor.getString(0)
                             }
+                            cursor.close()
+                            db.close()
+                        } catch (_: Exception) {}
+                    }
+
+                    // 2b. Probar base de datos heredada (SQLite: "RKStorage" -> tabla "catalystLocalStorage")
+                    if (jsonRaw.isNullOrEmpty()) {
+                        val rkDbPath = context.getDatabasePath("RKStorage")
+                        if (rkDbPath != null && rkDbPath.exists()) {
+                            try {
+                                val db = SQLiteDatabase.openDatabase(rkDbPath.path, null, SQLiteDatabase.OPEN_READONLY)
+                                val cursor = db.rawQuery(
+                                    "SELECT value FROM catalystLocalStorage WHERE key = ?",
+                                    arrayOf("@flashlens_widget_shared_data")
+                                )
+                                if (cursor.moveToFirst()) {
+                                    jsonRaw = cursor.getString(0)
+                                }
+                                cursor.close()
+                                db.close()
+                            } catch (_: Exception) {}
                         }
-                        cursor.close()
-                        db.close()
+                    }
+
+                    if (!jsonRaw.isNullOrEmpty()) {
+                        val json = JSONObject(jsonRaw)
+                        streakDays = json.optInt("streakDays", 0)
+                        currentLives = json.optInt("currentLives", 5)
+                        maxLives = json.optInt("maxLives", 5)
+                        nextRegenMinutes = json.optInt("nextRegenMinutes", 0)
+                        hasPracticedToday = json.optBoolean("hasPracticedToday", false)
+                        dailyXp = json.optInt("dailyXp", 0)
                     }
                 } catch (_: Exception) {
                     // Si SQLite aún no existe, mantiene valores por defecto seguros

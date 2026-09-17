@@ -1,4 +1,4 @@
-import { CharacterDiff, DictationResult } from '../types';
+import { CharacterDiff, DictationResult, LearningPace } from '../types';
 
 export class DictationAlgorithm {
   public static normalizeText(str: string): string {
@@ -44,7 +44,8 @@ export class DictationAlgorithm {
     userInput: string,
     targetText: string,
     isSpanishTarget: boolean = false,
-    acceptedTranslations?: string[]
+    acceptedTranslations?: string[],
+    learningPace: LearningPace = 'MEDIUM'
   ): DictationResult {
     const userClean = userInput.trim().toLowerCase();
     const targetClean = targetText.trim().toLowerCase();
@@ -146,7 +147,10 @@ export class DictationAlgorithm {
     }
 
     const accuracy = Math.round((matchCount / Math.max(1, targetClean.length)) * 100);
-    const isPassing = isSpanishTarget ? accuracy >= 75 : accuracy >= 88;
+    const passingThreshold = isSpanishTarget
+      ? (learningPace === 'SLOW' ? 65 : learningPace === 'MEDIUM' ? 75 : 85)
+      : (learningPace === 'SLOW' ? 70 : learningPace === 'MEDIUM' ? 78 : 88);
+    const isPassing = accuracy >= passingThreshold;
 
     return {
       isCorrect: isPassing,
@@ -156,7 +160,7 @@ export class DictationAlgorithm {
         isPassing
           ? '¡Muy bien! Pequeño detalle ortográfico pero significado correcto.'
           : accuracy >= 50
-          ? 'Buen intento. Escucha de nuevo y ajusta tu respuesta en español.'
+          ? 'Buen intento. Escucha de nuevo y ajusta tu respuesta.'
           : 'Sigue practicando. Escucha atentamente la pronunciación.',
     };
   }
