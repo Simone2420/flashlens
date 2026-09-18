@@ -104,6 +104,12 @@ export default function AudioLabScreen() {
             clearInterval(timer);
             // Tiempo agotado en modo ráfaga
             handleSubmitEvaluation(currentTextValue || 'timeout');
+            // En ritmos Lento y Medio de selección múltiple, auto-avanzar tras 1.2s para no quedar atrapado
+            if (profile.learningPace === 'SLOW' || profile.learningPace === 'MEDIUM') {
+              setTimeout(() => {
+                handleNextWord();
+              }, 1200);
+            }
             return 0;
           }
           return prev - 1;
@@ -113,7 +119,7 @@ export default function AudioLabScreen() {
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [isPlaying, dictationMode, currentCardIndex, lastResult]);
+  }, [isPlaying, dictationMode, currentCardIndex, lastResult, profile.learningPace]);
 
   const handleStartSession = (
     selectedMode: 'WORD' | 'SENTENCE' | 'BURST' = dictationMode,
@@ -612,7 +618,9 @@ export default function AudioLabScreen() {
 
           {/* Feedback de la Evaluación */}
           {lastResult && (
-            <View
+            <TouchableOpacity
+              activeOpacity={isBurstMultipleChoice ? 0.88 : 1}
+              onPress={isBurstMultipleChoice ? handleNextWord : undefined}
               style={[
                 styles.feedbackBox,
                 lastResult.isCorrect ? styles.feedbackBoxCorrect : styles.feedbackBoxWrong,
@@ -659,7 +667,13 @@ export default function AudioLabScreen() {
                   </Text>
                 </View>
               )}
-            </View>
+
+              {isBurstMultipleChoice && (
+                <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 12, fontWeight: '700', color: '#765A00' }}>
+                  Avanzando automáticamente... (o toca aquí para continuar ➔)
+                </Text>
+              )}
+            </TouchableOpacity>
           )}
 
           {/* Botones de Acción */}

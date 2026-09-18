@@ -13,6 +13,8 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  withSequence,
+  withSpring,
   interpolate,
   Easing,
 } from 'react-native-reanimated';
@@ -142,11 +144,35 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
   };
 
   const toggleFavorite = useFlashcardStore(state => state.toggleFavorite);
-  const isFav = !!card.isFavorite;
+  const storeIsFavorite = useFlashcardStore(state =>
+    state.cards.find(c => c.id === card.id)?.isFavorite
+  );
+  const [optimisticFav, setOptimisticFav] = useState<boolean | null>(null);
+
+  const isFav = optimisticFav !== null
+    ? optimisticFav
+    : (storeIsFavorite !== undefined ? storeIsFavorite : !!card.isFavorite);
+
+  useEffect(() => {
+    setOptimisticFav(null);
+  }, [card.id, storeIsFavorite, card.isFavorite]);
+
+  const favScale = useSharedValue(1);
+  const favAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: favScale.value }],
+  }));
 
   const handleToggleFavorite = (e?: any) => {
     e?.stopPropagation?.();
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    const nextFav = !isFav;
+    setOptimisticFav(nextFav);
+
+    favScale.value = withSequence(
+      withSpring(1.4, { damping: 4, stiffness: 250 }),
+      withSpring(1.0, { damping: 10, stiffness: 180 })
+    );
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     toggleFavorite(card.id);
   };
 
@@ -175,12 +201,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
   return (
     <View style={styles.container}>
       {/* Contenedor de la Tarjeta Flip */}
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={!isFlipped ? toggleFlip : undefined}
-        disabled={isFlipped}
-        style={styles.cardWrapper}
-      >
+      <View style={styles.cardWrapper}>
         {/* LADO A: ESTÍMULO VISUAL & AUDITIVO (Texto oculto) */}
         <Animated.View style={[styles.card, styles.cardFront, frontAnimatedStyle]}>
           <View style={styles.cardHeader}>
@@ -188,14 +209,20 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             <View style={styles.headerActions}>
               <TouchableOpacity
                 onPress={handleToggleFavorite}
-                style={styles.soundButton}
+                style={[
+                  styles.soundButton,
+                  styles.favoriteButton,
+                  isFav && styles.favoriteButtonActive,
+                ]}
                 activeOpacity={0.7}
               >
-                <Star
-                  size={19}
-                  color={isFav ? '#E8B400' : COLORS.onSurfaceVariant}
-                  fill={isFav ? '#E8B400' : 'transparent'}
-                />
+                <Animated.View style={favAnimatedStyle}>
+                  <Star
+                    size={19}
+                    color={isFav ? '#D97706' : COLORS.onSurfaceVariant}
+                    fill={isFav ? '#F59E0B' : 'transparent'}
+                  />
+                </Animated.View>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleSpeak(card.targetWord)}
@@ -207,37 +234,44 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             </View>
           </View>
 
-          <View style={styles.imageContainer}>
-            {/* Capa Base: Siempre renderizada para cero pantallas en blanco */}
-            <View style={styles.cardImagePlaceholder}>
-              <View style={styles.emojiCircle}>
-                <Text style={styles.cardEmoji}>{getCardEmoji(card)}</Text>
+          {/* Área interactiva de toque para girar la tarjeta (aislada del header) */}
+          <TouchableOpacity
+            activeOpacity={0.94}
+            onPress={toggleFlip}
+            style={styles.frontBodyTouchable}
+          >
+            <View style={styles.imageContainer}>
+              {/* Capa Base: Siempre renderizada para cero pantallas en blanco */}
+              <View style={styles.cardImagePlaceholder}>
+                <View style={styles.emojiCircle}>
+                  <Text style={styles.cardEmoji}>{getCardEmoji(card)}</Text>
+                </View>
+                <Text style={styles.placeholderCategory}>
+                  {card.conceptCategory} • {card.partOfSpeech}
+                </Text>
               </View>
-              <Text style={styles.placeholderCategory}>
-                {card.conceptCategory} • {card.partOfSpeech}
-              </Text>
+
+              {/* Capa Superior: Imagen real montada con transición suave */}
+              {card.imageUrl && !hasImageError ? (
+                <ExpoImage
+                  source={{ uri: card.imageUrl }}
+                  style={[styles.cardImage, StyleSheet.absoluteFillObject]}
+                  contentFit="cover"
+                  transition={250}
+                  cachePolicy="memory-disk"
+                  onError={() => setHasImageError(true)}
+                />
+              ) : null}
             </View>
 
-            {/* Capa Superior: Imagen real montada con transición suave */}
-            {card.imageUrl && !hasImageError ? (
-              <ExpoImage
-                source={{ uri: card.imageUrl }}
-                style={[styles.cardImage, StyleSheet.absoluteFillObject]}
-                contentFit="cover"
-                transition={250}
-                cachePolicy="memory-disk"
-                onError={() => setHasImageError(true)}
-              />
-            ) : null}
-          </View>
-
-          <View style={styles.stimulusFooter}>
-            <View style={styles.promptBadge}>
-              <Eye size={16} color={COLORS.onSurfaceVariant} />
-              <Text style={styles.promptText}>Recuperación Activa (Texto Oculto)</Text>
+            <View style={styles.stimulusFooter}>
+              <View style={styles.promptBadge}>
+                <Eye size={16} color={COLORS.onSurfaceVariant} />
+                <Text style={styles.promptText}>Recuperación Activa (Texto Oculto)</Text>
+              </View>
+              <Text style={styles.tapPrompt}>Toca la tarjeta para revelar la respuesta ↻</Text>
             </View>
-            <Text style={styles.tapPrompt}>Toca la tarjeta para revelar la respuesta ↻</Text>
-          </View>
+          </TouchableOpacity>
         </Animated.View>
 
         {/* LADO B: REVELACIÓN & CONTEXTO */}
@@ -247,14 +281,20 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             <View style={styles.headerActions}>
               <TouchableOpacity
                 onPress={handleToggleFavorite}
-                style={styles.soundButton}
+                style={[
+                  styles.soundButton,
+                  styles.favoriteButton,
+                  isFav && styles.favoriteButtonActive,
+                ]}
                 activeOpacity={0.7}
               >
-                <Star
-                  size={19}
-                  color={isFav ? '#E8B400' : COLORS.onSurfaceVariant}
-                  fill={isFav ? '#E8B400' : 'transparent'}
-                />
+                <Animated.View style={favAnimatedStyle}>
+                  <Star
+                    size={19}
+                    color={isFav ? '#D97706' : COLORS.onSurfaceVariant}
+                    fill={isFav ? '#F59E0B' : 'transparent'}
+                  />
+                </Animated.View>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleSpeak(card.targetWord)}
@@ -367,7 +407,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             </Text>
           </View>
         </Animated.View>
-      </TouchableOpacity>
+      </View>
 
       {/* 4 BOTONES DE EVALUACIÓN SM-2 */}
       {isFlipped ? (
@@ -462,6 +502,20 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surfaceContainer,
     borderWidth: 1,
     borderColor: COLORS.border,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  favoriteButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  favoriteButtonActive: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#F59E0B',
+  },
+  frontBodyTouchable: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   imageContainer: {
     flex: 1,

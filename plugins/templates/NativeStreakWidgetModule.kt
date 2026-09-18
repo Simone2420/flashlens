@@ -23,6 +23,7 @@ class NativeStreakWidgetModule(reactContext: ReactApplicationContext) : ReactCon
             if (data.hasKey("nextRegenMinutes")) editor.putInt("nextRegenMinutes", data.getInt("nextRegenMinutes"))
             if (data.hasKey("hasPracticedToday")) editor.putBoolean("hasPracticedToday", data.getBoolean("hasPracticedToday"))
             if (data.hasKey("dailyXp")) editor.putInt("dailyXp", data.getInt("dailyXp"))
+            if (data.hasKey("lastStreakDate")) editor.putString("lastStreakDate", data.getString("lastStreakDate"))
 
             editor.apply()
 

@@ -164,6 +164,7 @@ class WidgetService {
               nextRegenMinutes: nextRegenMinutes ?? 0,
               hasPracticedToday,
               dailyXp,
+              lastStreakDate,
             });
           }
         } catch (err) {

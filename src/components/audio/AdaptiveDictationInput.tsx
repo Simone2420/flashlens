@@ -57,13 +57,12 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
   const handleChangeText = (text: string) => {
     let sanitized = text;
 
-    // En ritmo Rápido para palabras individuales, si se inserta una sugerencia masiva externa,
-    // se restringe para permitir únicamente el avance de 1 carácter por paso.
-    // En ritmo Medio se permite la escritura natural y fluida con soporte de sinónimos y edición.
-    if (!isSentenceMode && learningPace === 'FAST') {
+    // En ritmos Medio y Rápido para palabras individuales, se bloquea el pegado masivo
+    // de texto y dictado por voz masivo para forzar que el usuario tipee manualmente.
+    if (!isSentenceMode && (learningPace === 'MEDIUM' || learningPace === 'FAST')) {
       if (text.length > inputValue.length + 1) {
-        const nextChar = text.slice(inputValue.length, inputValue.length + 1);
-        sanitized = inputValue + nextChar;
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+        return; // Bloqueo total de pegado masivo
       }
     }
 
@@ -193,6 +192,8 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           autoCorrect={false}
           spellCheck={false}
           autoComplete="off"
+          contextMenuHidden={true}
+          keyboardType="visible-password"
           editable={!disabled}
           returnKeyType="done"
           onSubmitEditing={() => onSubmit(inputValue)}
@@ -204,7 +205,9 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
           style={styles.boxesRow}
         >
           {Array.from({ length: visibleBoxesCount }).map((_, idx) => {
-            const char = inputValue[idx] || '';
+            const rawChar = inputValue[idx] || '';
+            const isSpace = rawChar === ' ';
+            const displayChar = isSpace ? '␣' : rawChar;
             const isCurrent = idx === inputValue.length && !disabled;
             const diff = diffs ? diffs[idx] : null;
 
@@ -213,6 +216,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
                 key={idx}
                 style={[
                   styles.box,
+                  isSpace && styles.boxSpace,
                   isCurrent && styles.boxActive,
                   diff?.status === 'CORRECT' && styles.boxCorrect,
                   diff?.status === 'WRONG' && styles.boxWrong,
@@ -222,11 +226,12 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
                 <Text
                   style={[
                     styles.boxText,
+                    isSpace && styles.boxTextSpace,
                     diff?.status === 'CORRECT' && styles.boxTextCorrect,
                     diff?.status === 'WRONG' && styles.boxTextWrong,
                   ]}
                 >
-                  {char}
+                  {displayChar}
                 </Text>
               </View>
             );
@@ -256,6 +261,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
         autoCorrect={false}
         spellCheck={false}
         autoComplete="off"
+        contextMenuHidden={true}
         keyboardType="visible-password"
         editable={!disabled}
         returnKeyType="done"
@@ -268,7 +274,9 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
         style={styles.boxesRow}
       >
         {Array.from({ length: displayedBoxesCount }).map((_, idx) => {
-          const char = inputValue[idx] || '';
+          const rawChar = inputValue[idx] || '';
+          const isSpace = rawChar === ' ';
+          const displayChar = isSpace ? '␣' : rawChar;
           const isCurrent = idx === inputValue.length && !disabled;
           const diff = diffs ? diffs[idx] : null;
 
@@ -277,6 +285,7 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
               key={idx}
               style={[
                 styles.box,
+                isSpace && styles.boxSpace,
                 isCurrent && styles.boxActive,
                 diff?.status === 'CORRECT' && styles.boxCorrect,
                 diff?.status === 'WRONG' && styles.boxWrong,
@@ -286,11 +295,12 @@ export const AdaptiveDictationInput: React.FC<AdaptiveDictationInputProps> = ({
               <Text
                 style={[
                   styles.boxText,
+                  isSpace && styles.boxTextSpace,
                   diff?.status === 'CORRECT' && styles.boxTextCorrect,
                   diff?.status === 'WRONG' && styles.boxTextWrong,
                 ]}
               >
-                {char}
+                {displayChar}
               </Text>
             </View>
           );
@@ -415,10 +425,20 @@ const styles = StyleSheet.create({
     borderColor: '#A855F7',
     backgroundColor: '#F3E8FF',
   },
+  boxSpace: {
+    backgroundColor: '#F8FAFC',
+    borderColor: '#CBD5E1',
+    borderStyle: 'dashed',
+  },
   boxText: {
     fontSize: 18,
     fontWeight: '800',
     color: '#1C1B1B',
+  },
+  boxTextSpace: {
+    color: '#94A3B8',
+    fontSize: 16,
+    fontWeight: '600',
   },
   boxTextCorrect: {
     color: '#16A34A',

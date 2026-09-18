@@ -53,14 +53,16 @@ export function calculateSM2({
 
     case 'EASY':
       if (newRepetition === 0) {
-        newInterval = 2;
+        newInterval = 1;
+        newEaseFactor = Math.min(3.0, easeFactor + 0.25);
       } else if (newRepetition === 1) {
-        newInterval = 4;
+        newInterval = 3;
+        newEaseFactor = Math.min(3.0, easeFactor + 0.20);
       } else {
         newInterval = Math.max(1, Math.round(newInterval * newEaseFactor * 1.3));
+        newEaseFactor = Math.min(3.0, newEaseFactor + 0.15);
       }
       newRepetition += 1;
-      newEaseFactor = Math.min(3.0, newEaseFactor + 0.15);
       break;
   }
 

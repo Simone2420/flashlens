@@ -183,6 +183,11 @@ export const useFlashcardStore = create<FlashcardState>()(
           const updated = state.cards.map(c =>
             c.id === cardId ? { ...c, isFavorite: !c.isFavorite } : c
           );
+          return { cards: updated };
+        });
+
+        // Sincronizar widgets de manera no bloqueante fuera del ciclo de actualización del store
+        setTimeout(() => {
           try {
             const userState = useUserStore.getState();
             const streak = userState?.profile?.currentStreak ?? 0;
@@ -192,8 +197,7 @@ export const useFlashcardStore = create<FlashcardState>()(
           } catch (e) {
             console.warn('Error sincronizando widget al alternar favorita:', e);
           }
-          return { cards: updated };
-        });
+        }, 0);
       },
 
       createFromVoiceSpanish: (spokenText) => {

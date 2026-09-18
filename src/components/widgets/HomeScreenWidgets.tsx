@@ -23,7 +23,13 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
 
   const now = new Date();
   const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const yesterday = new Date(now);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayLocal = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
   const hasPracticedToday = profile.lastStreakDate === todayLocal;
+  const isStreakBroken = profile.lastStreakDate !== todayLocal && profile.lastStreakDate !== yesterdayLocal;
+  const displayStreak = isStreakBroken ? 0 : profile.currentStreak;
   const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
   const nextRegen = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
@@ -67,7 +73,7 @@ export const CompactStreakWidget: React.FC<{ onPress?: () => void }> = ({ onPres
         <View style={styles.compactHeroCol}>
           <Text style={styles.compactFireEmoji}>🔥</Text>
           <Text style={styles.compactStreakText}>
-            {profile.currentStreak} {profile.currentStreak === 1 ? 'DÍA' : 'DÍAS'}
+            {displayStreak} {displayStreak === 1 ? 'DÍA' : 'DÍAS'}
           </Text>
           <Text style={styles.compactXpText}>{profile.xp} XP</Text>
         </View>
@@ -109,7 +115,13 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
 
   const now = new Date();
   const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const yesterday = new Date(now);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayLocal = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
   const hasPracticedToday = profile.lastStreakDate === todayLocal;
+  const isStreakBroken = profile.lastStreakDate !== todayLocal && profile.lastStreakDate !== yesterdayLocal;
+  const displayStreak = isStreakBroken ? 0 : profile.currentStreak;
   const safeLives = Math.max(0, Math.min(lives.maxLives, lives.currentLives));
 
   const nextRegen = lives.nextRegenerationAt ? new Date(lives.nextRegenerationAt).getTime() : 0;
@@ -219,7 +231,7 @@ export const ExpandedMasteryWidget: React.FC<{ onPress?: () => void }> = ({ onPr
         {/* Indicador de Racha y Vidas con Temporizador de Minutos */}
         <View style={[styles.expandedStreakPill, hasPracticedToday ? styles.streakPillSafe : styles.streakPillDanger]}>
           <Text style={[styles.expandedStreakPillText, hasPracticedToday ? styles.streakPillTextSafe : styles.streakPillTextDanger]}>
-            {hasPracticedToday ? `🔥 ${profile.currentStreak}d • ${livesText}` : `⚠️ ${profile.currentStreak}d • ${livesText}`}
+            {hasPracticedToday ? `🔥 ${displayStreak}d • ${livesText}` : `⚠️ ${displayStreak}d • ${livesText}`}
           </Text>
         </View>
       </View>

@@ -299,7 +299,14 @@ export const useUserStore = create<UserState>()(
 
       checkStreakIntegrity: () => {
         const { profile, lives } = get();
-        if (!profile.lastStreakDate || profile.currentStreak <= 0) return;
+        if (profile.currentStreak <= 0) return;
+
+        // Si hay racha positiva pero nunca hubo fecha registrada, corregir a 0
+        if (!profile.lastStreakDate) {
+          set({ profile: { ...profile, currentStreak: 0 } });
+          widgetService.syncWidgetData(0, lives, null as any, profile.xp || 0);
+          return;
+        }
 
         const now = new Date();
         const todayLocal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -435,6 +442,12 @@ export const useUserStore = create<UserState>()(
     {
       name: 'flashlens-user-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.checkStreakIntegrity();
+          state.checkLivesRegeneration();
+        }
+      },
     }
   )
 );

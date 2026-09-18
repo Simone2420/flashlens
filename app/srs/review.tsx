@@ -14,7 +14,7 @@ import { COLORS, SPACING } from '../../src/constants/theme';
 import { FlipCard3D } from '../../src/components/srs/FlipCard3D';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { useUserStore } from '../../src/store/useUserStore';
-import { ReviewRating } from '../../src/types';
+import { ReviewRating, Flashcard } from '../../src/types';
 import { Button } from '../../src/components/common/Button';
 import { Badge } from '../../src/components/common/Badge';
 import { ProgressBar } from '../../src/components/common/ProgressBar';
@@ -27,29 +27,43 @@ export default function SRSReviewScreen() {
   const { cards, reviewCard, getDueCards } = useFlashcardStore();
   const { addXP, registerDailyActivity } = useUserStore();
 
-  const dueCards = getDueCards();
-  const hardCards = cards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
-  const favoriteCards = cards.filter(c => c.isFavorite);
+  const [activeMode, setActiveMode] = useState<'DUE' | 'HARD' | 'FAVORITES' | 'ALL'>(mode);
 
-  // Seleccionar mazo según el modo elegido
-  let reviewDeck = cards;
+  // Estabilizar los IDs de la sesión para que alternar favoritos o calificar
+  // tarjetas no desplace ni expulse la tarjeta actual durante el repaso activo
+  const [sessionDeckIds, setSessionDeckIds] = useState<string[]>(() => {
+    let initialDeck: Flashcard[] = [];
+    if (mode === 'FAVORITES') {
+      initialDeck = cards.filter(c => c.isFavorite);
+    } else if (mode === 'HARD') {
+      initialDeck = cards.filter(c => c.lastRating === 'HARD' || c.lastRating === 'AGAIN');
+    } else if (mode === 'ALL') {
+      initialDeck = cards;
+    } else {
+      const due = getDueCards();
+      initialDeck = due.length > 0 ? due : [];
+    }
+    return initialDeck.map(c => c.id);
+  });
+
+  // Mapear a tarjetas vivas del store preservando los IDs estables de la sesión
+  const reviewDeck = sessionDeckIds
+    .map(id => cards.find(c => c.id === id))
+    .filter((c): c is Flashcard => c !== undefined);
+
   let modeTitle = 'REPASO ESPACIADO SM-2';
   let emptyStateMsg = 'No hay tarjetas pendientes hoy. ¡Vas al día!';
 
-  if (mode === 'FAVORITES') {
-    reviewDeck = favoriteCards.length > 0 ? favoriteCards : [];
+  if (activeMode === 'FAVORITES') {
     modeTitle = 'FLASHCARDS FAVORITAS';
     emptyStateMsg = 'No tienes flashcards marcadas como favoritas todavía. ¡Marca algunas con la estrella para repasarlas aquí!';
-  } else if (mode === 'HARD') {
-    reviewDeck = hardCards.length > 0 ? hardCards : [];
+  } else if (activeMode === 'HARD') {
     modeTitle = 'VOCABULARIO DIFÍCIL';
     emptyStateMsg = 'No tienes palabras marcadas como difíciles actualmente.';
-  } else if (mode === 'ALL') {
-    reviewDeck = cards;
+  } else if (activeMode === 'ALL') {
     modeTitle = 'TODO EL MAZO';
     emptyStateMsg = 'Tu mazo de flashcards está vacío actualmente.';
   } else {
-    reviewDeck = dueCards.length > 0 ? dueCards : [];
     modeTitle = 'REPASO ESPACIADO SM-2';
     emptyStateMsg = 'No hay tarjetas pendientes hoy. ¡Vas al día!';
   }
@@ -79,7 +93,18 @@ export default function SRSReviewScreen() {
   };
 
   const handleFinish = () => {
-    router.back();
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace('/(tabs)' as any);
+    }
+  };
+
+  const handleReviewAllCards = () => {
+    setActiveMode('ALL');
+    setSessionDeckIds(cards.map(c => c.id));
+    setCurrentIndex(0);
+    setSessionCompleted(false);
   };
 
   return (
@@ -112,12 +137,21 @@ export default function SRSReviewScreen() {
         <View style={[styles.completedContainer, { paddingBottom: bottomPadding }]}>
           <Text style={styles.completedTitle}>¡Todo al día!</Text>
           <Text style={styles.completedSub}>{emptyStateMsg}</Text>
+          {cards.length > 0 && activeMode !== 'ALL' && (
+            <Button
+              title="REPASAR TODO EL MAZO"
+              onPress={handleReviewAllCards}
+              variant="primary"
+              size="lg"
+              style={{ width: '100%', maxWidth: 320, marginTop: SPACING.lg }}
+            />
+          )}
           <Button
             title="VOLVER"
             onPress={handleFinish}
             variant="accent"
             size="lg"
-            style={{ width: '100%', maxWidth: 320, marginTop: SPACING.lg }}
+            style={{ width: '100%', maxWidth: 320, marginTop: SPACING.md }}
           />
         </View>
       ) : sessionCompleted ? (

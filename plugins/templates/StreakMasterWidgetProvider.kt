@@ -13,6 +13,10 @@ import com.flashlens.app.MainActivity
 import com.flashlens.app.R
 import org.json.JSONObject
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class StreakMasterWidgetProvider : AppWidgetProvider() {
 
@@ -54,6 +58,7 @@ class StreakMasterWidgetProvider : AppWidgetProvider() {
             var nextRegenMinutes = 0
             var hasPracticedToday = false
             var dailyXp = 0
+            var lastStreakDate: String? = null
 
             // 1. Intentar lectura rápida desde SharedPreferences nativas
             val prefs = context.getSharedPreferences("flashlens_widget_prefs", Context.MODE_PRIVATE)
@@ -64,6 +69,7 @@ class StreakMasterWidgetProvider : AppWidgetProvider() {
                 nextRegenMinutes = prefs.getInt("nextRegenMinutes", 0)
                 hasPracticedToday = prefs.getBoolean("hasPracticedToday", false)
                 dailyXp = prefs.getInt("dailyXp", 0)
+                lastStreakDate = prefs.getString("lastStreakDate", null)
             } else {
                 // 2. Fallback de lectura directa SQLite (Room AsyncStorage o RKStorage) en 0ms
                 try {
@@ -113,11 +119,28 @@ class StreakMasterWidgetProvider : AppWidgetProvider() {
                         nextRegenMinutes = json.optInt("nextRegenMinutes", 0)
                         hasPracticedToday = json.optBoolean("hasPracticedToday", false)
                         dailyXp = json.optInt("dailyXp", 0)
+                        lastStreakDate = json.optString("lastStreakDate", null)
                     }
                 } catch (_: Exception) {
                     // Si SQLite aún no existe, mantiene valores por defecto seguros
                 }
             }
+
+            // Validar expiración de racha por fecha actual del dispositivo
+            try {
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val todayDate = sdf.format(Date())
+                val cal = Calendar.getInstance()
+                cal.add(Calendar.DAY_OF_YEAR, -1)
+                val yesterdayDate = sdf.format(cal.time)
+
+                if (!lastStreakDate.isNullOrEmpty() && lastStreakDate != todayDate && lastStreakDate != yesterdayDate) {
+                    streakDays = 0
+                    hasPracticedToday = false
+                } else if (lastStreakDate != todayDate) {
+                    hasPracticedToday = false
+                }
+            } catch (_: Exception) {}
 
             // Aplicar Vidas y Temporizador en la cabecera
             val livesText = if (currentLives < maxLives && nextRegenMinutes > 0) {
