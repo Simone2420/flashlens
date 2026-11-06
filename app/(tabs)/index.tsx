@@ -24,6 +24,19 @@ import {
   Flame,
   Heart,
   ArrowRight,
+  Star,
+  X,
+  Footprints,
+  Theater,
+  Link2,
+  Zap,
+  Ruler,
+  AlertTriangle,
+  MessageCircle,
+  Brain,
+  Clock,
+  Mic,
+  Lightbulb,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -45,20 +58,20 @@ import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWi
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; icon: string }[] = [
-  { category: 'ACTION_VERB', label: 'Verbos', icon: '🏃‍♂️' },
-  { category: 'IDIOM_EXPRESSION', label: 'Modismos', icon: '🎭' },
-  { category: 'CONNECTOR_TRANSITION', label: 'Conectores', icon: '🔗' },
-  { category: 'PHRASAL_VERB', label: 'Phrasal Verbs', icon: '⚡' },
-  { category: 'GRAMMAR_RULE', label: 'Reglas', icon: '📐' },
-  { category: 'FALSE_FRIEND', label: 'Falsos Amigos', icon: '⚠️' },
-  { category: 'COLLOCATION_PHRASE', label: 'Colocaciones', icon: '💬' },
-  { category: 'EMOTION_STATE', label: 'Emociones', icon: '❤️' },
-  { category: 'ACTION_COGNITIVE', label: 'Cognitivos', icon: '🧠' },
-  { category: 'ADVERB_MODIFIER', label: 'Adverbios', icon: '⏱️' },
-  { category: 'QUALITY_PERSONALITY', label: 'Personalidad', icon: '🌟' },
-  { category: 'CONVERSATIONAL_FILLER', label: 'Muletillas', icon: '🗣️' },
-  { category: 'ABSTRACT_NOUN', label: 'Abstractos', icon: '💡' },
+const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; IconComponent: React.ComponentType<{ size?: number; color?: string }> }[] = [
+  { category: 'ACTION_VERB', label: 'Verbos', IconComponent: Footprints },
+  { category: 'IDIOM_EXPRESSION', label: 'Modismos', IconComponent: Theater },
+  { category: 'CONNECTOR_TRANSITION', label: 'Conectores', IconComponent: Link2 },
+  { category: 'PHRASAL_VERB', label: 'Phrasal Verbs', IconComponent: Zap },
+  { category: 'GRAMMAR_RULE', label: 'Reglas', IconComponent: Ruler },
+  { category: 'FALSE_FRIEND', label: 'Falsos Amigos', IconComponent: AlertTriangle },
+  { category: 'COLLOCATION_PHRASE', label: 'Colocaciones', IconComponent: MessageCircle },
+  { category: 'EMOTION_STATE', label: 'Emociones', IconComponent: Heart },
+  { category: 'ACTION_COGNITIVE', label: 'Cognitivos', IconComponent: Brain },
+  { category: 'ADVERB_MODIFIER', label: 'Adverbios', IconComponent: Clock },
+  { category: 'QUALITY_PERSONALITY', label: 'Personalidad', IconComponent: Sparkles },
+  { category: 'CONVERSATIONAL_FILLER', label: 'Muletillas', IconComponent: Mic },
+  { category: 'ABSTRACT_NOUN', label: 'Abstractos', IconComponent: Lightbulb },
 ];
 
 const CardThumbnail: React.FC<{ card: Flashcard }> = ({ card }) => {
@@ -109,6 +122,7 @@ export default function HomeScreen() {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   const [isPillModalVisible, setIsPillModalVisible] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [todayPill, setTodayPill] = useState<DailyPill | null>(null);
   const pillDateRef = useRef<string>('');
 
@@ -180,7 +194,7 @@ export default function HomeScreen() {
               HOLA, {(profile.fullName || profile.username || 'Carlos Gómez').toUpperCase()}
             </Text>
             <Text style={styles.subGreeting}>
-              {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel} ✏️
+              {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -237,8 +251,14 @@ export default function HomeScreen() {
                 router.push('/diagnostic' as any);
               }}
               style={styles.diagRecalibrateBtn}
+              accessibilityRole="button"
+              accessibilityLabel="Recalibrar nivel de diagnóstico"
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
-              <Text style={styles.diagRecalibrateText}>Recalibrar ➔</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+                <Text style={styles.diagRecalibrateText}>Recalibrar</Text>
+                <ArrowRight size={12} color="#16A34A" />
+              </View>
             </TouchableOpacity>
           </View>
         )}
@@ -256,10 +276,16 @@ export default function HomeScreen() {
                 setIsPillModalVisible(true);
               }}
               style={[styles.pillBanner, isPillInDeck && styles.pillBannerAdded]}
+              accessibilityRole="button"
+              accessibilityLabel={`Píldora del día: ${todayPill.targetWord}, nivel ${todayPill.cefrLevel || 'A2'}`}
             >
               <View style={styles.pillBannerLeft}>
                 <View style={[styles.pillIconBox, isPillInDeck && styles.pillIconBoxAdded]}>
-                  <Text style={{ fontSize: 20 }}>{isPillInDeck ? '✅' : '💊'}</Text>
+                  {isPillInDeck ? (
+                    <CheckCircle2 size={20} color="#166534" />
+                  ) : (
+                    <Sparkles size={20} color="#765A00" />
+                  )}
                 </View>
                 <View style={{ flex: 1 }}>
                   <View style={styles.pillBadgeRow}>
@@ -290,52 +316,78 @@ export default function HomeScreen() {
         {/* Selector de Mazo Dual (Tabs) */}
         <View style={styles.deckTabsRow}>
           <TouchableOpacity
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeCardTypeFilter === 'ALL' }}
+            accessibilityLabel={`Ver todas las tarjetas, total ${cards.length}`}
             onPress={() => {
               Haptics.selectionAsync();
               setCardTypeFilter('ALL');
             }}
             style={[styles.deckTab, activeCardTypeFilter === 'ALL' && styles.activeDeckTab]}
           >
+            <Layers size={13} color={activeCardTypeFilter === 'ALL' ? '#1C1B1B' : '#5E5E5E'} />
             <Text style={[styles.deckTabText, activeCardTypeFilter === 'ALL' && styles.activeDeckTabText]}>
               Todas ({cards.length})
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeCardTypeFilter === 'VOCABULARY' }}
+            accessibilityLabel="Filtrar tarjetas de objetos y vocabulario"
             onPress={() => {
               Haptics.selectionAsync();
               setCardTypeFilter('VOCABULARY');
             }}
             style={[styles.deckTab, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTab]}
           >
+            <Camera size={13} color={activeCardTypeFilter === 'VOCABULARY' ? '#1C1B1B' : '#5E5E5E'} />
             <Text style={[styles.deckTabText, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTabText]}>
-              📸 Objetos
+              Objetos
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeCardTypeFilter === 'ABSTRACT' }}
+            accessibilityLabel="Filtrar tarjetas abstractas"
             onPress={() => {
               Haptics.selectionAsync();
               setCardTypeFilter('ABSTRACT');
             }}
             style={[styles.deckTab, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTab]}
           >
+            <Sparkles size={13} color={activeCardTypeFilter === 'ABSTRACT' ? '#1C1B1B' : '#5E5E5E'} />
             <Text style={[styles.deckTabText, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTabText]}>
-              ✨ 12 Abstractas
+              12 Abstractas
             </Text>
           </TouchableOpacity>
         </View>
 
         {/* Barra de Búsqueda */}
-        <View style={styles.searchBarContainer}>
-          <Search size={16} color="#747878" />
+        <View style={[styles.searchBarContainer, isSearchFocused && styles.searchBarContainerFocused]}>
+          <Search size={16} color={isSearchFocused ? '#765A00' : '#747878'} />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar palabra, traducción o modismo..."
             placeholderTextColor="#747878"
             value={searchQuery}
             onChangeText={setSearchQuery}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setIsSearchFocused(false)}
+            accessibilityLabel="Buscar palabra o traducción en el mazo"
+            returnKeyType="search"
           />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity
+              onPress={() => setSearchQuery('')}
+              accessibilityRole="button"
+              accessibilityLabel="Borrar búsqueda"
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <X size={15} color="#747878" />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Carrusel Horizontal de Chips de las 12 Subcategorías + Favoritas */}
@@ -348,8 +400,11 @@ export default function HomeScreen() {
                   if (isFavoriteFilter) toggleFavoriteFilter();
                 }}
                 style={styles.clearFilterChip}
+                accessibilityRole="button"
+                accessibilityLabel="Limpiar filtros activos"
               >
-                <Text style={styles.clearFilterText}>✕ Limpiar</Text>
+                <X size={12} color="#BA1A1A" />
+                <Text style={styles.clearFilterText}>Limpiar</Text>
               </TouchableOpacity>
             )}
             {/* Chip de Filtro Especial: Favoritas */}
@@ -362,8 +417,15 @@ export default function HomeScreen() {
                 styles.subcatChip,
                 isFavoriteFilter && styles.favoriteChipSelected,
               ]}
+              accessibilityRole="checkbox"
+              accessibilityState={{ checked: isFavoriteFilter }}
+              accessibilityLabel={`Filtrar tarjetas favoritas, total ${cards.filter(c => c.isFavorite).length}`}
             >
-              <Text style={styles.subcatIcon}>⭐</Text>
+              <Star
+                size={12}
+                color={isFavoriteFilter ? '#92400E' : '#747878'}
+                fill={isFavoriteFilter ? '#92400E' : 'transparent'}
+              />
               <Text
                 style={[
                   styles.subcatLabel,
@@ -376,6 +438,7 @@ export default function HomeScreen() {
             {SUBCATEGORIES_LIST.map(cat => {
               const isSelected = selectedCategories.includes(cat.category);
               const count = cards.filter(c => c.conceptCategory === cat.category).length;
+              const CatIcon = cat.IconComponent;
 
               return (
                 <TouchableOpacity
@@ -385,8 +448,11 @@ export default function HomeScreen() {
                     toggleCategoryFilter(cat.category);
                   }}
                   style={[styles.subcatChip, isSelected && styles.subcatChipSelected]}
+                  accessibilityRole="checkbox"
+                  accessibilityState={{ checked: isSelected }}
+                  accessibilityLabel={`Filtrar por subcategoría ${cat.label}, ${count} tarjetas`}
                 >
-                  <Text style={styles.subcatIcon}>{cat.icon}</Text>
+                  <CatIcon size={12} color={isSelected ? '#765A00' : '#5E5E5E'} />
                   <Text style={[styles.subcatLabel, isSelected && styles.subcatLabelSelected]}>
                     {cat.label} ({count})
                   </Text>
@@ -444,6 +510,10 @@ export default function HomeScreen() {
                 <TouchableOpacity
                   onPress={() => handleSpeak(card.targetWord)}
                   style={styles.cardAudioBtn}
+                  activeOpacity={0.7}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 >
                   <Volume2 size={20} color="#765A00" />
                 </TouchableOpacity>
@@ -478,6 +548,8 @@ export default function HomeScreen() {
           setIsAbstractModalVisible(true);
         }}
         style={styles.fabButton}
+        accessibilityRole="button"
+        accessibilityLabel="Crear nueva tarjeta abstracta"
       >
         <Plus size={24} color="#1C1B1B" />
       </TouchableOpacity>
@@ -569,7 +641,11 @@ const styles = StyleSheet.create({
   },
   deckTab: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    minHeight: 38,
     paddingVertical: 8,
     borderRadius: 10,
   },
@@ -597,6 +673,10 @@ const styles = StyleSheet.create({
     borderColor: '#E0E0E0',
     gap: 8,
   },
+  searchBarContainerFocused: {
+    borderColor: '#E8B400',
+    backgroundColor: '#FFFFFF',
+  },
   searchInput: {
     flex: 1,
     color: '#1C1B1B',
@@ -609,6 +689,9 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   clearFilterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
     backgroundColor: '#FEE2E2',
     paddingHorizontal: 10,
     paddingVertical: 6,
