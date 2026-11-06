@@ -8,6 +8,9 @@ import {
   TextInput,
   Image,
   AppState,
+  FlatList,
+  ListRenderItem,
+  Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -168,377 +171,395 @@ export default function HomeScreen() {
   const filteredCards = getFilteredCards();
   const dueCards = getDueCards();
 
-  const handleSpeak = (text: string) => {
+  const handleSpeak = useCallback((text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Speech.speak(text, { language: 'en-US', rate: profile.learningPace === 'SLOW' ? 0.8 : 0.95 });
-  };
+  }, [profile.learningPace]);
+
+  const renderCardItem: ListRenderItem<Flashcard> = useCallback(({ item: card }) => (
+    <View style={styles.cardItem}>
+      <View style={styles.cardMainRow}>
+        {/* Imagen o Ícono de Categoría */}
+        <CardThumbnail card={card} />
+
+        {/* Contenido de la Tarjeta */}
+        <View style={styles.cardBody}>
+          <View style={styles.cardBadgeRow}>
+            <Text style={styles.cardCategoryBadge}>{card.conceptCategory}</Text>
+            <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
+          </View>
+          <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
+          <Text style={styles.cardPhonetic}>
+            {!isIpaUnlocked && card.facilitatedPhonetics
+              ? card.facilitatedPhonetics
+              : (card.phoneticScript || card.facilitatedPhonetics)}
+          </Text>
+          <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
+        </View>
+
+        {/* Botón de Audio TTS */}
+        <TouchableOpacity
+          onPress={() => handleSpeak(card.targetWord)}
+          style={styles.cardAudioBtn}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          <Volume2 size={20} color="#765A00" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Mnemotécnico o Fórmula Gramatical */}
+      {card.mnemonicHint && (
+        <View style={styles.cardMnemonicBox}>
+          <Text style={styles.cardMnemonicText}>💡 {card.mnemonicHint}</Text>
+        </View>
+      )}
+
+      {/* Oración Contextual */}
+      {card.contextSentence && (
+        <View style={styles.cardContextBox}>
+          <Text style={styles.cardContextEn}>"{card.contextSentence}"</Text>
+          {card.contextTranslation && (
+            <Text style={styles.cardContextEs}>{card.contextTranslation}</Text>
+          )}
+        </View>
+      )}
+    </View>
+  ), [isIpaUnlocked, handleSpeak]);
+
+  const renderEmptyCards = useCallback(() => (
+    <View style={styles.emptyCardsBox}>
+      <Sparkles size={36} color="#C4C7C7" />
+      <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
+      <Text style={styles.emptySubtitle}>
+        Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara.
+      </Text>
+    </View>
+  ), []);
+
+  const cardKeyExtractor = useCallback((card: Flashcard) => card.id, []);
+
+  const ListHeader = (
+    <>
+      {/* Barra Superior con Feedback y Estado */}
+      <View style={styles.topBar}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            Haptics.selectionAsync();
+            setIsProfileModalVisible(true);
+          }}
+        >
+          <Text style={styles.greetingText}>
+            HOLA, {(profile.fullName || profile.username || 'Carlos Gómez').toUpperCase()}
+          </Text>
+          <Text style={styles.subGreeting}>
+            {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            setIsFeedbackModalVisible(true);
+          }}
+          style={styles.feedbackBtn}
+        >
+          <MessageSquare size={16} color="#765A00" />
+          <Text style={styles.feedbackBtnText}>Opinión</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Banner de Diagnóstico para Calibrar Nivel Inicial */}
+      {!profile.hasCompletedDiagnostic ? (
+        <TouchableOpacity
+          activeOpacity={0.88}
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push('/diagnostic' as any);
+          }}
+          style={styles.diagHomeBanner}
+        >
+          <View style={styles.diagHomeBannerIcon}>
+            <Sparkles size={22} color="#765A00" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <View style={styles.diagBadgeRow}>
+              <Text style={styles.diagTag}>CALIBRACIÓN INICIAL</Text>
+              <Text style={styles.diagQuestionsCount}>25 Preguntas ICFES/CEFR</Text>
+            </View>
+            <Text style={styles.diagTitle}>¿Cuál es tu nivel real de inglés?</Text>
+            <Text style={styles.diagSubtitle}>
+              Haz la prueba diagnóstica oficial para calibrar tu árbol de lecciones y vocabulario a tu medida.
+            </Text>
+            <View style={styles.diagActionBtn}>
+              <Text style={styles.diagActionBtnText}>INICIAR PRUEBA DIAGNÓSTICA</Text>
+              <ArrowRight size={14} color="#1C1B1B" />
+            </View>
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.diagCompletedPill}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <CheckCircle2 size={15} color="#16A34A" />
+            <Text style={styles.diagCompletedText}>
+              Nivel Diagnosticado: <Text style={{ fontWeight: '900', color: '#16A34A' }}>{profile.diagnosedLevel}</Text>
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              Haptics.selectionAsync();
+              router.push('/diagnostic' as any);
+            }}
+            style={styles.diagRecalibrateBtn}
+            accessibilityRole="button"
+            accessibilityLabel="Recalibrar nivel de diagnóstico"
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+              <Text style={styles.diagRecalibrateText}>Recalibrar</Text>
+              <ArrowRight size={12} color="#16A34A" />
+            </View>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Banner Píldora del Día */}
+      {todayPill && (() => {
+        const isPillInDeck = cards.some(
+          c => c.targetWord.trim().toLowerCase() === todayPill.targetWord.trim().toLowerCase()
+        );
+        return (
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setIsPillModalVisible(true);
+            }}
+            style={[styles.pillBanner, isPillInDeck && styles.pillBannerAdded]}
+            accessibilityRole="button"
+            accessibilityLabel={`Píldora del día: ${todayPill.targetWord}, nivel ${todayPill.cefrLevel || 'A2'}`}
+          >
+            <View style={styles.pillBannerLeft}>
+              <View style={[styles.pillIconBox, isPillInDeck && styles.pillIconBoxAdded]}>
+                {isPillInDeck ? (
+                  <CheckCircle2 size={20} color="#166534" />
+                ) : (
+                  <Sparkles size={20} color="#765A00" />
+                )}
+              </View>
+              <View style={{ flex: 1 }}>
+                <View style={styles.pillBadgeRow}>
+                  <Text style={[styles.pillTag, isPillInDeck && styles.pillTagAdded]}>PÍLDORA DEL DÍA</Text>
+                  <Text style={styles.pillLevelBadge}>{todayPill.cefrLevel || 'A2'}</Text>
+                </View>
+                <Text style={styles.pillWordText}>{todayPill.targetWord}</Text>
+                <Text style={styles.pillTranslationText} numberOfLines={1}>
+                  {todayPill.nativeTranslation}
+                </Text>
+              </View>
+            </View>
+            <View style={[styles.pillActionPill, isPillInDeck && styles.pillActionPillAdded]}>
+              <Text style={[styles.pillActionText, isPillInDeck && styles.pillActionTextAdded]}>
+                {isPillInDeck ? '✓ En tu mazo' : 'Descubrir'}
+              </Text>
+              {!isPillInDeck && <ArrowRight size={12} color="#1C1B1B" />}
+            </View>
+          </TouchableOpacity>
+        );
+      })()}
+
+      {/* Widget Expandido Interactivo */}
+      <View style={styles.widgetSection}>
+        <ExpandedMasteryWidget onPress={() => setIsReviewModalVisible(true)} />
+      </View>
+
+      {/* Selector de Mazo Dual (Tabs) */}
+      <View style={styles.deckTabsRow}>
+        <TouchableOpacity
+          accessibilityRole="tab"
+          accessibilityState={{ selected: activeCardTypeFilter === 'ALL' }}
+          accessibilityLabel={`Ver todas las tarjetas, total ${cards.length}`}
+          onPress={() => {
+            Haptics.selectionAsync();
+            setCardTypeFilter('ALL');
+          }}
+          style={[styles.deckTab, activeCardTypeFilter === 'ALL' && styles.activeDeckTab]}
+        >
+          <Layers size={13} color={activeCardTypeFilter === 'ALL' ? '#1C1B1B' : '#5E5E5E'} />
+          <Text style={[styles.deckTabText, activeCardTypeFilter === 'ALL' && styles.activeDeckTabText]}>
+            Todas ({cards.length})
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          accessibilityRole="tab"
+          accessibilityState={{ selected: activeCardTypeFilter === 'VOCABULARY' }}
+          accessibilityLabel="Filtrar tarjetas de objetos y vocabulario"
+          onPress={() => {
+            Haptics.selectionAsync();
+            setCardTypeFilter('VOCABULARY');
+          }}
+          style={[styles.deckTab, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTab]}
+        >
+          <Camera size={13} color={activeCardTypeFilter === 'VOCABULARY' ? '#1C1B1B' : '#5E5E5E'} />
+          <Text style={[styles.deckTabText, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTabText]}>
+            Objetos
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          accessibilityRole="tab"
+          accessibilityState={{ selected: activeCardTypeFilter === 'ABSTRACT' }}
+          accessibilityLabel="Filtrar tarjetas abstractas"
+          onPress={() => {
+            Haptics.selectionAsync();
+            setCardTypeFilter('ABSTRACT');
+          }}
+          style={[styles.deckTab, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTab]}
+        >
+          <Sparkles size={13} color={activeCardTypeFilter === 'ABSTRACT' ? '#1C1B1B' : '#5E5E5E'} />
+          <Text style={[styles.deckTabText, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTabText]}>
+            12 Abstractas
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Barra de Búsqueda */}
+      <View style={[styles.searchBarContainer, isSearchFocused && styles.searchBarContainerFocused]}>
+        <Search size={16} color={isSearchFocused ? '#765A00' : '#747878'} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Buscar palabra, traducción o modismo..."
+          placeholderTextColor="#747878"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onFocus={() => setIsSearchFocused(true)}
+          onBlur={() => setIsSearchFocused(false)}
+          accessibilityLabel="Buscar palabra o traducción en el mazo"
+          returnKeyType="search"
+        />
+        {searchQuery.length > 0 && (
+          <TouchableOpacity
+            onPress={() => setSearchQuery('')}
+            accessibilityRole="button"
+            accessibilityLabel="Borrar búsqueda"
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          >
+            <X size={15} color="#747878" />
+          </TouchableOpacity>
+        )}
+      </View>
+
+      {/* Carrusel Horizontal de Chips de las 12 Subcategorías + Favoritas */}
+      <View style={styles.categoryFiltersContainer}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScroll}>
+          {(selectedCategories.length > 0 || isFavoriteFilter) && (
+            <TouchableOpacity
+              onPress={() => {
+                clearCategoryFilters();
+                if (isFavoriteFilter) toggleFavoriteFilter();
+              }}
+              style={styles.clearFilterChip}
+              accessibilityRole="button"
+              accessibilityLabel="Limpiar filtros activos"
+            >
+              <X size={12} color="#BA1A1A" />
+              <Text style={styles.clearFilterText}>Limpiar</Text>
+            </TouchableOpacity>
+          )}
+          {/* Chip de Filtro Especial: Favoritas */}
+          <TouchableOpacity
+            onPress={() => {
+              Haptics.selectionAsync();
+              toggleFavoriteFilter();
+            }}
+            style={[
+              styles.subcatChip,
+              isFavoriteFilter && styles.favoriteChipSelected,
+            ]}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: isFavoriteFilter }}
+            accessibilityLabel={`Filtrar tarjetas favoritas, total ${cards.filter(c => c.isFavorite).length}`}
+          >
+            <Star
+              size={12}
+              color={isFavoriteFilter ? '#92400E' : '#747878'}
+              fill={isFavoriteFilter ? '#92400E' : 'transparent'}
+            />
+            <Text
+              style={[
+                styles.subcatLabel,
+                isFavoriteFilter && styles.favoriteLabelSelected,
+              ]}
+            >
+              Favoritas ({cards.filter(c => c.isFavorite).length})
+            </Text>
+          </TouchableOpacity>
+          {SUBCATEGORIES_LIST.map(cat => {
+            const isSelected = selectedCategories.includes(cat.category);
+            const count = cards.filter(c => c.conceptCategory === cat.category).length;
+            const CatIcon = cat.IconComponent;
+
+            return (
+              <TouchableOpacity
+                key={cat.category}
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  toggleCategoryFilter(cat.category);
+                }}
+                style={[styles.subcatChip, isSelected && styles.subcatChipSelected]}
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: isSelected }}
+                accessibilityLabel={`Filtrar por subcategoría ${cat.label}, ${count} tarjetas`}
+              >
+                <CatIcon size={12} color={isSelected ? '#765A00' : '#5E5E5E'} />
+                <Text style={[styles.subcatLabel, isSelected && styles.subcatLabelSelected]}>
+                  {cat.label} ({count})
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
+      </View>
+
+      {/* Encabezado de la Sección de Tarjetas */}
+      <View style={styles.cardsHeaderRow}>
+        <Text style={styles.sectionHeading}>
+          MI MAZO DE ESTUDIO ({filteredCards.length})
+        </Text>
+        <TouchableOpacity
+          onPress={() => setIsReviewModalVisible(true)}
+          style={styles.reviewNowBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Iniciar repaso espaciado SM-2"
+        >
+          <Play size={12} color="#FFFFFF" fill="#FFFFFF" />
+          <Text style={styles.reviewNowBtnText}>Repaso SM-2</Text>
+        </TouchableOpacity>
+      </View>
+    </>
+  );
 
   return (
     <View style={styles.container}>
       <Header title="FLASHLENS" />
 
-      <ScrollView
+      <FlatList
+        data={filteredCards}
+        renderItem={renderCardItem}
+        keyExtractor={cardKeyExtractor}
+        ListHeaderComponent={ListHeader}
+        ListEmptyComponent={renderEmptyCards}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 90, 110) }]}
-      >
-        {/* Barra Superior con Feedback y Estado */}
-        <View style={styles.topBar}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => {
-              Haptics.selectionAsync();
-              setIsProfileModalVisible(true);
-            }}
-          >
-            <Text style={styles.greetingText}>
-              HOLA, {(profile.fullName || profile.username || 'Carlos Gómez').toUpperCase()}
-            </Text>
-            <Text style={styles.subGreeting}>
-              {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              setIsFeedbackModalVisible(true);
-            }}
-            style={styles.feedbackBtn}
-          >
-            <MessageSquare size={16} color="#765A00" />
-            <Text style={styles.feedbackBtnText}>Opinión</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Banner de Diagnóstico para Calibrar Nivel Inicial */}
-        {!profile.hasCompletedDiagnostic ? (
-          <TouchableOpacity
-            activeOpacity={0.88}
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-              router.push('/diagnostic' as any);
-            }}
-            style={styles.diagHomeBanner}
-          >
-            <View style={styles.diagHomeBannerIcon}>
-              <Sparkles size={22} color="#765A00" />
-            </View>
-            <View style={{ flex: 1 }}>
-              <View style={styles.diagBadgeRow}>
-                <Text style={styles.diagTag}>CALIBRACIÓN INICIAL</Text>
-                <Text style={styles.diagQuestionsCount}>25 Preguntas ICFES/CEFR</Text>
-              </View>
-              <Text style={styles.diagTitle}>¿Cuál es tu nivel real de inglés?</Text>
-              <Text style={styles.diagSubtitle}>
-                Haz la prueba diagnóstica oficial para calibrar tu árbol de lecciones y vocabulario a tu medida.
-              </Text>
-              <View style={styles.diagActionBtn}>
-                <Text style={styles.diagActionBtnText}>INICIAR PRUEBA DIAGNÓSTICA</Text>
-                <ArrowRight size={14} color="#1C1B1B" />
-              </View>
-            </View>
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.diagCompletedPill}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <CheckCircle2 size={15} color="#16A34A" />
-              <Text style={styles.diagCompletedText}>
-                Nivel Diagnosticado: <Text style={{ fontWeight: '900', color: '#16A34A' }}>{profile.diagnosedLevel}</Text>
-              </Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                Haptics.selectionAsync();
-                router.push('/diagnostic' as any);
-              }}
-              style={styles.diagRecalibrateBtn}
-              accessibilityRole="button"
-              accessibilityLabel="Recalibrar nivel de diagnóstico"
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                <Text style={styles.diagRecalibrateText}>Recalibrar</Text>
-                <ArrowRight size={12} color="#16A34A" />
-              </View>
-            </TouchableOpacity>
-          </View>
-        )}
-
-        {/* Banner Píldora del Día */}
-        {todayPill && (() => {
-          const isPillInDeck = cards.some(
-            c => c.targetWord.trim().toLowerCase() === todayPill.targetWord.trim().toLowerCase()
-          );
-          return (
-            <TouchableOpacity
-              activeOpacity={0.88}
-              onPress={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                setIsPillModalVisible(true);
-              }}
-              style={[styles.pillBanner, isPillInDeck && styles.pillBannerAdded]}
-              accessibilityRole="button"
-              accessibilityLabel={`Píldora del día: ${todayPill.targetWord}, nivel ${todayPill.cefrLevel || 'A2'}`}
-            >
-              <View style={styles.pillBannerLeft}>
-                <View style={[styles.pillIconBox, isPillInDeck && styles.pillIconBoxAdded]}>
-                  {isPillInDeck ? (
-                    <CheckCircle2 size={20} color="#166534" />
-                  ) : (
-                    <Sparkles size={20} color="#765A00" />
-                  )}
-                </View>
-                <View style={{ flex: 1 }}>
-                  <View style={styles.pillBadgeRow}>
-                    <Text style={[styles.pillTag, isPillInDeck && styles.pillTagAdded]}>PÍLDORA DEL DÍA</Text>
-                    <Text style={styles.pillLevelBadge}>{todayPill.cefrLevel || 'A2'}</Text>
-                  </View>
-                  <Text style={styles.pillWordText}>{todayPill.targetWord}</Text>
-                  <Text style={styles.pillTranslationText} numberOfLines={1}>
-                    {todayPill.nativeTranslation}
-                  </Text>
-                </View>
-              </View>
-              <View style={[styles.pillActionPill, isPillInDeck && styles.pillActionPillAdded]}>
-                <Text style={[styles.pillActionText, isPillInDeck && styles.pillActionTextAdded]}>
-                  {isPillInDeck ? '✓ En tu mazo' : 'Descubrir'}
-                </Text>
-                {!isPillInDeck && <ArrowRight size={12} color="#1C1B1B" />}
-              </View>
-            </TouchableOpacity>
-          );
-        })()}
-
-        {/* Widget Expandido Interactivo */}
-        <View style={styles.widgetSection}>
-          <ExpandedMasteryWidget onPress={() => setIsReviewModalVisible(true)} />
-        </View>
-
-        {/* Selector de Mazo Dual (Tabs) */}
-        <View style={styles.deckTabsRow}>
-          <TouchableOpacity
-            accessibilityRole="tab"
-            accessibilityState={{ selected: activeCardTypeFilter === 'ALL' }}
-            accessibilityLabel={`Ver todas las tarjetas, total ${cards.length}`}
-            onPress={() => {
-              Haptics.selectionAsync();
-              setCardTypeFilter('ALL');
-            }}
-            style={[styles.deckTab, activeCardTypeFilter === 'ALL' && styles.activeDeckTab]}
-          >
-            <Layers size={13} color={activeCardTypeFilter === 'ALL' ? '#1C1B1B' : '#5E5E5E'} />
-            <Text style={[styles.deckTabText, activeCardTypeFilter === 'ALL' && styles.activeDeckTabText]}>
-              Todas ({cards.length})
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            accessibilityRole="tab"
-            accessibilityState={{ selected: activeCardTypeFilter === 'VOCABULARY' }}
-            accessibilityLabel="Filtrar tarjetas de objetos y vocabulario"
-            onPress={() => {
-              Haptics.selectionAsync();
-              setCardTypeFilter('VOCABULARY');
-            }}
-            style={[styles.deckTab, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTab]}
-          >
-            <Camera size={13} color={activeCardTypeFilter === 'VOCABULARY' ? '#1C1B1B' : '#5E5E5E'} />
-            <Text style={[styles.deckTabText, activeCardTypeFilter === 'VOCABULARY' && styles.activeDeckTabText]}>
-              Objetos
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            accessibilityRole="tab"
-            accessibilityState={{ selected: activeCardTypeFilter === 'ABSTRACT' }}
-            accessibilityLabel="Filtrar tarjetas abstractas"
-            onPress={() => {
-              Haptics.selectionAsync();
-              setCardTypeFilter('ABSTRACT');
-            }}
-            style={[styles.deckTab, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTab]}
-          >
-            <Sparkles size={13} color={activeCardTypeFilter === 'ABSTRACT' ? '#1C1B1B' : '#5E5E5E'} />
-            <Text style={[styles.deckTabText, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTabText]}>
-              12 Abstractas
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Barra de Búsqueda */}
-        <View style={[styles.searchBarContainer, isSearchFocused && styles.searchBarContainerFocused]}>
-          <Search size={16} color={isSearchFocused ? '#765A00' : '#747878'} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Buscar palabra, traducción o modismo..."
-            placeholderTextColor="#747878"
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-            onFocus={() => setIsSearchFocused(true)}
-            onBlur={() => setIsSearchFocused(false)}
-            accessibilityLabel="Buscar palabra o traducción en el mazo"
-            returnKeyType="search"
-          />
-          {searchQuery.length > 0 && (
-            <TouchableOpacity
-              onPress={() => setSearchQuery('')}
-              accessibilityRole="button"
-              accessibilityLabel="Borrar búsqueda"
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            >
-              <X size={15} color="#747878" />
-            </TouchableOpacity>
-          )}
-        </View>
-
-        {/* Carrusel Horizontal de Chips de las 12 Subcategorías + Favoritas */}
-        <View style={styles.categoryFiltersContainer}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScroll}>
-            {(selectedCategories.length > 0 || isFavoriteFilter) && (
-              <TouchableOpacity
-                onPress={() => {
-                  clearCategoryFilters();
-                  if (isFavoriteFilter) toggleFavoriteFilter();
-                }}
-                style={styles.clearFilterChip}
-                accessibilityRole="button"
-                accessibilityLabel="Limpiar filtros activos"
-              >
-                <X size={12} color="#BA1A1A" />
-                <Text style={styles.clearFilterText}>Limpiar</Text>
-              </TouchableOpacity>
-            )}
-            {/* Chip de Filtro Especial: Favoritas */}
-            <TouchableOpacity
-              onPress={() => {
-                Haptics.selectionAsync();
-                toggleFavoriteFilter();
-              }}
-              style={[
-                styles.subcatChip,
-                isFavoriteFilter && styles.favoriteChipSelected,
-              ]}
-              accessibilityRole="checkbox"
-              accessibilityState={{ checked: isFavoriteFilter }}
-              accessibilityLabel={`Filtrar tarjetas favoritas, total ${cards.filter(c => c.isFavorite).length}`}
-            >
-              <Star
-                size={12}
-                color={isFavoriteFilter ? '#92400E' : '#747878'}
-                fill={isFavoriteFilter ? '#92400E' : 'transparent'}
-              />
-              <Text
-                style={[
-                  styles.subcatLabel,
-                  isFavoriteFilter && styles.favoriteLabelSelected,
-                ]}
-              >
-                Favoritas ({cards.filter(c => c.isFavorite).length})
-              </Text>
-            </TouchableOpacity>
-            {SUBCATEGORIES_LIST.map(cat => {
-              const isSelected = selectedCategories.includes(cat.category);
-              const count = cards.filter(c => c.conceptCategory === cat.category).length;
-              const CatIcon = cat.IconComponent;
-
-              return (
-                <TouchableOpacity
-                  key={cat.category}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    toggleCategoryFilter(cat.category);
-                  }}
-                  style={[styles.subcatChip, isSelected && styles.subcatChipSelected]}
-                  accessibilityRole="checkbox"
-                  accessibilityState={{ checked: isSelected }}
-                  accessibilityLabel={`Filtrar por subcategoría ${cat.label}, ${count} tarjetas`}
-                >
-                  <CatIcon size={12} color={isSelected ? '#765A00' : '#5E5E5E'} />
-                  <Text style={[styles.subcatLabel, isSelected && styles.subcatLabelSelected]}>
-                    {cat.label} ({count})
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
-        </View>
-
-        {/* Lista de Flashcards */}
-        <View style={styles.cardsHeaderRow}>
-          <Text style={styles.sectionHeading}>
-            MI MAZO DE ESTUDIO ({filteredCards.length})
-          </Text>
-          <TouchableOpacity
-            onPress={() => setIsReviewModalVisible(true)}
-            style={styles.reviewNowBtn}
-          >
-            <Play size={12} color="#FFFFFF" fill="#FFFFFF" />
-            <Text style={styles.reviewNowBtnText}>Repaso SM-2</Text>
-          </TouchableOpacity>
-        </View>
-
-        {filteredCards.length === 0 ? (
-          <View style={styles.emptyCardsBox}>
-            <Sparkles size={36} color="#C4C7C7" />
-            <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
-            <Text style={styles.emptySubtitle}>
-              Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara.
-            </Text>
-          </View>
-        ) : (
-          filteredCards.map(card => (
-            <View key={card.id} style={styles.cardItem}>
-              <View style={styles.cardMainRow}>
-                {/* Imagen o Ícono de Categoría */}
-                <CardThumbnail card={card} />
-
-                {/* Contenido de la Tarjeta */}
-                <View style={styles.cardBody}>
-                  <View style={styles.cardBadgeRow}>
-                    <Text style={styles.cardCategoryBadge}>{card.conceptCategory}</Text>
-                    <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
-                  </View>
-                  <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
-                  <Text style={styles.cardPhonetic}>
-                    {!isIpaUnlocked && card.facilitatedPhonetics
-                      ? card.facilitatedPhonetics
-                      : (card.phoneticScript || card.facilitatedPhonetics)}
-                  </Text>
-                  <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
-                </View>
-
-                {/* Botón de Audio TTS */}
-                <TouchableOpacity
-                  onPress={() => handleSpeak(card.targetWord)}
-                  style={styles.cardAudioBtn}
-                  activeOpacity={0.7}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                >
-                  <Volume2 size={20} color="#765A00" />
-                </TouchableOpacity>
-              </View>
-
-              {/* Mnemotécnico o Fórmula Gramatical */}
-              {card.mnemonicHint && (
-                <View style={styles.cardMnemonicBox}>
-                  <Text style={styles.cardMnemonicText}>💡 {card.mnemonicHint}</Text>
-                </View>
-              )}
-
-              {/* Oración Contextual */}
-              {card.contextSentence && (
-                <View style={styles.cardContextBox}>
-                  <Text style={styles.cardContextEn}>"{card.contextSentence}"</Text>
-                  {card.contextTranslation && (
-                    <Text style={styles.cardContextEs}>{card.contextTranslation}</Text>
-                  )}
-                </View>
-              )}
-            </View>
-          ))
-        )}
-      </ScrollView>
+        keyboardShouldPersistTaps="handled"
+        initialNumToRender={6}
+        maxToRenderPerBatch={8}
+        windowSize={5}
+        removeClippedSubviews={Platform.OS === 'android'}
+      />
 
       {/* Botón Flotante para Crear Tarjeta Abstracta */}
       <TouchableOpacity
