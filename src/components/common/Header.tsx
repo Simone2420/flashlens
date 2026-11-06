@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
-import { Heart, Flame, Zap, Plus } from 'lucide-react-native';
+import { Heart, Flame, Zap, Plus, ArrowLeft } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING } from '../../constants/theme';
 import { useUserStore } from '../../store/useUserStore';
@@ -26,8 +26,15 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
         {/* Lado Izquierdo: Título o Marca */}
         <View style={styles.leftSection}>
           {showBack && onBack ? (
-            <TouchableOpacity onPress={onBack} style={styles.backButton}>
-              <Text style={styles.backText}>←</Text>
+            <TouchableOpacity
+              onPress={onBack}
+              style={styles.backButton}
+              activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel="Volver a la pantalla anterior"
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            >
+              <ArrowLeft size={22} color={COLORS.onSurface} strokeWidth={2.2} />
             </TouchableOpacity>
           ) : null}
           <Text style={styles.brandTitle}>{title || 'FLASHLENS'}</Text>
@@ -36,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
         {/* Lado Derecho: Vidas, Racha, XP */}
         <View style={styles.statsSection}>
           {/* Racha */}
-          <View style={styles.statPill}>
+          <View style={styles.statPill} accessibilityLabel={`Racha actual: ${profile.currentStreak} días`}>
             <Flame size={16} color={COLORS.accent} fill={COLORS.accent} />
             <Text style={styles.statText}>{profile.currentStreak}</Text>
           </View>
@@ -46,6 +53,9 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
             style={[styles.statPill, lives.currentLives === 0 && styles.statPillEmpty]}
             onPress={() => setModalVisible(true)}
             activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel={`Vidas disponibles: ${lives.currentLives} de ${lives.maxLives}. Toca para recargar o ver opciones.`}
+            hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
           >
             <Heart
               size={16}
@@ -61,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBack, onBack, rightAc
           </TouchableOpacity>
 
           {/* XP */}
-          <View style={styles.statPill}>
+          <View style={styles.statPill} accessibilityLabel={`Experiencia acumulada: ${profile.xp} puntos`}>
             <Zap size={14} color={COLORS.onSurface} fill={COLORS.onSurface} />
             <Text style={styles.statText}>{profile.xp}</Text>
           </View>
@@ -95,18 +105,17 @@ const styles = StyleSheet.create({
   leftSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 4,
   },
   backButton: {
-    paddingRight: 8,
-  },
-  backText: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: COLORS.onSurface,
+    minWidth: 44,
+    minHeight: 44,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 2,
   },
   brandTitle: {
-    fontFamily: Platform.select({ ios: 'System', default: 'sans-serif' }),
+    fontFamily: Platform.select({ ios: 'DMSans-Bold', android: 'DMSans_700Bold', default: 'sans-serif' }),
     fontWeight: '800',
     fontSize: 16,
     letterSpacing: 1.5,
