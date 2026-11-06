@@ -14,7 +14,7 @@ export default function Index() {
       if (isOnboarded) {
         router.replace('/(tabs)' as any);
       } else {
-        router.replace('/(auth)/login' as any);
+        router.replace('/(auth)/onboarding' as any);
       }
     }, 100);
 

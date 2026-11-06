@@ -11,7 +11,13 @@ import {
   ScrollView,
 } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Sparkles, ArrowRight, UserCheck, Compass, CheckCircle2, GraduationCap } from 'lucide-react-native';
+import {
+  Sparkles,
+  ArrowRight,
+  Compass,
+  CircleQuestionMark,
+  GraduationCap,
+} from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
@@ -27,7 +33,7 @@ export default function LoginScreen() {
   const [age, setAge] = useState('');
   const [showDiagnosticDecision, setShowDiagnosticDecision] = useState(false);
 
-  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
+  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
   const bottomPadding = Math.max(insets.bottom, 16);
 
   const handleRegister = () => {
@@ -35,7 +41,10 @@ export default function LoginScreen() {
     const parsedAge = parseInt(age.trim(), 10);
 
     if (!trimmedName) {
-      Alert.alert('Nombre requerido', 'Por favor ingresa tu nombre completo para personalizar tu perfil de estudio.');
+      Alert.alert(
+        'Nombre requerido',
+        'Por favor ingresa tu nombre completo para personalizar tu perfil de estudio.'
+      );
       return;
     }
 
@@ -67,14 +76,44 @@ export default function LoginScreen() {
     router.replace('/(tabs)' as any);
   };
 
+  const handleOpenOnboarding = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    router.push({
+      pathname: '/(auth)/onboarding' as any,
+      params: { fromLogin: 'true' },
+    });
+  };
+
   return (
     <View style={[styles.safeArea, { paddingTop: topPadding, paddingBottom: bottomPadding }]}>
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        {/* Header Principal con Logotipo Minimalista */}
         <View style={styles.header}>
+          <View style={styles.brandBadge}>
+            <Text style={styles.brandBadgeText}>FL</Text>
+          </View>
           <Text style={styles.brand}>FLASHLENS</Text>
           <Text style={styles.tagline}>Aprendizaje Situacional por Visión Óptica & IA</Text>
+
+          {/* Botón Pill para Ver Diapositivas Onboarding */}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={handleOpenOnboarding}
+            style={styles.onboardingPillButton}
+            accessibilityLabel="Conoce FlashLens · Ver Diapositivas"
+            accessibilityRole="button"
+          >
+            <Compass size={14} color="#765A00" />
+            <Text style={styles.onboardingPillText}>Conoce FlashLens · Ver Guía</Text>
+            <ArrowRight size={13} color="#765A00" />
+          </TouchableOpacity>
         </View>
 
+        {/* Tarjeta de Formulario de Registro */}
         <View style={styles.formContainer}>
           <Text style={styles.formTitle}>Registro de Perfil</Text>
           <Text style={styles.formSubtitle}>
@@ -110,7 +149,7 @@ export default function LoginScreen() {
             onPress={handleRegister}
             variant="primary"
             size="lg"
-            style={{ marginTop: SPACING.sm }}
+            style={{ marginTop: SPACING.xs }}
             icon={<ArrowRight size={18} color="#FFFFFF" />}
           />
 
@@ -130,6 +169,22 @@ export default function LoginScreen() {
           />
         </View>
 
+        {/* Botón Inferior Secundario para Repasar Diapositivas */}
+        <View style={styles.guideContainer}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={handleOpenOnboarding}
+            style={styles.guideButton}
+            accessibilityLabel="Ver diapositivas de funcionamiento y metodología"
+            accessibilityRole="button"
+          >
+            <CircleQuestionMark size={16} color="#765A00" />
+            <Text style={styles.guideButtonText}>¿Cómo funciona FlashLens? Repasar Diapositivas</Text>
+            <ArrowRight size={14} color="#765A00" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
             FlashLens v1.0 · Motor Local Offline & IA · SuperMemo-2
@@ -138,11 +193,7 @@ export default function LoginScreen() {
       </ScrollView>
 
       {/* Modal de Decisión Diagnóstica Post-Registro */}
-      <Modal
-        visible={showDiagnosticDecision}
-        transparent
-        animationType="fade"
-      >
+      <Modal visible={showDiagnosticDecision} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
             <View style={styles.modalIconCircle}>
@@ -184,64 +235,102 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'space-between',
-    padding: SPACING.lg,
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.md, // 16dp horizontal para ergonomía óptima en cualquier ancho de pantalla
+    paddingTop: SPACING.xs,
+    paddingBottom: SPACING.md,
   },
   header: {
     alignItems: 'center',
-    marginTop: SPACING.md,
-    marginBottom: SPACING.lg,
+    marginBottom: SPACING.md,
+  },
+  brandBadge: {
+    width: 34,
+    height: 34,
+    backgroundColor: COLORS.accent,
+    borderWidth: 1.5,
+    borderColor: '#1C1B1B',
+    borderRadius: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 6,
+  },
+  brandBadgeText: {
+    color: '#1C1B1B',
+    fontSize: 13,
+    fontWeight: '900',
+    letterSpacing: 1,
   },
   brand: {
     fontSize: 24,
-    fontWeight: '800',
+    fontWeight: '900',
     letterSpacing: 2,
     color: COLORS.onSurface,
   },
   tagline: {
     fontSize: 12,
     color: COLORS.onSurfaceVariant,
-    marginTop: 4,
+    marginTop: 3,
     textAlign: 'center',
+  },
+  onboardingPillButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    borderRadius: 0,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    marginTop: 10,
+    gap: 6,
+  },
+  onboardingPillText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#765A00',
+    letterSpacing: 0.3,
   },
   formContainer: {
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 20,
-    padding: SPACING.lg,
+    borderRadius: 0,
+    padding: SPACING.md, // 16dp para evitar compresión excesiva en pantallas de 360dp
     ...SHADOWS.card,
   },
   formTitle: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontWeight: '800',
     color: COLORS.onSurface,
   },
   formSubtitle: {
-    fontSize: 13,
+    fontSize: 12.5,
     color: COLORS.onSurfaceVariant,
-    marginTop: 4,
+    marginTop: 3,
     marginBottom: SPACING.md,
+    lineHeight: 17,
   },
   inputGroup: {
-    marginBottom: SPACING.md,
+    marginBottom: SPACING.sm + 4,
   },
   inputLabel: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.onSurfaceVariant,
     letterSpacing: 0.5,
-    marginBottom: 6,
+    marginBottom: 5,
   },
   input: {
     borderWidth: 1,
     borderColor: COLORS.border,
     backgroundColor: COLORS.surfaceContainerLow,
-    borderRadius: 12,
+    borderRadius: 0,
     paddingHorizontal: 14,
-    paddingVertical: 12,
+    paddingVertical: 11,
     fontSize: 15,
     color: COLORS.onSurface,
+    minHeight: 48,
   },
   dividerBox: {
     flexDirection: 'row',
@@ -256,14 +345,35 @@ const styles = StyleSheet.create({
   },
   dividerText: {
     fontSize: 10,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.onSurfaceVariant,
     letterSpacing: 1,
   },
+  guideContainer: {
+    marginTop: SPACING.md,
+  },
+  guideButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFDF0',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    borderRadius: 0,
+    paddingVertical: 12,
+    paddingHorizontal: SPACING.md,
+    gap: 8,
+    minHeight: 46,
+  },
+  guideButtonText: {
+    fontSize: 12.5,
+    fontWeight: '800',
+    color: '#1C1B1B',
+  },
   footer: {
     alignItems: 'center',
-    paddingTop: SPACING.lg,
-    paddingBottom: SPACING.sm,
+    paddingTop: SPACING.md,
+    paddingBottom: SPACING.xs,
   },
   footerText: {
     fontSize: 11,
@@ -276,32 +386,33 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.65)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: SPACING.lg,
+    padding: SPACING.md,
   },
   modalCard: {
     width: '100%',
+    maxWidth: 380,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: SPACING.xl,
+    borderRadius: 0,
+    padding: SPACING.lg,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E0E0E0',
+    borderColor: '#1C1B1B',
     ...SHADOWS.card,
   },
   modalIconCircle: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
+    width: 64,
+    height: 64,
+    borderRadius: 0,
     backgroundColor: '#FFF8E1',
-    borderWidth: 2,
+    borderWidth: 1.5,
     borderColor: '#E8B400',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: SPACING.md,
   },
   modalTitle: {
-    fontSize: 20,
-    fontWeight: '800',
+    fontSize: 19,
+    fontWeight: '900',
     color: COLORS.onSurface,
     textAlign: 'center',
     marginBottom: 8,
@@ -316,18 +427,21 @@ const styles = StyleSheet.create({
   diagnosticPrimaryBtn: {
     width: '100%',
     backgroundColor: '#E8B400',
+    borderWidth: 1,
+    borderColor: '#1C1B1B',
+    borderRadius: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 14,
-    borderRadius: 14,
     gap: 8,
     marginBottom: 10,
+    minHeight: 48,
   },
   diagnosticPrimaryBtnText: {
     color: '#1C1B1B',
-    fontSize: 13,
-    fontWeight: '800',
+    fontSize: 12.5,
+    fontWeight: '900',
     letterSpacing: 0.5,
   },
   diagnosticSecondaryBtn: {
@@ -335,10 +449,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: 44,
   },
   diagnosticSecondaryBtnText: {
     color: COLORS.onSurfaceVariant,
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: '700',
   },
 });
