@@ -6,20 +6,22 @@ import { COLORS } from '../src/constants/theme';
 
 export default function Index() {
   const router = useRouter();
-  const { isOnboarded } = useUserStore();
+  const { isOnboarded, isLoggedIn } = useUserStore();
 
   useEffect(() => {
-    // Redirigir de inmediato a tabs o auth
+    // Redirigir de inmediato según onboarding y estado de sesión
     const timer = setTimeout(() => {
-      if (isOnboarded) {
-        router.replace('/(tabs)' as any);
-      } else {
+      if (!isOnboarded) {
         router.replace('/(auth)/onboarding' as any);
+      } else if (isLoggedIn === false) {
+        router.replace('/(auth)/login' as any);
+      } else {
+        router.replace('/(tabs)' as any);
       }
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [isOnboarded]);
+  }, [isOnboarded, isLoggedIn]);
 
   return (
     <View style={styles.container}>

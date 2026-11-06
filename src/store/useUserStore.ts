@@ -9,6 +9,7 @@ interface UserState {
   profile: UserProfile;
   lives: LivesState;
   isOnboarded: boolean;
+  isLoggedIn: boolean;
   pendingCelebration: { visible: boolean; streak: number; xpEarned: number; title?: string; message?: string } | null;
 
   // Actions
@@ -29,6 +30,7 @@ interface UserState {
   checkStreakIntegrity: () => void;
   setMockUserCredentials: (fullName: string, age: number, username?: string) => void;
   resetDemoUser: () => void;
+  logout: () => void;
   triggerCelebration: (data: { streak: number; xpEarned?: number; title?: string; message?: string }) => void;
   dismissCelebration: () => void;
 }
@@ -68,6 +70,7 @@ export const useUserStore = create<UserState>()(
       profile: DEFAULT_USER,
       lives: DEFAULT_LIVES,
       isOnboarded: false,
+      isLoggedIn: true,
       pendingCelebration: null,
 
       loseLife: () => {
@@ -411,6 +414,7 @@ export const useUserStore = create<UserState>()(
             notificationsEnabled: false,
           },
           isOnboarded: true,
+          isLoggedIn: true,
         }));
       },
 
@@ -419,6 +423,14 @@ export const useUserStore = create<UserState>()(
           profile: DEFAULT_USER,
           lives: DEFAULT_LIVES,
           isOnboarded: false,
+          isLoggedIn: false,
+          pendingCelebration: null,
+        });
+      },
+
+      logout: () => {
+        set({
+          isLoggedIn: false,
           pendingCelebration: null,
         });
       },

@@ -21,6 +21,8 @@ import {
   Sliders,
   CheckCircle2,
   MessageSquare,
+  LogOut,
+  Compass,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -37,7 +39,7 @@ import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackM
 
 export default function ProfileScreen() {
   const router = useRouter();
-  const { profile, lives, setLearningPace, toggleNotifications, refillLivesDemo, resetDemoUser } =
+  const { profile, lives, setLearningPace, toggleNotifications, refillLivesDemo, resetDemoUser, logout } =
     useUserStore();
   const { recalculatePaceTransition, resetRoadmapProgress } = useRoadmapStore();
   const { resetToMockDeck } = useFlashcardStore();
@@ -55,11 +57,44 @@ export default function ProfileScreen() {
     await notificationService.triggerTestNotification(type);
   };
 
+  const handleLogout = () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    Alert.alert(
+      'Cerrar Sesión',
+      '¿Estás seguro de que deseas salir de tu cuenta? Podrás volver a iniciar sesión o ingresar como demo en cualquier momento.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Cerrar Sesión',
+          style: 'destructive',
+          onPress: () => {
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            logout();
+            router.replace('/(auth)/login' as any);
+          },
+        },
+      ]
+    );
+  };
+
   const insets = useSafeAreaInsets();
 
   return (
     <View style={styles.container}>
-      <Header title="PERFIL & CONFIGURACIÓN" />
+      <Header
+        title="PERFIL & CONFIGURACIÓN"
+        rightAction={
+          <TouchableOpacity
+            onPress={handleLogout}
+            style={styles.headerLogoutBtn}
+            accessibilityLabel="Cerrar sesión"
+            accessibilityRole="button"
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <LogOut size={16} color="#BA1A1A" />
+          </TouchableOpacity>
+        }
+      />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -284,6 +319,36 @@ export default function ProfileScreen() {
           >
             <RotateCcw size={16} color="#BA1A1A" />
             <Text style={styles.demoActionBtnTextDanger}>Restaurar Mazo y Progreso Inicial</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* 5. GESTIÓN DE SESIÓN & CUENTA */}
+        <Text style={styles.sectionHeading}>CUENTA & SESIÓN</Text>
+        <View style={styles.demoActionsCard}>
+          <TouchableOpacity
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              router.push({
+                pathname: '/(auth)/onboarding' as any,
+                params: { fromLogin: 'true' },
+              });
+            }}
+            style={styles.demoActionBtn}
+            accessibilityLabel="Ver diapositivas de bienvenida y guía"
+            accessibilityRole="button"
+          >
+            <Compass size={16} color="#765A00" />
+            <Text style={styles.demoActionBtnText}>Ver Diapositivas de Bienvenida (Guía)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleLogout}
+            style={[styles.demoActionBtn, styles.demoActionBtnDanger]}
+            accessibilityLabel="Cerrar sesión actual"
+            accessibilityRole="button"
+          >
+            <LogOut size={16} color="#BA1A1A" />
+            <Text style={styles.demoActionBtnTextDanger}>Cerrar Sesión</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -585,5 +650,15 @@ const styles = StyleSheet.create({
     color: '#1C1B1B',
     fontSize: 11,
     fontWeight: '800',
+  },
+  headerLogoutBtn: {
+    padding: 6,
+    marginLeft: 6,
+    borderRadius: 8,
+    backgroundColor: '#FEE2E2',
+    borderWidth: 1,
+    borderColor: '#FCA5A5',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
