@@ -83,9 +83,9 @@ interface FlipCard3DProps {
   autoPlayAudio?: boolean;
 }
 
-const { width } = Dimensions.get('window');
+const { width, height: screenHeight } = Dimensions.get('window');
 const CARD_WIDTH = Math.min(width - 32, 400);
-const CARD_HEIGHT = 460;
+const CARD_HEIGHT = Math.min(Math.max(screenHeight * 0.52, 380), 460);
 
 export const FlipCard3D: React.FC<FlipCard3DProps> = ({
   card,
@@ -215,6 +215,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                   isFav && styles.favoriteButtonActive,
                 ]}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={isFav ? 'Quitar de favoritas' : 'Marcar como tarjeta favorita'}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               >
                 <Animated.View style={favAnimatedStyle}>
                   <Star
@@ -228,6 +231,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                 onPress={() => handleSpeak(card.targetWord)}
                 style={styles.soundButton}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Escuchar pronunciación en inglés"
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               >
                 <Volume2 size={20} color={COLORS.onSurface} />
               </TouchableOpacity>
@@ -239,6 +245,8 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
             activeOpacity={0.94}
             onPress={toggleFlip}
             style={styles.frontBodyTouchable}
+            accessibilityRole="button"
+            accessibilityLabel="Girar tarjeta para revelar el significado"
           >
             <View style={styles.imageContainer}>
               {/* Capa Base: Siempre renderizada para cero pantallas en blanco */}
@@ -287,6 +295,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                   isFav && styles.favoriteButtonActive,
                 ]}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={isFav ? 'Quitar de favoritas' : 'Marcar como tarjeta favorita'}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               >
                 <Animated.View style={favAnimatedStyle}>
                   <Star
@@ -300,6 +311,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                 onPress={() => handleSpeak(card.targetWord)}
                 style={styles.soundButton}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Escuchar pronunciación en inglés"
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               >
                 <Volume2 size={20} color={COLORS.onSurface} />
               </TouchableOpacity>
@@ -307,6 +321,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                 onPress={toggleFlip}
                 style={styles.soundButton}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Volver al frente de la tarjeta"
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               >
                 <RotateCw size={18} color={COLORS.onSurfaceVariant} />
               </TouchableOpacity>
@@ -415,6 +432,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           <TouchableOpacity
             style={[styles.ratingBtn, { backgroundColor: COLORS.srsAgain }]}
             onPress={() => onRate('AGAIN')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel="Calificar como Mal: Repasar en 1 día"
           >
             <Text style={styles.ratingTitle}>Mal</Text>
             <Text style={styles.ratingSub}>1 d</Text>
@@ -423,6 +443,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           <TouchableOpacity
             style={[styles.ratingBtn, { backgroundColor: COLORS.srsHard }]}
             onPress={() => onRate('HARD')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={`Calificar como Difícil: Repasar en ${Math.max(1, Math.round((card.intervalDays || 1) * 1.2))} días`}
           >
             <Text style={styles.ratingTitle}>Difícil</Text>
             <Text style={styles.ratingSub}>
@@ -433,6 +456,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           <TouchableOpacity
             style={[styles.ratingBtn, { backgroundColor: COLORS.srsGood }]}
             onPress={() => onRate('GOOD')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={`Calificar como Bien: Repasar en ${card.repetitionNumber === 0 ? '1' : Math.round((card.intervalDays || 1) * card.easeFactor)} días`}
           >
             <Text style={styles.ratingTitle}>Bien</Text>
             <Text style={styles.ratingSub}>
@@ -443,6 +469,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
           <TouchableOpacity
             style={[styles.ratingBtn, { backgroundColor: COLORS.srsEasy }]}
             onPress={() => onRate('EASY')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={`Calificar como Fácil: Repasar en ${card.repetitionNumber === 0 ? '2' : Math.round((card.intervalDays || 1) * card.easeFactor * 1.3)} días`}
           >
             <Text style={styles.ratingTitle}>Fácil</Text>
             <Text style={styles.ratingSub}>
@@ -454,6 +483,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
         <TouchableOpacity
           style={styles.flipActionBtn}
           onPress={toggleFlip}
+          activeOpacity={0.85}
+          accessibilityRole="button"
+          accessibilityLabel="Girar tarjeta y revelar significado"
         >
           <RotateCw size={18} color={COLORS.onSurface} />
           <Text style={styles.flipActionText}>GIRAR Y REVELAR</Text>
@@ -803,7 +835,8 @@ const styles = StyleSheet.create({
   },
   ratingBtn: {
     flex: 1,
-    paddingVertical: 10,
+    minHeight: 48,
+    paddingVertical: 6,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 0,
@@ -825,7 +858,8 @@ const styles = StyleSheet.create({
     gap: 8,
     width: CARD_WIDTH,
     marginTop: SPACING.md,
-    paddingVertical: 14,
+    minHeight: 48,
+    paddingVertical: 12,
     backgroundColor: COLORS.accent,
     borderRadius: 0,
   },
