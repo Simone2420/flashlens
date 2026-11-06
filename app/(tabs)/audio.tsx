@@ -23,6 +23,8 @@ import {
   Clock,
   Repeat,
   Sparkle,
+  Type,
+  FileText,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -383,38 +385,50 @@ export default function AudioLabScreen() {
             <Text style={styles.modeSelectorTitle}>SELECCIONA LA MODALIDAD DE PRÁCTICA:</Text>
             <View style={styles.modeTabs}>
               <TouchableOpacity
+                accessibilityRole="tab"
+                accessibilityState={{ selected: dictationMode === 'WORD' }}
+                accessibilityLabel="Modo de práctica: Palabras"
                 onPress={() => {
                   Haptics.selectionAsync();
                   setDictationMode('WORD');
                 }}
                 style={[styles.modeTab, dictationMode === 'WORD' && styles.modeTabActive]}
               >
+                <Type size={14} color={dictationMode === 'WORD' ? '#1C1B1B' : '#5E5E5E'} />
                 <Text style={[styles.modeTabText, dictationMode === 'WORD' && styles.modeTabTextActive]}>
-                  🔤 Palabras
+                  Palabras
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
+                accessibilityRole="tab"
+                accessibilityState={{ selected: dictationMode === 'SENTENCE' }}
+                accessibilityLabel="Modo de práctica: Oraciones"
                 onPress={() => {
                   Haptics.selectionAsync();
                   setDictationMode('SENTENCE');
                 }}
                 style={[styles.modeTab, dictationMode === 'SENTENCE' && styles.modeTabActive]}
               >
+                <FileText size={14} color={dictationMode === 'SENTENCE' ? '#1C1B1B' : '#5E5E5E'} />
                 <Text style={[styles.modeTabText, dictationMode === 'SENTENCE' && styles.modeTabTextActive]}>
-                  📝 Oraciones
+                  Oraciones
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
+                accessibilityRole="tab"
+                accessibilityState={{ selected: dictationMode === 'BURST' }}
+                accessibilityLabel="Modo de práctica: Ráfaga de 15 segundos"
                 onPress={() => {
                   Haptics.selectionAsync();
                   setDictationMode('BURST');
                 }}
                 style={[styles.modeTab, dictationMode === 'BURST' && styles.modeTabActive]}
               >
+                <Zap size={14} color={dictationMode === 'BURST' ? '#1C1B1B' : '#5E5E5E'} />
                 <Text style={[styles.modeTabText, dictationMode === 'BURST' && styles.modeTabTextActive]}>
-                  ⚡ Ráfaga
+                  Ráfaga
                 </Text>
               </TouchableOpacity>
             </View>
@@ -455,7 +469,13 @@ export default function AudioLabScreen() {
         >
           {/* Header de la Sesión */}
           <View style={styles.sessionHeader}>
-            <TouchableOpacity onPress={handleExitSession} style={styles.exitBtn}>
+            <TouchableOpacity
+              onPress={handleExitSession}
+              style={styles.exitBtn}
+              accessibilityRole="button"
+              accessibilityLabel="Salir de la sesión de audio"
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
               <X size={20} color="#5E5E5E" />
             </TouchableOpacity>
 
@@ -505,6 +525,9 @@ export default function AudioLabScreen() {
               activeOpacity={0.8}
               onPress={() => playTargetAudio()}
               style={[styles.audioSpeakerBtn, isSpeakingAudio && styles.audioSpeakerBtnActive]}
+              accessibilityRole="button"
+              accessibilityLabel="Reproducir audio nativo"
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
               <Volume2 size={36} color="#1C1B1B" />
             </TouchableOpacity>
@@ -683,6 +706,8 @@ export default function AudioLabScreen() {
                 activeOpacity={0.85}
                 onPress={() => handleSubmitEvaluation(currentTextValue)}
                 style={[styles.verifyBtn, isBurstFast && styles.thumbZoneBtn]}
+                accessibilityRole="button"
+                accessibilityLabel="Verificar respuesta ingresada"
               >
                 <Text style={styles.verifyBtnText}>VERIFICAR RESPUESTA</Text>
               </TouchableOpacity>
@@ -692,6 +717,8 @@ export default function AudioLabScreen() {
               <TouchableOpacity
                 onPress={handleNextWord}
                 style={[styles.nextWordBtn, isBurstFast && styles.thumbZoneBtn]}
+                accessibilityRole="button"
+                accessibilityLabel="Continuar a la siguiente palabra"
               >
                 <Text style={styles.nextWordBtnText}>CONTINUAR</Text>
                 <ArrowRight size={18} color="#1C1B1B" />
@@ -826,6 +853,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: 44,
     paddingVertical: 9,
     paddingHorizontal: 4,
     borderRadius: 9,
@@ -899,7 +927,11 @@ const styles = StyleSheet.create({
   },
   modeTab: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    minHeight: 44,
     paddingVertical: 10,
     borderRadius: 10,
   },
@@ -921,6 +953,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8B400',
     borderRadius: 20,
+    minHeight: 56,
     paddingVertical: 14,
     paddingHorizontal: 16,
     gap: 12,
@@ -960,9 +993,12 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.sm,
   },
   exitBtn: {
-    padding: 8,
+    width: 44,
+    height: 44,
     borderRadius: 14,
     backgroundColor: '#F1EDEC',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   progressCounter: {
     backgroundColor: '#FFFFFF',
@@ -1213,8 +1249,10 @@ const styles = StyleSheet.create({
   verifyBtn: {
     backgroundColor: '#E8B400',
     borderRadius: 16,
-    paddingVertical: 15,
+    minHeight: 48,
+    paddingVertical: 14,
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: SPACING.md,
     ...SHADOWS.card,
   },
@@ -1230,7 +1268,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8B400',
     borderRadius: 16,
-    paddingVertical: 15,
+    minHeight: 48,
+    paddingVertical: 14,
     marginTop: SPACING.md,
     gap: 6,
     ...SHADOWS.card,
