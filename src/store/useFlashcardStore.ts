@@ -30,6 +30,10 @@ interface FlashcardState {
   reviewCard: (cardId: string, rating: ReviewRating) => void;
   deleteCard: (cardId: string) => void;
   resetToMockDeck: () => void;
+
+  // 🏷️ Trazabilidad de Curaduría (v1.0 / [US-V1-04])
+  getPendingReviewCards: () => Flashcard[];
+  curateCard: (cardId: string, approvedImageUrl?: string) => void;
 }
 
 export const useFlashcardStore = create<FlashcardState>()(
@@ -110,6 +114,30 @@ export const useFlashcardStore = create<FlashcardState>()(
         const { cards } = get();
         const targetClean = cardData.targetWord.trim().toLowerCase();
         const existingIndex = cards.findIndex(c => c.targetWord.trim().toLowerCase() === targetClean);
+        const userState = useUserStore.getState();
+        const currentUserId = userState?.profile?.id || 'user-demo-1';
+
+        // 🏷️ Trazabilidad de términos (v1.0 / [US-V1-04]):
+        // Evaluar si el término ya pertenece al catálogo canónico predeterminado
+        const isCanonicalWord = INITIAL_FLASHCARDS.some(
+          c => c.targetWord.trim().toLowerCase() === targetClean
+        );
+
+        let resolvedCurationStatus = cardData.curationStatus;
+        if (!resolvedCurationStatus) {
+          if (cardData.imageSource === 'PRESET' || (isCanonicalWord && cardData.imageSource !== 'CAMERA')) {
+            resolvedCurationStatus = 'OFFICIAL';
+          } else if (isCanonicalWord && cardData.imageSource === 'CAMERA') {
+            resolvedCurationStatus = 'USER_CUSTOM';
+          } else {
+            // [US-V1-04]: Término nuevo fotografiado o creado por el usuario -> PENDING_REVIEW
+            resolvedCurationStatus = 'PENDING_REVIEW';
+          }
+        }
+
+        const resolvedContributedBy =
+          cardData.contributedByUserId ||
+          (resolvedCurationStatus === 'PENDING_REVIEW' ? currentUserId : undefined);
 
         // 🌟 Reutilización Inteligente: Si ya existe en el mazo, actualizar foto y contexto manteniendo el historial SRS
         if (existingIndex >= 0) {
@@ -125,6 +153,8 @@ export const useFlashcardStore = create<FlashcardState>()(
             nextReviewAt: existing.nextReviewAt,
             lastRating: existing.lastRating,
             isFavorite: existing.isFavorite ?? false,
+            curationStatus: resolvedCurationStatus || existing.curationStatus || 'USER_CUSTOM',
+            contributedByUserId: resolvedContributedBy || existing.contributedByUserId,
             imageUrl: cardData.imageUrl || existing.imageUrl,
             contextSentence: cardData.contextSentence || existing.contextSentence,
             contextTranslation: cardData.contextTranslation || existing.contextTranslation,
@@ -138,7 +168,6 @@ export const useFlashcardStore = create<FlashcardState>()(
           set({ cards: newCards });
 
           try {
-            const userState = useUserStore.getState();
             const streak = userState?.profile?.currentStreak ?? 0;
             const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
             const xp = userState?.profile?.xp ?? 0;
@@ -159,12 +188,13 @@ export const useFlashcardStore = create<FlashcardState>()(
           intervalDays: 0,
           nextReviewAt: new Date().toISOString(),
           isFavorite: false,
+          curationStatus: resolvedCurationStatus,
+          contributedByUserId: resolvedContributedBy,
         };
 
         set(state => {
           const updated = [newCard, ...state.cards];
           try {
-            const userState = useUserStore.getState();
             const streak = userState?.profile?.currentStreak ?? 0;
             const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
             const xp = userState?.profile?.xp ?? 0;
@@ -176,6 +206,27 @@ export const useFlashcardStore = create<FlashcardState>()(
         });
 
         return newCard;
+      },
+
+      getPendingReviewCards: () => {
+        const { cards } = get();
+        return cards.filter(c => c.curationStatus === 'PENDING_REVIEW');
+      },
+
+      curateCard: (cardId: string, approvedImageUrl?: string) => {
+        set(state => {
+          const updatedCards = state.cards.map(card => {
+            if (card.id === cardId) {
+              return {
+                ...card,
+                curationStatus: 'OFFICIAL' as const,
+                imageUrl: approvedImageUrl || card.imageUrl,
+              };
+            }
+            return card;
+          });
+          return { cards: updatedCards };
+        });
       },
 
       toggleFavorite: (cardId: string) => {

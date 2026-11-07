@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Platform,
+  Alert,
 } from 'react-native';
 import {
   Headphones,
@@ -25,6 +26,8 @@ import {
   Sparkle,
   Type,
   FileText,
+  Lock,
+  Gauge,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -41,9 +44,32 @@ import { INITIAL_FLASHCARDS } from '../../src/data/mockData';
 
 export default function AudioLabScreen() {
   const insets = useSafeAreaInsets();
-  const { profile, addXP, loseLife, registerDailyActivity, lives } = useUserStore();
+  const { profile, addXP, loseLife, registerDailyActivity, lives, getAvailableAudioSpeeds } = useUserStore();
   const { cards } = useFlashcardStore();
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
+  const [selectedSpeed, setSelectedSpeed] = useState<number>(1.0);
+
+  const availableSpeeds = getAvailableAudioSpeeds();
+  const ALL_SPEEDS = [
+    { value: 0.5, label: '0.5x', isExtended: true },
+    { value: 0.75, label: '0.75x', isExtended: false },
+    { value: 1.0, label: '1.0x', isExtended: false },
+    { value: 1.25, label: '1.25x', isExtended: false },
+    { value: 1.5, label: '1.50x', isExtended: true },
+  ];
+
+  const handleSelectSpeed = (speedItem: (typeof ALL_SPEEDS)[0]) => {
+    if (speedItem.isExtended && !availableSpeeds.includes(speedItem.value)) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      Alert.alert(
+        '🔒 Velocidad Premium Exclusiva',
+        `La velocidad ${speedItem.label} está reservada para usuarios con suscripción Premium o cupón Beta Tester.\n\nTu rol actual (Estudiante) tiene acceso a las velocidades estándar: 0.75x, 1.0x y 1.25x.`
+      );
+      return;
+    }
+    Haptics.selectionAsync();
+    setSelectedSpeed(speedItem.value);
+  };
   const {
     currentCardIndex,
     sessionCards,
@@ -190,7 +216,8 @@ export default function AudioLabScreen() {
       language = 'en-US';
     }
 
-    const rate = mode === 'BURST' ? 1.05 : profile.learningPace === 'SLOW' ? 0.75 : 0.95;
+    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC)
+    const rate = selectedSpeed;
 
     Speech.stop();
     Speech.speak(textToSpeak, {
@@ -539,6 +566,44 @@ export default function AudioLabScreen() {
                   : 'Escuchando audio nativo en inglés...'
                 : 'Toca para volver a escuchar'}
             </Text>
+
+            {/* Selector de Velocidades de Audio RBAC */}
+            <View style={styles.speedSelectorContainer}>
+              <View style={styles.speedHeaderRow}>
+                <Gauge size={13} color="#765A00" />
+                <Text style={styles.speedSelectorTitle}>VELOCIDAD DE REPRODUCCIÓN (RBAC)</Text>
+              </View>
+              <View style={styles.speedChipsRow}>
+                {ALL_SPEEDS.map((s) => {
+                  const isLocked = s.isExtended && !availableSpeeds.includes(s.value);
+                  const isSelected = selectedSpeed === s.value;
+                  return (
+                    <TouchableOpacity
+                      key={s.value}
+                      activeOpacity={0.75}
+                      onPress={() => handleSelectSpeed(s)}
+                      style={[
+                        styles.speedChip,
+                        isSelected && styles.speedChipSelected,
+                        isLocked && styles.speedChipLocked,
+                      ]}
+                      accessibilityLabel={`Velocidad ${s.label}${isLocked ? ' bloqueada' : ''}`}
+                    >
+                      {isLocked && <Lock size={10} color="#8A8A8A" style={{ marginRight: 2 }} />}
+                      <Text
+                        style={[
+                          styles.speedChipText,
+                          isSelected && styles.speedChipTextSelected,
+                          isLocked && styles.speedChipTextLocked,
+                        ]}
+                      >
+                        {s.label}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </View>
 
             {/* En modo inverso clásico, mostrar la pista contextual en español */}
             {dictationDirection === 'INVERSE' && activeCard && (
@@ -1106,6 +1171,65 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#747878',
     fontWeight: '700',
+  },
+  speedSelectorContainer: {
+    marginTop: 14,
+    width: '100%',
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#F0EAE1',
+    alignItems: 'center',
+  },
+  speedHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginBottom: 8,
+  },
+  speedSelectorTitle: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#765A00',
+    letterSpacing: 0.6,
+  },
+  speedChipsRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+    flexWrap: 'wrap',
+  },
+  speedChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    backgroundColor: '#F5F5F5',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  speedChipSelected: {
+    backgroundColor: '#FFF9E6',
+    borderColor: '#E8B400',
+  },
+  speedChipLocked: {
+    backgroundColor: '#F0F0F0',
+    borderColor: '#D4D4D4',
+    opacity: 0.75,
+  },
+  speedChipText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#4A4A4A',
+  },
+  speedChipTextSelected: {
+    color: '#765A00',
+    fontWeight: '800',
+  },
+  speedChipTextLocked: {
+    color: '#8A8A8A',
   },
   inversePromptCard: {
     backgroundColor: '#FFF8E1',

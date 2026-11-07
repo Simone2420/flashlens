@@ -20,6 +20,7 @@ import {
   MessageSquare,
   LogOut,
   Compass,
+  ShieldCheck,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -36,8 +37,16 @@ import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackM
 
 export default function ProfileScreen() {
   const router = useRouter();
-  const { profile, lives, setLearningPace, toggleNotifications, refillLivesDemo, resetDemoUser, logout } =
-    useUserStore();
+  const {
+    profile,
+    lives,
+    setLearningPace,
+    toggleNotifications,
+    refillLivesDemo,
+    resetDemoUser,
+    logout,
+    setRoleForDemo,
+  } = useUserStore();
   const { recalculatePaceTransition, resetRoadmapProgress } = useRoadmapStore();
   const { resetToMockDeck } = useFlashcardStore();
 
@@ -122,6 +131,115 @@ export default function ProfileScreen() {
               <Text style={styles.statVal}>{profile.xp} XP</Text>
               <Text style={styles.statLbl}>Nivel {profile.diagnosedLevel}</Text>
             </View>
+          </View>
+        </View>
+
+        {/* 🛡️ SISTEMA DE AUTORIZACIÓN Y ROLES RBAC (V1.0) */}
+        <Text style={styles.sectionHeading}>SISTEMA DE AUTORIZACIÓN RBAC (V1.0)</Text>
+        <View style={styles.rbacCard}>
+          <View style={styles.rbacHeaderRow}>
+            <View style={styles.rbacIconBox}>
+              <ShieldCheck size={20} color="#765A00" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.rbacTitle}>Rol Activo del Usuario:</Text>
+              <Text style={styles.rbacActiveRoleText}>
+                {profile.roles?.includes('ROLE_ADMIN')
+                  ? 'ROLE_ADMIN (Administrador CMS)'
+                  : profile.roles?.includes('ROLE_PREMIUM_STUDENT')
+                  ? 'ROLE_PREMIUM_STUDENT (Premium / Beta)'
+                  : 'ROLE_STUDENT (Estudiante Regular)'}
+              </Text>
+            </View>
+          </View>
+
+          <Text style={styles.rbacDescription}>
+            Selecciona el rol para alternar permisos en tiempo real y probar velocidades de Audio Lab (0.5x a 1.50x) y curaduría de términos:
+          </Text>
+
+          <View style={styles.roleButtonsContainer}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                Haptics.selectionAsync();
+                setRoleForDemo('ROLE_STUDENT');
+              }}
+              style={[
+                styles.roleSelectBtn,
+                !profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
+                  !profile.roles?.includes('ROLE_ADMIN') &&
+                  styles.roleSelectBtnActive,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.roleSelectBtnText,
+                  !profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
+                    !profile.roles?.includes('ROLE_ADMIN') &&
+                    styles.roleSelectBtnTextActive,
+                ]}
+              >
+                Estudiante
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                Haptics.selectionAsync();
+                setRoleForDemo('ROLE_PREMIUM_STUDENT');
+              }}
+              style={[
+                styles.roleSelectBtn,
+                profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
+                  !profile.roles?.includes('ROLE_ADMIN') &&
+                  styles.roleSelectBtnActive,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.roleSelectBtnText,
+                  profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
+                    !profile.roles?.includes('ROLE_ADMIN') &&
+                    styles.roleSelectBtnTextActive,
+                ]}
+              >
+                ⭐ Premium
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                Haptics.selectionAsync();
+                setRoleForDemo('ROLE_ADMIN');
+              }}
+              style={[
+                styles.roleSelectBtn,
+                profile.roles?.includes('ROLE_ADMIN') && styles.roleSelectBtnActive,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.roleSelectBtnText,
+                  profile.roles?.includes('ROLE_ADMIN') && styles.roleSelectBtnTextActive,
+                ]}
+              >
+                🛡️ Admin
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.rbacPermissionsSummary}>
+            <Text style={styles.rbacPermissionsCount}>
+              {profile.permissions?.length || 0} permisos activos asignados dinámicamente
+            </Text>
+            <Text style={styles.rbacSpeedsAllowed}>
+              Velocidades de audio habilitadas:{' '}
+              {profile.permissions?.includes('AUDIO_LAB:SPEED_EXTENDED')
+                ? '0.5x, 0.75x, 1.0x, 1.25x, 1.50x'
+                : '0.75x, 1.0x, 1.25x'}
+            </Text>
           </View>
         </View>
 
@@ -647,6 +765,96 @@ const styles = StyleSheet.create({
     color: '#1C1B1B',
     fontSize: 11,
     fontWeight: '800',
+  },
+  rbacCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: SPACING.md,
+    marginBottom: SPACING.md,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    ...SHADOWS.card,
+  },
+  rbacHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginBottom: 8,
+  },
+  rbacIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: '#FFF9E6',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rbacTitle: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#747878',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  rbacActiveRoleText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#1C1B1B',
+    marginTop: 1,
+  },
+  rbacDescription: {
+    fontSize: 11,
+    color: '#5E5E5E',
+    lineHeight: 16,
+    marginBottom: 10,
+  },
+  roleButtonsContainer: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: 10,
+  },
+  roleSelectBtn: {
+    flex: 1,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    borderRadius: 8,
+    backgroundColor: '#F5F5F5',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  roleSelectBtnActive: {
+    backgroundColor: '#FFF9E6',
+    borderColor: '#E8B400',
+  },
+  roleSelectBtnText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  roleSelectBtnTextActive: {
+    color: '#765A00',
+    fontWeight: '800',
+  },
+  rbacPermissionsSummary: {
+    backgroundColor: '#F9F9F9',
+    borderRadius: 8,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: '#EEEEEE',
+  },
+  rbacPermissionsCount: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#2E7D32',
+  },
+  rbacSpeedsAllowed: {
+    fontSize: 10,
+    color: '#666666',
+    marginTop: 2,
   },
   headerLogoutBtn: {
     padding: 6,

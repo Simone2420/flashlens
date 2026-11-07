@@ -43,13 +43,111 @@ export type ConceptCategory =
 export type DictationInputMode = 'FREE_TEXT' | 'EXACT_BOXES' | 'DYNAMIC_EXPANDING';
 export type DictationDirection = 'NORMAL' | 'INVERSE' | 'NATIVE_INVERSE';
 
+// ==========================================
+// 🛡️ SISTEMA RBAC (Role-Based Access Control)
+// ==========================================
+export type RoleCode =
+  | 'ROLE_STUDENT'
+  | 'ROLE_PREMIUM_STUDENT'
+  | 'ROLE_ADMIN'
+  | string;
+
+export type PermissionCode =
+  // FLASHCARDS
+  | 'CARDS:CREATE_CAMERA'
+  | 'CARDS:CREATE_VOICE'
+  | 'CARDS:CREATE_ABSTRACT'
+  | 'CARDS:CREATE_MANUAL'
+  | 'CARDS:REVIEW_SRS'
+  | 'CARDS:FAVORITE_TOGGLE'
+  | 'CARDS:EDIT_OWN'
+  | 'CARDS:DELETE_OWN'
+  | 'CARDS:DAILY_PILL_ADD'
+  | 'CARDS:FILTER_ADVANCED'
+  | 'CARDS:VIEW_PHONETICS_FACILITATED'
+  | 'CARDS:VIEW_PHONETICS_IPA'
+  | 'CARDS:VERB_THREE_FORMS'
+  | 'CARDS:EXPORT_PERSONAL_DECK'
+  // AUDIO LAB
+  | 'AUDIO_LAB:PLAY_BURST'
+  | 'AUDIO_LAB:PLAY_DICTATION'
+  | 'AUDIO_LAB:AMBIENT_NOISE'
+  | 'AUDIO_LAB:SPEED_STANDARD'
+  | 'AUDIO_LAB:SPEED_EXTENDED'
+  // ROADMAP
+  | 'ROADMAP:PLAY_LESSON'
+  | 'ROADMAP:VIEW_THEORY'
+  | 'ROADMAP:SUBMIT_ANSWERS'
+  // LIVES & ADS
+  | 'LIVES:USE_STANDARD'
+  | 'LIVES:UNLIMITED'
+  | 'ADS:BYPASS'
+  // DIAGNOSTIC
+  | 'DIAGNOSTIC:TAKE'
+  // ADMIN & CMS
+  | 'ADMIN:ACCESS_CMS'
+  | 'ADMIN:CURATE_PENDING_TERMS'
+  | 'ADMIN:REPLACE_CANONICAL_IMAGE'
+  | 'ADMIN:MANAGE_ROADMAP'
+  | 'ADMIN:MANAGE_ROLES_PERMISSIONS'
+  // V1.5 / V2.0
+  | 'WRITING_COACH:UNLIMITED'
+  | 'ARENA:UNLIMITED_SESSIONS'
+  | string;
+
+export interface RbacPermission {
+  id: string;
+  code: PermissionCode;
+  module: 'FLASHCARDS' | 'AUDIO_LAB' | 'ROADMAP' | 'LIVES_AND_ADS' | 'DIAGNOSTIC' | 'ADMIN' | 'WRITING_COACH' | 'ARENA';
+  action: 'CREATE' | 'READ' | 'UPDATE' | 'DELETE' | 'EXECUTE' | 'UNLIMITED' | 'CURATE';
+  displayName: string;
+  description?: string;
+  createdAt?: string;
+}
+
+export interface RbacRole {
+  id: string;
+  code: RoleCode;
+  displayName: string;
+  description: string;
+  priority: number;
+  isSystem: boolean;
+  isDefault: boolean;
+  createdAt?: string;
+}
+
+export interface RbacUserRole {
+  id: string;
+  userId: string;
+  roleId: string;
+  roleCode: RoleCode;
+  isActive: boolean;
+  assignedAt: string;
+  assignedBy?: string | null;
+  expiresAt?: string | null;
+}
+
+export interface RbacRolePermission {
+  id: string;
+  roleId: string;
+  permissionId: string;
+  permissionCode: PermissionCode;
+  grantedAt: string;
+  grantedBy?: string | null;
+}
+
 export interface UserProfile {
   id: string;
   email: string;
   username: string;
   fullName?: string;
   age?: number;
+  avatarUrl?: string;
+  bio?: string;
   isPremium: boolean;
+  roles: RoleCode[]; // e.g. ['ROLE_STUDENT']
+  permissions: PermissionCode[]; // e.g. ['CARDS:CREATE_CAMERA', 'AUDIO_LAB:SPEED_STANDARD']
+  userRoles?: RbacUserRole[];
   currentStreak: number;
   maxStreak: number;
   lastStreakDate?: string | null; // ISO date 'YYYY-MM-DD' in local timezone
@@ -63,6 +161,9 @@ export interface UserProfile {
   hasCompletedDiagnostic?: boolean;
   completedLessonsCount: number;
   notificationsEnabled: boolean;
+  lastActivityAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface LivesState {
@@ -71,6 +172,8 @@ export interface LivesState {
   lastLifeLostAt: string | null; // ISO timestamp
   nextRegenerationAt: string | null; // ISO timestamp
 }
+
+export type CurationStatus = 'OFFICIAL' | 'PENDING_REVIEW' | 'USER_CUSTOM';
 
 export interface Flashcard {
   id: string;
@@ -105,6 +208,9 @@ export interface Flashcard {
   lastRating?: ReviewRating;
   nextReviewAt: string; // ISO date
   isFavorite?: boolean; // Tarjeta marcada como favorita
+  // 🏷️ Trazabilidad de términos y curaduría (v1.0 / [US-V1-04])
+  curationStatus?: CurationStatus; // 'OFFICIAL' | 'PENDING_REVIEW' | 'USER_CUSTOM'
+  contributedByUserId?: string; // ID del usuario que aportó el término si es nuevo
 }
 
 export interface VoiceConceptMatch {

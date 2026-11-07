@@ -1,9 +1,19 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserProfile, LivesState, TargetLanguage, LearningPace, CEFRLevel } from '../types';
+import {
+  UserProfile,
+  LivesState,
+  TargetLanguage,
+  LearningPace,
+  CEFRLevel,
+  RoleCode,
+  PermissionCode,
+  RbacUserRole,
+} from '../types';
 import { widgetService } from '../services/widgetService';
 import { notificationService } from '../services/notificationService';
+import { rbacService } from '../services/rbacService';
 
 interface UserState {
   profile: UserProfile;
@@ -33,7 +43,17 @@ interface UserState {
   logout: () => void;
   triggerCelebration: (data: { streak: number; xpEarned?: number; title?: string; message?: string }) => void;
   dismissCelebration: () => void;
+
+  // 🛡️ Acciones RBAC
+  hasRole: (role: RoleCode) => boolean;
+  hasPermission: (permission: PermissionCode) => boolean;
+  assignRole: (role: RoleCode, expiresAt?: string | null) => void;
+  revokeRole: (role: RoleCode) => void;
+  setRoleForDemo: (role: RoleCode) => void;
+  getAvailableAudioSpeeds: () => number[];
 }
+
+const initialRbac = rbacService.createDefaultUserRoles('user-demo-1');
 
 const DEFAULT_USER: UserProfile = {
   id: 'user-demo-1',
@@ -42,6 +62,9 @@ const DEFAULT_USER: UserProfile = {
   fullName: 'Carlos Gómez',
   age: 24,
   isPremium: false,
+  roles: initialRbac.roles,
+  permissions: initialRbac.permissions,
+  userRoles: initialRbac.userRoles,
   currentStreak: 0,
   maxStreak: 0,
   lastStreakDate: null,
@@ -55,6 +78,8 @@ const DEFAULT_USER: UserProfile = {
   hasCompletedDiagnostic: false,
   completedLessonsCount: 0,
   notificationsEnabled: false,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
 };
 
 const DEFAULT_LIVES: LivesState = {
@@ -402,9 +427,12 @@ export const useUserStore = create<UserState>()(
       },
 
       setMockUserCredentials: (fullName: string, age: number, username?: string) => {
+        const userId = `user-${Date.now()}`;
+        const initialRbac = rbacService.createDefaultUserRoles(userId);
         set(state => ({
           profile: {
             ...state.profile,
+            id: userId,
             fullName: fullName.trim(),
             age: Math.max(5, Math.min(120, age)),
             username: (username || fullName).trim(),
@@ -412,6 +440,10 @@ export const useUserStore = create<UserState>()(
             maxStreak: 0,
             xp: 0,
             notificationsEnabled: false,
+            roles: state.profile.roles?.length ? state.profile.roles : initialRbac.roles,
+            permissions: state.profile.permissions?.length ? state.profile.permissions : initialRbac.permissions,
+            userRoles: state.profile.userRoles?.length ? state.profile.userRoles : initialRbac.userRoles,
+            updatedAt: new Date().toISOString(),
           },
           isOnboarded: true,
           isLoggedIn: true,
@@ -419,8 +451,14 @@ export const useUserStore = create<UserState>()(
       },
 
       resetDemoUser: () => {
+        const initialRbac = rbacService.createDefaultUserRoles('user-demo-1');
         set({
-          profile: DEFAULT_USER,
+          profile: {
+            ...DEFAULT_USER,
+            roles: initialRbac.roles,
+            permissions: initialRbac.permissions,
+            userRoles: initialRbac.userRoles,
+          },
           lives: DEFAULT_LIVES,
           isOnboarded: false,
           isLoggedIn: false,
@@ -433,6 +471,96 @@ export const useUserStore = create<UserState>()(
           isLoggedIn: false,
           pendingCelebration: null,
         });
+      },
+
+      // 🛡️ Métodos del Motor RBAC
+      hasRole: (role: RoleCode) => {
+        const { profile } = get();
+        return rbacService.hasRole(profile?.roles, role);
+      },
+
+      hasPermission: (permission: PermissionCode) => {
+        const { profile } = get();
+        return rbacService.hasPermission(profile?.permissions, permission);
+      },
+
+      assignRole: (role: RoleCode, expiresAt?: string | null) => {
+        set(state => {
+          const currentRoles = state.profile.roles || [];
+          if (currentRoles.includes(role)) return state;
+
+          const newRoles = [...currentRoles, role];
+          const newPermissions = rbacService.getPermissionsForRoles(newRoles);
+          const isPremium = newRoles.includes('ROLE_PREMIUM_STUDENT') || newRoles.includes('ROLE_ADMIN');
+
+          const newAssignment: RbacUserRole = {
+            id: `ur-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+            userId: state.profile.id,
+            roleId: `role-${role.toLowerCase()}`,
+            roleCode: role,
+            isActive: true,
+            assignedAt: new Date().toISOString(),
+            expiresAt: expiresAt || null,
+          };
+
+          const updatedUserRoles = [...(state.profile.userRoles || []), newAssignment];
+
+          return {
+            profile: {
+              ...state.profile,
+              roles: newRoles,
+              permissions: newPermissions,
+              userRoles: updatedUserRoles,
+              isPremium,
+              updatedAt: new Date().toISOString(),
+            },
+          };
+        });
+      },
+
+      revokeRole: (role: RoleCode) => {
+        set(state => {
+          const currentRoles = state.profile.roles || [];
+          const newRoles = currentRoles.filter(r => r !== role);
+          const effectiveRoles = newRoles.length > 0 ? newRoles : ['ROLE_STUDENT'];
+          const newPermissions = rbacService.getPermissionsForRoles(effectiveRoles);
+          const isPremium = effectiveRoles.includes('ROLE_PREMIUM_STUDENT') || effectiveRoles.includes('ROLE_ADMIN');
+
+          const updatedUserRoles = (state.profile.userRoles || []).filter(ur => ur.roleCode !== role);
+
+          return {
+            profile: {
+              ...state.profile,
+              roles: effectiveRoles,
+              permissions: newPermissions,
+              userRoles: updatedUserRoles,
+              isPremium,
+              updatedAt: new Date().toISOString(),
+            },
+          };
+        });
+      },
+
+      setRoleForDemo: (role: RoleCode) => {
+        set(state => {
+          const roles = [role];
+          const permissions = rbacService.getPermissionsForRoles(roles);
+          const isPremium = role === 'ROLE_PREMIUM_STUDENT' || role === 'ROLE_ADMIN';
+          return {
+            profile: {
+              ...state.profile,
+              roles,
+              permissions,
+              isPremium,
+              updatedAt: new Date().toISOString(),
+            },
+          };
+        });
+      },
+
+      getAvailableAudioSpeeds: () => {
+        const { profile } = get();
+        return rbacService.getAvailableAudioSpeeds(profile?.permissions);
       },
 
       triggerCelebration: (data) => {

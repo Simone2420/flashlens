@@ -347,7 +347,7 @@ export const CameraViewfinder: React.FC = () => {
       ? phoneticInput.trim()
       : (currentPayload?.phoneticScript || `/${wordInput.toLowerCase().trim()}/`);
 
-    addCard({
+    const createdCard = addCard({
       targetWord: wordInput.trim(),
       primaryTranslation: acceptedList[0] || rawTranslation,
       acceptedTranslations: acceptedList,
@@ -364,13 +364,21 @@ export const CameraViewfinder: React.FC = () => {
       imageUrl: activePhotoUri || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
       imageSource: 'CAMERA',
       createdVia: 'CAMERA',
+      contributedByUserId: profile.id,
     });
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setModalVisible(false);
     setActivePhotoUri(null);
     setFullPhotoUri(null);
-    Alert.alert('¡Tarjeta Creada!', `"${wordInput}" (${selectedCefr}) se ha guardado en tu mazo de estudio SRS.`);
+
+    const isPending = createdCard?.curationStatus === 'PENDING_REVIEW';
+    const alertTitle = isPending ? '¡Término Nuevo Registrado!' : '¡Tarjeta Creada!';
+    const alertMessage = isPending
+      ? `"${wordInput}" (${selectedCefr}) no existía en el catálogo base. Tu foto se ha guardado como imagen canónica provisional con estado PENDING_REVIEW para revisión de administradores.`
+      : `"${wordInput}" (${selectedCefr}) se ha guardado en tu mazo de estudio SRS.`;
+
+    Alert.alert(alertTitle, alertMessage);
   };
 
   return (
