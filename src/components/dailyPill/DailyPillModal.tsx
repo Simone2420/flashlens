@@ -140,7 +140,7 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
                 <Text style={styles.ipaText}>{pill.phoneticScript}</Text>
                 {pill.facilitatedPhonetics ? (
                   <View style={styles.facilitatedBadge}>
-                    <Text style={styles.facilitatedText}>🗣️ "{pill.facilitatedPhonetics}"</Text>
+                    <Text style={styles.facilitatedText}>🗣️ “{pill.facilitatedPhonetics}”</Text>
                   </View>
                 ) : null}
               </View>
@@ -166,7 +166,7 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
                 <Ionicons name="chatbubble-ellipses-outline" size={16} color="#0284C7" />
                 <Text style={styles.contextLabel}>En contexto:</Text>
               </View>
-              <Text style={styles.contextEnglish}>"{pill.contextSentence}"</Text>
+              <Text style={styles.contextEnglish}>“{pill.contextSentence}”</Text>
               <Text style={styles.contextSpanish}>{pill.contextTranslation}</Text>
             </View>
 

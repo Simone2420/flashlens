@@ -6,9 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Image,
   AppState,
-  Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -20,9 +18,7 @@ import {
   Plus,
   Search,
   MessageSquare,
-  Filter,
   CheckCircle2,
-  Flame,
   Heart,
   ArrowRight,
   Star,
@@ -42,12 +38,12 @@ import {
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
 import { Image as ExpoImage } from 'expo-image';
-import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/theme';
+import { SPACING, SHADOWS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { useUserStore } from '../../src/store/useUserStore';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
-import { ConceptCategory, CardType, Flashcard, DailyPill } from '../../src/types';
+import { ConceptCategory, Flashcard, DailyPill } from '../../src/types';
 import { AbstractCardModal } from '../../src/components/flashcards/AbstractCardModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
 import { MockLoginModal } from '../../src/components/auth/MockLoginModal';
@@ -114,8 +110,6 @@ export default function HomeScreen() {
     toggleFavoriteFilter,
     clearCategoryFilters,
     setSearchQuery,
-    getFilteredCards,
-    getDueCards,
   } = useFlashcardStore();
 
   const [isAbstractModalVisible, setIsAbstractModalVisible] = useState(false);
@@ -195,8 +189,6 @@ export default function HomeScreen() {
       return true;
     });
   }, [cards, activeCardTypeFilter, selectedCategories, searchQuery, isFavoriteFilter]);
-
-  const dueCards = getDueCards();
 
   const handleSpeak = useCallback((text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -514,7 +506,7 @@ export default function HomeScreen() {
           <Sparkles size={36} color="#C4C7C7" />
           <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
           <Text style={styles.emptySubtitle}>
-            Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara.
+            {"Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara."}
           </Text>
         </View>
       ) : (
@@ -562,7 +554,7 @@ export default function HomeScreen() {
             {/* Oración Contextual */}
             {card.contextSentence && (
               <View style={styles.cardContextBox}>
-                <Text style={styles.cardContextEn}>"{card.contextSentence}"</Text>
+                <Text style={styles.cardContextEn}>“{card.contextSentence}”</Text>
                 {card.contextTranslation && (
                   <Text style={styles.cardContextEs}>{card.contextTranslation}</Text>
                 )}

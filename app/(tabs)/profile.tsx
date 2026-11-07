@@ -15,10 +15,7 @@ import {
   Flame,
   Zap,
   Sparkles,
-  Bell,
-  Layers,
   RotateCcw,
-  Sliders,
   CheckCircle2,
   MessageSquare,
   LogOut,
@@ -26,7 +23,7 @@ import {
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
+import { SPACING, SHADOWS } from '../../src/constants/theme';
 import { Header } from '../../src/components/common/Header';
 import { useUserStore } from '../../src/store/useUserStore';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';

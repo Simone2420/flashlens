@@ -21,7 +21,7 @@ export default function Index() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [isOnboarded, isLoggedIn]);
+  }, [isOnboarded, isLoggedIn, router]);
 
   return (
     <View style={styles.container}>
