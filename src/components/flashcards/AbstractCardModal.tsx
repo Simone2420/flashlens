@@ -104,7 +104,6 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   const [isAutoFilling, setIsAutoFilling] = useState(false);
   const [formImageUri, setFormImageUri] = useState<string | null>(null);
   const [formImageSource, setFormImageSource] = useState<'AUTO' | 'USER_UPLOAD' | 'AI_GENERATED'>('AUTO');
-  const [isGeneratingAiImage, setIsGeneratingAiImage] = useState(false);
 
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
@@ -263,6 +262,27 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         setGrammarFormula(generated.grammarFormula);
       }
 
+      // 🎨 Generación simultánea de la ilustración con IA (FLUX) al completar con IA
+      try {
+        const prompt = imageGenerationService.buildNaturalPrompt(
+          generated.targetWord,
+          generated.conceptCategory,
+          undefined,
+          generated.contextSentence,
+          generated.mnemonicHint
+        );
+        const seed = Math.floor(Math.random() * 999999);
+        const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&model=flux&nologo=true&seed=${seed}`;
+        setFormImageUri(pollinationsUrl);
+        setFormImageSource('AI_GENERATED');
+      } catch (imgErr) {
+        console.warn('Error generando imagen automática en auto-fill:', imgErr);
+        if (generated.imageUrl) {
+          setFormImageUri(generated.imageUrl);
+          setFormImageSource('AI_GENERATED');
+        }
+      }
+
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       Speech.speak(generated.targetWord, { language: 'en-US', rate: 0.9 });
     } catch (err) {
@@ -290,33 +310,6 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     } catch (err) {
       console.warn('Error al seleccionar imagen:', err);
       Alert.alert('Error', 'No se pudo abrir la galería de imágenes del dispositivo.');
-    }
-  };
-
-  const handleGenerateAiImage = async () => {
-    const word = targetWord.trim() || 'Creative concept';
-    setIsGeneratingAiImage(true);
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    try {
-      const prompt = imageGenerationService.buildNaturalPrompt(
-        word,
-        selectedCategory,
-        undefined,
-        contextSentence,
-        mnemonicHint
-      );
-      const seed = Math.floor(Math.random() * 999999);
-      // Pollinations FLUX 100% funcional y directo
-      const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&model=flux&nologo=true&seed=${seed}`;
-      setFormImageUri(pollinationsUrl);
-      setFormImageSource('AI_GENERATED');
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    } catch (err) {
-      console.warn('Error generando imagen con IA:', err);
-      Alert.alert('Error', 'No se pudo generar la ilustración con IA.');
-    } finally {
-      setIsGeneratingAiImage(false);
     }
   };
 
@@ -620,7 +613,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   })}
                 </ScrollView>
 
-                {/* 🎨 SECCIÓN DE IMAGEN CON 2 OPCIONES: SUBIR PROPIA O GENERAR CON IA */}
+                {/* 🎨 SECCIÓN DE IMAGEN: SUBIR FOTO PERSONALIZADA */}
                 <Text style={styles.inputLabel}>Imagen de la Tarjeta:</Text>
                 <View style={styles.formImagePreview}>
                   <Image
@@ -632,7 +625,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                     }}
                     style={styles.formImage}
                   />
-                  {isGeneratingAiImage && (
+                  {isAutoFilling && (
                     <View style={styles.imageLoadingOverlay}>
                       <ActivityIndicator size="large" color="#E8B400" />
                       <Text style={styles.imageLoadingText}>Generando ilustración con FLUX IA...</Text>
@@ -641,7 +634,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   <View style={styles.formImageBadge}>
                     <Text style={styles.formImageBadgeText}>
                       {formImageSource === 'USER_UPLOAD'
-                        ? '📷 Tu Foto Propia'
+                        ? '📷 Foto Personalizada'
                         : formImageSource === 'AI_GENERATED'
                         ? '✨ Ilustración con FLUX IA'
                         : '🌐 Web Automática'}
@@ -649,7 +642,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   </View>
                 </View>
 
-                {/* 2 Opciones Claras de Imagen: Subir la propia o Generar con IA */}
+                {/* Opción de Imagen: Subir personalizada */}
                 <View style={styles.imageActionButtonsRow}>
                   <TouchableOpacity
                     activeOpacity={0.8}
@@ -657,23 +650,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                     style={styles.imageOptionBtn}
                   >
                     <Upload size={14} color="#1C1B1B" />
-                    <Text style={styles.imageOptionBtnText}>Subir Foto Propia</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={handleGenerateAiImage}
-                    disabled={isGeneratingAiImage}
-                    style={[styles.imageOptionBtn, styles.imageOptionBtnAi]}
-                  >
-                    {isGeneratingAiImage ? (
-                      <ActivityIndicator size="small" color="#765A00" />
-                    ) : (
-                      <Sparkles size={14} color="#765A00" />
-                    )}
-                    <Text style={[styles.imageOptionBtnText, styles.imageOptionBtnAiText]}>
-                      {isGeneratingAiImage ? 'Generando...' : 'Generar con IA'}
-                    </Text>
+                    <Text style={styles.imageOptionBtnText}>Subir Foto Personalizada</Text>
                   </TouchableOpacity>
                 </View>
 
