@@ -41,6 +41,7 @@ import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { AdaptiveDictationInput } from '../../src/components/audio/AdaptiveDictationInput';
 import { DictationDirection } from '../../src/types';
 import { INITIAL_FLASHCARDS } from '../../src/data/mockData';
+import { AudioService, VoiceGender } from '../../src/services/audioService';
 
 export default function AudioLabScreen() {
   const insets = useSafeAreaInsets();
@@ -48,7 +49,16 @@ export default function AudioLabScreen() {
   const { cards } = useFlashcardStore();
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
   const [selectedSpeed, setSelectedSpeed] = useState<number>(1.0);
-  const [voiceGender, setVoiceGender] = useState<'MALE' | 'FEMALE'>('FEMALE');
+  const [voiceGender, setVoiceGender] = useState<VoiceGender>('FEMALE');
+  const [availableVoices, setAvailableVoices] = useState<Speech.Voice[]>([]);
+
+  useEffect(() => {
+    AudioService.getAvailableVoices().then((voices) => {
+      if (voices && voices.length > 0) {
+        setAvailableVoices(voices);
+      }
+    });
+  }, []);
 
   const availableSpeeds = getAvailableAudioSpeeds();
   const ALL_SPEEDS = [
@@ -192,7 +202,8 @@ export default function AudioLabScreen() {
   const playTargetAudio = (
     card = activeCard,
     mode = dictationMode,
-    direction = dictationDirection
+    direction = dictationDirection,
+    genderOverride?: VoiceGender
   ) => {
     if (!card) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -219,15 +230,44 @@ export default function AudioLabScreen() {
       language = 'en-US';
     }
 
-    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el tono según género
+    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el pitch acústico óptimo
+    const currentGender = genderOverride || voiceGender;
     const rate = selectedSpeed;
-    const pitch = voiceGender === 'FEMALE' ? 1.15 : 0.88;
+    const pitch = AudioService.getPitchForGender(currentGender);
+    const voiceId = AudioService.findVoiceForGender(availableVoices, language, currentGender);
 
     Speech.stop();
     Speech.speak(textToSpeak, {
       language,
       rate,
       pitch,
+      voice: voiceId,
+      onDone: () => setIsSpeakingAudio(false),
+      onError: () => setIsSpeakingAudio(false),
+    });
+  };
+
+  const handleSelectVoiceGender = (newGender: VoiceGender) => {
+    Haptics.selectionAsync();
+    setVoiceGender(newGender);
+
+    // Muestra de audio inmediata para que el usuario compruebe al instante el timbre y tono en su dispositivo
+    const sampleLang = dictationDirection === 'INVERSE' ? 'es-ES' : 'en-US';
+    const sampleText =
+      sampleLang === 'es-ES'
+        ? newGender === 'MALE' ? 'Voz masculina activada' : 'Voz femenina activada'
+        : newGender === 'MALE' ? 'Male voice selected' : 'Female voice selected';
+
+    const samplePitch = AudioService.getPitchForGender(newGender);
+    const sampleVoice = AudioService.findVoiceForGender(availableVoices, sampleLang, newGender);
+
+    Speech.stop();
+    setIsSpeakingAudio(true);
+    Speech.speak(sampleText, {
+      language: sampleLang,
+      rate: selectedSpeed,
+      pitch: samplePitch,
+      voice: sampleVoice,
       onDone: () => setIsSpeakingAudio(false),
       onError: () => setIsSpeakingAudio(false),
     });
@@ -578,10 +618,7 @@ export default function AudioLabScreen() {
               <View style={styles.voiceGenderRow}>
                 <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setVoiceGender('FEMALE');
-                  }}
+                  onPress={() => handleSelectVoiceGender('FEMALE')}
                   style={[
                     styles.voiceGenderChip,
                     voiceGender === 'FEMALE' && styles.voiceGenderChipActive,
@@ -599,10 +636,7 @@ export default function AudioLabScreen() {
 
                 <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setVoiceGender('MALE');
-                  }}
+                  onPress={() => handleSelectVoiceGender('MALE')}
                   style={[
                     styles.voiceGenderChip,
                     voiceGender === 'MALE' && styles.voiceGenderChipActive,
