@@ -87,10 +87,10 @@ export const useFlashcardStore = create<FlashcardState>()(
 
           // Filtro por búsqueda
           if (searchQuery.trim().length > 0) {
-            const query = searchQuery.toLowerCase();
-            const matchesWord = card.targetWord.toLowerCase().includes(query);
-            const matchesTrans = card.nativeTranslation.toLowerCase().includes(query);
-            const matchesSentence = card.contextSentence.toLowerCase().includes(query);
+            const query = searchQuery.toLowerCase().trim();
+            const matchesWord = (card.targetWord || '').toLowerCase().includes(query);
+            const matchesTrans = (card.nativeTranslation || '').toLowerCase().includes(query);
+            const matchesSentence = (card.contextSentence || '').toLowerCase().includes(query);
             return matchesWord || matchesTrans || matchesSentence;
           }
 

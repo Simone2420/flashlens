@@ -61,6 +61,19 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
 
     try {
       await dailyPillService.addPillToDeck(pill);
+      const store = useFlashcardStore.getState();
+      if (store.activeCardTypeFilter !== 'ALL') {
+        store.setCardTypeFilter('ALL');
+      }
+      if (store.selectedCategories.length > 0) {
+        store.clearCategoryFilters();
+      }
+      if (store.isFavoriteFilter) {
+        store.toggleFavoriteFilter();
+      }
+      if (store.searchQuery.trim().length > 0) {
+        store.setSearchQuery('');
+      }
       setIsAdded(true);
       onAddedToDeck?.(pill);
 

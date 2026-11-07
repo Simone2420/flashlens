@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -8,8 +8,6 @@ import {
   TextInput,
   Image,
   AppState,
-  FlatList,
-  ListRenderItem,
   Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
@@ -168,7 +166,36 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
-  const filteredCards = getFilteredCards();
+  const filteredCards = useMemo(() => {
+    return (cards || []).filter(card => {
+      // Filtro por favoritas
+      if (isFavoriteFilter && !card.isFavorite) {
+        return false;
+      }
+
+      // Filtro por tipo de tarjeta (Vocabulario vs Abstracto)
+      if (activeCardTypeFilter !== 'ALL' && card.cardType !== activeCardTypeFilter) {
+        return false;
+      }
+
+      // Filtro por subcategorías
+      if (selectedCategories.length > 0 && !selectedCategories.includes(card.conceptCategory)) {
+        return false;
+      }
+
+      // Filtro por búsqueda
+      if (searchQuery.trim().length > 0) {
+        const query = searchQuery.toLowerCase().trim();
+        const matchesWord = (card.targetWord || '').toLowerCase().includes(query);
+        const matchesTrans = (card.nativeTranslation || '').toLowerCase().includes(query);
+        const matchesSentence = (card.contextSentence || '').toLowerCase().includes(query);
+        return matchesWord || matchesTrans || matchesSentence;
+      }
+
+      return true;
+    });
+  }, [cards, activeCardTypeFilter, selectedCategories, searchQuery, isFavoriteFilter]);
+
   const dueCards = getDueCards();
 
   const handleSpeak = useCallback((text: string) => {
@@ -176,74 +203,16 @@ export default function HomeScreen() {
     Speech.speak(text, { language: 'en-US', rate: profile.learningPace === 'SLOW' ? 0.8 : 0.95 });
   }, [profile.learningPace]);
 
-  const renderCardItem: ListRenderItem<Flashcard> = useCallback(({ item: card }) => (
-    <View style={styles.cardItem}>
-      <View style={styles.cardMainRow}>
-        {/* Imagen o Ícono de Categoría */}
-        <CardThumbnail card={card} />
+  return (
+    <View style={styles.container}>
+      <Header title="FLASHLENS" />
 
-        {/* Contenido de la Tarjeta */}
-        <View style={styles.cardBody}>
-          <View style={styles.cardBadgeRow}>
-            <Text style={styles.cardCategoryBadge}>{card.conceptCategory}</Text>
-            <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
-          </View>
-          <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
-          <Text style={styles.cardPhonetic}>
-            {!isIpaUnlocked && card.facilitatedPhonetics
-              ? card.facilitatedPhonetics
-              : (card.phoneticScript || card.facilitatedPhonetics)}
-          </Text>
-          <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
-        </View>
-
-        {/* Botón de Audio TTS */}
-        <TouchableOpacity
-          onPress={() => handleSpeak(card.targetWord)}
-          style={styles.cardAudioBtn}
-          activeOpacity={0.7}
-          accessibilityRole="button"
-          accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-        >
-          <Volume2 size={20} color="#765A00" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Mnemotécnico o Fórmula Gramatical */}
-      {card.mnemonicHint && (
-        <View style={styles.cardMnemonicBox}>
-          <Text style={styles.cardMnemonicText}>💡 {card.mnemonicHint}</Text>
-        </View>
-      )}
-
-      {/* Oración Contextual */}
-      {card.contextSentence && (
-        <View style={styles.cardContextBox}>
-          <Text style={styles.cardContextEn}>"{card.contextSentence}"</Text>
-          {card.contextTranslation && (
-            <Text style={styles.cardContextEs}>{card.contextTranslation}</Text>
-          )}
-        </View>
-      )}
-    </View>
-  ), [isIpaUnlocked, handleSpeak]);
-
-  const renderEmptyCards = useCallback(() => (
-    <View style={styles.emptyCardsBox}>
-      <Sparkles size={36} color="#C4C7C7" />
-      <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
-      <Text style={styles.emptySubtitle}>
-        Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara.
-      </Text>
-    </View>
-  ), []);
-
-  const cardKeyExtractor = useCallback((card: Flashcard) => card.id, []);
-
-  const ListHeader = (
-    <>
-      {/* Barra Superior con Feedback y Estado */}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 90, 110) }]}
+        keyboardShouldPersistTaps="handled"
+      >
+        {/* Barra Superior con Feedback y Estado */}
       <View style={styles.topBar}>
         <TouchableOpacity
           activeOpacity={0.8}
@@ -539,27 +508,70 @@ export default function HomeScreen() {
           <Text style={styles.reviewNowBtnText}>Repaso SM-2</Text>
         </TouchableOpacity>
       </View>
-    </>
-  );
 
-  return (
-    <View style={styles.container}>
-      <Header title="FLASHLENS" />
+      {filteredCards.length === 0 ? (
+        <View style={styles.emptyCardsBox}>
+          <Sparkles size={36} color="#C4C7C7" />
+          <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
+          <Text style={styles.emptySubtitle}>
+            Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara.
+          </Text>
+        </View>
+      ) : (
+        filteredCards.map(card => (
+          <View key={card.id} style={styles.cardItem}>
+            <View style={styles.cardMainRow}>
+              {/* Imagen o Ícono de Categoría */}
+              <CardThumbnail card={card} />
 
-      <FlatList
-        data={filteredCards}
-        renderItem={renderCardItem}
-        keyExtractor={cardKeyExtractor}
-        ListHeaderComponent={ListHeader}
-        ListEmptyComponent={renderEmptyCards}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 90, 110) }]}
-        keyboardShouldPersistTaps="handled"
-        initialNumToRender={6}
-        maxToRenderPerBatch={8}
-        windowSize={5}
-        removeClippedSubviews={Platform.OS === 'android'}
-      />
+              {/* Contenido de la Tarjeta */}
+              <View style={styles.cardBody}>
+                <View style={styles.cardBadgeRow}>
+                  <Text style={styles.cardCategoryBadge}>{card.conceptCategory}</Text>
+                  <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
+                </View>
+                <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
+                <Text style={styles.cardPhonetic}>
+                  {!isIpaUnlocked && card.facilitatedPhonetics
+                    ? card.facilitatedPhonetics
+                    : (card.phoneticScript || card.facilitatedPhonetics)}
+                </Text>
+                <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
+              </View>
+
+              {/* Botón de Audio TTS */}
+              <TouchableOpacity
+                onPress={() => handleSpeak(card.targetWord)}
+                style={styles.cardAudioBtn}
+                activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              >
+                <Volume2 size={20} color="#765A00" />
+              </TouchableOpacity>
+            </View>
+
+            {/* Mnemotécnico o Fórmula Gramatical */}
+            {card.mnemonicHint && (
+              <View style={styles.cardMnemonicBox}>
+                <Text style={styles.cardMnemonicText}>💡 {card.mnemonicHint}</Text>
+              </View>
+            )}
+
+            {/* Oración Contextual */}
+            {card.contextSentence && (
+              <View style={styles.cardContextBox}>
+                <Text style={styles.cardContextEn}>"{card.contextSentence}"</Text>
+                {card.contextTranslation && (
+                  <Text style={styles.cardContextEs}>{card.contextTranslation}</Text>
+                )}
+              </View>
+            )}
+          </View>
+        ))
+      )}
+    </ScrollView>
 
       {/* Botón Flotante para Crear Tarjeta Abstracta */}
       <TouchableOpacity
