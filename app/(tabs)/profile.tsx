@@ -53,6 +53,9 @@ export default function ProfileScreen() {
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
   const [showWidgetHowTo, setShowWidgetHowTo] = useState(false);
 
+  // Control de interfaz: oculto para el usuario normal en producción
+  const SHOW_RBAC_SECTION = false;
+
   useEffect(() => {
     // Asegurar que el usuario activo sea el usuario normal (Estudiante)
     if (profile.roles?.includes('ROLE_PREMIUM_STUDENT') || profile.roles?.includes('ROLE_ADMIN')) {
@@ -141,59 +144,63 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* 🛡️ SISTEMA DE AUTORIZACIÓN Y ROLES RBAC (V1.0) */}
-        <Text style={styles.sectionHeading}>SISTEMA DE AUTORIZACIÓN RBAC (V1.0)</Text>
-        <View style={styles.rbacCard}>
-          <View style={styles.rbacHeaderRow}>
-            <View style={styles.rbacIconBox}>
-              <ShieldCheck size={20} color="#765A00" />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rbacTitle}>Rol Activo del Usuario:</Text>
-              <Text style={styles.rbacActiveRoleText}>
-                {profile.roles?.includes('ROLE_ADMIN')
-                  ? 'ROLE_ADMIN (Administrador CMS)'
-                  : profile.roles?.includes('ROLE_PREMIUM_STUDENT')
-                  ? 'ROLE_PREMIUM_STUDENT (Premium / Beta)'
-                  : 'ROLE_STUDENT (Estudiante Regular)'}
+        {/* 🛡️ SISTEMA DE AUTORIZACIÓN Y ROLES RBAC (V1.0) - Oculto para usuario final */}
+        {SHOW_RBAC_SECTION && (
+          <>
+            <Text style={styles.sectionHeading}>SISTEMA DE AUTORIZACIÓN RBAC (V1.0)</Text>
+            <View style={styles.rbacCard}>
+              <View style={styles.rbacHeaderRow}>
+                <View style={styles.rbacIconBox}>
+                  <ShieldCheck size={20} color="#765A00" />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.rbacTitle}>Rol Activo del Usuario:</Text>
+                  <Text style={styles.rbacActiveRoleText}>
+                    {profile.roles?.includes('ROLE_ADMIN')
+                      ? 'ROLE_ADMIN (Administrador CMS)'
+                      : profile.roles?.includes('ROLE_PREMIUM_STUDENT')
+                      ? 'ROLE_PREMIUM_STUDENT (Premium / Beta)'
+                      : 'ROLE_STUDENT (Estudiante Regular)'}
+                  </Text>
+                </View>
+              </View>
+
+              <Text style={styles.rbacDescription}>
+                Perfil estándar con permisos esenciales asignados para estudio de vocabulario y dictado fonético:
               </Text>
+
+              <View style={styles.roleButtonsContainer}>
+                <View
+                  style={[
+                    styles.roleSelectBtn,
+                    styles.roleSelectBtnActive,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.roleSelectBtnText,
+                      styles.roleSelectBtnTextActive,
+                    ]}
+                  >
+                    🎓 Estudiante Regular
+                  </Text>
+                </View>
+              </View>
+
+              <View style={styles.rbacPermissionsSummary}>
+                <Text style={styles.rbacPermissionsCount}>
+                  {profile.permissions?.length || 0} permisos activos asignados dinámicamente
+                </Text>
+                <Text style={styles.rbacSpeedsAllowed}>
+                  Velocidades de audio habilitadas:{' '}
+                  {profile.permissions?.includes('AUDIO_LAB:SPEED_EXTENDED')
+                    ? '0.25x, 0.5x, 0.75x, 1.0x, 1.25x, 1.50x, 2.0x (Completo)'
+                    : '0.5x, 0.75x, 1.0x, 1.25x (Estándar)'}
+                </Text>
+              </View>
             </View>
-          </View>
-
-          <Text style={styles.rbacDescription}>
-            Perfil estándar con permisos esenciales asignados para estudio de vocabulario y dictado fonético:
-          </Text>
-
-          <View style={styles.roleButtonsContainer}>
-            <View
-              style={[
-                styles.roleSelectBtn,
-                styles.roleSelectBtnActive,
-              ]}
-            >
-              <Text
-                style={[
-                  styles.roleSelectBtnText,
-                  styles.roleSelectBtnTextActive,
-                ]}
-              >
-                🎓 Estudiante Regular
-              </Text>
-            </View>
-          </View>
-
-          <View style={styles.rbacPermissionsSummary}>
-            <Text style={styles.rbacPermissionsCount}>
-              {profile.permissions?.length || 0} permisos activos asignados dinámicamente
-            </Text>
-            <Text style={styles.rbacSpeedsAllowed}>
-              Velocidades de audio habilitadas:{' '}
-              {profile.permissions?.includes('AUDIO_LAB:SPEED_EXTENDED')
-                ? '0.25x, 0.5x, 0.75x, 1.0x, 1.25x, 1.50x, 2.0x (Completo)'
-                : '0.5x, 0.75x, 1.0x, 1.25x (Estándar)'}
-            </Text>
-          </View>
-        </View>
+          </>
+        )}
 
         {/* EVALUACIÓN DE NIVEL CEFR / DIAGNÓSTICO */}
         <Text style={styles.sectionHeading}>EVALUACIÓN DE NIVEL CEFR</Text>

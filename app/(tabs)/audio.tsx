@@ -52,8 +52,9 @@ export default function AudioLabScreen() {
   const [voiceGender, setVoiceGender] = useState<VoiceGender>('FEMALE');
   const [availableVoices, setAvailableVoices] = useState<Speech.Voice[]>([]);
 
-  // Bandera de funcionalidad: Oculto para todos los usuarios (reservado para la siguiente actualización)
+  // Banderas de funcionalidad: Ocultas para todos los usuarios (reservadas para la siguiente actualización)
   const SHOW_VOICE_GENDER_SELECTOR = false;
+  const SHOW_SPEED_SELECTOR = false;
 
   useEffect(() => {
     AudioService.getAvailableVoices().then((voices) => {
@@ -661,43 +662,45 @@ export default function AudioLabScreen() {
               </View>
             )}
 
-            {/* Selector de Velocidades de Audio RBAC */}
-            <View style={styles.speedSelectorContainer}>
-              <View style={styles.speedHeaderRow}>
-                <Gauge size={13} color="#765A00" />
-                <Text style={styles.speedSelectorTitle}>VELOCIDAD DE REPRODUCCIÓN (RBAC)</Text>
-              </View>
-              <View style={styles.speedChipsRow}>
-                {ALL_SPEEDS.map((s) => {
-                  const isLocked = s.isExtended && !availableSpeeds.includes(s.value);
-                  const isSelected = selectedSpeed === s.value;
-                  return (
-                    <TouchableOpacity
-                      key={s.value}
-                      activeOpacity={0.75}
-                      onPress={() => handleSelectSpeed(s)}
-                      style={[
-                        styles.speedChip,
-                        isSelected && styles.speedChipSelected,
-                        isLocked && styles.speedChipLocked,
-                      ]}
-                      accessibilityLabel={`Velocidad ${s.label}${isLocked ? ' bloqueada' : ''}`}
-                    >
-                      {isLocked && <Lock size={10} color="#8A8A8A" style={{ marginRight: 2 }} />}
-                      <Text
+            {/* Selector de Velocidades de Audio RBAC: Oculto para todos los usuarios */}
+            {SHOW_SPEED_SELECTOR && (
+              <View style={styles.speedSelectorContainer}>
+                <View style={styles.speedHeaderRow}>
+                  <Gauge size={13} color="#765A00" />
+                  <Text style={styles.speedSelectorTitle}>VELOCIDAD DE REPRODUCCIÓN (RBAC)</Text>
+                </View>
+                <View style={styles.speedChipsRow}>
+                  {ALL_SPEEDS.map((s) => {
+                    const isLocked = s.isExtended && !availableSpeeds.includes(s.value);
+                    const isSelected = selectedSpeed === s.value;
+                    return (
+                      <TouchableOpacity
+                        key={s.value}
+                        activeOpacity={0.75}
+                        onPress={() => handleSelectSpeed(s)}
                         style={[
-                          styles.speedChipText,
-                          isSelected && styles.speedChipTextSelected,
-                          isLocked && styles.speedChipTextLocked,
+                          styles.speedChip,
+                          isSelected && styles.speedChipSelected,
+                          isLocked && styles.speedChipLocked,
                         ]}
+                        accessibilityLabel={`Velocidad ${s.label}${isLocked ? ' bloqueada' : ''}`}
                       >
-                        {s.label}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                })}
+                        {isLocked && <Lock size={10} color="#8A8A8A" style={{ marginRight: 2 }} />}
+                        <Text
+                          style={[
+                            styles.speedChipText,
+                            isSelected && styles.speedChipTextSelected,
+                            isLocked && styles.speedChipTextLocked,
+                          ]}
+                        >
+                          {s.label}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </View>
               </View>
-            </View>
+            )}
 
             {/* En modo inverso clásico, mostrar la pista contextual en español */}
             {dictationDirection === 'INVERSE' && activeCard && (
