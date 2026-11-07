@@ -48,14 +48,17 @@ export default function AudioLabScreen() {
   const { cards } = useFlashcardStore();
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
   const [selectedSpeed, setSelectedSpeed] = useState<number>(1.0);
+  const [voiceGender, setVoiceGender] = useState<'MALE' | 'FEMALE'>('FEMALE');
 
   const availableSpeeds = getAvailableAudioSpeeds();
   const ALL_SPEEDS = [
-    { value: 0.5, label: '0.5x', isExtended: true },
+    { value: 0.25, label: '0.25x', isExtended: true },
+    { value: 0.5, label: '0.5x', isExtended: false },
     { value: 0.75, label: '0.75x', isExtended: false },
     { value: 1.0, label: '1.0x', isExtended: false },
     { value: 1.25, label: '1.25x', isExtended: false },
     { value: 1.5, label: '1.50x', isExtended: true },
+    { value: 2.0, label: '2.0x', isExtended: true },
   ];
 
   const handleSelectSpeed = (speedItem: (typeof ALL_SPEEDS)[0]) => {
@@ -63,7 +66,7 @@ export default function AudioLabScreen() {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
       Alert.alert(
         '🔒 Velocidad Premium Exclusiva',
-        `La velocidad ${speedItem.label} está reservada para usuarios con suscripción Premium o cupón Beta Tester.\n\nTu rol actual (Estudiante) tiene acceso a las velocidades estándar: 0.75x, 1.0x y 1.25x.`
+        `La velocidad ${speedItem.label} está reservada para usuarios con suscripción Premium o cupón Beta Tester.\n\nTu rol actual (Estudiante) tiene acceso a las velocidades estándar: 0.5x, 0.75x, 1.0x y 1.25x.`
       );
       return;
     }
@@ -216,13 +219,15 @@ export default function AudioLabScreen() {
       language = 'en-US';
     }
 
-    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC)
+    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el tono según género
     const rate = selectedSpeed;
+    const pitch = voiceGender === 'FEMALE' ? 1.15 : 0.88;
 
     Speech.stop();
     Speech.speak(textToSpeak, {
       language,
       rate,
+      pitch,
       onDone: () => setIsSpeakingAudio(false),
       onError: () => setIsSpeakingAudio(false),
     });
@@ -566,6 +571,54 @@ export default function AudioLabScreen() {
                   : 'Escuchando audio nativo en inglés...'
                 : 'Toca para volver a escuchar'}
             </Text>
+
+            {/* Selector de Voz: Femenina vs Masculina */}
+            <View style={styles.voiceGenderContainer}>
+              <Text style={styles.voiceGenderLabel}>VOZ:</Text>
+              <View style={styles.voiceGenderRow}>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    setVoiceGender('FEMALE');
+                  }}
+                  style={[
+                    styles.voiceGenderChip,
+                    voiceGender === 'FEMALE' && styles.voiceGenderChipActive,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.voiceGenderText,
+                      voiceGender === 'FEMALE' && styles.voiceGenderTextActive,
+                    ]}
+                  >
+                    👧 Femenina
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    setVoiceGender('MALE');
+                  }}
+                  style={[
+                    styles.voiceGenderChip,
+                    voiceGender === 'MALE' && styles.voiceGenderChipActive,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.voiceGenderText,
+                      voiceGender === 'MALE' && styles.voiceGenderTextActive,
+                    ]}
+                  >
+                    👦 Masculina
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
 
             {/* Selector de Velocidades de Audio RBAC */}
             <View style={styles.speedSelectorContainer}>
@@ -1171,6 +1224,45 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#747878',
     fontWeight: '700',
+  },
+  voiceGenderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    marginTop: 10,
+    marginBottom: 4,
+  },
+  voiceGenderLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#765A00',
+    letterSpacing: 0.6,
+  },
+  voiceGenderRow: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  voiceGenderChip: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    backgroundColor: '#F5F5F5',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  voiceGenderChipActive: {
+    backgroundColor: '#FFF9E6',
+    borderColor: '#E8B400',
+  },
+  voiceGenderText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  voiceGenderTextActive: {
+    color: '#765A00',
+    fontWeight: '800',
   },
   speedSelectorContainer: {
     marginTop: 14,

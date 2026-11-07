@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   AppState,
+  ActivityIndicator,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -73,17 +74,30 @@ const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; IconCompon
 
 const CardThumbnail: React.FC<{ card: Flashcard }> = ({ card }) => {
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (card.imageUrl && !hasError) {
     return (
-      <ExpoImage
-        source={{ uri: card.imageUrl }}
-        style={styles.cardThumb}
-        contentFit="cover"
-        transition={200}
-        cachePolicy="memory-disk"
-        onError={() => setHasError(true)}
-      />
+      <View style={styles.cardThumbContainer}>
+        <ExpoImage
+          source={{ uri: card.imageUrl }}
+          style={styles.cardThumb}
+          contentFit="cover"
+          transition={200}
+          cachePolicy="memory-disk"
+          onLoadStart={() => setIsLoading(true)}
+          onLoad={() => setIsLoading(false)}
+          onError={() => {
+            setHasError(true);
+            setIsLoading(false);
+          }}
+        />
+        {isLoading && (
+          <View style={styles.cardThumbLoadingOverlay}>
+            <ActivityIndicator size="small" color="#E8B400" />
+          </View>
+        )}
+      </View>
     );
   }
 
@@ -304,7 +318,21 @@ export default function HomeScreen() {
           >
             <View style={styles.pillBannerLeft}>
               <View style={[styles.pillIconBox, isPillInDeck && styles.pillIconBoxAdded]}>
-                {isPillInDeck ? (
+                {todayPill.imageUrl ? (
+                  <View style={styles.pillThumbWrapper}>
+                    <ExpoImage
+                      source={{ uri: todayPill.imageUrl }}
+                      style={styles.pillThumbImg}
+                      contentFit="cover"
+                      transition={200}
+                    />
+                    {isPillInDeck && (
+                      <View style={styles.pillThumbCheckBadge}>
+                        <CheckCircle2 size={12} color="#FFFFFF" />
+                      </View>
+                    )}
+                  </View>
+                ) : isPillInDeck ? (
                   <CheckCircle2 size={20} color="#166534" />
                 ) : (
                   <Sparkles size={20} color="#765A00" />
@@ -805,6 +833,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
+  cardThumbContainer: {
+    width: 60,
+    height: 60,
+    borderRadius: 12,
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#F1EDEC',
+  },
+  cardThumbLoadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 255, 255, 0.65)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   cardThumb: {
     width: 60,
     height: 60,
@@ -958,6 +1000,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
+    overflow: 'hidden',
+  },
+  pillThumbWrapper: {
+    width: 44,
+    height: 44,
+    position: 'relative',
+  },
+  pillThumbImg: {
+    width: 44,
+    height: 44,
+    borderRadius: 11,
+  },
+  pillThumbCheckBadge: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    backgroundColor: '#16A34A',
+    borderRadius: 8,
+    width: 16,
+    height: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   pillBadgeRow: {
     flexDirection: 'row',

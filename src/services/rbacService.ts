@@ -156,7 +156,7 @@ export const RBAC_PERMISSIONS: RbacPermission[] = [
     module: 'AUDIO_LAB',
     action: 'EXECUTE',
     displayName: 'Velocidades de Audio Estándar',
-    description: 'Permite seleccionar las velocidades base: 0.75x, 1.0x y 1.25x',
+    description: 'Permite seleccionar las velocidades base: 0.5x, 0.75x, 1.0x y 1.25x',
   },
   {
     id: 'perm-audio-05',
@@ -164,7 +164,7 @@ export const RBAC_PERMISSIONS: RbacPermission[] = [
     module: 'AUDIO_LAB',
     action: 'UNLIMITED',
     displayName: 'Velocidades de Audio Extendidas (Premium)',
-    description: 'Desbloquea velocidades extremas: 0.5x (análisis lento) y 1.50x (alta velocidad)',
+    description: 'Desbloquea velocidades extremas: 0.25x (cámara súper lenta), 1.50x y 2.0x (alta velocidad)',
   },
 
   // --- MÓDULO ROADMAP & DIAGNÓSTICO ---
@@ -455,12 +455,12 @@ export const rbacService = {
    * Retorna las velocidades de audio permitidas para el usuario según sus permisos
    */
   getAvailableAudioSpeeds(userPermissions: PermissionCode[] | undefined): number[] {
-    // Velocidades estándar base para todo estudiante (0.75x, 1.0x, 1.25x)
-    const speeds = [0.75, 1.0, 1.25];
+    // Velocidades estándar base para todo estudiante (0.5x, 0.75x, 1.0x, 1.25x)
+    const speeds = [0.5, 0.75, 1.0, 1.25];
 
-    // Si tiene permiso de velocidades extendidas (Premium / Admin), agrega 0.5x y 1.50x
+    // Si tiene permiso de velocidades extendidas (Premium / Admin), agrega 0.25x, 1.50x y 2.0x
     if (this.hasPermission(userPermissions, 'AUDIO_LAB:SPEED_EXTENDED')) {
-      return [0.5, 0.75, 1.0, 1.25, 1.5];
+      return [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
     }
 
     return speeds;

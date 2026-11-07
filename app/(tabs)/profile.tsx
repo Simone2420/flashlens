@@ -154,7 +154,7 @@ export default function ProfileScreen() {
           </View>
 
           <Text style={styles.rbacDescription}>
-            Selecciona el rol para alternar permisos en tiempo real y probar velocidades de Audio Lab (0.5x a 1.50x) y curaduría de términos:
+            Selecciona el rol para alternar permisos en tiempo real y probar velocidades de Audio Lab (0.25x a 2.0x):
           </Text>
 
           <View style={styles.roleButtonsContainer}>
@@ -166,17 +166,13 @@ export default function ProfileScreen() {
               }}
               style={[
                 styles.roleSelectBtn,
-                !profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
-                  !profile.roles?.includes('ROLE_ADMIN') &&
-                  styles.roleSelectBtnActive,
+                !profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnActive,
               ]}
             >
               <Text
                 style={[
                   styles.roleSelectBtnText,
-                  !profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
-                    !profile.roles?.includes('ROLE_ADMIN') &&
-                    styles.roleSelectBtnTextActive,
+                  !profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnTextActive,
                 ]}
               >
                 Estudiante
@@ -191,41 +187,16 @@ export default function ProfileScreen() {
               }}
               style={[
                 styles.roleSelectBtn,
-                profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
-                  !profile.roles?.includes('ROLE_ADMIN') &&
-                  styles.roleSelectBtnActive,
+                profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnActive,
               ]}
             >
               <Text
                 style={[
                   styles.roleSelectBtnText,
-                  profile.roles?.includes('ROLE_PREMIUM_STUDENT') &&
-                    !profile.roles?.includes('ROLE_ADMIN') &&
-                    styles.roleSelectBtnTextActive,
+                  profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnTextActive,
                 ]}
               >
                 ⭐ Premium
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => {
-                Haptics.selectionAsync();
-                setRoleForDemo('ROLE_ADMIN');
-              }}
-              style={[
-                styles.roleSelectBtn,
-                profile.roles?.includes('ROLE_ADMIN') && styles.roleSelectBtnActive,
-              ]}
-            >
-              <Text
-                style={[
-                  styles.roleSelectBtnText,
-                  profile.roles?.includes('ROLE_ADMIN') && styles.roleSelectBtnTextActive,
-                ]}
-              >
-                🛡️ Admin
               </Text>
             </TouchableOpacity>
           </View>
@@ -237,8 +208,8 @@ export default function ProfileScreen() {
             <Text style={styles.rbacSpeedsAllowed}>
               Velocidades de audio habilitadas:{' '}
               {profile.permissions?.includes('AUDIO_LAB:SPEED_EXTENDED')
-                ? '0.5x, 0.75x, 1.0x, 1.25x, 1.50x'
-                : '0.75x, 1.0x, 1.25x'}
+                ? '0.25x, 0.5x, 0.75x, 1.0x, 1.25x, 1.50x, 2.0x (Completo)'
+                : '0.5x, 0.75x, 1.0x, 1.25x (Estándar)'}
             </Text>
           </View>
         </View>

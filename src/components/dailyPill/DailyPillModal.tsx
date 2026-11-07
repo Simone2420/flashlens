@@ -11,6 +11,7 @@ import {
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
+import { Image as ExpoImage } from 'expo-image';
 import { DailyPill } from '../../types';
 import { dailyPillService } from '../../services/dailyPillService';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
@@ -30,6 +31,7 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
 }) => {
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const cards = useFlashcardStore(state => state.cards) || [];
 
   useEffect(() => {
@@ -122,6 +124,25 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
           </View>
 
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+            {/* Mini Foto Ilustrativa de la Píldora con Ruedita de Carga */}
+            {pill.imageUrl ? (
+              <View style={styles.pillMiniPhotoCard}>
+                <ExpoImage
+                  source={{ uri: pill.imageUrl }}
+                  style={styles.pillMiniPhoto}
+                  contentFit="cover"
+                  transition={200}
+                  onLoadStart={() => setIsImageLoading(true)}
+                  onLoad={() => setIsImageLoading(false)}
+                />
+                {(isImageLoading || isAdding) && (
+                  <View style={styles.pillMiniPhotoLoading}>
+                    <ActivityIndicator size="small" color="#E8B400" />
+                  </View>
+                )}
+              </View>
+            ) : null}
+
             {/* Word & Audio */}
             <View style={styles.wordSection}>
               <View style={styles.wordTitleRow}>
@@ -310,6 +331,27 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 16,
+  },
+  pillMiniPhotoCard: {
+    width: '100%',
+    height: 140,
+    borderRadius: 14,
+    overflow: 'hidden',
+    marginBottom: 14,
+    backgroundColor: '#F1EDEC',
+    position: 'relative',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  pillMiniPhoto: {
+    width: '100%',
+    height: '100%',
+  },
+  pillMiniPhotoLoading: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   wordSection: {
     marginBottom: 16,

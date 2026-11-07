@@ -11,6 +11,7 @@ import {
   Image,
   Animated,
   Easing,
+  ActivityIndicator,
 } from 'react-native';
 import {
   Mic,
@@ -23,9 +24,11 @@ import {
   Zap,
   Radio,
   Image as ImageIcon,
+  Upload,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
+import * as ImagePicker from 'expo-image-picker';
 import { COLORS, SPACING, BORDER_RADIUS, SHADOWS } from '../../constants/theme';
 import { ConceptCategory, PartOfSpeech, Flashcard } from '../../types';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
@@ -99,6 +102,9 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
   const [contextTranslation, setContextTranslation] = useState('');
   const [grammarFormula, setGrammarFormula] = useState('');
   const [isAutoFilling, setIsAutoFilling] = useState(false);
+  const [formImageUri, setFormImageUri] = useState<string | null>(null);
+  const [formImageSource, setFormImageSource] = useState<'AUTO' | 'USER_UPLOAD' | 'AI_GENERATED'>('AUTO');
+  const [isGeneratingAiImage, setIsGeneratingAiImage] = useState(false);
 
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
@@ -267,6 +273,53 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
   };
 
+  const handlePickImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.8,
+      });
+
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        setFormImageUri(result.assets[0].uri);
+        setFormImageSource('USER_UPLOAD');
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }
+    } catch (err) {
+      console.warn('Error al seleccionar imagen:', err);
+      Alert.alert('Error', 'No se pudo abrir la galería de imágenes del dispositivo.');
+    }
+  };
+
+  const handleGenerateAiImage = async () => {
+    const word = targetWord.trim() || 'Creative concept';
+    setIsGeneratingAiImage(true);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    try {
+      const prompt = imageGenerationService.buildNaturalPrompt(
+        word,
+        selectedCategory,
+        undefined,
+        contextSentence,
+        mnemonicHint
+      );
+      const seed = Math.floor(Math.random() * 999999);
+      // Pollinations FLUX 100% funcional y directo
+      const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&model=flux&nologo=true&seed=${seed}`;
+      setFormImageUri(pollinationsUrl);
+      setFormImageSource('AI_GENERATED');
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch (err) {
+      console.warn('Error generando imagen con IA:', err);
+      Alert.alert('Error', 'No se pudo generar la ilustración con IA.');
+    } finally {
+      setIsGeneratingAiImage(false);
+    }
+  };
+
   const handleSaveMixedForm = async () => {
     if (!targetWord.trim() || !nativeTranslation.trim()) {
       Alert.alert('Campos Incompletos', 'Por favor ingresa la palabra en inglés y su traducción.');
@@ -274,13 +327,17 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
 
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
-    const categoryImg = await imageGenerationService.generateOrFallback(
-      targetWord.trim(),
-      selectedCategory,
-      undefined,
-      contextSentence,
-      mnemonicHint
-    );
+    const finalImg =
+      formImageUri ||
+      (await imageGenerationService.generateOrFallback(
+        targetWord.trim(),
+        selectedCategory,
+        undefined,
+        contextSentence,
+        mnemonicHint
+      ));
+
+    const finalImageSource = formImageSource === 'USER_UPLOAD' ? 'CAMERA' : 'AI_GENERATED';
 
     const rawTranslation = nativeTranslation.trim();
     const acceptedList = rawTranslation
@@ -316,9 +373,9 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
       contextTranslation: contextTranslation || `Oración de ejemplo con ${targetWord}.`,
       mnemonicHint: mnemonicHint || undefined,
       grammarFormula: grammarFormula || undefined,
-      imageUrl: categoryImg,
-      imageSource: 'AI_GENERATED',
-      createdVia: 'MANUAL',
+      imageUrl: finalImg,
+      imageSource: finalImageSource,
+      createdVia: formImageSource === 'USER_UPLOAD' ? 'CAMERA' : 'MANUAL',
     });
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -563,15 +620,61 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                   })}
                 </ScrollView>
 
-                {/* Vista Previa de Imagen Web Asignada */}
+                {/* 🎨 SECCIÓN DE IMAGEN CON 2 OPCIONES: SUBIR PROPIA O GENERAR CON IA */}
+                <Text style={styles.inputLabel}>Imagen de la Tarjeta:</Text>
                 <View style={styles.formImagePreview}>
                   <Image
-                    source={{ uri: CATEGORY_IMAGE_MAP[selectedCategory] || CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION }}
+                    source={{
+                      uri:
+                        formImageUri ||
+                        CATEGORY_IMAGE_MAP[selectedCategory] ||
+                        CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION,
+                    }}
                     style={styles.formImage}
                   />
+                  {isGeneratingAiImage && (
+                    <View style={styles.imageLoadingOverlay}>
+                      <ActivityIndicator size="large" color="#E8B400" />
+                      <Text style={styles.imageLoadingText}>Generando ilustración con FLUX IA...</Text>
+                    </View>
+                  )}
                   <View style={styles.formImageBadge}>
-                    <Text style={styles.formImageBadgeText}>Imagen Web Automática</Text>
+                    <Text style={styles.formImageBadgeText}>
+                      {formImageSource === 'USER_UPLOAD'
+                        ? '📷 Tu Foto Propia'
+                        : formImageSource === 'AI_GENERATED'
+                        ? '✨ Ilustración con FLUX IA'
+                        : '🌐 Web Automática'}
+                    </Text>
                   </View>
+                </View>
+
+                {/* 2 Opciones Claras de Imagen: Subir la propia o Generar con IA */}
+                <View style={styles.imageActionButtonsRow}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={handlePickImage}
+                    style={styles.imageOptionBtn}
+                  >
+                    <Upload size={14} color="#1C1B1B" />
+                    <Text style={styles.imageOptionBtnText}>Subir Foto Propia</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={handleGenerateAiImage}
+                    disabled={isGeneratingAiImage}
+                    style={[styles.imageOptionBtn, styles.imageOptionBtnAi]}
+                  >
+                    {isGeneratingAiImage ? (
+                      <ActivityIndicator size="small" color="#765A00" />
+                    ) : (
+                      <Sparkles size={14} color="#765A00" />
+                    )}
+                    <Text style={[styles.imageOptionBtnText, styles.imageOptionBtnAiText]}>
+                      {isGeneratingAiImage ? 'Generando...' : 'Generar con IA'}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
 
                 <Text style={styles.inputLabel}>Palabra / Expresión en Inglés:</Text>
@@ -970,6 +1073,50 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 9,
     fontWeight: '700',
+  },
+  imageLoadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+    gap: 8,
+  },
+  imageLoadingText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  imageActionButtonsRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: SPACING.sm,
+  },
+  imageOptionBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 9,
+    paddingHorizontal: 8,
+    borderRadius: 12,
+    backgroundColor: '#F5F5F5',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  imageOptionBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#1C1B1B',
+  },
+  imageOptionBtnAi: {
+    backgroundColor: '#FFF9E6',
+    borderColor: '#E8B400',
+  },
+  imageOptionBtnAiText: {
+    color: '#765A00',
+    fontWeight: '800',
   },
   input: {
     borderWidth: 1,
