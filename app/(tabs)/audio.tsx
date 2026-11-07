@@ -52,6 +52,9 @@ export default function AudioLabScreen() {
   const [voiceGender, setVoiceGender] = useState<VoiceGender>('FEMALE');
   const [availableVoices, setAvailableVoices] = useState<Speech.Voice[]>([]);
 
+  // Bandera de funcionalidad: Oculto para todos los usuarios (reservado para la siguiente actualización)
+  const SHOW_VOICE_GENDER_SELECTOR = false;
+
   useEffect(() => {
     AudioService.getAvailableVoices().then((voices) => {
       if (voices && voices.length > 0) {
@@ -230,11 +233,13 @@ export default function AudioLabScreen() {
       language = 'en-US';
     }
 
-    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el pitch acústico óptimo
+    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el pitch acústico
     const currentGender = genderOverride || voiceGender;
     const rate = selectedSpeed;
-    const pitch = AudioService.getPitchForGender(currentGender);
-    const voiceId = AudioService.findVoiceForGender(availableVoices, language, currentGender);
+    const pitch = SHOW_VOICE_GENDER_SELECTOR ? AudioService.getPitchForGender(currentGender) : 1.0;
+    const voiceId = SHOW_VOICE_GENDER_SELECTOR
+      ? AudioService.findVoiceForGender(availableVoices, language, currentGender)
+      : undefined;
 
     Speech.stop();
     Speech.speak(textToSpeak, {
@@ -612,47 +617,49 @@ export default function AudioLabScreen() {
                 : 'Toca para volver a escuchar'}
             </Text>
 
-            {/* Selector de Voz: Femenina vs Masculina */}
-            <View style={styles.voiceGenderContainer}>
-              <Text style={styles.voiceGenderLabel}>VOZ:</Text>
-              <View style={styles.voiceGenderRow}>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => handleSelectVoiceGender('FEMALE')}
-                  style={[
-                    styles.voiceGenderChip,
-                    voiceGender === 'FEMALE' && styles.voiceGenderChipActive,
-                  ]}
-                >
-                  <Text
+            {/* Selector de Voz: Oculto para todos los usuarios (reservado para la siguiente actualización) */}
+            {SHOW_VOICE_GENDER_SELECTOR && (
+              <View style={styles.voiceGenderContainer}>
+                <Text style={styles.voiceGenderLabel}>VOZ:</Text>
+                <View style={styles.voiceGenderRow}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => handleSelectVoiceGender('FEMALE')}
                     style={[
-                      styles.voiceGenderText,
-                      voiceGender === 'FEMALE' && styles.voiceGenderTextActive,
+                      styles.voiceGenderChip,
+                      voiceGender === 'FEMALE' && styles.voiceGenderChipActive,
                     ]}
                   >
-                    👧 Femenina
-                  </Text>
-                </TouchableOpacity>
+                    <Text
+                      style={[
+                        styles.voiceGenderText,
+                        voiceGender === 'FEMALE' && styles.voiceGenderTextActive,
+                      ]}
+                    >
+                      👧 Femenina
+                    </Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => handleSelectVoiceGender('MALE')}
-                  style={[
-                    styles.voiceGenderChip,
-                    voiceGender === 'MALE' && styles.voiceGenderChipActive,
-                  ]}
-                >
-                  <Text
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => handleSelectVoiceGender('MALE')}
                     style={[
-                      styles.voiceGenderText,
-                      voiceGender === 'MALE' && styles.voiceGenderTextActive,
+                      styles.voiceGenderChip,
+                      voiceGender === 'MALE' && styles.voiceGenderChipActive,
                     ]}
                   >
-                    👦 Masculina
-                  </Text>
-                </TouchableOpacity>
+                    <Text
+                      style={[
+                        styles.voiceGenderText,
+                        voiceGender === 'MALE' && styles.voiceGenderTextActive,
+                      ]}
+                    >
+                      👦 Masculina
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
+            )}
 
             {/* Selector de Velocidades de Audio RBAC */}
             <View style={styles.speedSelectorContainer}>

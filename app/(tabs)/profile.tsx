@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -52,6 +52,13 @@ export default function ProfileScreen() {
 
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
   const [showWidgetHowTo, setShowWidgetHowTo] = useState(false);
+
+  useEffect(() => {
+    // Asegurar que el usuario activo sea el usuario normal (Estudiante)
+    if (profile.roles?.includes('ROLE_PREMIUM_STUDENT') || profile.roles?.includes('ROLE_ADMIN')) {
+      setRoleForDemo('ROLE_STUDENT');
+    }
+  }, []);
 
   const handlePaceChange = (newPace: LearningPace) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -154,51 +161,25 @@ export default function ProfileScreen() {
           </View>
 
           <Text style={styles.rbacDescription}>
-            Selecciona el rol para alternar permisos en tiempo real y probar velocidades de Audio Lab (0.25x a 2.0x):
+            Perfil estándar con permisos esenciales asignados para estudio de vocabulario y dictado fonético:
           </Text>
 
           <View style={styles.roleButtonsContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => {
-                Haptics.selectionAsync();
-                setRoleForDemo('ROLE_STUDENT');
-              }}
+            <View
               style={[
                 styles.roleSelectBtn,
-                !profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnActive,
+                styles.roleSelectBtnActive,
               ]}
             >
               <Text
                 style={[
                   styles.roleSelectBtnText,
-                  !profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnTextActive,
+                  styles.roleSelectBtnTextActive,
                 ]}
               >
-                Estudiante
+                🎓 Estudiante Regular
               </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => {
-                Haptics.selectionAsync();
-                setRoleForDemo('ROLE_PREMIUM_STUDENT');
-              }}
-              style={[
-                styles.roleSelectBtn,
-                profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnActive,
-              ]}
-            >
-              <Text
-                style={[
-                  styles.roleSelectBtnText,
-                  profile.roles?.includes('ROLE_PREMIUM_STUDENT') && styles.roleSelectBtnTextActive,
-                ]}
-              >
-                ⭐ Premium
-              </Text>
-            </TouchableOpacity>
+            </View>
           </View>
 
           <View style={styles.rbacPermissionsSummary}>
