@@ -29,10 +29,12 @@ import {
   Award,
   Crop,
   Layers,
+  RotateCcw,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
 import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
+import { ImageCropperView } from './ImageCropperView';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 import { useUserStore } from '../../store/useUserStore';
 import { useRoadmapStore } from '../../store/useRoadmapStore';
@@ -52,9 +54,14 @@ export const CameraViewfinder: React.FC = () => {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [fullPhotoUri, setFullPhotoUri] = useState<string | null>(null);
+  const [fullPhotoSize, setFullPhotoSize] = useState<{ width: number; height: number }>({
+    width: 0,
+    height: 0,
+  });
   const [activePhotoUri, setActivePhotoUri] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isCroppingMode, setIsCroppingMode] = useState(false);
 
   const { profile } = useUserStore();
   const { addCard } = useFlashcardStore();
@@ -141,7 +148,33 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Captura la foto con opción de recorte y ejecuta la IA activa (Nube o Local)
+   * Normaliza la orientación EXIF de la foto capturada para que el visor y el recorte
+   * trabajen exactamente sobre las mismas coordenadas de píxeles en Android e iOS.
+   */
+  const normalizeLocalPhoto = async (
+    rawUri: string
+  ): Promise<{ uri: string; width: number; height: number }> => {
+    if (!rawUri || rawUri.startsWith('http')) {
+      return { uri: rawUri, width: 0, height: 0 };
+    }
+    try {
+      const normalized = await ImageManipulator.manipulateAsync(rawUri, [], {
+        compress: 0.92,
+        format: ImageManipulator.SaveFormat.JPEG,
+      });
+      return {
+        uri: normalized.uri,
+        width: normalized.width,
+        height: normalized.height,
+      };
+    } catch (e) {
+      console.warn('No se pudo normalizar orientación EXIF:', e);
+      return { uri: rawUri, width: 0, height: 0 };
+    }
+  };
+
+  /**
+   * Captura la foto y ejecuta la IA activa (Nube o Local)
    */
   const handleCapture = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -154,17 +187,22 @@ export const CameraViewfinder: React.FC = () => {
         });
 
         if (photo?.uri) {
+          const normalized = await normalizeLocalPhoto(photo.uri);
           const userLevel = profile.diagnosedLevel || 'A1';
           setSelectedCefr(userLevel);
-          const result = await classifyPhoto(photo.uri, userLevel);
-          populateFormWithResult(photo.uri, result);
+          setFullPhotoUri(normalized.uri);
+          setFullPhotoSize({ width: normalized.width, height: normalized.height });
+          const result = await classifyPhoto(normalized.uri, userLevel);
+          populateFormWithResult(normalized.uri, result, false);
           return;
         }
       }
 
       const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80';
+      setFullPhotoUri(fallbackUri);
+      setFullPhotoSize({ width: 0, height: 0 });
       const fallbackResult = await classifyPhoto(fallbackUri, profile.diagnosedLevel || 'A1');
-      populateFormWithResult(fallbackUri, fallbackResult);
+      populateFormWithResult(fallbackUri, fallbackResult, false);
     } catch (e) {
       console.warn('Error capturando foto:', e);
     } finally {
@@ -186,11 +224,14 @@ export const CameraViewfinder: React.FC = () => {
       if (!result.canceled && result.assets[0]?.uri) {
         const asset = result.assets[0];
         setIsAnalyzing(true);
+        const normalized = await normalizeLocalPhoto(asset.uri);
         const userLevel = profile.diagnosedLevel || 'A1';
         setSelectedCefr(userLevel);
-        const detection = await classifyPhoto(asset.uri, userLevel);
+        setFullPhotoUri(normalized.uri);
+        setFullPhotoSize({ width: normalized.width, height: normalized.height });
+        const detection = await classifyPhoto(normalized.uri, userLevel);
         setIsAnalyzing(false);
-        populateFormWithResult(asset.uri, detection);
+        populateFormWithResult(normalized.uri, detection, false);
       }
     } catch (e) {
       setIsAnalyzing(false);
@@ -199,39 +240,82 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Permite al usuario recortar interactivamente un área específica de la foto y re-clasificarla
+   * Abre el editor visual interactivo de recorte sobre la foto original capturada
    */
-  const handleManualCrop = async () => {
-    if (!fullPhotoUri) return;
+  const handleOpenCropper = () => {
+    const sourceUri = fullPhotoUri || activePhotoUri;
+    if (!sourceUri) return;
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    if (sourceUri.startsWith('http')) {
+      Alert.alert(
+        'Imagen de Demostración Remota',
+        'Para recortar un área específica, captura una foto real con la cámara o selecciona una desde la galería.'
+      );
+      return;
+    }
+    setIsCroppingMode(true);
+  };
+
+  /**
+   * Aplica el recorte seleccionado manualmente por el usuario y re-analiza solo esa región
+   */
+  const handleConfirmCrop = async (croppedUri: string) => {
+    setIsCroppingMode(false);
+    setActivePhotoUri(croppedUri);
+    setIsAnalyzing(true);
 
     try {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-      const cropResult = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ['images'],
-        allowsEditing: true,
-        aspect: [1, 1],
-        quality: 0.9,
-      });
-
-      if (!cropResult.canceled && cropResult.assets[0]?.uri) {
-        const croppedUri = cropResult.assets[0].uri;
-        setIsAnalyzing(true);
-        const reclassified = await classifyPhoto(croppedUri, selectedCefr);
-        setIsAnalyzing(false);
-        setActivePhotoUri(croppedUri);
-        populateFormWithResult(croppedUri, reclassified);
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      }
+      const reclassified = await classifyPhoto(croppedUri, selectedCefr);
+      populateFormWithResult(croppedUri, reclassified, true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } catch (e) {
+      console.warn('Error re-analizando foto recortada:', e);
+    } finally {
       setIsAnalyzing(false);
-      console.warn('Error recortando imagen:', e);
     }
   };
 
-  const populateFormWithResult = (imageUri: string, payload: AdaptiveCardPayload) => {
+  /**
+   * Restaura la foto original sin recortar y vuelve a clasificarla
+   */
+  const handleRestoreOriginalPhoto = async () => {
+    if (!fullPhotoUri || fullPhotoUri === activePhotoUri) return;
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setActivePhotoUri(fullPhotoUri);
+    setIsAnalyzing(true);
+
+    try {
+      const reclassified = await classifyPhoto(fullPhotoUri, selectedCefr);
+      populateFormWithResult(fullPhotoUri, reclassified, true);
+    } catch (e) {
+      console.warn('Error restaurando foto original:', e);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  const handleCloseModal = () => {
+    Speech.stop();
+    setModalVisible(false);
+    setIsCroppingMode(false);
+    setActivePhotoUri(null);
+    setFullPhotoUri(null);
+    setFullPhotoSize({ width: 0, height: 0 });
+  };
+
+  const populateFormWithResult = (
+    imageUri: string,
+    payload: AdaptiveCardPayload,
+    keepFullPhoto = true
+  ) => {
     setIsAnalyzing(false);
-    setFullPhotoUri(prev => prev || imageUri);
+    if (!keepFullPhoto) {
+      setFullPhotoUri(imageUri);
+    } else {
+      setFullPhotoUri(prev => prev || imageUri);
+    }
     setActivePhotoUri(imageUri);
     setCurrentPayload(payload);
     setRawDetectedText(payload.targetWord);
@@ -368,9 +452,7 @@ export const CameraViewfinder: React.FC = () => {
     });
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    setModalVisible(false);
-    setActivePhotoUri(null);
-    setFullPhotoUri(null);
+    handleCloseModal();
 
     const isPending = createdCard?.curationStatus === 'PENDING_REVIEW';
     const alertTitle = isPending ? '¡Término Nuevo Registrado!' : '¡Tarjeta Creada!';
@@ -537,44 +619,82 @@ export const CameraViewfinder: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      {/* 4. MODAL ADAPTATIVO PARA GUARDAR FLASHCARD DETECTADA */}
-      <Modal visible={modalVisible} animationType="slide" transparent>
+      {/* 4. MODAL ADAPTATIVO PARA RECORTE Y GUARDADO DE FLASHCARD */}
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent
+        onRequestClose={() => {
+          if (isCroppingMode) {
+            setIsCroppingMode(false);
+          } else {
+            handleCloseModal();
+          }
+        }}
+      >
         <View style={styles.modalBackdrop}>
-          <View style={styles.modalContent}>
-            {/* Header del Modal */}
-            <View style={styles.modalHeader}>
-              <View style={styles.modalTitleRow}>
-                <Sparkles size={20} color="#765A00" />
-                <Text style={styles.modalTitle}>Objeto Detectado ({confidenceScore}%)</Text>
-              </View>
-              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalCloseBtn}>
-                <X size={20} color="#5E5E5E" />
-              </TouchableOpacity>
+          {isCroppingMode && (fullPhotoUri || activePhotoUri) ? (
+            <View style={styles.modalCropContainer}>
+              <ImageCropperView
+                imageUri={(fullPhotoUri || activePhotoUri) as string}
+                imageWidth={fullPhotoSize.width}
+                imageHeight={fullPhotoSize.height}
+                isBusy={isAnalyzing}
+                onCancel={() => setIsCroppingMode(false)}
+                onConfirmCrop={handleConfirmCrop}
+              />
             </View>
-
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
-              {/* Vista Previa de la Foto con Botón Opcional de Recorte */}
-              {activePhotoUri && (
-                <View style={styles.modalImageWrapper}>
-                  <Image source={{ uri: activePhotoUri }} style={styles.modalImage} />
-                  
-                  {/* Botón Flotante para Recortar Foto Opcionalmente */}
-                  <TouchableOpacity
-                    onPress={handleManualCrop}
-                    style={styles.modalCropActionBtn}
-                  >
-                    <Crop size={14} color="#1C1B1B" />
-                    <Text style={styles.modalCropActionText}>✂️ Recortar Área Específica</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    onPress={() => handleSpeak(wordInput)}
-                    style={styles.modalSpeechBtn}
-                  >
-                    <Volume2 size={20} color="#765A00" />
-                  </TouchableOpacity>
+          ) : (
+            <View style={styles.modalContent}>
+              {/* Header del Modal */}
+              <View style={styles.modalHeader}>
+                <View style={styles.modalTitleRow}>
+                  <Sparkles size={20} color="#765A00" />
+                  <Text style={styles.modalTitle}>Objeto Detectado ({confidenceScore}%)</Text>
                 </View>
-              )}
+                <TouchableOpacity onPress={handleCloseModal} style={styles.modalCloseBtn}>
+                  <X size={20} color="#5E5E5E" />
+                </TouchableOpacity>
+              </View>
+
+              <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
+                {/* Vista Previa de la Foto con Recorte Interactivo y Restaurar Original */}
+                {activePhotoUri && (
+                  <View style={styles.modalImageWrapper}>
+                    <Image
+                      source={{ uri: activePhotoUri }}
+                      style={styles.modalImage}
+                      resizeMode="contain"
+                    />
+
+                    {/* Botón Flotante para Abrir Recorte Interactivo */}
+                    <TouchableOpacity
+                      onPress={handleOpenCropper}
+                      style={styles.modalCropActionBtn}
+                    >
+                      <Crop size={14} color="#1C1B1B" />
+                      <Text style={styles.modalCropActionText}>✂️ Recortar Área</Text>
+                    </TouchableOpacity>
+
+                    {/* Restaurar Foto Completa si ya fue recortada */}
+                    {fullPhotoUri && activePhotoUri !== fullPhotoUri && (
+                      <TouchableOpacity
+                        onPress={handleRestoreOriginalPhoto}
+                        style={styles.modalRestoreBtn}
+                      >
+                        <RotateCcw size={13} color="#FFFFFF" />
+                        <Text style={styles.modalRestoreText}>Original</Text>
+                      </TouchableOpacity>
+                    )}
+
+                    <TouchableOpacity
+                      onPress={() => handleSpeak(wordInput)}
+                      style={styles.modalSpeechBtn}
+                    >
+                      <Volume2 size={20} color="#765A00" />
+                    </TouchableOpacity>
+                  </View>
+                )}
 
               {/* Selector Rápido de las 3 Mejores Detecciones de ML Kit */}
               {detectedCandidates.length > 0 && (
@@ -675,6 +795,18 @@ export const CameraViewfinder: React.FC = () => {
               </TouchableOpacity>
             </ScrollView>
           </View>
+          )}
+
+          {/* Overlay visible sobre el Modal al re-analizar un recorte */}
+          {isAnalyzing && (
+            <View style={styles.analyzingOverlay}>
+              <View style={styles.analyzingCard}>
+                <ActivityIndicator size="large" color="#E8B400" />
+                <Text style={styles.analyzingTitle}>{analyzingTitle}</Text>
+                <Text style={styles.analyzingSub}>{analyzingSub}</Text>
+              </View>
+            </View>
+          )}
         </View>
       </Modal>
     </View>
@@ -916,6 +1048,10 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#E0E0E0',
   },
+  modalCropContainer: {
+    height: '92%',
+    width: '100%',
+  },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -942,8 +1078,8 @@ const styles = StyleSheet.create({
   },
   modalImageWrapper: {
     width: '100%',
-    height: 170,
-    backgroundColor: '#F1EDEC',
+    height: 190,
+    backgroundColor: '#1C1B1B',
     borderRadius: 16,
     overflow: 'hidden',
     marginBottom: SPACING.md,
@@ -959,7 +1095,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     left: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    backgroundColor: 'rgba(255, 255, 255, 0.94)',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
@@ -973,6 +1109,25 @@ const styles = StyleSheet.create({
     color: '#1C1B1B',
     fontSize: 11,
     fontWeight: '800',
+  },
+  modalRestoreBtn: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'rgba(28, 27, 27, 0.82)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.25)',
+    gap: 5,
+  },
+  modalRestoreText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '700',
   },
   modalSpeechBtn: {
     position: 'absolute',
