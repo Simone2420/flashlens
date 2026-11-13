@@ -429,6 +429,8 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     setContextSentence('');
     setContextTranslation('');
     setGrammarFormula('');
+    setFormImageUri(null);
+    setFormImageSource('AUTO');
   };
 
   return (

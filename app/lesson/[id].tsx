@@ -211,7 +211,8 @@ export default function LessonScreen() {
             if (lessonPhase === 'THEORY' || lessonPhase === 'CHECKPOINT') {
               setLessonPhase('QUESTION');
             } else if (lessonPhase === 'SUMMARY') {
-              completeSublesson(node.id, activeSublesson.id, 100);
+              const { xpEarned } = completeSublesson(node.id, activeSublesson.id, 100);
+              if (xpEarned > 0) addXP(xpEarned);
               registerDailyActivity('LESSON');
               setLessonPhase('COMPLETE');
             }
@@ -261,7 +262,7 @@ export default function LessonScreen() {
   const currentQ: SublessonQuestionItem | undefined = currentQuestions[questionIdx];
 
   const handleEvaluateCurrent = () => {
-    if (!currentQ || isAnswered) return;
+    if (!currentQ || isAnswered || currentQ.type === 'MATCH_PAIRS') return;
 
     let correct = false;
 
@@ -329,7 +330,8 @@ export default function LessonScreen() {
         setCurrentExplanation(summaryExp);
         setLessonPhase('SUMMARY');
       } else {
-        completeSublesson(node.id, activeSublesson.id, 100);
+        const { xpEarned } = completeSublesson(node.id, activeSublesson.id, 100);
+        if (xpEarned > 0) addXP(xpEarned);
         registerDailyActivity('LESSON');
         setLessonPhase('COMPLETE');
       }
@@ -465,13 +467,19 @@ export default function LessonScreen() {
       {/* Footer de Acción Inferior */}
       <View style={[styles.footer, { paddingBottom: bottomPadding }]}>
         {!isAnswered ? (
-          <TouchableOpacity
-            activeOpacity={0.88}
-            onPress={handleEvaluateCurrent}
-            style={styles.actionBtn}
-          >
-            <Text style={styles.actionBtnText}>COMPROBAR</Text>
-          </TouchableOpacity>
+          currentQ?.type === 'MATCH_PAIRS' ? (
+            <View style={[styles.actionBtn, { opacity: 0.55 }]}>
+              <Text style={styles.actionBtnText}>EMPAREJA TODOS LOS PARES</Text>
+            </View>
+          ) : (
+            <TouchableOpacity
+              activeOpacity={0.88}
+              onPress={handleEvaluateCurrent}
+              style={styles.actionBtn}
+            >
+              <Text style={styles.actionBtnText}>COMPROBAR</Text>
+            </TouchableOpacity>
+          )
         ) : (
           <TouchableOpacity
             activeOpacity={0.88}

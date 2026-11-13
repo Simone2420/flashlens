@@ -126,7 +126,9 @@ export const useUserStore = create<UserState>()(
         set({ lives: updatedLives });
 
         // Sincronizar con widgets
-        const dailyXp = profile.lastDailyXpDate === new Date().toISOString().split('T')[0] ? (profile.dailyXp || 0) : 0;
+        const nowLocal = new Date();
+        const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+        const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
         widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
 
         // Programar notificación de recuperación completa teniendo en cuenta el corazón en curso

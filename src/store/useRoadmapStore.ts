@@ -112,6 +112,7 @@ export const useRoadmapStore = create<RoadmapState>()(
         const { nodes } = get();
         const updatedNodes = [...nodes];
         const requiredCount = newPace === 'FAST' ? 3 : newPace === 'MEDIUM' ? 4 : 5;
+        let anyNewlyCompleted = false;
 
         updatedNodes.forEach((node, idx) => {
           if (node.status === 'ACTIVE' && node.completedSublessons >= requiredCount) {
@@ -120,8 +121,23 @@ export const useRoadmapStore = create<RoadmapState>()(
               status: 'COMPLETED' as const,
               starsEarned: 3,
             };
+            anyNewlyCompleted = true;
           }
         });
+
+        // Si algún nodo se completó tras reducir el ritmo requerido, desbloquear sus nodos hijos
+        if (anyNewlyCompleted) {
+          const completedIds = updatedNodes.filter(n => n.status === 'COMPLETED').map(n => n.id);
+
+          updatedNodes.forEach((node, idx) => {
+            if (node.status === 'LOCKED') {
+              const allPrereqsMet = node.prerequisites.every(pid => completedIds.includes(pid));
+              if (allPrereqsMet) {
+                updatedNodes[idx] = { ...node, status: 'ACTIVE' as const };
+              }
+            }
+          });
+        }
 
         set({ nodes: updatedNodes });
       },

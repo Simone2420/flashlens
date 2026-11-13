@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   View,
   Text,
@@ -108,6 +108,10 @@ export default function AudioLabScreen() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [currentTextValue, setCurrentTextValue] = useState('');
+  const currentTextValueRef = useRef('');
+  useEffect(() => {
+    currentTextValueRef.current = currentTextValue;
+  }, [currentTextValue]);
   const [isSpeakingAudio, setIsSpeakingAudio] = useState(false);
   const [burstTimeLeft, setBurstTimeLeft] = useState(15);
   const [selectedBurstOption, setSelectedBurstOption] = useState<string | null>(null);
@@ -147,8 +151,8 @@ export default function AudioLabScreen() {
         setBurstTimeLeft(prev => {
           if (prev <= 1) {
             clearInterval(timer);
-            // Tiempo agotado en modo ráfaga
-            handleSubmitEvaluation(currentTextValue || 'timeout');
+            // Tiempo agotado en modo ráfaga: evaluar lo que el usuario haya alcanzado a escribir
+            handleSubmitEvaluation(currentTextValueRef.current || 'timeout');
             // En ritmos Lento y Medio de selección múltiple, auto-avanzar tras 1.2s para no quedar atrapado
             if (profile.learningPace === 'SLOW' || profile.learningPace === 'MEDIUM') {
               setTimeout(() => {

@@ -410,7 +410,7 @@ export default function HomeScreen() {
         >
           <Sparkles size={13} color={activeCardTypeFilter === 'ABSTRACT' ? '#1C1B1B' : '#5E5E5E'} />
           <Text style={[styles.deckTabText, activeCardTypeFilter === 'ABSTRACT' && styles.activeDeckTabText]}>
-            12 Abstractas
+            {cards.filter(c => c.cardType === 'ABSTRACT').length} Abstractas
           </Text>
         </TouchableOpacity>
       </View>

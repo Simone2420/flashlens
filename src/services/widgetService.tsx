@@ -238,7 +238,8 @@ class WidgetService {
       useUserStore.getState().checkLivesRegeneration();
       useUserStore.getState().checkStreakIntegrity();
       const state = useUserStore.getState();
-      const todayStr = new Date().toISOString().split('T')[0];
+      const nowLocal = new Date();
+      const todayStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
       const dailyXp = state.profile.lastDailyXpDate === todayStr ? (state.profile.dailyXp || 0) : 0;
       await this.syncWidgetData(
         state.profile.currentStreak,
