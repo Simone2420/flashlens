@@ -115,6 +115,19 @@ export default function AudioLabScreen() {
   const [isSpeakingAudio, setIsSpeakingAudio] = useState(false);
   const [burstTimeLeft, setBurstTimeLeft] = useState(15);
   const [selectedBurstOption, setSelectedBurstOption] = useState<string | null>(null);
+  const burstAdvanceTimerRef = useRef<any>(null);
+  const nextAudioTimerRef = useRef<any>(null);
+
+  const clearPendingAudioTimers = () => {
+    if (burstAdvanceTimerRef.current) {
+      clearTimeout(burstAdvanceTimerRef.current);
+      burstAdvanceTimerRef.current = null;
+    }
+    if (nextAudioTimerRef.current) {
+      clearTimeout(nextAudioTimerRef.current);
+      nextAudioTimerRef.current = null;
+    }
+  };
 
   const activeCard = sessionCards[currentCardIndex] || cards[0] || INITIAL_FLASHCARDS[0];
 
@@ -155,7 +168,8 @@ export default function AudioLabScreen() {
             handleSubmitEvaluation(currentTextValueRef.current || 'timeout');
             // En ritmos Lento y Medio de selección múltiple, auto-avanzar tras 1.2s para no quedar atrapado
             if (profile.learningPace === 'SLOW' || profile.learningPace === 'MEDIUM') {
-              setTimeout(() => {
+              if (burstAdvanceTimerRef.current) clearTimeout(burstAdvanceTimerRef.current);
+              burstAdvanceTimerRef.current = setTimeout(() => {
                 handleNextWord();
               }, 1200);
             }
@@ -178,6 +192,7 @@ export default function AudioLabScreen() {
       setShowNoLivesModal(true);
       return;
     }
+    clearPendingAudioTimers();
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const targetDeck = cards.length > 0 ? cards : [];
     startSession(targetDeck, selectedMode, selectedDirection);
@@ -187,13 +202,15 @@ export default function AudioLabScreen() {
     setSelectedBurstOption(null);
 
     if (targetDeck.length > 0) {
-      setTimeout(() => {
+      nextAudioTimerRef.current = setTimeout(() => {
         playTargetAudio(targetDeck[0], selectedMode, selectedDirection);
       }, 400);
     }
   };
 
   const handleExitSession = () => {
+    clearPendingAudioTimers();
+    Speech.stop();
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     resetSession();
     setIsPlaying(false);
@@ -203,6 +220,7 @@ export default function AudioLabScreen() {
 
   useEffect(() => {
     return () => {
+      clearPendingAudioTimers();
       Speech.stop();
     };
   }, []);
@@ -305,12 +323,14 @@ export default function AudioLabScreen() {
     handleSubmitEvaluation(option);
 
     // En Modo Ráfaga para ritmos Lento y Medio: avance automático fluido sin botón "Continuar"
-    setTimeout(() => {
+    if (burstAdvanceTimerRef.current) clearTimeout(burstAdvanceTimerRef.current);
+    burstAdvanceTimerRef.current = setTimeout(() => {
       handleNextWord();
     }, 600);
   };
 
   const handleNextWord = () => {
+    clearPendingAudioTimers();
     if (lives.currentLives <= 0) {
       setShowNoLivesModal(true);
       return;
@@ -321,10 +341,11 @@ export default function AudioLabScreen() {
 
     const hasMore = nextCard();
     if (hasMore) {
-      setTimeout(() => {
-        const nextIndex = currentCardIndex + 1;
-        if (sessionCards[nextIndex]) {
-          playTargetAudio(sessionCards[nextIndex]);
+      nextAudioTimerRef.current = setTimeout(() => {
+        const latestState = useAudioLabStore.getState();
+        const nextCardObj = latestState.sessionCards[latestState.currentCardIndex];
+        if (nextCardObj) {
+          playTargetAudio(nextCardObj);
         }
       }, 300);
     } else {

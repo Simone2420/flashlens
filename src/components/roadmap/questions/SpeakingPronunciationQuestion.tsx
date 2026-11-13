@@ -101,7 +101,7 @@ export const SpeakingPronunciationQuestion: React.FC<SpeakingPronunciationQuesti
         {recordedText.length > 0 && (
           <View style={styles.transcriptBox}>
             <Text style={styles.transcriptLabel}>Tu pronunciación detectada:</Text>
-            <Text style={styles.transcriptText}>"{recordedText}"</Text>
+            <Text style={styles.transcriptText}>{`"${recordedText}"`}</Text>
           </View>
         )}
       </View>

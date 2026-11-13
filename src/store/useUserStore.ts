@@ -160,7 +160,10 @@ export const useUserStore = create<UserState>()(
         };
 
         set({ lives: updatedLives });
-        widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+        const nowLocal = new Date();
+        const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+        const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
+        widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
       },
 
       refillLivesDemo: () => {
@@ -172,7 +175,10 @@ export const useUserStore = create<UserState>()(
           nextRegenerationAt: null,
         };
         set({ lives: fullLives });
-        widgetService.syncWidgetData(profile.currentStreak, fullLives, null as any, profile.xp);
+        const nowLocal = new Date();
+        const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+        const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
+        widgetService.syncWidgetData(profile.currentStreak, fullLives, null as any, dailyXp);
       },
 
       addXP: (amount: number) => {
@@ -219,7 +225,10 @@ export const useUserStore = create<UserState>()(
             currentStreak: newStreak,
             maxStreak: Math.max(state.profile.maxStreak, newStreak),
           };
-          widgetService.syncWidgetData(newStreak, state.lives, null as any, state.profile.xp);
+          const nowLocal = new Date();
+          const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+          const dailyXp = state.profile.lastDailyXpDate === todayLocalStr ? (state.profile.dailyXp || 0) : 0;
+          widgetService.syncWidgetData(newStreak, state.lives, null as any, dailyXp);
           return { profile: updatedProfile };
         });
       },
@@ -279,7 +288,8 @@ export const useUserStore = create<UserState>()(
           profile: updatedProfile,
           pendingCelebration: celebrationData,
         });
-        widgetService.syncWidgetData(newStreak, lives, null as any, updatedProfile.xp);
+        const dailyXp = updatedProfile.lastDailyXpDate === todayLocal ? (updatedProfile.dailyXp || 0) : 0;
+        widgetService.syncWidgetData(newStreak, lives, null as any, dailyXp);
 
         // Cancelar alertas nocturnas de racha para hoy
         notificationService.syncDailyNotificationSchedule().catch(() => {});
@@ -334,7 +344,10 @@ export const useUserStore = create<UserState>()(
         // Si hay racha positiva pero nunca hubo fecha registrada, corregir a 0
         if (!profile.lastStreakDate) {
           set({ profile: { ...profile, currentStreak: 0 } });
-          widgetService.syncWidgetData(0, lives, null as any, profile.xp || 0);
+          const nowLocal = new Date();
+          const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+          const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
+          widgetService.syncWidgetData(0, lives, null as any, dailyXp);
           return;
         }
 
@@ -364,6 +377,9 @@ export const useUserStore = create<UserState>()(
         }
 
         const now = Date.now();
+        const nowDate = new Date(now);
+        const todayLocalStr = `${nowDate.getFullYear()}-${String(nowDate.getMonth() + 1).padStart(2, '0')}-${String(nowDate.getDate()).padStart(2, '0')}`;
+        const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
         const intervalMs = 15 * 60 * 1000; // 15 minutos por cada corazón
 
         if (!lives.lastLifeLostAt) {
@@ -380,7 +396,7 @@ export const useUserStore = create<UserState>()(
               lastLifeLostAt: isFull ? null : new Date(nextTime + (livesToRegen - 1) * intervalMs).toISOString(),
             };
             set({ lives: updatedLives });
-            widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+            widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
             return;
           }
 
@@ -396,7 +412,7 @@ export const useUserStore = create<UserState>()(
             nextRegenerationAt: nextIso,
           };
           set({ lives: updatedLives });
-          widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+          widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
           return;
         }
 
@@ -424,7 +440,7 @@ export const useUserStore = create<UserState>()(
           };
 
           set({ lives: updatedLives });
-          widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, profile.xp);
+          widgetService.syncWidgetData(profile.currentStreak, updatedLives, null as any, dailyXp);
         }
       },
 

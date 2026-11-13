@@ -127,7 +127,7 @@ export default function DiagnosticScreen() {
       });
 
       const percentage = Math.round((correctCount / questions.length) * 100);
-      const diagnosedLevel = percentage >= 75 ? 'A2' : percentage >= 40 ? 'A1' : 'A0';
+      const diagnosedLevel = percentage >= 75 ? 'A2' : 'A1';
       const recommendedPace = percentage >= 75 ? 'FAST' : percentage >= 40 ? 'MEDIUM' : 'SLOW';
 
       router.replace({

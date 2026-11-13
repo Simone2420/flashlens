@@ -139,7 +139,7 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
             {mainPitfall && (
               <View style={styles.dontSayBox}>
                 <View style={styles.dontSayRow}>
-                  <Text style={styles.dontSayLabel}>❌ Don't say:</Text>
+                  <Text style={styles.dontSayLabel}>{"❌ Don't say:"}</Text>
                   <Text style={styles.dontSayText}>{mainPitfall.wrongExample}</Text>
                 </View>
                 <View style={styles.sayRow}>

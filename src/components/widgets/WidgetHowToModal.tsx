@@ -78,10 +78,10 @@ export const WidgetHowToModal: React.FC<WidgetHowToModalProps> = ({
               <View style={styles.stepContent}>
                 <View style={styles.stepHeader}>
                   <Layers size={18} color="#E8B400" />
-                  <Text style={styles.stepTitle}>Busca "FlashLens"</Text>
+                  <Text style={styles.stepTitle}>{'Busca "FlashLens"'}</Text>
                 </View>
                 <Text style={styles.stepDesc}>
-                  Toca la opción <Text style={styles.boldText}>"Widgets"</Text> que aparece abajo, desplázate hasta encontrar <Text style={styles.boldText}>FlashLens</Text> y elige tu formato preferido.
+                  Toca la opción <Text style={styles.boldText}>{'"Widgets"'}</Text> que aparece abajo, desplázate hasta encontrar <Text style={styles.boldText}>FlashLens</Text> y elige tu formato preferido.
                 </Text>
               </View>
             </View>

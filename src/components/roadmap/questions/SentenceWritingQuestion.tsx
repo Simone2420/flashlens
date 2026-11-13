@@ -117,7 +117,7 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
 
         {targetSentenceSpanish ? (
           <View style={styles.spanishSentenceContainer}>
-            <Text style={styles.spanishSentenceText}>"{targetSentenceSpanish}"</Text>
+            <Text style={styles.spanishSentenceText}>{`"${targetSentenceSpanish}"`}</Text>
             <Text style={styles.spanishSentenceSub}>
               Toca las fichas de abajo en el orden correcto en inglés:
             </Text>

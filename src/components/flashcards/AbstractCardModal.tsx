@@ -476,7 +476,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
               // TAB 1: DICTADO EN ESPAÑOL / VOZ INTELIGENTE
               <View style={styles.voiceSection}>
                 <Text style={styles.sectionSubtitle}>
-                  Di o escribe una frase en español (ej. *"me quedé sin dinero"*, *"por si acaso"*).
+                  {'Di o escribe una frase en español (ej. "me quedé sin dinero", "por si acaso").'}
                 </Text>
 
                 <View style={styles.voiceInputCard}>

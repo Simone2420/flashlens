@@ -362,7 +362,7 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                 ) : null}
                 {card.facilitatedPhonetics ? (
                   <View style={styles.facilitatedBadge}>
-                    <Text style={styles.facilitatedText}>🗣️ "{card.facilitatedPhonetics}"</Text>
+                    <Text style={styles.facilitatedText}>{`🗣️ "${card.facilitatedPhonetics}"`}</Text>
                   </View>
                 ) : null}
               </View>
@@ -409,9 +409,9 @@ export const FlipCard3D: React.FC<FlipCard3DProps> = ({
                       <Volume2 size={15} color={COLORS.onSurfaceVariant} />
                     </TouchableOpacity>
                   </View>
-                  <Text style={styles.contextSentence}>"{card.contextSentence}"</Text>
+                  <Text style={styles.contextSentence}>{`"${card.contextSentence}"`}</Text>
                   {card.contextTranslation ? (
-                    <Text style={styles.contextTranslation}>"{card.contextTranslation}"</Text>
+                    <Text style={styles.contextTranslation}>{`"${card.contextTranslation}"`}</Text>
                   ) : null}
                 </View>
               ) : null}

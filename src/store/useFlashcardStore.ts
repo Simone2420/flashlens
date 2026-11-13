@@ -170,8 +170,10 @@ export const useFlashcardStore = create<FlashcardState>()(
           try {
             const streak = userState?.profile?.currentStreak ?? 0;
             const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
-            const xp = userState?.profile?.xp ?? 0;
-            widgetService.syncWidgetData(streak, lives, updatedCard, xp);
+            const nowLocal = new Date();
+            const todayStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+            const dailyXp = userState?.profile?.lastDailyXpDate === todayStr ? (userState?.profile?.dailyXp || 0) : 0;
+            widgetService.syncWidgetData(streak, lives, updatedCard, dailyXp);
           } catch (e) {
             console.warn('Error sincronizando widget al actualizar tarjeta:', e);
           }
@@ -197,8 +199,10 @@ export const useFlashcardStore = create<FlashcardState>()(
           try {
             const streak = userState?.profile?.currentStreak ?? 0;
             const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
-            const xp = userState?.profile?.xp ?? 0;
-            widgetService.syncWidgetData(streak, lives, newCard, xp);
+            const nowLocal = new Date();
+            const todayStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+            const dailyXp = userState?.profile?.lastDailyXpDate === todayStr ? (userState?.profile?.dailyXp || 0) : 0;
+            widgetService.syncWidgetData(streak, lives, newCard, dailyXp);
           } catch (e) {
             console.warn('Error sincronizando widget al añadir tarjeta:', e);
           }
@@ -243,8 +247,10 @@ export const useFlashcardStore = create<FlashcardState>()(
             const userState = useUserStore.getState();
             const streak = userState?.profile?.currentStreak ?? 0;
             const lives = userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null };
-            const xp = userState?.profile?.xp ?? 0;
-            widgetService.syncWidgetData(streak, lives, null as any, xp);
+            const nowLocal = new Date();
+            const todayStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+            const dailyXp = userState?.profile?.lastDailyXpDate === todayStr ? (userState?.profile?.dailyXp || 0) : 0;
+            widgetService.syncWidgetData(streak, lives, null as any, dailyXp);
           } catch (e) {
             console.warn('Error sincronizando widget al alternar favorita:', e);
           }
@@ -313,11 +319,14 @@ export const useFlashcardStore = create<FlashcardState>()(
           if (rating === 'HARD' || rating === 'AGAIN') {
             try {
               const userState = useUserStore.getState();
+              const nowLocal = new Date();
+              const todayStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
+              const dailyXp = userState?.profile?.lastDailyXpDate === todayStr ? (userState?.profile?.dailyXp || 0) : 0;
               widgetService.syncWidgetData(
                 userState?.profile?.currentStreak ?? 0,
                 userState?.lives ?? { currentLives: 5, maxLives: 5, lastLifeLostAt: null, nextRegenerationAt: null },
                 updatedCard,
-                userState?.profile?.xp ?? 0
+                dailyXp
               );
             } catch {}
           }

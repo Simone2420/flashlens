@@ -46,7 +46,8 @@ export default function DiagnosticResultScreen() {
   const total = Number(params.total) || 25;
   const correct = Number(params.correct) || 18;
   const percentage = Number(params.percentage) || 72;
-  const level: CEFRLevel = (params.level as CEFRLevel) || 'A1';
+  const rawLevel = params.level as string | undefined;
+  const level: CEFRLevel = rawLevel === 'A0' || !rawLevel ? 'A1' : (rawLevel as CEFRLevel);
   const defaultPace: LearningPace = (params.pace as LearningPace) || 'MEDIUM';
 
   const [selectedPace, setSelectedPace] = useState<LearningPace>(defaultPace);
