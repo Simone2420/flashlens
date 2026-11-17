@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Animated,
+  TextInput,
 } from 'react-native';
-import { Volume2, Mic, MicOff, CheckCircle2, Sparkles } from 'lucide-react-native';
+import { Volume2, Mic, MicOff, Keyboard } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
 import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../../constants/theme';
@@ -28,9 +28,20 @@ export const SpeakingPronunciationQuestion: React.FC<SpeakingPronunciationQuesti
   disabled = false,
 }) => {
   const [isListening, setIsListening] = useState(false);
+  const [showManualFallback, setShowManualFallback] = useState(false);
+
+  useEffect(() => {
+    setIsListening(false);
+    setShowManualFallback(false);
+    return () => {
+      Speech.stop();
+      speechToTextService.stopListening();
+    };
+  }, [targetSentence, prompt]);
 
   const handleSpeak = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Speech.stop();
     Speech.speak(targetSentence, { language: 'en-US', rate: 0.85 });
   };
 
@@ -51,12 +62,16 @@ export const SpeakingPronunciationQuestion: React.FC<SpeakingPronunciationQuesti
             setIsListening(false);
           }
         },
-        onError: () => setIsListening(false),
+        onError: () => {
+          setIsListening(false);
+          setShowManualFallback(true);
+        },
         onEnd: () => setIsListening(false),
       });
 
       if (!started) {
         setIsListening(false);
+        setShowManualFallback(true);
       }
     }
   };
@@ -98,10 +113,40 @@ export const SpeakingPronunciationQuestion: React.FC<SpeakingPronunciationQuesti
         </View>
 
         {/* Transcripción Detectada */}
-        {recordedText.length > 0 && (
+        {recordedText.length > 0 && !showManualFallback && (
           <View style={styles.transcriptBox}>
             <Text style={styles.transcriptLabel}>Tu pronunciación detectada:</Text>
             <Text style={styles.transcriptText}>{`"${recordedText}"`}</Text>
+          </View>
+        )}
+
+        {/* Alternativa de Accesibilidad si el usuario no puede hablar o el micrófono no está disponible */}
+        {!disabled && (
+          <TouchableOpacity
+            activeOpacity={0.75}
+            onPress={() => setShowManualFallback(prev => !prev)}
+            style={styles.fallbackToggleBtn}
+          >
+            <Keyboard size={14} color="#765A00" />
+            <Text style={styles.fallbackToggleText}>
+              {showManualFallback
+                ? 'Ocultar escritura manual'
+                : '¿No puedes hablar ahora? Practicar escribiendo'}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {showManualFallback && (
+          <View style={styles.manualFallbackBox}>
+            <TextInput
+              style={styles.manualFallbackInput}
+              placeholder="Escribe la frase en inglés aquí..."
+              placeholderTextColor="#747878"
+              value={recordedText}
+              onChangeText={onRecordResult}
+              editable={!disabled}
+              autoCapitalize="none"
+            />
           </View>
         )}
       </View>
@@ -200,5 +245,36 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     color: '#1C1B1B',
+  },
+  fallbackToggleBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 10,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    backgroundColor: '#FFF9E6',
+  },
+  fallbackToggleText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#765A00',
+  },
+  manualFallbackBox: {
+    width: '100%',
+    marginTop: 10,
+  },
+  manualFallbackInput: {
+    width: '100%',
+    backgroundColor: '#F8FAFC',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 14,
+    color: '#1C1B1B',
+    fontWeight: '600',
   },
 });

@@ -49,7 +49,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
       "computador",
       "laptop",
       "computadora",
-      "computador portátil"
+      "computador portátil",
+      "computadora portátil"
     ],
     "minInputLength": 6,
     "displayTranslation": "Portátil / Computadora",
@@ -79,7 +80,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
       "mochila",
       "morral",
       "bolso",
-      "bulto"
+      "bulto",
+      "mochila / morral"
     ],
     "minInputLength": 5,
     "displayTranslation": "Mochila / Morral",
@@ -138,7 +140,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "acceptedTranslations": [
       "aunque",
       "a pesar de que",
-      "si bien"
+      "si bien",
+      "aunque / a pesar de que"
     ],
     "minInputLength": 6,
     "displayTranslation": "Aunque / A pesar de que",
@@ -168,7 +171,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
       "agotado",
       "exhausto",
       "muy cansado",
-      "cansado"
+      "cansado",
+      "agotado / exhausto"
     ],
     "minInputLength": 7,
     "displayTranslation": "Agotado / Exhausto",
@@ -197,7 +201,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "acceptedTranslations": [
       "rendirse",
       "abandonar",
-      "darse por vencido"
+      "darse por vencido",
+      "rendirse / darse por vencido"
     ],
     "minInputLength": 8,
     "displayTranslation": "Rendirse / Darse por vencido",
@@ -226,7 +231,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     "acceptedTranslations": [
       "en realidad",
       "de hecho",
-      "realmente"
+      "realmente",
+      "en realidad / de hecho"
     ],
     "minInputLength": 9,
     "displayTranslation": "En realidad / De hecho",
@@ -257,7 +263,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
       "solia",
       "acostumbraba",
       "antes hacía",
-      "antes hacia"
+      "antes hacia",
+      "solía (hábito pasado)"
     ],
     "minInputLength": 5,
     "displayTranslation": "Solía (hábito pasado)",
@@ -1213,23 +1220,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She is a doctor and they are engineers.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Ella es médica y ellos son ingenieros.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_2_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Is very cold today / Am from Cali",
-                "correctExample": "It is very cold today / I am from Cali",
-                "fastPill": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
-                "mediumExplanation": "A diferencia del español (\"soy estudiante\"), en inglés se exige el sujeto explícito (\"I am a student\"). Usa \"It\" para objetos singulares y \"They\" para plurales.",
-                "slowDeepDive": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_2-1-2",
@@ -1249,13 +1246,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We are happy because they are here.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Estamos felices porque ellos están aquí.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_2_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Is very cold today / Am from Cali",
+                "correctExample": "It is very cold today / I am from Cali",
+                "fastPill": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
+                "mediumExplanation": "A diferencia del español (\"soy estudiante\"), en inglés se exige el sujeto explícito (\"I am a student\"). Usa \"It\" para objetos singulares y \"They\" para plurales.",
+                "slowDeepDive": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_2-1-3",
@@ -1267,7 +1274,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)\n2. Plural: We (nosotros), You (ustedes), They (ellos/ellas)\n3. Regla: El pronombre sujeto es OBLIGATORIO en toda oración.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Pronombres Sujeto en Inglés.",
             "conceptBreakdown": "Recuerda la regla central: 1. Singular: I (yo), You (tú/usted), He (él), She (ella), It (cosa/animal)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en inglés no existen oraciones con sujeto tácito. Siempre debes incluir \"I\", \"He\", \"It\", etc.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -1372,23 +1379,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We are students and we're happy.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Nosotros somos estudiantes y estamos felices.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_2_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I have 25 years old",
-                "correctExample": "I am 25 years old / I'm 25",
-                "fastPill": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
-                "mediumExplanation": "En inglés hablado se usan casi siempre las contracciones con apóstrofo ('m, 's, 're).",
-                "slowDeepDive": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_2-2-2",
@@ -1408,13 +1405,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He's my best friend and he's very kind.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Él es mi mejor amigo y es muy amable.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_2_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have 25 years old",
+                "correctExample": "I am 25 years old / I'm 25",
+                "fastPill": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
+                "mediumExplanation": "En inglés hablado se usan casi siempre las contracciones con apóstrofo ('m, 's, 're).",
+                "slowDeepDive": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\"."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_2-2-3",
@@ -1426,7 +1433,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I am ➔ I'm (Soy / Estoy)\n2. He / She / It is ➔ He's / She's / It's\n3. You / We / They are ➔ You're / We're / They're\n4. Edad: I am 25 years old (con To Be)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbo To Be Afirmativo & Contracciones.",
             "conceptBreakdown": "Recuerda la regla central: 1. I am ➔ I'm (Soy / Estoy)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en inglés la edad se expresa exclusivamente con el verbo To Be (\"I am 20 years old\"), nunca con \"have\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -1531,23 +1538,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I'm not tired and they aren't busy.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "No estoy cansado y ellos no están ocupados.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_2_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "She no is my teacher / I no am ready",
-                "correctExample": "She is not my teacher / I am not ready",
-                "fastPill": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
-                "mediumExplanation": "En inglés no decimos \"She no is here\". Decimos \"She is NOT here\" o \"She isn't here\".",
-                "slowDeepDive": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_2-3-2",
@@ -1567,13 +1564,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She isn't at work today.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Ella no está en el trabajo hoy.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_2_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "She no is my teacher / I no am ready",
+                "correctExample": "She is not my teacher / I am not ready",
+                "fastPill": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
+                "mediumExplanation": "En inglés no decimos \"She no is here\". Decimos \"She is NOT here\" o \"She isn't here\".",
+                "slowDeepDive": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_2-3-3",
@@ -1585,7 +1592,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I am not ➔ I'm not\n2. He / She / It is not ➔ He isn't / She isn't\n3. You / We / They are not ➔ We aren't / They aren't",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Verbo To Be Negativo (Isn't / Aren't).",
             "conceptBreakdown": "Recuerda la regla central: 1. I am not ➔ I'm not",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que la partícula \"not\" va después del verbo To Be, nunca antes.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -1690,23 +1697,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Is she a student at this university?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Es ella estudiante en esta universidad?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_2_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Are you ready? - Yes, I'm",
-                "correctExample": "Are you ready? - Yes, I am",
-                "fastPill": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
-                "mediumExplanation": "Afirmativo: \"You are ready\". Pregunta: \"Are you ready?\". Responde con respuestas cortas.",
-                "slowDeepDive": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\")."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_2-4-2",
@@ -1726,13 +1723,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Are you ready to start the class?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿Estás listo para empezar la clase?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_2_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Are you ready? - Yes, I'm",
+                "correctExample": "Are you ready? - Yes, I am",
+                "fastPill": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
+                "mediumExplanation": "Afirmativo: \"You are ready\". Pregunta: \"Are you ready?\". Responde con respuestas cortas.",
+                "slowDeepDive": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\")."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_2-4-3",
@@ -1744,7 +1751,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Are you happy? ➔ Yes, I am. / No, I'm not.\n2. Is he your brother? ➔ Yes, he is. / No, he isn't.\n3. Regla: Nunca contraer en respuestas cortas afirmativas (Yes, I am).",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Preguntas con To Be & Respuestas Cortas.",
             "conceptBreakdown": "Recuerda la regla central: 1. Are you happy? ➔ Yes, I am. / No, I'm not.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se usan contracciones en respuestas cortas afirmativas: di \"Yes, I am\" (no \"Yes, I'm\") y \"Yes, he is\" (no \"Yes, he's\").",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -1849,23 +1856,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This is my computer and she is an architect.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Esta es mi computadora y ella es arquitecta.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_2_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "He is doctor / I am engineer",
-                "correctExample": "He is a doctor / I am an engineer",
-                "fastPill": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
-                "mediumExplanation": "En inglés se usa \"a/an\" antes de profesiones: \"I am A teacher\", \"He is AN engineer\".",
-                "slowDeepDive": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_2-5-2",
@@ -1885,13 +1882,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This is my phone and these are my keys.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Este es mi teléfono y estas son mis llaves.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_2_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He is doctor / I am engineer",
+                "correctExample": "He is a doctor / I am an engineer",
+                "fastPill": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
+                "mediumExplanation": "En inglés se usa \"a/an\" antes de profesiones: \"I am A teacher\", \"He is AN engineer\".",
+                "slowDeepDive": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_2-5-3",
@@ -1903,7 +1910,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)\n2. These (estos/estas - cerca plural) | Those (esos/aquellos - lejos plural)\n3. Profesiones: a teacher / an engineer (artículo obligatorio)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Profesiones & Demostrativos (This / That / These / Those).",
             "conceptBreakdown": "Recuerda la regla central: 1. This (este/esta - cerca singular) | That (ese/aquel - lejos singular)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en inglés es obligatorio usar \"a\" o \"an\" antes de cualquier profesión singular.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2026,23 +2033,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The teacher has a book and an eraser.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El profesor tiene un libro y un borrador.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_3_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "a hour / an university",
-                "correctExample": "an hour / a university",
-                "fastPill": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
-                "mediumExplanation": "La regla de \"a\" o \"an\" depende del sonido inicial de la palabra, no solo de la letra escrita.",
-                "slowDeepDive": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_3-1-2",
@@ -2062,13 +2059,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I have an idea and a great project.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Tengo una idea y un gran proyecto.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_3_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "a hour / an university",
+                "correctExample": "an hour / a university",
+                "fastPill": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
+                "mediumExplanation": "La regla de \"a\" o \"an\" depende del sonido inicial de la palabra, no solo de la letra escrita.",
+                "slowDeepDive": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_3-1-3",
@@ -2080,7 +2087,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. A + sonido consonante: a book, a laptop, a university (/juː/)\n2. An + sonido vocal: an apple, an eraser, an hour (h muda)\n3. The: el/la/los/las para objetos específicos conocidos",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Artículos Indefinidos (A / An) vs Definido (The).",
             "conceptBreakdown": "Recuerda la regla central: 1. A + sonido consonante: a book, a laptop, a university (/juː/)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que palabras como \"hour\" llevan \"an\" por tener h muda (an hour), mientras que \"university\" lleva \"a\" por sonar /juː/ (a university).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2185,23 +2192,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The boys are reading three interesting books.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Los niños están leyendo tres libros interesantes.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_3_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "citys / watchs",
-                "correctExample": "cities / watches",
-                "fastPill": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
-                "mediumExplanation": "Los plurales regulares modifican su terminación según las letras finales de la palabra.",
-                "slowDeepDive": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_3-2-2",
@@ -2221,13 +2218,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "There are two boxes and four glasses on the table.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Hay dos cajas y cuatro vasos sobre la mesa.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_3_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "citys / watchs",
+                "correctExample": "cities / watches",
+                "fastPill": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
+                "mediumExplanation": "Los plurales regulares modifican su terminación según las letras finales de la palabra.",
+                "slowDeepDive": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_3-2-3",
@@ -2239,7 +2246,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Regla general: book ➔ books, car ➔ cars\n2. Tras -ch, -sh, -s, -x, -z: watch ➔ watches, box ➔ boxes\n3. Consonante + y: city ➔ cities, dictionary ➔ dictionaries",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Plurales Regulares (-s, -es, -ies).",
             "conceptBreakdown": "Recuerda la regla central: 1. Regla general: book ➔ books, car ➔ cars",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que si la \"y\" va precedida de vocal (boy, day), solo se añade -s (boys, days).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2344,23 +2351,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Three men and two women are in the office.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Tres hombres y dos mujeres están en la oficina.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_3_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "The childrens are playing / Two persons",
-                "correctExample": "The children are playing / Two people",
-                "fastPill": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
-                "mediumExplanation": "Memoriza estas formas irregulares esenciales en el vocabulario cotidiano.",
-                "slowDeepDive": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_3-3-2",
@@ -2380,13 +2377,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The children have clean hands and feet.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los niños tienen las manos y los pies limpios.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_3_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The childrens are playing / Two persons",
+                "correctExample": "The children are playing / Two people",
+                "fastPill": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
+                "mediumExplanation": "Memoriza estas formas irregulares esenciales en el vocabulario cotidiano.",
+                "slowDeepDive": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_3-3-3",
@@ -2398,7 +2405,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. man ➔ men | woman ➔ women\n2. child ➔ children | person ➔ people\n3. foot ➔ feet | tooth ➔ teeth",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Plurales Irregulares (Man/Men, Child/Children).",
             "conceptBreakdown": "Recuerda la regla central: 1. man ➔ men | woman ➔ women",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que decir \"childrens\" o \"peoples\" es incorrecto porque \"children\" y \"people\" ya son plurales.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2503,23 +2510,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Put your laptop and notebook in your backpack.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Pon tu portátil y cuaderno en tu mochila.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_3_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I put my books in the charge",
-                "correctExample": "I put my books in the backpack",
-                "fastPill": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
-                "mediumExplanation": "Vocabulario práctico para describir tus pertenencias y herramientas de trabajo.",
-                "slowDeepDive": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_3-4-2",
@@ -2539,13 +2536,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My backpack is on the desk next to the computer.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mi mochila está sobre el escritorio junto a la computadora.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_3_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I put my books in the charge",
+                "correctExample": "I put my books in the backpack",
+                "fastPill": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
+                "mediumExplanation": "Vocabulario práctico para describir tus pertenencias y herramientas de trabajo.",
+                "slowDeepDive": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_3-4-3",
@@ -2557,7 +2564,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Escuela: backpack, notebook, pencil, desk, whiteboard\n2. Tecnología: laptop, smartphone, charger, headphones, screen",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Objetos del Aula & Tecnología.",
             "conceptBreakdown": "Recuerda la regla central: 1. Escuela: backpack, notebook, pencil, desk, whiteboard",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"backpack\" significa mochila/morral y \"charger\" es el cargador de batería.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2662,23 +2669,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The book is on the table and the pen is in the bag.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El libro está sobre la mesa y el bolígrafo está en el bolso.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_3_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "The book is in the table",
-                "correctExample": "The book is on the table",
-                "fastPill": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
-                "mediumExplanation": "Usa \"in\" para contenedores, \"on\" para superficies y \"under\" para posiciones inferiores.",
-                "slowDeepDive": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_3-5-2",
@@ -2698,13 +2695,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The shoes are under the chair next to the door.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los zapatos están debajo de la silla junto a la puerta.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_3_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The book is in the table",
+                "correctExample": "The book is on the table",
+                "fastPill": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
+                "mediumExplanation": "Usa \"in\" para contenedores, \"on\" para superficies y \"under\" para posiciones inferiores.",
+                "slowDeepDive": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\"."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_3-5-3",
@@ -2716,7 +2723,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. In: dentro de un espacio cerrado (in the bag, in the room)\n2. On: sobre una superficie (on the desk, on the wall)\n3. Under: debajo de (under the bed)\n4. Next to: al lado de (next to the door)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preposiciones de Lugar: In, On, Under, Next to.",
             "conceptBreakdown": "Recuerda la regla central: 1. In: dentro de un espacio cerrado (in the bag, in the room)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que para objetos sobre una mesa o escritorio siempre usamos \"on\" (on the desk), no \"in\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2839,23 +2846,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She wakes up early and drinks hot coffee.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Ella se despierta temprano y toma café caliente.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_4_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "He study English every day",
-                "correctExample": "He studies English every day",
-                "fastPill": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
-                "mediumExplanation": "Usa presente simple para hábitos y verdades universales.",
-                "slowDeepDive": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_4-1-2",
@@ -2875,13 +2872,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My brother plays soccer every Saturday morning.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mi hermano juega fútbol todos los sábados por la mañana.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_4_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He study English every day",
+                "correctExample": "He studies English every day",
+                "fastPill": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
+                "mediumExplanation": "Usa presente simple para hábitos y verdades universales.",
+                "slowDeepDive": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_4-1-3",
@@ -2893,7 +2900,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I / You / We / They + base verb (I work, We play)\n2. He / She / It + verb(-s/-es) ➔ He works, She watches, He studies\n3. Regla: Solo la 3ra persona singular añade -s/-es en afirmativo.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Rutinas Diarias & 3ra Persona (-s / -es).",
             "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They + base verb (I work, We play)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que los verbos terminados en consonante + y cambian a -ies en tercera persona (study ➔ studies, fly ➔ flies).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -2998,23 +3005,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He doesn't eat meat because he is vegetarian.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él no come carne porque es vegetariano.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_4_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "He doesn't works / He no works",
-                "correctExample": "He doesn't work",
-                "fastPill": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
-                "mediumExplanation": "El auxiliar \"doesn't\" absorbe la tercera persona, por lo que el verbo vuelve a su forma simple.",
-                "slowDeepDive": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_4-2-2",
@@ -3034,13 +3031,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "They don't work on weekends.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Ellos no trabajan los fines de semana.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_4_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He doesn't works / He no works",
+                "correctExample": "He doesn't work",
+                "fastPill": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
+                "mediumExplanation": "El auxiliar \"doesn't\" absorbe la tercera persona, por lo que el verbo vuelve a su forma simple.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_4-2-3",
@@ -3052,7 +3059,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I / You / We / They + don't + base verb (We don't work)\n2. He / She / It + doesn't + base verb (He doesn't work)\n3. Regla: Con \"doesn't\", el verbo principal NO lleva -s.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Negación: Don't vs Doesn't.",
             "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They + don't + base verb (We don't work)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"doesn't works\"; siempre es \"doesn't work\" con el verbo en infinitivo sin to.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3157,23 +3164,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Do you live in Colombia and does he work here?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Vives en Colombia y él trabaja aquí?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_4_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Does she lives in Bogota?",
-                "correctExample": "Does she live in Bogota?",
-                "fastPill": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
-                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Does\" el verbo principal va en forma base sin -s.",
-                "slowDeepDive": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_4-3-2",
@@ -3193,13 +3190,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Does your sister live in this apartment?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿Tu hermana vive en este apartamento?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_4_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Does she lives in Bogota?",
+                "correctExample": "Does she live in Bogota?",
+                "fastPill": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
+                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Does\" el verbo principal va en forma base sin -s.",
+                "slowDeepDive": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_4-3-3",
@@ -3211,7 +3218,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Do + I/you/we/they + base verb? (Do you work?)\n2. Does + he/she/it + base verb? (Does he work?)\n3. Respuestas: Yes, I do. / No, I don't. | Yes, he does. / No, he doesn't.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Preguntas con Do y Does.",
             "conceptBreakdown": "Recuerda la regla central: 1. Do + I/you/we/they + base verb? (Do you work?)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que el orden de pregunta en presente es: Auxiliar (Do/Does) + Sujeto + Verbo Base.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3316,23 +3323,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I usually drink water and I never smoke.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Usualmente bebo agua y nunca fumo.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_4_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I don't never eat meat / She is late always",
-                "correctExample": "I never eat meat / She is always late",
-                "fastPill": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
-                "mediumExplanation": "Los adverbios de frecuencia preceden a los verbos ordinarios pero siguen al verbo To Be.",
-                "slowDeepDive": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_4-4-2",
@@ -3352,13 +3349,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She always brushes her teeth before going to bed.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Ella siempre se cepilla los dientes antes de acostarse.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_4_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I don't never eat meat / She is late always",
+                "correctExample": "I never eat meat / She is always late",
+                "fastPill": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
+                "mediumExplanation": "Los adverbios de frecuencia preceden a los verbos ordinarios pero siguen al verbo To Be.",
+                "slowDeepDive": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_4-4-3",
@@ -3370,7 +3377,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)\n2. Posición: Antes del verbo principal (I always eat)\n3. Posición con To Be: Después del verbo To Be (I am always happy)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Adverbios de Frecuencia (Always, Usually, Never).",
             "conceptBreakdown": "Recuerda la regla central: 1. Always (100%) > Usually (80%) > Sometimes (50%) > Never (0%)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"never\" ya es negativo, por lo que nunca debe combinarse con don't/doesn't (doble negación).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3475,23 +3482,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We go to the gym on Mondays in the afternoon.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Vamos al gimnasio los lunes por la tarde.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_4_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "in the night / in Monday",
-                "correctExample": "at night / on Monday",
-                "fastPill": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
-                "mediumExplanation": "Preposiciones temporales indispensables para coordinar horarios y rutinas.",
-                "slowDeepDive": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_4-5-2",
@@ -3511,13 +3508,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I read a book at night before sleeping.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Leo un libro por la noche antes de dormir.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_4_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "in the night / in Monday",
+                "correctExample": "at night / on Monday",
+                "fastPill": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
+                "mediumExplanation": "Preposiciones temporales indispensables para coordinar horarios y rutinas.",
+                "slowDeepDive": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\"."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_4-5-3",
@@ -3529,7 +3536,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. In: in the morning, in the afternoon, in the evening\n2. At: at night, at noon, at 8:00 AM\n3. On: on Monday, on Fridays, on the weekend",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Expresiones Temporales: In the morning, On Mondays.",
             "conceptBreakdown": "Recuerda la regla central: 1. In: in the morning, in the afternoon, in the evening",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que decimos \"in the morning\" pero \"at night\". Con días de la semana siempre se usa \"on\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3652,23 +3659,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My brother's wife is very friendly and smart.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "La esposa de mi hermano es muy amable e inteligente.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_5_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "The house of my sister / My parents are my uncles",
-                "correctExample": "My sister's house / My parents are my mother and father",
-                "fastPill": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
-                "mediumExplanation": "En inglés la posesión se expresa colocando 's al final del poseedor.",
-                "slowDeepDive": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_5-1-2",
@@ -3688,13 +3685,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My parents live in a big house with my sister.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mis padres viven en una casa grande con mi hermana.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_5_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The house of my sister / My parents are my uncles",
+                "correctExample": "My sister's house / My parents are my mother and father",
+                "fastPill": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
+                "mediumExplanation": "En inglés la posesión se expresa colocando 's al final del poseedor.",
+                "slowDeepDive": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_5-1-3",
@@ -3706,7 +3713,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Familia: parents (padres), siblings (hermanos), children (hijos)\n2. Posesivo: Carlos's car (el carro de Carlos), My sister's house",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Miembros de la Familia & Posesivo ('s).",
             "conceptBreakdown": "Recuerda la regla central: 1. Familia: parents (padres), siblings (hermanos), children (hijos)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"parents\" significa padres (padre y madre), no parientes (relatives).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3811,23 +3818,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The refrigerator and the stove are in the kitchen.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El refrigerador y la estufa están en la cocina.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_5_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I sleep in the living room bed",
-                "correctExample": "I sleep in the bedroom",
-                "fastPill": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
-                "mediumExplanation": "Vocabulario esencial para describir tu hogar y alquiler de viviendas.",
-                "slowDeepDive": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_5-2-2",
@@ -3847,13 +3844,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Our apartment has two bedrooms and a nice balcony.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Nuestro apartamento tiene dos habitaciones y un bonito balcón.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_5_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I sleep in the living room bed",
+                "correctExample": "I sleep in the bedroom",
+                "fastPill": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
+                "mediumExplanation": "Vocabulario esencial para describir tu hogar y alquiler de viviendas.",
+                "slowDeepDive": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_5-2-3",
@@ -3865,7 +3872,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Habitaciones: kitchen, living room, bedroom, bathroom, garden\n2. Muebles: sofa, bed, table, chair, refrigerator, stove",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Partes de la Casa & Muebles.",
             "conceptBreakdown": "Recuerda la regla central: 1. Habitaciones: kitchen, living room, bedroom, bathroom, garden",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"living room\" es la sala de estar y \"bedroom\" es la habitación o dormitorio.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -3970,23 +3977,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "There is a computer and there are two chairs in the room.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Hay una computadora y hay dos sillas en la habitación.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_5_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "There is three books on the table",
-                "correctExample": "There are three books on the table",
-                "fastPill": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
-                "mediumExplanation": "Estructura obligatoria para expresar existencia y disponibilidad de cosas.",
-                "slowDeepDive": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_5-3-2",
@@ -4006,13 +4003,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "There are many beautiful flowers in the garden.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Hay muchas flores hermosas en el jardín.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_5_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "There is three books on the table",
+                "correctExample": "There are three books on the table",
+                "fastPill": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
+                "mediumExplanation": "Estructura obligatoria para expresar existencia y disponibilidad de cosas.",
+                "slowDeepDive": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_5-3-3",
@@ -4024,7 +4031,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. There is + singular noun (There is a table)\n2. There are + plural noun (There are three chairs)\n3. Negativo: There isn't / There aren't | Pregunta: Is there...? / Are there...?",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Existencia: There is & There are.",
             "conceptBreakdown": "Recuerda la regla central: 1. There is + singular noun (There is a table)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en español se usa \"hay\" para todo, pero en inglés debes distinguir entre \"there is\" (singular) y \"there are\" (plural).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -4129,23 +4136,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He is a hardworking man and a kind father.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él es un hombre trabajador y un padre bondadoso.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_5_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "They are intelligentes doctors / a woman kind",
-                "correctExample": "They are intelligent doctors / a kind woman",
-                "fastPill": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
-                "mediumExplanation": "En inglés nunca decimos \"doctors friendlys\". Decimos \"friendly doctors\".",
-                "slowDeepDive": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_5-4-2",
@@ -4165,13 +4162,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My sister is tall, smart and very creative.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mi hermana es alta, inteligente y muy creativa.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_5_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "They are intelligentes doctors / a woman kind",
+                "correctExample": "They are intelligent doctors / a kind woman",
+                "fastPill": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
+                "mediumExplanation": "En inglés nunca decimos \"doctors friendlys\". Decimos \"friendly doctors\".",
+                "slowDeepDive": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_5-4-3",
@@ -4183,7 +4190,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Posición: Adjective + Noun (a tall man, a kind doctor)\n2. Regla: Los adjetivos en inglés NO tienen plural ni género.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Adjetivos de Personalidad & Físico.",
             "conceptBreakdown": "Recuerda la regla central: 1. Posición: Adjective + Noun (a tall man, a kind doctor)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que los adjetivos en inglés son invariables: nunca añaden -s ni cambian por femenino/masculino.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -4288,23 +4295,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I've got two brothers and he has got one sister.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Tengo dos hermanos y él tiene una hermana.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_5_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "He have got a new car",
-                "correctExample": "He has got a new car",
-                "fastPill": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
-                "mediumExplanation": "Equivale al verbo \"have\", ampliamente utilizado en exámenes internacionales.",
-                "slowDeepDive": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_5-5-2",
@@ -4324,13 +4321,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Have you got any pets in your house?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿Tienes mascotas en tu casa?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_5_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "He have got a new car",
+                "correctExample": "He has got a new car",
+                "fastPill": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
+                "mediumExplanation": "Equivale al verbo \"have\", ampliamente utilizado en exámenes internacionales.",
+                "slowDeepDive": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_5-5-3",
@@ -4342,7 +4349,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I / You / We / They have got ➔ I've got (Tengo)\n2. He / She / It has got ➔ He's got (Él tiene)\n3. Pregunta: Have you got a car? / Has she got blue eyes?",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Verbo Have Got / Has Got (Posesión).",
             "conceptBreakdown": "Recuerda la regla central: 1. I / You / We / They have got ➔ I've got (Tengo)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que con He/She/It se usa \"has got\" (He has got blue eyes).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -5279,23 +5286,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Today is my twenty-fifth birthday.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Hoy es mi cumpleaños número veinticinco.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_7_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "My birthday is May three / I live in the floor five",
-                "correctExample": "My birthday is May 3rd (third) / I live on the fifth floor",
-                "fastPill": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
-                "mediumExplanation": "Las fechas en inglés se leen con ordinales: \"May third\" (May 3rd).",
-                "slowDeepDive": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_7-1-2",
@@ -5315,13 +5312,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He won first place in the English competition.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Él ganó el primer lugar en la competencia de inglés.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_7_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "My birthday is May three / I live in the floor five",
+                "correctExample": "My birthday is May 3rd (third) / I live on the fifth floor",
+                "fastPill": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
+                "mediumExplanation": "Las fechas en inglés se leen con ordinales: \"May third\" (May 3rd).",
+                "slowDeepDive": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_7-1-3",
@@ -5333,7 +5340,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)\n2. Ordinales (orden/fechas): first (1st), second (2nd), third (3rd), fourth (4th)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Números Cardinales & Ordinales.",
             "conceptBreakdown": "Recuerda la regla central: 1. Cardinales (cantidad): one (1), twenty (20), fifty (50), hundred (100)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que las terminaciones especiales de ordinales son: 1st (st), 2nd (nd), 3rd (rd) y el resto th (4th, 5th, 20th).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -5438,23 +5445,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The train arrives at quarter to nine in the morning.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El tren llega a las nueve menos cuarto de la mañana.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_7_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "It is eight fifteen o'clock",
-                "correctExample": "It is quarter past eight / It is eight fifteen",
-                "fastPill": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
-                "mediumExplanation": "\"Past\" indica minutos después de la hora (hasta el minuto 30); \"To\" indica minutos que faltan para la siguiente hora.",
-                "slowDeepDive": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_7-2-2",
@@ -5474,13 +5471,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My English class starts at half past seven.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mi clase de inglés comienza a las siete y media.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_7_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "It is eight fifteen o'clock",
+                "correctExample": "It is quarter past eight / It is eight fifteen",
+                "fastPill": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
+                "mediumExplanation": "\"Past\" indica minutos después de la hora (hasta el minuto 30); \"To\" indica minutos que faltan para la siguiente hora.",
+                "slowDeepDive": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_7-2-3",
@@ -5492,7 +5499,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. 7:00 ➔ Seven o'clock\n2. 7:15 ➔ Quarter past seven\n3. 7:30 ➔ Half past seven\n4. 7:45 ➔ Quarter to eight",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Decir la Hora: O'clock, Past & To.",
             "conceptBreakdown": "Recuerda la regla central: 1. 7:00 ➔ Seven o'clock",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"o'clock\" solo se usa para horas en punto exactas (7:00 = seven o'clock, nunca 7:15 o'clock).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -5597,23 +5604,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This jacket costs forty-five dollars and fifty cents.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Esta chaqueta cuesta cuarenta y cinco dólares con cincuenta centavos.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_7_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "How much is these shoes?",
-                "correctExample": "How much are these shoes?",
-                "fastPill": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
-                "mediumExplanation": "Usa \"How much is...?\" para singular y \"How much are...?\" para plural (shoes, pants).",
-                "slowDeepDive": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_7-3-2",
@@ -5633,13 +5630,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Excuse me, how much are these black shoes?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Disculpe, ¿cuánto cuestan estos zapatos negros?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_7_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "How much is these shoes?",
+                "correctExample": "How much are these shoes?",
+                "fastPill": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
+                "mediumExplanation": "Usa \"How much is...?\" para singular y \"How much are...?\" para plural (shoes, pants).",
+                "slowDeepDive": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\"."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_7-3-3",
@@ -5651,7 +5658,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. How much is this [item]? ➔ It is twenty dollars ($20).\n2. Can I help you? / I am looking for a jacket.\n3. Can I pay by card? ➔ Here is your receipt.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Precios & Compras en Tiendas.",
             "conceptBreakdown": "Recuerda la regla central: 1. How much is this [item]? ➔ It is twenty dollars ($20).",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que para prendas plurales como \"shoes\" o \"pants\" decimos \"How much ARE these shoes?\", no \"is\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -5756,23 +5763,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We go to the beach in summer on weekends.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Vamos a la playa en verano los fines de semana.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_7_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "on friday / in august",
-                "correctExample": "on Friday / in August",
-                "fastPill": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
-                "mediumExplanation": "Vocabulario temporal indispensable para fijar reuniones y fechas de entrega.",
-                "slowDeepDive": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_7-4-2",
@@ -5792,13 +5789,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My English test is on Friday, October 15th.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mi examen de inglés es el viernes 15 de octubre.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_7_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "on friday / in august",
+                "correctExample": "on Friday / in August",
+                "fastPill": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
+                "mediumExplanation": "Vocabulario temporal indispensable para fijar reuniones y fechas de entrega.",
+                "slowDeepDive": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October)."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_7-4-3",
@@ -5810,7 +5817,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n2. Meses: January, February, March, April, May, June, July, August, September, October, November, December\n3. Estaciones: Spring, Summer, Autumn (Fall), Winter",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Días de la Semana, Meses & Estaciones.",
             "conceptBreakdown": "Recuerda la regla central: 1. Días: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que a diferencia del español, en inglés los días y meses van obligatoriamente con mayúscula inicial (Friday, October).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -5915,23 +5922,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He is wearing a blue shirt and black pants today.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él lleva puesta una camisa azul y pantalones negros hoy.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_7_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "This pant is small",
-                "correctExample": "These pants are small",
-                "fastPill": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
-                "mediumExplanation": "Usa \"in a larger/smaller size\" para solicitar cambios de talla.",
-                "slowDeepDive": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_7-5-2",
@@ -5951,13 +5948,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I would like to try on this green jacket in medium size.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Me gustaría probarme esta chaqueta verde en talla mediana.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_7_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "This pant is small",
+                "correctExample": "These pants are small",
+                "fastPill": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
+                "mediumExplanation": "Usa \"in a larger/smaller size\" para solicitar cambios de talla.",
+                "slowDeepDive": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_7-5-3",
@@ -5969,7 +5976,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)\n2. Tallas: small (S), medium (M), large (L), extra large (XL)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Ropa, Tallas & Colores.",
             "conceptBreakdown": "Recuerda la regla central: 1. Ropa: shirt (camisa), pants/trousers (pantalones), jacket (chaqueta), shoes (zapatos)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"pants\" (pantalones) y \"glasses\" (gafas) son siempre sustantivos plurales en inglés.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -7624,7 +7631,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_9-5-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "How is the sentence \"Where do you live?\" written in phonetic symbols?",
+            "prompt": "The sentence \"Where do you live?\" is written in phonetic symbols as _____.",
             "options": [
               "/weər duː juː lɪv/",
               "/uér du iu liv/",
@@ -7719,23 +7726,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "You can see this sign at the airport check-in desk.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Puedes ver este aviso en el mostrador de facturación del aeropuerto.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_8_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "No swimming seen in a cinema",
-                "correctExample": "No swimming seen at the beach",
-                "fastPill": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
-                "mediumExplanation": "Estrategia Saber Pro: busca palabras clave en el cartel (waves, seats, silent, books).",
-                "slowDeepDive": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_10-1-2",
@@ -7755,13 +7752,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Passengers must show their tickets before boarding the train.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los pasajeros deben mostrar sus boletos antes de abordar el tren.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "No swimming seen in a cinema",
+                "correctExample": "No swimming seen at the beach",
+                "fastPill": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
+                "mediumExplanation": "Estrategia Saber Pro: busca palabras clave en el cartel (waves, seats, silent, books).",
+                "slowDeepDive": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_10-1-3",
@@ -7773,7 +7780,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema\n2. Notice: NO SWIMMING - DANGEROUS WAVES ➔ At the beach\n3. Notice: FASTEN YOUR SEATBELT ➔ On an airplane",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Avisos Públicos Saber Pro A1 (Parte 1).",
             "conceptBreakdown": "Recuerda la regla central: 1. Notice: PLEASE SILENCE YOUR PHONES ➔ In a cinema",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que la Parte 1 de la prueba Saber Pro evalúa la identificación del contexto pragmático de avisos.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -7801,7 +7808,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_10-1-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Notice: \"NO SWIMMING - DANGEROUS WAVES\". Where is this notice?",
+            "prompt": "Notice: \"NO SWIMMING - DANGEROUS WAVES\". You can see this notice _____.",
             "options": [
               "At the beach",
               "In a restaurant",
@@ -7878,23 +7885,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I enjoy studying English with FlashLens every day.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Disfruto estudiar inglés con FlashLens todos los días.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_8_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Would you like coffee? - I am 20 years old",
-                "correctExample": "Would you like coffee? - Yes, please",
-                "fastPill": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
-                "mediumExplanation": "Analiza la intención del hablante A (ofrecimiento, pregunta de cortesía, saludo).",
-                "slowDeepDive": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_10-2-2",
@@ -7914,13 +7911,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Thank you for your advice, it was very helpful.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Gracias por tu consejo, fue de gran ayuda.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Would you like coffee? - I am 20 years old",
+                "correctExample": "Would you like coffee? - Yes, please",
+                "fastPill": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
+                "mediumExplanation": "Analiza la intención del hablante A (ofrecimiento, pregunta de cortesía, saludo).",
+                "slowDeepDive": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_10-2-3",
@@ -7932,7 +7939,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Speaker A: Would you like a cup of coffee?\n2. Speaker B: Yes, please. With a little sugar.\n3. Estrategia: Elige la respuesta más lógica y cortés.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Diálogos Cortos Saber Pro A1 (Parte 2).",
             "conceptBreakdown": "Recuerda la regla central: 1. Speaker A: Would you like a cup of coffee?",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que responder fuera de tema (ej. responder edad cuando ofrecen café) es el distractor típico en Saber Pro.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8037,23 +8044,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "David lives in Cali and works as a designer.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "David vive en Cali y trabaja como diseñador.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_8_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Assuming unstated facts not in the text",
-                "correctExample": "Finding exact keywords in the paragraph",
-                "fastPill": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
-                "mediumExplanation": "Lectura literal para responder preguntas cerradas basadas en el texto.",
-                "slowDeepDive": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_10-3-2",
@@ -8073,13 +8070,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He enjoys his job and speaks English with his international clients.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Él disfruta su trabajo y habla inglés con sus clientes internacionales.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "David works on weekends (no aparece en el texto) ❌",
+                "correctExample": "David works from Monday to Friday (dato explícito) ✅",
+                "fastPill": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
+                "mediumExplanation": "Lectura literal para responder preguntas cerradas basadas en el texto.",
+                "slowDeepDive": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_10-3-3",
@@ -8091,7 +8098,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Text: David is 28 years old. He is a graphic designer in Cali.\n2. Extraction: Age = 28, Job = Graphic designer, City = Cali",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comprensión Lectora Literal A1.",
             "conceptBreakdown": "Recuerda la regla central: 1. Text: David is 28 years old. He is a graphic designer in Cali.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en lectura literal la respuesta exacta está explícita dentro del párrafo.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8119,7 +8126,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a1_node_10-3-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "According to the text, David lives and works in _____.",
+            "prompt": "Text: \"David is 28 years old. He is a graphic designer in Cali.\" — According to the text, David lives and works in _____.",
             "options": [
               "Cali",
               "Bogota",
@@ -8196,23 +8203,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My family has dinner together every evening at home.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Mi familia cena junta todas las noches en casa.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_8_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "My sister son is my cousin",
-                "correctExample": "My sister's son is my nephew",
-                "fastPill": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
-                "mediumExplanation": "Reconocimiento léxico para consolidar tu vocabulario activo.",
-                "slowDeepDive": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_10-4-2",
@@ -8232,13 +8229,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I am proud of my progress in English level A1.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Estoy orgulloso de mi progreso en el nivel A1 de inglés.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "My sister son is my cousin",
+                "correctExample": "My sister's son is my nephew",
+                "fastPill": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
+                "mediumExplanation": "Reconocimiento léxico para consolidar tu vocabulario activo.",
+                "slowDeepDive": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_10-4-3",
@@ -8250,7 +8257,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Familia: parents, siblings, nephew, niece\n2. Lugares: library, supermarket, hospital, school\n3. Acciones: study, work, cook, travel, play",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Vocabulario Integrado A1.",
             "conceptBreakdown": "Recuerda la regla central: 1. Familia: parents, siblings, nephew, niece",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"nephew\" es sobrino e \"niece\" es sobrina.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8355,23 +8362,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I have successfully completed all A1 modules in FlashLens.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "He completado con éxito todos los módulos de A1 en FlashLens.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a1_node_8_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Staying in basic vocabulary without advancing",
-                "correctExample": "Moving forward to CEFR Level A2 consolidation",
-                "fastPill": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
-                "mediumExplanation": "Estás listo para avanzar a los retos del nivel A2 (Pasado Simple, Direcciones, Comparativos y Futuro).",
-                "slowDeepDive": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a1_node_10-5-2",
@@ -8391,13 +8388,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I am ready to conquer level A2 with confidence and fluency.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Estoy listo para conquistar el nivel A2 con confianza y fluidez.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a1_node_8_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have 20 years old and I am teacher ❌",
+                "correctExample": "I am 20 years old and I am a teacher ✅",
+                "fastPill": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
+                "mediumExplanation": "Estás listo para avanzar a los retos del nivel A2 (Pasado Simple, Direcciones, Comparativos y Futuro).",
+                "slowDeepDive": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras."
+              }
+            ]
           },
           {
             "id": "exp-a1_node_10-5-3",
@@ -8409,7 +8416,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Nivel A1 CEFR: Usuario Básico (Acceso)\n2. Competencias: Rutinas, descripciones simples, To Be, Presente Simple\n3. Meta alcanzada ➔ Avance a Nivel A2",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Evaluación de Consolidación A1.",
             "conceptBreakdown": "Recuerda la regla central: 1. Nivel A1 CEFR: Usuario Básico (Acceso)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que el nivel A1 te permite interactuar en tareas cotidianas con oraciones claras.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8532,23 +8539,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "They lived in London for three years.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Ellos vivieron en Londres durante tres años.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_9_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Pronunciar \"watched\" como \"uatch-ed\" con dos sílabas",
-                "correctExample": "Watched se pronuncia /wɒtʃt/ con sonido /t/ final",
-                "fastPill": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
-                "mediumExplanation": "En los demás verbos la \"e\" de -ed es muda: \"watched\" suena /wɒtʃt/ (una sola sílaba).",
-                "slowDeepDive": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_11-1-2",
@@ -8568,13 +8565,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I visited my grandparents and we talked for hours.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Visité a mis abuelos y hablamos durante horas.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_9_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Pronunciar \"watched\" como \"uatch-ed\" con dos sílabas",
+                "correctExample": "Watched se pronuncia /wɒtʃt/ con sonido /t/ final",
+                "fastPill": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
+                "mediumExplanation": "En los demás verbos la \"e\" de -ed es muda: \"watched\" suena /wɒtʃt/ (una sola sílaba).",
+                "slowDeepDive": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_11-1-3",
@@ -8586,7 +8593,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/\n2. /d/ (tras sonidos sonoros): played /pleɪd/, lived /lɪvd/\n3. /ɪd/ (tras sonido t y d): wanted /ˈwɒn.tɪd/, needed /ˈniː.dɪd/",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Verbos Regulares: Terminación -ed (/t/, /d/, /ɪd/).",
             "conceptBreakdown": "Recuerda la regla central: 1. /t/ (tras sonidos sordos p, k, f, s, sh, ch): watched /wɒtʃt/, worked /wɜːkt/",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que pronunciar \"uashed\" o \"played\" con dos sílabas es un error común; la sílaba extra /ɪd/ SOLO aplica tras t y d (wanted, decided).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8691,23 +8698,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I bought a new laptop and saw a movie yesterday.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Ayer compré un portátil nuevo y vi una película.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_9_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Yesterday I goed to the store and eated pizza",
-                "correctExample": "Yesterday I went to the store and ate pizza",
-                "fastPill": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
-                "mediumExplanation": "Memoriza los verbos irregulares de alta frecuencia en la comunicación cotidiana.",
-                "slowDeepDive": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_11-2-2",
@@ -8727,13 +8724,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She went to Paris last summer and had a wonderful time.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Ella fue a París el verano pasado y la pasó de maravilla.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_9_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Yesterday I goed to the store and eated pizza",
+                "correctExample": "Yesterday I went to the store and ate pizza",
+                "fastPill": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
+                "mediumExplanation": "Memoriza los verbos irregulares de alta frecuencia en la comunicación cotidiana.",
+                "slowDeepDive": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_11-2-3",
@@ -8745,7 +8752,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. go ➔ went (ir)\n2. see ➔ saw (ver)\n3. have ➔ had (tener)\n4. buy ➔ bought (comprar)\n5. eat ➔ ate (comer)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Verbos Irregulares Frecuentes (Go ➔ Went, See ➔ Saw).",
             "conceptBreakdown": "Recuerda la regla central: 1. go ➔ went (ir)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que formas como \"goed\" o \"eated\" no existen; debes usar \"went\" y \"ate\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -8850,23 +8857,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We didn't watch the movie because we were busy.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "No vimos la película porque estábamos ocupados.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_9_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "She didn't went to the party / He no went",
-                "correctExample": "She didn't go to the party",
-                "fastPill": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
-                "mediumExplanation": "\"Didn't\" ya indica tiempo pasado, por lo que el verbo no se conjuga en pasado dos veces.",
-                "slowDeepDive": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_11-3-2",
@@ -8886,13 +8883,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He didn't understand the question during the exam.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Él no entendió la pregunta durante el examen.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_9_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "She didn't went to the party / He no went",
+                "correctExample": "She didn't go to the party",
+                "fastPill": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
+                "mediumExplanation": "\"Didn't\" ya indica tiempo pasado, por lo que el verbo no se conjuga en pasado dos veces.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_11-3-3",
@@ -8904,7 +8911,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)\n2. I didn't go (No fui - con \"go\", no \"went\")\n3. She didn't see (Ella no vio - con \"see\", no \"saw\")",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Negación en Pasado: Auxiliar Didn't.",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + didn't + base verb (verbo sin -ed y sin forma irregular)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"didn't went\" ni \"didn't watched\". Siempre se usa \"didn't\" + verbo en forma base (didn't go).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -9009,23 +9016,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Did you see your friends last weekend?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Viste a tus amigos el fin de semana pasado?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_9_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Did you went? / ago two days",
-                "correctExample": "Did you go? / two days ago",
-                "fastPill": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
-                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Did\" el verbo principal va en forma base.",
-                "slowDeepDive": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_11-4-2",
@@ -9045,13 +9042,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Where did you go on your last vacation?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿A dónde fuiste en tus últimas vacaciones?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_9_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Did you went? / ago two days",
+                "correctExample": "Did you go? / two days ago",
+                "fastPill": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
+                "mediumExplanation": "Al igual que en la negación, en preguntas con \"Did\" el verbo principal va en forma base.",
+                "slowDeepDive": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_11-4-3",
@@ -9063,7 +9070,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Did + subject + base verb? (Did you see Carlos?)\n2. Expresiones: yesterday (ayer), last night (anoche), two days ago (hace 2 días)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Preguntas con Did & Expresiones de Tiempo Pasado.",
             "conceptBreakdown": "Recuerda la regla central: 1. Did + subject + base verb? (Did you see Carlos?)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"ago\" se coloca al final de la expresión temporal (two weeks ago = hace dos semanas).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -9168,23 +9175,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He used to study English every day when he was at school.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él solía estudiar inglés todos los días cuando estaba en la escuela.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_9_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I use to live in Cali (para pasado) / I didn't used to",
-                "correctExample": "I used to live in Cali / I didn't use to",
-                "fastPill": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
-                "mediumExplanation": "Distingue entre el pasado simple puntual (I played once) y el hábito pasado (I used to play regularly).",
-                "slowDeepDive": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_11-5-2",
@@ -9204,13 +9201,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We used to go to the countryside on summer holidays.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Solíamos ir al campo en las vacaciones de verano.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_9_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I use to live in Cali (para pasado) / I didn't used to",
+                "correctExample": "I used to live in Cali / I didn't use to",
+                "fastPill": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
+                "mediumExplanation": "Distingue entre el pasado simple puntual (I played once) y el hábito pasado (I used to play regularly).",
+                "slowDeepDive": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_11-5-3",
@@ -9222,7 +9229,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)\n2. Negativo: I didn't use to play (No solía jugar)\n3. Significado: Hábitos o estados del pasado que ya no ocurren en el presente.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Hábitos Pasados con \"Used To\".",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + used to + base verb ➔ I used to play tennis (Solía jugar tenis)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en oraciones negativas con \"didn't\" se escribe \"didn't use to\" (sin la -d final en use).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10158,23 +10165,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The modern hospital is near the central bus station.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El hospital moderno está cerca de la estación central de autobuses.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_10_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I bought a novel at the library",
-                "correctExample": "I bought a novel at the bookstore / I borrowed a book from the library",
-                "fastPill": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
-                "mediumExplanation": "Cuidado con el falso amigo: \"library\" es biblioteca (para consultar libros) y \"bookstore\" es la tienda de libros.",
-                "slowDeepDive": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_13-1-2",
@@ -10194,13 +10191,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "There is a famous art museum in the historic center.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Hay un famoso museo de arte en el centro histórico.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_10_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I bought a novel at the library",
+                "correctExample": "I bought a novel at the bookstore / I borrowed a book from the library",
+                "fastPill": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
+                "mediumExplanation": "Cuidado con el falso amigo: \"library\" es biblioteca (para consultar libros) y \"bookstore\" es la tienda de libros.",
+                "slowDeepDive": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_13-1-3",
@@ -10212,7 +10219,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital\n2. Transporte: bus station, train station, airport, subway station",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Lugares de la Ciudad & Servicios Públicos.",
             "conceptBreakdown": "Recuerda la regla central: 1. Servicios: library (biblioteca), bookstore (librería/tienda), bank, pharmacy, hospital",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"library\" significa biblioteca pública donde prestan libros, NO librería comercial (bookstore).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10317,23 +10324,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Turn left at the traffic light and cross the street.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Gira a la izquierda en el semáforo y cruza la calle.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_10_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Go direct to the left",
-                "correctExample": "Go straight ahead and turn left",
-                "fastPill": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
-                "mediumExplanation": "Instrucciones en modo imperativo con preposiciones espaciales.",
-                "slowDeepDive": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_13-2-2",
@@ -10353,13 +10350,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Excuse me, where is the nearest metro station?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Disculpe, ¿dónde está la estación de metro más cercana?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_10_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Go direct to the left",
+                "correctExample": "Go straight ahead and turn left",
+                "fastPill": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
+                "mediumExplanation": "Instrucciones en modo imperativo con preposiciones espaciales.",
+                "slowDeepDive": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_13-2-3",
@@ -10371,7 +10378,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Go straight ahead (Sigue derecho / todo recto)\n2. Turn left / Turn right (Gira a la izquierda / derecha)\n3. It is on the corner of [Street] (Está en la esquina de)\n4. Cross the street (Cruza la calle)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Dar y Pedir Direcciones (Turn Left, Go Straight).",
             "conceptBreakdown": "Recuerda la regla central: 1. Go straight ahead (Sigue derecho / todo recto)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"Go straight ahead\" significa seguir derecho sin desviarse.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10476,23 +10483,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Walk past the supermarket and go through the central park.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Pasa el supermercado y cruza el parque central.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_10_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Walk into the street to the other side",
-                "correctExample": "Walk across the street to the other side",
-                "fastPill": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
-                "mediumExplanation": "Usa \"across\" para superficies bidimensionales y \"through\" para túneles, parques y puertas.",
-                "slowDeepDive": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_13-3-2",
@@ -10512,13 +10509,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The pedestrians walked across the bridge over the river.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los peatones cruzaron el puente sobre el río.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_10_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Walk into the street to the other side",
+                "correctExample": "Walk across the street to the other side",
+                "fastPill": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
+                "mediumExplanation": "Usa \"across\" para superficies bidimensionales y \"through\" para túneles, parques y puertas.",
+                "slowDeepDive": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_13-3-3",
@@ -10530,7 +10537,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Walk across: cruzar de un lado a otro (across the street / bridge)\n2. Go through: atravesar un espacio tridimensional (through the park / tunnel)\n3. Go into: entrar al interior de un edificio (into the bank)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Preposiciones de Movimiento: Across, Through, Into.",
             "conceptBreakdown": "Recuerda la regla central: 1. Walk across: cruzar de un lado a otro (across the street / bridge)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que para cruzar una calle se dice \"walk across the street\", mientras que para atravesar un túnel se dice \"drive through the tunnel\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10635,23 +10642,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I take the subway to work every morning at eight o'clock.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Tomo el metro al trabajo todas las mañanas a las ocho en punto.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_10_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I go to work by foot",
-                "correctExample": "I go to work on foot",
-                "fastPill": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
-                "mediumExplanation": "Todos los vehículos usan \"by\", excepto caminar que usa \"on foot\".",
-                "slowDeepDive": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_13-4-2",
@@ -10671,13 +10668,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Traveling by train is faster and more comfortable than by bus.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Viajar en tren es más rápido y cómodo que en autobús.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_10_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I go to work by foot",
+                "correctExample": "I go to work on foot",
+                "fastPill": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
+                "mediumExplanation": "Todos los vehículos usan \"by\", excepto caminar que usa \"on foot\".",
+                "slowDeepDive": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_13-4-3",
@@ -10689,7 +10696,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. En vehículo: by bus, by train, by plane, by car, by taxi\n2. Caminando: on foot (exclusivamente con preposición \"on\")",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Medios de Transporte & Viajes.",
             "conceptBreakdown": "Recuerda la regla central: 1. En vehículo: by bus, by train, by plane, by car, by taxi",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que ir caminando se dice \"on foot\" (con on), nunca \"by foot\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10794,23 +10801,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "My neighborhood has green parks, quiet streets and good restaurants.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Mi vecindario tiene parques verdes, calles tranquilas y buenos restaurantes.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_10_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "The street is very people",
-                "correctExample": "The street is very crowded",
-                "fastPill": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
-                "mediumExplanation": "Combina adjetivos urbanos con estructuras de existencia There is / There are.",
-                "slowDeepDive": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_13-5-2",
@@ -10830,13 +10827,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I love living in this city because people are very friendly.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Me encanta vivir en esta ciudad porque la gente es muy amable.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_10_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "The street is very people",
+                "correctExample": "The street is very crowded",
+                "fastPill": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
+                "mediumExplanation": "Combina adjetivos urbanos con estructuras de existencia There is / There are.",
+                "slowDeepDive": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_13-5-3",
@@ -10848,7 +10855,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)\n2. There are many shops and restaurants in my neighborhood.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Describir tu Ciudad o Vecindario.",
             "conceptBreakdown": "Recuerda la regla central: 1. Adjetivos: crowded (abarrotado), quiet (tranquilo), noisy (ruidoso), safe (seguro)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"crowded\" describe un lugar lleno de gente o abarrotado.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -10971,23 +10978,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This computer is faster than my old laptop.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Esta computadora es más rápida que mi viejo portátil.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_11_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "more fast than / more big than",
-                "correctExample": "faster than / bigger than",
-                "fastPill": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
-                "mediumExplanation": "Regla morfológica básica para adjetivos breves en inglés.",
-                "slowDeepDive": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_14-1-2",
@@ -11007,13 +11004,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Canada is colder than Colombia in winter.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Canadá es más frío que Colombia en invierno.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_11_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "more fast than / more big than",
+                "correctExample": "faster than / bigger than",
+                "fastPill": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
+                "mediumExplanation": "Regla morfológica básica para adjetivos breves en inglés.",
+                "slowDeepDive": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_14-1-3",
@@ -11025,7 +11032,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than\n2. CVC (Consonante-Vocal-Consonante): big ➔ bigger than, hot ➔ hotter than",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Comparativos Cortos (-er than).",
             "conceptBreakdown": "Recuerda la regla central: 1. Adjetivo corto (1 sílaba) + -er + than: fast ➔ faster than, tall ➔ taller than",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se dice \"more fast than\"; siempre es \"faster than\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -11130,23 +11137,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Traveling by plane is more comfortable than by bus.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Viajar en avión es más cómodo que en autobús.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_11_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "expensiver than / more expensiver",
-                "correctExample": "more expensive than",
-                "fastPill": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
-                "mediumExplanation": "Mantiene la palabra intacta y añade \"more\" antes del adjetivo.",
-                "slowDeepDive": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_14-2-2",
@@ -11166,13 +11163,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This book is more interesting than the movie.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Este libro es más interesante que la película.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_11_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "expensiver than / more expensiver",
+                "correctExample": "more expensive than",
+                "fastPill": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
+                "mediumExplanation": "Mantiene la palabra intacta y añade \"more\" antes del adjetivo.",
+                "slowDeepDive": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_14-2-3",
@@ -11184,7 +11191,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. More + adjetivo largo (2+ sílabas) + than\n2. more expensive than, more comfortable than, more interesting than",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Comparativos Largos (More ... than).",
             "conceptBreakdown": "Recuerda la regla central: 1. More + adjetivo largo (2+ sílabas) + than",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que no se debe añadir -er a adjetivos largos (expensiver no existe).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -11289,23 +11296,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "His English is much better than it was last year.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Su inglés es mucho mejor de lo que era el año pasado.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_11_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "more good than / more bad than",
-                "correctExample": "better than / worse than",
-                "fastPill": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
-                "mediumExplanation": "Memoriza estas formas irregulares esenciales en cualquier comparación.",
-                "slowDeepDive": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_14-3-2",
@@ -11325,13 +11322,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This coffee is the best in the entire city.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Este café es el mejor de toda la ciudad.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_11_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "more good than / more bad than",
+                "correctExample": "better than / worse than",
+                "fastPill": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
+                "mediumExplanation": "Memoriza estas formas irregulares esenciales en cualquier comparación.",
+                "slowDeepDive": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_14-3-3",
@@ -11343,7 +11350,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)\n2. bad ➔ worse than ➔ the worst (malo ➔ peor que ➔ el peor)\n3. far ➔ farther than ➔ the farthest (lejos)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comparativos y Superlativos Irregulares (Good / Bad).",
             "conceptBreakdown": "Recuerda la regla central: 1. good ➔ better than ➔ the best (bueno ➔ mejor que ➔ el mejor)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"gooder\" y \"badder\" no existen en inglés. Usa \"better than\" y \"worse than\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -11448,23 +11455,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "This is the most important exam of the semester.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Este es el examen más importante del semestre.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_11_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Mount Everest is highest mountain",
-                "correctExample": "Mount Everest is the highest mountain",
-                "fastPill": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
-                "mediumExplanation": "El superlativo exige \"The\" al inicio de la frase descriptiva.",
-                "slowDeepDive": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_14-4-2",
@@ -11484,13 +11481,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The cheetah is the fastest animal on land.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "El guepardo es el animal más rápido en tierra.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_11_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Mount Everest is highest mountain",
+                "correctExample": "Mount Everest is the highest mountain",
+                "fastPill": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
+                "mediumExplanation": "El superlativo exige \"The\" al inicio de la frase descriptiva.",
+                "slowDeepDive": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_14-4-3",
@@ -11502,7 +11509,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. The + adjetivo corto + -est: the tallest, the fastest, the oldest\n2. The most + adjetivo largo: the most beautiful, the most expensive\n3. Regla: Siempre llevan el artículo \"The\" antes del superlativo.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Superlativos: The -est & The Most.",
             "conceptBreakdown": "Recuerda la regla central: 1. The + adjetivo corto + -est: the tallest, the fastest, the oldest",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite \"the\" en superlativos: decimos \"the highest mountain\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -11607,23 +11614,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He is as hardworking as his father.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él es tan trabajador como su padre.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_11_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "as faster as / as expensive than",
-                "correctExample": "as fast as / as expensive as",
-                "fastPill": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
-                "mediumExplanation": "El adjetivo va en su forma base neutra entre las dos partículas \"as\".",
-                "slowDeepDive": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_14-5-2",
@@ -11643,13 +11640,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Colombia is as rich in biodiversity as Brazil.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Colombia es tan rica en biodiversidad como Brasil.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_11_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "as faster as / as expensive than",
+                "correctExample": "as fast as / as expensive as",
+                "fastPill": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
+                "mediumExplanation": "El adjetivo va en su forma base neutra entre las dos partículas \"as\".",
+                "slowDeepDive": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_14-5-3",
@@ -11661,7 +11668,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)\n2. Negativo: Subject + not as + adjective + as (not as expensive as)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Estructura de Igualdad: As ... As.",
             "conceptBreakdown": "Recuerda la regla central: 1. Afirmativo: Subject + as + adjective + as (as tall as, as fast as)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que dentro de \"as ... as\" el adjetivo NO lleva -er ni more (as fast as, nunca as faster as).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -12597,23 +12604,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I am practicing English on FlashLens right now.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Estoy practicando inglés en FlashLens ahora mismo.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_12_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I studying now / She working",
-                "correctExample": "I am studying now / She is working",
-                "fastPill": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
-                "mediumExplanation": "Requiere conjugar To Be + verbo principal con terminación -ing.",
-                "slowDeepDive": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_16-1-2",
@@ -12633,13 +12630,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The children are playing happily in the garden.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los niños están jugando alegremente en el jardín.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I studying now / She working",
+                "correctExample": "I am studying now / She is working",
+                "fastPill": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
+                "mediumExplanation": "Requiere conjugar To Be + verbo principal con terminación -ing.",
+                "slowDeepDive": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_16-1-3",
@@ -12651,7 +12658,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + am/is/are + verb(-ing)\n2. I am studying English right now / She is working at the moment\n3. Marcadores: right now, currently, at the moment, Listen!, Look!",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Presente Continuo: Acciones en Progreso.",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + verb(-ing)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se omite el verbo To Be: di \"I AM studying\", no \"I studying\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -12756,23 +12763,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He usually wears jeans, but today he is wearing a suit.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Él usualmente usa jeans, pero hoy lleva puesto un traje.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_12_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I am drinking coffee every day / Today I work",
-                "correctExample": "I drink coffee every day / Today I am working",
-                "fastPill": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
-                "mediumExplanation": "Los marcadores temporales (every day vs right now) determinan el tiempo verbal.",
-                "slowDeepDive": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_16-2-2",
@@ -12792,13 +12789,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We live in Colombia but we are traveling in Europe this month.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Vivimos en Colombia, pero este mes estamos viajando por Europa.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I am drinking coffee every day / Today I work",
+                "correctExample": "I drink coffee every day / Today I am working",
+                "fastPill": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
+                "mediumExplanation": "Los marcadores temporales (every day vs right now) determinan el tiempo verbal.",
+                "slowDeepDive": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_16-2-3",
@@ -12810,7 +12817,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Present Simple: hábitos permanentes (I drink coffee every morning)\n2. Present Continuous: acciones temporales/ahora (Today I am drinking tea)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Contraste: Presente Simple vs Presente Continuo.",
             "conceptBreakdown": "Recuerda la regla central: 1. Present Simple: hábitos permanentes (I drink coffee every morning)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que con \"usually\" usamos presente simple, pero con \"today / right now\" usamos presente continuo.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -12915,23 +12922,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I am going to pass my English exam with a high score.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Voy a aprobar mi examen de inglés con una puntuación alta.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_12_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I go travel / I will to travel",
-                "correctExample": "I am going to travel",
-                "fastPill": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
-                "mediumExplanation": "Estructura estándar de futuro para proyectos y vacaciones programadas.",
-                "slowDeepDive": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_16-3-2",
@@ -12951,13 +12948,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "What are you going to do this weekend with your friends?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿Qué vas a hacer este fin de semana con tus amigos?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I go travel / I will to travel",
+                "correctExample": "I am going to travel",
+                "fastPill": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
+                "mediumExplanation": "Estructura estándar de futuro para proyectos y vacaciones programadas.",
+                "slowDeepDive": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_16-3-3",
@@ -12969,7 +12976,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + am/is/are + going to + base verb\n2. I am going to travel to London next month.\n3. Planes premeditados y decisiones tomadas antes de hablar.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Futuro con \"Be Going To\" (Planes e Intenciones).",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + going to + base verb",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"going to\" va seguido del verbo base (going to travel, nunca going to traveled).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13074,23 +13081,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "We are flying to New York next Friday morning.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Volaremos a Nueva York el próximo viernes por la mañana.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_12_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I will meet the doctor tomorrow at 10 AM",
-                "correctExample": "I am seeing the doctor tomorrow at 10 AM",
-                "fastPill": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
-                "mediumExplanation": "Indica acuerdos definitivos entre dos o más personas.",
-                "slowDeepDive": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_16-4-2",
@@ -13110,13 +13107,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Are you attending the international conference next week?",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¿Asistirás a la conferencia internacional la próxima semana?",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I will meet the doctor tomorrow at 10 AM",
+                "correctExample": "I am seeing the doctor tomorrow at 10 AM",
+                "fastPill": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
+                "mediumExplanation": "Indica acuerdos definitivos entre dos o más personas.",
+                "slowDeepDive": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_16-4-3",
@@ -13128,7 +13135,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + am/is/are + verb(-ing) + future time\n2. I am meeting Sarah tomorrow at 3:00 PM (cita agendada)\n3. We are flying to New York on Friday morning (vuelo comprado)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Presente Continuo con Sentido de Futuro Acordado.",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + am/is/are + verb(-ing) + future time",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que si la cita tiene hora y fecha fijada en el calendario, el presente continuo suena más natural que will.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13233,23 +13240,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "What are you going to do after you graduate?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Qué vas a hacer después de graduarte?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_12_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Look at the clouds, it will rains",
-                "correctExample": "Look at the clouds, it is going to rain",
-                "fastPill": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
-                "mediumExplanation": "Usa \"be going to\" para predecir algo cuando ves la causa en el presente.",
-                "slowDeepDive": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_16-5-2",
@@ -13269,13 +13266,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Look at those dark clouds, it is going to rain heavily.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Mira esas nubes oscuras, va a llover fuertemente.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_12_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Look at the clouds, it will rains",
+                "correctExample": "Look at the clouds, it is going to rain",
+                "fastPill": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
+                "mediumExplanation": "Usa \"be going to\" para predecir algo cuando ves la causa en el presente.",
+                "slowDeepDive": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_16-5-3",
@@ -13287,7 +13294,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Are you going to study tonight?\n2. What are you going to do this weekend?\n3. Predicción con evidencia: Look at the dark clouds! It is going to rain.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Preguntas sobre Planes & Predicciones Futuras.",
             "conceptBreakdown": "Recuerda la regla central: 1. Are you going to study tonight?",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que cuando ves indicios claros (nubes negras, alguien tropezando), se usa \"going to\" para predecir (It's going to rain!).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13410,23 +13417,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I studied hard because I wanted to pass the test.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Estudié mucho porque quería aprobar el examen.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_13_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I was tired because I went to bed early (sentido invertido)",
-                "correctExample": "I went to bed early because I was tired / I was tired, so I went to bed early",
-                "fastPill": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
-                "mediumExplanation": "Distingue entre causa (\"because\") y consecuencia (\"so\").",
-                "slowDeepDive": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_17-1-2",
@@ -13446,13 +13443,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Although English is challenging, I practice every day.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Aunque el inglés es desafiante, practico todos los días.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_13_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I was tired because I went to bed early (sentido invertido)",
+                "correctExample": "I went to bed early because I was tired / I was tired, so I went to bed early",
+                "fastPill": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
+                "mediumExplanation": "Distingue entre causa (\"because\") y consecuencia (\"so\").",
+                "slowDeepDive": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_17-1-3",
@@ -13464,7 +13471,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. And (adición): I like coffee and tea.\n2. But (contraste): I wanted to go, but I was tired.\n3. So (consecuencia): It was raining, so I took an umbrella.\n4. Because (causa): I slept early because I was exhausted.\n5. Although (concesión): Although it was hard, I passed.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Conectores Lógicos: And, But, So, Because, Although.",
             "conceptBreakdown": "Recuerda la regla central: 1. And (adición): I like coffee and tea.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"because\" explica el porqué (causa), mientras que \"so\" introduce el resultado o efecto.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13569,23 +13576,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "You should drink eight glasses of water every day.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Deberías beber ocho vasos de agua todos los días.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_13_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "You should to rest",
-                "correctExample": "You should rest",
-                "fastPill": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
-                "mediumExplanation": "\"Should\" es un modal auxiliar: no cambia con he/she/it y va seguido del verbo base sin \"to\".",
-                "slowDeepDive": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_17-2-2",
@@ -13605,13 +13602,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "If you feel sick, you should stay at home and rest.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Si te sientes enfermo, deberías quedarte en casa y descansar.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_13_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "You should to rest",
+                "correctExample": "You should rest",
+                "fastPill": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
+                "mediumExplanation": "\"Should\" es un modal auxiliar: no cambia con he/she/it y va seguido del verbo base sin \"to\".",
+                "slowDeepDive": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_17-2-3",
@@ -13623,7 +13630,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Subject + should + base verb: You should drink more water.\n2. Subject + shouldn't + base verb: You shouldn't work so late.\n3. Pregunta: Should I see a doctor?",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Modal Should & Shouldn't (Consejos & Sugerencias).",
             "conceptBreakdown": "Recuerda la regla central: 1. Subject + should + base verb: You should drink more water.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que nunca se añade \"to\" tras should (you should see a doctor, no you should to see).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13728,23 +13735,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Students have to submit their homework on time.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Los estudiantes tienen que entregar sus tareas a tiempo.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_13_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Tomorrow is Sunday, I mustn't wake up early",
-                "correctExample": "Tomorrow is Sunday, I don't have to wake up early",
-                "fastPill": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
-                "mediumExplanation": "\"Don't have to\" significa que tienes la opción de hacerlo o no; no es una prohibición.",
-                "slowDeepDive": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_17-3-2",
@@ -13764,13 +13761,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "You mustn't use your mobile phone during the exam.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "No debes usar tu teléfono móvil durante el examen.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_13_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Tomorrow is Sunday, I mustn't wake up early",
+                "correctExample": "Tomorrow is Sunday, I don't have to wake up early",
+                "fastPill": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
+                "mediumExplanation": "\"Don't have to\" significa que tienes la opción de hacerlo o no; no es una prohibición.",
+                "slowDeepDive": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_17-3-3",
@@ -13782,7 +13789,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)\n2. Must: obligación personal o urgente (I must call my mom)\n3. Don't have to: NO es obligatorio / no hay necesidad (You don't have to pay)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Modales de Obligación: Must vs Have To.",
             "conceptBreakdown": "Recuerda la regla central: 1. Have to: obligación por reglas externas o leyes (You have to wear a seatbelt)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"don't have to\" significa \"no tienes que hacerlo (opcional)\", mientras que \"mustn't\" significa \"está estrictamente prohibido\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -13887,23 +13894,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I have a sore throat and a bad cough today.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Tengo dolor de garganta y una tos fuerte hoy.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_13_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I have headache / My head pains",
-                "correctExample": "I have a headache / My head hurts",
-                "fastPill": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
-                "mediumExplanation": "Usa \"I have a [síntoma]\" para la mayoría de dolencias comunes.",
-                "slowDeepDive": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\")."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_17-4-2",
@@ -13923,13 +13920,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The doctor advised me to take this medicine twice a day.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "El médico me aconsejó tomar este medicamento dos veces al día.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_13_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have headache / My head pains",
+                "correctExample": "I have a headache / My head hurts",
+                "fastPill": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
+                "mediumExplanation": "Usa \"I have a [síntoma]\" para la mayoría de dolencias comunes.",
+                "slowDeepDive": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\")."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_17-4-3",
@@ -13941,7 +13948,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Síntomas: I have a headache / stomachache / fever / sore throat\n2. Dolor puntual: My knee hurts / My back hurts\n3. En la consulta: Take this medicine twice a day.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Salud, Síntomas Médicos & Partes del Cuerpo.",
             "conceptBreakdown": "Recuerda la regla central: 1. Síntomas: I have a headache / stomachache / fever / sore throat",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que para dolor de cabeza se dice \"I have a headache\" (con artículo \"a\").",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -14046,23 +14053,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Regular exercise makes me feel healthy, calm and energetic.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El ejercicio regular me hace sentir saludable, tranquilo y con energía.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_13_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "I feel very much tired",
-                "correctExample": "I feel completely exhausted",
-                "fastPill": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
-                "mediumExplanation": "Usa \"I feel [adjetivo]\" para describir tu estado emocional.",
-                "slowDeepDive": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\")."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_17-5-2",
@@ -14082,13 +14079,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I feel very proud and confident about my progress in English.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Me siento muy orgulloso y seguro de mi progreso en inglés.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_13_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I feel very much tired",
+                "correctExample": "I feel completely exhausted",
+                "fastPill": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
+                "mediumExplanation": "Usa \"I feel [adjetivo]\" para describir tu estado emocional.",
+                "slowDeepDive": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\")."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_17-5-3",
@@ -14100,7 +14107,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. I feel exhausted / energetic / anxious / relaxed / cheerful\n2. Why do you feel stressed? ➔ Because I have a big exam tomorrow.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Expresar Emociones, Estado de Ánimo & Bienestar.",
             "conceptBreakdown": "Recuerda la regla central: 1. I feel exhausted / energetic / anxious / relaxed / cheerful",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"exhausted\" significa extremadamente cansado (mucho más intenso que \"tired\").",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -14623,7 +14630,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_18-3-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Have you called the doctor _____? - Not yet, I will call now.",
+            "prompt": "Have you called the doctor _____? - No, I haven't had time. I will call now.",
             "options": [
               "yet",
               "already",
@@ -15038,23 +15045,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "You can see this warning notice at the chemistry laboratory.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Puedes ver este aviso de advertencia en el laboratorio de química.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_14_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Discount on shoes placed in a hospital",
-                "correctExample": "Discount on shoes placed in a shoe store",
-                "fastPill": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
-                "mediumExplanation": "Estrategia de palabras clave en avisos comerciales y de seguridad.",
-                "slowDeepDive": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_19-1-2",
@@ -15074,13 +15071,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Passengers must wear a face mask inside the hospital.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Los pasajeros deben usar mascarilla dentro del hospital.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_14_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Discount on shoes placed in a hospital",
+                "correctExample": "Discount on shoes placed in a shoe store",
+                "fastPill": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
+                "mediumExplanation": "Estrategia de palabras clave en avisos comerciales y de seguridad.",
+                "slowDeepDive": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_19-1-3",
@@ -15092,7 +15099,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store\n2. Notice: EMERGENCY EXIT - DO NOT BLOCK ➔ In a public building\n3. Notice: NO FLASH PHOTOGRAPHY ➔ In an art museum",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Carteles & Lugares Públicos (ICFES Parte 1).",
             "conceptBreakdown": "Recuerda la regla central: 1. Notice: 50% DISCOUNT ON SHOES ➔ In a shoe store",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en la Parte 1 de Saber Pro cada cartel se empareja con una de las opciones de lugar (A, B o C).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15120,7 +15127,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_19-1-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "Notice: \"EMERGENCY EXIT - DO NOT BLOCK\". Where is this notice?",
+            "prompt": "Notice: \"EMERGENCY EXIT - DO NOT BLOCK\". You typically find this notice _____.",
             "options": [
               "In a public building",
               "In a garden",
@@ -15197,23 +15204,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Could you please tell me where the nearest pharmacy is located?",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "¿Podría decirme por favor dónde está ubicada la farmacia más cercana?",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_14_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Do you mind if I open? - Yes, open it (contradictorio)",
-                "correctExample": "Do you mind if I open? - Not at all, go ahead",
-                "fastPill": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
-                "mediumExplanation": "Evalúa la fórmula de cortesía que encaja con el enunciado del hablante A.",
-                "slowDeepDive": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_19-2-2",
@@ -15233,13 +15230,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I really appreciate your assistance with this difficult project.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Realmente agradezco tu ayuda con este proyecto difícil.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_14_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Do you mind if I open? - Yes, open it (contradictorio)",
+                "correctExample": "Do you mind if I open? - Not at all, go ahead",
+                "fastPill": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
+                "mediumExplanation": "Evalúa la fórmula de cortesía que encaja con el enunciado del hablante A.",
+                "slowDeepDive": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_19-2-3",
@@ -15251,7 +15258,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Speaker A: I won't be able to come to your party tonight.\n2. Speaker B: What a pity! We will miss you.\n3. Speaker A: Do you mind if I open the window? ➔ Speaker B: Not at all, go ahead.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Conversaciones Cortas Saber Pro (ICFES Parte 2).",
             "conceptBreakdown": "Recuerda la regla central: 1. Speaker A: I won't be able to come to your party tonight.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"Do you mind...?\" pregunta \"¿Te molesta si...?\"; la respuesta afirmativa para dar permiso es \"Not at all\" (No me molesta para nada).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15356,23 +15363,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Elena started her company in 2021 and photographs wildlife.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Elena comenzó su empresa en 2021 y fotografía la vida silvestre.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_14_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Guessing without referencing the text",
-                "correctExample": "Locating exact chronological references in paragraph",
-                "fastPill": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
-                "mediumExplanation": "Escaneo de datos puntuales sin necesidad de traducir palabra por palabra.",
-                "slowDeepDive": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_19-3-2",
@@ -15392,13 +15389,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "She has won several international awards for her nature photography.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Ella ha ganado varios premios internacionales por su fotografía de naturaleza.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_14_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Elena started in 2022 (fecha incorrecta) ❌",
+                "correctExample": "Elena started her company in 2021 (dato exacto del texto) ✅",
+                "fastPill": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
+                "mediumExplanation": "Escaneo de datos puntuales sin necesidad de traducir palabra por palabra.",
+                "slowDeepDive": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_19-3-3",
@@ -15410,7 +15417,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.\n2. Extraction: Founding year = 2021, Topic = Wildlife photography",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Comprensión Lectora Literal A2 (ICFES Parte 3).",
             "conceptBreakdown": "Recuerda la regla central: 1. Text: Elena started her photography company in 2021. She photographs wildlife across South America.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que debes buscar sinónimos o paráfrasis exactas del texto en las opciones de respuesta.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15438,7 +15445,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_19-3-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "According to the article, what does Elena photograph?",
+            "prompt": "Article: \"Elena travels across South America taking pictures of wildlife.\" — According to the article, Elena photographs _____.",
             "options": [
               "Wildlife animals",
               "Sports cars",
@@ -15515,23 +15522,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Reading between the lines helps you infer implicit meaning.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Leer entre líneas te ayuda a inferir el significado implícito.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_14_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Translating unknown words literally",
-                "correctExample": "Inferring meaning from surrounding textual clues",
-                "fastPill": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
-                "mediumExplanation": "Técnica de lectura crítica indispensable en Saber Pro e ICFES.",
-                "slowDeepDive": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_19-4-2",
@@ -15551,13 +15548,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Context clues provide valuable hints to understand complex vocabulary.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Las pistas de contexto brindan señales valiosas para comprender vocabulario complejo.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_14_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Starving = tener un poco de sueño ❌",
+                "correctExample": "Starving = morir de hambre (por pista: hadn't eaten all day) ✅",
+                "fastPill": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
+                "mediumExplanation": "Técnica de lectura crítica indispensable en Saber Pro e ICFES.",
+                "slowDeepDive": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_19-4-3",
@@ -15569,7 +15576,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.\n2. Inferencia: Arid = Very dry (muy árido / seco)\n3. Context: He is an avid reader who reads 2 books a week ➔ Avid = Very enthusiastic",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Inferencia & Vocabulario en Contexto.",
             "conceptBreakdown": "Recuerda la regla central: 1. Context: The weather was arid; it hadn't rained in 6 months and the soil was cracked.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que las pistas de contexto (como \"hadn't rained in 6 months\") revelan el significado exacto de palabras complejas.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15674,23 +15681,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Actually, I didn't know the answer until you explained it.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "En realidad, no sabía la respuesta hasta que la explicaste.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_14_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Actually I am studying at university (queriendo decir en la actualidad)",
-                "correctExample": "Currently I am studying at university / Actually, I am working",
-                "fastPill": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
-                "mediumExplanation": "Los falsos amigos parecen palabras en español pero tienen significados totalmente distintos.",
-                "slowDeepDive": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_19-5-2",
@@ -15710,13 +15707,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "He felt very embarrassed when he forgot his friend's name.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Él se sintió muy avergonzado cuando olvidó el nombre de su amigo.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_14_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Actually I am studying at university (queriendo decir en la actualidad)",
+                "correctExample": "Currently I am studying at university / Actually, I am working",
+                "fastPill": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
+                "mediumExplanation": "Los falsos amigos parecen palabras en español pero tienen significados totalmente distintos.",
+                "slowDeepDive": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_19-5-3",
@@ -15728,7 +15735,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente\n2. False Friends: Embarrassed = Avergonzado(a) (NO embarazada) | Pregnant = Embarazada\n3. Descarte: Eliminar opciones extremas que usen \"always\" o \"never\" sin justificación.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Trampas Frecuentes & Descarte en Saber Pro.",
             "conceptBreakdown": "Recuerda la regla central: 1. False Friends: Actually = En realidad (NO actualmente) | Currently = Actualmente",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que \"actually\" significa \"en realidad\" o \"de hecho\", mientras que \"actualmente\" se dice \"currently\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15851,23 +15858,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "The Coffee Cultural Landscape is celebrated worldwide for its beauty.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "El Paisaje Cultural Cafetero es celebrado mundialmente por su belleza.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_15_1",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Confusing visitor statistics with founding dates",
-                "correctExample": "Matching exact data points with the questions",
-                "fastPill": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
-                "mediumExplanation": "Lectura inferencial y literal integrada.",
-                "slowDeepDive": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_20-1-2",
@@ -15887,13 +15884,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Colombian coffee is recognized globally for its superior quality and taste.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "El café colombiano es reconocido mundialmente por su calidad y sabor superior.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_1",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "500,000 tourists visited in 2011 (mezclar cifras) ❌",
+                "correctExample": "Declared a World Heritage Site in 2011 (dato verificado) ✅",
+                "fastPill": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
+                "mediumExplanation": "Lectura inferencial y literal integrada.",
+                "slowDeepDive": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_20-1-3",
@@ -15905,7 +15912,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.\n2. Reading: Analysis of dates, numbers and historical facts.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 1. Simulacro Saber Pro A2: Comprensión Lectora.",
             "conceptBreakdown": "Recuerda la regla central: 1. Text: Over 500,000 tourists visit the Coffee Landscape of Colombia every year. Declared World Heritage Site by UNESCO in 2011.",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en exámenes estandarizados las preguntas suelen pedir la idea principal o fechas clave.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -15933,7 +15940,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
           {
             "id": "q-a2_node_20-1-2",
             "type": "FILL_IN_BLANK",
-            "prompt": "According to the text, the landscape is located in _____.",
+            "prompt": "Text: \"Over 500,000 tourists visit the Coffee Cultural Landscape of Colombia every year.\" — According to the text, the landscape is located in _____.",
             "options": [
               "Colombia",
               "Brazil",
@@ -16010,23 +16017,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Yesterday I cooked pasta, today I am eating salad, and tomorrow I will have fish.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Ayer cociné pasta, hoy estoy comiendo ensalada y mañana comeré pescado.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_15_2",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Last year I live in Cali and now I lived in Medellin",
-                "correctExample": "Last year I lived in Cali and now I live in Medellin",
-                "fastPill": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
-                "mediumExplanation": "Dominio de la línea de tiempo verbal en inglés.",
-                "slowDeepDive": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move)."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_20-2-2",
@@ -16046,13 +16043,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I learned basic English in A1 and now I am mastering A2 fluently.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Aprendí inglés básico en A1 y ahora domino el nivel A2 con fluidez.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_2",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Last year I live in Cali and now I lived in Medellin",
+                "correctExample": "Last year I lived in Cali and now I live in Medellin",
+                "fastPill": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
+                "mediumExplanation": "Dominio de la línea de tiempo verbal en inglés.",
+                "slowDeepDive": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move)."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_20-2-3",
@@ -16064,7 +16071,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Pasado: Last year I lived in Cali (pasado simple)\n2. Presente: Now I live in Medellin (presente simple) and I am working (continuo)\n3. Futuro: Next year I am going to move to Bogota (be going to)",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 2. Integración de Tiempos Verbales (Presente, Pasado, Futuro).",
             "conceptBreakdown": "Recuerda la regla central: 1. Pasado: Last year I lived in Cali (pasado simple)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que cada cláusula debe mantener coherencia con su marcador temporal (last year ➔ lived, now ➔ live, next year ➔ going to move).",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -16169,23 +16176,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I listened carefully to the native speaker's pronunciation.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Escuché atentamente la pronunciación del hablante nativo.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_15_3",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Confusing spoken past tenses with present forms",
-                "correctExample": "Recognizing subtle phonetic differences in native speech",
-                "fastPill": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
-                "mediumExplanation": "Entrenamiento de percepción acústica y discriminación fonológica.",
-                "slowDeepDive": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\"."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_20-3-2",
@@ -16205,13 +16202,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Mastering phonetic stress allows you to communicate naturally.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Dominar el acento fonético te permite comunicarte con naturalidad.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_3",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I was work when you call ❌",
+                "correctExample": "I was working when you called (/aɪ wəz ˈwɜːkɪŋ wɛn juː kɔːld/) ✅",
+                "fastPill": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
+                "mediumExplanation": "Entrenamiento de percepción acústica y discriminación fonológica.",
+                "slowDeepDive": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\"."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_20-3-3",
@@ -16223,7 +16230,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/\n2. Terminaciones: watched /wɒtʃt/ vs wanted /ˈwɒn.tɪd/\n3. Formas débiles y reducciones nativas: going to ➔ gonna, want to ➔ wanna",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 3. Prueba de Precisión Auditiva & Fonética A2.",
             "conceptBreakdown": "Recuerda la regla central: 1. Pares mínimos: ship /ʃɪp/ vs sheep /ʃiːp/, berry /ˈber.i/ vs very /ˈver.i/",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que en habla conectada nativa \"going to\" se reduce comúnmente a \"gonna\".",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -16328,23 +16335,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I enjoy writing in English because it helps me organize my thoughts.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Disfruto escribir en inglés porque me ayuda a organizar mis pensamientos.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_15_4",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Writing isolated single sentences without logical connectors",
-                "correctExample": "Structuring cohesive paragraphs with variety of tenses and connectors",
-                "fastPill": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
-                "mediumExplanation": "Producción escrita estructurada de nivel A2 consolidado.",
-                "slowDeepDive": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_20-4-2",
@@ -16364,13 +16361,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "With dedication and daily practice, I have achieved level A2 certification.",
-                "es": "Segundo ejemplo representativo.",
+                "es": "Con dedicación y práctica diaria, he alcanzado la certificación de nivel A2.",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_4",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "Although it rained, but we visited the farm ❌",
+                "correctExample": "Although it rained, we visited the farm ✅",
+                "fastPill": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
+                "mediumExplanation": "Producción escrita estructurada de nivel A2 consolidado.",
+                "slowDeepDive": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_20-4-3",
@@ -16382,7 +16389,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión\n2. Variedad léxica y ausencia de calcos literales del español.",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 4. Diagnóstico de Producción Escrita A2.",
             "conceptBreakdown": "Recuerda la regla central: 1. Párrafo narrativo: Topic sentence + Supporting details + Conectores (although, because, so) + Conclusión",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que el uso de conectores lógicos como \"although\", \"because\" y \"so\" enriquece la calidad de tu redacción.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -16478,7 +16485,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
             "summaryShort": "¡Felicitaciones! Has completado y dominado el 100% de los objetivos de los niveles A1 y A2 en FlashLens.",
             "conceptBreakdown": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
-            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
+            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 100 sublecciones y los 20 nodos de formación de FlashLens.",
             "keyTakeaways": [
               "Aplica la estructura gramatical o fórmula del concepto.",
               "Presta atención a las diferencias clave con el español.",
@@ -16487,23 +16494,13 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "I am proud to be a certified A2 English speaker with FlashLens.",
-                "es": "Ejemplo contextual en inglés estándar.",
+                "es": "Estoy orgulloso de ser un hablante de inglés certificado en A2 con FlashLens.",
                 "highlightEn": "pattern",
                 "highlightEs": "patrón",
                 "note": "Estructura central"
               }
             ],
-            "commonPitfalls": [
-              {
-                "pitfallId": "pitfall_a2_node_15_5",
-                "ruleTitle": "Ten en cuenta que:",
-                "wrongExample": "Stopping practice after certification",
-                "correctExample": "Continuing daily spaced repetition in Audio Lab and Flashcards",
-                "fastPill": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
-                "mediumExplanation": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
-                "slowDeepDive": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens."
-              }
-            ]
+            "commonPitfalls": []
           },
           {
             "id": "exp-a2_node_20-5-2",
@@ -16515,7 +16512,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
             "summaryShort": "Refuerzo intermedio: consolida los matices de 5. Gran Certificación de Logro Nivel A2 antes de los ejercicios de producción.",
             "conceptBreakdown": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
-            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 75 sublecciones y los 15 nodos de formación de FlashLens.",
+            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 100 sublecciones y los 20 nodos de formación de FlashLens.",
             "keyTakeaways": [
               "Fija el patrón antes de escribir o hablar.",
               "Verifica la concordancia exacta."
@@ -16523,13 +16520,23 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "contrastExamples": [
               {
                 "en": "Congratulations on completing the entire A1 and A2 roadmap with excellence!",
-                "es": "Segundo ejemplo representativo.",
+                "es": "¡Felicitaciones por completar toda la ruta A1 y A2 con excelencia!",
                 "highlightEn": "example",
                 "highlightEs": "ejemplo",
                 "note": "Refuerzo"
               }
             ],
-            "commonPitfalls": []
+            "commonPitfalls": [
+              {
+                "pitfallId": "pitfall_a2_node_15_5",
+                "ruleTitle": "Ten en cuenta que:",
+                "wrongExample": "I have seen that movie yesterday ❌",
+                "correctExample": "I saw that movie yesterday / I have seen that movie before ✅",
+                "fastPill": "Ten en cuenta que has superado con éxito las 100 sublecciones y los 20 nodos de formación de FlashLens.",
+                "mediumExplanation": "Tu nivel de inglés te permite comunicarte con soltura en el ámbito social, académico y profesional.",
+                "slowDeepDive": "Ten en cuenta que has superado con éxito las 100 sublecciones y los 20 nodos de formación de FlashLens."
+              }
+            ]
           },
           {
             "id": "exp-a2_node_20-5-3",
@@ -16541,7 +16548,7 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
             "grammarFormula": "1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)\n2. Competencias: Narración en pasado, planes futuros, descripción de ciudades y diálogo fluido\n3. Meta alcanzada: Certificación Oficial A2 FlashLens",
             "summaryShort": "¡Dominado! Has completado y afianzado los puntos clave de 5. Gran Certificación de Logro Nivel A2.",
             "conceptBreakdown": "Recuerda la regla central: 1. Nivel A2 CEFR: Usuario Independiente Inicial (Waystage)",
-            "deepDiveNotes": "Continúa practicando en el Laboratorio de Audio y Flashcards.",
+            "deepDiveNotes": "Ten en cuenta que has superado con éxito las 100 sublecciones y los 20 nodos de formación de FlashLens.",
             "keyTakeaways": [
               "Concepto dominado",
               "Sin errores de transferencia L1",
@@ -16621,360 +16628,432 @@ export const MOCK_ROADMAP_NODES: RoadmapNode[] = [
   }
 ];
 
-export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [// Bloque I: Fonética (5)
+export const MOCK_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
   {
-    id: 'diag-1',
-    section: 'PHONETICS',
-    orderIndex: 1,
-    question: {
-      id: 'dq-1',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia 'ship' con vocal corta /ɪ/.",
-      correctAnswer: 'ship',
-      explanation: 'Vocal corta y relajada /ɪ/.',
-      cefrLevel: 'A1',
-      phoneticTarget: '/ɪ/',
-    },
+    "id": "diag-1",
+    "section": "PHONETICS",
+    "orderIndex": 1,
+    "question": {
+      "id": "dq-1",
+      "type": "SPEAKING_PRONUNCIATION",
+      "prompt": "Pronuncia 'ship' con vocal corta /ɪ/.",
+      "correctAnswer": "ship",
+      "explanation": "Vocal corta y relajada /ɪ/.",
+      "cefrLevel": "A1",
+      "phoneticTarget": "/ɪ/"
+    }
   },
   {
-    id: 'diag-2',
-    section: 'PHONETICS',
-    orderIndex: 2,
-    question: {
-      id: 'dq-2',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia 'sheep' con vocal larga tensa /iː/.",
-      correctAnswer: 'sheep',
-      explanation: 'Vocal larga y tensa /iː/.',
-      cefrLevel: 'A1',
-      phoneticTarget: '/iː/',
-    },
+    "id": "diag-2",
+    "section": "PHONETICS",
+    "orderIndex": 2,
+    "question": {
+      "id": "dq-2",
+      "type": "SPEAKING_PRONUNCIATION",
+      "prompt": "Pronuncia 'sheep' con vocal larga tensa /iː/.",
+      "correctAnswer": "sheep",
+      "explanation": "Vocal larga y tensa /iː/.",
+      "cefrLevel": "A1",
+      "phoneticTarget": "/iː/"
+    }
   },
   {
-    id: 'diag-3',
-    section: 'PHONETICS',
-    orderIndex: 3,
-    question: {
-      id: 'dq-3',
-      type: 'FILL_IN_BLANK',
-      prompt: "Elige la palabra con sonido corto: 'I saw a _____ in the sea (barco)'",
-      options: ['ship', 'sheep'],
-      correctAnswer: 'ship',
-      explanation: "'Ship' lleva la vocal corta /ɪ/.",
-      cefrLevel: 'A1',
-    },
+    "id": "diag-3",
+    "section": "PHONETICS",
+    "orderIndex": 3,
+    "question": {
+      "id": "dq-3",
+      "type": "FILL_IN_BLANK",
+      "prompt": "Elige la palabra con sonido corto: 'I saw a _____ in the sea (barco)'",
+      "options": [
+        "ship",
+        "sheep"
+      ],
+      "correctAnswer": "ship",
+      "explanation": "'Ship' lleva la vocal corta /ɪ/.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-4',
-    section: 'PHONETICS',
-    orderIndex: 4,
-    question: {
-      id: 'dq-4',
-      type: 'FILL_IN_BLANK',
-      prompt: "Identifica el Schwa /ə/: 'She is a doc____ (doctora)'",
-      options: ['tor', 'tar', 'ter'],
-      correctAnswer: 'tor',
-      explanation: "'-or' en doctor suena como Schwa /tər/.",
-      cefrLevel: 'A1',
-    },
+    "id": "diag-4",
+    "section": "PHONETICS",
+    "orderIndex": 4,
+    "question": {
+      "id": "dq-4",
+      "type": "FILL_IN_BLANK",
+      "prompt": "Elige la palabra que inicia con el sonido neutro Schwa /ə/: '_____ (acerca de)'",
+      "options": [
+        "about",
+        "apple",
+        "easy"
+      ],
+      "correctAnswer": "about",
+      "explanation": "'About' (/əˈbaʊt/) comienza con la vocal neutra y relajada Schwa /ə/.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-5',
-    section: 'PHONETICS',
-    orderIndex: 5,
-    question: {
-      id: 'dq-5',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia la terminación /-t/ en 'walked'.",
-      correctAnswer: 'walked',
-      explanation: "El sufijo regular de walk es sordo /-t/.",
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque II: Gramática (6)
-  {
-    id: 'diag-6',
-    section: 'GRAMMAR',
-    orderIndex: 6,
-    question: {
-      id: 'dq-6',
-      type: 'FILL_IN_BLANK',
-      prompt: "She _____ from Colombia.",
-      options: ['is', 'are', 'am'],
-      correctAnswer: 'is',
-      explanation: 'Tercera persona singular usa is.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-5",
+    "section": "PHONETICS",
+    "orderIndex": 5,
+    "question": {
+      "id": "dq-5",
+      "type": "SPEAKING_PRONUNCIATION",
+      "prompt": "Pronuncia la terminación /-t/ en 'walked'.",
+      "correctAnswer": "walked",
+      "explanation": "El sufijo regular de walk es sordo /-t/.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-7',
-    section: 'GRAMMAR',
-    orderIndex: 7,
-    question: {
-      id: 'dq-7',
-      type: 'FILL_IN_BLANK',
-      prompt: "Daniel _____ English every day.",
-      options: ['studies', 'study', 'studying'],
-      correctAnswer: 'studies',
-      explanation: 'Regla de -ies para verbos en presente 3ra persona.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-6",
+    "section": "GRAMMAR",
+    "orderIndex": 6,
+    "question": {
+      "id": "dq-6",
+      "type": "FILL_IN_BLANK",
+      "prompt": "She _____ from Colombia.",
+      "options": [
+        "is",
+        "are",
+        "am"
+      ],
+      "correctAnswer": "is",
+      "explanation": "Tercera persona singular usa is.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-8',
-    section: 'GRAMMAR',
-    orderIndex: 8,
-    question: {
-      id: 'dq-8',
-      type: 'FILL_IN_BLANK',
-      prompt: "_____ there any milk left in the fridge?",
-      options: ['Is', 'Are', 'Do'],
-      correctAnswer: 'Is',
-      explanation: "'Milk' es incontable y requiere 'Is there'.",
-      cefrLevel: 'A1',
-    },
+    "id": "diag-7",
+    "section": "GRAMMAR",
+    "orderIndex": 7,
+    "question": {
+      "id": "dq-7",
+      "type": "FILL_IN_BLANK",
+      "prompt": "Daniel _____ English every day.",
+      "options": [
+        "studies",
+        "study",
+        "studying"
+      ],
+      "correctAnswer": "studies",
+      "explanation": "Regla de -ies para verbos en presente 3ra persona.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-9',
-    section: 'GRAMMAR',
-    orderIndex: 9,
-    question: {
-      id: 'dq-9',
-      type: 'FILL_IN_BLANK',
-      prompt: "We _____ to London last summer.",
-      options: ['travelled', 'travel', 'travelling'],
-      correctAnswer: 'travelled',
-      explanation: 'Pasado simple regular con -ed.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-8",
+    "section": "GRAMMAR",
+    "orderIndex": 8,
+    "question": {
+      "id": "dq-8",
+      "type": "FILL_IN_BLANK",
+      "prompt": "_____ there any milk left in the fridge?",
+      "options": [
+        "Is",
+        "Are",
+        "Do"
+      ],
+      "correctAnswer": "Is",
+      "explanation": "'Milk' es incontable y requiere 'Is there'.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-10',
-    section: 'GRAMMAR',
-    orderIndex: 10,
-    question: {
-      id: 'dq-10',
-      type: 'FILL_IN_BLANK',
-      prompt: "Canada is _____ than Colombia in winter.",
-      options: ['colder', 'more cold', 'coldest'],
-      correctAnswer: 'colder',
-      explanation: 'Comparativo de una sílaba añade -er than.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-9",
+    "section": "GRAMMAR",
+    "orderIndex": 9,
+    "question": {
+      "id": "dq-9",
+      "type": "FILL_IN_BLANK",
+      "prompt": "We _____ to London last summer.",
+      "options": [
+        "travelled",
+        "travel",
+        "travelling"
+      ],
+      "correctAnswer": "travelled",
+      "explanation": "Pasado simple regular con -ed.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-11',
-    section: 'GRAMMAR',
-    orderIndex: 11,
-    question: {
-      id: 'dq-11',
-      type: 'FILL_IN_BLANK',
-      prompt: "I didn't _____ coffee in the morning.",
-      options: ['use to drink', 'used to drink'],
-      correctAnswer: 'use to drink',
-      explanation: "Con el auxiliar 'didn't', el verbo va en forma base 'use to'.",
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque III: Vocabulario (5)
-  {
-    id: 'diag-12',
-    section: 'VOCABULARY',
-    orderIndex: 12,
-    question: {
-      id: 'dq-12',
-      type: 'IMAGE_WORD_MATCH',
-      prompt: "Selecciona la palabra en inglés para 'Mochila':",
-      options: ['Backpack', 'Suitcase', 'Wallet'],
-      correctAnswer: 'Backpack',
-      explanation: 'Backpack es mochila.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-10",
+    "section": "GRAMMAR",
+    "orderIndex": 10,
+    "question": {
+      "id": "dq-10",
+      "type": "FILL_IN_BLANK",
+      "prompt": "Canada is _____ than Colombia in winter.",
+      "options": [
+        "colder",
+        "more cold",
+        "coldest"
+      ],
+      "correctAnswer": "colder",
+      "explanation": "Comparativo de una sílaba añade -er than.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-13',
-    section: 'VOCABULARY',
-    orderIndex: 13,
-    question: {
-      id: 'dq-13',
-      type: 'IMAGE_WORD_MATCH',
-      prompt: "Selecciona la palabra para 'Taza de café':",
-      options: ['Coffee Mug', 'Glass', 'Bottle'],
-      correctAnswer: 'Coffee Mug',
-      explanation: 'Coffee mug es taza de cerámica.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-11",
+    "section": "GRAMMAR",
+    "orderIndex": 11,
+    "question": {
+      "id": "dq-11",
+      "type": "FILL_IN_BLANK",
+      "prompt": "I didn't _____ coffee in the morning.",
+      "options": [
+        "use to drink",
+        "used to drink"
+      ],
+      "correctAnswer": "use to drink",
+      "explanation": "Con el auxiliar 'didn't', el verbo va en forma base 'use to'.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-14',
-    section: 'VOCABULARY',
-    orderIndex: 14,
-    question: {
-      id: 'dq-14',
-      type: 'MATCH_PAIRS',
-      prompt: 'Relaciona los miembros de la familia con su opuesto:',
-      options: { 'Father': 'Mother', 'Brother': 'Sister', 'Uncle': 'Aunt' },
-      correctAnswer: { 'Father': 'Mother', 'Brother': 'Sister', 'Uncle': 'Aunt' },
-      explanation: 'Parentesco básico.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-12",
+    "section": "VOCABULARY",
+    "orderIndex": 12,
+    "question": {
+      "id": "dq-12",
+      "type": "IMAGE_WORD_MATCH",
+      "prompt": "Selecciona la palabra en inglés para 'Mochila':",
+      "options": [
+        "Backpack",
+        "Suitcase",
+        "Wallet"
+      ],
+      "correctAnswer": "Backpack",
+      "explanation": "Backpack es mochila.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-15',
-    section: 'VOCABULARY',
-    orderIndex: 15,
-    question: {
-      id: 'dq-15',
-      type: 'MATCH_PAIRS',
-      prompt: 'Relaciona los adjetivos con sus antónimos:',
-      options: { 'Expensive': 'Cheap', 'Quiet': 'Noisy', 'Dangerous': 'Safe' },
-      correctAnswer: { 'Expensive': 'Cheap', 'Quiet': 'Noisy', 'Dangerous': 'Safe' },
-      explanation: 'Antónimos fundamentales A2.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-13",
+    "section": "VOCABULARY",
+    "orderIndex": 13,
+    "question": {
+      "id": "dq-13",
+      "type": "IMAGE_WORD_MATCH",
+      "prompt": "Selecciona la palabra para 'Taza de café':",
+      "options": [
+        "Coffee Mug",
+        "Glass",
+        "Bottle"
+      ],
+      "correctAnswer": "Coffee Mug",
+      "explanation": "Coffee mug es taza de cerámica.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-16',
-    section: 'VOCABULARY',
-    orderIndex: 16,
-    question: {
-      id: 'dq-16',
-      type: 'FILL_IN_BLANK',
-      prompt: "The keys are _____ the table (sobre la mesa).",
-      options: ['on', 'in', 'at', 'under'],
-      correctAnswer: 'on',
-      explanation: "'On' denota superficie.",
-      cefrLevel: 'A1',
-    },
-  },
-
-  // Bloque IV: Lectura ICFES (5)
-  {
-    id: 'diag-17',
-    section: 'READING_ICFES',
-    orderIndex: 17,
-    question: {
-      id: 'dq-17',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "¿Dónde verías el aviso 'PLEASE DO NOT FEED THE ANIMALS'?",
-      options: ['In a zoo', 'In a library', 'In a bakery'],
-      correctAnswer: 'In a zoo',
-      explanation: 'Aviso público de zoológico.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-14",
+    "section": "VOCABULARY",
+    "orderIndex": 14,
+    "question": {
+      "id": "dq-14",
+      "type": "MATCH_PAIRS",
+      "prompt": "Relaciona los miembros de la familia con su opuesto:",
+      "options": {
+        "Father": "Mother",
+        "Brother": "Sister",
+        "Uncle": "Aunt"
+      },
+      "correctAnswer": {
+        "Father": "Mother",
+        "Brother": "Sister",
+        "Uncle": "Aunt"
+      },
+      "explanation": "Parentesco básico.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-18',
-    section: 'READING_ICFES',
-    orderIndex: 18,
-    question: {
-      id: 'dq-18',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "Alex: 'How much is this t-shirt?' Seller: '$15 dollars.' ¿Qué hace Alex?",
-      options: ['Buying clothes', 'Ordering food', 'Calling doctor'],
-      correctAnswer: 'Buying clothes',
-      explanation: 'Transacción de compra de ropa.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-15",
+    "section": "VOCABULARY",
+    "orderIndex": 15,
+    "question": {
+      "id": "dq-15",
+      "type": "MATCH_PAIRS",
+      "prompt": "Relaciona los adjetivos con sus antónimos:",
+      "options": {
+        "Expensive": "Cheap",
+        "Quiet": "Noisy",
+        "Dangerous": "Safe"
+      },
+      "correctAnswer": {
+        "Expensive": "Cheap",
+        "Quiet": "Noisy",
+        "Dangerous": "Safe"
+      },
+      "explanation": "Antónimos fundamentales A2.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-19',
-    section: 'READING_ICFES',
-    orderIndex: 19,
-    question: {
-      id: 'dq-19',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "'Hi Laura, I couldn't come to class because I had a high fever.' ¿Por qué faltó?",
-      options: ['Because he was sick', 'Because he lost his book'],
-      correctAnswer: 'Because he was sick',
-      explanation: 'Comprensión de causa con fever (fiebre).',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-16",
+    "section": "VOCABULARY",
+    "orderIndex": 16,
+    "question": {
+      "id": "dq-16",
+      "type": "FILL_IN_BLANK",
+      "prompt": "The keys are _____ the table (sobre la mesa).",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "correctAnswer": "on",
+      "explanation": "'On' denota superficie.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-20',
-    section: 'READING_ICFES',
-    orderIndex: 20,
-    question: {
-      id: 'dq-20',
-      type: 'MULTIPLE_CHOICE_ICFES',
-      prompt: "'FASTEN SEATBELTS WHILE SEATED'. ¿Dónde verías este aviso?",
-      options: ['On an airplane', 'In a cinema', 'In a supermarket'],
-      correctAnswer: 'On an airplane',
-      explanation: 'Instrucción de seguridad aeronáutica.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-17",
+    "section": "READING_ICFES",
+    "orderIndex": 17,
+    "question": {
+      "id": "dq-17",
+      "type": "MULTIPLE_CHOICE_ICFES",
+      "prompt": "¿Dónde verías el aviso 'PLEASE DO NOT FEED THE ANIMALS'?",
+      "options": [
+        "In a zoo",
+        "In a library",
+        "In a bakery"
+      ],
+      "correctAnswer": "In a zoo",
+      "explanation": "Aviso público de zoológico.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-21',
-    section: 'READING_ICFES',
-    orderIndex: 21,
-    question: {
-      id: 'dq-21',
-      type: 'FILL_IN_BLANK',
-      prompt: "Although it was raining, _____ we went out.",
-      options: ['although', 'because', 'but'],
-      correctAnswer: 'although',
-      explanation: 'Conector concesivo de contraste.',
-      cefrLevel: 'A2',
-    },
-  },
-
-  // Bloque V: Producción (4)
-  {
-    id: 'diag-22',
-    section: 'PRODUCTION',
-    orderIndex: 22,
-    question: {
-      id: 'dq-22',
-      type: 'SENTENCE_WRITING',
-      prompt: "Escribe: 'I live in Colombia and I study English every morning.'",
-      correctAnswer: 'I live in Colombia and I study English every morning.',
-      explanation: 'Construcción coordinada nivel A1.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-18",
+    "section": "READING_ICFES",
+    "orderIndex": 18,
+    "question": {
+      "id": "dq-18",
+      "type": "MULTIPLE_CHOICE_ICFES",
+      "prompt": "Alex: 'How much is this t-shirt?' Seller: '$15 dollars.' ¿Qué hace Alex?",
+      "options": [
+        "Buying clothes",
+        "Ordering food",
+        "Calling doctor"
+      ],
+      "correctAnswer": "Buying clothes",
+      "explanation": "Transacción de compra de ropa.",
+      "cefrLevel": "A1"
+    }
   },
   {
-    id: 'diag-23',
-    section: 'PRODUCTION',
-    orderIndex: 23,
-    question: {
-      id: 'dq-23',
-      type: 'SENTENCE_WRITING',
-      prompt: "Escribe: 'Although English is challenging, I enjoy practicing it.'",
-      correctAnswer: 'Although English is challenging, I enjoy practicing it.',
-      explanation: 'Uso de conectores de contraste en producción A2.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-19",
+    "section": "READING_ICFES",
+    "orderIndex": 19,
+    "question": {
+      "id": "dq-19",
+      "type": "MULTIPLE_CHOICE_ICFES",
+      "prompt": "'Hi Laura, I couldn't come to class because I had a high fever.' ¿Por qué faltó?",
+      "options": [
+        "Because he was sick",
+        "Because he lost his book"
+      ],
+      "correctAnswer": "Because he was sick",
+      "explanation": "Comprensión de causa con fever (fiebre).",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-24',
-    section: 'PRODUCTION',
-    orderIndex: 24,
-    question: {
-      id: 'dq-24',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Lee en voz alta: 'I like apples and bananas.'",
-      correctAnswer: 'I like apples and bananas',
-      explanation: 'Fluidez y articulación vocálica A1.',
-      cefrLevel: 'A1',
-    },
+    "id": "diag-20",
+    "section": "READING_ICFES",
+    "orderIndex": 20,
+    "question": {
+      "id": "dq-20",
+      "type": "MULTIPLE_CHOICE_ICFES",
+      "prompt": "'FASTEN SEATBELTS WHILE SEATED'. ¿Dónde verías este aviso?",
+      "options": [
+        "On an airplane",
+        "In a cinema",
+        "In a supermarket"
+      ],
+      "correctAnswer": "On an airplane",
+      "explanation": "Instrucción de seguridad aeronáutica.",
+      "cefrLevel": "A2"
+    }
   },
   {
-    id: 'diag-25',
-    section: 'PRODUCTION',
-    orderIndex: 25,
-    question: {
-      id: 'dq-25',
-      type: 'SPEAKING_PRONUNCIATION',
-      prompt: "Pronuncia: 'We watched a movie and cooked dinner last night.'",
-      correctAnswer: 'We watched a movie and cooked dinner last night',
-      explanation: 'Terminaciones regulares -ed en pasado /t/.',
-      cefrLevel: 'A2',
-    },
+    "id": "diag-21",
+    "section": "READING_ICFES",
+    "orderIndex": 21,
+    "question": {
+      "id": "dq-21",
+      "type": "FILL_IN_BLANK",
+      "prompt": "_____ it was raining heavily, we went out to the park.",
+      "options": [
+        "Although",
+        "Because",
+        "However"
+      ],
+      "correctAnswer": "Although",
+      "explanation": "'Although' (aunque) es un conector concesivo de contraste al inicio de la cláusula.",
+      "cefrLevel": "A2"
+    }
   },
+  {
+    "id": "diag-22",
+    "section": "PRODUCTION",
+    "orderIndex": 22,
+    "question": {
+      "id": "dq-22",
+      "type": "SENTENCE_WRITING",
+      "prompt": "Traduce y construye en inglés: \"Vivo en Colombia y estudio inglés todas las mañanas.\"",
+      "correctAnswer": "I live in Colombia and I study English every morning.",
+      "explanation": "Construcción coordinada nivel A1.",
+      "cefrLevel": "A1",
+      "contextText": "Vivo en Colombia y estudio inglés todas las mañanas."
+    }
+  },
+  {
+    "id": "diag-23",
+    "section": "PRODUCTION",
+    "orderIndex": 23,
+    "question": {
+      "id": "dq-23",
+      "type": "SENTENCE_WRITING",
+      "prompt": "Traduce y construye en inglés: \"Aunque el inglés es desafiante, disfruto practicarlo.\"",
+      "correctAnswer": "Although English is challenging, I enjoy practicing it.",
+      "explanation": "Uso de conectores de contraste en producción A2.",
+      "cefrLevel": "A2",
+      "contextText": "Aunque el inglés es desafiante, disfruto practicarlo."
+    }
+  },
+  {
+    "id": "diag-24",
+    "section": "PRODUCTION",
+    "orderIndex": 24,
+    "question": {
+      "id": "dq-24",
+      "type": "SPEAKING_PRONUNCIATION",
+      "prompt": "Lee en voz alta: 'I like apples and bananas.'",
+      "correctAnswer": "I like apples and bananas",
+      "explanation": "Fluidez y articulación vocálica A1.",
+      "cefrLevel": "A1"
+    }
+  },
+  {
+    "id": "diag-25",
+    "section": "PRODUCTION",
+    "orderIndex": 25,
+    "question": {
+      "id": "dq-25",
+      "type": "SPEAKING_PRONUNCIATION",
+      "prompt": "Pronuncia: 'We watched a movie and cooked dinner last night.'",
+      "correctAnswer": "We watched a movie and cooked dinner last night",
+      "explanation": "Terminaciones regulares -ed en pasado /t/.",
+      "cefrLevel": "A2"
+    }
+  }
 ];
 
-export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = MOCK_DIAGNOSTIC_QUESTIONS;
+export const DIAGNOSTIC_QUESTIONS = MOCK_DIAGNOSTIC_QUESTIONS;

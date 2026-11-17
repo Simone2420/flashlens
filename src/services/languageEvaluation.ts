@@ -64,16 +64,23 @@ const CONTRACTIONS_MAP: Record<string, string> = {
 export function normalizeEnglishText(text: string): string {
   if (!text) return '';
 
-  let normalized = text
+  // 1. Unificar apóstrofes tipográficos y pasar a minúsculas antes de expandir contracciones
+  const preClean = text
     .toLowerCase()
     .trim()
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'’]/g, ' ') // Remueve signos de puntuación y apóstrofes
-    .replace(/\s+/g, ' '); // Colapsa espacios múltiples
+    .replace(/[’`]/g, "'")
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_~()?"]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
-  // Reemplazar contracciones por su forma expandida
-  const words = normalized.split(' ');
-  const expandedWords = words.map(w => CONTRACTIONS_MAP[w] || w);
-  return expandedWords.join(' ').trim();
+  // 2. Reemplazar contracciones por su forma expandida y normalizar posesivos ('s -> s)
+  const rawWords = preClean.split(' ');
+  const expandedWords = rawWords.map((w) => {
+    if (CONTRACTIONS_MAP[w]) return CONTRACTIONS_MAP[w];
+    return w.replace(/'/g, '');
+  });
+
+  return expandedWords.join(' ').replace(/\s+/g, ' ').trim();
 }
 
 /**
@@ -145,9 +152,14 @@ export function evaluateLanguageInput(
   const targetWords = cleanTarget.split(' ');
 
   let matchedWordsCount = 0;
-  for (const tWord of targetWords) {
+  let orderedWordsCount = 0;
+  for (let i = 0; i < targetWords.length; i++) {
+    const tWord = targetWords[i];
     if (userWords.includes(tWord)) {
       matchedWordsCount++;
+    }
+    if (userWords[i] === tWord) {
+      orderedWordsCount++;
     }
   }
 
@@ -155,12 +167,20 @@ export function evaluateLanguageInput(
     ? (matchedWordsCount / targetWords.length) * 100
     : 0;
 
-  // 3. Similitud por Distancia de Levenshtein
+  const orderedTokenScore = targetWords.length > 0
+    ? (orderedWordsCount / Math.max(targetWords.length, userWords.length)) * 100
+    : 0;
+
+  // 3. Similitud por Distancia de Levenshtein (respeta el orden secuencial de la oración)
   const maxLen = Math.max(cleanUser.length, cleanTarget.length);
   const levDistance = calculateLevenshteinDistance(cleanUser, cleanTarget);
   const levSimilarityScore = maxLen > 0 ? ((maxLen - levDistance) / maxLen) * 100 : 0;
 
-  const combinedAccuracy = Math.max(tokenOverlapScore, levSimilarityScore);
+  // En escritura (isSpeaking = false) el orden gramatical de las palabras es obligatorio;
+  // en pronunciación por voz (isSpeaking = true) se admite tolerancia acústica de tokens.
+  const combinedAccuracy = isSpeaking
+    ? Math.max(tokenOverlapScore, levSimilarityScore)
+    : Math.max(orderedTokenScore, levSimilarityScore);
 
   // 4. Criterio de Aceptación Flexible
   // Para Voz: >= 80% es correcto

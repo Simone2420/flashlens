@@ -31,9 +31,11 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
 
   useEffect(() => {
     // Generar fichas de palabras desordenadas a partir de la respuesta correcta + distractores
+    // Se preservan apóstrofes internos en contracciones y posesivos (I'm, don't, speaker's)
     const rawWords = correctAnswer
-      .replace(/[.,/#!$%^&*;:{}=\-_`~()?"']/g, '')
+      .replace(/[.,/#!$%^&*;:{}=\-_`~()?"]/g, '')
       .split(/\s+/)
+      .map(w => w.replace(/^'+|'+$/g, ''))
       .filter(w => w.length > 0);
 
     const distractors = ['always', 'not', 'very', 'really'];
@@ -49,7 +51,7 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
     return () => {
       Speech.stop();
     };
-  }, [correctAnswer]);
+  }, [correctAnswer, prompt]);
 
   const handleSpeak = (text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

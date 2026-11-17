@@ -101,8 +101,47 @@ class ImageGenerationService {
   }
 
   /**
+   * Construye al instante (0ms bloqueo) la URL autenticada de FLUX en Pollinations
+   * para que el componente <Image> nativo la descargue y almacene en caché asíncronamente
+   * sin bloquear la interfaz ni el texto generado por el LLM.
+   */
+  public getInstantFluxUrl(
+    targetWord: string,
+    category: ConceptCategory | string = 'OBJECT',
+    visualScene?: string,
+    contextSentence?: string,
+    mnemonicHint?: string
+  ): string {
+    const fallbackUrl = FALLBACK_CATEGORY_IMAGES[category] || FALLBACK_CATEGORY_IMAGES.OBJECT;
+    const apiKey = API_CONFIG.POLLINATIONS.API_KEY;
+    if (!apiKey) {
+      return fallbackUrl;
+    }
+
+    const prompt = this.buildNaturalPrompt(
+      targetWord,
+      category,
+      visualScene,
+      contextSentence,
+      mnemonicHint
+    );
+    const encodedPrompt = encodeURIComponent(prompt);
+    // Semilla determinista basada en la palabra para aprovechar el caché CDN immutable (max-age=31536000)
+    const deterministicSeed = Math.abs(
+      targetWord
+        .trim()
+        .toLowerCase()
+        .split('')
+        .reduce((acc, ch) => (acc * 31 + ch.charCodeAt(0)) | 0, 7)
+    ) % 99999;
+
+    const baseUrl = API_CONFIG.POLLINATIONS.DIRECT_IMAGE_URL || 'https://gen.pollinations.ai/image';
+    return `${baseUrl}/${encodedPrompt}?width=512&height=512&nologo=true&model=${API_CONFIG.POLLINATIONS.MODEL || 'flux'}&seed=${deterministicSeed}&key=${apiKey}`;
+  }
+
+  /**
    * Genera una ilustración mediante la API de Pollinations.ai (FLUX)
-   * Devuelve la URL pública de la imagen lista para React Native Image.
+   * Devuelve la URL pública CDN de la imagen lista para React Native Image.
    */
   private async generateWithPollinations(prompt: string): Promise<string | null> {
     const apiKey = API_CONFIG.POLLINATIONS.API_KEY;
@@ -112,54 +151,33 @@ class ImageGenerationService {
     }
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.POLLINATIONS.TIMEOUT_MS);
-
-    // Payload limpio y validado (estrictamente sin nulls ni campos vacíos para evitar error 400 Zod)
-    const payload = {
-      prompt,
-      model: API_CONFIG.POLLINATIONS.MODEL,
-      n: 1,
-      size: API_CONFIG.POLLINATIONS.SIZE,
-      response_format: 'url',
-    };
+    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.POLLINATIONS.TIMEOUT_MS || 9500);
 
     try {
-      const response = await fetch(API_CONFIG.POLLINATIONS.API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify(payload),
+      const encodedPrompt = encodeURIComponent(prompt);
+      const seed = Math.floor(Math.random() * 99999);
+      const baseUrl = API_CONFIG.POLLINATIONS.DIRECT_IMAGE_URL || 'https://gen.pollinations.ai/image';
+      const directUrl = `${baseUrl}/${encodedPrompt}?width=512&height=512&nologo=true&model=${API_CONFIG.POLLINATIONS.MODEL || 'flux'}&seed=${seed}&key=${apiKey}`;
+
+      const response = await fetch(directUrl, {
+        method: 'GET',
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
 
       if (!response.ok) {
-        const errorBody = await response.text();
-        console.warn(`[Pollinations] Error HTTP ${response.status}:`, errorBody);
+        console.warn(`[Pollinations] Error HTTP ${response.status}`);
         return null;
       }
 
-      const json = await response.json();
-
-      // Formato compatible: data[0].url o data[0].b64_json
-      if (json.data && json.data.length > 0) {
-        if (json.data[0].url) {
-          return json.data[0].url;
-        }
-        if (json.data[0].b64_json) {
-          return `data:image/jpeg;base64,${json.data[0].b64_json}`;
-        }
+      // Si Pollinations devuelve el header x-content-id, construimos la URL pública permanente en media.pollinations.ai
+      const contentId = response.headers.get('x-content-id');
+      if (contentId) {
+        return `https://media.pollinations.ai/${contentId}`;
       }
 
-      // Fallback si la API devuelve directamente { url: "..." }
-      if (json.url) {
-        return json.url;
-      }
-
-      return null;
+      return directUrl;
     } catch (error: any) {
       clearTimeout(timeoutId);
       if (error.name === 'AbortError') {
@@ -172,58 +190,7 @@ class ImageGenerationService {
   }
 
   /**
-   * Genera una imagen utilizando Hugging Face FLUX.1-schnell y la convierte a Base64.
-   */
-  private async generateWithHuggingFace(prompt: string): Promise<string | null> {
-    const apiKey = API_CONFIG.HUGGING_FACE.API_KEY;
-    if (!apiKey) return null;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.HUGGING_FACE.TIMEOUT_MS);
-
-    try {
-      const response = await fetch(API_CONFIG.HUGGING_FACE.MODEL_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'x-wait-for-model': 'true',
-        },
-        body: JSON.stringify({ inputs: prompt }),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-
-      if (!response.ok) {
-        console.warn(`Hugging Face respondió con estado: ${response.status}`);
-        return null;
-      }
-
-      const blob = await response.blob();
-      const base64 = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          if (typeof reader.result === 'string') {
-            resolve(reader.result);
-          } else {
-            reject(new Error('FileReader no produjo string'));
-          }
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      });
-
-      return base64;
-    } catch (e: any) {
-      clearTimeout(timeoutId);
-      console.warn('Error generando imagen con Hugging Face FLUX:', e?.message || e);
-      return null;
-    }
-  }
-
-  /**
-   * Obtiene la ilustración educativa generada por Pollinations AI (FLUX) o Hugging Face,
+   * Obtiene la ilustración educativa generada por Pollinations AI (FLUX),
    * empleando metáforas visuales para conceptos abstractos y píldora del día,
    * con fallback veloz por categoría.
    */
@@ -237,19 +204,13 @@ class ImageGenerationService {
     const fallbackUrl = FALLBACK_CATEGORY_IMAGES[category] || FALLBACK_CATEGORY_IMAGES.OBJECT;
     const prompt = this.buildNaturalPrompt(targetWord, category, visualScene, contextSentence, mnemonicHint);
 
-    // 1. Intentar generación primaria con Pollinations AI (FLUX - URL directa 512x512)
+    // 1. Intentar generación primaria con Pollinations AI (FLUX CDN 512x512)
     const pollinationsImg = await this.generateWithPollinations(prompt);
     if (pollinationsImg) {
       return pollinationsImg;
     }
 
-    // 2. Fallback secundario con Hugging Face FLUX si está configurado
-    const hfImage = await this.generateWithHuggingFace(prompt);
-    if (hfImage) {
-      return hfImage;
-    }
-
-    // 3. Retornar fallback seguro y veloz de categoría
+    // 2. Retornar fallback seguro y veloz de categoría sin bloquear con endpoints deprecados
     return fallbackUrl;
   }
 

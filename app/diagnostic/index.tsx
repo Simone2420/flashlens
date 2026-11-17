@@ -26,6 +26,7 @@ import { FillInBlankQuestion } from '../../src/components/roadmap/questions/Fill
 import { MultipleChoiceIcfesQuestion } from '../../src/components/roadmap/questions/MultipleChoiceIcfesQuestion';
 import { SentenceWritingQuestion } from '../../src/components/roadmap/questions/SentenceWritingQuestion';
 import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/questions/SpeakingPronunciationQuestion';
+import { ImageWordMatchQuestion } from '../../src/components/roadmap/questions/ImageWordMatchQuestion';
 
 export default function DiagnosticScreen() {
   const router = useRouter();
@@ -113,7 +114,11 @@ export default function DiagnosticScreen() {
         } else if (item.question.type === 'SPEAKING_PRONUNCIATION') {
           isRight = evaluateLanguageInput(userAns, String(correctAns), true).isCorrect;
         } else {
-          isRight = userAns.toLowerCase().trim() === String(correctAns).toLowerCase().trim();
+          const opts = Array.isArray(item.question.options) ? item.question.options : [];
+          const hasExactOpt = opts.some(o => o.trim() === String(correctAns).trim());
+          isRight = hasExactOpt
+            ? userAns.trim() === String(correctAns).trim()
+            : userAns.toLowerCase().trim() === String(correctAns).toLowerCase().trim();
         }
 
         if (isRight) {
@@ -154,8 +159,7 @@ export default function DiagnosticScreen() {
   const hasAnswer =
     (q?.type === 'MATCH_PAIRS' && isPairDone) ||
     Boolean(selectedOption && selectedOption.trim().length > 0) ||
-    Boolean(writtenInput && writtenInput.trim().length > 0) ||
-    q?.type === 'SPEAKING_PRONUNCIATION'; // Permite avanzar en emuladores o entornos sin micrófono físico
+    Boolean(writtenInput && writtenInput.trim().length > 0);
 
   return (
     <View style={[styles.safeArea, { paddingTop: topPadding }]}>
@@ -182,6 +186,7 @@ export default function DiagnosticScreen() {
         {/* 1. MATCH PAIRS (EMPAREJAR PAREJAS) */}
         {q?.type === 'MATCH_PAIRS' && (
           <MatchPairsQuestion
+            key={currentItem.id}
             prompt={q.prompt}
             pairs={typeof q.options === 'object' && !Array.isArray(q.options) ? (q.options as Record<string, string>) : {}}
             onComplete={(isDone) => setIsPairDone(isDone)}
@@ -192,6 +197,7 @@ export default function DiagnosticScreen() {
         {/* 2. FILL IN THE BLANK (COMPLETAR ESPACIO) */}
         {q?.type === 'FILL_IN_BLANK' && (
           <FillInBlankQuestion
+            key={currentItem.id}
             prompt={q.prompt}
             options={Array.isArray(q.options) ? q.options : []}
             selectedWord={selectedOption}
@@ -200,9 +206,10 @@ export default function DiagnosticScreen() {
           />
         )}
 
-        {/* 3. MULTIPLE CHOICE ICFES & IMAGE WORD MATCH */}
-        {(q?.type === 'MULTIPLE_CHOICE_ICFES' || q?.type === 'IMAGE_WORD_MATCH') && (
+        {/* 3. MULTIPLE CHOICE ICFES */}
+        {q?.type === 'MULTIPLE_CHOICE_ICFES' && (
           <MultipleChoiceIcfesQuestion
+            key={currentItem.id}
             prompt={q.prompt}
             options={Array.isArray(q.options) ? q.options : []}
             selectedOption={selectedOption}
@@ -213,9 +220,24 @@ export default function DiagnosticScreen() {
           />
         )}
 
-        {/* 4. SENTENCE WRITING (CONSTRUCCIÓN DE ORACIONES) */}
+        {/* 4. IMAGE WORD MATCH (VOCABULARIO VISUAL) */}
+        {q?.type === 'IMAGE_WORD_MATCH' && (
+          <ImageWordMatchQuestion
+            key={currentItem.id}
+            prompt={q.prompt}
+            options={Array.isArray(q.options) ? q.options : []}
+            selectedOption={selectedOption}
+            onSelectOption={setSelectedOption}
+            isAnswered={false}
+            correctAnswer={String(q.correctAnswer)}
+            disabled={false}
+          />
+        )}
+
+        {/* 5. SENTENCE WRITING (CONSTRUCCIÓN DE ORACIONES) */}
         {q?.type === 'SENTENCE_WRITING' && (
           <SentenceWritingQuestion
+            key={currentItem.id}
             prompt={q.prompt}
             correctAnswer={String(q.correctAnswer)}
             value={writtenInput}
@@ -224,9 +246,10 @@ export default function DiagnosticScreen() {
           />
         )}
 
-        {/* 5. SPEAKING PRONUNCIATION (PRÁCTICA ORAL) */}
+        {/* 6. SPEAKING PRONUNCIATION (PRÁCTICA ORAL) */}
         {q?.type === 'SPEAKING_PRONUNCIATION' && (
           <SpeakingPronunciationQuestion
+            key={currentItem.id}
             prompt={q.prompt}
             targetSentence={String(q.correctAnswer)}
             recordedText={writtenInput}

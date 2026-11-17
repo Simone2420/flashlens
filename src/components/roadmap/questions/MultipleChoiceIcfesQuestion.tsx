@@ -33,7 +33,19 @@ export const MultipleChoiceIcfesQuestion: React.FC<MultipleChoiceIcfesQuestionPr
 }) => {
   const handleSpeak = (text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Speech.speak(text, { language: 'en-US' });
+    Speech.stop();
+    const withoutIpa = text.replace(/\/[^/]+\//g, '').replace(/\s+/g, ' ').trim();
+    const isSpanishPrompt = /[¿¡áéíóúñ]/i.test(withoutIpa);
+    if (isSpanishPrompt) {
+      const quoteMatch = withoutIpa.match(/["']([^"']{2,})["']/);
+      if (quoteMatch && !/[¿¡áéíóúñ]/i.test(quoteMatch[1])) {
+        Speech.speak(quoteMatch[1], { language: 'en-US' });
+        return;
+      }
+      Speech.speak(withoutIpa, { language: 'es-ES' });
+      return;
+    }
+    Speech.speak(withoutIpa || text, { language: 'en-US' });
   };
 
   return (
@@ -60,7 +72,16 @@ export const MultipleChoiceIcfesQuestion: React.FC<MultipleChoiceIcfesQuestionPr
         {options.map((opt, idx) => {
           const letter = LETTERS[idx] || `${idx + 1}`;
           const isSelected = selectedOption === opt;
-          const isCorrect = isAnswered && correctAnswer && opt.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
+          const hasExactMatchInOptions = Boolean(
+            correctAnswer && options.some(o => o.trim() === correctAnswer.trim())
+          );
+          const isCorrect = Boolean(
+            isAnswered &&
+              correctAnswer &&
+              (hasExactMatchInOptions
+                ? opt.trim() === correctAnswer.trim()
+                : opt.toLowerCase().trim() === correctAnswer.toLowerCase().trim())
+          );
           const isWrongSelected = isAnswered && isSelected && !isCorrect;
 
           return (

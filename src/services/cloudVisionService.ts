@@ -18,14 +18,14 @@ export interface CloudVisionResponse {
 
 class CloudVisionService {
   /**
-   * Comprime la imagen a 900px JPEG Base64 (~80-120 KB) para subida ultrarrápida
+   * Comprime la imagen a 640px JPEG Base64 (~35-55 KB) para subida móvil ultrarrápida y menor latencia de tokens
    */
   private async compressImageToBase64(imageUri: string): Promise<string> {
     const manipResult = await ImageManipulator.manipulateAsync(
       imageUri,
-      [{ resize: { width: 900 } }],
+      [{ resize: { width: 640 } }],
       {
-        compress: 0.75,
+        compress: 0.68,
         format: ImageManipulator.SaveFormat.JPEG,
         base64: true,
       }
@@ -39,7 +39,50 @@ class CloudVisionService {
   }
 
   /**
-   * Envía la imagen al modelo multimodal en OpenRouter con prompt pedagógico
+   * Ejecuta un fetch con su propio AbortController independiente para evitar que un intento consuma el timeout del siguiente
+   */
+  private async fetchWithTimeout(
+    url: string,
+    options: RequestInit,
+    timeoutMs: number
+  ): Promise<Response> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, {
+        ...options,
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  /**
+   * Extrae y parsea el objeto JSON ignorando bloques <think>, espacios keep-alive o bloques markdown
+   */
+  private extractJsonObject(rawContent: string): any | null {
+    if (!rawContent) return null;
+    const withoutThink = rawContent.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+    const firstBrace = withoutThink.indexOf('{');
+    const lastBrace = withoutThink.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      try {
+        return JSON.parse(withoutThink.slice(firstBrace, lastBrace + 1));
+      } catch {
+        // Fallback a limpieza de fences
+      }
+    }
+    try {
+      const cleaned = withoutThink.replace(/```json\s*|\s*```/g, '').trim();
+      return JSON.parse(cleaned);
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Envía la imagen al modelo multimodal en la nube (OpenRouter Vision -> Pollinations Vision Fallback)
    */
   public async classifyAndGenerate(
     imageUri: string,
@@ -47,11 +90,12 @@ class CloudVisionService {
   ): Promise<CloudVisionResponse> {
     try {
       const base64Data = await this.compressImageToBase64(imageUri);
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.OPENROUTER.TIMEOUT_MS);
 
-      const prompt = `You are an expert English linguist and language teacher for Spanish speakers.
+      const prompt = `You are an expert English-Spanish linguist and language teacher for Spanish speakers.
 Analyze the main object in this image and create an educational flashcard adapted to CEFR level "${targetCefr}".
+CRITICAL LANGUAGE RULES:
+- "targetWord" and "contextSentence" MUST be in ENGLISH.
+- "primaryTranslation", "acceptedTranslations", "contextTranslation", and "mnemonicHint" MUST be in SPANISH (Español). NEVER use Chinese or any other language.
 Respond ONLY with a valid raw JSON object (without markdown code fences, without explanations).
 
 Schema:
@@ -78,79 +122,141 @@ Schema:
   ]
 }`;
 
-      const sendRequest = async (modelConfig: { models?: string[]; model?: string }) => {
-        return await fetch(API_CONFIG.OPENROUTER.BASE_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${API_CONFIG.OPENROUTER.API_KEY}`,
-            'HTTP-Referer': 'https://flashlens.app',
-            'X-Title': 'FlashLens Language App',
-          },
-          body: JSON.stringify({
-            ...modelConfig,
-            messages: [
-              {
-                role: 'user',
-                content: [
-                  { type: 'text', text: prompt },
-                  {
-                    type: 'image_url',
-                    image_url: {
-                      url: `data:image/jpeg;base64,${base64Data}`,
-                    },
-                  },
-                ],
+      const messagesPayload = [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: prompt },
+            {
+              type: 'image_url',
+              image_url: {
+                url: `data:image/jpeg;base64,${base64Data}`,
               },
-            ],
-            temperature: 0.2,
-            max_tokens: 1000,
-            reasoning: { effort: 'none' },
-          }),
-          signal: controller.signal,
-        });
-      };
+            },
+          ],
+        },
+      ];
 
-      // 1. Intento primario: Array en cascada limitado estrictamente a 3 modelos (límite OpenRouter)
-      let response = await sendRequest({
-        models: (API_CONFIG.OPENROUTER.MODELS || []).slice(0, 3),
-      });
+      let parsed: any = null;
+      let lastErrorStatus = '';
 
-      // 2. Si falla con 400 (parámetros no soportados) o 429, reintentar con el modelo individual primario
-      if (!response.ok && (response.status === 400 || response.status === 429)) {
-        console.warn(`Reintentando con modelo individual ${API_CONFIG.OPENROUTER.PRIMARY_VISION_MODEL}...`);
-        response = await sendRequest({
-          model: API_CONFIG.OPENROUTER.PRIMARY_VISION_MODEL,
-        });
+      // 1. Intento Primario: OpenRouter Vision con modelos rápidos verificados y su propio timeout independiente
+      if (API_CONFIG.OPENROUTER.API_KEY) {
+        const visionModels = (
+          API_CONFIG.OPENROUTER.VISION_MODELS ||
+          API_CONFIG.OPENROUTER.MODELS ||
+          []
+        ).slice(0, 3);
+
+        try {
+          const response = await this.fetchWithTimeout(
+            API_CONFIG.OPENROUTER.BASE_URL,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_CONFIG.OPENROUTER.API_KEY}`,
+                'HTTP-Referer': 'https://flashlens.app',
+                'X-Title': 'FlashLens Language App',
+              },
+              body: JSON.stringify({
+                models: visionModels,
+                messages: messagesPayload,
+                temperature: 0.2,
+                max_tokens: 750,
+                reasoning: { effort: 'none' },
+              }),
+            },
+            API_CONFIG.OPENROUTER.PER_ATTEMPT_TIMEOUT_MS || 8500
+          );
+
+          if (response.ok) {
+            const json = await response.json();
+            const choiceMsg = json.choices?.[0]?.message;
+            const content = (choiceMsg?.content || choiceMsg?.reasoning || '').trim();
+            parsed = this.extractJsonObject(content);
+          } else {
+            lastErrorStatus = `OpenRouter HTTP ${response.status}`;
+            console.warn('OpenRouter Vision intento 1 no OK:', response.status);
+          }
+        } catch (err: any) {
+          lastErrorStatus = err?.name === 'AbortError' ? 'Timeout OpenRouter' : (err?.message || 'Error OpenRouter');
+          console.warn('OpenRouter Vision intento 1 excepción:', lastErrorStatus);
+        }
       }
 
-      clearTimeout(timeoutId);
+      // 2. Intento Secundario (Fallback Multimodal Independiente): Pollinations OpenAI Vision
+      if (!parsed?.targetWord && API_CONFIG.POLLINATIONS.API_KEY) {
+        try {
+          const pollResponse = await this.fetchWithTimeout(
+            API_CONFIG.POLLINATIONS.CHAT_URL,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_CONFIG.POLLINATIONS.API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: API_CONFIG.POLLINATIONS.CHAT_MODEL || 'openai',
+                messages: messagesPayload,
+                temperature: 0.2,
+              }),
+            },
+            API_CONFIG.POLLINATIONS.TIMEOUT_MS || 9500
+          );
 
-      if (!response.ok) {
-        const errText = await response.text();
-        console.warn('OpenRouter API Error:', response.status, errText);
+          if (pollResponse.ok) {
+            const pollJson = await pollResponse.json();
+            const pollContent = (pollJson.choices?.[0]?.message?.content || '').trim();
+            parsed = this.extractJsonObject(pollContent);
+          } else {
+            lastErrorStatus = `Pollinations HTTP ${pollResponse.status}`;
+          }
+        } catch (pollErr: any) {
+          lastErrorStatus = pollErr?.name === 'AbortError' ? 'Tiempo de espera agotado (Timeout)' : (pollErr?.message || lastErrorStatus);
+          console.warn('Pollinations Vision fallback excepción:', lastErrorStatus);
+        }
+      }
+
+      // 3. Tercer Intento de Respaldo: Modelo individual secundario en OpenRouter con timeout fresco
+      if (!parsed?.targetWord && API_CONFIG.OPENROUTER.API_KEY) {
+        try {
+          const fallbackResponse = await this.fetchWithTimeout(
+            API_CONFIG.OPENROUTER.BASE_URL,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_CONFIG.OPENROUTER.API_KEY}`,
+                'HTTP-Referer': 'https://flashlens.app',
+                'X-Title': 'FlashLens Language App',
+              },
+              body: JSON.stringify({
+                model: API_CONFIG.OPENROUTER.FALLBACK_VISION_MODEL,
+                messages: messagesPayload,
+                temperature: 0.2,
+                max_tokens: 750,
+                reasoning: { effort: 'none' },
+              }),
+            },
+            7500
+          );
+
+          if (fallbackResponse.ok) {
+            const fbJson = await fallbackResponse.json();
+            const fbContent = (fbJson.choices?.[0]?.message?.content || '').trim();
+            parsed = this.extractJsonObject(fbContent);
+          }
+        } catch {
+          // Continúa al manejo de error final
+        }
+      }
+
+      if (!parsed || !parsed.targetWord) {
         return {
           success: false,
-          error: `Error ${response.status}`,
+          error: lastErrorStatus || 'Respuesta vacía del modelo',
         };
-      }
-
-      const json = await response.json();
-      const choiceMsg = json.choices?.[0]?.message;
-      const content = (choiceMsg?.content || choiceMsg?.reasoning || '').trim();
-      if (!content) {
-        return { success: false, error: 'Respuesta vacía del modelo' };
-      }
-
-      // Extracción robusta de JSON resistente a markdown fences y tokens de razonamiento
-      let parsed: any;
-      const firstBrace = content.indexOf('{');
-      const lastBrace = content.lastIndexOf('}');
-      if (firstBrace !== -1 && lastBrace !== -1) {
-        parsed = JSON.parse(content.slice(firstBrace, lastBrace + 1));
-      } else {
-        const cleaned = content.replace(/```json\s*|\s*```/g, '').trim();
-        parsed = JSON.parse(cleaned);
       }
 
       const facilitated = nlpLinguisticService.toFacilitatedPhonetics(

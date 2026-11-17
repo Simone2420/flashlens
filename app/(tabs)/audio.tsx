@@ -136,10 +136,14 @@ export default function AudioLabScreen() {
     if (!activeCard || dictationMode !== 'BURST') return [];
 
     const isNativeInverse = dictationDirection === 'NATIVE_INVERSE';
-    const correctAnswer = isNativeInverse ? activeCard.nativeTranslation : activeCard.targetWord;
+    const correctAnswer = isNativeInverse
+      ? (activeCard.primaryTranslation || activeCard.nativeTranslation)
+      : activeCard.targetWord;
     const otherCards = cards.filter(c => c.id !== activeCard.id);
     const shuffledOthers = [...otherCards].sort(() => 0.5 - Math.random());
-    const distractors = shuffledOthers.slice(0, 3).map(c => (isNativeInverse ? c.nativeTranslation : c.targetWord));
+    const distractors = shuffledOthers
+      .slice(0, 3)
+      .map(c => (isNativeInverse ? (c.primaryTranslation || c.nativeTranslation) : c.targetWord));
 
     // Fallbacks si hay pocas tarjetas
     const fallbackDistractors = isNativeInverse
@@ -769,7 +773,7 @@ export default function AudioLabScreen() {
                       const isSelected = selectedBurstOption === opt;
                       const isCorrect =
                         dictationDirection === 'NATIVE_INVERSE'
-                          ? opt === activeCard.nativeTranslation
+                          ? opt === (activeCard.primaryTranslation || activeCard.nativeTranslation)
                           : opt === activeCard.targetWord;
 
                       let btnStyle: any = [styles.mcOptionBtn, hasLongOption && styles.mcOptionBtnFull];

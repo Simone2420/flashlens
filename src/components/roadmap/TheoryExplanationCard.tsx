@@ -36,7 +36,15 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
 }) => {
   const handleSpeak = (text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Speech.speak(text, { language: 'en-US', rate: 0.9 });
+    Speech.stop();
+    const cleaned = text
+      .replace(/\/[^/]+\//g, '')
+      .replace(/\([^)]*\)/g, '')
+      .replace(/^[0-9]+\.\s*[^:]+:\s*/gm, '')
+      .replace(/[➔•]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    Speech.speak(cleaned || text, { language: 'en-US', rate: 0.9 });
   };
 
   const isIntro = explanation.placement === 'INTRO';
@@ -119,7 +127,13 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
               <Text style={styles.codeFooterHint}>Pulsa para escuchar pronunciación</Text>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => handleSpeak(explanation.grammarFormula || explanation.title)}
+                onPress={() =>
+                  handleSpeak(
+                    explanation.contrastExamples?.[0]?.en ||
+                      explanation.grammarFormula ||
+                      explanation.title
+                  )
+                }
                 style={styles.runAudioBtn}
               >
                 <Text style={styles.runAudioBtnText}>AUDIO</Text>
@@ -134,9 +148,9 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
       {isCheckpoint && (
         <View style={styles.checkpointSpecialSection}>
           {/* Tarjeta Don't Say vs Say */}
-          <View style={styles.contrastErrorCard}>
-            <Text style={styles.contrastErrorTitle}>⚠️ ERROR COMÚN DE HISPANOHABLANTES:</Text>
-            {mainPitfall && (
+          {mainPitfall && (
+            <View style={styles.contrastErrorCard}>
+              <Text style={styles.contrastErrorTitle}>⚠️ ERROR COMÚN DE HISPANOHABLANTES:</Text>
               <View style={styles.dontSayBox}>
                 <View style={styles.dontSayRow}>
                   <Text style={styles.dontSayLabel}>{"❌ Don't say:"}</Text>
@@ -150,8 +164,8 @@ export const TheoryExplanationCard: React.FC<TheoryExplanationCardProps> = ({
                   💡 <Text style={{ fontWeight: '800' }}>Por qué:</Text> {mainPitfall.fastPill || mainPitfall.mediumExplanation}
                 </Text>
               </View>
-            )}
-          </View>
+            </View>
+          )}
 
           {/* Guía de Articulación y Pronunciación */}
           <View style={styles.phoneticsCard}>

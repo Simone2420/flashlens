@@ -262,25 +262,19 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
         setGrammarFormula(generated.grammarFormula);
       }
 
-      // 🎨 Generación simultánea de la ilustración con IA (FLUX) al completar con IA
-      try {
-        const prompt = imageGenerationService.buildNaturalPrompt(
-          generated.targetWord,
-          generated.conceptCategory,
-          undefined,
-          generated.contextSentence,
-          generated.mnemonicHint
-        );
-        const seed = Math.floor(Math.random() * 999999);
-        const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&model=flux&nologo=true&seed=${seed}`;
-        setFormImageUri(pollinationsUrl);
+      // 🎨 Asignación inmediata de la ilustración autenticada con IA (FLUX) sin sobrescribir fotos propias
+      if (formImageSource !== 'USER_UPLOAD') {
+        const finalAiImage =
+          generated.imageUrl ||
+          imageGenerationService.getInstantFluxUrl(
+            generated.targetWord,
+            generated.conceptCategory,
+            generated.visualScene,
+            generated.contextSentence,
+            generated.mnemonicHint
+          );
+        setFormImageUri(finalAiImage);
         setFormImageSource('AI_GENERATED');
-      } catch (imgErr) {
-        console.warn('Error generando imagen automática en auto-fill:', imgErr);
-        if (generated.imageUrl) {
-          setFormImageUri(generated.imageUrl);
-          setFormImageSource('AI_GENERATED');
-        }
       }
 
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -313,7 +307,7 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     }
   };
 
-  const handleSaveMixedForm = async () => {
+  const handleSaveMixedForm = () => {
     if (!targetWord.trim() || !nativeTranslation.trim()) {
       Alert.alert('Campos Incompletos', 'Por favor ingresa la palabra en inglés y su traducción.');
       return;
@@ -322,13 +316,13 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
     const config = SUBCATEGORIES_CONFIG.find(c => c.category === selectedCategory);
     const finalImg =
       formImageUri ||
-      (await imageGenerationService.generateOrFallback(
+      imageGenerationService.getInstantFluxUrl(
         targetWord.trim(),
         selectedCategory,
         undefined,
         contextSentence,
         mnemonicHint
-      ));
+      );
 
     const finalImageSource = formImageSource === 'USER_UPLOAD' ? 'CAMERA' : 'AI_GENERATED';
 
@@ -550,16 +544,26 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                       </TouchableOpacity>
                     </View>
 
-                    {/* Imagen de Unsplash Asignada */}
+                    {/* Ilustración IA o Educativa Asignada */}
                     {generatedPreviewCard.imageUrl && (
                       <View style={styles.unsplashImageWrapper}>
                         <Image
                           source={{ uri: generatedPreviewCard.imageUrl }}
                           style={styles.unsplashImage}
+                          onError={() => {
+                            const fallback =
+                              CATEGORY_IMAGE_MAP[generatedPreviewCard.conceptCategory] ||
+                              CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+                            if (generatedPreviewCard.imageUrl !== fallback) {
+                              setGeneratedPreviewCard(prev =>
+                                prev ? { ...prev, imageUrl: fallback } : prev
+                              );
+                            }
+                          }}
                         />
                         <View style={styles.unsplashBadge}>
                           <ImageIcon size={10} color="#FFFFFF" />
-                          <Text style={styles.unsplashBadgeText}>Unsplash Educational</Text>
+                          <Text style={styles.unsplashBadgeText}>✨ FLUX IA Educational</Text>
                         </View>
                       </View>
                     )}
@@ -626,6 +630,14 @@ export const AbstractCardModal: React.FC<AbstractCardModalProps> = ({
                         CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION,
                     }}
                     style={styles.formImage}
+                    onError={() => {
+                      const fallback =
+                        CATEGORY_IMAGE_MAP[selectedCategory] ||
+                        CATEGORY_IMAGE_MAP.IDIOM_EXPRESSION;
+                      if (formImageUri && formImageUri !== fallback) {
+                        setFormImageUri(fallback);
+                      }
+                    }}
                   />
                   {isAutoFilling && (
                     <View style={styles.imageLoadingOverlay}>

@@ -5,35 +5,53 @@
  */
 
 export const API_CONFIG = {
-  // 1. OpenRouter - Modelos Multimodales de Visión Gratuitos
+  // 1. OpenRouter - Modelos Multimodales de Visión y Texto Gratuitos de Baja Latencia
   OPENROUTER: {
     API_KEY: process.env.EXPO_PUBLIC_OPENROUTER_API_KEY || '',
     BASE_URL: 'https://openrouter.ai/api/v1/chat/completions',
-    // Lista de modelos multimodales gratuitos activos (OpenRouter permite máx 3 items)
-    MODELS: [
-      'dots-studio/dots-3-note-preview:free',
-      'google/gemma-4-31b-it:free',
-      'google/gemma-4-26b-a4b-it:free',
+    // Modelos de Visión verificados de respuesta rápida (~3s con reasoning: none)
+    VISION_MODELS: [
+      'particle-ai/particle-1:free',
+      'nvidia/nemotron-3.5-super-vl:free',
+      'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
     ],
-    PRIMARY_VISION_MODEL: 'dots-studio/dots-3-note-preview:free',
-    FALLBACK_VISION_MODEL: 'google/gemma-4-31b-it:free',
-    TIMEOUT_MS: 12000, // 12 segundos límite para subida y procesamiento en red móvil
+    // Modelos de Texto/Lingüística ultra-rápidos (~1.2s con reasoning: none)
+    TEXT_MODELS: [
+      'nvidia/nemotron-3.5-lightning:free',
+      'cohere/north-mini-code:free',
+      'nvidia/nemotron-3.5-super-vl:free',
+    ],
+    // Alias compatible con código previo
+    MODELS: [
+      'particle-ai/particle-1:free',
+      'nvidia/nemotron-3.5-super-vl:free',
+      'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
+    ],
+    PRIMARY_VISION_MODEL: 'particle-ai/particle-1:free',
+    FALLBACK_VISION_MODEL: 'nvidia/nemotron-3.5-super-vl:free',
+    PRIMARY_TEXT_MODEL: 'nvidia/nemotron-3.5-lightning:free',
+    FALLBACK_TEXT_MODEL: 'cohere/north-mini-code:free',
+    PER_ATTEMPT_TIMEOUT_MS: 8500,
+    TIMEOUT_MS: 14000,
   },
 
-  // 2. Pollinations.ai - Generación de Ilustraciones Conceptuales con FLUX (Demo v1.1)
+  // 2. Pollinations.ai - Generación de Ilustraciones FLUX + Fallback Multimodal OpenAI
   POLLINATIONS: {
     API_KEY: process.env.EXPO_PUBLIC_POLLINATIONS_API_KEY || '',
     API_URL: 'https://gen.pollinations.ai/v1/images/generations',
+    DIRECT_IMAGE_URL: 'https://gen.pollinations.ai/image',
+    CHAT_URL: 'https://gen.pollinations.ai/v1/chat/completions',
+    CHAT_MODEL: 'openai',
     MODEL: 'flux',
     SIZE: '512x512',
-    TIMEOUT_MS: 12000,
+    TIMEOUT_MS: 9500,
   },
 
   // Fallback auxiliar Hugging Face FLUX
   HUGGING_FACE: {
     API_KEY: process.env.EXPO_PUBLIC_HF_API_KEY || '',
-    MODEL_URL: 'https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell',
-    TIMEOUT_MS: 7500,
+    MODEL_URL: 'https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell',
+    TIMEOUT_MS: 6000,
   },
 
   // 3. Google Sheets Webhook - Recolección de Sugerencias y Feedback en Vivo

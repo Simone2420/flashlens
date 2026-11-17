@@ -261,8 +261,17 @@ export default function LessonScreen() {
   const currentQuestions = activeSublesson.questions || [];
   const currentQ: SublessonQuestionItem | undefined = currentQuestions[questionIdx];
 
+  const hasCurrentAnswer =
+    currentQ?.type === 'MATCH_PAIRS'
+      ? false
+      : currentQ?.type === 'FILL_IN_BLANK' ||
+        currentQ?.type === 'MULTIPLE_CHOICE_ICFES' ||
+        currentQ?.type === 'IMAGE_WORD_MATCH'
+      ? Boolean(selectedOption && selectedOption.trim().length > 0)
+      : Boolean(writtenInput && writtenInput.trim().length > 0);
+
   const handleEvaluateCurrent = () => {
-    if (!currentQ || isAnswered || currentQ.type === 'MATCH_PAIRS') return;
+    if (!currentQ || isAnswered || currentQ.type === 'MATCH_PAIRS' || !hasCurrentAnswer) return;
 
     let correct = false;
 
@@ -271,7 +280,11 @@ export default function LessonScreen() {
       currentQ.type === 'MULTIPLE_CHOICE_ICFES' ||
       currentQ.type === 'IMAGE_WORD_MATCH'
     ) {
-      correct = selectedOption?.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
+      const opts = Array.isArray(currentQ.options) ? currentQ.options : [];
+      const hasExactOpt = opts.some(o => o.trim() === String(currentQ.correctAnswer).trim());
+      correct = hasExactOpt
+        ? selectedOption?.trim() === String(currentQ.correctAnswer).trim()
+        : selectedOption?.toLowerCase().trim() === String(currentQ.correctAnswer).toLowerCase().trim();
     } else if (currentQ.type === 'SENTENCE_WRITING') {
       const result = evaluateLanguageInput(writtenInput, String(currentQ.correctAnswer), false);
       correct = result.isCorrect;
@@ -377,6 +390,7 @@ export default function LessonScreen() {
           {/* 1. MATCH PAIRS (EMPAREJAR PAREJAS) */}
           {currentQ.type === 'MATCH_PAIRS' && (
             <MatchPairsQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               pairs={(currentQ.options as Record<string, string>) || {}}
               onComplete={(isDone) => {
@@ -391,6 +405,7 @@ export default function LessonScreen() {
           {/* 2. FILL IN THE BLANK (COMPLETAR ESPACIO) */}
           {currentQ.type === 'FILL_IN_BLANK' && (
             <FillInBlankQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               options={Array.isArray(currentQ.options) ? currentQ.options : []}
               selectedWord={selectedOption}
@@ -402,6 +417,7 @@ export default function LessonScreen() {
           {/* 3. MULTIPLE CHOICE ICFES & GENERAL */}
           {currentQ.type === 'MULTIPLE_CHOICE_ICFES' && (
             <MultipleChoiceIcfesQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               options={Array.isArray(currentQ.options) ? currentQ.options : []}
               selectedOption={selectedOption}
@@ -415,6 +431,7 @@ export default function LessonScreen() {
           {/* 4. SENTENCE WRITING (CONSTRUCCIÓN DE ORACIONES) */}
           {currentQ.type === 'SENTENCE_WRITING' && (
             <SentenceWritingQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               correctAnswer={String(currentQ.correctAnswer)}
               value={writtenInput}
@@ -426,6 +443,7 @@ export default function LessonScreen() {
           {/* 5. SPEAKING PRONUNCIATION (PRÁCTICA ORAL) */}
           {currentQ.type === 'SPEAKING_PRONUNCIATION' && (
             <SpeakingPronunciationQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               targetSentence={String(currentQ.correctAnswer)}
               recordedText={writtenInput}
@@ -437,6 +455,7 @@ export default function LessonScreen() {
           {/* 6. IMAGE WORD MATCH (VOCABULARIO VISUAL) */}
           {currentQ.type === 'IMAGE_WORD_MATCH' && (
             <ImageWordMatchQuestion
+              key={currentQ.id}
               prompt={currentQ.prompt}
               options={Array.isArray(currentQ.options) ? currentQ.options : []}
               selectedOption={selectedOption}
@@ -474,8 +493,9 @@ export default function LessonScreen() {
           ) : (
             <TouchableOpacity
               activeOpacity={0.88}
+              disabled={!hasCurrentAnswer}
               onPress={handleEvaluateCurrent}
-              style={styles.actionBtn}
+              style={[styles.actionBtn, !hasCurrentAnswer && { opacity: 0.5 }]}
             >
               <Text style={styles.actionBtnText}>COMPROBAR</Text>
             </TouchableOpacity>

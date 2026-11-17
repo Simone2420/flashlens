@@ -148,8 +148,8 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Normaliza la orientación EXIF de la foto capturada para que el visor y el recorte
-   * trabajen exactamente sobre las mismas coordenadas de píxeles en Android e iOS.
+   * Normaliza la orientación EXIF y escala a 1280px HD para que el recorte y la subida a la nube
+   * sean instantáneos y trabajen sobre las mismas coordenadas de píxeles en Android e iOS.
    */
   const normalizeLocalPhoto = async (
     rawUri: string
@@ -158,10 +158,14 @@ export const CameraViewfinder: React.FC = () => {
       return { uri: rawUri, width: 0, height: 0 };
     }
     try {
-      const normalized = await ImageManipulator.manipulateAsync(rawUri, [], {
-        compress: 0.92,
-        format: ImageManipulator.SaveFormat.JPEG,
-      });
+      const normalized = await ImageManipulator.manipulateAsync(
+        rawUri,
+        [{ resize: { width: 1280 } }],
+        {
+          compress: 0.85,
+          format: ImageManipulator.SaveFormat.JPEG,
+        }
+      );
       return {
         uri: normalized.uri,
         width: normalized.width,

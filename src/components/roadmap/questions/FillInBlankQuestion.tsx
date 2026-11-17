@@ -27,7 +27,21 @@ export const FillInBlankQuestion: React.FC<FillInBlankQuestionProps> = ({
 }) => {
   const handleSpeak = (text: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Speech.speak(text, { language: 'en-US' });
+    Speech.stop();
+    let spoken = text
+      .replace(/\/[^/]+\//g, '')
+      .replace(/\([^)]*[áéíóúñ][^)]*\)/gi, '')
+      .replace(/\((?:barco|doctora|acerca de|sobre la mesa|el mes de agosto)\)/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (/[¿¡áéíóúñ]/i.test(spoken)) {
+      const quoteMatch = spoken.match(/['"]([^'"]+)['"]/);
+      if (quoteMatch) {
+        spoken = quoteMatch[1].trim();
+      }
+    }
+    Speech.speak(spoken || text, { language: 'en-US' });
   };
 
   // Divide el prompt alrededor de signos como '____', '[___]', '...', etc.
