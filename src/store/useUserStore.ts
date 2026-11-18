@@ -36,6 +36,7 @@ interface UserState {
   }) => Promise<{ success: boolean; error?: string }>;
   loginDemo: () => Promise<{ success: boolean; error?: string }>;
   syncWithBackend: () => Promise<boolean>;
+  updateUserProfile: (updates: Partial<UserProfile>) => Promise<{ success: boolean; error?: string }>;
 
   // Actions
   loseLife: () => boolean; // returns true if user still has lives > 0
@@ -326,6 +327,9 @@ export const useUserStore = create<UserState>()(
         set(state => ({
           profile: { ...state.profile, learningPace: pace },
         }));
+        authService.getStoredToken().then(token => {
+          if (token) userApiService.updateProfile({ learningPace: pace }).catch(() => {});
+        });
       },
 
       setDiagnosedLevel: (level: CEFRLevel) => {
@@ -336,12 +340,25 @@ export const useUserStore = create<UserState>()(
             hasCompletedDiagnostic: true,
           },
         }));
+        authService.getStoredToken().then(token => {
+          if (token) {
+            userApiService.updateProfile({
+              diagnosedLevel: level,
+              hasCompletedDiagnostic: true,
+            }).catch(() => {});
+          }
+        });
       },
 
       toggleNotifications: (enabled?: boolean) => {
         set(state => {
           const nextState = enabled !== undefined ? enabled : !state.profile.notificationsEnabled;
           notificationService.setEnabled(nextState);
+          authService.getStoredToken().then(token => {
+            if (token) {
+              userApiService.updateProfile({ notificationsEnabled: nextState }).catch(() => {});
+            }
+          });
           return {
             profile: { ...state.profile, notificationsEnabled: nextState },
           };
@@ -567,6 +584,32 @@ export const useUserStore = create<UserState>()(
           return true;
         } catch {
           return false;
+        }
+      },
+
+      updateUserProfile: async (updates: Partial<UserProfile>) => {
+        set(state => ({
+          profile: {
+            ...state.profile,
+            ...updates,
+            updatedAt: new Date().toISOString(),
+          },
+        }));
+        try {
+          const token = await authService.getStoredToken();
+          if (token) {
+            const updated = await userApiService.updateProfile(updates);
+            set(state => ({
+              profile: {
+                ...state.profile,
+                ...updated,
+              },
+            }));
+          }
+          return { success: true };
+        } catch (err: any) {
+          console.warn('Error sincronizando perfil con backend:', err?.message || err);
+          return { success: false, error: err?.message || 'Error al actualizar perfil' };
         }
       },
 

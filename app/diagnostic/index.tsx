@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -19,6 +19,7 @@ import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../src/constants/the
 import { MOCK_DIAGNOSTIC_QUESTIONS } from '../../src/data/mockData';
 import { DiagnosticQuestion } from '../../src/types';
 import { evaluateLanguageInput } from '../../src/services/languageEvaluation';
+import { diagnosticApiService } from '../../src/services/api';
 
 // Componentes interactivos especializados por tipo de pregunta
 import { MatchPairsQuestion } from '../../src/components/roadmap/questions/MatchPairsQuestion';
@@ -34,13 +35,33 @@ export default function DiagnosticScreen() {
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
   const bottomPadding = Math.max(insets.bottom, 16);
 
-  const questions = MOCK_DIAGNOSTIC_QUESTIONS;
+  const [questions, setQuestions] = useState<DiagnosticQuestion[]>(MOCK_DIAGNOSTIC_QUESTIONS);
+  const [testId, setTestId] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [writtenInput, setWrittenInput] = useState('');
   const [isPairDone, setIsPairDone] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    diagnosticApiService
+      .getDiagnosticTest()
+      .then(res => {
+        if (isMounted && res.questions && res.questions.length > 0) {
+          setQuestions(res.questions);
+          setTestId(res.testId);
+        }
+      })
+      .catch(err => {
+        console.log('Usando cuestionario diagnóstico local (offline):', err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const currentItem: DiagnosticQuestion | undefined = questions[currentIdx];
   const q = currentItem?.question;
@@ -95,6 +116,7 @@ export default function DiagnosticScreen() {
       setWrittenInput('');
       setIsPairDone(false);
     } else {
+      setIsSubmitting(true);
       let correctCount = 0;
       let phoneticsCorrect = 0;
       let grammarCorrect = 0;
@@ -135,9 +157,56 @@ export default function DiagnosticScreen() {
       const diagnosedLevel = percentage >= 75 ? 'A2' : 'A1';
       const recommendedPace = percentage >= 75 ? 'FAST' : percentage >= 40 ? 'MEDIUM' : 'SLOW';
 
-      router.replace({
-        pathname: '/diagnostic/result' as any,
-        params: {
+      const navigateToResults = (params: any) => {
+        setIsSubmitting(false);
+        router.replace({
+          pathname: '/diagnostic/result' as any,
+          params,
+        });
+      };
+
+      if (testId) {
+        const answersPayload = Object.entries(updatedAnswers).map(([qId, uAns]) => ({
+          questionId: qId,
+          userAnswer: uAns,
+        }));
+
+        diagnosticApiService
+          .submitDiagnostic({
+            testId,
+            answers: answersPayload,
+          })
+          .then(res => {
+            navigateToResults({
+              total: String(res.totalQuestions || questions.length),
+              correct: String(res.correctAnswers ?? correctCount),
+              percentage: String(res.percentage ?? percentage),
+              level: res.diagnosedLevel || diagnosedLevel,
+              pace: res.recommendedPace || recommendedPace,
+              phonetics: String(res.sectionScores?.phonetics ?? phoneticsCorrect),
+              grammar: String(res.sectionScores?.grammar ?? grammarCorrect),
+              vocab: String(res.sectionScores?.vocabulary ?? vocabCorrect),
+              reading: String(res.sectionScores?.readingIcfes ?? readingCorrect),
+              production: String(res.sectionScores?.production ?? productionCorrect),
+            });
+          })
+          .catch(err => {
+            console.warn('Error enviando diagnóstico al backend, usando resultado local:', err);
+            navigateToResults({
+              total: String(questions.length),
+              correct: String(correctCount),
+              percentage: String(percentage),
+              level: diagnosedLevel,
+              pace: recommendedPace,
+              phonetics: String(phoneticsCorrect),
+              grammar: String(grammarCorrect),
+              vocab: String(vocabCorrect),
+              reading: String(readingCorrect),
+              production: String(productionCorrect),
+            });
+          });
+      } else {
+        navigateToResults({
           total: String(questions.length),
           correct: String(correctCount),
           percentage: String(percentage),
@@ -148,8 +217,8 @@ export default function DiagnosticScreen() {
           vocab: String(vocabCorrect),
           reading: String(readingCorrect),
           production: String(productionCorrect),
-        },
-      });
+        });
+      }
     }
   };
 
@@ -263,11 +332,15 @@ export default function DiagnosticScreen() {
       <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
         <TouchableOpacity
           onPress={handleNext}
-          disabled={!hasAnswer}
-          style={[styles.nextBtn, !hasAnswer && styles.nextBtnDisabled]}
+          disabled={!hasAnswer || isSubmitting}
+          style={[styles.nextBtn, (!hasAnswer || isSubmitting) && styles.nextBtnDisabled]}
         >
           <Text style={styles.nextBtnText}>
-            {currentIdx + 1 === questions.length ? 'FINALIZAR DIAGNÓSTICO' : 'SIGUIENTE PREGUNTA'}
+            {isSubmitting
+              ? 'CALIFICANDO EN LA NUBE...'
+              : currentIdx + 1 === questions.length
+              ? 'FINALIZAR DIAGNÓSTICO'
+              : 'SIGUIENTE PREGUNTA'}
           </Text>
           <ArrowRight size={18} color="#FFFFFF" />
         </TouchableOpacity>

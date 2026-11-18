@@ -6,3 +6,5 @@ export * from './userApiService';
 export * from './catalogApiService';
 export * from './roadmapApiService';
 export * from './audioApiService';
+export * from './diagnosticApiService';
+export * from './feedbackApiService';

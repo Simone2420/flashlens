@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Switch,
   Alert,
+  Modal,
+  TextInput,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -21,6 +23,10 @@ import {
   LogOut,
   Compass,
   ShieldCheck,
+  Cloud,
+  CloudOff,
+  Pencil,
+  Calendar,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -31,6 +37,7 @@ import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { useFlashcardStore } from '../../src/store/useFlashcardStore';
 import { notificationService } from '../../src/services/notificationService';
 import { LearningPace } from '../../src/types';
+import { authService } from '../../src/services/api';
 import { CompactStreakWidget, ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
 import { WidgetHowToModal } from '../../src/components/widgets/WidgetHowToModal';
 import { MicroFeedbackModal } from '../../src/components/feedback/MicroFeedbackModal';
@@ -46,12 +53,18 @@ export default function ProfileScreen() {
     resetDemoUser,
     logout,
     setRoleForDemo,
+    updateUserProfile,
   } = useUserStore();
   const { recalculatePaceTransition, resetRoadmapProgress } = useRoadmapStore();
   const { resetToMockDeck } = useFlashcardStore();
 
   const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
   const [showWidgetHowTo, setShowWidgetHowTo] = useState(false);
+  const [isEditProfileVisible, setIsEditProfileVisible] = useState(false);
+  const [editFullName, setEditFullName] = useState(profile.fullName || profile.username || '');
+  const [editAge, setEditAge] = useState(profile.age ? String(profile.age) : '24');
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [isCloudConnected, setIsCloudConnected] = useState(true);
 
   // Control de interfaz: oculto para el usuario normal en producción
   const SHOW_RBAC_SECTION = false;
@@ -61,6 +74,14 @@ export default function ProfileScreen() {
     if (profile.roles?.includes('ROLE_PREMIUM_STUDENT') || profile.roles?.includes('ROLE_ADMIN')) {
       setRoleForDemo('ROLE_STUDENT');
     }
+    authService
+      .getStoredToken()
+      .then(token => {
+        setIsCloudConnected(Boolean(token));
+      })
+      .catch(() => {
+        setIsCloudConnected(false);
+      });
   }, []);
 
   const handlePaceChange = (newPace: LearningPace) => {
@@ -118,11 +139,37 @@ export default function ProfileScreen() {
       >
         {/* Tarjeta Principal del Perfil */}
         <View style={styles.profileHeaderCard}>
+          {/* Badge de Sincronización en la Nube */}
+          <View style={[styles.syncStatusPill, isCloudConnected ? styles.syncOnline : styles.syncOffline]}>
+            {isCloudConnected ? <Cloud size={13} color="#15803D" /> : <CloudOff size={13} color="#B45309" />}
+            <Text style={[styles.syncStatusText, isCloudConnected ? styles.syncOnlineText : styles.syncOfflineText]}>
+              {isCloudConnected ? 'Sincronizado con TiDB Cloud ☁️' : 'Modo Local Offline 📱'}
+            </Text>
+          </View>
+
           <View style={styles.avatarCircle}>
             <User size={36} color="#765A00" />
           </View>
-          <Text style={styles.usernameText}>{profile.username}</Text>
+          <Text style={styles.usernameText}>{profile.fullName || profile.username}</Text>
           <Text style={styles.emailText}>{profile.email}</Text>
+          {profile.age ? (
+            <Text style={styles.ageText}>🎂 {profile.age} Años</Text>
+          ) : null}
+
+          {/* Botón para Editar Perfil */}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setEditFullName(profile.fullName || profile.username || '');
+              setEditAge(profile.age ? String(profile.age) : '24');
+              setIsEditProfileVisible(true);
+            }}
+            style={styles.editProfileBtn}
+          >
+            <Pencil size={13} color="#765A00" />
+            <Text style={styles.editProfileBtnText}>Editar Información</Text>
+          </TouchableOpacity>
 
           {/* Estadísticas Clave */}
           <View style={styles.statsRow}>
@@ -436,6 +483,86 @@ export default function ProfileScreen() {
         visible={showWidgetHowTo}
         onClose={() => setShowWidgetHowTo(false)}
       />
+
+      {/* Modal para Editar Perfil */}
+      <Modal visible={isEditProfileVisible} transparent animationType="fade">
+        <View style={styles.modalOverlay}>
+          <View style={styles.editModalCard}>
+            <Text style={styles.editModalTitle}>Editar Perfil</Text>
+            <Text style={styles.editModalSubtitle}>
+              Actualiza tus datos para sincronizarlos con tu cuenta en la nube
+            </Text>
+
+            <View style={styles.modalInputGroup}>
+              <Text style={styles.modalInputLabel}>NOMBRE COMPLETO</Text>
+              <TextInput
+                style={styles.modalInput}
+                value={editFullName}
+                onChangeText={setEditFullName}
+                placeholder="Ej: Carlos Gómez"
+                placeholderTextColor="#888888"
+              />
+            </View>
+
+            <View style={styles.modalInputGroup}>
+              <Text style={styles.modalInputLabel}>EDAD</Text>
+              <TextInput
+                style={styles.modalInput}
+                value={editAge}
+                onChangeText={setEditAge}
+                placeholder="Ej: 24"
+                keyboardType="number-pad"
+                placeholderTextColor="#888888"
+              />
+            </View>
+
+            <View style={styles.modalActionsRow}>
+              <TouchableOpacity
+                onPress={() => setIsEditProfileVisible(false)}
+                style={styles.modalCancelBtn}
+                disabled={savingProfile}
+              >
+                <Text style={styles.modalCancelBtnText}>Cancelar</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={async () => {
+                  const trimmed = editFullName.trim();
+                  const parsedAge = parseInt(editAge.trim(), 10);
+                  if (!trimmed) {
+                    Alert.alert('Nombre requerido', 'Por favor ingresa tu nombre completo.');
+                    return;
+                  }
+                  if (isNaN(parsedAge) || parsedAge < 5 || parsedAge > 120) {
+                    Alert.alert('Edad inválida', 'Por favor ingresa una edad numérica válida.');
+                    return;
+                  }
+                  setSavingProfile(true);
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                  try {
+                    await updateUserProfile({
+                      fullName: trimmed,
+                      age: parsedAge,
+                    });
+                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                    setIsEditProfileVisible(false);
+                  } catch (e: any) {
+                    Alert.alert('Error', e?.message || 'No se pudo actualizar el perfil.');
+                  } finally {
+                    setSavingProfile(false);
+                  }
+                }}
+                style={styles.modalSaveBtn}
+                disabled={savingProfile}
+              >
+                <Text style={styles.modalSaveBtnText}>
+                  {savingProfile ? 'Guardando...' : 'Guardar Cambios'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -824,5 +951,139 @@ const styles = StyleSheet.create({
     borderColor: '#FCA5A5',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  syncStatusPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingVertical: 5,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+  syncOnline: {
+    backgroundColor: '#DCFCE7',
+    borderWidth: 1,
+    borderColor: '#86EFAC',
+  },
+  syncOffline: {
+    backgroundColor: '#FEF3C7',
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  syncStatusText: {
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  syncOnlineText: {
+    color: '#15803D',
+  },
+  syncOfflineText: {
+    color: '#B45309',
+  },
+  ageText: {
+    fontSize: 12,
+    color: '#765A00',
+    marginTop: 4,
+    fontWeight: '700',
+  },
+  editProfileBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#FFFDF0',
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  editProfileBtnText: {
+    fontSize: 11.5,
+    fontWeight: '800',
+    color: '#765A00',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: SPACING.md,
+  },
+  editModalCard: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: '#FFFFFF',
+    padding: SPACING.lg,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#1C1B1B',
+    ...SHADOWS.card,
+  },
+  editModalTitle: {
+    fontSize: 18,
+    fontWeight: '900',
+    color: '#1C1B1B',
+    marginBottom: 4,
+  },
+  editModalSubtitle: {
+    fontSize: 12,
+    color: '#5E5E5E',
+    marginBottom: SPACING.md,
+  },
+  modalInputGroup: {
+    marginBottom: SPACING.sm + 4,
+  },
+  modalInputLabel: {
+    fontSize: 10.5,
+    fontWeight: '800',
+    color: '#5E5E5E',
+    letterSpacing: 0.5,
+    marginBottom: 5,
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    backgroundColor: '#F9F9F9',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 14.5,
+    color: '#1C1B1B',
+  },
+  modalActionsRow: {
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: SPACING.sm,
+  },
+  modalCancelBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  modalCancelBtnText: {
+    fontSize: 12.5,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  modalSaveBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    backgroundColor: '#E8B400',
+    borderWidth: 1,
+    borderColor: '#1C1B1B',
+  },
+  modalSaveBtnText: {
+    fontSize: 12.5,
+    fontWeight: '800',
+    color: '#1C1B1B',
   },
 });

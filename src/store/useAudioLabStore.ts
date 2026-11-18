@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { DictationResult, Flashcard, DictationDirection } from '../types';
 import { DictationAlgorithm } from '../services/dictationAlgorithm';
 import { useUserStore } from './useUserStore';
+import { audioApiService } from '../services/api';
 
 interface AudioLabState {
   currentCardIndex: number;
@@ -102,6 +103,20 @@ export const useAudioLabStore = create<AudioLabState>((set, get) => ({
       currentCard.acceptedTranslations,
       learningPace
     );
+
+    // Registro asíncrono en backend para trazabilidad y analítica de errores fonéticos
+    audioApiService
+      .verifyDictation({
+        userInput,
+        expectedText: targetText,
+        acceptedTranslations: currentCard.acceptedTranslations,
+        mode: dictationMode,
+        direction: isNativeInverse ? 'NATIVE_INVERSE' : 'NORMAL',
+        cardId: currentCard.id && !currentCard.id.startsWith('fc-') ? currentCard.id : undefined,
+      })
+      .catch(err => {
+        // En modo offline no interrumpe el flujo local
+      });
 
     if (result.isCorrect) {
       const newCombo = comboCount + 1;

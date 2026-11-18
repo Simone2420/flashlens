@@ -11,6 +11,7 @@ import * as Notifications from 'expo-notifications';
 import { API_CONFIG } from '../constants/apiConfig';
 import { UserFeedback } from '../types';
 import { networkService } from './networkService';
+import { feedbackApiService } from './api/feedbackApiService';
 
 export interface FeedbackPayload {
   timestamp?: string;
@@ -79,7 +80,31 @@ class CloudFeedbackService {
       console.warn('Error guardando en historial local:', e);
     }
 
-    // 2. Intentar envío inmediato al Webhook de Google Sheets
+    // 2. Intentar envío inmediato al Backend oficial en TiDB Cloud
+    let backendSuccess = false;
+    try {
+      await feedbackApiService.submitFeedback({
+        moduleCategory: fullPayload.category,
+        feedbackType: 'MOBILE_APP',
+        rating: fullPayload.rating,
+        comment: fullPayload.comment,
+        screenName: 'FEEDBACK_MODAL',
+        deviceMetadata: {
+          name: fullPayload.name,
+          age: fullPayload.age,
+          level: fullPayload.level,
+          streak: fullPayload.currentStreak,
+          device: fullPayload.deviceInfo,
+        },
+      });
+      backendSuccess = true;
+      networkService.markConnected();
+    } catch (apiErr) {
+      console.warn('No se pudo enviar feedback al backend oficial, reintentando con Google Sheets:', apiErr);
+    }
+
+    // 3. Replicar al Webhook de Google Sheets (respaldo secundario)
+    let sheetSuccess = false;
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.GOOGLE_SHEETS.TIMEOUT_MS);
@@ -96,16 +121,20 @@ class CloudFeedbackService {
       clearTimeout(timeoutId);
 
       if (response.ok) {
+        sheetSuccess = true;
         networkService.markConnected();
-        // Enviar también elementos pendientes si existían en cola
-        this.flushPendingQueue().catch(() => {});
-        return { success: true, queued: false };
       }
     } catch (e) {
-      console.warn('No se pudo conectar al webhook de Google Sheets, encolando offline:', e);
+      console.warn('No se pudo conectar al webhook de Google Sheets:', e);
     }
 
-    // 3. Si falló el envío en vivo, guardar en la cola de reintento
+    if (backendSuccess || sheetSuccess) {
+      // Enviar también elementos pendientes si existían en cola
+      this.flushPendingQueue().catch(() => {});
+      return { success: true, queued: false };
+    }
+
+    // 4. Si falló el envío en vivo a ambos canales, guardar en la cola de reintento offline
     try {
       const queueRaw = await AsyncStorage.getItem(STORAGE_QUEUE_KEY);
       const queueList: FeedbackPayload[] = queueRaw ? JSON.parse(queueRaw) : [];
@@ -137,6 +166,28 @@ class CloudFeedbackService {
       let sentCount = 0;
 
       for (const item of queueList) {
+        let sent = false;
+        // Intentar primero con backend oficial
+        try {
+          await feedbackApiService.submitFeedback({
+            moduleCategory: item.category,
+            feedbackType: 'MOBILE_APP',
+            rating: item.rating,
+            comment: item.comment,
+            screenName: 'FEEDBACK_MODAL',
+            deviceMetadata: {
+              name: item.name,
+              age: item.age,
+              level: item.level,
+              streak: item.currentStreak,
+              device: item.deviceInfo,
+            },
+          });
+          sent = true;
+        } catch {
+          // Si falla backend, reintentar con Google Sheets
+        }
+
         try {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.GOOGLE_SHEETS.TIMEOUT_MS);
@@ -151,11 +202,15 @@ class CloudFeedbackService {
           clearTimeout(timeoutId);
 
           if (res.ok) {
-            sentCount++;
-          } else {
-            remaining.push(item);
+            sent = true;
           }
         } catch {
+          // error silencioso
+        }
+
+        if (sent) {
+          sentCount++;
+        } else {
           remaining.push(item);
         }
       }

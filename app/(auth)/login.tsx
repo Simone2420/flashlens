@@ -17,6 +17,14 @@ import {
   Compass,
   CircleQuestionMark,
   GraduationCap,
+  Eye,
+  EyeOff,
+  Lock,
+  Mail,
+  User,
+  Calendar,
+  LogIn,
+  UserPlus,
 } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
@@ -27,19 +35,101 @@ import { useUserStore } from '../../src/store/useUserStore';
 export default function LoginScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { setMockUserCredentials, loginDemo, register: registerUser } = useUserStore();
+  const {
+    login: loginUser,
+    register: registerUser,
+    loginDemo,
+    setMockUserCredentials,
+  } = useUserStore();
 
+  const [authMode, setAuthMode] = useState<'LOGIN' | 'REGISTER'>('LOGIN');
+
+  // Estado para Inicio de Sesión
+  const [loginIdentifier, setLoginIdentifier] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+
+  // Estado para Registro
   const [fullName, setFullName] = useState('');
-  const [age, setAge] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [showDiagnosticDecision, setShowDiagnosticDecision] = useState(false);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
   const bottomPadding = Math.max(insets.bottom, 16);
 
+  // Función auxiliar para calcular edad a partir de YYYY-MM-DD
+  const calculateAge = (dateStr: string): number | null => {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr.trim());
+    if (!match) return null;
+    const y = parseInt(match[1], 10);
+    const m = parseInt(match[2], 10) - 1;
+    const d = parseInt(match[3], 10);
+    const born = new Date(y, m, d);
+    if (isNaN(born.getTime())) return null;
+    const today = new Date();
+    let age = today.getFullYear() - born.getFullYear();
+    const monthDiff = today.getMonth() - born.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < born.getDate())) {
+      age--;
+    }
+    return age >= 1 && age <= 120 ? age : null;
+  };
+
+  const computedAge = calculateAge(birthDate);
+
+  const handleLogin = async () => {
+    const trimmedId = loginIdentifier.trim();
+    const trimmedPass = loginPassword.trim();
+
+    if (!trimmedId) {
+      Alert.alert(
+        'Campo requerido',
+        'Por favor ingresa tu correo electrónico o tu nombre de usuario.'
+      );
+      return;
+    }
+
+    if (!trimmedPass) {
+      Alert.alert('Contraseña requerida', 'Por favor ingresa tu contraseña.');
+      return;
+    }
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setLoading(true);
+
+    try {
+      const result = await loginUser(trimmedId, trimmedPass);
+      if (result.success) {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        const profile = useUserStore.getState().profile;
+        if (!profile.hasCompletedDiagnostic) {
+          setShowDiagnosticDecision(true);
+        } else {
+          router.replace('/(tabs)' as any);
+        }
+      } else {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        Alert.alert(
+          'Error de Inicio de Sesión',
+          result.error || 'Credenciales no válidas. Verifica tu usuario o contraseña.'
+        );
+      }
+    } catch (err: any) {
+      Alert.alert('Error de conexión', err?.message || 'No se pudo conectar con el servidor.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleRegister = async () => {
     const trimmedName = fullName.trim();
-    const parsedAge = parseInt(age.trim(), 10);
+    const trimmedPass = registerPassword.trim() || 'Password123!';
+    const trimmedBirthDate = birthDate.trim();
 
     if (!trimmedName) {
       Alert.alert(
@@ -49,34 +139,48 @@ export default function LoginScreen() {
       return;
     }
 
-    if (isNaN(parsedAge) || parsedAge < 5 || parsedAge > 120) {
-      Alert.alert('Edad inválida', 'Por favor ingresa una edad numérica válida.');
-      return;
+    // Validar formato de fecha de nacimiento si se ingresó
+    let derivedAge = 24;
+    let finalBirthDate = '2000-06-15';
+
+    if (trimmedBirthDate) {
+      const parsed = calculateAge(trimmedBirthDate);
+      if (parsed === null) {
+        Alert.alert(
+          'Fecha de nacimiento inválida',
+          'Por favor ingresa tu fecha en formato AAAA-MM-DD (ejemplo: 2000-05-15).'
+        );
+        return;
+      }
+      derivedAge = parsed;
+      finalBirthDate = trimmedBirthDate;
     }
 
-    setLoading(true);
-    try {
-      const currentYear = new Date().getFullYear();
-      const birthYear = currentYear - parsedAge;
-      const derivedBirthDate = `${birthYear}-06-15`;
-      const cleanSlug = trimmedName.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const autoEmail = `${cleanSlug || 'estudiante'}.${Date.now().toString().slice(-4)}@flashlens.app`;
+    // Derivar correo electrónico si no se colocó uno explícito
+    const cleanSlug = trimmedName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const userEmail =
+      registerEmail.trim() ||
+      `${cleanSlug || 'estudiante'}.${Date.now().toString().slice(-4)}@flashlens.app`;
 
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setLoading(true);
+
+    try {
       const result = await registerUser({
-        email: autoEmail,
+        email: userEmail,
         username: trimmedName,
-        password: 'Password123!',
+        password: trimmedPass,
         fullName: trimmedName,
-        birthDate: derivedBirthDate,
-        age: parsedAge,
+        birthDate: finalBirthDate,
+        age: derivedAge,
       });
 
       if (!result.success) {
         console.warn('Registro en backend no completado, usando fallback offline:', result.error);
-        setMockUserCredentials(trimmedName, parsedAge, trimmedName);
+        setMockUserCredentials(trimmedName, derivedAge, trimmedName);
       }
     } catch {
-      setMockUserCredentials(trimmedName, parsedAge, trimmedName);
+      setMockUserCredentials(trimmedName, derivedAge, trimmedName);
     } finally {
       setLoading(false);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -144,55 +248,219 @@ export default function LoginScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Tarjeta de Formulario de Registro */}
+        {/* Tarjeta Principal con Selector de Modo (Tabs) */}
         <View style={styles.formContainer}>
-          <Text style={styles.formTitle}>Registro de Perfil</Text>
-          <Text style={styles.formSubtitle}>
-            Configura tu cuenta local para sincronizar tu mazo SRS y tu racha diaria
-          </Text>
+          {/* Segmented Switcher */}
+          <View style={styles.tabContainer}>
+            <TouchableOpacity
+              activeOpacity={0.85}
+              onPress={() => {
+                Haptics.selectionAsync();
+                setAuthMode('LOGIN');
+              }}
+              style={[styles.tabButton, authMode === 'LOGIN' && styles.tabButtonActive]}
+            >
+              <LogIn size={15} color={authMode === 'LOGIN' ? '#1C1B1B' : COLORS.onSurfaceVariant} />
+              <Text
+                style={[styles.tabButtonText, authMode === 'LOGIN' && styles.tabButtonTextActive]}
+              >
+                INICIAR SESIÓN
+              </Text>
+            </TouchableOpacity>
 
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>NOMBRE COMPLETO</Text>
-            <TextInput
-              style={styles.input}
-              value={fullName}
-              onChangeText={setFullName}
-              placeholder="Ej: Carlos Gómez"
-              placeholderTextColor={COLORS.onSurfaceVariant}
-              autoCapitalize="words"
-            />
+            <TouchableOpacity
+              activeOpacity={0.85}
+              onPress={() => {
+                Haptics.selectionAsync();
+                setAuthMode('REGISTER');
+              }}
+              style={[styles.tabButton, authMode === 'REGISTER' && styles.tabButtonActive]}
+            >
+              <UserPlus size={15} color={authMode === 'REGISTER' ? '#1C1B1B' : COLORS.onSurfaceVariant} />
+              <Text
+                style={[styles.tabButtonText, authMode === 'REGISTER' && styles.tabButtonTextActive]}
+              >
+                REGISTRARME
+              </Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>EDAD</Text>
-            <TextInput
-              style={styles.input}
-              value={age}
-              onChangeText={setAge}
-              placeholder="Ej: 24"
-              placeholderTextColor={COLORS.onSurfaceVariant}
-              keyboardType="number-pad"
-            />
-          </View>
+          {/* MODO 1: INICIAR SESIÓN */}
+          {authMode === 'LOGIN' && (
+            <View>
+              <Text style={styles.formTitle}>Iniciar Sesión</Text>
+              <Text style={styles.formSubtitle}>
+                Ingresa con tu correo o usuario para sincronizar tu mazo SRS y progreso en la nube
+              </Text>
 
-          <Button
-            title="REGISTRARME Y CONTINUAR"
-            onPress={handleRegister}
-            variant="primary"
-            size="lg"
-            disabled={loading}
-            loading={loading}
-            style={{ marginTop: SPACING.xs }}
-            icon={<ArrowRight size={18} color="#FFFFFF" />}
-          />
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <Mail size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>CORREO O USUARIO</Text>
+                </View>
+                <TextInput
+                  style={styles.input}
+                  value={loginIdentifier}
+                  onChangeText={setLoginIdentifier}
+                  placeholder="usuario.demo@flashlens.app o Carlos Gómez"
+                  placeholderTextColor={COLORS.onSurfaceVariant}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+              </View>
 
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <Lock size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>CONTRASEÑA</Text>
+                </View>
+                <View style={styles.passwordContainer}>
+                  <TextInput
+                    style={styles.passwordInput}
+                    value={loginPassword}
+                    onChangeText={setLoginPassword}
+                    placeholder="••••••••"
+                    placeholderTextColor={COLORS.onSurfaceVariant}
+                    secureTextEntry={!showLoginPassword}
+                    autoCapitalize="none"
+                  />
+                  <TouchableOpacity
+                    onPress={() => setShowLoginPassword(!showLoginPassword)}
+                    style={styles.eyeBtn}
+                    accessibilityLabel="Alternar visibilidad de contraseña"
+                  >
+                    {showLoginPassword ? (
+                      <EyeOff size={18} color={COLORS.onSurfaceVariant} />
+                    ) : (
+                      <Eye size={18} color={COLORS.onSurfaceVariant} />
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <Button
+                title="INICIAR SESIÓN"
+                onPress={handleLogin}
+                variant="primary"
+                size="lg"
+                disabled={loading}
+                loading={loading}
+                style={{ marginTop: SPACING.xs }}
+                icon={<ArrowRight size={18} color="#FFFFFF" />}
+              />
+            </View>
+          )}
+
+          {/* MODO 2: REGISTRO DE NUEVA CUENTA */}
+          {authMode === 'REGISTER' && (
+            <View>
+              <Text style={styles.formTitle}>Registro de Estudiante</Text>
+              <Text style={styles.formSubtitle}>
+                Crea tu cuenta oficial en la nube para calibrar tu nivel y guardar tus flashcards
+              </Text>
+
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <User size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>NOMBRE COMPLETO</Text>
+                </View>
+                <TextInput
+                  style={styles.input}
+                  value={fullName}
+                  onChangeText={setFullName}
+                  placeholder="Ej: Carlos Gómez"
+                  placeholderTextColor={COLORS.onSurfaceVariant}
+                  autoCapitalize="words"
+                />
+              </View>
+
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <Calendar size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>FECHA DE NACIMIENTO (AAAA-MM-DD)</Text>
+                  {computedAge !== null && (
+                    <Text style={styles.computedAgeBadge}>🎂 {computedAge} años</Text>
+                  )}
+                </View>
+                <TextInput
+                  style={styles.input}
+                  value={birthDate}
+                  onChangeText={setBirthDate}
+                  placeholder="Ej: 2000-05-15"
+                  placeholderTextColor={COLORS.onSurfaceVariant}
+                  keyboardType="numbers-and-punctuation"
+                  maxLength={10}
+                />
+                <Text style={styles.fieldHint}>
+                  Buenas prácticas pedagógicas: la edad se calcula con exactitud mediante tu fecha
+                </Text>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <Mail size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>CORREO ELECTRÓNICO (OPCIONAL)</Text>
+                </View>
+                <TextInput
+                  style={styles.input}
+                  value={registerEmail}
+                  onChangeText={setRegisterEmail}
+                  placeholder="carlos@flashlens.app"
+                  placeholderTextColor={COLORS.onSurfaceVariant}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
+              </View>
+
+              <View style={styles.inputGroup}>
+                <View style={styles.labelRow}>
+                  <Lock size={13} color={COLORS.onSurfaceVariant} />
+                  <Text style={styles.inputLabel}>CONTRASEÑA</Text>
+                </View>
+                <View style={styles.passwordContainer}>
+                  <TextInput
+                    style={styles.passwordInput}
+                    value={registerPassword}
+                    onChangeText={setRegisterPassword}
+                    placeholder="Mínimo 6 caracteres"
+                    placeholderTextColor={COLORS.onSurfaceVariant}
+                    secureTextEntry={!showRegisterPassword}
+                    autoCapitalize="none"
+                  />
+                  <TouchableOpacity
+                    onPress={() => setShowRegisterPassword(!showRegisterPassword)}
+                    style={styles.eyeBtn}
+                    accessibilityLabel="Alternar visibilidad de contraseña"
+                  >
+                    {showRegisterPassword ? (
+                      <EyeOff size={18} color={COLORS.onSurfaceVariant} />
+                    ) : (
+                      <Eye size={18} color={COLORS.onSurfaceVariant} />
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <Button
+                title="CREAR CUENTA Y CONTINUAR"
+                onPress={handleRegister}
+                variant="primary"
+                size="lg"
+                disabled={loading}
+                loading={loading}
+                style={{ marginTop: SPACING.xs }}
+                icon={<ArrowRight size={18} color="#FFFFFF" />}
+              />
+            </View>
+          )}
+
+          {/* Divisor y Acceso Rápido como Demo */}
           <View style={styles.dividerBox}>
             <View style={styles.dividerLine} />
             <Text style={styles.dividerText}>O INGRESA AL INSTANTE</Text>
             <View style={styles.dividerLine} />
           </View>
 
-          {/* Botón para continuar con usuario demo */}
           <Button
             title="Continuar como Usuario Demo"
             onPress={handleContinueAsDemo}
@@ -221,12 +489,12 @@ export default function LoginScreen() {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            FlashLens v1.0 · Motor Local Offline & IA · SuperMemo-2
+            FlashLens v1.0 · Conexión Backend Oficial · TiDB Cloud Serverless
           </Text>
         </View>
       </ScrollView>
 
-      {/* Modal de Decisión Diagnóstica Post-Registro */}
+      {/* Modal de Decisión Diagnóstica Post-Login/Registro */}
       <Modal visible={showDiagnosticDecision} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
@@ -236,7 +504,7 @@ export default function LoginScreen() {
 
             <Text style={styles.modalTitle}>¿Deseas calibrar tu nivel?</Text>
             <Text style={styles.modalDesc}>
-              La prueba diagnóstica oficial de 25 preguntas te permite medir tu competencia y desbloquear automáticamente el nivel A2 si tienes bases previas.
+              La prueba diagnóstica oficial de 25 preguntas calibradas según el Marco Común Europeo te permite medir tu competencia y desbloquear automáticamente el nivel A2 si tienes bases previas.
             </Text>
 
             <TouchableOpacity
@@ -270,7 +538,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     justifyContent: 'center',
-    paddingHorizontal: SPACING.md, // 16dp horizontal para ergonomía óptima en cualquier ancho de pantalla
+    paddingHorizontal: SPACING.md,
     paddingTop: SPACING.xs,
     paddingBottom: SPACING.md,
   },
@@ -330,8 +598,39 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 0,
-    padding: SPACING.md, // 16dp para evitar compresión excesiva en pantallas de 360dp
+    padding: SPACING.md,
     ...SHADOWS.card,
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    marginBottom: SPACING.md,
+    backgroundColor: COLORS.surfaceContainerLow,
+  },
+  tabButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    gap: 6,
+    backgroundColor: 'transparent',
+  },
+  tabButtonActive: {
+    backgroundColor: COLORS.accent,
+    borderWidth: 1,
+    borderColor: '#1C1B1B',
+  },
+  tabButtonText: {
+    fontSize: 11.5,
+    fontWeight: '800',
+    color: COLORS.onSurfaceVariant,
+    letterSpacing: 0.5,
+  },
+  tabButtonTextActive: {
+    color: '#1C1B1B',
+    fontWeight: '900',
   },
   formTitle: {
     fontSize: 18,
@@ -348,12 +647,34 @@ const styles = StyleSheet.create({
   inputGroup: {
     marginBottom: SPACING.sm + 4,
   },
+  labelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 5,
+  },
   inputLabel: {
     fontSize: 11,
     fontWeight: '800',
     color: COLORS.onSurfaceVariant,
     letterSpacing: 0.5,
-    marginBottom: 5,
+  },
+  computedAgeBadge: {
+    marginLeft: 'auto',
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#765A00',
+    backgroundColor: '#FFF8E1',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+  },
+  fieldHint: {
+    fontSize: 10.5,
+    color: COLORS.onSurfaceVariant,
+    marginTop: 4,
+    lineHeight: 14,
   },
   input: {
     borderWidth: 1,
@@ -362,9 +683,29 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     paddingHorizontal: 14,
     paddingVertical: 11,
-    fontSize: 15,
+    fontSize: 14.5,
     color: COLORS.onSurface,
     minHeight: 48,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    backgroundColor: COLORS.surfaceContainerLow,
+    borderRadius: 0,
+  },
+  passwordInput: {
+    flex: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    fontSize: 14.5,
+    color: COLORS.onSurface,
+    minHeight: 48,
+  },
+  eyeBtn: {
+    paddingHorizontal: 12,
+    paddingVertical: 10,
   },
   dividerBox: {
     flexDirection: 'row',

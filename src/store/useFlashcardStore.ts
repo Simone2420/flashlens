@@ -6,7 +6,7 @@ import { INITIAL_FLASHCARDS, VOICE_CONCEPT_DICTIONARY } from '../data/mockData';
 import { calculateNextSRSState } from '../services/srsAlgorithm';
 import { widgetService } from '../services/widgetService';
 import { useUserStore } from './useUserStore';
-import { flashcardApiService } from '../services/api';
+import { flashcardApiService, authService } from '../services/api';
 
 interface FlashcardState {
   cards: Flashcard[];
@@ -193,6 +193,13 @@ export const useFlashcardStore = create<FlashcardState>()(
             console.warn('Error sincronizando widget al actualizar tarjeta:', e);
           }
 
+          // Sincronizar actualización en TiDB Cloud si no es un ID temporal
+          authService.getStoredToken().then(token => {
+            if (token && !updatedCard.id.startsWith('fc-')) {
+              flashcardApiService.updateCard(updatedCard.id, updatedCard).catch(() => {});
+            }
+          });
+
           return updatedCard;
         }
 
@@ -222,6 +229,24 @@ export const useFlashcardStore = create<FlashcardState>()(
             console.warn('Error sincronizando widget al añadir tarjeta:', e);
           }
           return { cards: updated };
+        });
+
+        // Sincronización asíncrona con TiDB Cloud para persistir la tarjeta y obtener UUID real
+        authService.getStoredToken().then(token => {
+          if (token) {
+            flashcardApiService
+              .createCard(newCard)
+              .then(created => {
+                if (created && created.id) {
+                  set(state => ({
+                    cards: state.cards.map(c => (c.id === newCard.id ? { ...c, id: created.id } : c)),
+                  }));
+                }
+              })
+              .catch(err => {
+                console.warn('Error sincronizando nueva tarjeta en TiDB Cloud:', err?.message || err);
+              });
+          }
         });
 
         return newCard;
