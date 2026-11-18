@@ -14,6 +14,7 @@ import {
 import { widgetService } from '../services/widgetService';
 import { notificationService } from '../services/notificationService';
 import { rbacService } from '../services/rbacService';
+import { authService, userApiService } from '../services/api';
 
 interface UserState {
   profile: UserProfile;
@@ -21,6 +22,20 @@ interface UserState {
   isOnboarded: boolean;
   isLoggedIn: boolean;
   pendingCelebration: { visible: boolean; streak: number; xpEarned: number; title?: string; message?: string } | null;
+
+  // 🌐 Acciones Backend API
+  login: (identifier: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  register: (payload: {
+    email: string;
+    username: string;
+    password: string;
+    fullName?: string;
+    birthDate?: string;
+    age?: number;
+    targetLanguage?: string;
+  }) => Promise<{ success: boolean; error?: string }>;
+  loginDemo: () => Promise<{ success: boolean; error?: string }>;
+  syncWithBackend: () => Promise<boolean>;
 
   // Actions
   loseLife: () => boolean; // returns true if user still has lives > 0
@@ -468,6 +483,93 @@ export const useUserStore = create<UserState>()(
         }));
       },
 
+      // 🌐 Conexiones Backend API
+      login: async (identifier, password) => {
+        try {
+          const isEmail = identifier.includes('@');
+          const res = await authService.login({
+            email: isEmail ? identifier : undefined,
+            username: !isEmail ? identifier : undefined,
+            password,
+          });
+          set({
+            profile: res.user,
+            isLoggedIn: true,
+            isOnboarded: true,
+          });
+          get().checkStreakIntegrity();
+          widgetService.syncWidgetData(
+            res.user.currentStreak,
+            get().lives,
+            null as any,
+            res.user.dailyXp || 0
+          );
+          return { success: true };
+        } catch (err: any) {
+          return { success: false, error: err.message || 'Error al iniciar sesión' };
+        }
+      },
+
+      register: async (payload) => {
+        try {
+          const res = await authService.register(payload);
+          set({
+            profile: res.user,
+            isLoggedIn: true,
+            isOnboarded: true,
+          });
+          widgetService.syncWidgetData(
+            res.user.currentStreak,
+            get().lives,
+            null as any,
+            res.user.dailyXp || 0
+          );
+          return { success: true };
+        } catch (err: any) {
+          return { success: false, error: err.message || 'Error al registrar usuario' };
+        }
+      },
+
+      loginDemo: async () => {
+        try {
+          const res = await authService.loginDemo();
+          set({
+            profile: res.user,
+            isLoggedIn: true,
+            isOnboarded: true,
+          });
+          get().checkStreakIntegrity();
+          widgetService.syncWidgetData(
+            res.user.currentStreak,
+            get().lives,
+            null as any,
+            res.user.dailyXp || 0
+          );
+          return { success: true };
+        } catch (err) {
+          console.warn('Conexión con backend falló en loginDemo, usando fallback local:', err);
+          get().setMockUserCredentials('Carlos Gómez', 24, 'Carlos Gómez');
+          return { success: true };
+        }
+      },
+
+      syncWithBackend: async () => {
+        try {
+          const token = await authService.getStoredToken();
+          if (!token) return false;
+          const user = await authService.syncSession();
+          set(state => ({
+            profile: {
+              ...state.profile,
+              ...user,
+            },
+          }));
+          return true;
+        } catch {
+          return false;
+        }
+      },
+
       resetDemoUser: () => {
         const initialRbac = rbacService.createDefaultUserRoles('user-demo-1');
         set({
@@ -485,6 +587,7 @@ export const useUserStore = create<UserState>()(
       },
 
       logout: () => {
+        authService.logout().catch(() => {});
         set({
           isLoggedIn: false,
           pendingCelebration: null,

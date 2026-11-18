@@ -3,10 +3,14 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RoadmapNode, Sublesson, LearningPace, CEFRLevel } from '../types';
 import { MOCK_ROADMAP_NODES } from '../data/mockData';
+import { roadmapApiService } from '../services/api';
 
 interface RoadmapState {
   nodes: RoadmapNode[];
   selectedNodeId: string | null;
+
+  // 🌐 Sincronización Backend API
+  fetchTreeFromApi: () => Promise<void>;
 
   // Actions
   selectNode: (nodeId: string) => void;
@@ -24,6 +28,25 @@ export const useRoadmapStore = create<RoadmapState>()(
     (set, get) => ({
       nodes: MOCK_ROADMAP_NODES,
       selectedNodeId: null,
+
+      fetchTreeFromApi: async () => {
+        try {
+          const res = await roadmapApiService.getTree();
+          if (res && res.nodes && res.nodes.length > 0) {
+            const currentNodes = get().nodes;
+            const merged = res.nodes.map(node => {
+              const existing = currentNodes.find(n => n.id === node.id);
+              return {
+                ...node,
+                sublessons: node.sublessons || existing?.sublessons,
+              };
+            });
+            set({ nodes: merged });
+          }
+        } catch (e) {
+          console.warn('Modo offline: usando ruta DAG local:', e);
+        }
+      },
 
       selectNode: (nodeId: string) => {
         set({ selectedNodeId: nodeId });
@@ -53,6 +76,9 @@ export const useRoadmapStore = create<RoadmapState>()(
       },
 
       completeSublesson: (nodeId: string, sublessonId: string, score: number) => {
+        // Sincronizar progreso y desbloqueo DAG con el backend en TiDB Cloud
+        roadmapApiService.submitSublesson(sublessonId, score).catch(() => {});
+
         const { nodes } = get();
         let xpEarned = 20;
         let nodeCompleted = false;

@@ -147,11 +147,15 @@ export default function HomeScreen() {
 
   useEffect(() => {
     loadDailyPill();
+    useFlashcardStore.getState().fetchCardsFromApi().catch(() => {});
+    useUserStore.getState().syncWithBackend().catch(() => {});
 
     // Re-verificar fecha al volver a primer plano (p.ej. si pasó la medianoche)
     const appStateSub = AppState.addEventListener('change', (nextState) => {
       if (nextState === 'active') {
         loadDailyPill();
+        useFlashcardStore.getState().fetchCardsFromApi().catch(() => {});
+        useUserStore.getState().syncWithBackend().catch(() => {});
       }
     });
 

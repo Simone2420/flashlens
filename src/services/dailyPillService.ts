@@ -14,6 +14,7 @@ import { API_CONFIG } from '../constants/apiConfig';
 import { useFlashcardStore } from '../store/useFlashcardStore';
 import { useUserStore } from '../store/useUserStore';
 import { imageGenerationService } from './imageGenerationService';
+import { catalogApiService } from './api';
 
 const STORAGE_POOL_KEY = '@flashlens_daily_pills_pool';
 const STORAGE_SHOWN_IDS_KEY = '@flashlens_shown_pill_ids';
@@ -78,6 +79,16 @@ class DailyPillService {
    * no vista que no esté en el mazo del usuario.
    */
   public async getTodayPill(): Promise<DailyPill> {
+    // 0. Intentar consultar la píldora oficial del backend en Railway
+    try {
+      const apiPill = await catalogApiService.getTodayPill();
+      if (apiPill && apiPill.targetWord) {
+        return apiPill;
+      }
+    } catch {
+      // Fallback a pool local offline
+    }
+
     const now = new Date();
     const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     const pool = await this.getPool();
@@ -256,6 +267,9 @@ Devuelve ÚNICAMENTE el array JSON válido comenzando con [ y terminando con ]. 
       imageSource: 'AI_GENERATED',
       createdVia: 'MANUAL',
     });
+
+    // 2.1 Sincronizar adición con backend en TiDB Cloud
+    catalogApiService.addPillToDeck(pill.id).catch(() => {});
 
     // 3. Otorgar +10 XP al usuario
     userStore.addXP(10);

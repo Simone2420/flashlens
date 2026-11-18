@@ -6,12 +6,16 @@ import { INITIAL_FLASHCARDS, VOICE_CONCEPT_DICTIONARY } from '../data/mockData';
 import { calculateNextSRSState } from '../services/srsAlgorithm';
 import { widgetService } from '../services/widgetService';
 import { useUserStore } from './useUserStore';
+import { flashcardApiService } from '../services/api';
 
 interface FlashcardState {
   cards: Flashcard[];
   activeCardTypeFilter: 'ALL' | CardType;
   selectedCategories: ConceptCategory[];
   searchQuery: string;
+
+  // 🌐 Sincronización Backend API
+  fetchCardsFromApi: () => Promise<void>;
 
   // Actions
   setCardTypeFilter: (filter: 'ALL' | CardType) => void;
@@ -44,6 +48,17 @@ export const useFlashcardStore = create<FlashcardState>()(
       selectedCategories: [],
       searchQuery: '',
       isFavoriteFilter: false,
+
+      fetchCardsFromApi: async () => {
+        try {
+          const apiCards = await flashcardApiService.listCards();
+          if (apiCards && apiCards.length > 0) {
+            set({ cards: apiCards });
+          }
+        } catch (e) {
+          console.warn('Modo offline: usando tarjetas locales de AsyncStorage:', e);
+        }
+      },
 
       setCardTypeFilter: (filter) => {
         set({ activeCardTypeFilter: filter });
@@ -241,6 +256,9 @@ export const useFlashcardStore = create<FlashcardState>()(
           return { cards: updated };
         });
 
+        // Sincronizar en segundo plano con el backend
+        flashcardApiService.toggleFavorite(cardId).catch(() => {});
+
         // Sincronizar widgets de manera no bloqueante fuera del ciclo de actualización del store
         setTimeout(() => {
           try {
@@ -333,9 +351,15 @@ export const useFlashcardStore = create<FlashcardState>()(
 
           return { cards: updatedCards };
         });
+
+        // Sincronizar en segundo plano con el algoritmo SM-2 del backend
+        flashcardApiService.rateCard(cardId, rating).catch(() => {});
       },
 
       deleteCard: (cardId) => {
+        // Sincronizar eliminación en segundo plano
+        flashcardApiService.deleteCard(cardId).catch(() => {});
+
         set(state => {
           const updated = state.cards.filter(c => c.id !== cardId);
           try {

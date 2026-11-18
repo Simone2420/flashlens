@@ -9,6 +9,7 @@ import { API_CONFIG } from '../constants/apiConfig';
 import { CEFRLevel } from '../types';
 import { AdaptiveCardPayload, nlpLinguisticService } from './nlpLinguisticService';
 import { networkService } from './networkService';
+import { flashcardApiService } from './api';
 
 export interface CloudVisionResponse {
   success: boolean;
@@ -88,6 +89,35 @@ class CloudVisionService {
     imageUri: string,
     targetCefr: CEFRLevel = 'A1'
   ): Promise<CloudVisionResponse> {
+    // 1. Intento primario con Backend Oficial (Reutilización en 2 fases + Cloudinary + TiDB)
+    try {
+      const backendCard = await flashcardApiService.scanLensPhoto(imageUri, targetCefr);
+      if (backendCard && backendCard.targetWord) {
+        return {
+          success: true,
+          payload: {
+            targetWord: backendCard.targetWord,
+            nativeTranslation: backendCard.nativeTranslation,
+            primaryTranslation: backendCard.primaryTranslation || backendCard.nativeTranslation,
+            acceptedTranslations: backendCard.acceptedTranslations || [backendCard.nativeTranslation],
+            minInputLength: backendCard.minInputLength,
+            displayTranslation: backendCard.displayTranslation,
+            phoneticScript: backendCard.phoneticScript || '',
+            facilitatedPhonetics: backendCard.facilitatedPhonetics || '',
+            cefrLevel: targetCefr,
+            contextSentence: backendCard.contextSentence || '',
+            contextTranslation: backendCard.contextTranslation || '',
+            mnemonicHint: backendCard.mnemonicHint,
+            partOfSpeech: 'NOUN',
+            conceptCategory: 'OBJECT',
+            confidence: 96,
+          },
+        };
+      }
+    } catch (e) {
+      console.warn('Backend scan-lens no disponible o modo fallback, recurriendo a IA directa:', e);
+    }
+
     try {
       const base64Data = await this.compressImageToBase64(imageUri);
 

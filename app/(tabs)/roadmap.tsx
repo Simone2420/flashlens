@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -34,6 +34,10 @@ export default function RoadmapScreen() {
   const { nodes, selectNode } = useRoadmapStore();
   const { profile } = useUserStore();
   const [treeWidth, setTreeWidth] = useState<number>(340);
+
+  useEffect(() => {
+    useRoadmapStore.getState().fetchTreeFromApi().catch(() => {});
+  }, []);
 
   const isA2Focused = params.focusNode === 'a2_node_10' || profile.diagnosedLevel === 'A2';
 

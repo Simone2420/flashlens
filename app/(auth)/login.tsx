@@ -27,16 +27,17 @@ import { useUserStore } from '../../src/store/useUserStore';
 export default function LoginScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { setMockUserCredentials } = useUserStore();
+  const { setMockUserCredentials, loginDemo, register: registerUser } = useUserStore();
 
   const [fullName, setFullName] = useState('');
   const [age, setAge] = useState('');
+  const [loading, setLoading] = useState(false);
   const [showDiagnosticDecision, setShowDiagnosticDecision] = useState(false);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
   const bottomPadding = Math.max(insets.bottom, 16);
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     const trimmedName = fullName.trim();
     const parsedAge = parseInt(age.trim(), 10);
 
@@ -53,15 +54,45 @@ export default function LoginScreen() {
       return;
     }
 
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    setMockUserCredentials(trimmedName, parsedAge, trimmedName);
-    setShowDiagnosticDecision(true);
+    setLoading(true);
+    try {
+      const currentYear = new Date().getFullYear();
+      const birthYear = currentYear - parsedAge;
+      const derivedBirthDate = `${birthYear}-06-15`;
+      const cleanSlug = trimmedName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const autoEmail = `${cleanSlug || 'estudiante'}.${Date.now().toString().slice(-4)}@flashlens.app`;
+
+      const result = await registerUser({
+        email: autoEmail,
+        username: trimmedName,
+        password: 'Password123!',
+        fullName: trimmedName,
+        birthDate: derivedBirthDate,
+        age: parsedAge,
+      });
+
+      if (!result.success) {
+        console.warn('Registro en backend no completado, usando fallback offline:', result.error);
+        setMockUserCredentials(trimmedName, parsedAge, trimmedName);
+      }
+    } catch {
+      setMockUserCredentials(trimmedName, parsedAge, trimmedName);
+    } finally {
+      setLoading(false);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setShowDiagnosticDecision(true);
+    }
   };
 
-  const handleContinueAsDemo = () => {
+  const handleContinueAsDemo = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setMockUserCredentials('Carlos Gómez', 24, 'Carlos Gómez');
-    setShowDiagnosticDecision(true);
+    setLoading(true);
+    try {
+      await loginDemo();
+    } finally {
+      setLoading(false);
+      setShowDiagnosticDecision(true);
+    }
   };
 
   const handleStartDiagnostic = () => {
@@ -149,6 +180,8 @@ export default function LoginScreen() {
             onPress={handleRegister}
             variant="primary"
             size="lg"
+            disabled={loading}
+            loading={loading}
             style={{ marginTop: SPACING.xs }}
             icon={<ArrowRight size={18} color="#FFFFFF" />}
           />
@@ -165,6 +198,7 @@ export default function LoginScreen() {
             onPress={handleContinueAsDemo}
             variant="accent"
             size="lg"
+            disabled={loading}
             icon={<Sparkles size={18} color={COLORS.onSurface} />}
           />
         </View>

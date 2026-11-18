@@ -5,6 +5,12 @@
  */
 
 export const API_CONFIG = {
+  // 0. Backend API Oficial FlashLens (Railway + TiDB Serverless)
+  BACKEND: {
+    BASE_URL: process.env.EXPO_PUBLIC_API_URL || 'https://flashlens-api-production.up.railway.app/api/v1',
+    TIMEOUT_MS: 15000,
+  },
+
   // 1. OpenRouter - Modelos Multimodales de Visión y Texto Gratuitos de Baja Latencia
   OPENROUTER: {
     API_KEY: process.env.EXPO_PUBLIC_OPENROUTER_API_KEY || '',
