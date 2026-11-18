@@ -11,6 +11,7 @@ import { nlpLinguisticService } from './nlpLinguisticService';
 import { networkService } from './networkService';
 import { imageGenerationService } from './imageGenerationService';
 import { VOICE_CONCEPT_DICTIONARY } from '../data/mockData';
+import { flashcardApiService } from './api/flashcardApiService';
 
 export interface AbstractCardResult {
   targetWord: string;
@@ -352,8 +353,36 @@ Valid partOfSpeech values:
 
     let parsed: any = null;
 
-    // 1. Intento Primario Ultra-Rápido (~1.2s): Modelos de texto OpenRouter con timeout independiente
-    if (API_CONFIG.OPENROUTER.API_KEY) {
+    // 0. Intento Primario Oficial: Backend de FlashLens (FastAPI + TiDB Cloud en Railway)
+    try {
+      const backendRes = await flashcardApiService.generateAbstractCard(
+        rawInput,
+        preferredCategory || 'GRAMMAR_RULE',
+        targetCefr
+      );
+      if (backendRes && (backendRes.target_word || backendRes.targetWord)) {
+        parsed = {
+          targetWord: backendRes.target_word || backendRes.targetWord,
+          primaryTranslation: backendRes.primary_translation || backendRes.primaryTranslation,
+          acceptedTranslations: backendRes.accepted_translations || backendRes.acceptedTranslations || [],
+          conceptCategory: backendRes.concept_category || backendRes.conceptCategory || preferredCategory || 'COLLOCATION_PHRASE',
+          partOfSpeech: backendRes.part_of_speech || backendRes.partOfSpeech || 'PHRASE',
+          phoneticScript: backendRes.phonetic_script || backendRes.phoneticScript,
+          facilitatedPhonetics: backendRes.facilitated_phonetics || backendRes.facilitatedPhonetics,
+          contextSentence: backendRes.context_sentence || backendRes.contextSentence,
+          contextTranslation: backendRes.context_translation || backendRes.contextTranslation,
+          mnemonicHint: backendRes.mnemonic_hint || backendRes.mnemonicHint,
+          grammarFormula: backendRes.grammar_formula || backendRes.grammarFormula,
+          visualScene: backendRes.visual_scene || backendRes.visualScene,
+          imageUrl: backendRes.image_url || backendRes.imageUrl,
+        };
+      }
+    } catch (e: any) {
+      console.log('Backend generateAbstractCard no disponible, pasando a fallback OpenRouter:', e?.message || e);
+    }
+
+    // 1. Intento Secundario: Modelos de texto OpenRouter con timeout independiente
+    if (!parsed && API_CONFIG.OPENROUTER.API_KEY) {
       const textModels = (
         API_CONFIG.OPENROUTER.TEXT_MODELS ||
         API_CONFIG.OPENROUTER.MODELS ||
