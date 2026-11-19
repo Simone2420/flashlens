@@ -14,7 +14,7 @@ import { API_CONFIG } from '../constants/apiConfig';
 import { useFlashcardStore } from '../store/useFlashcardStore';
 import { useUserStore } from '../store/useUserStore';
 import { imageGenerationService } from './imageGenerationService';
-import { catalogApiService } from './api';
+import { catalogApiService, flashcardApiService } from './api';
 
 const STORAGE_POOL_KEY = '@flashlens_daily_pills_pool';
 const STORAGE_SHOWN_IDS_KEY = '@flashlens_shown_pill_ids';
@@ -83,6 +83,15 @@ class DailyPillService {
     try {
       const apiPill = await catalogApiService.getTodayPill();
       if (apiPill && apiPill.targetWord) {
+        if (!apiPill.imageUrl) {
+          apiPill.imageUrl = imageGenerationService.getInstantFluxUrl(
+            apiPill.targetWord,
+            apiPill.conceptCategory,
+            undefined,
+            apiPill.contextSentence,
+            apiPill.mnemonicHint
+          );
+        }
         return apiPill;
       }
     } catch {
@@ -245,50 +254,109 @@ Devuelve ÚNICAMENTE el array JSON válido comenzando con [ y terminando con ]. 
       return alreadyExists;
     }
 
-    // 1. Imagen inicial o fallback
+    // 1. Imagen inicial instantánea FLUX CDN o fallback de categoría
     const fallbackImg = imageGenerationService.getCategoryFallback(pill.conceptCategory);
-
-    // 2. Insertar tarjeta en useFlashcardStore con SM-2 desde cero
-    const newCard = flashcardStore.addCard({
-      targetWord: pill.targetWord,
-      primaryTranslation: pill.primaryTranslation || pill.nativeTranslation,
-      nativeTranslation: pill.nativeTranslation,
-      acceptedTranslations: pill.acceptedTranslations || [pill.nativeTranslation.toLowerCase()],
-      cardType: pill.conceptCategory === 'OBJECT' ? 'VOCABULARY' : 'ABSTRACT',
-      partOfSpeech: pill.partOfSpeech,
-      conceptCategory: pill.conceptCategory,
-      facilitatedPhonetics: pill.facilitatedPhonetics,
-      phoneticScript: pill.phoneticScript,
-      contextSentence: pill.contextSentence,
-      contextTranslation: pill.contextTranslation,
-      mnemonicHint: pill.mnemonicHint,
-      grammarFormula: pill.grammarFormula,
-      imageUrl: pill.imageUrl || fallbackImg,
-      imageSource: 'AI_GENERATED',
-      createdVia: 'MANUAL',
-    });
-
-    // 2.1 Sincronizar adición con backend en TiDB Cloud
-    catalogApiService.addPillToDeck(pill.id).catch(() => {});
-
-    // 3. Otorgar +10 XP al usuario
-    userStore.addXP(10);
-
-    // 4. Generar ilustración con Hugging Face FLUX en segundo plano empleando metáfora visual concreta
-    if (!pill.imageUrl || pill.imageUrl === fallbackImg) {
-      imageGenerationService.generateOrFallback(
+    const initialImage =
+      pill.imageUrl ||
+      imageGenerationService.getInstantFluxUrl(
         pill.targetWord,
         pill.conceptCategory,
         undefined,
         pill.contextSentence,
         pill.mnemonicHint
-      )
+      ) ||
+      fallbackImg;
+
+    // 2. Insertar tarjeta localmente en useFlashcardStore sin disparar POST /flashcards/ duplicado
+    const newCard = flashcardStore.addCard(
+      {
+        targetWord: pill.targetWord,
+        primaryTranslation: pill.primaryTranslation || pill.nativeTranslation,
+        nativeTranslation: pill.nativeTranslation,
+        acceptedTranslations: pill.acceptedTranslations || [pill.nativeTranslation.toLowerCase()],
+        cardType: pill.conceptCategory === 'OBJECT' ? 'VOCABULARY' : 'ABSTRACT',
+        partOfSpeech: pill.partOfSpeech,
+        conceptCategory: pill.conceptCategory,
+        facilitatedPhonetics: pill.facilitatedPhonetics,
+        phoneticScript: pill.phoneticScript,
+        contextSentence: pill.contextSentence,
+        contextTranslation: pill.contextTranslation,
+        mnemonicHint: pill.mnemonicHint,
+        grammarFormula: pill.grammarFormula,
+        imageUrl: initialImage,
+        imageSource: 'AI_GENERATED',
+        createdVia: 'MANUAL',
+      },
+      { skipBackendSync: true }
+    );
+
+    const normalizedWord = pill.targetWord.trim().toLowerCase();
+
+    // 2.1 Sincronizar adición únicamente por el endpoint oficial de Píldora del Día en TiDB Cloud
+    catalogApiService
+      .addPillToDeck(pill.id)
+      .then(backendCard => {
+        if (backendCard && backendCard.id) {
+          const currentCards = useFlashcardStore.getState().cards;
+          const updated = currentCards.map(c =>
+            c.id === newCard.id || c.targetWord.trim().toLowerCase() === normalizedWord
+              ? { ...c, id: backendCard.id }
+              : c
+          );
+          useFlashcardStore.setState({ cards: updated });
+
+          // Persistir la imagen generada en la tarjeta de TiDB Cloud si el backend no tenía una
+          if (initialImage && initialImage !== fallbackImg && !backendCard.imageUrl) {
+            flashcardApiService.updateCard(backendCard.id, { imageUrl: initialImage }).catch(() => {});
+          }
+        }
+      })
+      .catch(() => {
+        // Si falló /catalog/daily-pills/{id}/add-to-deck (ej. píldora local offline), sincronizar por /flashcards/
+        flashcardApiService
+          .createCard(newCard)
+          .then(created => {
+            if (created && created.id) {
+              const currentCards = useFlashcardStore.getState().cards;
+              useFlashcardStore.setState({
+                cards: currentCards.map(c => (c.id === newCard.id ? { ...c, id: created.id } : c)),
+              });
+            }
+          })
+          .catch(() => {});
+      });
+
+    // 3. Otorgar +10 XP al usuario
+    userStore.addXP(10);
+
+    // 4. Si aún estamos usando el fallback de categoría, intentar generación FLUX en segundo plano
+    if (!initialImage || initialImage === fallbackImg) {
+      imageGenerationService
+        .generateOrFallback(
+          pill.targetWord,
+          pill.conceptCategory,
+          undefined,
+          pill.contextSentence,
+          pill.mnemonicHint
+        )
         .then(generatedImg => {
           if (generatedImg && generatedImg !== fallbackImg) {
-            // Actualizar tarjeta con la imagen generada
             const currentCards = useFlashcardStore.getState().cards;
-            const updated = currentCards.map(c => c.id === newCard.id ? { ...c, imageUrl: generatedImg } : c);
+            let matchedBackendId: string | null = null;
+            const updated = currentCards.map(c => {
+              if (c.id === newCard.id || c.targetWord.trim().toLowerCase() === normalizedWord) {
+                if (!c.id.startsWith('fc-')) {
+                  matchedBackendId = c.id;
+                }
+                return { ...c, imageUrl: generatedImg };
+              }
+              return c;
+            });
             useFlashcardStore.setState({ cards: updated });
+
+            if (matchedBackendId) {
+              flashcardApiService.updateCard(matchedBackendId, { imageUrl: generatedImg }).catch(() => {});
+            }
           }
         })
         .catch(err => console.warn('Error en segundo plano generando FLUX para píldora:', err));

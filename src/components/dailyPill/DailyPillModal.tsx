@@ -14,6 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { DailyPill } from '../../types';
 import { dailyPillService } from '../../services/dailyPillService';
+import { imageGenerationService } from '../../services/imageGenerationService';
 import { useFlashcardStore } from '../../store/useFlashcardStore';
 
 interface DailyPillModalProps {
@@ -32,7 +33,13 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [imageFailed, setImageFailed] = useState(false);
   const cards = useFlashcardStore(state => state.cards) || [];
+
+  useEffect(() => {
+    setImageFailed(false);
+    setIsImageLoading(true);
+  }, [pill?.id, pill?.imageUrl]);
 
   useEffect(() => {
     return () => {
@@ -125,23 +132,33 @@ export const DailyPillModal: React.FC<DailyPillModalProps> = ({
 
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
             {/* Mini Foto Ilustrativa de la Píldora con Ruedita de Carga */}
-            {pill.imageUrl ? (
-              <View style={styles.pillMiniPhotoCard}>
-                <ExpoImage
-                  source={{ uri: pill.imageUrl }}
-                  style={styles.pillMiniPhoto}
-                  contentFit="cover"
-                  transition={200}
-                  onLoadStart={() => setIsImageLoading(true)}
-                  onLoad={() => setIsImageLoading(false)}
-                />
-                {(isImageLoading || isAdding) && (
-                  <View style={styles.pillMiniPhotoLoading}>
-                    <ActivityIndicator size="small" color="#E8B400" />
-                  </View>
-                )}
-              </View>
-            ) : null}
+            {(() => {
+              const resolvedUri =
+                imageFailed || !pill.imageUrl
+                  ? imageGenerationService.getCategoryFallback(pill.conceptCategory)
+                  : pill.imageUrl;
+              return (
+                <View style={styles.pillMiniPhotoCard}>
+                  <ExpoImage
+                    source={{ uri: resolvedUri }}
+                    style={styles.pillMiniPhoto}
+                    contentFit="cover"
+                    transition={200}
+                    onLoadStart={() => setIsImageLoading(true)}
+                    onLoad={() => setIsImageLoading(false)}
+                    onError={() => {
+                      setIsImageLoading(false);
+                      if (!imageFailed) setImageFailed(true);
+                    }}
+                  />
+                  {(isImageLoading || isAdding) && (
+                    <View style={styles.pillMiniPhotoLoading}>
+                      <ActivityIndicator size="small" color="#E8B400" />
+                    </View>
+                  )}
+                </View>
+              );
+            })()}
 
             {/* Word & Audio */}
             <View style={styles.wordSection}>

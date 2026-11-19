@@ -28,7 +28,10 @@ interface FlashcardState {
   getDueCards: () => Flashcard[];
 
   // Card Creation & Review
-  addCard: (card: Omit<Flashcard, 'id' | 'createdAt' | 'repetitionNumber' | 'easeFactor' | 'intervalDays' | 'nextReviewAt'>) => Flashcard;
+  addCard: (
+    card: Omit<Flashcard, 'id' | 'createdAt' | 'repetitionNumber' | 'easeFactor' | 'intervalDays' | 'nextReviewAt'>,
+    options?: { skipBackendSync?: boolean }
+  ) => Flashcard;
   toggleFavorite: (cardId: string) => void;
   createFromVoiceSpanish: (spokenText: string) => Flashcard | null;
   reviewCard: (cardId: string, rating: ReviewRating) => void;
@@ -53,7 +56,22 @@ export const useFlashcardStore = create<FlashcardState>()(
         try {
           const apiCards = await flashcardApiService.listCards();
           if (apiCards && apiCards.length > 0) {
-            set({ cards: apiCards });
+            // Deduplicar por targetWord (insensible a mayúsculas) conservando la tarjeta con mejor imagen/progreso
+            const uniqueMap = new Map<string, Flashcard>();
+            for (const card of apiCards) {
+              const key = card.targetWord.trim().toLowerCase();
+              const existing = uniqueMap.get(key);
+              if (!existing) {
+                uniqueMap.set(key, card);
+              } else {
+                const existingHasRealImg = Boolean(existing.imageUrl && !existing.imageUrl.includes('images.unsplash.com'));
+                const cardHasRealImg = Boolean(card.imageUrl && !card.imageUrl.includes('images.unsplash.com'));
+                if ((cardHasRealImg && !existingHasRealImg) || (card.repetitionNumber > existing.repetitionNumber)) {
+                  uniqueMap.set(key, card);
+                }
+              }
+            }
+            set({ cards: Array.from(uniqueMap.values()) });
           }
         } catch (e) {
           console.warn('Modo offline: usando tarjetas locales de AsyncStorage:', e);
@@ -125,7 +143,7 @@ export const useFlashcardStore = create<FlashcardState>()(
         return cards.filter(card => new Date(card.nextReviewAt) <= endOfToday);
       },
 
-      addCard: (cardData) => {
+      addCard: (cardData, options) => {
         const { cards } = get();
         const targetClean = cardData.targetWord.trim().toLowerCase();
         const existingIndex = cards.findIndex(c => c.targetWord.trim().toLowerCase() === targetClean);
@@ -232,22 +250,24 @@ export const useFlashcardStore = create<FlashcardState>()(
         });
 
         // Sincronización asíncrona con TiDB Cloud para persistir la tarjeta y obtener UUID real
-        authService.getStoredToken().then(token => {
-          if (token) {
-            flashcardApiService
-              .createCard(newCard)
-              .then(created => {
-                if (created && created.id) {
-                  set(state => ({
-                    cards: state.cards.map(c => (c.id === newCard.id ? { ...c, id: created.id } : c)),
-                  }));
-                }
-              })
-              .catch(err => {
-                console.warn('Error sincronizando nueva tarjeta en TiDB Cloud:', err?.message || err);
-              });
-          }
-        });
+        if (!options?.skipBackendSync) {
+          authService.getStoredToken().then(token => {
+            if (token) {
+              flashcardApiService
+                .createCard(newCard)
+                .then(created => {
+                  if (created && created.id) {
+                    set(state => ({
+                      cards: state.cards.map(c => (c.id === newCard.id ? { ...c, id: created.id } : c)),
+                    }));
+                  }
+                })
+                .catch(err => {
+                  console.warn('Error sincronizando nueva tarjeta en TiDB Cloud:', err?.message || err);
+                });
+            }
+          });
+        }
 
         return newCard;
       },
