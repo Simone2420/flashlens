@@ -7,10 +7,14 @@ import {
 
 class CatalogApiService {
   /**
-   * Obtiene la píldora curada del día para hoy desde TiDB Cloud
+   * Obtiene la píldora curada del día para hoy desde TiDB Cloud (usando fecha local YYYY-MM-DD para paridad exacta con Web)
    */
-  public async getTodayPill(): Promise<DailyPill> {
-    const res = await apiClient.get('/catalog/daily-pills/today');
+  public async getTodayPill(localDate?: string): Promise<DailyPill> {
+    const now = new Date();
+    const dateStr =
+      localDate ||
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const res = await apiClient.get(`/catalog/daily-pills/today?date=${encodeURIComponent(dateStr)}`);
     return transformDailyPillFromBackend(res);
   }
 
