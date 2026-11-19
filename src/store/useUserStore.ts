@@ -155,6 +155,11 @@ export const useUserStore = create<UserState>()(
         const secondsUntilFull = Math.ceil(msUntilNext / 1000) + remainingLivesToRegen * 15 * 60;
         notificationService.scheduleLivesFull(secondsUntilFull);
 
+        // Sincronizar consumo de vida con TiDB Cloud
+        authService.getStoredToken().then(token => {
+          if (token) userApiService.consumeLife().catch(() => {});
+        });
+
         return newLivesCount > 0;
       },
 
@@ -309,6 +314,11 @@ export const useUserStore = create<UserState>()(
 
         // Cancelar alertas nocturnas de racha para hoy
         notificationService.syncDailyNotificationSchedule().catch(() => {});
+
+        // Sincronizar actividad diaria y racha con TiDB Cloud
+        authService.getStoredToken().then(token => {
+          if (token) userApiService.registerDailyActivity(activityType).catch(() => {});
+        });
 
         return {
           success: true,
@@ -574,12 +584,16 @@ export const useUserStore = create<UserState>()(
         try {
           const token = await authService.getStoredToken();
           if (!token) return false;
-          const user = await authService.syncSession();
+          const [user, remoteLives] = await Promise.all([
+            authService.syncSession(),
+            userApiService.getLives().catch(() => null),
+          ]);
           set(state => ({
             profile: {
               ...state.profile,
               ...user,
             },
+            lives: remoteLives ? { ...state.lives, ...remoteLives } : state.lives,
           }));
           return true;
         } catch {

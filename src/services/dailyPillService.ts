@@ -305,8 +305,11 @@ Devuelve ÚNICAMENTE el array JSON válido comenzando con [ y terminando con ]. 
           );
           useFlashcardStore.setState({ cards: updated });
 
-          // Persistir la imagen generada en la tarjeta de TiDB Cloud si el backend no tenía una
-          if (initialImage && initialImage !== fallbackImg && !backendCard.imageUrl) {
+          // Persistir la imagen generada en la tarjeta de TiDB Cloud si el backend no tenía una o traía el robot genérico
+          const isGenericRobot = Boolean(
+            backendCard.imageUrl && backendCard.imageUrl.includes('photo-1546776310-eef45dd6d63c')
+          );
+          if (initialImage && initialImage !== fallbackImg && (!backendCard.imageUrl || isGenericRobot)) {
             flashcardApiService.updateCard(backendCard.id, { imageUrl: initialImage }).catch(() => {});
           }
         }

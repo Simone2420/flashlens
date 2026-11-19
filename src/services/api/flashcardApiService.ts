@@ -68,6 +68,31 @@ class FlashcardApiService {
   }
 
   /**
+   * Sube una imagen local del dispositivo (file:// o content://) a Cloudinary vía backend
+   * y retorna la URL pública HTTPS para sincronización entre Móvil y Web.
+   */
+  public async uploadImage(imageUri: string): Promise<string | null> {
+    try {
+      const formData = new FormData();
+      const filename = imageUri.split('/').pop() || 'photo.jpg';
+      const match = /\.(\w+)$/.exec(filename);
+      const type = match ? `image/${match[1]}` : 'image/jpeg';
+
+      formData.append('image', {
+        uri: imageUri,
+        name: filename,
+        type,
+      } as any);
+
+      const res = await apiClient.uploadMultipart('/flashcards/upload-image', formData);
+      return res?.image_url || res?.url || null;
+    } catch (err) {
+      console.warn('No se pudo subir imagen local a Cloudinary:', err);
+      return null;
+    }
+  }
+
+  /**
    * Escanea una foto desde la cámara hacia el endpoint inteligente de 2 fases:
    * 1) Reutiliza metadatos si el término ya existe.
    * 2) Genera con IA multimodal y guarda en PENDING_REVIEW si es nuevo.

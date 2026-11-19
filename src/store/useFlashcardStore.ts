@@ -251,20 +251,32 @@ export const useFlashcardStore = create<FlashcardState>()(
 
         // Sincronización asíncrona con TiDB Cloud para persistir la tarjeta y obtener UUID real
         if (!options?.skipBackendSync) {
-          authService.getStoredToken().then(token => {
-            if (token) {
-              flashcardApiService
-                .createCard(newCard)
-                .then(created => {
-                  if (created && created.id) {
-                    set(state => ({
-                      cards: state.cards.map(c => (c.id === newCard.id ? { ...c, id: created.id } : c)),
-                    }));
-                  }
-                })
-                .catch(err => {
-                  console.warn('Error sincronizando nueva tarjeta en TiDB Cloud:', err?.message || err);
-                });
+          authService.getStoredToken().then(async token => {
+            if (!token) return;
+            try {
+              let cardToSync = newCard;
+              // Si la imagen es un archivo local del teléfono, subirla primero a Cloudinary para que cargue también en Web
+              if (
+                cardToSync.imageUrl &&
+                (cardToSync.imageUrl.startsWith('file://') || cardToSync.imageUrl.startsWith('content://'))
+              ) {
+                const cloudUrl = await flashcardApiService.uploadImage(cardToSync.imageUrl);
+                if (cloudUrl) {
+                  cardToSync = { ...cardToSync, imageUrl: cloudUrl };
+                }
+              }
+              const created = await flashcardApiService.createCard(cardToSync);
+              if (created && created.id) {
+                set(state => ({
+                  cards: state.cards.map(c =>
+                    c.id === newCard.id
+                      ? { ...c, id: created.id, imageUrl: cardToSync.imageUrl }
+                      : c
+                  ),
+                }));
+              }
+            } catch (err: any) {
+              console.warn('Error sincronizando nueva tarjeta en TiDB Cloud:', err?.message || err);
             }
           });
         }
