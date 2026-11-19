@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -42,8 +42,14 @@ export default function LessonScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  const { getNodeById, getVisibleSublessons, completeSublesson } = useRoadmapStore();
+  const { getNodeById, getVisibleSublessons, completeSublesson, fetchNodeSublessons } = useRoadmapStore();
   const { profile, lives, loseLife, addXP, registerDailyActivity } = useUserStore();
+
+  useEffect(() => {
+    if (id) {
+      fetchNodeSublessons(id).catch(() => {});
+    }
+  }, [id, fetchNodeSublessons]);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
   const bottomPadding = Math.max(insets.bottom, 16);

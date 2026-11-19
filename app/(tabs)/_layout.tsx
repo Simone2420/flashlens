@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { AppState } from 'react-native';
 import { Tabs } from 'expo-router';
 import { Home, Map, Camera, Headphones, User } from 'lucide-react-native';
 import { COLORS } from '../../src/constants/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useUserStore } from '../../src/store/useUserStore';
+import { useFlashcardStore } from '../../src/store/useFlashcardStore';
+import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
   const bottomInset = Math.max(insets.bottom, 10);
+  const lastSyncRef = useRef<number>(0);
+
+  // Sincronización en vivo de Vidas, XP, Flashcards y Roadmap al volver a primer plano en Móvil
+  useEffect(() => {
+    const syncAll = () => {
+      const now = Date.now();
+      if (now - lastSyncRef.current < 5000) return;
+      lastSyncRef.current = now;
+      useUserStore.getState().syncWithBackend().then(ok => {
+        if (ok) {
+          useFlashcardStore.getState().fetchCardsFromApi().catch(() => {});
+          useRoadmapStore.getState().fetchTreeFromApi().catch(() => {});
+        }
+      }).catch(() => {});
+    };
+
+    syncAll();
+
+    const sub = AppState.addEventListener('change', nextState => {
+      if (nextState === 'active') {
+        syncAll();
+      }
+    });
+    return () => sub.remove();
+  }, []);
 
   return (
     <Tabs

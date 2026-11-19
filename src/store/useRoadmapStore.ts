@@ -11,6 +11,7 @@ interface RoadmapState {
 
   // 🌐 Sincronización Backend API
   fetchTreeFromApi: () => Promise<void>;
+  fetchNodeSublessons: (nodeId: string) => Promise<Sublesson[]>;
 
   // Actions
   selectNode: (nodeId: string) => void;
@@ -46,6 +47,21 @@ export const useRoadmapStore = create<RoadmapState>()(
         } catch (e) {
           console.warn('Modo offline: usando ruta DAG local:', e);
         }
+      },
+
+      fetchNodeSublessons: async (nodeId: string) => {
+        try {
+          const subs = await roadmapApiService.getNodeSublessons(nodeId);
+          if (subs && subs.length > 0) {
+            set(state => ({
+              nodes: state.nodes.map(n => (n.id === nodeId ? { ...n, sublessons: subs } : n)),
+            }));
+            return subs;
+          }
+        } catch (e) {
+          console.warn('Fallback a sublecciones locales:', e);
+        }
+        return get().nodes.find(n => n.id === nodeId)?.sublessons || [];
       },
 
       selectNode: (nodeId: string) => {
