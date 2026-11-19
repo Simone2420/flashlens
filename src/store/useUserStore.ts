@@ -200,6 +200,9 @@ export const useUserStore = create<UserState>()(
         const todayLocalStr = `${nowLocal.getFullYear()}-${String(nowLocal.getMonth() + 1).padStart(2, '0')}-${String(nowLocal.getDate()).padStart(2, '0')}`;
         const dailyXp = profile.lastDailyXpDate === todayLocalStr ? (profile.dailyXp || 0) : 0;
         widgetService.syncWidgetData(profile.currentStreak, fullLives, null as any, dailyXp);
+        authService.getStoredToken().then(token => {
+          if (token) userApiService.refillLives().catch(() => {});
+        });
       },
 
       addXP: (amount: number) => {
@@ -519,11 +522,13 @@ export const useUserStore = create<UserState>()(
             username: !isEmail ? identifier : undefined,
             password,
           });
-          set({
+          const remoteLives = await userApiService.getLives().catch(() => null);
+          set(state => ({
             profile: res.user,
+            lives: remoteLives ? { ...state.lives, ...remoteLives } : state.lives,
             isLoggedIn: true,
             isOnboarded: true,
-          });
+          }));
           get().checkStreakIntegrity();
           widgetService.syncWidgetData(
             res.user.currentStreak,
@@ -540,11 +545,13 @@ export const useUserStore = create<UserState>()(
       register: async (payload) => {
         try {
           const res = await authService.register(payload);
-          set({
+          const remoteLives = await userApiService.getLives().catch(() => null);
+          set(state => ({
             profile: res.user,
+            lives: remoteLives ? { ...state.lives, ...remoteLives } : state.lives,
             isLoggedIn: true,
             isOnboarded: true,
-          });
+          }));
           widgetService.syncWidgetData(
             res.user.currentStreak,
             get().lives,
@@ -560,11 +567,13 @@ export const useUserStore = create<UserState>()(
       loginDemo: async () => {
         try {
           const res = await authService.loginDemo();
-          set({
+          const remoteLives = await userApiService.getLives().catch(() => null);
+          set(state => ({
             profile: res.user,
+            lives: remoteLives ? { ...state.lives, ...remoteLives } : state.lives,
             isLoggedIn: true,
             isOnboarded: true,
-          });
+          }));
           get().checkStreakIntegrity();
           widgetService.syncWidgetData(
             res.user.currentStreak,
@@ -645,8 +654,15 @@ export const useUserStore = create<UserState>()(
 
       logout: () => {
         authService.logout().catch(() => {});
+        AsyncStorage.multiRemove([
+          'flashlens-flashcard-storage',
+          'flashlens-roadmap-storage',
+        ]).catch(() => {});
         set({
+          profile: DEFAULT_USER,
+          lives: DEFAULT_LIVES,
           isLoggedIn: false,
+          isOnboarded: false,
           pendingCelebration: null,
         });
       },

@@ -55,7 +55,11 @@ export const useFlashcardStore = create<FlashcardState>()(
       fetchCardsFromApi: async () => {
         try {
           const apiCards = await flashcardApiService.listCards();
-          if (apiCards && apiCards.length > 0) {
+          if (Array.isArray(apiCards)) {
+            if (apiCards.length === 0) {
+              set({ cards: [] });
+              return;
+            }
             // Deduplicar por targetWord (insensible a mayúsculas) conservando la tarjeta con mejor imagen/progreso
             const uniqueMap = new Map<string, Flashcard>();
             for (const card of apiCards) {
