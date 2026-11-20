@@ -95,7 +95,12 @@ export const useRoadmapStore = create<RoadmapState>()(
 
       completeSublesson: (nodeId: string, sublessonId: string, score: number) => {
         // Sincronizar progreso y desbloqueo DAG con el backend en TiDB Cloud
-        roadmapApiService.submitSublesson(sublessonId, score).catch(() => {});
+        roadmapApiService
+          .submitSublesson(sublessonId, score)
+          .then(() => {
+            get().fetchTreeFromApi().catch(() => {});
+          })
+          .catch(() => {});
 
         const { nodes } = get();
         let xpEarned = 20;

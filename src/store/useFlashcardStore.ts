@@ -7,6 +7,7 @@ import { calculateNextSRSState } from '../services/srsAlgorithm';
 import { widgetService } from '../services/widgetService';
 import { useUserStore } from './useUserStore';
 import { flashcardApiService, authService } from '../services/api';
+import { imageGenerationService } from '../services/imageGenerationService';
 
 interface FlashcardState {
   cards: Flashcard[];
@@ -60,9 +61,35 @@ export const useFlashcardStore = create<FlashcardState>()(
               set({ cards: [] });
               return;
             }
+            const isBrokenOrGenericImage = (url?: string) => {
+              if (!url || !url.trim()) return true;
+              const lower = url.toLowerCase();
+              return (
+                lower.startsWith('file://') ||
+                lower.startsWith('content://') ||
+                lower.startsWith('ph://') ||
+                lower.includes('photo-1546776310-eef45dd6d63c')
+              );
+            };
+
             // Deduplicar por targetWord (insensible a mayúsculas) conservando la tarjeta con mejor imagen/progreso
             const uniqueMap = new Map<string, Flashcard>();
-            for (const card of apiCards) {
+            for (const rawCard of apiCards) {
+              let card = rawCard;
+              if (isBrokenOrGenericImage(card.imageUrl)) {
+                const repairedImg = imageGenerationService.getInstantFluxUrl(
+                  card.targetWord,
+                  card.conceptCategory,
+                  undefined,
+                  card.contextSentence,
+                  card.mnemonicHint
+                );
+                card = { ...card, imageUrl: repairedImg };
+                if (card.id && !card.id.startsWith('card-') && !card.id.startsWith('fc-')) {
+                  flashcardApiService.updateCard(card.id, { imageUrl: repairedImg }).catch(() => {});
+                }
+              }
+
               const key = card.targetWord.trim().toLowerCase();
               const existing = uniqueMap.get(key);
               if (!existing) {
