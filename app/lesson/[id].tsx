@@ -272,6 +272,7 @@ export default function LessonScreen() {
       ? false
       : currentQ?.type === 'FILL_IN_BLANK' ||
         currentQ?.type === 'MULTIPLE_CHOICE_ICFES' ||
+        (currentQ?.type as string) === 'MULTIPLE_CHOICE' ||
         currentQ?.type === 'IMAGE_WORD_MATCH'
       ? Boolean(selectedOption && selectedOption.trim().length > 0)
       : Boolean(writtenInput && writtenInput.trim().length > 0);
@@ -284,6 +285,7 @@ export default function LessonScreen() {
     if (
       currentQ.type === 'FILL_IN_BLANK' ||
       currentQ.type === 'MULTIPLE_CHOICE_ICFES' ||
+      (currentQ.type as string) === 'MULTIPLE_CHOICE' ||
       currentQ.type === 'IMAGE_WORD_MATCH'
     ) {
       const opts = Array.isArray(currentQ.options) ? currentQ.options : [];
@@ -321,11 +323,14 @@ export default function LessonScreen() {
     }
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
-    // Verificar si hay una explicación MID_CHECKPOINT para el siguiente índice
+    // Verificar si hay una explicación MID_CHECKPOINT para el siguiente índice válido
     const nextIdx = questionIdx + 1;
-    const checkpointExp = (activeSublesson.explanations || []).find(
-      e => e.placement === 'MID_CHECKPOINT' && e.triggerQuestionIndex === nextIdx
-    );
+    const checkpointExp =
+      nextIdx < currentQuestions.length
+        ? (activeSublesson.explanations || []).find(
+            e => e.placement === 'MID_CHECKPOINT' && (e.triggerQuestionIndex ?? 1) === nextIdx
+          )
+        : undefined;
 
     if (checkpointExp) {
       setCurrentExplanation(checkpointExp);
@@ -356,6 +361,30 @@ export default function LessonScreen() {
       }
     }
   };
+
+  if (currentQuestions.length === 0 || !currentQ) {
+    return (
+      <View style={[styles.safeArea, { paddingTop: topPadding }]}>
+        <View style={[styles.completedSublessonBox, { paddingBottom: bottomPadding + 20 }]}>
+          <Text style={styles.completedSubTitle}>Sublección en preparación</Text>
+          <Text style={styles.completedSubMeta}>
+            Esta sublección aún no tiene ejercicios publicados en el CMS. Selecciona otra para continuar estudiando.
+          </Text>
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              setLessonPhase('SUBLESSON_PICKER');
+              setActiveSublesson(null);
+            }}
+            style={styles.finishSublessonBtn}
+          >
+            <Text style={styles.finishSublessonBtnText}>VOLVER A SUBLECCIONES</Text>
+            <ArrowRight size={18} color="#1C1B1B" />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={[styles.safeArea, { paddingTop: topPadding }]}>
@@ -421,7 +450,7 @@ export default function LessonScreen() {
           )}
 
           {/* 3. MULTIPLE CHOICE ICFES & GENERAL */}
-          {currentQ.type === 'MULTIPLE_CHOICE_ICFES' && (
+          {(currentQ.type === 'MULTIPLE_CHOICE_ICFES' || (currentQ.type as string) === 'MULTIPLE_CHOICE') && (
             <MultipleChoiceIcfesQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}

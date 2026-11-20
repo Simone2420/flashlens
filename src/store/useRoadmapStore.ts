@@ -88,7 +88,9 @@ export const useRoadmapStore = create<RoadmapState>()(
           allowedTiers = ['ALL', 'MEDIUM_PLUS', 'SLOW_REINFORCEMENT'];
         }
 
-        return node.sublessons.filter(sub => allowedTiers.includes(sub.paceTier));
+        const filtered = node.sublessons.filter(sub => allowedTiers.includes(sub.paceTier));
+        // Respaldo defensivo v1.0: nunca dejar un nodo vacío si el ritmo seleccionado no tiene variantes propias
+        return filtered.length > 0 ? filtered : node.sublessons;
       },
 
       completeSublesson: (nodeId: string, sublessonId: string, score: number) => {
