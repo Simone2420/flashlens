@@ -118,8 +118,7 @@ export const useRoadmapStore = create<RoadmapState>()(
           });
 
           const completedCount = updatedSublessons.filter(s => s.isCompleted).length;
-          // En modo rápido basta con 3, en medio con 4, en lento con 5
-          const isNodeDone = completedCount >= 3;
+          const isNodeDone = updatedSublessons.length > 0 && completedCount >= updatedSublessons.length;
 
           let newStatus = node.status;
           let stars = node.starsEarned;

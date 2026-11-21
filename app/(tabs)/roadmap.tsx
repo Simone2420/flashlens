@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -6,8 +6,9 @@ import {
   ScrollView,
   TouchableOpacity,
   LayoutChangeEvent,
+  AppState,
 } from 'react-native';
-import { useRouter, useLocalSearchParams } from 'expo-router';
+import { useRouter, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import Svg, { Line, Path } from 'react-native-svg';
 import {
   Sparkles,
@@ -35,8 +36,19 @@ export default function RoadmapScreen() {
   const { profile } = useUserStore();
   const [treeWidth, setTreeWidth] = useState<number>(340);
 
+  useFocusEffect(
+    useCallback(() => {
+      useRoadmapStore.getState().fetchTreeFromApi().catch(() => {});
+    }, [])
+  );
+
   useEffect(() => {
-    useRoadmapStore.getState().fetchTreeFromApi().catch(() => {});
+    const sub = AppState.addEventListener('change', nextState => {
+      if (nextState === 'active') {
+        useRoadmapStore.getState().fetchTreeFromApi().catch(() => {});
+      }
+    });
+    return () => sub.remove();
   }, []);
 
   const isA2Focused = params.focusNode === 'a2_node_10' || profile.diagnosedLevel === 'A2';
