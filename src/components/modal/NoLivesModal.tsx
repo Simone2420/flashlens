@@ -26,6 +26,7 @@ export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) 
       if (diff <= 0) {
         setTimeLeft('00:00:00');
         checkLivesRegeneration();
+        useUserStore.getState().syncWithBackend().catch(() => {});
       } else {
         const hours = Math.floor(diff / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -70,7 +71,7 @@ export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) 
           </Text>
 
           <Text style={styles.description}>
-            Tienes {lives.currentLives} de {lives.maxLives} corazones. Los errores en el Roadmap o en el modo dictado descuentan 1 vida.
+            Tienes {lives.currentLives} de {lives.maxLives} corazones. Los errores en el Roadmap o en el modo dictado descuentan 1 vida. Recuperas 1 corazón automáticamente cada 15 minutos.
           </Text>
 
           {lives.currentLives < lives.maxLives && (

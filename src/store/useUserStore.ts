@@ -155,9 +155,18 @@ export const useUserStore = create<UserState>()(
         const secondsUntilFull = Math.ceil(msUntilNext / 1000) + remainingLivesToRegen * 15 * 60;
         notificationService.scheduleLivesFull(secondsUntilFull);
 
-        // Sincronizar consumo de vida con TiDB Cloud
+        // Sincronizar consumo de vida con TiDB Cloud y alinear el reloj oficial de 15 min
         authService.getStoredToken().then(token => {
-          if (token) userApiService.consumeLife().catch(() => {});
+          if (token) {
+            userApiService
+              .consumeLife()
+              .then(serverLives => {
+                if (serverLives) {
+                  set({ lives: serverLives });
+                }
+              })
+              .catch(() => {});
+          }
         });
 
         return newLivesCount > 0;
@@ -604,6 +613,17 @@ export const useUserStore = create<UserState>()(
             },
             lives: remoteLives ? { ...state.lives, ...remoteLives } : state.lives,
           }));
+          // Mantener preferencia local de notificaciones y aviso de vidas sincronizados con TiDB
+          notificationService
+            .syncPreferenceFromProfile(Boolean(user.notificationsEnabled))
+            .catch(() => {});
+          if (remoteLives && remoteLives.currentLives < remoteLives.maxLives && remoteLives.nextRegenerationAt) {
+            const msUntilNext = Math.max(0, new Date(remoteLives.nextRegenerationAt).getTime() - Date.now());
+            const remaining = Math.max(0, remoteLives.maxLives - remoteLives.currentLives - 1);
+            notificationService
+              .scheduleLivesFull(Math.ceil(msUntilNext / 1000) + remaining * 15 * 60)
+              .catch(() => {});
+          }
           return true;
         } catch {
           return false;

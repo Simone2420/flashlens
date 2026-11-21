@@ -95,10 +95,29 @@ class NotificationService {
   public async isEnabled(): Promise<boolean> {
     try {
       const val = await AsyncStorage.getItem(NOTIFICATION_PREF_KEY);
-      // Por defecto desactivada (false) según los requerimientos de la app
-      return val === 'true';
+      if (val !== null) return val === 'true';
+      return Boolean(useUserStore.getState().profile.notificationsEnabled);
     } catch {
-      return false;
+      return Boolean(useUserStore.getState().profile.notificationsEnabled);
+    }
+  }
+
+  public async syncPreferenceFromProfile(enabled: boolean): Promise<void> {
+    try {
+      const prev = await AsyncStorage.getItem(NOTIFICATION_PREF_KEY);
+      const nextStr = enabled ? 'true' : 'false';
+      if (prev === nextStr) return;
+      await AsyncStorage.setItem(NOTIFICATION_PREF_KEY, nextStr);
+      if (!enabled) {
+        await this.cancelAll();
+      } else {
+        const perm: any = await Notifications.getPermissionsAsync();
+        if (perm?.granted || perm?.status === 'granted') {
+          await this.syncDailyNotificationSchedule();
+        }
+      }
+    } catch (e) {
+      console.warn('Error sincronizando preferencia de notificaciones:', e);
     }
   }
 
@@ -108,6 +127,7 @@ class NotificationService {
       if (!enabled) {
         await this.cancelAll();
       } else {
+        await this.setupNotificationChannels();
         const granted = await this.requestPermissions();
         if (granted) {
           await this.syncDailyNotificationSchedule();
@@ -131,10 +151,13 @@ class NotificationService {
     if (!(await this.isEnabled())) return;
 
     try {
-      // 1. Limpiar notificaciones programadas anteriores para evitar duplicados
+      // 1. Asegurar canal Android y limpiar notificaciones programadas anteriores para evitar duplicados
+      await this.setupNotificationChannels();
       await Notifications.cancelAllScheduledNotificationsAsync();
+      this.scheduledLivesFullId = null;
 
-      const userState = useUserStore.getState().profile;
+      const channelConfig = Platform.OS === 'android' ? { channelId: 'flashlens-alerts' } : {};
+      const { profile: userState, lives } = useUserStore.getState();
       const now = new Date();
       const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
       const hasPracticedToday = userState.lastStreakDate === todayStr;
@@ -151,6 +174,7 @@ class NotificationService {
           type: Notifications.SchedulableTriggerInputTypes.DAILY,
           hour: 12,
           minute: 0,
+          ...channelConfig,
         },
       });
 
@@ -169,6 +193,7 @@ class NotificationService {
             type: Notifications.SchedulableTriggerInputTypes.DAILY,
             hour: 16,
             minute: 0,
+            ...channelConfig,
           },
         });
       }
@@ -189,6 +214,7 @@ class NotificationService {
             type: Notifications.SchedulableTriggerInputTypes.DAILY,
             hour: 20,
             minute: 0,
+            ...channelConfig,
           },
         });
 
@@ -204,10 +230,21 @@ class NotificationService {
             type: Notifications.SchedulableTriggerInputTypes.DAILY,
             hour: 22,
             minute: 30,
+            ...channelConfig,
           },
         });
       } else {
         console.log('El usuario ya completó su racha hoy: Alertas de racha de 8:00 PM y 10:30 PM silenciadas.');
+      }
+
+      // 5. Reprogramar aviso de vidas al 100% (1 cada 15 min) si faltan corazones
+      if (lives.currentLives < lives.maxLives && lives.nextRegenerationAt) {
+        const msUntilNext = Math.max(0, new Date(lives.nextRegenerationAt).getTime() - Date.now());
+        const remainingLives = Math.max(0, lives.maxLives - lives.currentLives - 1);
+        const secondsUntilFull = Math.ceil(msUntilNext / 1000) + remainingLives * 15 * 60;
+        if (secondsUntilFull > 0) {
+          await this.scheduleLivesFull(secondsUntilFull);
+        }
       }
     } catch (e) {
       console.warn('Error sincronizando calendario de notificaciones:', e);
@@ -221,6 +258,7 @@ class NotificationService {
     if (!(await this.isEnabled()) || secondsUntilFull <= 0) return;
 
     try {
+      await this.setupNotificationChannels();
       if (this.scheduledLivesFullId) {
         await Notifications.cancelScheduledNotificationAsync(this.scheduledLivesFullId).catch(() => {});
         this.scheduledLivesFullId = null;
@@ -229,13 +267,14 @@ class NotificationService {
       this.scheduledLivesFullId = await Notifications.scheduleNotificationAsync({
         content: {
           title: '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!',
-          body: 'Recuperaste tus 5 corazones. ¡Entra y continúa tu camino en el Roadmap!',
+          body: 'Recuperaste tus 5 corazones (1 cada 15 min). ¡Entra y continúa tu camino en el Roadmap!',
           data: { route: '/(tabs)/roadmap' },
           sound: 'default',
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
           seconds: Math.max(1, Math.round(secondsUntilFull)),
+          ...(Platform.OS === 'android' ? { channelId: 'flashlens-alerts' } : {}),
         },
       });
     } catch (e) {
@@ -283,13 +322,22 @@ class NotificationService {
    */
   public async triggerTestNotification(type: LocalNotificationPayload['type']): Promise<LocalNotificationPayload> {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    await this.setupNotificationChannels();
+    await this.requestPermissions();
+
+    const dueCount = useFlashcardStore.getState().getDueCards().length;
+    const streak = useUserStore.getState().profile.currentStreak || 0;
 
     let title = '✨ FlashLens Notificación';
     let body = 'Probando el sistema de notificaciones reales on-device.';
     let route = '/(tabs)';
 
-    if (type === 'STREAK_DANGER') {
-      title = '🔥 ¡No pierdas tu racha!';
+    if (type === 'LIVES_FULL') {
+      title = '❤️❤️❤️❤️❤️ ¡Tus vidas están al 100%!';
+      body = 'Recuperaste tus 5 corazones (1 cada 15 min). ¡Vuelve a practicar en el Roadmap!';
+      route = '/(tabs)/roadmap';
+    } else if (type === 'STREAK_DANGER') {
+      title = streak > 0 ? `🔥 ¡Protege tu racha de ${streak} días!` : '🔥 ¡No pierdas tu racha!';
       body = 'Solo te toma 2 minutos completar tu meta de hoy antes de medianoche.';
       route = 'STREAK_DANGER';
     } else if (type === 'STREAK_EMERGENCY') {
@@ -297,7 +345,10 @@ class NotificationService {
       body = '¡Queda menos de hora y media para medianoche! Entra ahora mismo y salva tu fuego 🔥';
       route = 'STREAK_EMERGENCY';
     } else if (type === 'SRS_DUE') {
-      title = '🧠 Tienes 4 tarjetas listas para repasar';
+      title =
+        dueCount > 0
+          ? `🧠 Tienes ${dueCount} ${dueCount === 1 ? 'tarjeta lista' : 'tarjetas listas'} para repasar`
+          : '🧠 Repaso SM-2 listo para practicar';
       body = 'Domínalas hoy antes de que se te olviden con el método SM-2.';
       route = 'REVIEW_MODAL';
     } else if (type === 'LEARNING_PILL') {
@@ -326,7 +377,10 @@ class NotificationService {
           data: { route: payload.route },
           sound: 'default',
         },
-        trigger: null,
+        trigger:
+          Platform.OS === 'android'
+            ? { channelId: 'flashlens-alerts' }
+            : null,
       });
     } catch (e) {
       console.warn('Error disparando notificación nativa de prueba:', e);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -15,9 +15,26 @@ export const NotificationToast: React.FC = () => {
   const router = useRouter();
   const [currentNotif, setCurrentNotif] = useState<LocalNotificationPayload | null>(null);
   const slideAnim = useState(new Animated.Value(-120))[0];
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const hideToast = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    Animated.timing(slideAnim, {
+      toValue: -140,
+      duration: 250,
+      useNativeDriver: true,
+    }).start(() => setCurrentNotif(null));
+  };
 
   useEffect(() => {
     const unsubscribe = notificationService.addListener(notif => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
       setCurrentNotif(notif);
       Animated.spring(slideAnim, {
         toValue: 20,
@@ -25,23 +42,16 @@ export const NotificationToast: React.FC = () => {
         bounciness: 8,
       }).start();
 
-      const timer = setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         hideToast();
       }, 6000);
-
-      return () => clearTimeout(timer);
     });
 
-    return () => unsubscribe();
+    return () => {
+      unsubscribe();
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, []);
-
-  const hideToast = () => {
-    Animated.timing(slideAnim, {
-      toValue: -140,
-      duration: 250,
-      useNativeDriver: true,
-    }).start(() => setCurrentNotif(null));
-  };
 
   const handlePress = () => {
     if (currentNotif?.route) {
