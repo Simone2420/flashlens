@@ -165,6 +165,24 @@ export function transformRoadmapNodeFromBackend(raw: any): RoadmapNode {
 }
 
 /**
+ * Convierte una pregunta pedagógica del backend (snake_case) al contrato camelCase del frontend móvil
+ */
+export function transformQuestionFromBackend(raw: any): any {
+  return {
+    id: String(raw.id || ''),
+    type: raw.type || 'MULTIPLE_CHOICE_ICFES',
+    prompt: raw.prompt || '',
+    contextText: raw.context_text ?? raw.contextText ?? undefined,
+    mediaUrl: raw.media_url ?? raw.mediaUrl ?? undefined,
+    options: raw.options,
+    correctAnswer: raw.correct_answer !== undefined ? raw.correct_answer : raw.correctAnswer,
+    explanation: raw.explanation || undefined,
+    cefrLevel: raw.cefr_level || raw.cefrLevel || 'A1',
+    phoneticTarget: raw.phonetic_target ?? raw.phoneticTarget ?? undefined,
+  };
+}
+
+/**
  * Convierte una sublección
  */
 export function transformSublessonFromBackend(raw: any): Sublesson {
@@ -195,6 +213,8 @@ export function transformSublessonFromBackend(raw: any): Sublesson {
           audioSampleUrl: exp.audio_sample_url || undefined,
         }))
       : undefined,
-    questions: Array.isArray(raw.questions) ? raw.questions : [],
+    questions: Array.isArray(raw.questions)
+      ? raw.questions.map(transformQuestionFromBackend)
+      : [],
   };
 }

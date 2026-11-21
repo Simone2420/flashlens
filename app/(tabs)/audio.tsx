@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Platform,
   Alert,
+  RefreshControl,
 } from 'react-native';
 import {
   Headphones,
@@ -48,6 +49,19 @@ export default function AudioLabScreen() {
   const { profile, addXP, loseLife, registerDailyActivity, lives, getAvailableAudioSpeeds } = useUserStore();
   const { cards } = useFlashcardStore();
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.allSettled([
+        useUserStore.getState().syncWithBackend(),
+        useFlashcardStore.getState().fetchCardsFromApi(),
+      ]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
   const [selectedSpeed, setSelectedSpeed] = useState<number>(1.0);
   const [voiceGender, setVoiceGender] = useState<VoiceGender>('FEMALE');
   const [availableVoices, setAvailableVoices] = useState<Speech.Voice[]>([]);
@@ -380,6 +394,14 @@ export default function AudioLabScreen() {
             { paddingBottom: Math.max(insets.bottom + 60, 80) },
           ]}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+              tintColor="#E8B400"
+              colors={['#E8B400', '#1C1B1B']}
+            />
+          }
         >
           <View style={styles.heroCard}>
             <View style={styles.headphonesCircle}>

@@ -13,17 +13,37 @@ import { COLORS, SPACING, SHADOWS, BORDER_RADIUS } from '../../../constants/them
 
 interface MatchPairsQuestionProps {
   prompt: string;
-  pairs: Record<string, string>; // { "ship": "/ɪ/ (vocal corta)", "sheep": "/iː/ (vocal larga)" }
+  pairs: Record<string, string> | { pairs?: { en: string; es: string }[] } | { en: string; es: string }[] | any;
   onComplete: (isCorrect: boolean) => void;
   disabled?: boolean;
 }
 
 export const MatchPairsQuestion: React.FC<MatchPairsQuestionProps> = ({
   prompt,
-  pairs,
+  pairs: rawPairs,
   onComplete,
   disabled = false,
 }) => {
+  const pairs: Record<string, string> = React.useMemo(() => {
+    const out: Record<string, string> = {};
+    if (Array.isArray(rawPairs)) {
+      rawPairs.forEach((p: any) => {
+        if (p?.en && p?.es) out[String(p.en)] = String(p.es);
+      });
+    } else if (rawPairs && typeof rawPairs === 'object') {
+      if (Array.isArray(rawPairs.pairs)) {
+        rawPairs.pairs.forEach((p: any) => {
+          if (p?.en && p?.es) out[String(p.en)] = String(p.es);
+        });
+      } else {
+        Object.entries(rawPairs).forEach(([k, v]) => {
+          if (k && v !== undefined && v !== null) out[String(k)] = String(v);
+        });
+      }
+    }
+    return out;
+  }, [rawPairs]);
+
   const leftItems = Object.keys(pairs);
   const rightItems = Object.values(pairs);
 

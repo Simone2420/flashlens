@@ -440,8 +440,30 @@ export const useFlashcardStore = create<FlashcardState>()(
           return { cards: updatedCards };
         });
 
-        // Sincronizar en segundo plano con el algoritmo SM-2 del backend
-        flashcardApiService.rateCard(cardId, rating).catch(() => {});
+        // Sincronizar en segundo plano con el algoritmo SM-2 del backend y fusionar resultado oficial
+        if (!cardId.startsWith('fc-') && !cardId.startsWith('card-')) {
+          flashcardApiService
+            .rateCard(cardId, rating)
+            .then(serverCard => {
+              if (serverCard && serverCard.id) {
+                set(state => ({
+                  cards: state.cards.map(c =>
+                    c.id === cardId
+                      ? {
+                          ...c,
+                          repetitionNumber: serverCard.repetitionNumber,
+                          easeFactor: serverCard.easeFactor,
+                          intervalDays: serverCard.intervalDays,
+                          lastRating: serverCard.lastRating || rating,
+                          nextReviewAt: serverCard.nextReviewAt || c.nextReviewAt,
+                        }
+                      : c
+                  ),
+                }));
+              }
+            })
+            .catch(() => {});
+        }
       },
 
       deleteCard: (cardId) => {

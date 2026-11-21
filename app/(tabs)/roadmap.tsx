@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   LayoutChangeEvent,
   AppState,
+  RefreshControl,
 } from 'react-native';
 import { useRouter, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import Svg, { Line, Path } from 'react-native-svg';
@@ -35,6 +36,19 @@ export default function RoadmapScreen() {
   const { nodes, selectNode } = useRoadmapStore();
   const { profile } = useUserStore();
   const [treeWidth, setTreeWidth] = useState<number>(340);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.allSettled([
+        useRoadmapStore.getState().fetchTreeFromApi(),
+        useUserStore.getState().syncWithBackend(),
+      ]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -122,6 +136,14 @@ export default function RoadmapScreen() {
           styles.scrollContent,
           { paddingBottom: Math.max(insets.bottom + 40, 60) },
         ]}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+            tintColor="#E8B400"
+            colors={['#E8B400', '#1C1B1B']}
+          />
+        }
       >
         {/* Banner de Diagnóstico Oficial */}
         <TouchableOpacity

@@ -71,6 +71,8 @@ export default function SRSReviewScreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [ratedCount, setRatedCount] = useState(0);
+  const [retryCounts, setRetryCounts] = useState<Record<string, number>>({});
+  const [requeueBanner, setRequeueBanner] = useState<string | null>(null);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
   const bottomPadding = Math.max(insets.bottom, 16);
@@ -84,7 +86,19 @@ export default function SRSReviewScreen() {
     setRatedCount((prev) => prev + 1);
     addXP(15); // +15 XP por cada tarjeta repasada
 
-    if (currentIndex + 1 < reviewDeck.length) {
+    let nextDeckLength = reviewDeck.length;
+    if (rating === 'AGAIN') {
+      const priorRetries = retryCounts[currentCard.id] || 0;
+      if (priorRetries < 2) {
+        setRetryCounts((prev) => ({ ...prev, [currentCard.id]: priorRetries + 1 }));
+        setSessionDeckIds((prev) => [...prev, currentCard.id]);
+        nextDeckLength = reviewDeck.length + 1;
+        setRequeueBanner(`"${currentCard.targetWord}" se repetirá al final de la sesión.`);
+        setTimeout(() => setRequeueBanner(null), 2600);
+      }
+    }
+
+    if (currentIndex + 1 < nextDeckLength) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       registerDailyActivity('FLASHCARD_DECK');
@@ -132,6 +146,25 @@ export default function SRSReviewScreen() {
         progress={reviewDeck.length === 0 || sessionCompleted ? 1 : currentIndex / reviewDeck.length}
         height={2}
       />
+
+      {requeueBanner && (
+        <View
+          style={{
+            marginHorizontal: 16,
+            marginTop: 10,
+            paddingHorizontal: 12,
+            paddingVertical: 8,
+            backgroundColor: '#FFF1F2',
+            borderColor: '#FDA4AF',
+            borderWidth: 1,
+            borderRadius: 12,
+          }}
+        >
+          <Text style={{ fontSize: 12, fontWeight: '700', color: '#9F1239', textAlign: 'center' }}>
+            🔁 {requeueBanner}
+          </Text>
+        </View>
+      )}
 
       {reviewDeck.length === 0 ? (
         <View style={[styles.completedContainer, { paddingBottom: bottomPadding }]}>

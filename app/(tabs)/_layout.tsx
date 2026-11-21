@@ -13,11 +13,12 @@ export default function TabLayout() {
   const bottomInset = Math.max(insets.bottom, 10);
   const lastSyncRef = useRef<number>(0);
 
-  // Sincronización en vivo de Vidas, XP, Flashcards y Roadmap al volver a primer plano en Móvil
+  // Sincronización en vivo de Vidas, XP, Flashcards y Roadmap al volver a primer plano
+  // y periódicamente cada 45s mientras la aplicación permanece activa
   useEffect(() => {
-    const syncAll = () => {
+    const syncAll = (force = false) => {
       const now = Date.now();
-      if (now - lastSyncRef.current < 5000) return;
+      if (!force && now - lastSyncRef.current < 5000) return;
       lastSyncRef.current = now;
       useUserStore.getState().syncWithBackend().then(ok => {
         if (ok) {
@@ -27,14 +28,23 @@ export default function TabLayout() {
       }).catch(() => {});
     };
 
-    syncAll();
+    syncAll(false);
+
+    const intervalId = setInterval(() => {
+      if (AppState.currentState === 'active') {
+        syncAll(true);
+      }
+    }, 45000);
 
     const sub = AppState.addEventListener('change', nextState => {
       if (nextState === 'active') {
-        syncAll();
+        syncAll(false);
       }
     });
-    return () => sub.remove();
+    return () => {
+      clearInterval(intervalId);
+      sub.remove();
+    };
   }, []);
 
   return (

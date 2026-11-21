@@ -31,9 +31,11 @@ export const SentenceWritingQuestion: React.FC<SentenceWritingQuestionProps> = (
 
   useEffect(() => {
     // Generar fichas de palabras desordenadas a partir de la respuesta correcta + distractores
-    // Se preservan apóstrofes internos en contracciones y posesivos (I'm, don't, speaker's)
+    // Guiones/barras se separan con espacio (ej. twenty-six -> twenty, six) para coincidir con normalizeEnglishText
+    // y se preservan apóstrofes internos en contracciones y posesivos (I'm, don't, speaker's)
     const rawWords = correctAnswer
-      .replace(/[.,/#!$%^&*;:{}=\-_`~()?"]/g, '')
+      .replace(/[-–—/]/g, ' ')
+      .replace(/[.,#!$%^&*;:{}=_`~()?"]/g, '')
       .split(/\s+/)
       .map(w => w.replace(/^'+|'+$/g, ''))
       .filter(w => w.length > 0);

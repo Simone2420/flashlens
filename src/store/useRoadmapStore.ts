@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RoadmapNode, Sublesson, LearningPace, CEFRLevel } from '../types';
 import { MOCK_ROADMAP_NODES } from '../data/mockData';
 import { roadmapApiService } from '../services/api';
+import { useUserStore } from './useUserStore';
 
 interface RoadmapState {
   nodes: RoadmapNode[];
@@ -99,6 +100,8 @@ export const useRoadmapStore = create<RoadmapState>()(
           .submitSublesson(sublessonId, score)
           .then(() => {
             get().fetchTreeFromApi().catch(() => {});
+            get().fetchNodeSublessons(nodeId).catch(() => {});
+            useUserStore.getState().syncWithBackend().catch(() => {});
           })
           .catch(() => {});
 

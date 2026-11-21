@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -44,11 +45,23 @@ export default function LessonScreen() {
 
   const { getNodeById, getVisibleSublessons, completeSublesson, fetchNodeSublessons } = useRoadmapStore();
   const { profile, lives, loseLife, addXP, registerDailyActivity } = useUserStore();
+  const [loadingSublessons, setLoadingSublessons] = useState(true);
 
   useEffect(() => {
+    let active = true;
     if (id) {
-      fetchNodeSublessons(id).catch(() => {});
+      setLoadingSublessons(true);
+      fetchNodeSublessons(id)
+        .catch(() => {})
+        .finally(() => {
+          if (active) setLoadingSublessons(false);
+        });
+    } else {
+      setLoadingSublessons(false);
     }
+    return () => {
+      active = false;
+    };
   }, [id, fetchNodeSublessons]);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
@@ -66,6 +79,19 @@ export default function LessonScreen() {
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
+
+  if (loadingSublessons) {
+    return (
+      <View style={[styles.safeArea, { paddingTop: topPadding, paddingBottom: bottomPadding }]}>
+        <View style={styles.emptyContainer}>
+          <ActivityIndicator size="large" color="#E8B400" />
+          <Text style={[styles.completedSubMeta, { marginTop: 12 }]}>
+            Sincronizando lecciones desde la nube...
+          </Text>
+        </View>
+      </View>
+    );
+  }
 
   if (!node) {
     return (
@@ -427,7 +453,7 @@ export default function LessonScreen() {
             <MatchPairsQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}
-              pairs={(currentQ.options as Record<string, string>) || {}}
+              pairs={currentQ.options || currentQ.correctAnswer || {}}
               onComplete={(isDone) => {
                 setIsCorrect(isDone);
                 setIsAnswered(true);
@@ -442,6 +468,7 @@ export default function LessonScreen() {
             <FillInBlankQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}
+              contextText={currentQ.contextText}
               options={Array.isArray(currentQ.options) ? currentQ.options : []}
               selectedWord={selectedOption}
               onSelectWord={setSelectedOption}
@@ -458,7 +485,7 @@ export default function LessonScreen() {
               selectedOption={selectedOption}
               onSelectOption={setSelectedOption}
               isAnswered={isAnswered}
-              correctAnswer={String(currentQ.correctAnswer)}
+              correctAnswer={String(currentQ.correctAnswer ?? '')}
               disabled={isAnswered}
             />
           )}
@@ -468,7 +495,7 @@ export default function LessonScreen() {
             <SentenceWritingQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}
-              correctAnswer={String(currentQ.correctAnswer)}
+              correctAnswer={String(currentQ.correctAnswer ?? '')}
               value={writtenInput}
               onChangeValue={setWrittenInput}
               disabled={isAnswered}
@@ -480,7 +507,7 @@ export default function LessonScreen() {
             <SpeakingPronunciationQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}
-              targetSentence={String(currentQ.correctAnswer)}
+              targetSentence={String(currentQ.correctAnswer || currentQ.contextText || '')}
               recordedText={writtenInput}
               onRecordResult={setWrittenInput}
               disabled={isAnswered}
@@ -492,11 +519,12 @@ export default function LessonScreen() {
             <ImageWordMatchQuestion
               key={currentQ.id}
               prompt={currentQ.prompt}
+              imageUrl={currentQ.mediaUrl}
               options={Array.isArray(currentQ.options) ? currentQ.options : []}
               selectedOption={selectedOption}
               onSelectOption={setSelectedOption}
               isAnswered={isAnswered}
-              correctAnswer={String(currentQ.correctAnswer)}
+              correctAnswer={String(currentQ.correctAnswer ?? '')}
               disabled={isAnswered}
             />
           )}

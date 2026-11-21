@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Alert,
   Modal,
   TextInput,
+  RefreshControl,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -65,15 +66,25 @@ export default function ProfileScreen() {
   const [editAge, setEditAge] = useState(profile.age ? String(profile.age) : '24');
   const [savingProfile, setSavingProfile] = useState(false);
   const [isCloudConnected, setIsCloudConnected] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.allSettled([
+        useUserStore.getState().syncWithBackend(),
+        useFlashcardStore.getState().fetchCardsFromApi(),
+        useRoadmapStore.getState().fetchTreeFromApi(),
+      ]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
 
   // Control de interfaz: oculto para el usuario normal en producción
   const SHOW_RBAC_SECTION = false;
 
   useEffect(() => {
-    // Asegurar que el usuario activo sea el usuario normal (Estudiante)
-    if (profile.roles?.includes('ROLE_PREMIUM_STUDENT') || profile.roles?.includes('ROLE_ADMIN')) {
-      setRoleForDemo('ROLE_STUDENT');
-    }
     authService
       .getStoredToken()
       .then(token => {
@@ -136,6 +147,14 @@ export default function ProfileScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 40, 60) }]}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+            tintColor="#E8B400"
+            colors={['#E8B400', '#1C1B1B']}
+          />
+        }
       >
         {/* Tarjeta Principal del Perfil */}
         <View style={styles.profileHeaderCard}>

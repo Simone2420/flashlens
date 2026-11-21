@@ -8,8 +8,9 @@ import {
   TextInput,
   AppState,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import {
   Sparkles,
   Layers,
@@ -176,6 +177,29 @@ export default function HomeScreen() {
   }, []);
 
   const insets = useSafeAreaInsets();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.allSettled([
+        useUserStore.getState().syncWithBackend(),
+        useFlashcardStore.getState().fetchCardsFromApi(),
+        useRoadmapStore.getState().fetchTreeFromApi(),
+        loadDailyPill(),
+      ]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [loadDailyPill]);
+
+  useFocusEffect(
+    useCallback(() => {
+      useFlashcardStore.getState().fetchCardsFromApi().catch(() => {});
+      useUserStore.getState().syncWithBackend().catch(() => {});
+    }, [])
+  );
+
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
 
   const filteredCards = useMemo(() => {
@@ -221,6 +245,14 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingBottom: Math.max(insets.bottom + 90, 110) }]}
         keyboardShouldPersistTaps="handled"
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+            tintColor="#E8B400"
+            colors={['#E8B400', '#1C1B1B']}
+          />
+        }
       >
         {/* Barra Superior con Feedback y Estado */}
       <View style={styles.topBar}>
