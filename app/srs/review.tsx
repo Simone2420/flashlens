@@ -89,7 +89,7 @@ export default function SRSReviewScreen() {
     let nextDeckLength = reviewDeck.length;
     if (rating === 'AGAIN') {
       const priorRetries = retryCounts[currentCard.id] || 0;
-      if (priorRetries < 2) {
+      if (priorRetries < 1) {
         setRetryCounts((prev) => ({ ...prev, [currentCard.id]: priorRetries + 1 }));
         setSessionDeckIds((prev) => [...prev, currentCard.id]);
         nextDeckLength = reviewDeck.length + 1;
@@ -232,6 +232,7 @@ export default function SRSReviewScreen() {
         <ScrollView contentContainerStyle={[styles.cardContainer, { paddingBottom: bottomPadding + 20 }]}>
           {currentCard && (
             <FlipCard3D
+              key={`${currentCard.id}-${currentIndex}`}
               card={currentCard}
               onRate={handleRate}
             />
