@@ -98,8 +98,8 @@ export function OnboardingCarousel({ onComplete, onSkip }: OnboardingCarouselPro
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const offsetX = event.nativeEvent.contentOffset.x;
-      const index = Math.round(offsetX / windowWidth);
-      if (index >= 0 && index < SLIDES.length && index !== currentIndex) {
+      const index = Math.max(0, Math.min(SLIDES.length - 1, Math.round(offsetX / windowWidth)));
+      if (index !== currentIndex) {
         setCurrentIndex(index);
       }
     },
@@ -213,8 +213,12 @@ export function OnboardingCarousel({ onComplete, onSkip }: OnboardingCarouselPro
         keyExtractor={(item) => item.id}
         horizontal
         pagingEnabled
+        snapToInterval={windowWidth}
+        snapToAlignment="start"
+        decelerationRate="fast"
         showsHorizontalScrollIndicator={false}
         bounces={false}
+        style={{ width: windowWidth, flex: 1 }}
         onMomentumScrollEnd={handleScroll}
         getItemLayout={(_, index) => ({
           length: windowWidth,
@@ -236,7 +240,7 @@ export function OnboardingCarousel({ onComplete, onSkip }: OnboardingCarouselPro
                       {item.badge}
                     </Text>
                   </View>
-                  <Text style={styles.stepMiniPill}>Paso {index + 1} de 5</Text>
+                  <Text style={styles.stepMiniPill}>Paso {index + 1} de {SLIDES.length}</Text>
                 </View>
 
                 {/* Área de Ilustración con Chips Flotantes */}
@@ -268,10 +272,10 @@ export function OnboardingCarousel({ onComplete, onSkip }: OnboardingCarouselPro
         }}
       />
 
-      {/* 4. Barra Inferior: Cápsula de 5 Íconos Táctiles + Botón Dinámico */}
+      {/* 4. Barra Inferior: Cápsula de Íconos Táctiles + Botón Dinámico */}
       <View style={[styles.bottomBar, { width: cardWidth }]}>
         
-        {/* Cápsula de 5 Íconos Táctiles */}
+        {/* Cápsula de Íconos Táctiles */}
         <View style={styles.indicatorCapsule}>
           {SLIDES.map((slide, idx) => {
             const isActive = idx === currentIndex;
@@ -353,7 +357,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.accent,
     borderWidth: 1,
     borderColor: '#1C1B1B',
-    borderRadius: 0,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -381,7 +385,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF8E1',
     borderWidth: 1,
     borderColor: '#E8B400',
-    borderRadius: 0,
+    borderRadius: 10,
     paddingVertical: 5,
     paddingHorizontal: 10,
     gap: 2,
@@ -413,7 +417,7 @@ const styles = StyleSheet.create({
   },
   segmentBar: {
     height: 4,
-    borderRadius: 0,
+    borderRadius: 4,
     width: '100%',
   },
   segmentBarActive: {
@@ -428,7 +432,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1EDEC',
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    borderRadius: 0,
+    borderRadius: 8,
   },
   counterText: {
     color: '#1C1B1B',
@@ -438,7 +442,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     alignItems: 'center',
-    justifyContent: 'center',
+    flexGrow: 0,
   },
   slideWrapper: {
     alignItems: 'center',
@@ -449,7 +453,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    borderRadius: 0,
+    borderRadius: 16,
     padding: SPACING.md,
     ...SHADOWS.card,
     minHeight: 390,
@@ -470,7 +474,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF8E1',
     borderWidth: 1,
     borderColor: '#E8B400',
-    borderRadius: 0,
+    borderRadius: 8,
     paddingVertical: 3,
     paddingHorizontal: 8,
     gap: 4,
@@ -494,7 +498,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDF8F8',
     borderWidth: 1,
     borderColor: '#F1EDEC',
-    borderRadius: 0,
+    borderRadius: 12,
     paddingVertical: 6,
     alignItems: 'center',
     justifyContent: 'center',
@@ -506,7 +510,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     paddingVertical: 3,
     paddingHorizontal: 7,
-    borderRadius: 0,
+    borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
@@ -575,14 +579,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1EDEC',
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    borderRadius: 0,
+    borderRadius: 12,
     padding: 3,
     gap: 3,
   },
   indicatorTab: {
     width: 32,
     height: 32,
-    borderRadius: 0,
+    borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -592,7 +596,7 @@ const styles = StyleSheet.create({
   nextCircleButton: {
     width: 44,
     height: 44,
-    borderRadius: 0,
+    borderRadius: 12,
     backgroundColor: '#E8B400',
     borderWidth: 1,
     borderColor: '#1C1B1B',
@@ -606,7 +610,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8B400',
     borderWidth: 1,
     borderColor: '#1C1B1B',
-    borderRadius: 0,
+    borderRadius: 12,
     paddingVertical: 10,
     paddingHorizontal: 14,
     gap: 6,
@@ -622,7 +626,7 @@ const styles = StyleSheet.create({
   startArrowBadge: {
     width: 20,
     height: 20,
-    borderRadius: 0,
+    borderRadius: 6,
     backgroundColor: '#FFF8E1',
     alignItems: 'center',
     justifyContent: 'center',
