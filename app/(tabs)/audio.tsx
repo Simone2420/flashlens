@@ -404,7 +404,25 @@ export default function AudioLabScreen() {
                 activeOpacity={0.85}
                 onPress={() => {
                   Haptics.selectionAsync();
-                  setDictationDirection('NORMAL');
+                  setDictationDirection('NATIVE_INVERSE');
+                  if (dictationMode === 'BURST') setDictationMode('WORD');
+                }}
+                style={[
+                  styles.goalCard,
+                  dictationMode !== 'BURST' && dictationDirection === 'NATIVE_INVERSE' && styles.goalCardActive,
+                ]}
+              >
+                <Sparkles size={18} color="#765A00" />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.goalCardTitle}>Dictado Inverso Nativo</Text>
+                  <Text style={styles.goalCardDesc}>Escuchas en inglés y escribes en español</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                activeOpacity={0.85}
+                onPress={() => {
+                  Haptics.selectionAsync();
                   setDictationMode('BURST');
                 }}
                 style={[
@@ -471,6 +489,8 @@ export default function AudioLabScreen() {
                   ? '⚡ Desafío Ráfaga 15s'
                   : dictationDirection === 'INVERSE'
                   ? `🇪🇸 Piensa en Inglés • ${dictationMode === 'WORD' ? 'Palabras' : 'Oraciones'}`
+                  : dictationDirection === 'NATIVE_INVERSE'
+                  ? `✨ Inverso Nativo • ${dictationMode === 'WORD' ? 'Palabras' : 'Oraciones'}`
                   : `🎧 Oído en Inglés • ${dictationMode === 'WORD' ? 'Palabras' : 'Oraciones'}`}
               </Text>
             </View>
@@ -792,7 +812,13 @@ export default function AudioLabScreen() {
             <Trophy size={56} color="#E8B400" />
             <Text style={styles.resultTitle}>¡Sesión Completada!</Text>
             <Text style={styles.resultSubtitle}>
-              Excelente entrenamiento en {dictationDirection === 'NORMAL' ? 'Dictado Normal' : 'Dictado Inverso'} ({dictationMode}).
+              Excelente entrenamiento en{' '}
+              {dictationDirection === 'NORMAL'
+                ? 'Oído en Inglés'
+                : dictationDirection === 'NATIVE_INVERSE'
+                ? 'Dictado Inverso Nativo'
+                : 'Piensa en Inglés'}{' '}
+              ({dictationMode}).
             </Text>
 
             <View style={styles.statsRow}>
