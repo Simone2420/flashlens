@@ -22,7 +22,6 @@ import {
   Lock,
   Mail,
   User,
-  Calendar,
   LogIn,
   UserPlus,
 } from 'lucide-react-native';
@@ -51,7 +50,6 @@ export default function LoginScreen() {
 
   // Estado para Registro
   const [fullName, setFullName] = useState('');
-  const [birthDate, setBirthDate] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
@@ -61,26 +59,6 @@ export default function LoginScreen() {
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
   const bottomPadding = Math.max(insets.bottom, 16);
-
-  // Función auxiliar para calcular edad a partir de YYYY-MM-DD
-  const calculateAge = (dateStr: string): number | null => {
-    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr.trim());
-    if (!match) return null;
-    const y = parseInt(match[1], 10);
-    const m = parseInt(match[2], 10) - 1;
-    const d = parseInt(match[3], 10);
-    const born = new Date(y, m, d);
-    if (isNaN(born.getTime())) return null;
-    const today = new Date();
-    let age = today.getFullYear() - born.getFullYear();
-    const monthDiff = today.getMonth() - born.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < born.getDate())) {
-      age--;
-    }
-    return age >= 1 && age <= 120 ? age : null;
-  };
-
-  const computedAge = calculateAge(birthDate);
 
   const handleLogin = async () => {
     const trimmedId = loginIdentifier.trim();
@@ -129,7 +107,6 @@ export default function LoginScreen() {
   const handleRegister = async () => {
     const trimmedName = fullName.trim();
     const trimmedPass = registerPassword.trim() || 'Password123!';
-    const trimmedBirthDate = birthDate.trim();
 
     if (!trimmedName) {
       Alert.alert(
@@ -139,22 +116,8 @@ export default function LoginScreen() {
       return;
     }
 
-    // Validar formato de fecha de nacimiento si se ingresó
-    let derivedAge = 24;
-    let finalBirthDate = '2000-06-15';
-
-    if (trimmedBirthDate) {
-      const parsed = calculateAge(trimmedBirthDate);
-      if (parsed === null) {
-        Alert.alert(
-          'Fecha de nacimiento inválida',
-          'Por favor ingresa tu fecha en formato AAAA-MM-DD (ejemplo: 2000-05-15).'
-        );
-        return;
-      }
-      derivedAge = parsed;
-      finalBirthDate = trimmedBirthDate;
-    }
+    const derivedAge = 24;
+    const finalBirthDate = '2000-06-15';
 
     // Derivar correo electrónico si no se colocó uno explícito
     const cleanSlug = trimmedName.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -176,10 +139,17 @@ export default function LoginScreen() {
       });
 
       if (!result.success) {
-        console.warn('Registro en backend no completado, usando fallback offline:', result.error);
+        Alert.alert(
+          'Modo local temporal',
+          'No pudimos conectar con la nube ahora. Entrarás en modo local y podrás sincronizar después.'
+        );
         setMockUserCredentials(trimmedName, derivedAge, trimmedName);
       }
     } catch {
+      Alert.alert(
+        'Modo local temporal',
+        'No pudimos conectar con la nube ahora. Entrarás en modo local y podrás sincronizar después.'
+      );
       setMockUserCredentials(trimmedName, derivedAge, trimmedName);
     } finally {
       setLoading(false);
@@ -376,28 +346,6 @@ export default function LoginScreen() {
 
               <View style={styles.inputGroup}>
                 <View style={styles.labelRow}>
-                  <Calendar size={13} color={COLORS.onSurfaceVariant} />
-                  <Text style={styles.inputLabel}>FECHA DE NACIMIENTO (AAAA-MM-DD)</Text>
-                  {computedAge !== null && (
-                    <Text style={styles.computedAgeBadge}>🎂 {computedAge} años</Text>
-                  )}
-                </View>
-                <TextInput
-                  style={styles.input}
-                  value={birthDate}
-                  onChangeText={setBirthDate}
-                  placeholder="Ej: 2000-05-15"
-                  placeholderTextColor={COLORS.onSurfaceVariant}
-                  keyboardType="numbers-and-punctuation"
-                  maxLength={10}
-                />
-                <Text style={styles.fieldHint}>
-                  Buenas prácticas pedagógicas: la edad se calcula con exactitud mediante tu fecha
-                </Text>
-              </View>
-
-              <View style={styles.inputGroup}>
-                <View style={styles.labelRow}>
                   <Mail size={13} color={COLORS.onSurfaceVariant} />
                   <Text style={styles.inputLabel}>CORREO ELECTRÓNICO (OPCIONAL)</Text>
                 </View>
@@ -454,15 +402,15 @@ export default function LoginScreen() {
             </View>
           )}
 
-          {/* Divisor y Acceso Rápido como Demo */}
+          {/* Divisor y Acceso Rápido como Invitado */}
           <View style={styles.dividerBox}>
             <View style={styles.dividerLine} />
-            <Text style={styles.dividerText}>O INGRESA AL INSTANTE</Text>
+            <Text style={styles.dividerText}>O EXPLORA AL INSTANTE</Text>
             <View style={styles.dividerLine} />
           </View>
 
           <Button
-            title="Continuar como Usuario Demo"
+            title="Explorar sin cuenta (Modo Invitado)"
             onPress={handleContinueAsDemo}
             variant="accent"
             size="lg"
@@ -489,12 +437,12 @@ export default function LoginScreen() {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            FlashLens v1.0 · Conexión Backend Oficial · TiDB Cloud Serverless
+            FlashLens · Tu mundo real, tu nuevo vocabulario
           </Text>
         </View>
       </ScrollView>
 
-      {/* Modal de Decisión Diagnóstica Post-Login/Registro */}
+      {/* Modal de Decisión Inicial Post-Login/Registro */}
       <Modal visible={showDiagnosticDecision} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
@@ -502,26 +450,26 @@ export default function LoginScreen() {
               <GraduationCap size={36} color="#765A00" />
             </View>
 
-            <Text style={styles.modalTitle}>¿Deseas calibrar tu nivel?</Text>
+            <Text style={styles.modalTitle}>¡Todo listo para empezar!</Text>
             <Text style={styles.modalDesc}>
-              La prueba diagnóstica oficial de 25 preguntas calibradas según el Marco Común Europeo te permite medir tu competencia y desbloquear automáticamente el nivel A2 si tienes bases previas.
+              Puedes entrar directo a explorar tu mazo y la cámara en nivel A1, o hacer la prueba opcional de 25 preguntas para desbloquear A2.
             </Text>
 
             <TouchableOpacity
               activeOpacity={0.85}
-              onPress={handleStartDiagnostic}
+              onPress={handleSkipDiagnostic}
               style={styles.diagnosticPrimaryBtn}
             >
-              <Compass size={18} color="#1C1B1B" />
-              <Text style={styles.diagnosticPrimaryBtnText}>HACER PRUEBA DIAGNÓSTICA (Recomendado)</Text>
+              <Sparkles size={18} color="#1C1B1B" />
+              <Text style={styles.diagnosticPrimaryBtnText}>EMPEZAR AHORA (NIVEL A1)</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={handleSkipDiagnostic}
+              onPress={handleStartDiagnostic}
               style={styles.diagnosticSecondaryBtn}
             >
-              <Text style={styles.diagnosticSecondaryBtnText}>Omitir por ahora · Empezar en A1</Text>
+              <Text style={styles.diagnosticSecondaryBtnText}>Calibrar mi nivel (Prueba de 25 preguntas · ~8 min)</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -552,7 +500,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.accent,
     borderWidth: 1.5,
     borderColor: '#1C1B1B',
-    borderRadius: 0,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 6,
@@ -581,7 +529,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF8E1',
     borderWidth: 1,
     borderColor: '#E8B400',
-    borderRadius: 0,
+    borderRadius: 12,
     paddingVertical: 6,
     paddingHorizontal: 12,
     marginTop: 10,
@@ -597,7 +545,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 0,
+    borderRadius: 12,
     padding: SPACING.md,
     ...SHADOWS.card,
   },
@@ -605,6 +553,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: COLORS.border,
+    borderRadius: 12,
+    overflow: 'hidden',
     marginBottom: SPACING.md,
     backgroundColor: COLORS.surfaceContainerLow,
   },
@@ -680,7 +630,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     backgroundColor: COLORS.surfaceContainerLow,
-    borderRadius: 0,
+    borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 11,
     fontSize: 14.5,
@@ -693,7 +643,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     backgroundColor: COLORS.surfaceContainerLow,
-    borderRadius: 0,
+    borderRadius: 12,
   },
   passwordInput: {
     flex: 1,
@@ -734,7 +684,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFDF0',
     borderWidth: 1,
     borderColor: '#E8B400',
-    borderRadius: 0,
+    borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: SPACING.md,
     gap: 8,
@@ -767,7 +717,7 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 380,
     backgroundColor: '#FFFFFF',
-    borderRadius: 0,
+    borderRadius: 16,
     padding: SPACING.lg,
     alignItems: 'center',
     borderWidth: 1,
@@ -777,7 +727,7 @@ const styles = StyleSheet.create({
   modalIconCircle: {
     width: 64,
     height: 64,
-    borderRadius: 0,
+    borderRadius: 12,
     backgroundColor: '#FFF8E1',
     borderWidth: 1.5,
     borderColor: '#E8B400',
@@ -804,7 +754,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8B400',
     borderWidth: 1,
     borderColor: '#1C1B1B',
-    borderRadius: 0,
+    borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

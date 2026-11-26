@@ -9,6 +9,8 @@ import {
   AppState,
   ActivityIndicator,
   RefreshControl,
+  Modal,
+  Alert,
 } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router';
 import {
@@ -36,6 +38,8 @@ import {
   Clock,
   Mic,
   Lightbulb,
+  Trash2,
+  SlidersHorizontal,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
@@ -53,9 +57,9 @@ import { ReviewModeModal } from '../../src/components/srs/ReviewModeModal';
 import { DailyPillModal } from '../../src/components/dailyPill/DailyPillModal';
 import { dailyPillService } from '../../src/services/dailyPillService';
 import { notificationService } from '../../src/services/notificationService';
-import { ExpandedMasteryWidget } from '../../src/components/widgets/HomeScreenWidgets';
 import { getCardEmoji } from '../../src/components/srs/FlipCard3D';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { formatCardCategory, formatPace } from '../../src/constants/labels';
 
 const SUBCATEGORIES_LIST: { category: ConceptCategory; label: string; IconComponent: React.ComponentType<{ size?: number; color?: string }> }[] = [
   { category: 'ACTION_VERB', label: 'Verbos', IconComponent: Footprints },
@@ -125,6 +129,9 @@ export default function HomeScreen() {
     toggleFavoriteFilter,
     clearCategoryFilters,
     setSearchQuery,
+    toggleFavorite,
+    deleteCard,
+    getDueCards,
   } = useFlashcardStore();
 
   const [isAbstractModalVisible, setIsAbstractModalVisible] = useState(false);
@@ -132,6 +139,7 @@ export default function HomeScreen() {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   const [isPillModalVisible, setIsPillModalVisible] = useState(false);
+  const [isFiltersModalVisible, setIsFiltersModalVisible] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [todayPill, setTodayPill] = useState<DailyPill | null>(null);
   const pillDateRef = useRef<string>('');
@@ -201,6 +209,7 @@ export default function HomeScreen() {
   );
 
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
+  const dueCount = useMemo(() => getDueCards().length, [cards, getDueCards]);
 
   const filteredCards = useMemo(() => {
     return (cards || []).filter(card => {
@@ -267,7 +276,7 @@ export default function HomeScreen() {
             HOLA, {(profile.fullName || profile.username || 'Carlos Gómez').toUpperCase()}
           </Text>
           <Text style={styles.subGreeting}>
-            {profile.age || 24} años • Ritmo: <Text style={styles.paceHighlight}>{profile.learningPace}</Text> • Nivel: {profile.diagnosedLevel}
+            Ritmo: <Text style={styles.paceHighlight}>{formatPace(profile.learningPace)}</Text> • Nivel: {profile.diagnosedLevel}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -282,7 +291,53 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Banner de Diagnóstico para Calibrar Nivel Inicial */}
+      {/* Hero de Acción Diaria (1 Toque) */}
+      <View style={styles.dailyHeroCard}>
+        <View style={styles.dailyHeroTop}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.dailyHeroEyebrow}>TU META DE HOY</Text>
+            <Text style={styles.dailyHeroTitle}>
+              {dueCount > 0
+                ? `Tienes ${dueCount} ${dueCount === 1 ? 'tarjeta' : 'tarjetas'} por repasar`
+                : '¡Vas al día con tu repaso!'}
+            </Text>
+            <Text style={styles.dailyHeroSub}>
+              {dueCount > 0
+                ? 'Sesión rápida de memoria espaciada (2–3 min)'
+                : `Tienes ${cards.length} tarjetas acumuladas en tu mazo`}
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.dailyHeroActions}>
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              router.push({
+                pathname: '/srs/review',
+                params: { mode: dueCount > 0 ? 'DUE' : 'ALL' },
+              } as any);
+            }}
+            style={styles.dailyHeroPrimaryBtn}
+          >
+            <Play size={14} color="#1C1B1B" fill="#1C1B1B" />
+            <Text style={styles.dailyHeroPrimaryBtnText}>
+              EMPEZAR REPASO ({dueCount > 0 ? dueCount : cards.length})
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => setIsReviewModalVisible(true)}
+            style={styles.dailyHeroSecondaryBtn}
+          >
+            <Text style={styles.dailyHeroSecondaryBtnText}>Otros modos</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Banner Compacto de Diagnóstico para Calibrar Nivel Inicial */}
       {!profile.hasCompletedDiagnostic ? (
         <TouchableOpacity
           activeOpacity={0.88}
@@ -290,32 +345,23 @@ export default function HomeScreen() {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push('/diagnostic' as any);
           }}
-          style={styles.diagHomeBanner}
+          style={styles.diagCompactBanner}
         >
-          <View style={styles.diagHomeBannerIcon}>
-            <Sparkles size={22} color="#765A00" />
+          <View style={styles.diagCompactIcon}>
+            <Sparkles size={16} color="#765A00" />
           </View>
           <View style={{ flex: 1 }}>
-            <View style={styles.diagBadgeRow}>
-              <Text style={styles.diagTag}>CALIBRACIÓN INICIAL</Text>
-              <Text style={styles.diagQuestionsCount}>25 Preguntas ICFES/CEFR</Text>
-            </View>
-            <Text style={styles.diagTitle}>¿Cuál es tu nivel real de inglés?</Text>
-            <Text style={styles.diagSubtitle}>
-              Haz la prueba diagnóstica oficial para calibrar tu árbol de lecciones y vocabulario a tu medida.
-            </Text>
-            <View style={styles.diagActionBtn}>
-              <Text style={styles.diagActionBtnText}>INICIAR PRUEBA DIAGNÓSTICA</Text>
-              <ArrowRight size={14} color="#1C1B1B" />
-            </View>
+            <Text style={styles.diagCompactTitle}>¿Ya sabes algo de inglés?</Text>
+            <Text style={styles.diagCompactSub}>Haz la prueba opcional (25 preg.) para desbloquear A2</Text>
           </View>
+          <ArrowRight size={16} color="#765A00" />
         </TouchableOpacity>
       ) : (
         <View style={styles.diagCompletedPill}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <CheckCircle2 size={15} color="#16A34A" />
             <Text style={styles.diagCompletedText}>
-              Nivel Diagnosticado: <Text style={{ fontWeight: '900', color: '#16A34A' }}>{profile.diagnosedLevel}</Text>
+              Nivel Calibrado: <Text style={{ fontWeight: '900', color: '#16A34A' }}>{profile.diagnosedLevel}</Text>
             </Text>
           </View>
           <TouchableOpacity
@@ -395,11 +441,6 @@ export default function HomeScreen() {
         );
       })()}
 
-      {/* Widget Expandido Interactivo */}
-      <View style={styles.widgetSection}>
-        <ExpandedMasteryWidget onPress={() => setIsReviewModalVisible(true)} />
-      </View>
-
       {/* Selector de Mazo Dual (Tabs) */}
       <View style={styles.deckTabsRow}>
         <TouchableOpacity
@@ -477,76 +518,65 @@ export default function HomeScreen() {
         )}
       </View>
 
-      {/* Carrusel Horizontal de Chips de las 12 Subcategorías + Favoritas */}
-      <View style={styles.categoryFiltersContainer}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScroll}>
-          {(selectedCategories.length > 0 || isFavoriteFilter) && (
-            <TouchableOpacity
-              onPress={() => {
-                clearCategoryFilters();
-                if (isFavoriteFilter) toggleFavoriteFilter();
-              }}
-              style={styles.clearFilterChip}
-              accessibilityRole="button"
-              accessibilityLabel="Limpiar filtros activos"
-            >
-              <X size={12} color="#BA1A1A" />
-              <Text style={styles.clearFilterText}>Limpiar</Text>
-            </TouchableOpacity>
-          )}
-          {/* Chip de Filtro Especial: Favoritas */}
+      {/* Filtros Compactos: Favoritas + Modal de Categorías */}
+      <View style={styles.compactFilterRow}>
+        <TouchableOpacity
+          onPress={() => {
+            Haptics.selectionAsync();
+            toggleFavoriteFilter();
+          }}
+          style={[
+            styles.subcatChip,
+            isFavoriteFilter && styles.favoriteChipSelected,
+          ]}
+          accessibilityRole="checkbox"
+          accessibilityState={{ checked: isFavoriteFilter }}
+          accessibilityLabel={`Filtrar tarjetas favoritas, total ${cards.filter(c => c.isFavorite).length}`}
+        >
+          <Star
+            size={12}
+            color={isFavoriteFilter ? '#92400E' : '#747878'}
+            fill={isFavoriteFilter ? '#92400E' : 'transparent'}
+          />
+          <Text
+            style={[
+              styles.subcatLabel,
+              isFavoriteFilter && styles.favoriteLabelSelected,
+            ]}
+          >
+            Favoritas ({cards.filter(c => c.isFavorite).length})
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            Haptics.selectionAsync();
+            setIsFiltersModalVisible(true);
+          }}
+          style={[styles.subcatChip, selectedCategories.length > 0 && styles.subcatChipSelected]}
+          accessibilityRole="button"
+          accessibilityLabel="Abrir filtros de categorías"
+        >
+          <SlidersHorizontal size={12} color={selectedCategories.length > 0 ? '#765A00' : '#5E5E5E'} />
+          <Text style={[styles.subcatLabel, selectedCategories.length > 0 && styles.subcatLabelSelected]}>
+            {selectedCategories.length > 0 ? `Categorías (${selectedCategories.length})` : 'Categorías'}
+          </Text>
+        </TouchableOpacity>
+
+        {(selectedCategories.length > 0 || isFavoriteFilter) && (
           <TouchableOpacity
             onPress={() => {
-              Haptics.selectionAsync();
-              toggleFavoriteFilter();
+              clearCategoryFilters();
+              if (isFavoriteFilter) toggleFavoriteFilter();
             }}
-            style={[
-              styles.subcatChip,
-              isFavoriteFilter && styles.favoriteChipSelected,
-            ]}
-            accessibilityRole="checkbox"
-            accessibilityState={{ checked: isFavoriteFilter }}
-            accessibilityLabel={`Filtrar tarjetas favoritas, total ${cards.filter(c => c.isFavorite).length}`}
+            style={styles.clearFilterChip}
+            accessibilityRole="button"
+            accessibilityLabel="Limpiar filtros activos"
           >
-            <Star
-              size={12}
-              color={isFavoriteFilter ? '#92400E' : '#747878'}
-              fill={isFavoriteFilter ? '#92400E' : 'transparent'}
-            />
-            <Text
-              style={[
-                styles.subcatLabel,
-                isFavoriteFilter && styles.favoriteLabelSelected,
-              ]}
-            >
-              Favoritas ({cards.filter(c => c.isFavorite).length})
-            </Text>
+            <X size={12} color="#BA1A1A" />
+            <Text style={styles.clearFilterText}>Limpiar</Text>
           </TouchableOpacity>
-          {SUBCATEGORIES_LIST.map(cat => {
-            const isSelected = selectedCategories.includes(cat.category);
-            const count = cards.filter(c => c.conceptCategory === cat.category).length;
-            const CatIcon = cat.IconComponent;
-
-            return (
-              <TouchableOpacity
-                key={cat.category}
-                onPress={() => {
-                  Haptics.selectionAsync();
-                  toggleCategoryFilter(cat.category);
-                }}
-                style={[styles.subcatChip, isSelected && styles.subcatChipSelected]}
-                accessibilityRole="checkbox"
-                accessibilityState={{ checked: isSelected }}
-                accessibilityLabel={`Filtrar por subcategoría ${cat.label}, ${count} tarjetas`}
-              >
-                <CatIcon size={12} color={isSelected ? '#765A00' : '#5E5E5E'} />
-                <Text style={[styles.subcatLabel, isSelected && styles.subcatLabelSelected]}>
-                  {cat.label} ({count})
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
+        )}
       </View>
 
       {/* Encabezado de la Sección de Tarjetas */}
@@ -558,10 +588,10 @@ export default function HomeScreen() {
           onPress={() => setIsReviewModalVisible(true)}
           style={styles.reviewNowBtn}
           accessibilityRole="button"
-          accessibilityLabel="Iniciar repaso espaciado SM-2"
+          accessibilityLabel="Elegir modo de repaso"
         >
           <Play size={12} color="#FFFFFF" fill="#FFFFFF" />
-          <Text style={styles.reviewNowBtnText}>Repaso SM-2</Text>
+          <Text style={styles.reviewNowBtnText}>Modos</Text>
         </TouchableOpacity>
       </View>
 
@@ -570,7 +600,7 @@ export default function HomeScreen() {
           <Sparkles size={36} color="#C4C7C7" />
           <Text style={styles.emptyTitle}>No hay tarjetas con este filtro</Text>
           <Text style={styles.emptySubtitle}>
-            {"Toca el botón '+' abajo para crear una tarjeta abstracta por voz o usa la cámara."}
+            {"Toca el botón '+' abajo para crear una tarjeta por voz o usa la cámara en Lens."}
           </Text>
         </View>
       ) : (
@@ -583,8 +613,9 @@ export default function HomeScreen() {
               {/* Contenido de la Tarjeta */}
               <View style={styles.cardBody}>
                 <View style={styles.cardBadgeRow}>
-                  <Text style={styles.cardCategoryBadge}>{card.conceptCategory}</Text>
-                  <Text style={styles.cardPartBadge}>• {card.partOfSpeech}</Text>
+                  <Text style={styles.cardCategoryBadge}>
+                    {formatCardCategory(card.conceptCategory, card.partOfSpeech)}
+                  </Text>
                 </View>
                 <Text style={styles.cardTargetWord}>{card.targetWord}</Text>
                 <Text style={styles.cardPhonetic}>
@@ -595,17 +626,61 @@ export default function HomeScreen() {
                 <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
               </View>
 
-              {/* Botón de Audio TTS */}
-              <TouchableOpacity
-                onPress={() => handleSpeak(card.targetWord)}
-                style={styles.cardAudioBtn}
-                activeOpacity={0.7}
-                accessibilityRole="button"
-                accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              >
-                <Volume2 size={20} color="#765A00" />
-              </TouchableOpacity>
+              {/* Acciones Rápidas: Audio, Favorita, Eliminar */}
+              <View style={styles.cardActionsCol}>
+                <TouchableOpacity
+                  onPress={() => handleSpeak(card.targetWord)}
+                  style={styles.cardAudioBtn}
+                  activeOpacity={0.7}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Escuchar pronunciación de ${card.targetWord}`}
+                  hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                >
+                  <Volume2 size={18} color="#765A00" />
+                </TouchableOpacity>
+
+                <View style={styles.cardSecondaryActionsRow}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      Haptics.selectionAsync();
+                      toggleFavorite(card.id);
+                    }}
+                    style={[styles.cardMiniBtn, card.isFavorite && styles.cardMiniBtnFavActive]}
+                    accessibilityRole="button"
+                    accessibilityLabel={card.isFavorite ? 'Quitar de favoritas' : 'Marcar como favorita'}
+                    hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                  >
+                    <Star
+                      size={13}
+                      color={card.isFavorite ? '#D97706' : '#747878'}
+                      fill={card.isFavorite ? '#F59E0B' : 'transparent'}
+                    />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() => {
+                      Alert.alert(
+                        'Eliminar tarjeta',
+                        `¿Quieres eliminar "${card.targetWord}" de tu mazo?`,
+                        [
+                          { text: 'Cancelar', style: 'cancel' },
+                          {
+                            text: 'Eliminar',
+                            style: 'destructive',
+                            onPress: () => deleteCard(card.id),
+                          },
+                        ]
+                      );
+                    }}
+                    style={styles.cardMiniBtn}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Eliminar tarjeta ${card.targetWord}`}
+                    hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                  >
+                    <Trash2 size={13} color="#BA1A1A" />
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
 
             {/* Mnemotécnico o Fórmula Gramatical */}
@@ -668,6 +743,66 @@ export default function HomeScreen() {
           // Actualización reactiva automática
         }}
       />
+
+      {/* Modal de Categorías (Filtros Avanzados) */}
+      <Modal
+        visible={isFiltersModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsFiltersModalVisible(false)}
+      >
+        <View style={styles.filtersModalOverlay}>
+          <View style={styles.filtersModalCard}>
+            <View style={styles.filtersModalHeader}>
+              <Text style={styles.filtersModalTitle}>Filtrar por categoría</Text>
+              <TouchableOpacity
+                onPress={() => setIsFiltersModalVisible(false)}
+                style={styles.filtersModalClose}
+              >
+                <X size={18} color="#5E5E5E" />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.filtersGrid}>
+              {SUBCATEGORIES_LIST.map(cat => {
+                const isSelected = selectedCategories.includes(cat.category);
+                const count = cards.filter(c => c.conceptCategory === cat.category).length;
+                const CatIcon = cat.IconComponent;
+                return (
+                  <TouchableOpacity
+                    key={cat.category}
+                    onPress={() => {
+                      Haptics.selectionAsync();
+                      toggleCategoryFilter(cat.category);
+                    }}
+                    style={[styles.subcatChip, isSelected && styles.subcatChipSelected]}
+                  >
+                    <CatIcon size={12} color={isSelected ? '#765A00' : '#5E5E5E'} />
+                    <Text style={[styles.subcatLabel, isSelected && styles.subcatLabelSelected]}>
+                      {cat.label} ({count})
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+
+            <View style={styles.filtersModalFooter}>
+              <TouchableOpacity
+                onPress={() => clearCategoryFilters()}
+                style={styles.filtersResetBtn}
+              >
+                <Text style={styles.filtersResetText}>Limpiar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setIsFiltersModalVisible(false)}
+                style={styles.filtersApplyBtn}
+              >
+                <Text style={styles.filtersApplyText}>Ver {filteredCards.length} tarjetas</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -1224,5 +1359,195 @@ const styles = StyleSheet.create({
     color: '#16A34A',
     fontSize: 11.5,
     fontWeight: '800',
+  },
+  dailyHeroCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: SPACING.md,
+    borderWidth: 1.5,
+    borderColor: '#1C1B1B',
+    ...SHADOWS.card,
+  },
+  dailyHeroTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  dailyHeroEyebrow: {
+    color: '#765A00',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    marginBottom: 3,
+  },
+  dailyHeroTitle: {
+    color: '#1C1B1B',
+    fontSize: 18,
+    fontWeight: '900',
+  },
+  dailyHeroSub: {
+    color: '#5E5E5E',
+    fontSize: 12,
+    marginTop: 2,
+  },
+  dailyHeroActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  dailyHeroPrimaryBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8B400',
+    borderRadius: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    gap: 6,
+  },
+  dailyHeroPrimaryBtnText: {
+    color: '#1C1B1B',
+    fontSize: 12.5,
+    fontWeight: '900',
+  },
+  dailyHeroSecondaryBtn: {
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    backgroundColor: '#F7F3F2',
+  },
+  dailyHeroSecondaryBtnText: {
+    color: '#1C1B1B',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  diagCompactBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFDF5',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: SPACING.md,
+    borderWidth: 1,
+    borderColor: '#E8B400',
+    gap: 10,
+  },
+  diagCompactIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: '#FFF8E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  diagCompactTitle: {
+    color: '#1C1B1B',
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  diagCompactSub: {
+    color: '#5E5E5E',
+    fontSize: 11,
+  },
+  compactFilterRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: SPACING.md,
+  },
+  cardActionsCol: {
+    alignItems: 'center',
+    gap: 6,
+  },
+  cardSecondaryActionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  cardMiniBtn: {
+    padding: 5,
+    borderRadius: 8,
+    backgroundColor: '#F7F3F2',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  cardMiniBtnFavActive: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#F59E0B',
+  },
+  filtersModalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.45)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: SPACING.md,
+  },
+  filtersModalCard: {
+    width: '100%',
+    maxWidth: 400,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: SPACING.lg,
+    borderWidth: 1,
+    borderColor: '#1C1B1B',
+  },
+  filtersModalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 14,
+  },
+  filtersModalTitle: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#1C1B1B',
+  },
+  filtersModalClose: {
+    padding: 6,
+    borderRadius: 10,
+    backgroundColor: '#F1EDEC',
+  },
+  filtersGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 16,
+  },
+  filtersModalFooter: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  filtersResetBtn: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  filtersResetText: {
+    fontSize: 12.5,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  filtersApplyBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 12,
+    backgroundColor: '#E8B400',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  filtersApplyText: {
+    fontSize: 13,
+    fontWeight: '900',
+    color: '#1C1B1B',
   },
 });

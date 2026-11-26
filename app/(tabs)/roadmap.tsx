@@ -28,6 +28,7 @@ import { RoadmapNodeItem } from '../../src/components/roadmap/RoadmapNodeItem';
 import { useRoadmapStore } from '../../src/store/useRoadmapStore';
 import { useUserStore } from '../../src/store/useUserStore';
 import { RoadmapNode } from '../../src/types';
+import { formatPace } from '../../src/constants/labels';
 
 export default function RoadmapScreen() {
   const router = useRouter();
@@ -128,7 +129,7 @@ export default function RoadmapScreen() {
 
   return (
     <View style={styles.container}>
-      <Header title="RUTA DE APRENDIZAJE DAG" />
+      <Header title="TU RUTA DE INGLÉS" />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -158,7 +159,7 @@ export default function RoadmapScreen() {
             <Text style={styles.diagBannerTitle}>Prueba Diagnóstica Oficial (25 Preguntas)</Text>
             <Text style={styles.diagBannerSubtitle}>
               Nivel actual: <Text style={styles.boldPill}>{profile.diagnosedLevel}</Text> • Ritmo:{' '}
-              <Text style={styles.boldPill}>{profile.learningPace}</Text>
+              <Text style={styles.boldPill}>{formatPace(profile.learningPace)}</Text>
             </Text>
           </View>
           <ChevronRight size={18} color="#765A00" />
@@ -167,7 +168,7 @@ export default function RoadmapScreen() {
         {/* Header Resumen del Árbol */}
         <View style={styles.roadmapHeader}>
           <View>
-            <Text style={styles.levelTag}>ÁRBOL DE HABILIDADES DAG (20 NODOS)</Text>
+            <Text style={styles.levelTag}>MAPA DE LECCIONES (20 TEMAS)</Text>
             <Text style={styles.roadmapTitle}>Rutas Paralelas & Fonética Gradual</Text>
           </View>
           <View style={styles.starsPill}>

@@ -24,7 +24,7 @@ interface MicroFeedbackModalProps {
 const FEEDBACK_CATEGORIES: { id: UserFeedback['category']; label: string }[] = [
   { id: 'CAMERA', label: '📸 Cámara / IA' },
   { id: 'AUDIO_LAB', label: '🎧 Dictado Inverso' },
-  { id: 'ROADMAP', label: '🗺️ Rutas DAG' },
+  { id: 'ROADMAP', label: '🗺️ Ruta de Inglés' },
   { id: 'SRS', label: '🧠 Flashcards SRS' },
   { id: 'GENERAL', label: '✨ General' },
 ];

@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surfaceContainerLow,
     borderWidth: 1,
     borderColor: COLORS.border,
+    borderRadius: 10,
   },
   statPillEmpty: {
     backgroundColor: COLORS.errorLight,

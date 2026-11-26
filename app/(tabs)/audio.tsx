@@ -24,16 +24,15 @@ import {
   X,
   Clock,
   Repeat,
-  Sparkle,
   Type,
   FileText,
-  Lock,
   Gauge,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING, SHADOWS } from '../../src/constants/theme';
+import { formatPace } from '../../src/constants/labels';
 import { Header } from '../../src/components/common/Header';
 import { NoLivesModal } from '../../src/components/modal/NoLivesModal';
 import { useAudioLabStore } from '../../src/store/useAudioLabStore';
@@ -46,7 +45,7 @@ import { AudioService, VoiceGender } from '../../src/services/audioService';
 
 export default function AudioLabScreen() {
   const insets = useSafeAreaInsets();
-  const { profile, addXP, loseLife, registerDailyActivity, lives, getAvailableAudioSpeeds } = useUserStore();
+  const { profile, addXP, loseLife, registerDailyActivity, lives } = useUserStore();
   const { cards } = useFlashcardStore();
   const [showNoLivesModal, setShowNoLivesModal] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -63,44 +62,7 @@ export default function AudioLabScreen() {
     }
   }, []);
   const [selectedSpeed, setSelectedSpeed] = useState<number>(1.0);
-  const [voiceGender, setVoiceGender] = useState<VoiceGender>('FEMALE');
-  const [availableVoices, setAvailableVoices] = useState<Speech.Voice[]>([]);
-
-  // Banderas de funcionalidad: Ocultas para todos los usuarios (reservadas para la siguiente actualización)
-  const SHOW_VOICE_GENDER_SELECTOR = false;
-  const SHOW_SPEED_SELECTOR = false;
-
-  useEffect(() => {
-    AudioService.getAvailableVoices().then((voices) => {
-      if (voices && voices.length > 0) {
-        setAvailableVoices(voices);
-      }
-    });
-  }, []);
-
-  const availableSpeeds = getAvailableAudioSpeeds();
-  const ALL_SPEEDS = [
-    { value: 0.25, label: '0.25x', isExtended: true },
-    { value: 0.5, label: '0.5x', isExtended: false },
-    { value: 0.75, label: '0.75x', isExtended: false },
-    { value: 1.0, label: '1.0x', isExtended: false },
-    { value: 1.25, label: '1.25x', isExtended: false },
-    { value: 1.5, label: '1.50x', isExtended: true },
-    { value: 2.0, label: '2.0x', isExtended: true },
-  ];
-
-  const handleSelectSpeed = (speedItem: (typeof ALL_SPEEDS)[0]) => {
-    if (speedItem.isExtended && !availableSpeeds.includes(speedItem.value)) {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-      Alert.alert(
-        '🔒 Velocidad Premium Exclusiva',
-        `La velocidad ${speedItem.label} está reservada para usuarios con suscripción Premium o cupón Beta Tester.\n\nTu rol actual (Estudiante) tiene acceso a las velocidades estándar: 0.5x, 0.75x, 1.0x y 1.25x.`
-      );
-      return;
-    }
-    Haptics.selectionAsync();
-    setSelectedSpeed(speedItem.value);
-  };
+  const FREE_SPEEDS = [0.75, 1.0, 1.25];
   const {
     currentCardIndex,
     sessionCards,
@@ -274,53 +236,21 @@ export default function AudioLabScreen() {
       language = 'en-US';
     }
 
-    // Usar la velocidad seleccionada por el usuario (validada por motor RBAC) y el pitch acústico
-    const currentGender = genderOverride || voiceGender;
+    // Usar la velocidad elegida por el usuario (0.75x / 1.0x / 1.25x)
     const rate = selectedSpeed;
-    const pitch = SHOW_VOICE_GENDER_SELECTOR ? AudioService.getPitchForGender(currentGender) : 1.0;
-    const voiceId = SHOW_VOICE_GENDER_SELECTOR
-      ? AudioService.findVoiceForGender(availableVoices, language, currentGender)
-      : undefined;
 
     Speech.stop();
     Speech.speak(textToSpeak, {
       language,
       rate,
-      pitch,
-      voice: voiceId,
+      pitch: 1.0,
       onDone: () => setIsSpeakingAudio(false),
       onError: () => setIsSpeakingAudio(false),
     });
   };
 
-  const handleSelectVoiceGender = (newGender: VoiceGender) => {
-    Haptics.selectionAsync();
-    setVoiceGender(newGender);
-
-    // Muestra de audio inmediata para que el usuario compruebe al instante el timbre y tono en su dispositivo
-    const sampleLang = dictationDirection === 'INVERSE' ? 'es-ES' : 'en-US';
-    const sampleText =
-      sampleLang === 'es-ES'
-        ? newGender === 'MALE' ? 'Voz masculina activada' : 'Voz femenina activada'
-        : newGender === 'MALE' ? 'Male voice selected' : 'Female voice selected';
-
-    const samplePitch = AudioService.getPitchForGender(newGender);
-    const sampleVoice = AudioService.findVoiceForGender(availableVoices, sampleLang, newGender);
-
-    Speech.stop();
-    setIsSpeakingAudio(true);
-    Speech.speak(sampleText, {
-      language: sampleLang,
-      rate: selectedSpeed,
-      pitch: samplePitch,
-      voice: sampleVoice,
-      onDone: () => setIsSpeakingAudio(false),
-      onError: () => setIsSpeakingAudio(false),
-    });
-  };
-
-  const handleSubmitEvaluation = (text: string) => {
-    if (!text.trim() && dictationMode !== 'BURST') return;
+  const handleSubmitEvaluation = (text: string): boolean => {
+    if (!text.trim() && dictationMode !== 'BURST') return false;
 
     const result = evaluateInput(text);
     if (result.isCorrect) {
@@ -333,18 +263,19 @@ export default function AudioLabScreen() {
         setShowNoLivesModal(true);
       }
     }
+    return result.isCorrect;
   };
 
   const handleSelectBurstOption = (option: string) => {
     if (lastResult) return;
     setSelectedBurstOption(option);
-    handleSubmitEvaluation(option);
+    const wasCorrect = handleSubmitEvaluation(option);
 
-    // En Modo Ráfaga para ritmos Lento y Medio: avance automático fluido sin botón "Continuar"
+    // En Modo Ráfaga: 800ms si acierta, 1800ms si falla para que alcance a leer la corrección
     if (burstAdvanceTimerRef.current) clearTimeout(burstAdvanceTimerRef.current);
     burstAdvanceTimerRef.current = setTimeout(() => {
       handleNextWord();
-    }, 600);
+    }, wasCorrect ? 800 : 1800);
   };
 
   const handleNextWord = () => {
@@ -409,158 +340,119 @@ export default function AudioLabScreen() {
             </View>
             <Text style={styles.heroTitle}>Laboratorio de Audio</Text>
             <Text style={styles.heroSubtitle}>
-              Entrena tu oído fonético con dictado adaptativo a tu velocidad de aprendizaje.
+              Elige tu objetivo de entrenamiento y practica con dictado real.
             </Text>
-
-            {/* SELECTOR DIRECCIÓN DE DICTADO: NORMAL vs INVERSO vs INVERSO NATIVO */}
-            <View style={styles.directionControlCard}>
-              <Text style={styles.directionControlTitle}>DIRECCIÓN DEL DICTADO:</Text>
-              <View style={styles.directionTabs}>
-                <TouchableOpacity
-                  activeOpacity={0.85}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setDictationDirection('NORMAL');
-                  }}
-                  style={[
-                    styles.directionTab,
-                    dictationDirection === 'NORMAL' && styles.directionTabActive,
-                  ]}
-                >
-                  <Headphones size={13} color={dictationDirection === 'NORMAL' ? '#1C1B1B' : '#5E5E5E'} />
-                  <Text
-                    numberOfLines={1}
-                    style={[
-                      styles.directionTabText,
-                      dictationDirection === 'NORMAL' && styles.directionTabTextActive,
-                    ]}
-                  >
-                    Directo
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  activeOpacity={0.85}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setDictationDirection('INVERSE');
-                  }}
-                  style={[
-                    styles.directionTab,
-                    dictationDirection === 'INVERSE' && styles.directionTabActive,
-                  ]}
-                >
-                  <Repeat size={13} color={dictationDirection === 'INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
-                  <Text
-                    numberOfLines={1}
-                    style={[
-                      styles.directionTabText,
-                      dictationDirection === 'INVERSE' && styles.directionTabTextActive,
-                    ]}
-                  >
-                    Inverso
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  activeOpacity={0.85}
-                  onPress={() => {
-                    Haptics.selectionAsync();
-                    setDictationDirection('NATIVE_INVERSE');
-                  }}
-                  style={[
-                    styles.directionTab,
-                    dictationDirection === 'NATIVE_INVERSE' && styles.directionTabActive,
-                  ]}
-                >
-                  <Sparkles size={13} color={dictationDirection === 'NATIVE_INVERSE' ? '#1C1B1B' : '#5E5E5E'} />
-                  <Text
-                    numberOfLines={1}
-                    style={[
-                      styles.directionTabText,
-                      dictationDirection === 'NATIVE_INVERSE' && styles.directionTabTextActive,
-                    ]}
-                  >
-                    Inv. Nativo
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <Text style={styles.directionExplanation}>
-                {dictationDirection === 'NORMAL'
-                  ? '🎧 Directo: Escuchas en Inglés y escribes en Inglés.'
-                  : dictationDirection === 'INVERSE'
-                  ? '🔄 Inverso: Escuchas en Español y respondes en Inglés.'
-                  : '✨ Inverso Nativo: Escuchas en Inglés nativo y traduces/escribes en Español.'}
-              </Text>
-            </View>
 
             <View style={styles.paceIndicator}>
               <Text style={styles.paceIndicatorLabel}>
-                Ritmo de Aprendizaje: <Text style={styles.paceIndicatorValue}>{profile.learningPace}</Text>
+                Ritmo activo: <Text style={styles.paceIndicatorValue}>{formatPace(profile.learningPace)}</Text>
               </Text>
               <Text style={styles.paceDescText}>
                 {profile.learningPace === 'SLOW'
-                  ? '🐢 Modo Lento: Velocidad reducida. Ráfaga con selección múltiple.'
+                  ? '🐢 Suave: Más guía visual y selección múltiple en Ráfaga.'
                   : profile.learningPace === 'MEDIUM'
-                  ? '⚖️ Modo Medio: Casillas fijas exactas. Ráfaga con selección múltiple.'
-                  : '⚡ Modo Rápido: Casillas dinámicas de longitud oculta. Ráfaga con escritura manual.'}
+                  ? '⚖️ Equilibrado: Pistas exactas y selección múltiple en Ráfaga.'
+                  : '⚡ Intensivo: Dictado abierto y reto rápido en Ráfaga.'}
               </Text>
             </View>
           </View>
 
-          {/* Selector de las 3 Modalidades */}
+          {/* 3 Modos Claros Orientados al Objetivo */}
           <View style={styles.modeSelectorCard}>
-            <Text style={styles.modeSelectorTitle}>SELECCIONA LA MODALIDAD DE PRÁCTICA:</Text>
-            <View style={styles.modeTabs}>
+            <Text style={styles.modeSelectorTitle}>¿QUÉ QUIERES ENTRENAR HOY?</Text>
+
+            <View style={styles.goalCardsList}>
               <TouchableOpacity
-                accessibilityRole="tab"
-                accessibilityState={{ selected: dictationMode === 'WORD' }}
-                accessibilityLabel="Modo de práctica: Palabras"
+                activeOpacity={0.85}
                 onPress={() => {
                   Haptics.selectionAsync();
-                  setDictationMode('WORD');
+                  setDictationDirection('NORMAL');
+                  if (dictationMode === 'BURST') setDictationMode('WORD');
                 }}
-                style={[styles.modeTab, dictationMode === 'WORD' && styles.modeTabActive]}
+                style={[
+                  styles.goalCard,
+                  dictationMode !== 'BURST' && dictationDirection === 'NORMAL' && styles.goalCardActive,
+                ]}
               >
-                <Type size={14} color={dictationMode === 'WORD' ? '#1C1B1B' : '#5E5E5E'} />
-                <Text style={[styles.modeTabText, dictationMode === 'WORD' && styles.modeTabTextActive]}>
-                  Palabras
-                </Text>
+                <Headphones size={18} color="#765A00" />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.goalCardTitle}>Oído en Inglés</Text>
+                  <Text style={styles.goalCardDesc}>Escuchas en inglés y escribes lo que oyes</Text>
+                </View>
               </TouchableOpacity>
 
               <TouchableOpacity
-                accessibilityRole="tab"
-                accessibilityState={{ selected: dictationMode === 'SENTENCE' }}
-                accessibilityLabel="Modo de práctica: Oraciones"
+                activeOpacity={0.85}
                 onPress={() => {
                   Haptics.selectionAsync();
-                  setDictationMode('SENTENCE');
+                  setDictationDirection('INVERSE');
+                  if (dictationMode === 'BURST') setDictationMode('WORD');
                 }}
-                style={[styles.modeTab, dictationMode === 'SENTENCE' && styles.modeTabActive]}
+                style={[
+                  styles.goalCard,
+                  dictationMode !== 'BURST' && dictationDirection === 'INVERSE' && styles.goalCardActive,
+                ]}
               >
-                <FileText size={14} color={dictationMode === 'SENTENCE' ? '#1C1B1B' : '#5E5E5E'} />
-                <Text style={[styles.modeTabText, dictationMode === 'SENTENCE' && styles.modeTabTextActive]}>
-                  Oraciones
-                </Text>
+                <Repeat size={18} color="#765A00" />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.goalCardTitle}>Piensa en Inglés</Text>
+                  <Text style={styles.goalCardDesc}>Escuchas en español y respondes en inglés</Text>
+                </View>
               </TouchableOpacity>
 
               <TouchableOpacity
-                accessibilityRole="tab"
-                accessibilityState={{ selected: dictationMode === 'BURST' }}
-                accessibilityLabel="Modo de práctica: Ráfaga de 15 segundos"
+                activeOpacity={0.85}
                 onPress={() => {
                   Haptics.selectionAsync();
+                  setDictationDirection('NORMAL');
                   setDictationMode('BURST');
                 }}
-                style={[styles.modeTab, dictationMode === 'BURST' && styles.modeTabActive]}
+                style={[
+                  styles.goalCard,
+                  dictationMode === 'BURST' && styles.goalCardActive,
+                ]}
               >
-                <Zap size={14} color={dictationMode === 'BURST' ? '#1C1B1B' : '#5E5E5E'} />
-                <Text style={[styles.modeTabText, dictationMode === 'BURST' && styles.modeTabTextActive]}>
-                  Ráfaga
-                </Text>
+                <Zap size={18} color="#765A00" />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.goalCardTitle}>Desafío Ráfaga (15s)</Text>
+                  <Text style={styles.goalCardDesc}>Responde rápido a contrarreloj y suma combos</Text>
+                </View>
               </TouchableOpacity>
             </View>
+
+            {dictationMode !== 'BURST' && (
+              <View style={[styles.modeTabs, { marginTop: 12 }]}>
+                <TouchableOpacity
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: dictationMode === 'WORD' }}
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    setDictationMode('WORD');
+                  }}
+                  style={[styles.modeTab, dictationMode === 'WORD' && styles.modeTabActive]}
+                >
+                  <Type size={14} color={dictationMode === 'WORD' ? '#1C1B1B' : '#5E5E5E'} />
+                  <Text style={[styles.modeTabText, dictationMode === 'WORD' && styles.modeTabTextActive]}>
+                    Palabras
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: dictationMode === 'SENTENCE' }}
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    setDictationMode('SENTENCE');
+                  }}
+                  style={[styles.modeTab, dictationMode === 'SENTENCE' && styles.modeTabActive]}
+                >
+                  <FileText size={14} color={dictationMode === 'SENTENCE' ? '#1C1B1B' : '#5E5E5E'} />
+                  <Text style={[styles.modeTabText, dictationMode === 'SENTENCE' && styles.modeTabTextActive]}>
+                    Oraciones
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
 
           {/* Botón Iniciar Sesión de Alto Impacto */}
@@ -575,11 +467,11 @@ export default function AudioLabScreen() {
             <View style={styles.startBtnTextBox}>
               <Text style={styles.startSessionBtnTitle}>COMENZAR ENTRENAMIENTO</Text>
               <Text style={styles.startSessionBtnSubtitle}>
-                {dictationDirection === 'NORMAL'
-                  ? '🇬🇧 Directo'
+                {dictationMode === 'BURST'
+                  ? '⚡ Desafío Ráfaga 15s'
                   : dictationDirection === 'INVERSE'
-                  ? '🇪🇸 Inverso Clásico'
-                  : '✨ Inverso Nativo'} • {dictationMode === 'WORD' ? 'Palabras' : dictationMode === 'SENTENCE' ? 'Oraciones' : 'Ráfaga 15s'}
+                  ? `🇪🇸 Piensa en Inglés • ${dictationMode === 'WORD' ? 'Palabras' : 'Oraciones'}`
+                  : `🎧 Oído en Inglés • ${dictationMode === 'WORD' ? 'Palabras' : 'Oraciones'}`}
               </Text>
             </View>
           </TouchableOpacity>
@@ -669,89 +561,34 @@ export default function AudioLabScreen() {
                 : 'Toca para volver a escuchar'}
             </Text>
 
-            {/* Selector de Voz: Oculto para todos los usuarios (reservado para la siguiente actualización) */}
-            {SHOW_VOICE_GENDER_SELECTOR && (
-              <View style={styles.voiceGenderContainer}>
-                <Text style={styles.voiceGenderLabel}>VOZ:</Text>
-                <View style={styles.voiceGenderRow}>
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => handleSelectVoiceGender('FEMALE')}
-                    style={[
-                      styles.voiceGenderChip,
-                      voiceGender === 'FEMALE' && styles.voiceGenderChipActive,
-                    ]}
-                  >
-                    <Text
-                      style={[
-                        styles.voiceGenderText,
-                        voiceGender === 'FEMALE' && styles.voiceGenderTextActive,
-                      ]}
-                    >
-                      👧 Femenina
-                    </Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => handleSelectVoiceGender('MALE')}
-                    style={[
-                      styles.voiceGenderChip,
-                      voiceGender === 'MALE' && styles.voiceGenderChipActive,
-                    ]}
-                  >
-                    <Text
-                      style={[
-                        styles.voiceGenderText,
-                        voiceGender === 'MALE' && styles.voiceGenderTextActive,
-                      ]}
-                    >
-                      👦 Masculina
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+            {/* Selector de Velocidad Gratuita */}
+            <View style={styles.speedSelectorContainer}>
+              <View style={styles.speedHeaderRow}>
+                <Gauge size={13} color="#765A00" />
+                <Text style={styles.speedSelectorTitle}>VELOCIDAD</Text>
               </View>
-            )}
-
-            {/* Selector de Velocidades de Audio RBAC: Oculto para todos los usuarios */}
-            {SHOW_SPEED_SELECTOR && (
-              <View style={styles.speedSelectorContainer}>
-                <View style={styles.speedHeaderRow}>
-                  <Gauge size={13} color="#765A00" />
-                  <Text style={styles.speedSelectorTitle}>VELOCIDAD DE REPRODUCCIÓN (RBAC)</Text>
-                </View>
-                <View style={styles.speedChipsRow}>
-                  {ALL_SPEEDS.map((s) => {
-                    const isLocked = s.isExtended && !availableSpeeds.includes(s.value);
-                    const isSelected = selectedSpeed === s.value;
-                    return (
-                      <TouchableOpacity
-                        key={s.value}
-                        activeOpacity={0.75}
-                        onPress={() => handleSelectSpeed(s)}
-                        style={[
-                          styles.speedChip,
-                          isSelected && styles.speedChipSelected,
-                          isLocked && styles.speedChipLocked,
-                        ]}
-                        accessibilityLabel={`Velocidad ${s.label}${isLocked ? ' bloqueada' : ''}`}
-                      >
-                        {isLocked && <Lock size={10} color="#8A8A8A" style={{ marginRight: 2 }} />}
-                        <Text
-                          style={[
-                            styles.speedChipText,
-                            isSelected && styles.speedChipTextSelected,
-                            isLocked && styles.speedChipTextLocked,
-                          ]}
-                        >
-                          {s.label}
-                        </Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </View>
+              <View style={styles.speedChipsRow}>
+                {FREE_SPEEDS.map((spd) => {
+                  const isSelected = selectedSpeed === spd;
+                  return (
+                    <TouchableOpacity
+                      key={spd}
+                      activeOpacity={0.75}
+                      onPress={() => {
+                        Haptics.selectionAsync();
+                        setSelectedSpeed(spd);
+                      }}
+                      style={[styles.speedChip, isSelected && styles.speedChipSelected]}
+                      accessibilityLabel={`Velocidad ${spd}x`}
+                    >
+                      <Text style={[styles.speedChipText, isSelected && styles.speedChipTextSelected]}>
+                        {spd}x
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
               </View>
-            )}
+            </View>
 
             {/* En modo inverso clásico, mostrar la pista contextual en español */}
             {dictationDirection === 'INVERSE' && activeCard && (
@@ -1130,6 +967,33 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 10,
     letterSpacing: 0.5,
+  },
+  goalCardsList: {
+    gap: 8,
+  },
+  goalCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 12,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: '#E0E0E0',
+    backgroundColor: '#FDF8F8',
+  },
+  goalCardActive: {
+    borderColor: '#1C1B1B',
+    backgroundColor: '#FFF8E1',
+  },
+  goalCardTitle: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: '#1C1B1B',
+  },
+  goalCardDesc: {
+    fontSize: 11.5,
+    color: '#5E5E5E',
+    marginTop: 1,
   },
   modeTabs: {
     flexDirection: 'row',

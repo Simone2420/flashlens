@@ -30,6 +30,9 @@ import {
   Crop,
   Layers,
   RotateCcw,
+  Pencil,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
@@ -66,10 +69,11 @@ export const CameraViewfinder: React.FC = () => {
   const { profile } = useUserStore();
   const { addCard } = useFlashcardStore();
   const isIpaUnlocked = useRoadmapStore(state => state.isNodeCompleted('a1_node_9'));
-  const { isConnected, activeProvider, setActiveProvider, showCustomNotice } = useNetworkStore();
+  const { isConnected, showCustomNotice } = useNetworkStore();
 
   const [analyzingTitle, setAnalyzingTitle] = useState('Escaneando...');
   const [analyzingSub, setAnalyzingSub] = useState('Procesando objeto y adaptando nivel');
+  const [showAdvancedEditor, setShowAdvancedEditor] = useState(false);
 
   // Estados del formulario y nivel seleccionado
   const [currentPayload, setCurrentPayload] = useState<AdaptiveCardPayload | null>(null);
@@ -87,12 +91,6 @@ export const CameraViewfinder: React.FC = () => {
 
   // Animación continua del láser de escaneo óptico
   const scanLineAnim = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (!permission?.granted) {
-      requestPermission();
-    }
-  }, [permission]);
 
   useEffect(() => {
     const scanLoop = Animated.loop(
@@ -129,21 +127,23 @@ export const CameraViewfinder: React.FC = () => {
   };
 
   /**
-   * Clasifica la imagen usando Visión en la Nube (OpenRouter Gemini) o IA Local (Google ML Kit)
+   * Clasifica la imagen usando Visión en la Nube si hay red, con respaldo automático local.
    */
   const classifyPhoto = async (uri: string, level: CEFRLevel) => {
-    if (activeProvider === 'CLOUD_VISION') {
-      setAnalyzingTitle('Analizando con Visión en la Nube...');
-      setAnalyzingSub(`IA Multimodal procesando y adaptando nivel ${level}`);
+    if (isConnected) {
+      setAnalyzingTitle('Identificando objeto...');
+      setAnalyzingSub(`Adaptando vocabulario a tu nivel ${level}`);
       const cloudResult = await cloudVisionService.classifyAndGenerate(uri, level);
       if (cloudResult.success && cloudResult.payload) {
         return cloudResult.payload;
       }
-      showCustomNotice(`Nube no disponible (${cloudResult.error || 'reintentando'}) — Alternando a IA Local`, 'WARNING');
+      showCustomNotice('Nube no disponible — usando reconocimiento básico local', 'WARNING');
+    } else {
+      showCustomNotice('Sin conexión — usando reconocimiento básico local', 'WARNING');
     }
 
-    setAnalyzingTitle('Escaneando con Google ML Kit On-Device...');
-    setAnalyzingSub(`Procesando objeto on-device y adaptando nivel ${level}`);
+    setAnalyzingTitle('Analizando en el dispositivo...');
+    setAnalyzingSub(`Procesando objeto y adaptando nivel ${level}`);
     return await nlpLinguisticService.classifyAndGenerateCard(uri, level);
   };
 
@@ -202,13 +202,16 @@ export const CameraViewfinder: React.FC = () => {
         }
       }
 
-      const fallbackUri = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80';
-      setFullPhotoUri(fallbackUri);
-      setFullPhotoSize({ width: 0, height: 0 });
-      const fallbackResult = await classifyPhoto(fallbackUri, profile.diagnosedLevel || 'A1');
-      populateFormWithResult(fallbackUri, fallbackResult, false);
+      Alert.alert(
+        'No se pudo capturar',
+        'Intenta tomar la foto nuevamente o elige una imagen desde tu galería.'
+      );
     } catch (e) {
       console.warn('Error capturando foto:', e);
+      Alert.alert(
+        'No se pudo capturar',
+        'Ocurrió un problema con la cámara. Intenta de nuevo o selecciona una imagen de tu galería.'
+      );
     } finally {
       setIsAnalyzing(false);
     }
@@ -304,6 +307,7 @@ export const CameraViewfinder: React.FC = () => {
     Speech.stop();
     setModalVisible(false);
     setIsCroppingMode(false);
+    setShowAdvancedEditor(false);
     setActivePhotoUri(null);
     setFullPhotoUri(null);
     setFullPhotoSize({ width: 0, height: 0 });
@@ -315,6 +319,7 @@ export const CameraViewfinder: React.FC = () => {
     keepFullPhoto = true
   ) => {
     setIsAnalyzing(false);
+    setShowAdvancedEditor(false);
     if (!keepFullPhoto) {
       setFullPhotoUri(imageUri);
     } else {
@@ -435,7 +440,7 @@ export const CameraViewfinder: React.FC = () => {
       ? phoneticInput.trim()
       : (currentPayload?.phoneticScript || `/${wordInput.toLowerCase().trim()}/`);
 
-    const createdCard = addCard({
+    addCard({
       targetWord: wordInput.trim(),
       primaryTranslation: acceptedList[0] || rawTranslation,
       acceptedTranslations: acceptedList,
@@ -456,15 +461,14 @@ export const CameraViewfinder: React.FC = () => {
     });
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    const savedWord = wordInput.trim();
+    const savedLevel = selectedCefr;
     handleCloseModal();
 
-    const isPending = createdCard?.curationStatus === 'PENDING_REVIEW';
-    const alertTitle = isPending ? '¡Término Nuevo Registrado!' : '¡Tarjeta Creada!';
-    const alertMessage = isPending
-      ? `"${wordInput}" (${selectedCefr}) no existía en el catálogo base. Tu foto se ha guardado como imagen canónica provisional con estado PENDING_REVIEW para revisión de administradores.`
-      : `"${wordInput}" (${selectedCefr}) se ha guardado en tu mazo de estudio SRS.`;
-
-    Alert.alert(alertTitle, alertMessage);
+    Alert.alert(
+      '¡Tarjeta Guardada!',
+      `"${savedWord}" (${savedLevel}) se ha guardado en tu mazo de repaso.`
+    );
   };
 
   return (
@@ -478,53 +482,6 @@ export const CameraViewfinder: React.FC = () => {
               style={StyleSheet.absoluteFillObject}
               facing={facing}
             />
-
-            {/* Selector de Proveedor IA (Nube vs Local) */}
-            <View style={styles.providerToggleContainer}>
-              <TouchableOpacity
-                onPress={() => {
-                  Haptics.selectionAsync();
-                  if (!isConnected) {
-                    showCustomNotice('⚠️ Sin conexión a internet: Solo disponible IA Local', 'WARNING');
-                    return;
-                  }
-                  setActiveProvider('CLOUD_VISION');
-                }}
-                style={[
-                  styles.providerChip,
-                  activeProvider === 'CLOUD_VISION' && styles.providerChipActiveCloud,
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.providerChipText,
-                    activeProvider === 'CLOUD_VISION' && styles.providerChipTextActive,
-                  ]}
-                >
-                  ☁️ Nube (Gemini)
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  Haptics.selectionAsync();
-                  setActiveProvider('LOCAL_ON_DEVICE');
-                }}
-                style={[
-                  styles.providerChip,
-                  activeProvider === 'LOCAL_ON_DEVICE' && styles.providerChipActiveLocal,
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.providerChipText,
-                    activeProvider === 'LOCAL_ON_DEVICE' && styles.providerChipTextActive,
-                  ]}
-                >
-                  ⚡ Local (ML Kit)
-                </Text>
-              </TouchableOpacity>
-            </View>
 
             {/* Retícula de Enfoque Óptico */}
             <View style={styles.reticleOverlay} pointerEvents="none">
@@ -556,12 +513,12 @@ export const CameraViewfinder: React.FC = () => {
         ) : (
           <View style={styles.noPermissionBox}>
             <Scan size={52} color="#747878" />
-            <Text style={styles.permissionTitle}>Permiso de Cámara Requerido</Text>
+            <Text style={styles.permissionTitle}>Activa tu Cámara</Text>
             <Text style={styles.permissionSub}>
-              FlashLens necesita acceso a la cámara para identificar objetos con Google ML Kit local o Nube.
+              FlashLens usa la cámara únicamente cuando capturas un objeto para crear su flashcard al instante.
             </Text>
             <TouchableOpacity onPress={requestPermission} style={styles.grantPermissionBtn}>
-              <Text style={styles.grantPermissionBtnText}>CONCEDER PERMISO</Text>
+              <Text style={styles.grantPermissionBtnText}>ACTIVAR CÁMARA</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -581,10 +538,12 @@ export const CameraViewfinder: React.FC = () => {
       {/* 2. BARRA DE ESTADO INFORMATIVA */}
       <View style={styles.infoStatusBar}>
         <View style={styles.statusIndicatorRow}>
-          <View style={styles.statusDot} />
-          <Text style={styles.statusLabel}>GOOGLE ML KIT ON-DEVICE LISTO</Text>
+          <View style={[styles.statusDot, !isConnected && { backgroundColor: '#F59E0B' }]} />
+          <Text style={styles.statusLabel}>
+            {isConnected ? 'LENS LISTO · APUNTA A UN OBJETO' : 'MODO SIN CONEXIÓN'}
+          </Text>
         </View>
-        <Text style={styles.infoInstruction}>Nivel Activo: {profile.diagnosedLevel || 'A1'}</Text>
+        <Text style={styles.infoInstruction}>Nivel: {profile.diagnosedLevel || 'A1'}</Text>
       </View>
 
       {/* 3. CONTROLES DE OBTURADOR Y GALERÍA */}
@@ -734,69 +693,144 @@ export const CameraViewfinder: React.FC = () => {
                 </View>
               )}
 
-              {/* Input Palabra en Inglés y Fonética */}
-              <View style={styles.inputRow}>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={wordInput}
-                    onChangeText={setWordInput}
-                    placeholder="Nombre del objeto"
-                    placeholderTextColor="#747878"
-                  />
+              {/* Vista Resumen Lista para Guardar en 1 Toque */}
+              <View style={styles.quickSummaryCard}>
+                <View style={styles.quickSummaryTop}>
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.quickWordText}>{wordInput || 'Objeto'}</Text>
+                    {phoneticInput ? (
+                      <Text style={styles.quickPhoneticText}>{phoneticInput}</Text>
+                    ) : null}
+                    <Text style={styles.quickTransText}>➔ {translationInput}</Text>
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => handleSpeak(wordInput)}
+                    style={styles.quickAudioBtn}
+                    accessibilityRole="button"
+                    accessibilityLabel="Escuchar pronunciación"
+                  >
+                    <Volume2 size={20} color="#765A00" />
+                  </TouchableOpacity>
                 </View>
-                <View style={{ width: 145 }}>
-                  <Text style={styles.inputLabel} numberOfLines={1}>
-                    {isIpaUnlocked ? 'Fonética IPA:' : 'Pronunciación:'}
-                  </Text>
-                  <TextInput
-                    style={styles.input}
-                    value={phoneticInput}
-                    onChangeText={setPhoneticInput}
-                    placeholder={isIpaUnlocked ? '/.../' : 'ej. kófi kap'}
-                    placeholderTextColor="#747878"
-                  />
-                </View>
+
+                {sentenceInput ? (
+                  <View style={styles.quickContextBox}>
+                    <Text style={styles.quickSentenceEn}>“{sentenceInput}”</Text>
+                    {contextEsInput ? (
+                      <Text style={styles.quickSentenceEs}>{contextEsInput}</Text>
+                    ) : null}
+                  </View>
+                ) : null}
               </View>
 
-              {/* Input Traducción al Español */}
-              <Text style={styles.inputLabel}>Traducción al Español:</Text>
-              <TextInput
-                style={styles.input}
-                value={translationInput}
-                onChangeText={setTranslationInput}
-                placeholder="Traducción en español"
-                placeholderTextColor="#747878"
-              />
-
-              {/* Input Oración Contextual en Inglés */}
-              <Text style={styles.inputLabel}>Oración en Contexto ({selectedCefr}):</Text>
-              <TextInput
-                style={[styles.input, styles.textArea]}
-                value={sentenceInput}
-                onChangeText={setSentenceInput}
-                placeholder="Oración de ejemplo en inglés"
-                placeholderTextColor="#747878"
-                multiline
-              />
-
-              {/* Input Traducción de la Oración */}
-              <Text style={styles.inputLabel}>Traducción de la Oración (Español):</Text>
-              <TextInput
-                style={[styles.input, styles.textArea]}
-                value={contextEsInput}
-                onChangeText={setContextEsInput}
-                placeholder="Traducción de la oración"
-                placeholderTextColor="#747878"
-                multiline
-              />
-
-              {/* Botón Guardar en Mazo SRS */}
+              {/* Botón Primario Guardar en 1 Toque */}
               <TouchableOpacity onPress={handleSaveCard} style={styles.saveCardBtn}>
                 <Check size={18} color="#1C1B1B" />
-                <Text style={styles.saveCardBtnText}>GUARDAR EN MI MAZO SRS</Text>
+                <Text style={styles.saveCardBtnText}>GUARDAR EN MI MAZO</Text>
               </TouchableOpacity>
+
+              {/* Botón Colapsable para Edición Detallada */}
+              <TouchableOpacity
+                onPress={() => setShowAdvancedEditor(prev => !prev)}
+                style={styles.toggleEditBtn}
+                activeOpacity={0.75}
+              >
+                <Pencil size={14} color="#5E5E5E" />
+                <Text style={styles.toggleEditBtnText}>
+                  {showAdvancedEditor ? 'Ocultar edición manual' : 'Editar palabra, nivel u oración'}
+                </Text>
+                {showAdvancedEditor ? (
+                  <ChevronUp size={15} color="#5E5E5E" />
+                ) : (
+                  <ChevronDown size={15} color="#5E5E5E" />
+                )}
+              </TouchableOpacity>
+
+              {showAdvancedEditor && (
+                <View style={styles.advancedEditorBox}>
+                  {/* Selector CEFR */}
+                  <View style={styles.cefrSelectorContainer}>
+                    <View style={styles.cefrTitleRow}>
+                      <Award size={13} color="#765A00" />
+                      <Text style={styles.cefrTitle}>ADAPTAR A NIVEL:</Text>
+                    </View>
+                    <View style={styles.cefrChipsRow}>
+                      {CEFR_LEVELS.map(lvl => {
+                        const isActive = selectedCefr === lvl;
+                        return (
+                          <TouchableOpacity
+                            key={lvl}
+                            onPress={() => handleLevelChange(lvl)}
+                            style={[styles.cefrChip, isActive && styles.cefrChipActive]}
+                          >
+                            <Text style={[styles.cefrChipText, isActive && styles.cefrChipTextActive]}>
+                              {lvl}
+                            </Text>
+                          </TouchableOpacity>
+                        );
+                      })}
+                    </View>
+                  </View>
+
+                  {/* Input Palabra en Inglés y Fonética */}
+                  <View style={styles.inputRow}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.inputLabel}>Palabra en Inglés:</Text>
+                      <TextInput
+                        style={styles.input}
+                        value={wordInput}
+                        onChangeText={setWordInput}
+                        placeholder="Nombre del objeto"
+                        placeholderTextColor="#747878"
+                      />
+                    </View>
+                    <View style={{ width: 145 }}>
+                      <Text style={styles.inputLabel} numberOfLines={1}>
+                        {isIpaUnlocked ? 'Fonética IPA:' : 'Pronunciación:'}
+                      </Text>
+                      <TextInput
+                        style={styles.input}
+                        value={phoneticInput}
+                        onChangeText={setPhoneticInput}
+                        placeholder={isIpaUnlocked ? '/.../' : 'ej. kófi kap'}
+                        placeholderTextColor="#747878"
+                      />
+                    </View>
+                  </View>
+
+                  {/* Input Traducción al Español */}
+                  <Text style={styles.inputLabel}>Traducción al Español:</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={translationInput}
+                    onChangeText={setTranslationInput}
+                    placeholder="Traducción en español"
+                    placeholderTextColor="#747878"
+                  />
+
+                  {/* Input Oración Contextual en Inglés */}
+                  <Text style={styles.inputLabel}>Oración en Contexto ({selectedCefr}):</Text>
+                  <TextInput
+                    style={[styles.input, styles.textArea]}
+                    value={sentenceInput}
+                    onChangeText={setSentenceInput}
+                    placeholder="Oración de ejemplo en inglés"
+                    placeholderTextColor="#747878"
+                    multiline
+                  />
+
+                  {/* Input Traducción de la Oración */}
+                  <Text style={styles.inputLabel}>Traducción de la Oración (Español):</Text>
+                  <TextInput
+                    style={[styles.input, styles.textArea]}
+                    value={contextEsInput}
+                    onChangeText={setContextEsInput}
+                    placeholder="Traducción de la oración"
+                    placeholderTextColor="#747878"
+                    multiline
+                  />
+                </View>
+              )}
             </ScrollView>
           </View>
           )}
@@ -1264,9 +1298,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#E8B400',
-    borderRadius: 16,
+    borderRadius: 12,
     paddingVertical: 14,
-    marginTop: SPACING.lg,
+    marginTop: SPACING.sm,
     gap: 8,
   },
   saveCardBtnText: {
@@ -1275,37 +1309,80 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.5,
   },
-  providerToggleContainer: {
-    position: 'absolute',
-    top: 18,
-    alignSelf: 'center',
-    flexDirection: 'row',
-    backgroundColor: 'rgba(28, 27, 27, 0.75)',
-    borderRadius: 24,
-    padding: 3,
-    gap: 4,
-    zIndex: 20,
+  quickSummaryCard: {
+    backgroundColor: '#FDF8F8',
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: '#E0E0E0',
+    padding: 14,
+    marginBottom: SPACING.sm,
   },
-  providerChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
+  quickSummaryTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
-  providerChipActiveCloud: {
-    backgroundColor: '#0284C7',
-  },
-  providerChipActiveLocal: {
-    backgroundColor: '#E8B400',
-  },
-  providerChipText: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  providerChipTextActive: {
-    color: '#FFFFFF',
+  quickWordText: {
+    fontSize: 22,
     fontWeight: '900',
+    color: '#1C1B1B',
+  },
+  quickPhoneticText: {
+    fontSize: 13,
+    color: '#5E5E5E',
+    fontStyle: 'italic',
+    marginTop: 2,
+  },
+  quickTransText: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: '#765A00',
+    marginTop: 4,
+  },
+  quickAudioBtn: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#D4A400',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  quickContextBox: {
+    marginTop: 10,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#E0E0E0',
+  },
+  quickSentenceEn: {
+    fontSize: 13,
+    fontStyle: 'italic',
+    color: '#1C1B1B',
+    lineHeight: 18,
+  },
+  quickSentenceEs: {
+    fontSize: 12,
+    color: '#5E5E5E',
+    marginTop: 3,
+  },
+  toggleEditBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 12,
+    marginTop: 6,
+  },
+  toggleEditBtnText: {
+    fontSize: 12.5,
+    fontWeight: '700',
+    color: '#5E5E5E',
+  },
+  advancedEditorBox: {
+    marginTop: 6,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#E0E0E0',
   },
 });

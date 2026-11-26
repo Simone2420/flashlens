@@ -84,7 +84,7 @@ export const NoLivesModal: React.FC<NoLivesModalProps> = ({ visible, onClose }) 
 
           <View style={styles.actions}>
             <Button
-              title="Recargar Vidas al Máximo (Demo)"
+              title="Recarga gratuita de lanzamiento"
               onPress={handleRefill}
               variant="accent"
               size="lg"
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     padding: SPACING.xl,
-    borderRadius: 22,
+    borderRadius: 16,
   },
   closeBtn: {
     position: 'absolute',
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   widgetTipBox: {
     backgroundColor: '#FFFBEB',
-    borderRadius: 14,
+    borderRadius: 12,
     padding: 10,
     marginTop: SPACING.md,
     borderWidth: 1,

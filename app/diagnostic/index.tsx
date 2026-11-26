@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -230,10 +231,25 @@ export default function DiagnosticScreen() {
     Boolean(selectedOption && selectedOption.trim().length > 0) ||
     Boolean(writtenInput && writtenInput.trim().length > 0);
 
+  const handleExitDiagnostic = () => {
+    if (currentIdx > 0) {
+      Alert.alert(
+        '¿Salir de la prueba?',
+        'Perderás el progreso de las preguntas respondidas hasta ahora.',
+        [
+          { text: 'Seguir aquí', style: 'cancel' },
+          { text: 'Salir', style: 'destructive', onPress: () => router.back() },
+        ]
+      );
+      return;
+    }
+    router.back();
+  };
+
   return (
     <View style={[styles.safeArea, { paddingTop: topPadding }]}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.closeBtn}>
+        <TouchableOpacity onPress={handleExitDiagnostic} style={styles.closeBtn}>
           <X size={20} color="#5E5E5E" />
         </TouchableOpacity>
         <View style={styles.progressBarTrack}>

@@ -35,6 +35,7 @@ import { SpeakingPronunciationQuestion } from '../../src/components/roadmap/ques
 import { ImageWordMatchQuestion } from '../../src/components/roadmap/questions/ImageWordMatchQuestion';
 import { evaluateLanguageInput } from '../../src/services/languageEvaluation';
 import { NoLivesModal } from '../../src/components/modal/NoLivesModal';
+import { formatPace } from '../../src/constants/labels';
 
 type LessonPhase = 'SUBLESSON_PICKER' | 'THEORY' | 'QUESTION' | 'CHECKPOINT' | 'SUMMARY' | 'COMPLETE';
 
@@ -45,12 +46,20 @@ export default function LessonScreen() {
 
   const { getNodeById, getVisibleSublessons, completeSublesson, fetchNodeSublessons } = useRoadmapStore();
   const { profile, lives, loseLife, addXP, registerDailyActivity } = useUserStore();
-  const [loadingSublessons, setLoadingSublessons] = useState(true);
+  const node = getNodeById(id || '');
+  const visibleSublessons = id ? getVisibleSublessons(id, profile.learningPace) : [];
+  const hasCachedSublessons = visibleSublessons.length > 0;
+  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
+  const bottomPadding = Math.max(insets.bottom, 16);
+
+  const [loadingSublessons, setLoadingSublessons] = useState(!hasCachedSublessons);
 
   useEffect(() => {
     let active = true;
     if (id) {
-      setLoadingSublessons(true);
+      if (!hasCachedSublessons) {
+        setLoadingSublessons(true);
+      }
       fetchNodeSublessons(id)
         .catch(() => {})
         .finally(() => {
@@ -63,12 +72,6 @@ export default function LessonScreen() {
       active = false;
     };
   }, [id, fetchNodeSublessons]);
-
-  const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 12);
-  const bottomPadding = Math.max(insets.bottom, 16);
-
-  const node = getNodeById(id || '');
-  const visibleSublessons = id ? getVisibleSublessons(id, profile.learningPace) : [];
 
   const [activeSublesson, setActiveSublesson] = useState<Sublesson | null>(null);
   const [lessonPhase, setLessonPhase] = useState<LessonPhase>('SUBLESSON_PICKER');
@@ -136,7 +139,7 @@ export default function LessonScreen() {
             <Text style={styles.nodeIntroDesc}>{node.description}</Text>
             <View style={styles.paceTag}>
               <Text style={styles.paceTagText}>
-                Mostrando {visibleSublessons.length} sublecciones adaptadas a tu ritmo ({profile.learningPace})
+                Mostrando {visibleSublessons.length} prácticas adaptadas a tu ritmo ({formatPace(profile.learningPace)})
               </Text>
             </View>
           </View>

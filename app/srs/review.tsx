@@ -8,7 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { X, Trophy, ArrowLeft } from 'lucide-react-native';
+import { X, Trophy, Volume2, VolumeX } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SPACING } from '../../src/constants/theme';
 import { FlipCard3D } from '../../src/components/srs/FlipCard3D';
@@ -73,6 +73,7 @@ export default function SRSReviewScreen() {
   const [ratedCount, setRatedCount] = useState(0);
   const [retryCounts, setRetryCounts] = useState<Record<string, number>>({});
   const [requeueBanner, setRequeueBanner] = useState<string | null>(null);
+  const [autoPlayEnabled, setAutoPlayEnabled] = useState(true);
 
   const topPadding = Math.max(insets.top, Platform.OS === 'android' ? 24 : 0);
   const bottomPadding = Math.max(insets.bottom, 16);
@@ -131,14 +132,28 @@ export default function SRSReviewScreen() {
 
         <Text style={styles.headerTitle}>{modeTitle}</Text>
 
-        <View style={styles.counterBox}>
-          <Text style={styles.counterText}>
-            {reviewDeck.length === 0
-              ? '0/0'
-              : sessionCompleted
-              ? `${reviewDeck.length}/${reviewDeck.length}`
-              : `${currentIndex + 1}/${reviewDeck.length}`}
-          </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <TouchableOpacity
+            onPress={() => setAutoPlayEnabled(prev => !prev)}
+            style={styles.counterBox}
+            accessibilityRole="button"
+            accessibilityLabel={autoPlayEnabled ? 'Silenciar audio automático' : 'Activar audio automático'}
+          >
+            {autoPlayEnabled ? (
+              <Volume2 size={15} color="#765A00" />
+            ) : (
+              <VolumeX size={15} color={COLORS.onSurfaceVariant} />
+            )}
+          </TouchableOpacity>
+          <View style={styles.counterBox}>
+            <Text style={styles.counterText}>
+              {reviewDeck.length === 0
+                ? '0/0'
+                : sessionCompleted
+                ? `${reviewDeck.length}/${reviewDeck.length}`
+                : `${currentIndex + 1}/${reviewDeck.length}`}
+            </Text>
+          </View>
         </View>
       </View>
 
@@ -235,6 +250,7 @@ export default function SRSReviewScreen() {
               key={`${currentCard.id}-${currentIndex}`}
               card={currentCard}
               onRate={handleRate}
+              autoPlayAudio={autoPlayEnabled}
             />
           )}
         </ScrollView>

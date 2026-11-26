@@ -162,7 +162,7 @@ export default function ProfileScreen() {
           <View style={[styles.syncStatusPill, isCloudConnected ? styles.syncOnline : styles.syncOffline]}>
             {isCloudConnected ? <Cloud size={13} color="#15803D" /> : <CloudOff size={13} color="#B45309" />}
             <Text style={[styles.syncStatusText, isCloudConnected ? styles.syncOnlineText : styles.syncOfflineText]}>
-              {isCloudConnected ? 'Sincronizado con TiDB Cloud ☁️' : 'Modo Local Offline 📱'}
+              {isCloudConnected ? 'Progreso guardado en la nube ☁️' : 'Modo Local Offline 📱'}
             </Text>
           </View>
 
@@ -309,8 +309,8 @@ export default function ProfileScreen() {
           >
             <Text style={styles.paceEmoji}>🐢</Text>
             <View style={styles.paceTextCol}>
-              <Text style={styles.paceTitle}>Lento (SLOW)</Text>
-              <Text style={styles.paceSub}>Texto libre • 5 sublecciones por nodo</Text>
+              <Text style={styles.paceTitle}>Suave</Text>
+              <Text style={styles.paceSub}>Más guía • 5 prácticas por tema</Text>
             </View>
             {profile.learningPace === 'SLOW' && <CheckCircle2 size={18} color="#765A00" />}
           </TouchableOpacity>
@@ -321,8 +321,8 @@ export default function ProfileScreen() {
           >
             <Text style={styles.paceEmoji}>⚖️</Text>
             <View style={styles.paceTextCol}>
-              <Text style={styles.paceTitle}>Medio (MEDIUM)</Text>
-              <Text style={styles.paceSub}>Casillas exactas • 4 sublecciones</Text>
+              <Text style={styles.paceTitle}>Equilibrado</Text>
+              <Text style={styles.paceSub}>Balance ideal • 4 prácticas por tema</Text>
             </View>
             {profile.learningPace === 'MEDIUM' && <CheckCircle2 size={18} color="#765A00" />}
           </TouchableOpacity>
@@ -333,8 +333,8 @@ export default function ProfileScreen() {
           >
             <Text style={styles.paceEmoji}>⚡</Text>
             <View style={styles.paceTextCol}>
-              <Text style={styles.paceTitle}>Rápido (FAST)</Text>
-              <Text style={styles.paceSub}>3 casillas dinámicas • 3 sublecciones</Text>
+              <Text style={styles.paceTitle}>Intensivo</Text>
+              <Text style={styles.paceSub}>Reto directo • 3 prácticas por tema</Text>
             </View>
             {profile.learningPace === 'FAST' && <CheckCircle2 size={18} color="#765A00" />}
           </TouchableOpacity>
@@ -390,7 +390,7 @@ export default function ProfileScreen() {
             />
           </View>
 
-          {profile.notificationsEnabled && (
+          {__DEV__ && profile.notificationsEnabled && (
             <View style={styles.testNotifsGrid}>
               <Text style={styles.testNotifTitle}>Probar Notificación en Vivo:</Text>
               <View style={styles.notifButtonsRow}>
@@ -423,48 +423,52 @@ export default function ProfileScreen() {
           )}
         </View>
 
-        {/* 4. HERRAMIENTAS DEMO */}
-        <Text style={styles.sectionHeading}>HERRAMIENTAS DE PRUEBA DEMO</Text>
-        <View style={styles.demoActionsCard}>
-          <TouchableOpacity onPress={refillLivesDemo} style={styles.demoActionBtn}>
-            <Heart size={16} color="#EF4444" fill="#EF4444" />
-            <Text style={styles.demoActionBtnText}>Recargar 5 Vidas al Instante</Text>
-          </TouchableOpacity>
+        {/* 4. HERRAMIENTAS DE DESARROLLO (solo en __DEV__) */}
+        {__DEV__ && (
+          <>
+            <Text style={styles.sectionHeading}>HERRAMIENTAS DE DESARROLLO</Text>
+            <View style={styles.demoActionsCard}>
+              <TouchableOpacity onPress={refillLivesDemo} style={styles.demoActionBtn}>
+                <Heart size={16} color="#EF4444" fill="#EF4444" />
+                <Text style={styles.demoActionBtnText}>Recargar 5 Vidas al Instante</Text>
+              </TouchableOpacity>
 
+              <TouchableOpacity
+                onPress={() => {
+                  Alert.alert('Reiniciar Datos', '¿Deseas restaurar los datos al estado inicial?', [
+                    { text: 'Cancelar', style: 'cancel' },
+                    {
+                      text: 'Reiniciar',
+                      style: 'destructive',
+                      onPress: () => {
+                        resetDemoUser();
+                        resetRoadmapProgress();
+                        resetToMockDeck();
+                        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                      },
+                    },
+                  ]);
+                }}
+                style={[styles.demoActionBtn, styles.demoActionBtnDanger]}
+              >
+                <RotateCcw size={16} color="#BA1A1A" />
+                <Text style={styles.demoActionBtnTextDanger}>Restaurar Mazo y Progreso Inicial</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+
+        {/* 5. GESTIÓN DE SESIÓN & CUENTA */}
+        <Text style={styles.sectionHeading}>CUENTA & SOPORTE</Text>
+        <View style={styles.demoActionsCard}>
           <TouchableOpacity
             onPress={() => setIsFeedbackModalVisible(true)}
             style={styles.demoActionBtn}
           >
             <MessageSquare size={16} color="#765A00" />
-            <Text style={styles.demoActionBtnText}>Enviar Opinión / Feedback CSAT</Text>
+            <Text style={styles.demoActionBtnText}>Enviar Opinión o Sugerencia</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => {
-              Alert.alert('Reiniciar Demo', '¿Deseas restaurar los datos al estado inicial?', [
-                { text: 'Cancelar', style: 'cancel' },
-                {
-                  text: 'Reiniciar',
-                  style: 'destructive',
-                  onPress: () => {
-                    resetDemoUser();
-                    resetRoadmapProgress();
-                    resetToMockDeck();
-                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-                  },
-                },
-              ]);
-            }}
-            style={[styles.demoActionBtn, styles.demoActionBtnDanger]}
-          >
-            <RotateCcw size={16} color="#BA1A1A" />
-            <Text style={styles.demoActionBtnTextDanger}>Restaurar Mazo y Progreso Inicial</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* 5. GESTIÓN DE SESIÓN & CUENTA */}
-        <Text style={styles.sectionHeading}>CUENTA & SESIÓN</Text>
-        <View style={styles.demoActionsCard}>
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

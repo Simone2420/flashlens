@@ -13,9 +13,7 @@ import {
 import {
   Camera,
   Brain,
-  Headphones,
   Compass,
-  CircleQuestionMark,
   ArrowRight,
   ChevronRight,
 } from 'lucide-react-native';
@@ -25,9 +23,7 @@ import { COLORS, SPACING, SHADOWS } from '../../constants/theme';
 import {
   LensVisionIllustration,
   SrsNeuroscienceIllustration,
-  AudioLabIllustration,
   RoadmapFocusIllustration,
-  FaqSupportIllustration,
 } from './OnboardingIllustrations';
 
 export interface OnboardingCarouselProps {
@@ -50,63 +46,39 @@ interface SlideItem {
 const SLIDES: SlideItem[] = [
   {
     id: '1',
-    badge: 'IA VISUAL & CONCEPTOS',
+    badge: 'CÁMARA + VOZ',
     badgeIcon: Camera,
-    chips: ['⚡ Inferencia <2.5s', '✨ Objetos & Ideas'],
+    chips: ['⚡ Tarjetas en segundos', '✨ Objetos & Modismos'],
     title: 'Tu mundo real, tu nuevo vocabulario.',
     highlightWord: 'tu nuevo vocabulario.',
     description:
-      'Apunta con la cámara a los objetos cotidianos de tu espacio o crea tarjetas de conceptos abstractos (verbos, modismos y emociones) con mnemotecnias y audio nativo al instante.',
+      'Apunta tu cámara a cualquier objeto o di un modismo en español con tu voz para crear tu flashcard con audio nativo al instante.',
     capsuleIcon: Camera,
     renderIllustration: (w, h) => <LensVisionIllustration width={w} height={h} />,
   },
   {
     id: '2',
-    badge: 'CIENCIA COGNITIVA · SM-2',
+    badge: 'MEMORIA SM-2 & OÍDO',
     badgeIcon: Brain,
-    chips: ['🔄 Algoritmo SM-2', '📈 Retención a Largo Plazo'],
-    title: 'Vence activamente la curva del olvido.',
-    highlightWord: 'curva del olvido.',
+    chips: ['🔄 Repaso SM-2', '🎧 Dictado & Ráfaga'],
+    title: 'Retén lo que aprendes y entrena tu oído.',
+    highlightWord: 'entrena tu oído.',
     description:
-      'Estímulo visual al frente y revelación activa al reverso. El algoritmo SuperMemo-2 programa los repasos con precisión matemática para fijar el vocabulario para siempre.',
+      'Repasa en el momento exacto con recuperación activa y mejora tu comprensión auditiva con dictados guiados a tu ritmo.',
     capsuleIcon: Brain,
     renderIllustration: (w, h) => <SrsNeuroscienceIllustration width={w} height={h} />,
   },
   {
     id: '3',
-    badge: 'LABORATORIO FONÉTICO · DICTADO',
-    badgeIcon: Headphones,
-    chips: ['⚡ Ráfagas de 15s', '🎧 3 Modos de Dictado'],
-    title: 'Entrena tu oído y habla sin traducir mentalmente.',
-    highlightWord: 'sin traducir mentalmente.',
-    description:
-      'Dictado directo, inverso y situacional para erradicar el bloqueo mental. Desafía tus reflejos fonéticos en el modo ráfaga a contrarreloj y mantén tu combo.',
-    capsuleIcon: Headphones,
-    renderIllustration: (w, h) => <AudioLabIllustration width={w} height={h} />,
-  },
-  {
-    id: '4',
-    badge: 'CALIBRACIÓN CEFR · FOCO TOTAL',
+    badge: 'RUTA A1–A2 SIN RUIDO',
     badgeIcon: Compass,
-    chips: ['🎯 Diagnóstico ICFES/CEFR', '🛡️ 0 Banners Intrusivos'],
-    title: 'Progreso a tu medida y máxima concentración.',
+    chips: ['🎯 A tu propio ritmo', '🛡️ 0 Banners Intrusivos'],
+    title: 'Aprende paso a paso y con máxima concentración.',
     highlightWord: 'máxima concentración.',
     description:
-      'Calibra tu nivel con la prueba diagnóstica oficial de 25 preguntas. Aprende en una interfaz sobria y limpia diseñada para tu memoria, con cero anuncios invasivos.',
+      'Avanza por lecciones cortas con explicaciones claras antes de cada práctica, sin anuncios invasivos y con tus tarjetas siempre offline.',
     capsuleIcon: Compass,
     renderIllustration: (w, h) => <RoadmapFocusIllustration width={w} height={h} />,
-  },
-  {
-    id: '5',
-    badge: 'PREGUNTAS FRECUENTES · CLARIDAD',
-    badgeIcon: CircleQuestionMark,
-    chips: ['❓ Dudas Resueltas', '💡 Transparencia Total'],
-    title: 'Todo claro desde el primer día de práctica.',
-    highlightWord: 'primer día de práctica.',
-    description:
-      '¿Las vidas se cobran? No, son un freno formativo que se regenera cada 15 min. ¿Funciona offline? Sí, tus tarjetas y repasos se guardan en tu celular.',
-    capsuleIcon: CircleQuestionMark,
-    renderIllustration: (w, h) => <FaqSupportIllustration width={w} height={h} />,
   },
 ];
 
