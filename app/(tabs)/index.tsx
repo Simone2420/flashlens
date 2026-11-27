@@ -10,7 +10,6 @@ import {
   ActivityIndicator,
   RefreshControl,
   Modal,
-  Alert,
 } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router';
 import {
@@ -38,7 +37,6 @@ import {
   Clock,
   Mic,
   Lightbulb,
-  Trash2,
   SlidersHorizontal,
 } from 'lucide-react-native';
 import * as Speech from 'expo-speech';
@@ -130,7 +128,6 @@ export default function HomeScreen() {
     clearCategoryFilters,
     setSearchQuery,
     toggleFavorite,
-    deleteCard,
     getDueCards,
   } = useFlashcardStore();
 
@@ -626,7 +623,7 @@ export default function HomeScreen() {
                 <Text style={styles.cardNativeTrans}>➔ {card.nativeTranslation}</Text>
               </View>
 
-              {/* Acciones Rápidas: Audio, Favorita, Eliminar */}
+              {/* Acciones Rápidas: Audio y Favorita */}
               <View style={styles.cardActionsCol}>
                 <TouchableOpacity
                   onPress={() => handleSpeak(card.targetWord)}
@@ -639,47 +636,22 @@ export default function HomeScreen() {
                   <Volume2 size={18} color="#765A00" />
                 </TouchableOpacity>
 
-                <View style={styles.cardSecondaryActionsRow}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      Haptics.selectionAsync();
-                      toggleFavorite(card.id);
-                    }}
-                    style={[styles.cardMiniBtn, card.isFavorite && styles.cardMiniBtnFavActive]}
-                    accessibilityRole="button"
-                    accessibilityLabel={card.isFavorite ? 'Quitar de favoritas' : 'Marcar como favorita'}
-                    hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-                  >
-                    <Star
-                      size={13}
-                      color={card.isFavorite ? '#D97706' : '#747878'}
-                      fill={card.isFavorite ? '#F59E0B' : 'transparent'}
-                    />
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    onPress={() => {
-                      Alert.alert(
-                        'Eliminar tarjeta',
-                        `¿Quieres eliminar "${card.targetWord}" de tu mazo?`,
-                        [
-                          { text: 'Cancelar', style: 'cancel' },
-                          {
-                            text: 'Eliminar',
-                            style: 'destructive',
-                            onPress: () => deleteCard(card.id),
-                          },
-                        ]
-                      );
-                    }}
-                    style={styles.cardMiniBtn}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Eliminar tarjeta ${card.targetWord}`}
-                    hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-                  >
-                    <Trash2 size={13} color="#BA1A1A" />
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    Haptics.selectionAsync();
+                    toggleFavorite(card.id);
+                  }}
+                  style={[styles.cardMiniBtn, card.isFavorite && styles.cardMiniBtnFavActive]}
+                  accessibilityRole="button"
+                  accessibilityLabel={card.isFavorite ? 'Quitar de favoritas' : 'Marcar como favorita'}
+                  hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                >
+                  <Star
+                    size={13}
+                    color={card.isFavorite ? '#D97706' : '#747878'}
+                    fill={card.isFavorite ? '#F59E0B' : 'transparent'}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
 
